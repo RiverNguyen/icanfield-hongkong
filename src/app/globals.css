@@ -5,22 +5,22 @@
 body {
   font-family: 'Inter', sans-serif;
 }
-
+html {
+  font-size: 1vw;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-
 @layer base {
   :root {
   }
   .dark {
   }
 }
-
-@layer base {
-
+.section-container {
+  @apply max-w-[90rem] mx-auto;
 }
 @layer base {
   .heading1 {
@@ -49,5 +49,13 @@ body {
   }
   .sub-12 {
     @apply text-[0.75rem] leading-[1.5];
+  }
+}
+@media (max-width: 767px) {
+  html {
+    font-size: 4.26666vw;
+  }
+  .section-container {
+    max-width: 100%;
   }
 }
