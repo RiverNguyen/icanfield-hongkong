@@ -22,7 +22,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        'SVN-optima': ['var(--SVN-optima)'],
+        optima: ['var(--font-optima)', 'sans-serif'],
       },
       colors: {
         background: '#F6F6F4',

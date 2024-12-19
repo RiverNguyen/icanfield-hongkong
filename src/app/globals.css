@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+  font-family: 'Inter', sans-serif;
 }
 
 @layer utilities {
@@ -19,30 +20,25 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
 }
 @layer base {
-  .h1 {
+  .heading1 {
     @apply text-[3rem] leading-[1.2];
   }
-  .h2 {
+  .heading2 {
     @apply text-[2.5rem] leading-[1.2];
   }
-  .h3 {
+  .heading3 {
     @apply text-[2rem] leading-[1.2];
   }
-  .h4 {
+  .heading4 {
     @apply text-[1.5rem] leading-[1.4];
   }
-  .h5 {
+  .heading5 {
     @apply text-[1.25rem] leading-[1.5];
   }
-  .h6 {
+  .heading6 {
     @apply text-[1.125rem] leading-[1.5];
   }
   .semi-16-pc {
