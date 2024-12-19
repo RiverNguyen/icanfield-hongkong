@@ -1,9 +1,9 @@
-import createMiddleware from 'next-intl/middleware'
-import {routing} from './i18n/routing'
-
-export default createMiddleware(routing)
+export default function middleware() {
+  // Middleware logic can be added here
+  return
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/', '/(vi|en)/:path*'],
+  // Match only the root pathname
+  matcher: ['/'],
 }
