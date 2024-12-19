@@ -4,27 +4,6 @@
 
 body {
 }
-@font-face {
-  font-family: 'SVN-Optima';
-  src: url('./fonts/SVN-Optima-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'SVN-Optima';
-  src: url('./fonts/SVN-Optima-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'SVN-Optima';
-  src: url('./fonts/SVN-Optima-DemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
 
 @layer utilities {
   .text-balance {
@@ -45,5 +24,34 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+@layer base {
+  .h1 {
+    @apply text-[3rem] leading-[1.2];
+  }
+  .h2 {
+    @apply text-[2.5rem] leading-[1.2];
+  }
+  .h3 {
+    @apply text-[2rem] leading-[1.2];
+  }
+  .h4 {
+    @apply text-[1.5rem] leading-[1.4];
+  }
+  .h5 {
+    @apply text-[1.25rem] leading-[1.5];
+  }
+  .h6 {
+    @apply text-[1.125rem] leading-[1.5];
+  }
+  .semi-16-pc {
+    @apply text-[1rem] leading-[1.5];
+  }
+  .sub-14 {
+    @apply text-[0.875rem] leading-[1.5];
+  }
+  .sub-12 {
+    @apply text-[0.75rem] leading-[1.5];
   }
 }

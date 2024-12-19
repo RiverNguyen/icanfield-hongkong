@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type {Metadata} from 'next'
-import localFont from 'next/font/local'
 import '../globals.css'
 //
 import {NextIntlClientProvider} from 'next-intl'
