@@ -21,6 +21,9 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        optima: ['var(--font-optima)', 'sans-serif'],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
