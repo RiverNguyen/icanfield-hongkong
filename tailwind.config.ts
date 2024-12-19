@@ -21,6 +21,9 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        'SVN-optima': ['var(--SVN-optima)'],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
