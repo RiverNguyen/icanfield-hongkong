@@ -17,7 +17,7 @@ const BannerHomepage = () => {
   return (
     <section className='w-full h-[42.8125rem] relative xsm:h-[33.06rem] xsm:bg-background'>
       {haveVideo ? (
-        <div className='banner-video absolute top-0 left-0 w-full h-full xsm:relative xsm:h-[14.625rem]'>
+        <div className='banner-video absolute top-0 left-0 w-full h-full xsm:relative xsm:h-[14.625rem] rounded-bl-[0.5rem] rounded-br-[0.5rem] overflow-hidden'>
           {isClient && dataVideo.type === 'upload' ? (
             <ReactPlayer
               url={dataVideo.url}
