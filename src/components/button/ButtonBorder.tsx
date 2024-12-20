@@ -26,7 +26,7 @@ export default function ButtonBorder({
         width={24}
         height={24}
         alt='arow'
-        src={'/icons/homepage/icon-arow.svg'}
+        src={'/icons/homepage/footer/icon-arow.svg'}
         className='size-[1.5rem] object-contain ml-[0.5rem]'
       />
     </Link>
