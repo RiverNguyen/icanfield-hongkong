@@ -25,6 +25,8 @@ const config: Config = {
         optima: ['var(--font-optima)', 'sans-serif'],
       },
       colors: {
+        textwhite85: 'rgba(255,255,255,0.85)',
+        textwhitetest: '#f7f6f1',
         background: '#F6F6F4',
         brown: '#5C321E',
         greentext: '#254432',
