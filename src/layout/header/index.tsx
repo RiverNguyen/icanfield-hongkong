@@ -80,7 +80,7 @@ const Header = () => {
   ]
   return (
     <header>
-      <div className='header-top bg-[linear-gradient(118deg,#2E1506_69.75%,#95502F_142.7%,#F5C178_182.76%)] '>
+      <div className='header-top bg-[linear-gradient(118deg,#2E1506_69.75%,#95502F_142.7%,#F5C178_182.76%)] xsm:hidden'>
         <div className=' section-container flex items-center justify-between'>
           <div className='flex items-center space-x-[0.94rem]'>
             <div className=' relative '>
@@ -174,7 +174,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className='header-bottom'>
+      <div className='header-bottom xsm:hidden'>
         <div className='section-container flex items-center justify-between py-[0.62rem]'>
           {/* left */}
           <div className='flex items-center space-x-[2.5rem]'>
@@ -211,7 +211,7 @@ const Header = () => {
                     alt='logo'
                     width={14}
                     height={14}
-                    />
+                  />
                 </div>
               ) : (
                 <Link
@@ -239,6 +239,48 @@ const Header = () => {
               </span>
             </Link>
           </div>
+        </div>
+      </div>
+      <div className='sm:hidden flex items-center justify-between section-container py-[0.62rem]'>
+        <Link href={'/'}>
+          <ImageV2
+            src='/imgs/homepage/header/d-IC-mb.png'
+            alt='logo'
+            width={100}
+            height={100}
+            className='w-[6.25244rem] h-[2.25rem] object-contain'
+          />
+        </Link>
+        <div className='flex items-center space-x-[1.5rem]'>
+          <div className='flex items-center'>
+            <div className='relative size-[1rem] rounded-[50%] mr-1'>
+              <ImageV2
+                src='/imgs/homepage/header/vn-flag2.png'
+                alt='logo'
+                width={16}
+                height={16}
+                className='size-[1rem] rounded-[50%] z-0 absolute w-full h-full top-0 left-0'
+              />
+              <div className='bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)] absolute z-[1] w-full h-full top-0'></div>
+            </div>
+            <span className='text-greyscaletext-600 text-[0.75rem] font-medium leading-[1.5]'>VN</span>
+            <ImageV2
+            src={'/icons/homepage/header/arrow-down-brown-mb.svg'}
+            alt='down'
+            width={14}
+            height={14}
+            className='size-[1.125rem] object-contain ml-[0.38rem]'
+          />
+          </div>
+          <button className='w-[3.125rem] h-[2.125rem]'>
+            <ImageV2
+              src='/icons/homepage/header/hamburger.svg'
+              alt='menu'
+              width={20}
+              height={20}
+              className='w-full h-full'
+            />
+          </button>
         </div>
       </div>
     </header>

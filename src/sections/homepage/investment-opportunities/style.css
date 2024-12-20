@@ -1,0 +1,21 @@
+.investment-opportunities__subtitle,
+.investment-opportunities__title,
+.investment-opportunities__content {
+  transition: 1.8s cubic-bezier(0.58, 0.01, 0.15, 0.99);
+}
+
+.investment-opportunities.active .investment-opportunities__subtitle,
+.investment-opportunities.active .investment-opportunities__title,
+.investment-opportunities.active .investment-opportunities__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 639.98px) {
+  .investment-opportunities__subtitle,
+  .investment-opportunities__title,
+  .investment-opportunities__content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

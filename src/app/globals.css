@@ -15,19 +15,26 @@ html {
 }
 @layer base {
   :root {
+    --Phase-1-butt: linear-gradient(
+      97deg,
+      #5c321e -3.86%,
+      #95502f 51.97%,
+      #f5c178 117.18%
+    );
+    --Phase-1-Text-Text-Grey-Disable: rgba(18, 18, 18, 0.38);
   }
   .dark {
   }
 }
 .section-container {
-  @apply max-w-[90rem] mx-auto;
+  @apply max-w-[90rem] mx-auto xsm:px-4;
 }
 @layer base {
   .heading1 {
     @apply text-[3rem] leading-[1.2] tracking-[-0.06rem] xsm:text-[1.5rem] xsm:leading-[1.3];
   }
   .heading2 {
-    @apply text-[2.5rem] leading-[1.2] tracking-[-0.075rem] xsm:text-[1.25rem] xsm:tracking-[-0.06rem] xsm:leading-[1.3];
+    @apply text-[2.5rem] leading-[1.2] tracking-[-0.075rem] xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.06rem];
   }
   .heading3 {
     @apply text-[2rem] leading-[1.2] tracking-[-0.04rem];
@@ -48,13 +55,13 @@ html {
     @apply text-[0.875rem] leading-[1.5] tracking-[-0.00875rem];
   }
   .body-14-b {
-    @apply text-[0.875rem] leading-[1.5] font-bold;
+    @apply text-[0.875rem] font-bold leading-[1.5];
   }
   .body-14-s {
-    @apply text-[0.875rem] leading-[1.5] font-semibold;
+    @apply text-[0.875rem] font-semibold leading-[1.5];
   }
   .body-14-m {
-    @apply text-[0.875rem] leading-[1.5] font-medium;
+    @apply text-[0.875rem] font-medium leading-[1.5];
   }
   .sub-12 {
     @apply text-[0.75rem] leading-[1.5];
