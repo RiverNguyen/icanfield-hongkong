@@ -27,7 +27,7 @@ html {
   }
 }
 .section-container {
-  @apply mx-auto max-w-[90rem];
+  @apply max-w-[90rem] mx-auto xsm:px-4;
 }
 @layer base {
   .heading1 {

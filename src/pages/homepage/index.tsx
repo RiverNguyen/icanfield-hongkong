@@ -1,10 +1,14 @@
+import BannerHomepage from '@/sections/homepage/banner'
+import TalentedTeam from '@/sections/homepage/talented-team'
 import {InvestmentOpportunities} from '@/sections/homepage/investment-opportunities'
-import investmentOpportunities from '@/sections/homepage/investment-opportunities/CONSTANTS'
+import investmentOpportunities from '@/sections/homepage/investment-opportunities/constants'
 import React from 'react'
 
 const HomePage = () => {
   return (
-    <main className='pt-[100rem]'>
+    <main>
+      <BannerHomepage />
+      <TalentedTeam />
       <InvestmentOpportunities {...investmentOpportunities} />
     </main>
   )

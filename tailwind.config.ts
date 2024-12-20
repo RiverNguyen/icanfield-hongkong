@@ -28,7 +28,7 @@ const config: Config = {
         textwhite85: 'rgba(255,255,255,0.85)',
         textwhitetest: '#f7f6f1',
         background: '#F6F6F4',
-
+        'Phase-1-Brown': '#5C321E',
         brown: '#5C321E',
         greentext: '#254432',
         bodytext: '#5C5C5C',
