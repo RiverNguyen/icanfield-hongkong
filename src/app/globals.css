@@ -24,31 +24,67 @@ html {
 }
 @layer base {
   .heading1 {
-    @apply text-[3rem] leading-[1.2];
+    @apply text-[3rem] leading-[1.2] tracking-[-2%];
   }
   .heading2 {
-    @apply text-[2.5rem] leading-[1.2];
+    @apply text-[2.5rem] leading-[1.2] tracking-[-3%];
   }
   .heading3 {
-    @apply text-[2rem] leading-[1.2];
+    @apply text-[2rem] leading-[1.2] tracking-[-2%];
   }
   .heading4 {
-    @apply text-[1.5rem] leading-[1.4];
+    @apply text-[1.5rem] leading-[1.4] tracking-[-2%];
   }
   .heading5 {
-    @apply text-[1.25rem] leading-[1.5];
+    @apply text-[1.25rem] leading-[1.5] tracking-[-2%];
   }
   .heading6 {
     @apply text-[1.125rem] leading-[1.5];
   }
-  .semi-16-pc {
-    @apply text-[1rem] leading-[1.5];
-  }
   .sub-14 {
     @apply text-[0.875rem] leading-[1.5];
   }
+  .body-14 {
+    @apply text-[0.875rem] leading-[1.5] tracking-[-1%];
+  }
+  .body-14-b {
+    @apply text-[0.875rem] leading-[1.5] font-bold;
+  }
+  .body-14-s {
+    @apply text-[0.875rem] leading-[1.5] font-semibold;
+  }
+  .body-14-m {
+    @apply text-[0.875rem] leading-[1.5] font-medium;
+  }
   .sub-12 {
     @apply text-[0.75rem] leading-[1.5];
+  }
+  .sub-10 {
+    @apply text-[0.625rem] leading-[1.5];
+  }
+  .sub-28B {
+    @apply text-[1.75rem] leading-[1.25] tracking-[-1%] font-bold;
+  }
+  .sub-28Semi {
+    @apply text-[1.75rem] leading-[1.25] tracking-[-1%] font-semibold;
+  }
+  .sub-28M {
+    @apply text-[1.75rem] leading-[1.25] tracking-[-1%] font-medium;
+  }
+  .sub-28R {
+    @apply text-[1.75rem] leading-[1.25] tracking-[-1%];
+  }
+  .body16 {
+    @apply text-[1rem] leading-[1.5];
+  }
+  .body16-m {
+    @apply text-[1rem] leading-[1.5] tracking-[-2%] font-medium;
+  }
+  .body16-s {
+    @apply text-[1rem] leading-[1.5] tracking-[-2%] font-semibold;
+  }
+  .body16-r55 {
+    @apply text-[1rem] leading-[1.55];
   }
 }
 @media (max-width: 767px) {
