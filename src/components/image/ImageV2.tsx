@@ -1,7 +1,7 @@
 'use client'
 import {StaticImport} from 'next/dist/shared/lib/get-img-props'
 import NextImage, {ImageProps} from 'next/image'
-import {useEffect, useState} from 'react'
+import {memo, useEffect, useState} from 'react'
 
 export interface IImageProps extends ImageProps {
   fallbackImage?: string
@@ -46,4 +46,4 @@ const ImageV2 = ({
   )
 }
 
-export default ImageV2
+export default memo(ImageV2)

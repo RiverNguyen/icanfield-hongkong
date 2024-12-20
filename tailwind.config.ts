@@ -28,6 +28,7 @@ const config: Config = {
         textwhite85: 'rgba(255,255,255,0.85)',
         textwhitetest: '#f7f6f1',
         background: '#F6F6F4',
+
         brown: '#5C321E',
         greentext: '#254432',
         bodytext: '#5C5C5C',
@@ -58,11 +59,15 @@ const config: Config = {
         'orangetext-900': '#3F2214',
         'primary-brown': '#BC9247',
         'primary-yellow': '#DAF2AF',
+        'Text-Text-Grey-Disable': 'var(--Phase-1-Text-Text-Grey-Disable)',
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      backgroundImage: {
+        'btn-gradient': 'var(--Phase-1-butt)',
       },
     },
   },
