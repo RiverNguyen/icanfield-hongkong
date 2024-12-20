@@ -1,0 +1,3 @@
+.proud-journey__swiper .swiper-slide-active {
+  transform: translateX(0) !important; /* Slide active sẽ sát cạnh trái */
+}
