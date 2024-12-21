@@ -12,6 +12,14 @@ html {
   .text-balance {
     text-wrap: balance;
   }
+  .scrollbar-hidden {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }
 @layer base {
   :root {
@@ -27,7 +35,7 @@ html {
   }
 }
 .section-container {
-  @apply max-w-[90rem] mx-auto xsm:px-4;
+  @apply mx-auto max-w-[90rem] xsm:px-4;
 }
 @layer base {
   .heading1 {
