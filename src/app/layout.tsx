@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={` ${optima.variable} antialiased`}>
-        {/* <Header /> */}
+        <Header />
         {children}
         <Toaster
           theme='light'
@@ -49,7 +49,7 @@ export default function RootLayout({
           duration={4000}
           expand
         />
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   )

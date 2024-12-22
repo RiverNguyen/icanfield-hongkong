@@ -8,7 +8,6 @@ import React from 'react'
 const HomePage = () => {
   return (
     <main>
-      HomePage
       <BannerHomepage />
       <TalentedTeam />
       <InvestmentOpportunities {...investmentOpportunities} />
