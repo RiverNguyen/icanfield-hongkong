@@ -145,13 +145,13 @@ function ItemInvestmentOpportunities({
             {title}
             <ImageV2
               className={cn(
-                'ml-[0.5rem] inline-block size-[1.5rem] transition-transform duration-300 ease-in-out',
+                'ml-[0.5rem] inline-block size-[1.5rem] transition-transform duration-300 ease-in-out sm:hidden',
                 itemKey === activeIndex ? 'rotate-0' : 'rotate-180',
               )}
               alt='chevron-up'
               src={'/icons/chevron-up.svg'}
-              width={24}
-              height={24}
+              width={24 * 2}
+              height={24 * 2}
             />
           </h3>
           <p className='my-[0.75rem] h-[0.0625rem] w-full bg-[rgba(112,115,124,0.22)] sm:bg-[linear-gradient(90deg,rgba(112,115,124,0.22)_24.3%,rgba(112,115,124,0.00)_82.57%)]'></p>
