@@ -123,8 +123,8 @@ const BannerHomepage = () => {
             <ImageV2
               src='/icons/homepage/banner/search.svg'
               alt='filter'
-              width={20}
-              height={20}
+              width={40}
+              height={40}
               className='size-[1.5rem] object-contain mr-[0.62rem]'
             />
             <span className='text-white text-[1rem] font-semibold leading-[1.5]'>

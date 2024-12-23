@@ -43,8 +43,8 @@ const Footer = () => {
                   <ImageV2
                     alt=''
                     src={'/icons/homepage/footer/d-icon-local.svg'}
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                     className='size-[1.25rem] object-contain'
                   />
                   <p className='text-white body16 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>

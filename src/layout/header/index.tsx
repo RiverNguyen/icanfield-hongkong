@@ -6,6 +6,7 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import {Autoplay} from 'swiper/modules'
 import 'swiper/css'
 import './styles.css'
+import {languageOptions} from './constants'
 const Header = () => {
   const listPostOutstanding = [
     {
@@ -89,8 +90,8 @@ const Header = () => {
                 <ImageV2
                   src='/icons/homepage/header/news.svg'
                   alt='logo'
-                  width={14}
-                  height={14}
+                  width={40}
+                  height={40}
                   className='size-[0.875rem] object-contain translate-y-[-1px]'
                 />
                 <span className='text-[0.75rem] leading-[1.5] font-medium text-white'>
@@ -141,8 +142,8 @@ const Header = () => {
                 <ImageV2
                   src={item.linkIcon}
                   alt='logo'
-                  width={14}
-                  height={14}
+                  width={40}
+                  height={40}
                   className='size-[0.875rem] object-contain'
                 />
                 <span className='text-[0.75rem] leading-[1.5] font-medium text-white uppercase'>
@@ -150,7 +151,7 @@ const Header = () => {
                 </span>
               </div>
             ))}
-            <div className='language-dropdown flex items-center space-x-[0.5rem] '>
+            <div className='language-dropdown flex items-center space-x-[0.5rem] relative'>
               <div className='flex  size-[1.2rem] bg-[rgba(255,255,255,0.25)] rounded-[50%] backdrop-blur-[10px] relative'>
                 <div className='w-full h-full absolute bottom-0 left-0 z-[1] bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)] rounded-full'></div>
                 <ImageV2
@@ -167,9 +168,28 @@ const Header = () => {
               <ImageV2
                 src='/icons/homepage/header/arrow-down.svg'
                 alt='logo'
-                width={14}
-                height={14}
+                width={40}
+                height={40}
+                className='size-[1rem]'
               />
+              <div className='absolute'>
+                  {
+                    languageOptions.map((item, index) => (
+                      <div key={index} className='flex items-center space-x-[0.5rem]'>
+                          <span>
+                            {item.text}
+                          </span>
+                          <ImageV2
+                            src={item.flagUrl}
+                            alt='logo'
+                            width={40}
+                            height={40}
+                            className='size-[1rem] rounded-[50%] object-contain'
+                          />
+                      </div>
+                    ))
+                  }
+              </div>
             </div>
           </div>
         </div>
@@ -209,8 +229,9 @@ const Header = () => {
                   <ImageV2
                     src='/icons/homepage/header/arrow-down-brown.svg'
                     alt='logo'
-                    width={14}
-                    height={14}
+                    width={40}
+                    height={40}
+                    className='size-[1rem] object-contain'
                   />
                 </div>
               ) : (
@@ -230,13 +251,20 @@ const Header = () => {
               <ImageV2
                 src='/icons/homepage/header/star.svg'
                 alt='logo'
-                width={14}
-                height={14}
+                width={40}
+                height={40}
                 className='size-[1.5rem] object-contain'
               />
               <span className='text-white font-medium text-[0.875rem] leading-[1.5] tracking-[-0.0175rem]'>
                 Hỗ trợ khách hàng
               </span>
+              <ImageV2
+                src='/icons/homepage/header/down-white.svg'
+                alt='logo'
+                width={40}
+                height={40}
+                className='size-[1rem] object-contain'
+              />
             </Link>
           </div>
         </div>
@@ -257,8 +285,8 @@ const Header = () => {
               <ImageV2
                 src='/imgs/homepage/header/vn-flag2.png'
                 alt='logo'
-                width={16}
-                height={16}
+                width={40}
+                height={40}
                 className='size-[1rem] rounded-[50%] z-0 absolute w-full h-full top-0 left-0'
               />
               <div className='bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)] absolute z-[1] w-full h-full top-0'></div>
@@ -267,8 +295,8 @@ const Header = () => {
             <ImageV2
             src={'/icons/homepage/header/arrow-down-brown-mb.svg'}
             alt='down'
-            width={14}
-            height={14}
+            width={40}
+            height={40}
             className='size-[1.125rem] object-contain ml-[0.38rem]'
           />
           </div>
@@ -276,8 +304,8 @@ const Header = () => {
             <ImageV2
               src='/icons/homepage/header/hamburger.svg'
               alt='menu'
-              width={20}
-              height={20}
+              width={40}
+              height={40}
               className='w-full h-full'
             />
           </button>

@@ -72,8 +72,8 @@ const TalentedTeam = () => {
           <ImageV2
             src='/icons/homepage/talented-team/prev.svg'
             alt='next'
-            width={20}
-            height={20}
+            width={40}
+            height={40}
             className='size-[1.5rem] object-contain'
           />
         </div>
@@ -81,8 +81,8 @@ const TalentedTeam = () => {
           <ImageV2
             src='/icons/homepage/talented-team/prev.svg'
             alt='next'
-            width={20}
-            height={20}
+            width={40}
+            height={40}
             className='size-[1.5rem] rotate-180 object-contain'
           />
         </div>
