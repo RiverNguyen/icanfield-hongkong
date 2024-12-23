@@ -37,7 +37,7 @@ html {
 .section-container {
   @apply mx-auto max-w-[90rem] xsm:px-4;
 }
-@layer base {
+@layer components {
   .heading1 {
     @apply text-[3rem] leading-[1.2] tracking-[-0.06rem] xsm:text-[1.5rem] xsm:leading-[1.3];
   }

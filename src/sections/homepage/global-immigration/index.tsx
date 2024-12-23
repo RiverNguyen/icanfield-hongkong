@@ -3,7 +3,7 @@ import CountNumber from "@/sections/homepage/global-immigration/CountNumber";
 
 const GlobalImmigration = () => {
     return (
-        <section className="h-[80.75rem] relative">
+        <section className="sm:h-[80.75rem] relative">
             <div className="xsm:hidden">
                 <ImageV2 
                     className="xsm:hidden z-50 w-full h-[69.375rem] object-cover absolute bottom-[5.75rem] left-0" 
@@ -52,11 +52,11 @@ const GlobalImmigration = () => {
             <div className="sm:absolute z-[55] sm:top-[5rem] sm:right-[6.37rem] xsm:w-full xsm:px-[1rem] xsm:pt-[2.5rem]">
                 <h2 className="mb-[1rem] xsm:mb-[0.75rem] w-[39.1875rem] xsm:w-full text-brown font-optima heading1 font-semibold xsm:tracking-[-0.045rem]">ICanfield tiên phong kiến tạo lộ trình định cư toàn cầu</h2>
                 <p className="w-[33.0625rem] xsm:w-full body16 xsm:body-14 text-greyscaletext-body">Với 12+ năm kinh nghiệm, iCanfield tự hào là cầu nối giúp hàng nghìn gia đình hiện thực hóa giấc mơ định cư nước ngoài</p>
-                <div className="mt-[3rem] xsm:mt-[2.5rem] grid grid-cols-2 gap-[2.5rem] xsm:gap-[1.5rem]">
+                <div className="mt-[3rem] xsm:mt-[1.5rem] grid grid-cols-2 gap-[2.5rem] xsm:gap-[1.5rem]">
                     <div>
                         <div className="flex space-x-[0.69rem] xsm:space-x-[0.39rem] items-end">
                             <CountNumber number={12} suffix="+"/>
-                            <p className="uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">NĂM <br/> kinh nghiệm</p>
+                            <p className="xsm:whitespace-nowrap uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">NĂM <br/> kinh nghiệm</p>
                         </div>
                         <div className="w-full h-[0.0625rem] xsm:h-[0.03456rem] opacity-[0.1] bg-black my-[0.5rem]"></div>
                         <p className="text-greyscaletext-400 body16-m xsm:sub-12 xsm:font-medium xsm:tracking-[-0.015rem]">Tư vấn Đầu tư định cư Quốc tế</p>
@@ -64,7 +64,7 @@ const GlobalImmigration = () => {
                     <div>
                         <div className="flex space-x-[0.69rem] xsm:space-x-[0.39rem] items-end">
                             <CountNumber number={2100} suffix="+"/>
-                            <p className="uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">HỒ SƠ <br/> khách hàng</p>
+                            <p className="xsm:whitespace-nowrap uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">HỒ SƠ <br/> khách hàng</p>
                         </div>
                         <div className="w-full h-[0.0625rem] xsm:h-[0.03456rem] opacity-[0.1] bg-black my-[0.5rem]"></div>
                         <p className="text-greyscaletext-400 body16-m xsm:sub-12 xsm:font-medium xsm:tracking-[-0.015rem]">Đầu tư, định cư và du học thành công</p>
@@ -72,7 +72,7 @@ const GlobalImmigration = () => {
                     <div>
                         <div className="flex space-x-[0.69rem] xsm:space-x-[0.39rem] items-end">
                             <CountNumber number={25} suffix="+"/>
-                            <p className="uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">NĂM <br/> kinh nghiệm</p>
+                            <p className="xsm:whitespace-nowrap uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">NĂM <br/> kinh nghiệm</p>
                         </div>
                         <div className="w-full h-[0.0625rem] xsm:h-[0.03456rem] opacity-[0.1] bg-black my-[0.5rem]"></div>
                         <p className="text-greyscaletext-400 body16-m xsm:sub-12 xsm:font-medium xsm:tracking-[-0.015rem]">Đội ngũ cộng sự luật sư</p>
@@ -80,7 +80,7 @@ const GlobalImmigration = () => {
                     <div>
                         <div className="flex space-x-[0.69rem] xsm:space-x-[0.39rem] items-end">
                             <CountNumber number={12} suffix="+"/>
-                            <p className="uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">Dự án <br/> đầu tư</p>
+                            <p className="xsm:whitespace-nowrap uppercase sub-12 leading-[1.4] tracking-[-0.0075rem] font-semibold text-brown xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]">Dự án <br/> đầu tư</p>
                         </div>
                         <div className="w-full h-[0.0625rem] xsm:h-[0.03456rem] opacity-[0.1] bg-black my-[0.5rem]"></div>
                         <p className="text-greyscaletext-400 body16-m xsm:sub-12 xsm:font-medium xsm:tracking-[-0.015rem]">Thành công và sinh lời cao</p>

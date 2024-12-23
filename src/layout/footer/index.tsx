@@ -147,7 +147,8 @@ const Footer = () => {
           </p>
           <div className='flex xsm:mb-[1rem] space-x-[0.75rem] items-center'>
             {new Array(4).fill(0).map((e, index) => (
-              <div
+              <Link 
+                href={''}
                 className='p-[0.62rem] cursor-pointer'
                 key={index}
               >
@@ -158,7 +159,7 @@ const Footer = () => {
                   height={24}
                   className='size-[1.5rem] object-contain'
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
