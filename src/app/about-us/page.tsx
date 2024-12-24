@@ -1,8 +1,17 @@
-import IndexAboutUs from "@/pages/aboutus"
+import dynamic from 'next/dynamic'
+const IndexMap = dynamic(() => import('@/sections/about-us/map/IndexMap'), {
+  ssr: false,
+})
+import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
 
 const page = () => {
-  return <IndexAboutUs />
-  
+  return (
+    <>
+      <IndexMap />
+      <IndexAboutUs />
+    </>
+  )
 }
 
 export default page
+

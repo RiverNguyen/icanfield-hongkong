@@ -1,0 +1,23 @@
+#map_container .leaflet-container {
+  background: transparent !important;
+}
+
+#map_container .leaflet-control-attribution.leaflet-control {
+  display: none !important;
+}
+
+.marker-bound {
+  animation: marker-bound 1s linear infinite alternate;
+}
+@keyframes marker-bound {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+.no-scroll {
+  overflow: hidden;
+  margin-right: 16px;
+}
