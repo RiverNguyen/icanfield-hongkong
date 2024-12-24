@@ -5,7 +5,8 @@ import '@/app/globals.css'
 import {Toaster} from 'sonner'
 import Header from '@/layout/header'
 import Footer from '@/layout/footer'
-
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 const optima = localFont({
   src: [
     {
@@ -38,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={` ${optima.variable} antialiased`}>
+      <body className={` ${optima.variable} ${inter.className} antialiased`}>
         <Header />
         {children}
         <Toaster
