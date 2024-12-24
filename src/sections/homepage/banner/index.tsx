@@ -15,7 +15,7 @@ const BannerHomepage = () => {
     setIsClient(true)
   }, [])
   return (
-    <section className='w-full h-[42.8125rem] relative xsm:h-[33.06rem] xsm:bg-background'>
+    <section className='w-full h-[42.8125rem] relative xsm:h-[33.06rem] xsm:bg-background mt-[6.44rem] xsm:mt-[2.25rem]'>
       {haveVideo ? (
         <div className='banner-video absolute top-0 left-0 w-full h-full xsm:relative xsm:h-[14.625rem] rounded-bl-[0.5rem] rounded-br-[0.5rem] overflow-hidden'>
           {isClient && dataVideo.type === 'upload' ? (
@@ -71,7 +71,7 @@ const BannerHomepage = () => {
           </Swiper>
         </div>
       )}
-      <div className='overlay absolute z-[1] w-full h-full opacity-[0.24] bg-[linear-gradient(180deg,rgba(150,146,142,0.00)_55.02%,#96928E_95.27%)] xsm:hidden'></div>
+      <div className='overlay absolute z-[1] w-full h-full opacity-[0.24] bg-[linear-gradient(180deg,rgba(150,146,142,0.00)_55.02%,#96928E_95.27%)] xsm:hidden pointer-events-none'></div>
       <ImageV2
         src='/imgs/homepage/banner/d-text.png'
         alt='banner'

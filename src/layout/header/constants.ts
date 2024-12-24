@@ -1,14 +1,14 @@
 export const languageOptions = [
     {
         value: 'en',
-        label: 'English',
+        label: 'Tiếng Anh',
         text: 'EN',
-        flagUrl: '/imgs/homepage/header/vn-flag2.png'
+        flagUrl: '/imgs/homepage/header/en-flag2.png'
     },
     {
         value: 'vi',
-        label: 'Vietnamese',
+        label: 'Việt Nam',
         text: 'VN',
-        flagUrl: '/imgs/homepage/header/en-flag2.png'
+        flagUrl: '/imgs/homepage/header/vn-flag2.png'
     }
 ]
