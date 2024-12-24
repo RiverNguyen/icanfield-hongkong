@@ -427,7 +427,7 @@ const Header = () => {
                     height={40}
                     className='size-[1rem] object-contain'
                   />
-                  <div className='children-menu invisible absolute left-1/2 top-[100%] z-50 -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+                  <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
                     <ImageV2
                       src='/icons/homepage/header/triangle.svg'
                       alt='logo'
@@ -508,7 +508,7 @@ const Header = () => {
                 height={40}
                 className='size-[1rem] object-contain'
               />
-              <div className='children-menu invisible absolute left-1/2 top-[100%] z-50 !ml-0 -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+              <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] !ml-0 -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
                 <ImageV2
                   src='/icons/homepage/header/triangle.svg'
                   alt='logo'
