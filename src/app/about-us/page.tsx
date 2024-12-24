@@ -2,13 +2,16 @@ import dynamic from 'next/dynamic'
 const IndexMap = dynamic(() => import('@/sections/about-us/map/IndexMap'), {
   ssr: false,
 })
-const AboutUs = () => {
+import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
+
+const page = () => {
   return (
     <>
       <IndexMap />
-      <div className='h-screen w-full'>AboutUs</div>
+      <IndexAboutUs />
     </>
   )
 }
 
-export default AboutUs
+export default page
+
