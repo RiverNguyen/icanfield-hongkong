@@ -43,8 +43,8 @@ const Footer = () => {
                   <ImageV2
                     alt=''
                     src={'/icons/homepage/footer/d-icon-local.svg'}
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                     className='size-[1.25rem] object-contain'
                   />
                   <p className='text-white body16 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
@@ -147,7 +147,8 @@ const Footer = () => {
           </p>
           <div className='flex xsm:mb-[1rem] space-x-[0.75rem] items-center'>
             {new Array(4).fill(0).map((e, index) => (
-              <div
+              <Link 
+                href={''}
                 className='p-[0.62rem] cursor-pointer'
                 key={index}
               >
@@ -158,7 +159,7 @@ const Footer = () => {
                   height={24}
                   className='size-[1.5rem] object-contain'
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
