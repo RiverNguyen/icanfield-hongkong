@@ -13,7 +13,6 @@ import newFlow from '@/sections/homepage/news-homepage/constants'
 const HomePage = () => {
   return (
     <main>
-      HomePage
       <BannerHomepage />
       <GlobalImmigration />
       <TalentedTeam />

@@ -7,17 +7,55 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import {Autoplay} from 'swiper/modules'
 import 'swiper/css'
 import {filterOptions, dataVideo, bannerDataImage} from './constants'
-
+import {FilterOption} from '@/types/bannerFilter.interface'
 const BannerHomepage = () => {
   const haveVideo = true
   const [isClient, setIsClient] = useState(false)
   useEffect(() => {
     setIsClient(true)
   }, [])
+  //handle click dropdown filter
+  const [openFilters, setOpenFilters] = React.useState(
+    new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
+  )
+
+  const toggleDropdown = (index: number) => {
+    setOpenFilters(
+      (prev) => prev.map((isOpen, i) => (i === index ? !isOpen : isOpen)), // Đảo trạng thái của filter được click
+    )
+  }
+  //handle click dropdown filter'
+  const [selectedItems, setSelectedItems] = useState<{
+    [key: number]: {label: string; slug: string}
+  }>([])
+  const handleSelect = (
+    filterIndex: number,
+    selectedValue: {
+      label: string
+      slug: string
+    },
+  ) => {
+    setSelectedItems((prev) => ({
+      ...prev,
+      [filterIndex]: selectedValue,
+    }))
+    setOpenFilters((prev) =>
+      prev.map((isOpen, i) => (i === filterIndex ? false : isOpen)),
+    )
+    // console.log(`Filter ${filterIndex} selected: ${selectedValue}`)
+  }
+  //handle click popup filter
+  const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
+  const [keyFilter, setKeyFilter] = React.useState('')
+  const handleClickPopupFilter = (key: string) => {
+    setKeyFilter(key)
+    setOpenPopupFilter(true)
+  }
+  const currentFilter = filterOptions.find((filter) => filter.key === keyFilter)
   return (
-    <section className='w-full h-[42.8125rem] relative xsm:h-[33.06rem] xsm:bg-background'>
+    <section className='relative mt-[6.44rem] h-[42.8125rem] w-full xsm:mt-[2.25rem] xsm:h-[33.06rem] xsm:bg-background'>
       {haveVideo ? (
-        <div className='banner-video absolute top-0 left-0 w-full h-full xsm:relative xsm:h-[14.625rem] rounded-bl-[0.5rem] rounded-br-[0.5rem] overflow-hidden'>
+        <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
           {isClient && dataVideo.type === 'upload' ? (
             <ReactPlayer
               url={dataVideo.url}
@@ -26,7 +64,7 @@ const BannerHomepage = () => {
               muted
               width='100%'
               height='100%'
-              className='!w-full !h-full object-cover [&__video]:object-cover'
+              className='!h-full !w-full object-cover [&__video]:object-cover'
             />
           ) : (
             isClient && (
@@ -37,13 +75,13 @@ const BannerHomepage = () => {
                 muted
                 width='100%'
                 height='100%'
-                className='!w-full !h-full object-cover [&_div_iframe]:object-cover'
+                className='!h-full !w-full object-cover [&_div_iframe]:object-cover'
               />
             )
           )}
         </div>
       ) : (
-        <div className='absolute top-0 left-0 w-full h-full z-[0] xsm:relative xsm:h-[14.625rem]'>
+        <div className='absolute left-0 top-0 z-[0] h-full w-full xsm:relative xsm:h-[14.625rem]'>
           <Swiper
             autoplay={{
               delay: 2500,
@@ -64,81 +102,118 @@ const BannerHomepage = () => {
                   alt='banner'
                   width={1920}
                   height={600}
-                  className='object-cover w-full h-full'
+                  className='h-full w-full object-cover'
                 />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       )}
-      <div className='overlay absolute z-[1] w-full h-full opacity-[0.24] bg-[linear-gradient(180deg,rgba(150,146,142,0.00)_55.02%,#96928E_95.27%)] xsm:hidden'></div>
+      <div className='overlay pointer-events-none absolute z-[1] h-full w-full bg-[linear-gradient(180deg,rgba(150,146,142,0.00)_55.02%,#96928E_95.27%)] opacity-[0.24] xsm:hidden'></div>
       <ImageV2
         src='/imgs/homepage/banner/d-text.png'
         alt='banner'
         width={560}
         height={173}
-        className='absolute top-[17.31rem] left-1/2 -translate-x-1/2  w-[22.02719rem] h-[6.76769rem] object-contain z-[2] xsm:hidden'
+        className='absolute left-1/2 top-[17.31rem] z-[2] h-[6.76769rem] w-[22.02719rem] -translate-x-1/2 object-contain xsm:hidden'
       />
-      <div className='banner-filter xsm:hidden w-[71.5rem] bg-[#fff] absolute h-[4.19rem] bottom-[3.81rem] left-1/2 -translate-x-1/2 rounded-[0.75rem] flex z-[2]'>
-        <div className='w-[0.75rem] bg-[linear-gradient(180deg,#95502F_20.03%,#F5C178_100%)] h-full rounded-tl-[0.75rem] rounded-bl-[0.75rem]'></div>
-        <div className='w-full flex items-center justify-between h-full p-[0.5rem] '>
-          <div className='flex items-center justify-between flex-1 h-full'>
-            {filterOptions.map((item, index) => (
-              <React.Fragment key={index}>
-                <div className='flex items-center px-3 h-full w-full hover:bg-[rgba(60,8,8,0.08)] rounded-[0.5rem] transition-all duration-300 cursor-pointer'>
-                  <div className='flex items-center justify-center bg-[rgba(18,18,18,0.08)] p-[0.62rem] rounded-[0.5rem] mr-[0.75rem]'>
-                    <ImageV2
-                      src={item?.icon}
-                      alt='icon'
-                      width={20}
-                      height={20}
-                      className='size-[1.25rem] object-contain'
-                    />
-                  </div>
-                  <div className='flex flex-col flex-1 justify-between'>
-                    <span className='text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'>
-                      {item?.label}
-                    </span>
-                    <div className='flex items-center justify-between cursor-pointer'>
-                      <span className='text-Phase-1-Brown text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] line-clamp-1'>
-                        {item?.selected}
-                      </span>
+      <div className='banner-filter absolute bottom-[3.81rem] left-1/2 z-[2] flex h-[4.19rem] w-[71.5rem] -translate-x-1/2 rounded-[0.75rem] bg-[#fff] xsm:hidden'>
+        <div className='h-full w-[0.75rem] rounded-bl-[0.75rem] rounded-tl-[0.75rem] bg-[linear-gradient(180deg,#95502F_20.03%,#F5C178_100%)]'></div>
+        <div className='flex w-full items-end justify-between p-[0.5rem]'>
+          <div className='flex flex-1 items-center justify-between'>
+            {filterOptions.map((item, filterIndex) => (
+              <React.Fragment key={filterIndex}>
+                <div
+                  className={`flex h-full w-full cursor-pointer flex-wrap items-center self-end rounded-[0.5rem] bg-white px-3 py-2 transition-all duration-300 ${!openFilters[filterIndex] ? 'hover:bg-[rgba(60,8,8,0.08)]' : ''}`}
+                  onClick={() => toggleDropdown(filterIndex)}
+                >
+                  <div
+                    className={`flex ${!openFilters[filterIndex] ? '' : 'mb-2 border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-2'} w-full`}
+                  >
+                    <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
                       <ImageV2
-                        src='/icons/homepage/banner/arrow-down.svg'
-                        alt='arrow'
-                        width={10}
-                        height={10}
-                        className='size-[1.125rem] object-contain'
+                        src={item?.icon}
+                        alt='icon'
+                        width={20}
+                        height={20}
+                        className='size-[1.25rem] object-contain'
                       />
                     </div>
+                    <div className='flex flex-1 flex-col justify-between'>
+                      <span className='text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'>
+                        {item?.label}
+                      </span>
+                      <div className='flex cursor-pointer items-center justify-between'>
+                        <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
+                          {selectedItems[filterIndex]?.label || 'Click để chọn'}
+                        </span>
+                        <ImageV2
+                          src='/icons/homepage/banner/arrow-down.svg'
+                          alt='arrow'
+                          width={10}
+                          height={10}
+                          className={`size-[1.125rem] object-contain transition-transform duration-300 ${
+                            openFilters[filterIndex]
+                              ? '-rotate-180'
+                              : 'rotate-0'
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={
+                      'dropdown-filter flex w-full flex-col overflow-hidden transition-[height] duration-500'
+                    }
+                    style={{
+                      height: openFilters[filterIndex]
+                        ? `${item?.children.length * 40}px`
+                        : '0',
+                    }}
+                  >
+                    {item?.children.map((child, childIndex) => (
+                      <p
+                        key={childIndex}
+                        className='line-clamp-1 cursor-pointer rounded-[0.5rem] px-3 py-2 text-[0.875rem] font-medium leading-[1.5] tracking-[-0.00875rem] text-Phase-1-Brown hover:bg-[rgba(60,8,8,0.08)]'
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          handleSelect(filterIndex, child)
+                        }}
+                      >
+                        {child?.label}
+                      </p>
+                    ))}
                   </div>
                 </div>
-                {index < filterOptions.length - 1 && (
-                  <div className='line w-[0.0625rem] bg-[rgba(0,0,0,0.10)] rounded-[0.1875rem] h-[2.75rem] mx-[0.5rem]'></div>
+                {filterIndex < filterOptions.length - 1 && (
+                  <div className='line mx-[0.5rem] h-[2.75rem] w-[0.0625rem] rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
                 )}
               </React.Fragment>
             ))}
           </div>
-          <button className='flex items-center justify-center bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] rounded-[0.5rem] px-[2rem] h-full flex-shrink-0 ml-2'>
+          <button className='ml-2 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] px-[2rem]'>
             <ImageV2
               src='/icons/homepage/banner/search.svg'
               alt='filter'
-              width={20}
-              height={20}
-              className='size-[1.5rem] object-contain mr-[0.62rem]'
+              width={40}
+              height={40}
+              className='mr-[0.62rem] size-[1.5rem] object-contain'
             />
-            <span className='text-white text-[1rem] font-semibold leading-[1.5]'>
+            <span className='text-[1rem] font-semibold leading-[1.5] text-white'>
               Tìm kiếm
             </span>
           </button>
         </div>
       </div>
-      <div className='banner-filter-mb sm:hidden p-4 rounded-[0.75rem] bg-white shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)] w-[21.4375rem] mx-auto -translate-y-[1.5rem] flex flex-col'>
-        <div className='flex flex-col items-center justify-between flex-1 h-full'>
-          {filterOptions.map((item, index) => (
+      <div className='banner-filter-mb mx-auto flex w-[21.4375rem] -translate-y-[1.5rem] flex-col rounded-[0.75rem] bg-white p-4 shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)] sm:hidden'>
+        <div className='flex h-full flex-1 flex-col items-center justify-between'>
+          {filterOptions.map((item: FilterOption, index: number) => (
             <React.Fragment key={index}>
-              <div className='flex h-full w-full hover:bg-[rgba(60,8,8,0.08)] rounded-[0.5rem] transition-all duration-300 cursor-pointer'>
-                <div className='flex items-center justify-center bg-[rgba(18,18,18,0.08)] p-[0.62rem] rounded-[0.5rem] mr-[0.75rem]'>
+              <div
+                className='flex h-full w-full cursor-pointer rounded-[0.5rem] transition-all duration-300'
+                onClick={() => handleClickPopupFilter(item?.key)}
+              >
+                <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
                   <ImageV2
                     src={item?.icon}
                     alt='icon'
@@ -147,13 +222,13 @@ const BannerHomepage = () => {
                     className='size-[1.25rem] object-contain'
                   />
                 </div>
-                <div className='flex flex-col flex-1 justify-between'>
+                <div className='flex flex-1 flex-col justify-between'>
                   <span className='text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'>
                     {item?.label}
                   </span>
-                  <div className='flex items-center justify-between cursor-pointer'>
-                    <span className='text-Phase-1-Brown text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] line-clamp-1'>
-                      {item?.selected}
+                  <div className='flex cursor-pointer items-center justify-between'>
+                    <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
+                      {selectedItems[index]?.label || 'Click để chọn'}
                     </span>
                     <ImageV2
                       src='/icons/homepage/banner/arrow-down.svg'
@@ -166,23 +241,86 @@ const BannerHomepage = () => {
                 </div>
               </div>
               {index < filterOptions.length - 1 && (
-                <div className='line h-[0.0625rem] bg-[rgba(0,0,0,0.10)] rounded-[0.1875rem] w-full my-4'></div>
+                <div className='line my-4 h-[0.0625rem] w-full rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
               )}
             </React.Fragment>
           ))}
         </div>
-        <button className='flex items-center justify-center bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] rounded-[0.5rem] py-3 h-full flex-shrink-0 mt-4'>
+        <button className='mt-4 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] py-3'>
           <ImageV2
             src='/icons/homepage/banner/search.svg'
             alt='filter'
             width={20}
             height={20}
-            className='size-[1.5rem] object-contain mr-[0.62rem]'
+            className='mr-[0.62rem] size-[1.5rem] object-contain'
           />
-          <span className='text-white text-[0.875rem] font-semibold leading-[1.5]'>
+          <span className='text-[0.875rem] font-semibold leading-[1.5] text-white'>
             Tìm kiếm
           </span>
         </button>
+      </div>
+      <div
+        className={`popup-filter fixed left-0 top-0 z-[51] h-full w-full bg-transparent sm:hidden ${openPopupFilter ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+      >
+        <div
+          className='overlay-popup-filter absolute left-0 top-0 z-[1] h-full w-full bg-[rgba(0,0,0,0.16)]'
+          onClick={() => {
+            setOpenPopupFilter(false)
+          }}
+        ></div>
+        <div
+          className={`absolute bottom-0 left-0 z-10 flex h-[19.6rem] w-full flex-col rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[2.5rem] ${
+            openPopupFilter ? 'translate-y-0' : 'translate-y-full'
+          }`}
+        >
+          <div className='flex w-full items-center justify-between space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] pb-4'>
+            <div className='flex items-center'>
+              <div className='flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.5rem]'>
+                <ImageV2
+                  src={
+                    currentFilter?.icon ||
+                    '/icons/homepage/banner/filter-nation.svg'
+                  }
+                  width={40}
+                  height={40}
+                  alt='icon'
+                  onClick={() => setOpenPopupFilter(false)}
+                  className='size-[1rem] object-contain'
+                />
+              </div>
+              <span className='text-[0.875rem] font-medium leading-[1.4] tracking-[-0.0175rem]'>
+                {currentFilter?.label}
+              </span>
+            </div>
+            <ImageV2
+              src={'/icons/homepage/header/close-popup.svg'}
+              width={40}
+              height={40}
+              alt='close-popup'
+              onClick={() => setOpenPopupFilter(false)}
+              className='size-[1.5rem] cursor-pointer object-contain'
+            />
+          </div>
+          <div className='h-[15rem] overflow-y-auto'>
+            {currentFilter?.children.map((child) => (
+              <div
+                key={child.slug}
+                className='tracking-[-0.00875rem text-brown] cursor-pointer border-b-[1px] border-[#EBEBEB] px-3 py-4 text-[0.875rem] leading-[1.5]'
+                onClick={() => {
+                  handleSelect(
+                    filterOptions.findIndex(
+                      (filter) => filter.key === keyFilter,
+                    ),
+                    child,
+                  )
+                  setOpenPopupFilter(false)
+                }}
+              >
+                {child.label}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
