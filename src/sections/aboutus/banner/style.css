@@ -1,0 +1,61 @@
+@media (min-width: 639px) {
+    .active__plane {
+        animation: activePlane 1s ease forwards;
+    }
+    @keyframes activePlane {
+        0% {
+            width: 24.98719rem;
+            height: 16.69144rem;
+            top: 15.87rem;
+            left: 12.93rem;
+        }
+        100% {
+            width: 30.63838rem;
+            height: 20.46644rem;
+            top: 8.18rem;
+            left: -0.41rem;
+        }
+    }
+
+    .active__about {
+        animation: activeAbout 1s ease forwards;
+    }
+    @keyframes activeAbout {
+        0% {
+        transform: translateY(100%);
+        opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .active__content {
+        animation: activeContent 1s ease forwards;
+    }
+    @keyframes activeContent {
+        0% {
+        transform: translateY(100%);
+        opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .mission__fadein {
+        animation: missionFadein 1.5s ease forwards;
+    }
+    @keyframes missionFadein {
+        0% {
+        transform: translateY(100%) translateX(-50%);
+        opacity: 0;
+        }
+        100% {
+            transform: translateY(0) translateX(-50%);
+            opacity: 1;
+        }
+    }
+}

@@ -1,9 +1,8 @@
-import React from 'react'
+import IndexAboutUs from "@/pages/aboutus"
 
-const AboutUs = () => {
-  return (
-    <div>AboutUs</div>
-  )
+const page = () => {
+  return <IndexAboutUs />
+  
 }
 
-export default AboutUs
+export default page
