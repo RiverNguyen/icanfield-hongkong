@@ -1,8 +1,13 @@
-import React from 'react'
-
+import dynamic from 'next/dynamic'
+const IndexMap = dynamic(() => import('@/sections/about-us/map/IndexMap'), {
+  ssr: false,
+})
 const AboutUs = () => {
   return (
-    <div>AboutUs</div>
+    <>
+      <IndexMap />
+      <div className='h-screen w-full'>AboutUs</div>
+    </>
   )
 }
 
