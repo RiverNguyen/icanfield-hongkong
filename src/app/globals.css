@@ -30,6 +30,7 @@ html {
       #f5c178 117.18%
     );
     --Phase-1-Text-Text-Grey-Disable: rgba(18, 18, 18, 0.38);
+    --GREYSCALE-grey-900: #272727;
   }
   .dark {
   }
@@ -37,7 +38,7 @@ html {
 .section-container {
   @apply mx-auto max-w-[90rem] xsm:px-4;
 }
-@layer base {
+@layer components {
   .heading1 {
     @apply text-[3rem] leading-[1.2] tracking-[-0.06rem] xsm:text-[1.5rem] xsm:leading-[1.3];
   }
@@ -78,13 +79,13 @@ html {
     @apply text-[0.625rem] leading-[1.5];
   }
   .sub-28B {
-    @apply text-[1.75rem] leading-[1.25] tracking-[-0.0175rem] font-bold;
+    @apply text-[1.75rem] font-bold leading-[1.25] tracking-[-0.0175rem];
   }
   .sub-28Semi {
-    @apply text-[1.75rem] leading-[1.25] tracking-[-0.0175rem] font-semibold;
+    @apply text-[1.75rem] font-semibold leading-[1.25] tracking-[-0.0175rem];
   }
   .sub-28M {
-    @apply text-[1.75rem] leading-[1.25] tracking-[-0.0175rem] font-medium;
+    @apply text-[1.75rem] font-medium leading-[1.25] tracking-[-0.0175rem];
   }
   .sub-28R {
     @apply text-[1.75rem] leading-[1.25] tracking-[-0.0175rem];
@@ -93,16 +94,16 @@ html {
     @apply text-[1rem] leading-[1.5];
   }
   .body16-m {
-    @apply text-[1rem] leading-[1.5] tracking-[-0.02rem] font-medium;
+    @apply text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem];
   }
   .body16-s {
-    @apply text-[1rem] leading-[1.5] tracking-[-0.01rem] font-semibold;
+    @apply text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem];
   }
   .body16-r55 {
     @apply text-[1rem] leading-[1.55];
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 639px) {
   html {
     font-size: 4.26666vw;
   }
