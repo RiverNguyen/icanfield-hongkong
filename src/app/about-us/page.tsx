@@ -2,7 +2,12 @@ import dynamic from 'next/dynamic'
 const IndexMap = dynamic(() => import('@/sections/about-us/map/IndexMap'), {
   ssr: false,
 })
-import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
+const IndexAboutUs = dynamic(
+  () => import('@/pages/aboutUs'),
+  {
+    ssr: false,
+  },
+)
 
 const page = () => {
   return (
@@ -14,4 +19,3 @@ const page = () => {
 }
 
 export default page
-

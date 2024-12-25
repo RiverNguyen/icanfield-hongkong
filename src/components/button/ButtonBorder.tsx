@@ -23,8 +23,8 @@ export default function ButtonBorder({
         {title}
       </p>
       <ImageV2
-        width={24}
-        height={24}
+        width={40}
+        height={40}
         alt='arow'
         src={'/icons/homepage/footer/icon-arow.svg'}
         className='size-[1.5rem] object-contain ml-[0.5rem]'
