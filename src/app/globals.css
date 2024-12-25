@@ -90,6 +90,15 @@ html {
   .sub-28R {
     @apply text-[1.75rem] leading-[1.25] tracking-[-0.0175rem];
   }
+  .sub-24B {
+    @apply text-[1.5rem] leading-[133.3%] font-bold
+  }
+  .sub-24R {
+    @apply text-[1.5rem] leading-[133.3%]
+  }
+  .sub-24S {
+    @apply text-[1.5rem] leading-[133.3%] tracking-[-0.03rem]
+  }
   .body16 {
     @apply text-[1rem] leading-[1.5];
   }
