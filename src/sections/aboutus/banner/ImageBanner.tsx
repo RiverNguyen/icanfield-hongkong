@@ -97,8 +97,8 @@ export default function ImageBanner({className}: {className?: string}) {
     <clipPath id="clip0_1670_13032">
     <rect width="1800" height="788" fill="white"/>
     </clipPath>
-    <image id="image0_1670_13032" width="3936" height="2624" xlinkHref="/imgs/about-us/image-bg.webp"/>
-    <image id="image1_1670_13032" width="4096" height="2731" xlinkHref="/imgs/about-us/d-city.webp"/>
+    <image id="image0_1670_13032" width="3936" height="2624" xlinkHref="/imgs/about-us/banner/image-bg.webp"/>
+    <image id="image1_1670_13032" width="4096" height="2731" xlinkHref="/imgs/about-us/banner/d-city.webp"/>
     </defs>
     </svg>
     
