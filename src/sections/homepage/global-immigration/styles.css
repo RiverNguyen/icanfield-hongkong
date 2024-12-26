@@ -1,0 +1,4 @@
+.global-immigration.active .house-animation , .global-immigration.active .statue-animation ,.global-immigration.active .bridge-animation, .global-immigration.active .text-container-animation{
+    transform: translateY(0);
+    opacity: 1;
+}

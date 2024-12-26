@@ -26,13 +26,13 @@ export default function Mission() {
         )
         if (ref.current) observer.observe(ref.current)
     }, [])
-    return <section className="relative h-[100.25rem] xsm:h-[56.375rem]">
+    return <section className="relative xsm:z-[11] h-[100.25rem] xsm:h-[56.375rem] xsm:bg-background">
         <ImageV2 
-            className="w-full h-[82rem] xsm:h-[62.5rem] object-contain xsm:object-cover translate-y-[-16rem] opacity-[0.8]"
+            className="w-full h-[82rem] xsm:h-[57.5rem] object-contain xsm:object-cover translate-y-[-16rem] xsm:translate-y-[-1rem] opacity-[0.8]"
             alt="" 
             width={1600} 
             height={1300} 
-            src={'/imgs/about-us/BG-sky.png'} 
+            src={'/imgs/about-us/banner/BG-sky.png'} 
         />
         <div ref={ref} className="z-20 w-full h-[64.9375rem] xsm:h-[21.4375rem] absolute bottom-0">
             <ImageV2 
@@ -40,14 +40,14 @@ export default function Mission() {
                 alt="" 
                 width={1600} 
                 height={1300} 
-                src={'/imgs/about-us/bg-house.png'} 
+                src={'/imgs/about-us/banner/bg-house.png'} 
             />
             <ImageV2 
                 className="object-cover size-full sm:hidden"
                 alt="" 
                 width={1600} 
                 height={1300} 
-                src={'/imgs/about-us/bg-houseMBv3.webp'} 
+                src={'/imgs/about-us/banner/bg-houseMBv3.webp'} 
             />
         </div>
         <ImageV2 
@@ -55,9 +55,9 @@ export default function Mission() {
             alt="" 
             width={1600} 
             height={1300} 
-            src={'/imgs/about-us/silk-strip.png'} 
+            src={'/imgs/about-us/banner/silk-strip.png'} 
         />
-        <div className={cn(activeInterFace ? 'mission__fadein' : "","xsm:w-full transition-all sm:translate-y-[100%] sm:opacity-0 z-10 absolute left-[50%] translate-x-[-50%] bottom-[3.5rem] xsm:px-[1rem] xsm:bottom-[2.5rem]")}>
+        <div className={cn(activeInterFace ? 'mission__fadein pointer-events-auto' : "","pointer-events-none xsm:w-full transition-all sm:translate-y-[100%] sm:opacity-0 z-10 absolute left-[50%] translate-x-[-50%] bottom-[3.5rem] xsm:px-[1rem] xsm:bottom-[2.5rem]")}>
             <div className="space-y-[0.625rem] xsm:space-y-[0.5rem] flex flex-col items-center mb-[2.5rem]">
                 <span className="text-greyscaletext-400 body16 font-semibold xsm:sub-12 xsm:font-medium xsm:tracking-[-0.015rem]">SỨ MỆNH CỦA ICANFIELD</span>
                 <h2 className="text-center w-[55.875rem] xsm:w-full font-optima text-brown text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] xsm:heading1">Dịch chuyển nụ cười, kiến tạo thịnh vượng Đầu tư định cư quốc tế là chìa khoá mở ra điều kỳ diệu cho tương lai.</h2>
