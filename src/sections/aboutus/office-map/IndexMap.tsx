@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import './style.css'
 
 // GEO JSON
+import ImageV2 from '@/components/image/ImageV2'
 import {ICountry, LeafletMap} from '@/components/LeafletMap'
 import {cn} from '@/lib/utils'
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
@@ -41,6 +42,7 @@ const IndexMap = ({countries}: IIndexMapProps) => {
         className='relative z-10 flex w-fit items-center xsm:w-full'
       >
         <LeafletMap
+          className='!h-[32.68438rem] !w-[49.6875rem] xsm:!h-[18.75rem] xsm:!w-full'
           countries={countries}
           mapJson={customGeoJson as FeatureCollection}
           onClick={handleClickMarker}
@@ -58,8 +60,62 @@ const IndexMap = ({countries}: IIndexMapProps) => {
         setOpen={setOpen}
         countrySelected={countrySelected}
       />
+      <div>
+        {countries.map((country, index) => {
+          let countryObj: ICountry = {
+            name: country[0].name,
+            label: country[0].label,
+            flag: country[0].flag,
+          }
+          if (countries.length > 1) {
+            const newPosition = country.find((item) => {
+              if (item.label) return item
+            })
+            if (newPosition) {
+              countryObj = {
+                name: newPosition.name,
+                label: newPosition.label,
+                flag: newPosition.flag,
+              }
+            }
+          }
+          return (
+            <MarkerButton
+              onClick={() => handleClickMarker(countryObj)}
+              key={index}
+              {...countryObj}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
 
 export default IndexMap
+
+interface IMarkerButtonProps extends ICountry {
+  onClick: () => void
+}
+
+function MarkerButton({onClick, name, label, flag}: IMarkerButtonProps) {
+  return (
+    <button onClick={onClick}>
+      {flag && (
+        <ImageV2
+          src={flag}
+          alt={name}
+          width={24}
+          height={24}
+        />
+      )}
+      <div>
+        <span>Văn phòng</span>
+      </div>
+      {/* <ImageV2
+        src={flag}
+        alt=''
+      /> */}
+    </button>
+  )
+}

@@ -14,7 +14,7 @@ import {Swiper as SwiperType} from 'swiper/types'
 type PopupMarkerProps = {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  countrySelected: any
+  countrySelected: string | null
 }
 
 const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
@@ -28,9 +28,9 @@ const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
   return (
     <div
       className={cn(
-        'fixed bottom-[1.5rem] left-[-1rem] z-[55] h-[34.25rem] w-[25rem] -translate-x-full opacity-50 transition-all duration-500 ease-in-out',
+        'invisible fixed bottom-0 left-0 right-0 z-[55] rounded-[1rem_1rem_0rem_0rem] bg-white p-[1rem_1rem_2.5rem_1rem] opacity-50 transition-all duration-500 ease-in-out sm:bottom-[1.5rem] sm:left-[-1rem] sm:h-[34.25rem] sm:w-[25rem] sm:-translate-x-full sm:rounded-[1rem] sm:p-[1.15rem] xsm:right-0 xsm:translate-y-full',
         open &&
-          'left-[1.5rem] translate-x-0 rounded-[1rem] bg-white p-[1.15rem] opacity-100',
+          'visible opacity-100 sm:left-[1.5rem] sm:translate-x-0 xsm:translate-y-0',
       )}
     >
       <div className='flex items-center justify-between'>
@@ -44,7 +44,7 @@ const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
             quality={95}
           />
           <span className='ml-[0.5rem] text-[0.875rem] font-semibold leading-normal tracking-[-0.00875rem] text-greyscaletext-body'>
-            Văn phòng tại Canada
+            Văn phòng tại {countrySelected}
           </span>
         </div>
         <button

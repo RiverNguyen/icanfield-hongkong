@@ -21,3 +21,8 @@
   overflow: hidden;
   margin-right: 16px;
 }
+@media (max-width: 639px) {
+  .no-scroll {
+    margin-right: 0;
+  }
+}
