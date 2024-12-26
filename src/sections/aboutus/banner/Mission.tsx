@@ -1,10 +1,10 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
+import useIsMobile from '@/hooks/useIsMobile'
 import {cn} from '@/lib/utils'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
 import {useEffect, useRef, useState} from 'react'
 import './style.css'
-import useIsMobile from '@/hooks/useIsMobile'
 
 export default function Mission() {
   const [activeInterFace, setActiveInterFace] = useState<boolean>(false)
@@ -27,13 +27,13 @@ export default function Mission() {
     if (ref.current) observer.observe(ref.current)
   }, [])
   return (
-    <section className='relative h-[100.25rem] xsm:z-[11] xsm:h-[56.375rem] xsm:bg-background'>
+    <section className='relative h-[100.25rem] xsm:h-[56.375rem]'>
       <ImageV2
-        className='h-[82rem] w-full translate-y-[-16rem] object-contain opacity-[0.8] xsm:h-[57.5rem] xsm:translate-y-[-1rem] xsm:object-cover'
+        className='h-[82rem] w-full translate-y-[-16rem] object-contain opacity-[0.8] xsm:h-[62.5rem] xsm:object-cover'
         alt=''
         width={1600}
         height={1300}
-        src={'/imgs/about-us/banner/BG-sky.png'}
+        src={'/imgs/about-us/BG-sky.png'}
       />
       <div
         ref={ref}
@@ -44,14 +44,14 @@ export default function Mission() {
           alt=''
           width={1600}
           height={1300}
-          src={'/imgs/about-us/banner/bg-house.png'}
+          src={'/imgs/about-us/bg-house.png'}
         />
         <ImageV2
           className='size-full object-cover sm:hidden'
           alt=''
           width={1600}
           height={1300}
-          src={'/imgs/about-us/banner/bg-houseMBv3.webp'}
+          src={'/imgs/about-us/bg-houseMBv3.webp'}
         />
       </div>
       <ImageV2
@@ -59,12 +59,12 @@ export default function Mission() {
         alt=''
         width={1600}
         height={1300}
-        src={'/imgs/about-us/banner/silk-strip.png'}
+        src={'/imgs/about-us/silk-strip.png'}
       />
       <div
         className={cn(
-          activeInterFace ? 'mission__fadein pointer-events-auto' : '',
-          'pointer-events-none absolute bottom-[3.5rem] left-[50%] z-10 translate-x-[-50%] transition-all sm:translate-y-[100%] sm:opacity-0 xsm:bottom-[2.5rem] xsm:w-full xsm:px-[1rem]',
+          activeInterFace ? 'mission__fadein' : '',
+          'absolute bottom-[3.5rem] left-[50%] z-10 translate-x-[-50%] transition-all sm:translate-y-[100%] sm:opacity-0 xsm:bottom-[2.5rem] xsm:w-full xsm:px-[1rem]',
         )}
       >
         <div className='mb-[2.5rem] flex flex-col items-center space-y-[0.625rem] xsm:space-y-[0.5rem]'>
