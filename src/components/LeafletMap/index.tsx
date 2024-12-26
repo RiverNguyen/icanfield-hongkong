@@ -12,7 +12,7 @@ export interface ICountry {
 interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
-  onClick: (country: ICountry) => void
+  onClick?: (country: ICountry) => void
 }
 
 // INIT COUNTRY OF EU
@@ -129,6 +129,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
             }
           }
         }
+        console.log(position)
         return (
           <Marker
             key={index}
@@ -152,7 +153,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
               })
             }
             eventHandlers={{
-              click: () => onClick(countryObj),
+              click: () => onClick && onClick(countryObj),
             }}
           ></Marker>
         )

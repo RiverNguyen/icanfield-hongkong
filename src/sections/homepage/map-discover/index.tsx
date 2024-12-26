@@ -6,6 +6,10 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css'
 import {navbarNationalities, listProgramInfomation} from './contanst'
 import './styles.css'
+import {LeafletMap} from '@/components/LeafletMap'
+import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
+import {FeatureCollection} from 'geojson'
+import officeMap from '@/sections/aboutus/office-map/constants'
 const MapDiscover = () => {
   const [navbarNationalitiesActive, setNavbarNationalitiesActive] =
     React.useState(navbarNationalities[0].value)
@@ -109,8 +113,9 @@ const MapDiscover = () => {
             </Swiper>
           </div>
           <div className='xsm:px-4'>
-            <div className='map-content absolute bottom-0 left-0 h-full w-full bg-red-500 xsm:relative xsm:h-[15rem] xsm:w-full'>
+            <div className='map-content absolute overflow-hidden bottom-0 left-0 h-full w-full xsm:relative xsm:h-[15rem] xsm:w-full'>
               <div className='overlay-right absolute right-0 z-10 h-full w-[9.5rem] bg-[linear-gradient(-90deg,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
+              <LeafletMap countries={officeMap?.countries} mapJson={customGeoJson as FeatureCollection} />
             </div>
           </div>
         </div>
