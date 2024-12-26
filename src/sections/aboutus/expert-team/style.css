@@ -1,4 +1,4 @@
-#expert-team .swiper-slide.swiper-slide-prev {
+#expert-team .swiper-slide.swiper-slide-active {
   width: 29.2rem !important;
   height: 38.125rem !important;
 }
@@ -16,13 +16,14 @@
   visibility: visible; */
 }
 
-#expert-team .swiper-slide.swiper-slide-prev .human-photo {
+#expert-team .swiper-slide.swiper-slide-active .human-photo {
   opacity: 1;
   visibility: visible;
 }
 #expert-team .swiper-slide .human-photo .human-photo-path {
   fill: url(#paint0_linear_884_29267);
 }
-#expert-team .swiper-slide.swiper-slide-prev .human-photo .human-photo-path {
+#expert-team .swiper-slide.swiper-slide-active .human-photo .human-photo-path {
   fill: url(#paint0_linear_884_29326);
 }
+

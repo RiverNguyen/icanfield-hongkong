@@ -1,161 +1,184 @@
 'use client'
-import {FC} from 'react'
+import {FC, useEffect, useState} from 'react'
 import 'swiper/css'
 import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import './style.css'
+import { cn } from '@/lib/utils'
+import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
+import ImageV2 from '@/components/image/ImageV2'
+import ItemSliderMb from '@/sections/aboutus/expert-team/ItemSliderMb'
+import PopupSliderMb from '@/sections/aboutus/expert-team/PopupSliderMb'
 
 interface IExpertTeamProps {}
 
+const fakedata = [
+  {
+    name: 'Mr. jimmy1',
+    position: 'Giám Đốc Điều Hành iCanfield Vietnam',
+    srcimage: '/imgs/about-us/expert-team/human-2.webp',
+    content: 'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    '
+  },
+  {
+    name: 'Mr. jimmy2',
+    position: 'Giám Đốc Điều Hành iCanfield Vietnam',
+    srcimage: '/imgs/about-us/expert-team/human.webp',
+    content: 'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    '
+  },
+  {
+    name: 'Mr. jimmy3',
+    position: 'Giám Đốc Điều Hành iCanfield Vietnam',
+    srcimage: '/imgs/about-us/expert-team/human-2.webp',
+    content: 'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    '
+  },
+  {
+    name: 'Mr. jimmy4',
+    position: 'Giám Đốc Điều Hành iCanfield Vietnam',
+    srcimage: '/imgs/about-us/expert-team/human-2.webp',
+    content: 'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    '
+  },
+  {
+    name: 'Mr. jimmy5',
+    position: 'Giám Đốc Điều Hành iCanfield Vietnam',
+    srcimage: '/imgs/about-us/expert-team/human.webp',
+    content: 'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    '
+  },
+  {
+    name: 'Mr. jimmy6',
+    position: 'Giám Đốc Điều Hành iCanfield Vietnam',
+    srcimage: '/imgs/about-us/expert-team/human.webp',
+    content: 'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    '
+  },
+  {
+    name: 'Mr. jimmy7',
+    position: 'Giám Đốc Điều Hành iCanfield Vietnam',
+    srcimage: '/imgs/about-us/expert-team/human-2.webp',
+    content: 'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    '
+  },
+]
+
 export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [toggleMB, setToggleMB] = useState<boolean>(false);
+  const [idActivePopupMB, setIdActivePopupMB] = useState<number>(0);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 639); // Thay đổi ngưỡng tại đây nếu cần
+    };
+
+    checkMobile();
+
+    window.addEventListener('resize', checkMobile);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [nextIndex, setNextIndex] = useState<number>(1);
+  const handleSlideChange = (swiper: any) => {
+    setActiveIndex(swiper.realIndex);
+    const nextSlideIndex = (swiper.realIndex + 1) % swiper.slides.length;
+    setNextIndex(nextSlideIndex);
+  };
   return (
-    <>
-      <section
-        id='expert-team'
-        className='flex flex-col'
-      >
-        <div>
-          <button className='expert-team__prev'>prev</button>
-          <button className='expert-team__next'>next</button>
-        </div>
-        <Swiper
-          speed={800}
-          spaceBetween={50}
-          effect='creative'
-          creativeEffect={{
-            prev: {
-              shadow: true,
-              translate: [0, 0, -400],
-            },
-            next: {
-              shadow: true,
-              translate: [0, 0, -400],
-            },
-          }}
-          loop={true}
-          centeredSlides={true}
-          slidesPerView={4}
-          className='!mr-0 h-[38.125rem] max-w-[82.29rem]'
-          modules={[Navigation]}
-          navigation={{
-            nextEl: '.expert-team__next',
-            prevEl: '.expert-team__prev',
-          }}
-        >
-          {Array.from({length: 10}).map((_, index) => (
-            <SwiperSlide
-              className='!w-[16.125rem]'
-              key={index}
+    <section className='relative pt-[5rem] pl-[5rem] xsm:pt-[4rem] xsm:pl-0 bg-[linear-gradient(180deg,rgba(255,244,228,0.50)_0%,rgba(249,245,240,0.80)_16.83%,#F6F6F4_50.9%)]'>
+      <h2 className='text-brown font-optima heading1 font-medium w-[44.3125rem] xsm:w-full xsm:px-[1rem] xsm:mb-[1.5rem]'>Đội Ngũ Chuyên Gia Tinh Hoa Kiến Tạo Hành Trình Thành Công</h2>
+      {isMobile ? (
+        <>
+          <div className='absolute w-[61.5125rem] h-[42.87169rem] right-0 top-0'>
+            <ImageV2 className='size-full object-cover' alt='' width={1053} height={685} src={'/imgs/about-us/expert-team/backgroud-team.webp'} />
+          </div>
+          <div
+            id='expert-team'
+            className='flex flex-col relative mt-[1.06rem]'
+          >
+            <div className='overflow-hidden absolute left-0 top-[5.69rem] w-[36.625rem] h-[28rem] rounded-[1.5rem] bg-[linear-gradient(104deg,#FFF_58.51%,rgba(255,255,255,0.00)_74.37%)] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.03)]'>
+              {fakedata && fakedata?.map((e: any,i: number) => (
+                <div key={i} className={cn('transition-all duration-500 absolute overflow-hidden overflow-y-auto scrollbar-hidden w-full h-[28rem] p-[2rem_12.75rem_1.56rem_2.5rem]',
+                  activeIndex < i && 'opacity-0 z-[-1] top-[7rem] duration-500',
+                  activeIndex > i && 'opacity-0 z-[-1] top-[-7rem] duration-1000',
+                  activeIndex === i && 'top-0 z-[1] duration-1000'
+                )}>
+                  <span className='text-brown heading4 font-semibold'>{e?.name}</span>
+                  <p className='text-orangetext-500 body-14 mt-[0.25rem] mb-[1.5rem]'>{e?.position}</p>
+                  <div className='[&_p]:body16 [&_p]:tracking-[-0.02rem] [&_p]:text-bodytext'>
+                    <p>
+                      {e?.content}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              <div className='absolute z-[1] bottom-0 left-0 h-[3rem] w-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)_0%,#FFF_71.5%)]'></div>
+            </div>
+            <div className='flex items-center space-x-[0.75rem] absolute right-[5rem] top-[30%] translate-y-[-50%] z-10'>
+              <button className='expert-team__prev w-[2.5rem] h-[2.5rem] flex-center rounded-[1.5rem] bg-[rgba(245,193,120,0.20)]'>
+                <ImageV2 
+                  className='size-[1.5rem] object-cover' 
+                  alt='' 
+                  width={1053} 
+                  height={685} 
+                  src={'/icons/arrow-right-brown.svg'} 
+                />
+              </button>
+              <button className='expert-team__next w-[2.5rem] h-[2.5rem] flex-center rounded-[1.5rem] bg-[rgba(245,193,120,0.20)]'>
+                <ImageV2 
+                    className='size-[1.5rem] object-cover rotate-180' 
+                    alt='' 
+                    width={1053} 
+                    height={685} 
+                    src={'/icons/arrow-right-brown.svg'} 
+                  />
+              </button>
+            </div>
+            <Swiper
+              speed={800}
+              loop={true}
+              slidesPerView={"auto"}
+              className='!mr-0 h-[38.125rem] max-w-[72.125rem]'
+              modules={[Navigation]}
+              navigation={{
+                nextEl: '.expert-team__next',
+                prevEl: '.expert-team__prev',
+              }}
+              onSlideChange={handleSlideChange}
             >
-              <ItemExpertTeam />
-            </SwiperSlide>
+              {fakedata?.map((e: any, index: number) => (
+                <SwiperSlide
+                  className={cn('!w-[29.18769rem] [&.swiper-slide-active_.item-expert-team]:w-[29.18769rem] [&.swiper-slide-next]:pl-[4rem] [&.swiper-slide-active_.path-svg]:scale-[1]',
+                    nextIndex + 1 === index && '!translate-x-[-5rem]'
+                  )}
+                  key={index}
+                >
+                  <ItemExpertTeam index={index} srcImage={e?.srcimage}/>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </>
+      ) : 
+      <>
+        <div className='px-[1rem] w-full overflow-hidden overflow-x-auto scrollbar-hidden'>
+          <div className='flex space-x-[1rem] w-max'>
+          {fakedata?.map((e: any, index: number) => (
+            <ItemSliderMb 
+              key={index} 
+              data={e} 
+              index={index} 
+              setToggleMB={setToggleMB} 
+              setIdActivePopupMB={setIdActivePopupMB}
+            />
           ))}
-        </Swiper>
-      </section>
-    </>
-  )
-}
-
-interface IItemExpertTeam {
-  name: string
-  position: string
-  photo: string
-  description: string
-}
-
-function ItemExpertTeam() {
-  return (
-    <div className='h-[38.125rem] w-full'>
-      <svg
-        className='human-photo absolute bottom-0 left-0 h-auto w-full object-contain'
-        width={477}
-        height={613}
-        viewBox='0 0 477 613'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-        xmlnsXlink='http://www.w3.org/1999/xlink'
-      >
-        <path
-          className='human-photo-path'
-          d='M272.666 588.649C336.907 568.377 391.327 537.89 427.371 504.908C463.296 472.035 481.462 436.177 471.728 405.328C461.993 374.48 426.536 355.543 378.251 349.243C329.805 342.922 267.742 349.192 203.502 369.463C139.261 389.734 84.8405 420.222 48.7967 453.204C12.8719 486.077 -5.2941 521.935 4.44023 552.783C14.1746 583.631 49.6315 602.569 97.9174 608.869C146.363 615.189 208.426 608.92 272.666 588.649Z'
-          fill='url(#paint0_linear_884_29267)'
-          stroke='url(#paint1_linear_884_29326)'
-          strokeWidth={3.55833}
+          </div>
+        </div>
+        <PopupSliderMb 
+          index={idActivePopupMB}
+          data={fakedata[idActivePopupMB]} 
+          toggleMB={toggleMB} 
+          setToggleMB={setToggleMB}
         />
-        <path
-          fillRule='evenodd'
-          clipRule='evenodd'
-          d='M454.762 42.5371H22.4831V485.376C6.00841 508.613 -0.38438 531.858 6.13542 552.519C24.9391 612.108 144.029 627.646 272.13 587.223C400.23 546.8 488.833 465.725 470.03 406.135C467.163 397.051 461.966 388.991 454.762 381.997V42.5371Z'
-          fill='url(#pattern0_884_29326)'
-        />
-        <defs>
-          <pattern
-            id='pattern0_884_29326'
-            patternContentUnits='objectBoundingBox'
-            width={1}
-            height={1}
-          >
-            <use
-              xlinkHref='#image0_884_29326'
-              transform='matrix(0.000767469 0 0 0.000634518 -0.22142 0)'
-            />
-          </pattern>
-          <linearGradient
-            id='paint0_linear_884_29267'
-            x1={-4.14318}
-            y1={158.995}
-            x2={280.317}
-            y2={248.255}
-            gradientUnits='userSpaceOnUse'
-          >
-            <stop
-              offset={0.45}
-              stopColor='#95502F'
-            />
-            <stop
-              offset={1}
-              stopColor='#F5C178'
-            />
-          </linearGradient>
-          <linearGradient
-            id='paint0_linear_884_29326'
-            x1={204.037}
-            y1={371.16}
-            x2={272.131}
-            y2={586.952}
-            gradientUnits='userSpaceOnUse'
-          >
-            <stop stopColor='#F7EAD2' />
-            <stop
-              offset={1}
-              stopColor='white'
-            />
-          </linearGradient>
-          <linearGradient
-            id='paint1_linear_884_29326'
-            x1={-51.4189}
-            y1={369.852}
-            x2={488.233}
-            y2={368.985}
-            gradientUnits='userSpaceOnUse'
-          >
-            <stop
-              offset={0.164}
-              stopColor='#95502F'
-            />
-            <stop
-              offset={1}
-              stopColor='#F5C178'
-            />
-          </linearGradient>
-          <image
-            id='image0_884_29326'
-            width={1880}
-            height={1576}
-            xlinkHref='/imgs/about-us/expert-team/human-2.webp'
-          />
-        </defs>
-      </svg>
-    </div>
+      </> }
+    </section>
   )
 }
