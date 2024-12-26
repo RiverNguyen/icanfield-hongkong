@@ -12,7 +12,8 @@ export interface ICountry {
 interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
-  onClick: (country: ICountry) => void
+  onClick?: (country: ICountry) => void
+  className?: string
 }
 
 // INIT COUNTRY OF EU
@@ -22,6 +23,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   mapJson,
   countries,
   onClick,
+  className,
 }) => {
   const [isMobile, setIsMobile] = useState(false)
 
@@ -99,7 +101,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       maxZoom={18}
       zoomSnap={0.1}
       zoomDelta={isMobile ? 1 : 0.5}
-      className='!h-[32.68438rem] !w-[49.6875rem] xsm:!h-[18.75rem] xsm:!w-full'
+      className={className}
       scrollWheelZoom={isMobile ? false : true}
       zoomControl={false}
       dragging={isMobile ? false : true}
@@ -152,7 +154,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
               })
             }
             eventHandlers={{
-              click: () => onClick(countryObj),
+              click: () => onClick && onClick(countryObj),
             }}
           ></Marker>
         )
