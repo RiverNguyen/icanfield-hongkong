@@ -12,7 +12,7 @@ export interface ICountry {
 interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
-  onClick: (country: ICountry) => void
+  onClick?: (country: ICountry) => void
   className?: string
 }
 
@@ -154,7 +154,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
               })
             }
             eventHandlers={{
-              click: () => onClick(countryObj),
+              click: () => onClick && onClick(countryObj),
             }}
           ></Marker>
         )
