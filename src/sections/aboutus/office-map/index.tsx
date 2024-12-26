@@ -25,7 +25,7 @@ export const OfficeMap: FC<IOfficeMapProps> = ({
   countries,
 }) => {
   return (
-    <section className='relative rounded-[1.5rem] bg-white p-[2rem_1rem_0] shadow-[0px_2px_50px_0px_rgba(0,0,0,0.05)] before:absolute before:left-0 before:top-0 before:z-[-1] before:h-full before:w-full before:bg-[#F6F6F4] before:content-[""] sm:rounded-[4rem] sm:p-[5rem_0_7.94rem] sm:shadow-[0px_3px_50px_0px_rgba(0,0,0,0.03)]'>
+    <section className='relative rounded-[1.5rem] bg-white p-[2rem_1rem_1rem] shadow-[0px_2px_50px_0px_rgba(0,0,0,0.05)] before:absolute before:left-0 before:top-0 before:z-[-1] before:h-full before:w-full before:bg-[#F6F6F4] before:content-[""] sm:rounded-[4rem] sm:p-[5rem_0_7.94rem] sm:shadow-[0px_3px_50px_0px_rgba(0,0,0,0.03)] xsm:mb-[4rem]'>
       <div className='mx-auto flex max-w-[90rem] flex-col justify-between sm:flex-row'>
         <div className='flex max-w-[35.4375rem] flex-col'>
           <p className='sub-12 font-medium text-greyscaletext-body/70 sm:line-clamp-5 sm:text-[1rem] sm:font-semibold sm:leading-[150%]'>

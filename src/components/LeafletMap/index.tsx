@@ -1,8 +1,8 @@
 import {Feature, FeatureCollection, GeoJsonObject} from 'geojson'
 import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 import {FC, useCallback, useEffect, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
-
 export interface ICountry {
   name: string
   label?: string
@@ -139,12 +139,12 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
               new L.DivIcon({
                 html: `<div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
                   <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound xsm:!w-[2rem] xsm:!h-auto"/>
-                  <img src="/imgs/map/vn.svg" alt="VIỆT NAM" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full xsm:!size-[1rem] xsm:top-[0.6rem]"/>
+                  <img src="${countryObj.flag && countryObj.flag}" alt="VIỆT NAM" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full xsm:!size-[1rem] xsm:top-[0.6rem]"/>
                   ${
                     isMobile
                       ? ''
-                      : `<div class='text-[#5C321E absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]'>
-                        VIỆT NAM
+                      : `<div class='text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]'>
+                        ${countryObj.label ? countryObj.label : countryObj.name}
                       </div>`
                   }
               </div>`,
