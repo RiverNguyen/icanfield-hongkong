@@ -32,6 +32,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({items, title}) => {
 
   useEffect(() => {
     setSpaceBetween((prev) => {
+      if (typeof window === 'undefined') return prev
       if (window.innerWidth < 640) {
         return (
           1 * parseFloat(getComputedStyle(document.documentElement).fontSize)

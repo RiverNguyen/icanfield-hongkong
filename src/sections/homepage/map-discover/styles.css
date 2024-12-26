@@ -15,6 +15,7 @@
   );
   border-radius: 99rem;
 }
+
 @media (max-width: 768px) {
   .navbar-nationalities-item.active ::after {
     display: none;

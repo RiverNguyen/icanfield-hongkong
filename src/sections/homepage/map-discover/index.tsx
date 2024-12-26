@@ -10,6 +10,7 @@ import {LeafletMap} from '@/components/LeafletMap'
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import {FeatureCollection} from 'geojson'
 import officeMap from '@/sections/aboutus/office-map/constants'
+import 'leaflet/dist/leaflet.css'
 const MapDiscover = () => {
   const [navbarNationalitiesActive, setNavbarNationalitiesActive] =
     React.useState(navbarNationalities[0].value)
@@ -63,8 +64,8 @@ const MapDiscover = () => {
         <div className='overlay-top absolute left-0 top-0 z-10 h-[7.625rem] w-full bg-[linear-gradient(180deg,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
         <div className='overlay-bottom absolute bottom-0 left-0 z-10 h-[5.5rem] w-full bg-[linear-gradient(0,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
         <div className='overlay-left absolute left-0 top-0 z-10 h-full w-[5.0625rem] bg-[linear-gradient(90deg,#FFF_56.16%,rgba(255,255,255,0.00)_100%)] xsm:hidden'></div>
-        <div className='map-container relative w-[65rem] xsm:w-full'>
-          <div className='relative z-10 ml-[2.38rem] w-[45.6rem] xsm:ml-0 xsm:w-full'>
+        <div className='map-container relative w-[65rem] xsm:w-full h-full'>
+          <div className='relative z-10 ml-[2.38rem] w-[45.6rem] xsm:ml-0 xsm:w-full overflow-hidden'>
             <Swiper
               className='swiper-nationalities !p-4 xsm:mb-[1.5rem] xsm:!p-0 xsm:!pl-4'
               slidesPerView='auto'
@@ -112,10 +113,16 @@ const MapDiscover = () => {
               ))}
             </Swiper>
           </div>
-          <div className='xsm:px-4'>
-            <div className='map-content absolute overflow-hidden bottom-0 left-0 h-full w-full xsm:relative xsm:h-[15rem] xsm:w-full'>
+          <div className='absolute top-0 left-0 z-[1] h-full w-full overflow-hidden xsm:w-full xsm:px-4'>
+            <div className='map-content absolute bottom-0 left-0 h-full w-full overflow-hidden xsm:relative xsm:h-[15rem] xsm:w-full'>
               <div className='overlay-right absolute right-0 z-10 h-full w-[9.5rem] bg-[linear-gradient(-90deg,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
-              <LeafletMap countries={officeMap?.countries} mapJson={customGeoJson as FeatureCollection} />
+              <LeafletMap
+                countries={officeMap?.countries}
+                mapJson={customGeoJson as FeatureCollection}
+                className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
+                borderCountries='#AF9689'
+                zoomDesktop={1.8}
+              />
             </div>
           </div>
         </div>

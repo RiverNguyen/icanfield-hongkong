@@ -1,3 +1,4 @@
+'use client'
 import {Feature, FeatureCollection, GeoJsonObject} from 'geojson'
 import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
 import {FC, useCallback, useEffect, useState} from 'react'
@@ -14,6 +15,9 @@ interface ILeafletMapProps {
   countries: ICountry[][]
   onClick?: (country: ICountry) => void
   className?: string
+  borderCountries?: string
+  zoomMobile?: number
+  zoomDesktop?: number
 }
 
 // INIT COUNTRY OF EU
@@ -24,19 +28,24 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   countries,
   onClick,
   className,
+  borderCountries,
+  zoomMobile = 0.5,
+  zoomDesktop = 1.5,
 }) => {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
-    }
-    countries.forEach((country) => {
-      country.forEach((item) => {
-        euCountries.add(item.name)
+
+      countries.forEach((country) => {
+        country.forEach((item) => {
+          euCountries.add(item.name)
+        })
       })
-    })
-    console.log(getPosition('Vietnam'))
+
+      console.log(getPosition('Vietnam'))
+    }
   }, [])
 
   const getPosition = useCallback(function (country: string): LatLngTuple {
@@ -83,9 +92,9 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   const geoJsonStyle = useCallback((feature: Feature) => {
     return {
       fillColor: getFillColor(feature), // Define a function to dynamically assign colors
-      weight: 2, // Border thickness
+      weight: 1, // Border thickness
       opacity: 1, // Border opacity
-      color: 'transparent', // Border color
+      color: borderCountries, // Border color
       fillOpacity: 1, // Background fill opacity
     }
   }, [])
@@ -96,7 +105,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       style={{background: 'transparent !important'}}
       id='map_connect_global'
       center={[40, 0]}
-      zoom={isMobile ? 0.5 : 1.5}
+      zoom={isMobile ? zoomMobile : zoomDesktop}
       minZoom={0.5}
       maxZoom={18}
       zoomSnap={0.1}
@@ -131,7 +140,6 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
             }
           }
         }
-        console.log(position)
         return (
           <Marker
             key={index}

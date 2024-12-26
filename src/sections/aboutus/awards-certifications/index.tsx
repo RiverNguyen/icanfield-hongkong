@@ -27,6 +27,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
   const [spaceBetween, setSpaceBetween] = useState<number>(6.25)
   useEffect(() => {
     setSpaceBetween((prev) => {
+      if (typeof window === 'undefined') return prev
       if (window.innerWidth < 640) {
         return (
           1.5 * parseFloat(getComputedStyle(document.documentElement).fontSize)
