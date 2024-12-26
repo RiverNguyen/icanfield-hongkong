@@ -9,13 +9,13 @@ import ProudJourney from '@/sections/homepage/proud-journey'
 import proudJourney from '@/sections/homepage/proud-journey/constants'
 import NewsFlow from '@/sections/homepage/news-homepage'
 import newFlow from '@/sections/homepage/news-homepage/constants'
-
+import MapDiscover from '@/sections/homepage/map-discover'
 const HomePage = () => {
   return (
     <main>
-      HomePage
       <BannerHomepage />
       <GlobalImmigration />
+      <MapDiscover />
       <TalentedTeam />
       <InvestmentOpportunities {...investmentOpportunities} />
       <FormHomepage />

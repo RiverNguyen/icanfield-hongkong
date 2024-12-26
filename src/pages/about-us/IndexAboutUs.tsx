@@ -1,8 +1,11 @@
 import AwardsCertifications from '@/sections/aboutus/awards-certifications'
 import awardsCertifications from '@/sections/aboutus/awards-certifications/constants'
-import BannerAboutus from '@/sections/aboutus/banner'
+import BannerAboutus from '@/sections/aboutus/banner/BannerAboutus'
 import Mission from '@/sections/aboutus/banner/Mission'
-import {ExpertTeam} from '@/sections/aboutus/expert-team'
+import { ExpertTeam } from '@/sections/aboutus/expert-team'
+import {OfficeMap} from '@/sections/aboutus/office-map'
+import officeMap from '@/sections/aboutus/office-map/constants'
+import PioneeringMission from '@/sections/aboutus/pioneering-mission/PioneeringMission'
 
 const IndexAboutUs = () => {
   return (
@@ -11,6 +14,8 @@ const IndexAboutUs = () => {
       <Mission />
       <AwardsCertifications {...awardsCertifications} />
       <ExpertTeam />
+      <PioneeringMission />
+      <OfficeMap {...officeMap} />
     </>
   )
 }
