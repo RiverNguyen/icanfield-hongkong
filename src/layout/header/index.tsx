@@ -87,7 +87,7 @@ const Header = () => {
         {
           title: 'Các chương trình định cư',
           href: '/',
-          imgUrl: '/imgs/homepage/header/d-c.webp',
+          imgUrl: '/imgs/homepage/header/d-Uc.webp',
         },
         {
           title: 'Dự án EB-5',

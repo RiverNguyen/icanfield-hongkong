@@ -158,8 +158,8 @@ const BannerHomepage = () => {
                       <ImageV2
                         src={item?.icon}
                         alt='icon'
-                        width={20}
-                        height={20}
+                        width={40}
+                        height={40}
                         className='size-[1.25rem] object-contain'
                       />
                     </div>
@@ -265,8 +265,8 @@ const BannerHomepage = () => {
                     <ImageV2
                       src='/icons/homepage/banner/arrow-down.svg'
                       alt='arrow'
-                      width={10}
-                      height={10}
+                      width={40}
+                      height={40}
                       className='size-[1.125rem] object-contain'
                     />
                   </div>
@@ -282,8 +282,8 @@ const BannerHomepage = () => {
           <ImageV2
             src='/icons/homepage/banner/search.svg'
             alt='filter'
-            width={20}
-            height={20}
+            width={40}
+            height={40}
             className='mr-[0.62rem] size-[1.5rem] object-contain'
           />
           <span className='text-[0.875rem] font-semibold leading-[1.5] text-white'>
