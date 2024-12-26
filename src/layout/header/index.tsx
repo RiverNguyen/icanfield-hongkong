@@ -38,14 +38,17 @@ const Header = () => {
     {
       title: 'sự kiện',
       linkIcon: '/icons/homepage/header/event.svg',
+      href: '/events',
     },
     {
       title: 'tin định cư',
       linkIcon: '/icons/homepage/header/flag.svg',
+      href: '/events',
     },
     {
       title: 'liên hệ',
       linkIcon: '/icons/homepage/header/gmail.svg',
+      href: '/events',
     },
   ]
   const listItemLeftBottomHeader = [
@@ -354,8 +357,9 @@ const Header = () => {
             </div>
           </div>
           <div className='flex items-center space-x-[2.73rem]'>
-            {listItemTopHeader.map((item:TopHeaderItem, index) => (
-              <div
+            {listItemTopHeader.map((item: TopHeaderItem, index) => (
+              <Link
+                href={item.href}
                 key={index}
                 className='flex items-center space-x-[0.62rem]'
               >
@@ -369,7 +373,7 @@ const Header = () => {
                 <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
                   {item.title}
                 </span>
-              </div>
+              </Link>
             ))}
             <div
               className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem]'
