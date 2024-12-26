@@ -140,11 +140,11 @@ const BannerHomepage = () => {
                       />
                     </div>
                     <div className='flex flex-1 flex-col justify-between'>
-                      <span className='text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'>
+                      <span className={`text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100 transition-all duration-500 ${openFilters[filterIndex] ?'translate-y-[0.8rem] text-[0.75rem]':''}`}>
                         {item?.label}
                       </span>
                       <div className='flex cursor-pointer items-center justify-between'>
-                        <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
+                        <span className={`line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown1 transition-all duration-500 ${openFilters[filterIndex] ? 'translate-x-full -translate-y-[5rem] opacity-0' : 'translate-x-0 translate-y-0 opacity-100'}`}>
                           {selectedItems[filterIndex]?.label || 'Click để chọn'}
                         </span>
                         <ImageV2
@@ -152,9 +152,9 @@ const BannerHomepage = () => {
                           alt='arrow'
                           width={10}
                           height={10}
-                          className={`size-[1.125rem] object-contain transition-transform duration-300 ${
+                          className={`size-[1.125rem] object-contain transition-transform duration-500 ${
                             openFilters[filterIndex]
-                              ? '-rotate-180'
+                              ? '-rotate-180 -translate-y-[0.5rem]'
                               : 'rotate-0'
                           }`}
                         />
@@ -223,7 +223,7 @@ const BannerHomepage = () => {
                   />
                 </div>
                 <div className='flex flex-1 flex-col justify-between'>
-                  <span className='text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'>
+                  <span className={'text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'}>
                     {item?.label}
                   </span>
                   <div className='flex cursor-pointer items-center justify-between'>
@@ -269,13 +269,13 @@ const BannerHomepage = () => {
           }}
         ></div>
         <div
-          className={`absolute bottom-0 left-0 z-10 flex h-[19.6rem] w-full flex-col rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[2.5rem] ${
+          className={`absolute bottom-0 left-0 z-10 flex h-[19.6rem] w-full flex-col rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[2.5rem] transition-all duration-300 ${
             openPopupFilter ? 'translate-y-0' : 'translate-y-full'
           }`}
         >
           <div className='flex w-full items-center justify-between space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] pb-4'>
             <div className='flex items-center'>
-              <div className='flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.5rem]'>
+              <div className='flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.5rem] mr-2'>
                 <ImageV2
                   src={
                     currentFilter?.icon ||
