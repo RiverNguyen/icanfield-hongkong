@@ -3,9 +3,9 @@ import ItemPioneering from "@/sections/aboutus/pioneering-mission/ItemPioneering
 
 export default function PioneeringMission() {
     return <section className="w-full pt-[5rem] bg-background">
-        <div className="sm:sticky sm:top-0 w-full xsm:relative">
+        <div className="sm:sticky sm:top-[100vh] w-full xsm:relative">
             <ImageV2 
-                className="xsm:hidden w-full h-[100vh] absolute top-0 left-0"
+                className="xsm:hidden w-full h-[100vh] absolute sm:top-[-100vh] xsm:top-0 left-0"
                 width={1600} 
                 height={788} 
                 alt="" 
