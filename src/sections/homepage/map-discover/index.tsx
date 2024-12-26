@@ -65,7 +65,12 @@ const MapDiscover = () => {
               className='swiper-nationalities !p-4 xsm:mb-[1.5rem] xsm:!p-0 xsm:!pl-4'
               slidesPerView='auto'
               breakpoints={{
-                0: {spaceBetween: 8, slideToClickedSlide: true, loop: true,freeMode: true},
+                0: {
+                  spaceBetween: 8,
+                  slideToClickedSlide: true,
+                  loop: true,
+                  freeMode: true,
+                },
                 640: {spaceBetween: 16},
                 768: {spaceBetween: 56},
               }}
