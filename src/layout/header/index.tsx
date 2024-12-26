@@ -199,7 +199,7 @@ const Header = () => {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsActiveOverlay(false)
-    }, 700)
+    }, 300)
   }
   //handle change url image different program
   const handleChangeUrlImage = (url: string) => {
@@ -364,7 +364,7 @@ const Header = () => {
                 {languageOptions.map((item: LanguageOption, index: number) => (
                   <div
                     key={index}
-                    className='flex items-center space-x-[0.5rem] hover:scale-105'
+                    className='flex items-center space-x-[0.5rem] hover:scale-105 '
                     onClick={() => handleChangeLanguage(item)}
                   >
                     <span

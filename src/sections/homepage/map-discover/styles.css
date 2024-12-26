@@ -1,0 +1,22 @@
+.navbar-nationalities-item.active {
+  position: relative;
+}
+.navbar-nationalities-item.active ::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(149, 80, 47, 1) 50%,
+    rgba(245, 193, 120, 1) 100%
+  );
+  border-radius: 99rem;
+}
+@media (max-width: 768px) {
+  .navbar-nationalities-item.active ::after {
+    display: none;
+  }
+}

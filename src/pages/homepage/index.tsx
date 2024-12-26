@@ -12,7 +12,7 @@ import newFlow from '@/sections/homepage/news-homepage/constants'
 import MapDiscover from '@/sections/homepage/map-discover'
 const HomePage = () => {
   return (
-    <main>
+    <main className='bg-background'>
       <BannerHomepage />
       <GlobalImmigration />
       <MapDiscover />
