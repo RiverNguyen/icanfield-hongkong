@@ -1,11 +1,11 @@
 'use client'
 // STYLE
-import 'leaflet/dist/leaflet.css'
 import './style.css'
 
 // GEO JSON
 import ImageV2 from '@/components/image/ImageV2'
 import {ICountry, LeafletMap} from '@/components/LeafletMap'
+import ChevronRight from '@/components/svg/ChevronRight'
 import {cn} from '@/lib/utils'
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import PopupMarker from '@/sections/aboutus/office-map/PopupMarker'
@@ -31,7 +31,7 @@ const IndexMap = ({countries}: IIndexMapProps) => {
     console.log(customGeoJson)
   }, [open])
   const handleClickMarker = (country: ICountry) => {
-    setCountrySelected(country.name)
+    setCountrySelected(country.label ? country.label : country.name)
     setOpen(true)
     console.log(country)
   }
@@ -60,7 +60,7 @@ const IndexMap = ({countries}: IIndexMapProps) => {
         setOpen={setOpen}
         countrySelected={countrySelected}
       />
-      <div>
+      <div className='mt-4 grid grid-cols-2 gap-[0.5rem] sm:hidden'>
         {countries.map((country, index) => {
           let countryObj: ICountry = {
             name: country[0].name,
@@ -100,22 +100,28 @@ interface IMarkerButtonProps extends ICountry {
 
 function MarkerButton({onClick, name, label, flag}: IMarkerButtonProps) {
   return (
-    <button onClick={onClick}>
-      {flag && (
-        <ImageV2
-          src={flag}
-          alt={name}
-          width={24}
-          height={24}
-        />
-      )}
-      <div>
-        <span>Văn phòng</span>
+    <button
+      className='flex items-center rounded-[0.5rem] bg-background p-[0.5rem_0.63rem]'
+      onClick={onClick}
+    >
+      <span className='after:content relative block h-[2.25rem] w-[2.25rem] overflow-hidden rounded-full bg-black/10 p-[0.125rem] after:overflow-hidden'>
+        {flag && (
+          <ImageV2
+            src={flag}
+            alt={name}
+            width={48}
+            height={48}
+            className='h-full w-full rounded-full object-cover'
+          />
+        )}
+      </span>
+      <div className='ml-[0.63rem] mr-auto flex flex-col items-start'>
+        <span className='text-[0.5rem] font-medium leading-[1.5] tracking-[-0.005rem] text-tagtext'>
+          Văn phòng
+        </span>
+        <span className='body-14-s text-brown'>{label}</span>
       </div>
-      {/* <ImageV2
-        src={flag}
-        alt=''
-      /> */}
+      <ChevronRight className='size-[1.5rem] text-tagtext' />
     </button>
   )
 }

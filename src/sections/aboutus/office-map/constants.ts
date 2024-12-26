@@ -49,7 +49,7 @@ const officeMap: IOfficeMapProps = {
     [
       {
         name: 'Vietnam',
-        label: 'Vietnam',
+        label: 'Việt nam',
         flag: '/imgs/about-us/office-map/vietnam.png',
       },
     ],
