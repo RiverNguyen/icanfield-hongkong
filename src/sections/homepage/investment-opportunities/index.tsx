@@ -28,7 +28,7 @@ export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
         }
       },
       {
-        threshold: 0.3,
+        threshold: 0.1,
       },
     )
     if (ref.current) observer.observe(ref.current)

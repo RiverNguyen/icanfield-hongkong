@@ -79,7 +79,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({items, title}) => {
         <div className='relative h-fit w-full xsm:hidden'>
           <div className='pointer-events-none absolute left-0 top-0 h-[24.2rem] w-[44.3rem] rounded-[1rem] bg-white shadow-[0px_6px_16px_0px_rgba(83,83,83,0.10)]'>
             <ICQuote className='absolute left-[1.5rem] top-[1.5rem] h-auto w-[4.69463rem]' />
-            <div className='absolute left-[2rem] top-[4.2rem] z-10 size-fit'>
+            <div className='absolute left-[2rem] top-[2.5rem] z-10 size-fit'>
               <Swiper
                 direction='vertical'
                 slidesPerView={1}

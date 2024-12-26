@@ -4,6 +4,7 @@ import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import {FC, useCallback, useEffect, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
+import {useRef} from 'react'
 export interface ICountry {
   name: string
   label?: string
@@ -18,6 +19,10 @@ interface ILeafletMapProps {
   borderCountries?: string
   zoomMobile?: number
   zoomDesktop?: number
+  isZoomClick?: boolean
+  changeCountry?: string
+  isZoomInClick?: boolean
+  isZoomOutClick?: boolean
 }
 
 // INIT COUNTRY OF EU
@@ -31,9 +36,13 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   borderCountries,
   zoomMobile = 0.5,
   zoomDesktop = 1.5,
+  isZoomClick = false,
+  changeCountry,
+  isZoomInClick = false,
+  isZoomOutClick = false,
 }) => {
   const [isMobile, setIsMobile] = useState(false)
-
+  const mapRef = useRef<L.Map | null>(null)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
@@ -43,8 +52,6 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
           euCountries.add(item.name)
         })
       })
-
-      console.log(getPosition('Vietnam'))
     }
   }, [])
 
@@ -98,7 +105,71 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       fillOpacity: 1, // Background fill opacity
     }
   }, [])
+  // Zoom to country when click
+  const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
+  const handleCountryClick = (countryName: string) => {
+    const position = getPosition(countryName)
+    if (mapRef.current && isZoomClick) {
+      if (zoomedCountry === countryName) {
+        // Nếu quốc gia đã được zoom, bỏ zoom
+        mapRef.current.flyTo([40, 0], isMobile ? zoomMobile : 1.5)
+        setZoomedCountry(null)
+      } else {
+        // Nếu quốc gia chưa được zoom, zoom vào quốc gia đó
+        mapRef.current.flyTo(position, isMobile ? 1.75 : 3)
+        setZoomedCountry(countryName)
+      }
+    }
+  }
+  const findCountry = (label: string) => {
+    for (let i = 0; i < countries.length; i++) {
+      const country = countries[i].find((country) => country.label === label)
+      if (country) {
+        return country.name // Return the name of the country if found
+      }
+    }
+    return null // Return null if no country with the given label is found
+  }
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
 
+    if (
+      changeCountry !== '' &&
+      changeCountry !== null &&
+      changeCountry !== undefined
+    ) {
+      const countryName = findCountry(changeCountry)
+      if (countryName) {
+        timeoutId = setTimeout(() => {
+          handleCountryClick(countryName)
+        }, 100)
+      }
+    }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+    }
+  }, [changeCountry])
+  // Hàm xử lý zoom
+  const handleZoomIn = () => {
+    if (mapRef.current) {
+      mapRef.current.zoomIn()
+    }
+  }
+
+  const handleZoomOut = () => {
+    if (mapRef.current) {
+      mapRef.current.zoomOut()
+    }
+  }
+  useEffect(() => {
+    handleZoomIn()
+  }, [isZoomInClick])
+  useEffect(() => {
+    handleZoomOut()
+  }, [isZoomOutClick])
   return (
     <MapContainer
       key={isMobile ? 'mobile-map' : 'desktop-map'}
@@ -111,9 +182,10 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       zoomSnap={0.1}
       zoomDelta={isMobile ? 1 : 0.5}
       className={className}
-      scrollWheelZoom={isMobile ? false : true}
-      zoomControl={false}
+      zoomControl={true}
       dragging={isMobile ? false : true}
+      ref={mapRef}
+      scrollWheelZoom={false}
     >
       <GeoJSON
         data={mapJson as GeoJsonObject}
@@ -146,7 +218,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
             position={position} // Tọa độ Canada
             icon={
               new L.DivIcon({
-                html: `<div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
+                html: `<div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0 xsm:!pointer-events-none">
                   <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound xsm:!w-[2rem] xsm:!h-auto"/>
                   <img src="${countryObj.flag && countryObj.flag}" alt="VIỆT NAM" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full xsm:!size-[1rem] xsm:top-[0.6rem]"/>
                   ${
@@ -158,12 +230,17 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
                   }
               </div>`,
                 className:
-                  'my-div-icon !w-[5rem] !h-[3.26rem] relative !-mt-[3.26rem] xsm:!-mt-[2rem]',
+                  'my-div-icon !w-[5rem] !h-[3.26rem] relative !-mt-[3.26rem] xsm:!-mt-[2rem]  xsm:!pointer-events-none',
                 iconSize: [30, 30],
               })
             }
             eventHandlers={{
-              click: () => onClick && onClick(countryObj),
+              click: () => {
+                if (onClick) {
+                  onClick(countryObj)
+                }
+                handleCountryClick(countryObj.name)
+              },
             }}
           ></Marker>
         )

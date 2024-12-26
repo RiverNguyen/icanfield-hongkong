@@ -8,9 +8,12 @@ import {Autoplay} from 'swiper/modules'
 import 'swiper/css'
 import {filterOptions, dataVideo, bannerDataImage} from './constants'
 import {FilterOption} from '@/types/bannerFilter.interface'
+import {useRef} from 'react'
 const BannerHomepage = () => {
   const haveVideo = true
   const [isClient, setIsClient] = useState(false)
+  const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
+  const isSelecting = useRef(false)
   useEffect(() => {
     setIsClient(true)
   }, [])
@@ -24,17 +27,35 @@ const BannerHomepage = () => {
       (prev) => prev.map((isOpen, i) => (i === index ? !isOpen : isOpen)), // Đảo trạng thái của filter được click
     )
   }
+  //handle click outside filter
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isSelecting.current) return
+      if (
+        dropdownRefs.current.some(
+          (ref) => ref && ref.contains(event.target as Node),
+        )
+      ) {
+        return
+      }
+      setOpenFilters((prev) => prev.map(() => false))
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
   //handle click dropdown filter'
   const [selectedItems, setSelectedItems] = useState<{
     [key: number]: {label: string; slug: string}
   }>([])
+
   const handleSelect = (
     filterIndex: number,
-    selectedValue: {
-      label: string
-      slug: string
-    },
+    selectedValue: {label: string; slug: string},
   ) => {
+    isSelecting.current = true
     setSelectedItems((prev) => ({
       ...prev,
       [filterIndex]: selectedValue,
@@ -42,7 +63,7 @@ const BannerHomepage = () => {
     setOpenFilters((prev) =>
       prev.map((isOpen, i) => (i === filterIndex ? false : isOpen)),
     )
-    // console.log(`Filter ${filterIndex} selected: ${selectedValue}`)
+    isSelecting.current = false
   }
   //handle click popup filter
   const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
@@ -129,6 +150,9 @@ const BannerHomepage = () => {
                 >
                   <div
                     className={`flex ${!openFilters[filterIndex] ? '' : 'mb-2 border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-2'} w-full`}
+                    ref={(el) => {
+                      dropdownRefs.current[filterIndex] = el
+                    }}
                   >
                     <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
                       <ImageV2
@@ -150,8 +174,8 @@ const BannerHomepage = () => {
                         <ImageV2
                           src='/icons/homepage/banner/arrow-down.svg'
                           alt='arrow'
-                          width={10}
-                          height={10}
+                          width={40}
+                          height={40}
                           className={`size-[1.125rem] object-contain transition-transform duration-300 ${
                             openFilters[filterIndex]
                               ? '-rotate-180'
@@ -217,8 +241,8 @@ const BannerHomepage = () => {
                   <ImageV2
                     src={item?.icon}
                     alt='icon'
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                     className='size-[1.25rem] object-contain'
                   />
                 </div>
