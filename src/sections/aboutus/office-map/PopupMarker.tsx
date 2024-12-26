@@ -2,15 +2,14 @@
 'use client'
 import 'swiper/css'
 
+import ICLocation from '@/components/icon/ICLocation'
+import ICWatch from '@/components/icon/ICWatch'
 import {cn} from '@/lib/utils'
 import Image from 'next/image'
+import Link from 'next/link'
 import {useRef} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Swiper as SwiperType} from 'swiper/types'
-import ICLocation from '@/components/icon/ICLocation'
-import ICWatch from '@/components/icon/ICWatch'
-import Link from 'next/link'
-import ButtonBorder from '@/components/button/ButtonBorder'
 
 type PopupMarkerProps = {
   open: boolean
