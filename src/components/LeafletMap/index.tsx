@@ -43,10 +43,14 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false)
   const mapRef = useRef<L.Map | null>(null)
+  const [isClient, setIsClient] = useState(false)
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsMobile(window.innerWidth < 640)
+    setIsClient(true)
+  }, [])
 
+  useEffect(() => {
+    if (isClient && typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 640)
       countries.forEach((country) => {
         country.forEach((item) => {
           euCountries.add(item.name)
