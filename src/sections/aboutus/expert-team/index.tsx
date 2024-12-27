@@ -71,16 +71,16 @@ export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
     setNextIndex(nextSlideIndex);
   };
   return (
-    <section className='relative pt-[5rem] pl-[5rem] pb-[10.75rem] xsm:pt-[4rem] xsm:pl-0 bg-[linear-gradient(180deg,rgba(255,244,228,0.50)_0%,rgba(249,245,240,0.80)_16.83%,#F6F6F4_50.9%)]'>
+    <section className='relative pt-[5rem] pl-[5rem] pb-[10.75rem] xsm:pb-[4rem] xsm:pt-[4rem] xsm:pl-0 bg-[linear-gradient(180deg,rgba(255,244,228,0.50)_0%,rgba(249,245,240,0.80)_16.83%,#F6F6F4_50.9%)]'>
       <h2 className='text-brown font-optima heading1 font-medium w-[44.3125rem] xsm:w-full xsm:px-[1rem] xsm:mb-[1.5rem]'>Đội Ngũ Chuyên Gia Tinh Hoa Kiến Tạo Hành Trình Thành Công</h2>
       {!isMobile ? (
         <>
-          <div className='absolute w-[61.5125rem] h-[42.87169rem] right-0 top-0'>
+          <div className='xsm:hidden absolute w-[61.5125rem] h-[42.87169rem] right-0 top-0'>
             <ImageV2 className='size-full object-cover' alt='' width={1053} height={685} src={'/imgs/about-us/expert-team/backgroud-team.webp'} />
           </div>
           <div
             id='expert-team'
-            className='flex flex-col relative mt-[1.06rem]'
+            className='flex flex-col relative mt-[1.06rem] xsm:hidden'
           >
             <div className='overflow-hidden absolute left-0 top-[5.69rem] w-[36.625rem] h-[28rem] rounded-[1.5rem] bg-[linear-gradient(104deg,#FFF_58.51%,rgba(255,255,255,0.00)_74.37%)] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.03)]'>
               {fakedata && fakedata?.map((e: any,i: number) => (
