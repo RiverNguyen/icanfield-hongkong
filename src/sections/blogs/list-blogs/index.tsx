@@ -6,7 +6,7 @@ import IndexTabs from '@/sections/blogs/list-blogs/tab'
 
 const ListBlogs = () => {
   return (
-    <section className='list-blogs section-container mb-[6.75rem] xsm:mb-[3.25rem]'>
+    <section className='list-blogs section-container mb-[6.75rem] mt-[6.75rem] xsm:mb-[3.25rem] xsm:mt-[3rem]'>
       <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:mb-[1rem] xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>
         Tin tức khác
       </h2>
