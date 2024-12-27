@@ -1,63 +1,64 @@
 @media (min-width: 639px) {
-    .active__plane {
-        animation: activePlane 1s ease forwards;
+  .active__plane {
+    animation: activePlane 1s ease forwards;
+  }
+  @keyframes activePlane {
+    0% {
+      width: 24.98719rem;
+      height: 16.69144rem;
+      top: 32%;
+      left: 12%;
     }
-    @keyframes activePlane {
-        0% {
-            width: 24.98719rem;
-            height: 16.69144rem;
-            top: 32%;
-            left: 12%;
-        }
-        100% {
-            width: 30.63838rem;
-            height: 20.46644rem;
-            top: 17.7%;
-            left: 0%;
-        }
+    100% {
+      width: 30.63838rem;
+      height: 20.46644rem;
+      top: 19.3%;
+      left: 0%;
+      transform: rotate(1deg);
     }
+  }
 
-    .active__about {
-        animation: activeAbout 1s ease forwards;
+  .active__about {
+    animation: activeAbout 1s ease forwards;
+  }
+  @keyframes activeAbout {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
     }
-    @keyframes activeAbout {
-        0% {
-        transform: translateY(100%);
-        opacity: 0;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
-        }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
     }
+  }
 
-    .active__content {
-        animation: activeContent 1s ease forwards;
+  .active__content {
+    animation: activeContent 1s ease forwards;
+  }
+  @keyframes activeContent {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
     }
-    @keyframes activeContent {
-        0% {
-        transform: translateY(100%);
-        opacity: 0;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
-        }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
     }
+  }
 
-    .mission__fadein {
-        animation: missionFadein 1.5s ease forwards;
+  .mission__fadein {
+    animation: missionFadein 1.5s ease forwards;
+  }
+  @keyframes missionFadein {
+    0% {
+      transform: translateY(100%) translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
     }
-    @keyframes missionFadein {
-        0% {
-            transform: translateY(100%) translateX(-50%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        100% {
-            transform: translateY(0) translateX(-50%);
-            opacity: 1;
-            pointer-events: auto;
-        }
+    100% {
+      transform: translateY(0) translateX(-50%);
+      opacity: 1;
+      pointer-events: auto;
     }
+  }
 }

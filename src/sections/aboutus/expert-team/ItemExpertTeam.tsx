@@ -102,7 +102,8 @@ export default function ItemExpertTeam({
           <image
             id={'image0_884_29326' + index}
             width={1880}
-            height={1539}
+            height={1498}
+            className='scale-[1.05]'
             xlinkHref={srcImage || ''}
           />
         </defs>
