@@ -149,7 +149,7 @@ const Footer = () => {
             {new Array(4).fill(0).map((e, index) => (
               <Link
                 href={''}
-                className='cursor-pointer p-[0.62rem]'
+                className='flex-center cursor-pointer p-[0.62rem] relative before:transition-all before:duration-700 hover:before:h-[2.75rem] before:absolute before:w-full before:h-0 before:bottom-0 before:left-0 before:rounded-[0.625rem] before:bg-primary-brown before:z-[2]'
                 key={index}
               >
                 <ImageV2
@@ -157,7 +157,7 @@ const Footer = () => {
                   src={'/icons/homepage/footer/d-fb.svg'}
                   width={40}
                   height={40}
-                  className='size-[1.5rem] object-contain'
+                  className='size-[1.5rem] object-contain z-[3]'
                 />
               </Link>
             ))}

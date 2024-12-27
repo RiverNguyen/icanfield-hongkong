@@ -14,12 +14,12 @@ export default function ButtonBorder({
   return (
     <Link
       className={cn(
-        'flex w-max items-center p-[0.5rem_0.75rem_0.5rem_1.5rem] rounded-[0.5rem] border-[1px] border-solid border-textwhite85',
+        'group flex w-max items-center p-[0.5rem_0.75rem_0.5rem_1.5rem] rounded-[0.5rem] border-[1px] border-solid border-textwhite85 transition-all duration-500 hover:bg-white',
         className,
       )}
       href={link || ''}
     >
-      <p className='text-white sub-14 font-medium tracking-[-0.0175rem]'>
+      <p className='transition-all duration-500 text-white group-hover:text-greentext sub-14 font-medium tracking-[-0.0175rem]'>
         {title}
       </p>
       <ImageV2
@@ -27,7 +27,7 @@ export default function ButtonBorder({
         height={40}
         alt='arow'
         src={'/icons/homepage/footer/icon-arow.svg'}
-        className='size-[1.5rem] object-contain ml-[0.5rem]'
+        className='transition-all duration-500 size-[1.5rem] object-contain ml-[0.5rem] group-hover:filter group-hover:brightness-[100] group-hover:invert-[100]'
       />
     </Link>
   )
