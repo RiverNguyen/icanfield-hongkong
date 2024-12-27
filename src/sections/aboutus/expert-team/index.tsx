@@ -11,18 +11,13 @@ import ItemSliderMb from '@/sections/aboutus/expert-team/ItemSliderMb'
 import PopupSliderMb from '@/sections/aboutus/expert-team/PopupSliderMb'
 import useIsMobile from '@/hooks/useIsMobile'
 
-interface IExpertTeamProps {}
+export interface IExpertTeamProps {
+  name: string
+  position: string
+  srcimage: string
+  content: string
+}
 
-interface IExpertTeamProps {
-  name: string;
-  position: string;
-  srcimage: string;
-  content: string;
-}
-interface IExpertTeamSwiper {
-  realIndex: number;
-  slides: {};
-}
 const fakedata = [
   {
     name: 'Mr. jimmy1',
@@ -73,18 +68,18 @@ const fakedata = [
     content:
       'Mr. Jimmy là Giám đốc Điều hành (CEO) của iCanfield Vietnam, với hơn 12 năm kinh nghiệm trong lĩnh vực tư vấn đầu tư, hoạch định tài chính và tư vấn di trú. Mr. Jimmy đã tốt nghiệp chuyên ngành Tài chính Đầu tư tại Đại học UTS, Australia (University of Technology, Sydney), và đã sinh sống, học tập và làm việc tại Úc hơn 7 năm trước khi trở về Việt Nam. Sau khi về nước, Mr. Jimmy đã bắt đầu tham gia các công việc về quản lý dự án và phát triển các dự án bất động sản trong nước và quốc tế. Bên cạnh đó, Mr. Jimmy cũng đảm nhận vai trò phát triển các sản phẩm đầu tư và định cư, xây dựng mối quan hệ sâu rộng với các luật sư và chủ đầu tư lớn trên thế giới. Với hơn 12 năm kinh nghiệm trong lĩnh vực di trú và định cư, Mr. Jimmy đã trực tiếp tư vấn cho hàng trăm nhà đầu tư và xử lý thành công 100% các hồ sơ đầu tư và định cư của khách hàng. Mr. Jimmy cam kết cung cấp các giải pháp toàn diện về di trú, giúp khách hàng không chỉ tối ưu hóa tài chính mà còn thực hiện thành công các kế hoạch định cư tại các quốc gia phát triển. Sự cam kết và kinh nghiệm của Mr. Jimmy đảm bảo mọi hồ sơ và nhu cầu của khách hàng đều được giải quyết nhanh chóng và hiệu quả, mang lại sự an tâm cho những người có kế hoạch xây dựng một tương lai toàn cầu.    ',
   },
-];
+]
 
-export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
+export const ExpertTeam: FC<IExpertTeamProps> = () => {
   const isMobile = useIsMobile()
   const [toggleMB, setToggleMB] = useState<boolean>(false)
   const [idActivePopupMB, setIdActivePopupMB] = useState<number>(0)
 
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [nextIndex, setNextIndex] = useState<number>(1)
-  const handleSlideChange = (swiper: any) => {
-    setActiveIndex(swiper.realIndex)
-    const nextSlideIndex = (swiper.realIndex + 1) % swiper.slides.length
+  const handleSlideChange = (realIndex: number, length: number) => {
+    setActiveIndex(realIndex)
+    const nextSlideIndex = (realIndex + 1) % length
     setNextIndex(nextSlideIndex)
   }
   return (
@@ -109,7 +104,7 @@ export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
           >
             <div className='absolute left-0 top-[5.69rem] h-[28rem] w-[36.625rem] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(104deg,#FFF_58.51%,rgba(255,255,255,0.00)_74.37%)] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.03)]'>
               {fakedata &&
-                fakedata?.map((e: any, i: number) => (
+                fakedata?.map((e: IExpertTeamProps, i: number) => (
                   <div
                     key={i}
                     className={cn(
@@ -161,10 +156,10 @@ export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
               className='!mr-0 h-[38.125rem] max-w-[72.125rem]'
               modules={[Navigation]}
               navigation={{
-                nextEl: ".expert-team__next",
-                prevEl: ".expert-team__prev",
+                nextEl: '.expert-team__next',
+                prevEl: '.expert-team__prev',
               }}
-              onSlideChange={handleSlideChange}
+              onSlideChange={(swiper) =>handleSlideChange(swiper.realIndex, fakedata.length)}
             >
               {fakedata?.map((e: IExpertTeamProps, index: number) => (
                 <SwiperSlide
@@ -187,7 +182,7 @@ export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
         <>
           <div className='scrollbar-hidden w-full overflow-hidden overflow-x-auto px-[1rem]'>
             <div className='flex w-max space-x-[1rem]'>
-              {fakedata?.map((e: any, index: number) => (
+              {fakedata?.map((e: IExpertTeamProps, index: number) => (
                 <ItemSliderMb
                   key={index}
                   data={e}
@@ -207,5 +202,5 @@ export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
         </>
       )}
     </section>
-  );
-};
+  )
+}
