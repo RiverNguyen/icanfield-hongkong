@@ -27,6 +27,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
   const [spaceBetween, setSpaceBetween] = useState<number>(6.25)
   useEffect(() => {
     setSpaceBetween((prev) => {
+      if (typeof window === 'undefined') return prev
       if (window.innerWidth < 640) {
         return (
           1.5 * parseFloat(getComputedStyle(document.documentElement).fontSize)
@@ -38,7 +39,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
     })
   }, [])
   return (
-    <section className='xsm:overflow-hidden bg-[linear-gradient(180deg,#F6F6F4_76.05%,#F7EDDE_100%)]'>
+    <section className='xsm:overflow-hidden pb-[5rem] bg-[linear-gradient(180deg,#F6F6F4_76.05%,#F7EDDE_100%)]'>
       <ImageV2
         alt={logo.alt}
         src={logo.src}

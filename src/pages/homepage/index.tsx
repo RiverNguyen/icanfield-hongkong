@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import FormHomepage from '@/sections/homepage/form-homepage'
 import React from 'react'
 import BannerHomepage from '@/sections/homepage/banner'
@@ -9,10 +10,12 @@ import ProudJourney from '@/sections/homepage/proud-journey'
 import proudJourney from '@/sections/homepage/proud-journey/constants'
 import NewsFlow from '@/sections/homepage/news-homepage'
 import newFlow from '@/sections/homepage/news-homepage/constants'
-import MapDiscover from '@/sections/homepage/map-discover'
+const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
+  ssr: false, // Nếu component không cần server-side rendering
+})
 const HomePage = () => {
   return (
-    <main>
+    <main className='bg-background'>
       <BannerHomepage />
       <GlobalImmigration />
       <MapDiscover />
