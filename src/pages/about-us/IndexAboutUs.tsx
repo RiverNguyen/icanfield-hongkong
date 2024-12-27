@@ -12,10 +12,10 @@ const IndexAboutUs = () => {
     <>
       <BannerAboutus />
       <Mission />
-      <AwardsCertifications {...awardsCertifications} />
-      <ExpertTeam />
       <PioneeringMission />
       <OfficeMap {...officeMap} />
+      <ExpertTeam />
+      <AwardsCertifications {...awardsCertifications} />
     </>
   )
 }

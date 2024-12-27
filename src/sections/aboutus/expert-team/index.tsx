@@ -9,6 +9,7 @@ import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
 import ImageV2 from '@/components/image/ImageV2'
 import ItemSliderMb from '@/sections/aboutus/expert-team/ItemSliderMb'
 import PopupSliderMb from '@/sections/aboutus/expert-team/PopupSliderMb'
+import useIsMobile from '@/hooks/useIsMobile'
 
 interface IExpertTeamProps {}
 
@@ -58,22 +59,9 @@ const fakedata = [
 ]
 
 export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const isMobile = useIsMobile();
   const [toggleMB, setToggleMB] = useState<boolean>(false);
   const [idActivePopupMB, setIdActivePopupMB] = useState<number>(0);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 639); // Thay đổi ngưỡng tại đây nếu cần
-    };
-
-    checkMobile();
-
-    window.addEventListener('resize', checkMobile);
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [nextIndex, setNextIndex] = useState<number>(1);
@@ -83,9 +71,9 @@ export const ExpertTeam: FC<IExpertTeamProps> = ({}) => {
     setNextIndex(nextSlideIndex);
   };
   return (
-    <section className='relative pt-[5rem] pl-[5rem] xsm:pt-[4rem] xsm:pl-0 bg-[linear-gradient(180deg,rgba(255,244,228,0.50)_0%,rgba(249,245,240,0.80)_16.83%,#F6F6F4_50.9%)]'>
+    <section className='relative pt-[5rem] pl-[5rem] pb-[10.75rem] xsm:pt-[4rem] xsm:pl-0 bg-[linear-gradient(180deg,rgba(255,244,228,0.50)_0%,rgba(249,245,240,0.80)_16.83%,#F6F6F4_50.9%)]'>
       <h2 className='text-brown font-optima heading1 font-medium w-[44.3125rem] xsm:w-full xsm:px-[1rem] xsm:mb-[1.5rem]'>Đội Ngũ Chuyên Gia Tinh Hoa Kiến Tạo Hành Trình Thành Công</h2>
-      {isMobile ? (
+      {!isMobile ? (
         <>
           <div className='absolute w-[61.5125rem] h-[42.87169rem] right-0 top-0'>
             <ImageV2 className='size-full object-cover' alt='' width={1053} height={685} src={'/imgs/about-us/expert-team/backgroud-team.webp'} />
