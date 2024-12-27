@@ -19,7 +19,7 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
   children,
 }) => {
   return (
-    <section className='relative min-h-[36.45rem] pt-[6.44rem]'>
+    <section className='relative min-h-[28.75rem] overflow-hidden pt-[3.75rem] sm:min-h-[36.45rem] sm:pt-[6.44rem]'>
       <ImageV2
         src={backgroundImage.src}
         alt={backgroundImage.alt}
@@ -35,7 +35,9 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
           {'mt-[1.5rem]': !!children},
         )}
       >
-        <BannerLine className='mb-[1rem] max-w-full sm:max-w-[58.96875rem] xsm:order-2' />
+        {titleTop && titleBottom && description && (
+          <BannerLine className='mb-[1rem] mt-[1rem] max-w-full sm:mt-0 sm:max-w-[58.96875rem] xsm:order-2' />
+        )}
         <div className='sm:mr-[5rem] xsm:order-1'>
           <h1 className='font-optima text-[2.375rem] font-medium leading-[1.2] tracking-[-0.0475rem] text-white sm:text-[5rem] sm:tracking-[-0.1rem]'>
             {titleTop}
@@ -44,7 +46,7 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
             {titleBottom}
           </h2>
         </div>
-        <p className='max-w-[20.2rem] text-[0.75rem] font-semibold uppercase leading-[1.5] text-white/85 sm:text-[1rem] xsm:order-3'>
+        <p className='text-[0.75rem] font-semibold uppercase leading-[1.5] text-white/85 sm:max-w-[20.2rem] sm:text-[1rem] xsm:order-3'>
           {description}
         </p>
       </div>
