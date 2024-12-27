@@ -1,6 +1,6 @@
-import ButtonBorder from '@/components/button/ButtonBorder'
-import ImageV2 from '@/components/image/ImageV2'
-import Link from 'next/link'
+import ButtonBorder from "@/components/button/ButtonBorder";
+import ImageV2 from "@/components/image/ImageV2";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -9,14 +9,11 @@ const Footer = () => {
         <h3 className='heading2 w-[45.29138rem] text-center font-optima font-semibold tracking-[-0.05rem] text-textwhitetest xsm:w-full'>
           Để iCanfield dẫn lối <br /> hành trình quốc tế hóa của bạn!
         </h3>
-        <ButtonBorder
-          title={'Hỗ trợ khách hàng'}
-          link={'#'}
-        />
+        <ButtonBorder title={"Hỗ trợ khách hàng"} link={"#"} />
       </div>
       <ImageV2
-        alt='bg-footer'
-        src={'/imgs/homepage/footer/bg-footer.png'}
+        alt="bg-footer"
+        src={"/imgs/homepage/footer/bg-footer.png"}
         width={1600}
         height={522}
         className='absolute bottom-0 left-0 z-0 h-[calc(38.6875rem-6.06rem)] w-full opacity-[0.3] xsm:hidden'
@@ -24,8 +21,8 @@ const Footer = () => {
       <div className='section-container relative h-[calc(38.6875rem-6.06rem)] space-y-[3.5rem] rounded-[2rem_2rem_0_0] bg-[rgba(255,255,255,0.03)] px-[6rem] pt-[4rem] xsm:h-auto xsm:space-y-[2rem] xsm:p-[2.5rem_1rem]'>
         <div className='flex sm:justify-between xsm:flex-col'>
           <ImageV2
-            alt='logo-footer'
-            src={'/icons/homepage/footer/d-logofooter.svg'}
+            alt="logo-footer"
+            src={"/icons/homepage/footer/d-logofooter.svg"}
             width={190}
             height={223}
             className='h-[13.95613rem] w-[11.875rem] xsm:mx-auto xsm:h-[9.625rem] xsm:w-[8.18975rem]'
@@ -35,27 +32,21 @@ const Footer = () => {
               <p className='body16 font-medium text-white xsm:font-bold'>
                 THÔNG TIN LIÊN HỆ
               </p>
-              <div className='space-y-[1.25rem] xsm:space-y-[0.75rem]'>
-                <Link
-                  href='#'
-                  className='flex items-start space-x-[1rem]'
-                >
+              <div className="space-y-[1.25rem] xsm:space-y-[0.75rem]">
+                <Link href="#" className="flex items-start space-x-[1rem]">
                   <ImageV2
-                    alt=''
-                    src={'/icons/homepage/footer/d-icon-local.svg'}
+                    alt=""
+                    src={"/icons/homepage/footer/d-icon-local.svg"}
                     width={40}
                     height={40}
-                    className='size-[1.25rem] object-contain'
+                    className="size-[1.25rem] object-contain"
                   />
                   <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
                     Tầng 12, Tòa nhà President Place 93 Nguyễn Du, P. Bến Nghé,
                     Quận 1, TP.HCM
                   </p>
                 </Link>
-                <Link
-                  href='#'
-                  className='flex items-start space-x-[1rem]'
-                >
+                <Link href="#" className="flex items-start space-x-[1rem]">
                   <ImageV2
                     alt=''
                     src={'/icons/homepage/footer/d-icon-local.svg'}
@@ -67,10 +58,7 @@ const Footer = () => {
                     contact@icanfield.com
                   </p>
                 </Link>
-                <Link
-                  href='#'
-                  className='flex items-start space-x-[1rem]'
-                >
+                <Link href="#" className="flex items-start space-x-[1rem]">
                   <ImageV2
                     alt=''
                     src={'/icons/homepage/footer/d-icon-local.svg'}
@@ -90,7 +78,7 @@ const Footer = () => {
               </p>
               <div className='sm:space-y-[1.25rem] xsm:grid xsm:grid-cols-2 xsm:gap-y-[0.75rem]'>
                 <Link
-                  href='#'
+                  href='/about-us'
                   className='flex items-center space-x-[1rem]'
                 >
                   <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
@@ -165,7 +153,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

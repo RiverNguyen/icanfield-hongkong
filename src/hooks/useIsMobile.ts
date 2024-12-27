@@ -5,16 +5,14 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      if (typeof window !== 'undefined') {
-        setIsMobile(window.innerWidth <= 639) // Thay đổi ngưỡng tại đây nếu cần
-      }
+      console.log(window.innerWidth)
+      setIsMobile(window.innerWidth <= 639) // Thay đổi ngưỡng tại đây nếu cần
     }
 
     checkMobile()
-    if (typeof window === 'undefined') return
+
     window.addEventListener('resize', checkMobile)
     return () => {
-      if (typeof window === 'undefined') return
       window.removeEventListener('resize', checkMobile)
     }
   }, [])

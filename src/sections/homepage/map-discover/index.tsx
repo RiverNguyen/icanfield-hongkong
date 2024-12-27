@@ -203,6 +203,7 @@ const MapDiscover = () => {
                 }
                 isZoomInClick={isZoomInClick}
                 isZoomOutClick={isZoomOutClick}
+                isControlZoom={true}
               />
             </div>
           </div>

@@ -3,7 +3,7 @@ import './style.css'
 
 export default function ItemPioneering({index}: {index: number}) {
   return (
-    <div className='item__pioneering group relative h-[25rem] w-[44.25rem] overflow-hidden rounded-[1.5rem] bg-white shadow-[0px_4px_10px_0px_rgba(0,0,0,0.03)] xsm:h-[11.875rem] xsm:w-full xsm:rounded-[0.75rem] xsm:shadow-[0px_1.938px_4.845px_0px_rgba(0,0,0,0.03)]'>
+    <div className='item__pioneering group relative h-[25rem] w-[43.85rem] overflow-hidden rounded-[1.5rem] bg-white shadow-[0px_4px_10px_0px_rgba(0,0,0,0.03)] xsm:h-[11.875rem] xsm:w-full xsm:rounded-[0.75rem] xsm:shadow-[0px_1.938px_4.845px_0px_rgba(0,0,0,0.03)]'>
       <ImageV2
         className='pointer-events-none absolute bottom-0 right-0 h-[25rem] w-[31rem] xsm:hidden'
         height={400}
@@ -19,7 +19,7 @@ export default function ItemPioneering({index}: {index: number}) {
         src={'/icons/about-us/pioneering-mission/comma.svg'}
       />
       <div className='relative z-10 flex h-full w-[29.4375rem] flex-col justify-between p-[3rem_1rem_2rem_3rem] xsm:w-[16.25rem] xsm:p-[1.25rem_0rem_1rem_1.25rem]'>
-        <div className='[&_p]:sub-24S [&_strong]:sub-24S [&_p]:text-greyscaletext-200 group-hover:[&_p]:text-white xsm:[&_p]:text-[0.8125rem] xsm:[&_p]:font-medium xsm:[&_p]:leading-[1.5] xsm:[&_p]:tracking-[0.00813rem] xsm:[&_p]:text-white [&_strong]:text-greyscaletext-900 group-hover:[&_strong]:font-normal group-hover:[&_strong]:text-white xsm:[&_strong]:text-[0.8125rem] xsm:[&_strong]:font-medium xsm:[&_strong]:text-white'>
+        <div className='[&_p]:sub-24S [&_strong]:sub-24S [&_p]:text-greyscaletext-200 [&_p]:transition-all [&_p]:delay-300 group-hover:[&_p]:text-white xsm:[&_p]:text-[0.8125rem] xsm:[&_p]:font-medium xsm:[&_p]:leading-[1.5] xsm:[&_p]:tracking-[0.00813rem] xsm:[&_p]:text-white [&_strong]:text-greyscaletext-900 [&_strong]:transition-all [&_strong]:delay-300 group-hover:[&_strong]:font-normal group-hover:[&_strong]:text-white xsm:[&_strong]:text-[0.8125rem] xsm:[&_strong]:font-medium xsm:[&_strong]:text-white'>
           <p>
             Chúng tôi đặt khách hàng làm trọng tâm,{' '}
             <strong>đồng hành với sự chân thành</strong> và nỗ lực cao nhất.

@@ -308,8 +308,8 @@ const Header = () => {
         <div className='section-container flex items-center justify-between'>
           <div className='flex items-center space-x-[0.94rem]'>
             <div className='relative'>
-              <div className='z-1 absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08]'></div>
-              <div className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'>
+              <div className='z-1 absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08] pointer-events-none'></div>
+              <Link href={'/blogs'} className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'>
                 <ImageV2
                   src='/icons/homepage/header/news.svg'
                   alt='logo'
@@ -320,7 +320,7 @@ const Header = () => {
                 <span className='text-[0.75rem] font-medium leading-[1.5] text-white'>
                   TIN DOANH NGHIỆP
                 </span>
-              </div>
+              </Link>
             </div>
             <div className='h-[2.0625rem] w-[19.9625rem]'>
               <Swiper

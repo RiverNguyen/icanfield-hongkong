@@ -4,9 +4,9 @@ import ItemPioneering from '@/sections/aboutus/pioneering-mission/ItemPioneering
 export default function PioneeringMission() {
   return (
     <section className='w-full bg-background pt-[5rem]'>
-      <div className='w-full sm:sticky sm:top-0 xsm:relative'>
+      <div className='w-full sm:sticky sm:top-[100vh] xsm:relative'>
         <ImageV2
-          className='absolute left-0 top-0 h-[100vh] w-full xsm:hidden'
+          className='absolute left-0 h-[100vh] w-full sm:top-[-100vh] xsm:top-0 xsm:hidden'
           width={1600}
           height={788}
           alt=''
@@ -29,8 +29,8 @@ export default function PioneeringMission() {
             />
           ))}
         </div>
-        <div className='sticky top-0 h-[43.75rem] flex-1 space-y-[2rem] p-[6.5rem_7.5rem_6.5rem_3.5rem] xsm:top-[3.75rem] xsm:hidden xsm:p-[4rem_1rem_1.5rem_1rem]'>
-          <h2 className='heading1 font-semibold text-brown'>
+        <div className='sticky top-[3rem] h-[43.75rem] flex-1 space-y-[2rem] p-[6.5rem_7.5rem_6.5rem_3.5rem] xsm:top-[3.75rem] xsm:hidden xsm:p-[4rem_1rem_1.5rem_1rem]'>
+          <h2 className='heading1 font-optima font-semibold text-brown'>
             Sứ Mệnh Tiên Phong <br /> Giá Trị Dẫn Lối Thành Công
           </h2>
           <div className='[&_p]:body16 space-y-[0.75rem] [&_p]:tracking-[-0.02rem] [&_p]:text-greyscaletext-400'>

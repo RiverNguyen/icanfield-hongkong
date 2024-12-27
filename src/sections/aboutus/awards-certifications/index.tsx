@@ -39,7 +39,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
     })
   }, [])
   return (
-    <section className='xsm:overflow-hidden'>
+    <section className='xsm:overflow-hidden pb-[5rem] bg-[linear-gradient(180deg,#F6F6F4_76.05%,#F7EDDE_100%)]'>
       <ImageV2
         alt={logo.alt}
         src={logo.src}
