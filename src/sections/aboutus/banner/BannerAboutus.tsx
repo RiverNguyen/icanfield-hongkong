@@ -35,12 +35,18 @@ export default function BannerAboutus() {
       {isMobile ? (
         <ImageBannerMb className='h-[100vh] w-full' />
       ) : (
-        <ImageBanner className='h-[100vh] w-full scale-[1.025]' />
+        <ImageV2
+          className='w-full h-full'
+          alt=''
+          width={1600}
+          height={700}
+          src={'/imgs/about-us/banner/d-hero_bannerv2.webp'}
+        />
       )}
       <ImageV2
         className={cn(
           activeInterFace && 'active__plane',
-          'absolute left-[12.93rem] top-[15.87rem] h-[16.69144rem] w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:h-[6.31106rem] xsm:w-[10.14275rem] xsm:rotate-[-5.462deg]',
+          'absolute left-[11.83rem] top-[14.87rem] h-[16.69144rem] w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:h-[6.31106rem] xsm:w-[10.14275rem] xsm:rotate-[-5.462deg]',
         )}
         alt=''
         width={399}

@@ -6,15 +6,12 @@
     0% {
       width: 24.98719rem;
       height: 16.69144rem;
-      top: 32%;
-      left: 12%;
+      transform: translateX(0) translateY(0);
     }
     100% {
       width: 30.63838rem;
       height: 20.46644rem;
-      top: 19.3%;
-      left: 0%;
-      transform: rotate(1deg);
+      transform: translateX(-13rem) translateY(-7rem);
     }
   }
 
@@ -51,13 +48,11 @@
   }
   @keyframes missionFadein {
     0% {
-      transform: translateY(100%) translateX(-50%);
-      opacity: 0;
+      transform: translateY(25%) translateX(-50%);
       pointer-events: none;
     }
     100% {
       transform: translateY(0) translateX(-50%);
-      opacity: 1;
       pointer-events: auto;
     }
   }
