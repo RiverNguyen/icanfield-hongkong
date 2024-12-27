@@ -1,17 +1,16 @@
 'use client'
-import React from 'react'
-import ImageV2 from '@/components/image/ImageV2'
-import {useRef} from 'react'
-import Link from 'next/link'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Autoplay} from 'swiper/modules'
-import 'swiper/css'
-import './styles.css'
-import {languageOptions} from './constants'
-import {LanguageOption} from '@/types/header.interface'
-import UnderLineHeader from '@/components/svg/UnderLine'
-import Image from 'next/image'
 import {Dropdown} from '@/components/dropdownMenuMb'
+import ImageV2 from '@/components/image/ImageV2'
+import UnderLineHeader from '@/components/svg/UnderLine'
+import {LanguageOption} from '@/types/header.interface'
+import Image from 'next/image'
+import Link from 'next/link'
+import React, {useRef} from 'react'
+import 'swiper/css'
+import {Autoplay} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {languageOptions} from './constants'
+import './styles.css'
 const Header = () => {
   const listPostOutstanding = [
     {
@@ -564,7 +563,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className='section-container relative flex items-center justify-between bg-white py-[0.62rem] sm:hidden'>
+      <div className='section-container relative flex min-h-[3.75rem] items-center justify-between bg-white py-[0.62rem] sm:hidden'>
         <Link href={'/'}>
           <ImageV2
             src='/imgs/homepage/header/d-IC-mb.png'
@@ -575,7 +574,10 @@ const Header = () => {
           />
         </Link>
         <div className='flex items-center space-x-[1.5rem]'>
-          <div className='flex items-center' onClick={handleOpenLanguageMb}>
+          <div
+            className='flex items-center'
+            onClick={handleOpenLanguageMb}
+          >
             <div className='relative mr-1 size-[1rem] rounded-[50%]'>
               <ImageV2
                 src='/imgs/homepage/header/vn-flag2.png'
@@ -690,9 +692,13 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className={`popup-change-language fixed bottom-0 left-0 z-[51] h-fit w-full bg-white p-4 pb-[1.5rem] rounded-tl-[1rem] rounded-tr-[1rem] sm:hidden transition-all duration-300 ${isActivedLanguageMb ? 'translate-y-0' : 'translate-y-[150%]'}`}>
-        <div className='flex items-center justify-between pb-4 border-[#EBEBEB] border-b-[1px]'>
-          <span className='text-[0.875rem] font-semibold tracking-[-0.0175rem] text-brown'>Lựa chọn ngôn ngữ</span>
+      <div
+        className={`popup-change-language fixed bottom-0 left-0 z-[51] h-fit w-full rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[1.5rem] transition-all duration-300 sm:hidden ${isActivedLanguageMb ? 'translate-y-0' : 'translate-y-[150%]'}`}
+      >
+        <div className='flex items-center justify-between border-b-[1px] border-[#EBEBEB] pb-4'>
+          <span className='text-[0.875rem] font-semibold tracking-[-0.0175rem] text-brown'>
+            Lựa chọn ngôn ngữ
+          </span>
           <ImageV2
             src={'/icons/homepage/header/close-popup.svg'}
             alt='close'
@@ -705,7 +711,7 @@ const Header = () => {
         <>
           {languageOptions.map((item: LanguageOption, index: number) => (
             <div
-              className='flex items-center space-x-[0.5rem] p-[1rem_0.75rem] border-[#EBEBEB] border-b-[1px]'
+              className='flex items-center space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] p-[1rem_0.75rem]'
               key={index}
             >
               <ImageV2
@@ -713,15 +719,17 @@ const Header = () => {
                 alt='logo'
                 width={40}
                 height={40}
-                className='size-[1.5rem] object-contain rounded-[50%]'
+                className='size-[1.5rem] rounded-[50%] object-contain'
               />
-              <span className='text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body'>{item.label}</span>
+              <span className='text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body'>
+                {item.label}
+              </span>
             </div>
           ))}
         </>
       </div>
       <div
-        className={`overlay-menu pointer-events-none xsm:pointer-events-auto fixed left-0 top-0 z-[50] h-full w-full bg-[rgba(0,0,0,0.16)] ${isActiveOverlay ? 'block' : 'hidden'}`}
+        className={`overlay-menu pointer-events-none fixed left-0 top-0 z-[50] h-full w-full bg-[rgba(0,0,0,0.16)] xsm:pointer-events-auto ${isActiveOverlay ? 'block' : 'hidden'}`}
         onClick={handleOpenLanguageMb}
       ></div>
     </header>

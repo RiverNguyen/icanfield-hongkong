@@ -19,23 +19,25 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
   children,
 }) => {
   return (
-    <section className='relative min-h-[36.45rem] pt-[6.44rem]'>
+    <section className='relative min-h-[28.75rem] overflow-hidden pt-[3.75rem] sm:min-h-[36.45rem] sm:pt-[6.44rem]'>
       <ImageV2
         src={backgroundImage.src}
         alt={backgroundImage.alt}
         width={1600 * 2}
         height={478 * 2}
-        className='absolute bottom-0 left-0 right-0 top-[6.44rem] h-full w-full object-cover'
+        className='absolute inset-0 h-full w-full object-cover'
       />
-      <div className='absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-black/30'></div>
-      <div className='absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
+      <div className='absolute inset-0 h-full w-full bg-black/30'></div>
+      <div className='absolute inset-0 h-full w-full bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
       <div
         className={cn(
           'z-1 relative mx-auto mt-[5.81rem] flex max-w-full flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:flex-wrap sm:px-0',
           {'mt-[1.5rem]': !!children},
         )}
       >
-        <BannerLine className='mb-[1rem] max-w-full sm:max-w-[58.96875rem] xsm:order-2' />
+        {titleTop && titleBottom && description && (
+          <BannerLine className='mb-[1rem] mt-[1rem] max-w-full sm:mt-0 sm:max-w-[58.96875rem] xsm:order-2' />
+        )}
         <div className='sm:mr-[5rem] xsm:order-1'>
           <h1 className='font-optima text-[2.375rem] font-medium leading-[1.2] tracking-[-0.0475rem] text-white sm:text-[5rem] sm:tracking-[-0.1rem]'>
             {titleTop}
@@ -44,7 +46,7 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
             {titleBottom}
           </h2>
         </div>
-        <p className='max-w-[20.2rem] text-[0.75rem] font-semibold uppercase leading-[1.5] text-white/85 sm:text-[1rem] xsm:order-3'>
+        <p className='text-[0.75rem] font-semibold uppercase leading-[1.5] text-white/85 sm:max-w-[20.2rem] sm:text-[1rem] xsm:order-3'>
           {description}
         </p>
       </div>
