@@ -3,9 +3,9 @@ import ItemPioneering from "@/sections/aboutus/pioneering-mission/ItemPioneering
 
 export default function PioneeringMission() {
     return <section className="w-full pt-[5rem] bg-background">
-        <div className="sm:sticky sm:top-0 w-full xsm:relative">
+        <div className="sm:sticky sm:top-[100vh] w-full xsm:relative">
             <ImageV2 
-                className="xsm:hidden w-full h-[100vh] absolute top-0 left-0"
+                className="xsm:hidden w-full h-[100vh] absolute sm:top-[-100vh] xsm:top-0 left-0"
                 width={1600} 
                 height={788} 
                 alt="" 
@@ -25,8 +25,8 @@ export default function PioneeringMission() {
                     <ItemPioneering key={index} index={index} />
                 ))}
             </div>
-            <div className="xsm:hidden sticky top-0 xsm:top-[3.75rem] flex-1 p-[6.5rem_7.5rem_6.5rem_3.5rem] xsm:p-[4rem_1rem_1.5rem_1rem] h-[43.75rem] space-y-[2rem]">
-                <h2 className="heading1 text-brown font-semibold">Sứ Mệnh Tiên Phong <br/> Giá Trị Dẫn Lối Thành Công</h2>
+            <div className="xsm:hidden sticky top-[3rem] xsm:top-[3.75rem] flex-1 p-[6.5rem_7.5rem_6.5rem_3.5rem] xsm:p-[4rem_1rem_1.5rem_1rem] h-[43.75rem] space-y-[2rem]">
+                <h2 className="heading1 font-optima text-brown font-semibold">Sứ Mệnh Tiên Phong <br/> Giá Trị Dẫn Lối Thành Công</h2>
                 <div className="[&_p]:text-greyscaletext-400 [&_p]:body16 [&_p]:tracking-[-0.02rem] space-y-[0.75rem]">
                     <p>
                         Tại iCanfield, chúng tôi tin rằng mỗi hành trình vươn tầm quốc tế đều bắt đầu từ sự tận tâm và tầm nhìn chiến lược. Với hơn 10 năm kinh nghiệm, sứ mệnh của chúng tôi là đồng hành cùng bạn hiện thực hóa giấc mơ toàn cầu bằng những giải pháp đầu tư, định cư và du học ưu việt nhất.

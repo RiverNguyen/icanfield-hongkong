@@ -34,7 +34,7 @@ export default function BannerAboutus() {
             <ImageBanner className="w-full h-[100vh] scale-[1.025]" />
         }
         <ImageV2 
-            className={cn(activeInterFace && 'active__plane' ,"transition-all w-[24.98719rem] h-[16.69144rem] absolute object-cover top-[15.87rem] left-[12.93rem] xsm:w-[10.14275rem] xsm:h-[6.31106rem] xsm:top-[21.31rem] xsm:left-[-0.29rem] xsm:rotate-[-5.462deg]")} 
+            className={cn(activeInterFace && 'active__plane' ,"transition-all w-[24.98719rem] h-[16.69144rem] absolute object-cover top-[32%] left-[12%] xsm:w-[10.14275rem] xsm:h-[6.31106rem] xsm:top-[21.31rem] xsm:left-[-0.29rem] xsm:rotate-[-5.462deg]")} 
             alt="" 
             width={399} 
             height={267} 
