@@ -1,4 +1,6 @@
 const fakeContent = `
+  <p>Chương trình thẻ thường trú nhân Malta (Malta Permanent Residence Programme - MPRP) là một trong những lựa chọn đầu tư định cư được quan tâm nhất tại châu Âu. Tuy nhiên, từ ngày 01/01/2025, mức phí tham gia chương trình này sẽ có sự điều chỉnh tăng đáng kể.</p>
+  <img src="" />
   <h2>Phần Tiêu Đề 1</h2>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet orci ac arcu cursus consectetur non vitae nulla. Phasellus in lacus eget nunc posuere vehicula.</p>
   <ul>
