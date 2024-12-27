@@ -1,23 +1,22 @@
 'use client'
-import React from 'react'
-import ImageV2 from '@/components/image/ImageV2'
-import {useRef} from 'react'
-import Link from 'next/link'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Autoplay} from 'swiper/modules'
-import 'swiper/css'
-import './styles.css'
-import {languageOptions} from './constants'
-import {LanguageOption} from '@/types/header.interface'
-import UnderLineHeader from '@/components/svg/UnderLine'
-import Image from 'next/image'
 import {Dropdown} from '@/components/dropdownMenuMb'
+import ImageV2 from '@/components/image/ImageV2'
+import UnderLineHeader from '@/components/svg/UnderLine'
 import {
+  LanguageOption,
   MenuItem,
-  SocialNetwork,
   PostOutstanding,
+  SocialNetwork,
   TopHeaderItem,
 } from '@/types/header.interface'
+import Image from 'next/image'
+import Link from 'next/link'
+import React, {useRef} from 'react'
+import 'swiper/css'
+import {Autoplay} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {languageOptions} from './constants'
+import './styles.css'
 const Header = () => {
   const listPostOutstanding = [
     {
@@ -308,8 +307,11 @@ const Header = () => {
         <div className='section-container flex items-center justify-between'>
           <div className='flex items-center space-x-[0.94rem]'>
             <div className='relative'>
-              <div className='z-1 absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08] pointer-events-none'></div>
-              <Link href={'/blogs'} className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'>
+              <div className='z-1 pointer-events-none absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08]'></div>
+              <Link
+                href={'/blogs'}
+                className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'
+              >
                 <ImageV2
                   src='/icons/homepage/header/news.svg'
                   alt='logo'
@@ -336,7 +338,7 @@ const Header = () => {
                 pagination={{
                   clickable: true,
                 }}
-                navigation={true}
+                // navigation={true}
                 modules={[Autoplay]}
                 className='swiper-outstanding-post !h-full'
               >

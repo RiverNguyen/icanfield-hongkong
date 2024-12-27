@@ -1,11 +1,7 @@
-import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
+import IndexAboutUs from '@/pages/aboutus'
 
 const page = () => {
-  return (
-    <>
-      <IndexAboutUs />
-    </>
-  )
+  return <IndexAboutUs />
 }
 
 export default page

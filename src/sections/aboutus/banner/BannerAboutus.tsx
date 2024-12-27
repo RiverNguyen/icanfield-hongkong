@@ -1,11 +1,11 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {useEffect, useRef, useState} from 'react'
-import './style.css'
+import useIsMobile from '@/hooks/useIsMobile'
 import {cn} from '@/lib/utils'
 import ImageBanner from '@/sections/aboutus/banner/ImageBanner'
-import useIsMobile from '@/hooks/useIsMobile'
 import ImageBannerMb from '@/sections/aboutus/banner/ImageBannerMb'
+import {useEffect, useRef, useState} from 'react'
+import './style.css'
 
 export default function BannerAboutus() {
   const [activeInterFace, setActiveInterFace] = useState<boolean>(false)
@@ -30,22 +30,22 @@ export default function BannerAboutus() {
   return (
     <section
       ref={ref}
-      className='relative z-10 sm:h-[100vh] w-full overflow-hidden xsm:bg-background'
+      className='relative z-10 h-[100vh] w-full overflow-hidden'
     >
       {isMobile ? (
-        <ImageBannerMb className='sm:h-[100vh] w-full' />
+        <ImageBannerMb className='h-[100vh] w-full' />
       ) : (
         <ImageBanner className='h-[100vh] w-full scale-[1.025]' />
       )}
       <ImageV2
         className={cn(
           activeInterFace && 'active__plane',
-          'absolute left-[12%] top-[32%] h-[16.69144rem] w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:h-[6.31106rem] xsm:w-[10.14275rem] xsm:rotate-[-5.462deg]',
+          'absolute left-[12.93rem] top-[15.87rem] h-[16.69144rem] w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:h-[6.31106rem] xsm:w-[10.14275rem] xsm:rotate-[-5.462deg]',
         )}
         alt=''
         width={399}
         height={267}
-        src={'/imgs/about-us/banner/may_bay.webp'}
+        src={'/imgs/about-us/may_bay.webp'}
       />
       <div
         className={cn(
@@ -61,7 +61,7 @@ export default function BannerAboutus() {
           alt=''
           width={539}
           height={165}
-          src={'/imgs/about-us/banner/d-name-icanfield.png'}
+          src={'/imgs/about-us/d-name-icanfield.png'}
         />
         <h1 className='fixed top-[-100%] opacity-0'>Icanfield Việt Nam</h1>
       </div>
