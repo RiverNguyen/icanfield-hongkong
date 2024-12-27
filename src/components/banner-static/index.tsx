@@ -56,39 +56,11 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
 
 function BannerLine({className}: {className?: string}) {
   return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width={947}
-      height={6}
-      viewBox='0 0 947 6'
-      fill='none'
-      className={className}
-    >
-      <path
-        d='M0.333333 3C0.333333 4.47276 1.52724 5.66667 3 5.66667C4.47276 5.66667 5.66667 4.47276 5.66667 3C5.66667 1.52724 4.47276 0.333333 3 0.333333C1.52724 0.333333 0.333333 1.52724 0.333333 3ZM3 3.5H946.5V2.5H3V3.5Z'
-        fill='url(#paint0_linear_1889_53326)'
-        fillOpacity={0.3}
-      />
-      <defs>
-        <linearGradient
-          id='paint0_linear_1889_53326'
-          x1={3}
-          y1={3.5}
-          x2={946.5}
-          y2={3.5}
-          gradientUnits='userSpaceOnUse'
-        >
-          <stop
-            offset={0.5}
-            stopColor='white'
-          />
-          <stop
-            offset={1}
-            stopColor='white'
-            stopOpacity={0}
-          />
-        </linearGradient>
-      </defs>
-    </svg>
+    <div
+      className={cn(
+        'relative h-[1px] w-full max-w-[58.96875rem] bg-[linear-gradient(to_right,rgba(255,255,255,1)_50%,rgba(255,255,255,0)_100%)] opacity-60 after:absolute after:left-0 after:top-1/2 after:block after:h-[0.4rem] after:w-[0.4rem] after:-translate-y-1/2 after:rounded-full after:bg-white after:content-[""]',
+        className,
+      )}
+    ></div>
   )
 }

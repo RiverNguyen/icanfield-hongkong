@@ -1,0 +1,29 @@
+#expert-team .swiper-slide.swiper-slide-active {
+  width: 29.2rem !important;
+  height: 38.125rem !important;
+}
+
+#expert-team .swiper-slide {
+  transition: all 0.8s;
+}
+
+#expert-team .swiper-slide.swiper-slide-prev .human-photo-active,
+#expert-team .swiper-slide.swiper-slide-prev .human-photo {
+  /* transition: all 0.8s; */
+}
+#expert-team .swiper-slide.swiper-slide-prev .human-photo-active {
+  /* opacity: 1;
+  visibility: visible; */
+}
+
+#expert-team .swiper-slide.swiper-slide-active .human-photo {
+  opacity: 1;
+  visibility: visible;
+}
+#expert-team .swiper-slide .human-photo .human-photo-path {
+  fill: url(#paint0_linear_884_29267);
+}
+#expert-team .swiper-slide.swiper-slide-active .human-photo .human-photo-path {
+  fill: url(#paint0_linear_884_29326);
+}
+

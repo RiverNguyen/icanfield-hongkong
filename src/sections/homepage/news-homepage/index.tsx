@@ -164,12 +164,12 @@ function NewsFeatured({
             </p>
           )}
         </div>
-        <span className='mt-auto inline-flex cursor-pointer items-center self-start rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] xsm:hidden'>
-          <span className='body-14-m text-white'>Chi tiết bài viết</span>
-          <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white' />
-        </span>
+        <Link href={link} className='mt-auto inline-flex cursor-pointer items-center self-start rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] xsm:hidden relative z-10 group hover:bg-white'>
+          <span className='body-14-m text-white group-hover:text-greentext'>Chi tiết bài viết</span>
+          <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white group-hover:text-greentext' />
+        </Link>
         <Link
-          className='absolute bottom-0 left-0 right-0 top-0'
+          className='absolute bottom-0 left-0 right-0 top-0 group-hover:text-greentext'
           href={link}
         ></Link>
       </div>

@@ -5,7 +5,7 @@ import Pagination from '@/components/pagination/Pagination'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
 import IndexTabs from '@/sections/blogs/list-blogs/tab'
 import {Category, SortOption} from '@/types/blogs.interface'
-import {useEffect, useRef, useState} from 'react'
+import {useRef, useState} from 'react'
 
 // INIT DATA
 const categories = [

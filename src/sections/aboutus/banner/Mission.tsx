@@ -1,10 +1,10 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
+import useIsMobile from '@/hooks/useIsMobile'
 import {cn} from '@/lib/utils'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
 import {useEffect, useRef, useState} from 'react'
 import './style.css'
-import useIsMobile from '@/hooks/useIsMobile'
 
 export default function Mission() {
   const [activeInterFace, setActiveInterFace] = useState<boolean>(false)

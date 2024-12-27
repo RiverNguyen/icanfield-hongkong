@@ -164,8 +164,8 @@ const FormConnect = () => {
               className='size-[1.5rem]'
               src={'/icons/homepage/footer/icon-arow.svg'}
               alt=''
-              width={24}
-              height={24}
+              width={40}
+              height={40}
             />
           </Button>
         </form>
