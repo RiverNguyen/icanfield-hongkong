@@ -10,8 +10,8 @@ export const PageBlogs: FC<IPageBlogsProps> = ({}) => {
   return (
     <>
       <BannerStatic {...blogBanner}></BannerStatic>
-      <WrapperConnectUs />
       <ListBlogs />
+      <WrapperConnectUs />
     </>
   )
 }
