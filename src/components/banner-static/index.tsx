@@ -25,10 +25,10 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
         alt={backgroundImage.alt}
         width={1600 * 2}
         height={478 * 2}
-        className='absolute bottom-0 left-0 right-0 top-[3.75rem] h-full w-full object-cover sm:top-[6.44rem]'
+        className='absolute inset-0 h-full w-full object-cover'
       />
-      <div className='absolute bottom-0 left-0 right-0 top-0 bg-black/30'></div>
-      <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
+      <div className='absolute inset-0 h-full w-full bg-black/30'></div>
+      <div className='absolute inset-0 h-full w-full bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
       <div
         className={cn(
           'z-1 relative mx-auto mt-[5.81rem] flex max-w-full flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:flex-wrap sm:px-0',
@@ -56,11 +56,39 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
 
 function BannerLine({className}: {className?: string}) {
   return (
-    <div
-      className={cn(
-        'relative h-[1px] w-full max-w-[58.96875rem] bg-[linear-gradient(to_right,rgba(255,255,255,1)_50%,rgba(255,255,255,0)_100%)] opacity-60 after:absolute after:left-0 after:top-1/2 after:block after:h-[0.4rem] after:w-[0.4rem] after:-translate-y-1/2 after:rounded-full after:bg-white after:content-[""]',
-        className,
-      )}
-    ></div>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={947}
+      height={6}
+      viewBox='0 0 947 6'
+      fill='none'
+      className={className}
+    >
+      <path
+        d='M0.333333 3C0.333333 4.47276 1.52724 5.66667 3 5.66667C4.47276 5.66667 5.66667 4.47276 5.66667 3C5.66667 1.52724 4.47276 0.333333 3 0.333333C1.52724 0.333333 0.333333 1.52724 0.333333 3ZM3 3.5H946.5V2.5H3V3.5Z'
+        fill='url(#paint0_linear_1889_53326)'
+        fillOpacity={0.3}
+      />
+      <defs>
+        <linearGradient
+          id='paint0_linear_1889_53326'
+          x1={3}
+          y1={3.5}
+          x2={946.5}
+          y2={3.5}
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop
+            offset={0.5}
+            stopColor='white'
+          />
+          <stop
+            offset={1}
+            stopColor='white'
+            stopOpacity={0}
+          />
+        </linearGradient>
+      </defs>
+    </svg>
   )
 }
