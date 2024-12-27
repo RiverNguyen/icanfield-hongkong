@@ -114,6 +114,30 @@ html {
   .body16-r55 {
     @apply text-[1rem] leading-[1.55];
   }
+  .inter18 {
+    @apply text-[1.125rem] leading-[1.5] tracking-[-0.01125rem];
+  }
+  .inter22-m {
+    @apply text-[1.375rem] leading-[1.4] tracking-[-0.0875rem] font-medium;
+  }
+  .content-p {
+    @apply inter18 text-greyscaletext-body my-[0.5rem];
+  }
+  .content-strong {
+    @apply inter22-m;
+  }
+  .content-ul {
+    @apply list-disc pl-[1.5rem] my-[0.5rem];
+  }
+  .content-span {
+    @apply inter18 text-greyscaletext-body;
+  }
+  .content-img {
+    @apply w-full h-auto max-h-[100vh] object-cover mb-[1.12rem] mt-[2.5rem];
+  }
+  .content-h2 {
+    @apply text-greyscaletext-body text-[1.375rem] font-semibold leading-[1.4] tracking-[-0.0875rem] my-[1.5rem];
+  }
 }
 @media (max-width: 639px) {
   html {
