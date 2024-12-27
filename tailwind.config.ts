@@ -69,6 +69,9 @@ const config: Config = {
       backgroundImage: {
         'btn-gradient': 'var(--Phase-1-butt)',
       },
+      transitionTimingFunction: {
+        'pagination-bezier': 'cubic-bezier(0.77, 0.05, 0.26, 1.02)', // Bounce effect
+      },
     },
   },
   plugins: [
