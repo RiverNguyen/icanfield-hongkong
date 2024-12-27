@@ -61,7 +61,9 @@ export const FeaturedNews: FC<IFeaturedNewsProps> = ({title, items}) => {
 
   return (
     <section className='mx-auto mt-[5rem] max-w-[90rem]'>
-      <h2>{title}</h2>
+      <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:mb-[1rem] xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>
+        {title}
+      </h2>
       <div className='relative overflow-hidden rounded-[1.5rem]'>
         <Swiper
           allowTouchMove={false}
