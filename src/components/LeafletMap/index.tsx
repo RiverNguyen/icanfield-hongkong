@@ -6,9 +6,9 @@ import {FC, useCallback, useEffect, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
 import {useRef} from 'react'
 export interface ICountry {
-  name: string;
-  label?: string;
-  flag?: string;
+  name: string
+  label?: string
+  flag?: string
 }
 
 interface ILeafletMapProps {
@@ -27,7 +27,7 @@ interface ILeafletMapProps {
 }
 
 // INIT COUNTRY OF EU
-const euCountries = new Set();
+const euCountries = new Set()
 
 export const LeafletMap: FC<ILeafletMapProps> = ({
   mapJson,
@@ -45,13 +45,9 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false)
   const mapRef = useRef<L.Map | null>(null)
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   useEffect(() => {
-    if (isClient && typeof window !== 'undefined') {
+    if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
       countries.forEach((country) => {
         country.forEach((item) => {
@@ -62,45 +58,46 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   }, [])
 
   const getPosition = useCallback(function (country: string): LatLngTuple {
-    const geo: FeatureCollection = mapJson as FeatureCollection;
+    const geo: FeatureCollection = mapJson as FeatureCollection
 
     // Nếu không có `features`, trả về [0, 0]
-    if (!geo.features || geo.features.length === 0) return [0, 0];
+    if (!geo.features || geo.features.length === 0) return [0, 0]
 
     // Tìm feature có thuộc tính `name` khớp với `country`
     const position = geo.features.find((feature: Feature) => {
-      return feature.properties && feature.properties.name === country;
-    });
+      return feature.properties && feature.properties.name === country
+    })
 
     // Nếu không tìm thấy feature, trả về [0, 0]
-    if (!position || !position.properties) return [0, 0];
+    if (!position || !position.properties) return [0, 0]
 
     // Lấy tọa độ `label_x` và `label_y` từ properties
-    const { label_x, label_y } = position.properties;
+    const {label_x, label_y} = position.properties
 
     // Đảm bảo rằng `label_x` và `label_y` là số
-    if (typeof label_x === "number" && typeof label_y === "number") {
-      return [label_y, label_x];
+    if (typeof label_x === 'number' && typeof label_y === 'number') {
+      return [label_y, label_x]
     }
 
     // Nếu không hợp lệ, trả về [0, 0]
-    return [0, 0];
-  }, []);
+    return [0, 0]
+  }, [])
 
   const getFillColor = useCallback((feature: Feature) => {
-    if (!feature.properties) return "#F0EFE7"; // Màu mặc định
-
-    const countryName = feature.properties.name;
-    if (euCountries.has(countryName) && countryName !== "Vietnam") {
-      return "#D0C1BA"; // Màu cho các quốc gia EU
+    if (!feature.properties) return '#F0EFE7' // Màu mặc định
+    console.log(euCountries)
+    const countryName = feature.properties.name
+    if (euCountries.has(countryName) && countryName !== 'Vietnam') {
+      console.log('hehe')
+      return '#D0C1BA' // Màu cho các quốc gia EU
     }
 
     // Xử lý màu cho các quốc gia cụ thể
-    const specialColors: { [key: string]: string } = {
-      Vietnam: "#EA3434",
-    };
-    return specialColors[countryName] || "#F0EFE7"; // Mặc định màu nền
-  }, []);
+    const specialColors: {[key: string]: string} = {
+      Vietnam: '#EA3434',
+    }
+    return specialColors[countryName] || '#F0EFE7' // Mặc định màu nền
+  }, [])
 
   const geoJsonStyle = useCallback((feature: Feature) => {
     return {
@@ -178,9 +175,9 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   }, [isZoomOutClick])
   return (
     <MapContainer
-      key={isMobile ? "mobile-map" : "desktop-map"}
-      style={{ background: "transparent !important" }}
-      id="map_connect_global"
+      key={isMobile ? 'mobile-map' : 'desktop-map'}
+      style={{background: 'transparent !important'}}
+      id='map_connect_global'
       center={[40, 0]}
       zoom={isMobile ? zoomMobile : zoomDesktop}
       minZoom={0.5}
@@ -202,20 +199,20 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
           name: country[0].name,
           label: country[0].label,
           flag: country[0].flag,
-        };
-        let position: LatLngTuple = getPosition(country[0].name);
+        }
+        let position: LatLngTuple = getPosition(country[0].name)
 
         if (countries.length > 1) {
           const newPosition = country.find((item) => {
-            if (item.label) return item;
-          });
+            if (item.label) return item
+          })
           if (newPosition) {
-            position = getPosition(newPosition.name);
+            position = getPosition(newPosition.name)
             countryObj = {
               name: newPosition.name,
               label: newPosition.label,
               flag: newPosition.flag,
-            };
+            }
           }
         }
         return (
@@ -231,7 +228,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
                   }" alt="VIỆT NAM" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full xsm:!size-[1rem] xsm:top-[0.6rem]"/>
                   ${
                     isMobile
-                      ? ""
+                      ? ''
                       : `<div class='text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]'>
                         ${countryObj.label ? countryObj.label : countryObj.name}
                       </div>`
@@ -251,8 +248,8 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
               },
             }}
           ></Marker>
-        );
+        )
       })}
     </MapContainer>
-  );
-};
+  )
+}
