@@ -338,7 +338,7 @@ const Header = () => {
                 pagination={{
                   clickable: true,
                 }}
-                navigation={true}
+                // navigation={true}
                 modules={[Autoplay]}
                 className='swiper-outstanding-post !h-full'
               >

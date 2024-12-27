@@ -14,9 +14,9 @@ export const PageBlogs: FC<IPageBlogsProps> = ({}) => {
   return (
     <>
       <BannerStatic {...blogBanner}></BannerStatic>
+      <FeaturedNews {...featuredNews} />
       <ListBlogs />
       <WrapperConnectUs />
-      <FeaturedNews {...featuredNews} />
     </>
   )
 }
