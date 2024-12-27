@@ -23,6 +23,7 @@ interface ILeafletMapProps {
   changeCountry?: string
   isZoomInClick?: boolean
   isZoomOutClick?: boolean
+  isControlZoom?: boolean
 }
 
 // INIT COUNTRY OF EU
@@ -40,6 +41,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   changeCountry,
   isZoomInClick = false,
   isZoomOutClick = false,
+  isControlZoom = false,
 }) => {
   const [isMobile, setIsMobile] = useState(false)
   const mapRef = useRef<L.Map | null>(null)
@@ -186,7 +188,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       zoomSnap={0.1}
       zoomDelta={isMobile ? 1 : 0.5}
       className={className}
-      zoomControl={true}
+      zoomControl={isControlZoom}
       dragging={isMobile ? false : true}
       ref={mapRef}
       scrollWheelZoom={false}

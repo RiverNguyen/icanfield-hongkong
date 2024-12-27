@@ -78,7 +78,7 @@ const Footer = () => {
               </p>
               <div className='sm:space-y-[1.25rem] xsm:grid xsm:grid-cols-2 xsm:gap-y-[0.75rem]'>
                 <Link
-                  href='#'
+                  href='/about-us'
                   className='flex items-center space-x-[1rem]'
                 >
                   <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
