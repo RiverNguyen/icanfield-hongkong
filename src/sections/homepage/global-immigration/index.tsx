@@ -34,13 +34,13 @@ const GlobalImmigration = () => {
 
   return (
     <section
-      className={`global-immigration relative sm:h-[80.75rem] ${isActive ? 'active' : ''}`}
+      className={`global-immigration relative sm:h-[75.75rem] ${isActive ? 'active' : ''}`}
       ref={refSection}
     >
       <div className='xsm:hidden'>
         <ImageV2
-          className='absolute bottom-[5.75rem] left-0 z-30 h-[69.375rem] w-full object-cover xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/bg-aboutus.png'}
+          className='absolute bottom-[0] left-0 z-30 h-[69.375rem] w-full object-cover xsm:hidden'
+          src={'/imgs/homepage/globalImmigration/bg-aboutus-2.png'}
           alt=''
           width={1600}
           height={1110}
