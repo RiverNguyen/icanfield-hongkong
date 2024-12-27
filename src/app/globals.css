@@ -123,3 +123,15 @@ html {
     max-width: 100%;
   }
 }
+
+@media (max-width: 1024px) {
+  .hidden-scrollbar::-webkit-scrollbar {
+    -webkit-appearance: none;
+    display: none;
+  }
+
+  .hidden-scrollbar::-webkit-scrollbar-thumb {
+    -webkit-appearance: none;
+    display: none;
+  }
+}
