@@ -27,7 +27,7 @@ export default function BannerAboutus() {
         )
         if (ref.current) observer.observe(ref.current)
     }, [])
-    return <section ref={ref} className="relative w-full h-[100vh] overflow-hidden z-10">
+    return <section ref={ref} className="xsm:bg-background relative w-full h-[100vh] overflow-hidden z-10">
         {isMobile ? 
             <ImageBannerMb className="w-full h-[100vh]" />
         : 
@@ -38,7 +38,7 @@ export default function BannerAboutus() {
             alt="" 
             width={399} 
             height={267} 
-            src={'/imgs/about-us/may_bay.webp'}
+            src={'/imgs/about-us/banner/may_bay.webp'}
         />
         <div className={cn(activeInterFace && 'active__about' ,"transition-all sm:translate-y-[100%] sm:opacity-0 absolute z-10 top-[13.87rem] sm:right-[11.94rem] xsm:top-[4.44rem] xsm:left-[50%] xsm:translate-x-[-50%] space-y-[1.5rem] xsm:space-y-[1rem] xsm:w-[18.25rem]")}>
             <p className="font-optima text-white text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] xsm:text-[1.75rem] xsm:font-semibold xsm:tracking-[-0.035rem]">Chúng tôi là</p>
@@ -47,7 +47,7 @@ export default function BannerAboutus() {
                 alt="" 
                 width={539} 
                 height={165} 
-                src={'/imgs/about-us/d-name-icanfield.png'}
+                src={'/imgs/about-us/banner/d-name-icanfield.png'}
             />
             <h1 className="fixed top-[-100%] opacity-0">Icanfield Việt Nam</h1>
         </div>

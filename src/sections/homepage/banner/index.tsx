@@ -8,9 +8,12 @@ import {Autoplay} from 'swiper/modules'
 import 'swiper/css'
 import {filterOptions, dataVideo, bannerDataImage} from './constants'
 import {FilterOption} from '@/types/bannerFilter.interface'
+import {useRef} from 'react'
 const BannerHomepage = () => {
   const haveVideo = true
   const [isClient, setIsClient] = useState(false)
+  const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
+  const isSelecting = useRef(false)
   useEffect(() => {
     setIsClient(true)
   }, [])
@@ -24,17 +27,35 @@ const BannerHomepage = () => {
       (prev) => prev.map((isOpen, i) => (i === index ? !isOpen : isOpen)), // Đảo trạng thái của filter được click
     )
   }
+  //handle click outside filter
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isSelecting.current) return
+      if (
+        dropdownRefs.current.some(
+          (ref) => ref && ref.contains(event.target as Node),
+        )
+      ) {
+        return
+      }
+      setOpenFilters((prev) => prev.map(() => false))
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
   //handle click dropdown filter'
   const [selectedItems, setSelectedItems] = useState<{
     [key: number]: {label: string; slug: string}
   }>([])
+
   const handleSelect = (
     filterIndex: number,
-    selectedValue: {
-      label: string
-      slug: string
-    },
+    selectedValue: {label: string; slug: string},
   ) => {
+    isSelecting.current = true
     setSelectedItems((prev) => ({
       ...prev,
       [filterIndex]: selectedValue,
@@ -42,7 +63,7 @@ const BannerHomepage = () => {
     setOpenFilters((prev) =>
       prev.map((isOpen, i) => (i === filterIndex ? false : isOpen)),
     )
-    // console.log(`Filter ${filterIndex} selected: ${selectedValue}`)
+    isSelecting.current = false
   }
   //handle click popup filter
   const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
@@ -129,32 +150,39 @@ const BannerHomepage = () => {
                 >
                   <div
                     className={`flex ${!openFilters[filterIndex] ? '' : 'mb-2 border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-2'} w-full`}
+                    ref={(el) => {
+                      dropdownRefs.current[filterIndex] = el
+                    }}
                   >
                     <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
                       <ImageV2
                         src={item?.icon}
                         alt='icon'
-                        width={20}
-                        height={20}
+                        width={40}
+                        height={40}
                         className='size-[1.25rem] object-contain'
                       />
                     </div>
                     <div className='flex flex-1 flex-col justify-between'>
-                      <span className={`text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100 transition-all duration-500 ${openFilters[filterIndex] ?'translate-y-[0.8rem] text-[0.75rem]':''}`}>
+                      <span
+                        className={`text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100 transition-all duration-500 ${openFilters[filterIndex] ? 'translate-y-[0.8rem] text-[0.75rem]' : ''}`}
+                      >
                         {item?.label}
                       </span>
                       <div className='flex cursor-pointer items-center justify-between'>
-                        <span className={`line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown1 transition-all duration-500 ${openFilters[filterIndex] ? 'translate-x-full -translate-y-[5rem] opacity-0' : 'translate-x-0 translate-y-0 opacity-100'}`}>
+                        <span
+                          className={`text-Phase-1-Brown1 line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] transition-all duration-500 ${openFilters[filterIndex] ? '-translate-y-[5rem] translate-x-full opacity-0' : 'translate-x-0 translate-y-0 opacity-100'}`}
+                        >
                           {selectedItems[filterIndex]?.label || 'Click để chọn'}
                         </span>
                         <ImageV2
                           src='/icons/homepage/banner/arrow-down.svg'
                           alt='arrow'
-                          width={10}
-                          height={10}
-                          className={`size-[1.125rem] object-contain transition-transform duration-500 ${
+                          width={40}
+                          height={40}
+                          className={`size-[1.125rem] object-contain transition-transform duration-300 ${
                             openFilters[filterIndex]
-                              ? '-rotate-180 -translate-y-[0.5rem]'
+                              ? '-translate-y-[0.5rem] -rotate-180'
                               : 'rotate-0'
                           }`}
                         />
@@ -217,13 +245,17 @@ const BannerHomepage = () => {
                   <ImageV2
                     src={item?.icon}
                     alt='icon'
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                     className='size-[1.25rem] object-contain'
                   />
                 </div>
                 <div className='flex flex-1 flex-col justify-between'>
-                  <span className={'text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'}>
+                  <span
+                    className={
+                      'text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'
+                    }
+                  >
                     {item?.label}
                   </span>
                   <div className='flex cursor-pointer items-center justify-between'>
@@ -233,8 +265,8 @@ const BannerHomepage = () => {
                     <ImageV2
                       src='/icons/homepage/banner/arrow-down.svg'
                       alt='arrow'
-                      width={10}
-                      height={10}
+                      width={40}
+                      height={40}
                       className='size-[1.125rem] object-contain'
                     />
                   </div>
@@ -250,8 +282,8 @@ const BannerHomepage = () => {
           <ImageV2
             src='/icons/homepage/banner/search.svg'
             alt='filter'
-            width={20}
-            height={20}
+            width={40}
+            height={40}
             className='mr-[0.62rem] size-[1.5rem] object-contain'
           />
           <span className='text-[0.875rem] font-semibold leading-[1.5] text-white'>
@@ -275,7 +307,7 @@ const BannerHomepage = () => {
         >
           <div className='flex w-full items-center justify-between space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] pb-4'>
             <div className='flex items-center'>
-              <div className='flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.5rem] mr-2'>
+              <div className='mr-2 flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.5rem]'>
                 <ImageV2
                   src={
                     currentFilter?.icon ||

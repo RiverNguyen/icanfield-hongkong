@@ -1,8 +1,11 @@
-import IndexAboutUs from "@/pages/aboutus"
+import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
 
 const page = () => {
-  return <IndexAboutUs />
-  
+  return (
+    <>
+      <IndexAboutUs />
+    </>
+  )
 }
 
 export default page

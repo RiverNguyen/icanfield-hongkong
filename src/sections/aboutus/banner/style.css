@@ -50,12 +50,14 @@
     }
     @keyframes missionFadein {
         0% {
-        transform: translateY(100%) translateX(-50%);
-        opacity: 0;
+            transform: translateY(100%) translateX(-50%);
+            opacity: 0;
+            pointer-events: none;
         }
         100% {
             transform: translateY(0) translateX(-50%);
             opacity: 1;
+            pointer-events: auto;
         }
     }
 }
