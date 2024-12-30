@@ -2,7 +2,13 @@
 import {Dropdown} from '@/components/dropdownMenuMb'
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
-import {LanguageOption} from '@/types/header.interface'
+import {
+  LanguageOption,
+  MenuItem,
+  PostOutstanding,
+  SocialNetwork,
+  TopHeaderItem,
+} from '@/types/header.interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, {useRef} from 'react'
@@ -31,14 +37,17 @@ const Header = () => {
     {
       title: 'sự kiện',
       linkIcon: '/icons/homepage/header/event.svg',
+      href: '/events',
     },
     {
       title: 'tin định cư',
       linkIcon: '/icons/homepage/header/flag.svg',
+      href: '/events',
     },
     {
       title: 'liên hệ',
       linkIcon: '/icons/homepage/header/gmail.svg',
+      href: '/events',
     },
   ]
   const listItemLeftBottomHeader = [
@@ -63,7 +72,39 @@ const Header = () => {
       imgUrl: '/imgs/homepage/header/eu-flag2.png',
     },
   ]
-  const listItemRightBottomHeader = [
+  const menu = [
+    {
+      title: 'Định cư Canada',
+      href: '/',
+      imgUrl: '/imgs/homepage/header/canada-flag2.png',
+    },
+    {
+      title: 'Định cư Mỹ',
+      href: '/',
+      imgUrl: '/imgs/homepage/header/d-america-flag.jpg',
+      children: [
+        {
+          title: 'Các chương trình định cư',
+          href: '/',
+          imgUrl: '/imgs/homepage/header/d-Uc.webp',
+        },
+        {
+          title: 'Dự án EB-5',
+          href: '/',
+          imgUrl: '/imgs/homepage/header/d-bds.webp',
+        },
+      ],
+    },
+    {
+      title: 'Định cư Caribe',
+      href: '/',
+      imgUrl: '/imgs/homepage/header/d-carribe-flag.png',
+    },
+    {
+      title: 'Định cư Châu Âu',
+      href: '/',
+      imgUrl: '/imgs/homepage/header/eu-flag2.png',
+    },
     {
       title: 'Các chương trình khác',
       href: '/',
@@ -198,7 +239,7 @@ const Header = () => {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsActiveOverlay(false)
-    }, 700)
+    }, 300)
   }
   //handle change url image different program
   const handleChangeUrlImage = (url: string) => {
@@ -266,8 +307,11 @@ const Header = () => {
         <div className='section-container flex items-center justify-between'>
           <div className='flex items-center space-x-[0.94rem]'>
             <div className='relative'>
-              <div className='z-1 absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08]'></div>
-              <div className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'>
+              <div className='z-1 pointer-events-none absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08]'></div>
+              <Link
+                href={'/blogs'}
+                className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'
+              >
                 <ImageV2
                   src='/icons/homepage/header/news.svg'
                   alt='logo'
@@ -278,7 +322,7 @@ const Header = () => {
                 <span className='text-[0.75rem] font-medium leading-[1.5] text-white'>
                   TIN DOANH NGHIỆP
                 </span>
-              </div>
+              </Link>
             </div>
             <div className='h-[2.0625rem] w-[19.9625rem]'>
               <Swiper
@@ -294,11 +338,11 @@ const Header = () => {
                 pagination={{
                   clickable: true,
                 }}
-                navigation={true}
+                // navigation={true}
                 modules={[Autoplay]}
                 className='swiper-outstanding-post !h-full'
               >
-                {listPostOutstanding.map((item, index) => (
+                {listPostOutstanding.map((item: PostOutstanding, index) => (
                   <SwiperSlide
                     key={index}
                     className='!flex !h-full !w-fit !items-center'
@@ -315,8 +359,9 @@ const Header = () => {
             </div>
           </div>
           <div className='flex items-center space-x-[2.73rem]'>
-            {listItemTopHeader.map((item, index) => (
-              <div
+            {listItemTopHeader.map((item: TopHeaderItem, index) => (
+              <Link
+                href={item.href}
                 key={index}
                 className='flex items-center space-x-[0.62rem]'
               >
@@ -330,7 +375,7 @@ const Header = () => {
                 <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
                   {item.title}
                 </span>
-              </div>
+              </Link>
             ))}
             <div
               className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem]'
@@ -389,15 +434,84 @@ const Header = () => {
         <div className='section-container flex h-[4.37rem] items-center justify-between'>
           {/* left */}
           <div className='flex h-full items-center space-x-[2.5rem]'>
-            {listItemLeftBottomHeader.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className='flex h-full items-center text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
-              >
-                {item.title}
-              </Link>
-            ))}
+            {menu.slice(0, -2).map((item: MenuItem, index) =>
+              item.children ? (
+                <div
+                  key={index}
+                  className='item-has-children group flex h-full cursor-pointer items-center space-x-[0.25rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <span>{item.title}</span>
+                  <ImageV2
+                    src='/icons/homepage/header/arrow-down-brown.svg'
+                    alt='arrow'
+                    width={40}
+                    height={40}
+                    className='size-[1rem] object-contain'
+                  />
+                  <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+                    <ImageV2
+                      src='/icons/homepage/header/triangle.svg'
+                      alt='triangle'
+                      width={40}
+                      height={40}
+                      className='h-[2rem] w-[3rem] translate-x-[60rem] object-contain'
+                    />
+                    <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                      <div className='flex items-start justify-between'>
+                        <div>
+                          <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                            {item.title}
+                          </p>
+                          <div className='flex flex-col'>
+                            {item.children.map(
+                              (child: MenuItem, childIndex) => (
+                                <div
+                                  key={childIndex}
+                                  className='flex flex-col'
+                                  onMouseEnter={() =>
+                                    handleChangeUrlImage(child.imgUrl || '')
+                                  }
+                                >
+                                  <Link
+                                    href={child.href}
+                                    className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                  >
+                                    <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                      {child.title}
+                                    </p>
+                                    {item.children &&
+                                      childIndex < item.children.length - 1 && (
+                                        <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                      )}
+                                  </Link>
+                                </div>
+                              ),
+                            )}
+                          </div>
+                        </div>
+                        <Image
+                          src={urlImage || item.children[0]?.imgUrl || ''}
+                          alt='preview'
+                          width={500}
+                          height={500}
+                          className='h-full w-[38.125rem] rounded-[1rem] object-cover'
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className='flex h-full items-center text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
+                >
+                  {item.title}
+                </Link>
+              ),
+            )}
           </div>
           <Link href={'/'}>
             <ImageV2
@@ -410,7 +524,7 @@ const Header = () => {
           </Link>
           {/* right */}
           <div className='flex h-full items-center space-x-[2rem]'>
-            {listItemRightBottomHeader.map((item, index) =>
+            {menu.slice(-2).map((item: MenuItem, index) =>
               item.children ? (
                 <div
                   key={index}
@@ -441,12 +555,12 @@ const Header = () => {
                             {item.title}
                           </p>
                           <div className='flex flex-col'>
-                            {item.children.map((child, index) => (
+                            {item.children.map((child: MenuItem, index) => (
                               <div
                                 key={index}
                                 className='flex flex-col'
                                 onMouseEnter={() =>
-                                  handleChangeUrlImage(child.imgUrl)
+                                  handleChangeUrlImage(child?.imgUrl || '')
                                 }
                               >
                                 <Link
@@ -456,16 +570,21 @@ const Header = () => {
                                   <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                     {child.title}
                                   </p>
-                                  {index < item.children.length - 1 && (
-                                    <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
-                                  )}
+                                  {item.children &&
+                                    index < item.children.length - 1 && (
+                                      <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                    )}
                                 </Link>
                               </div>
                             ))}
                           </div>
                         </div>
                         <Image
-                          src={urlImage ? urlImage : item.children[0].imgUrl}
+                          src={
+                            urlImage
+                              ? urlImage
+                              : item?.children[0]?.imgUrl || ''
+                          }
                           alt='logo'
                           width={500}
                           height={500}
@@ -522,27 +641,31 @@ const Header = () => {
                         Hỗ trợ khách hàng
                       </p>
                       <div className='flex flex-col'>
-                        {listItemSupportCustomer.map((child, index) => (
-                          <div
-                            key={index}
-                            className='flex flex-col'
-                            onMouseEnter={() =>
-                              handleChangeUrlImageSupportCustomer(child.imgUrl)
-                            }
-                          >
-                            <Link
-                              href={child.href}
-                              className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                        {listItemSupportCustomer.map(
+                          (child: MenuItem, index) => (
+                            <div
+                              key={index}
+                              className='flex flex-col'
+                              onMouseEnter={() =>
+                                handleChangeUrlImageSupportCustomer(
+                                  child.imgUrl || '',
+                                )
+                              }
                             >
-                              <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
-                                {child.title}
-                              </p>
-                              {index < listItemSupportCustomer.length - 1 && (
-                                <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
-                              )}
-                            </Link>
-                          </div>
-                        ))}
+                              <Link
+                                href={child.href}
+                                className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                              >
+                                <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                  {child.title}
+                                </p>
+                                {index < listItemSupportCustomer.length - 1 && (
+                                  <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                )}
+                              </Link>
+                            </div>
+                          ),
+                        )}
                       </div>
                     </div>
                     <ImageV2
@@ -563,7 +686,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className='section-container relative flex min-h-[3.75rem] items-center justify-between bg-white py-[0.62rem] sm:hidden'>
+      <div className='section-container relative flex h-[3.75rem] items-center justify-between bg-white py-[0.62rem] sm:hidden'>
         <Link href={'/'}>
           <ImageV2
             src='/imgs/homepage/header/d-IC-mb.png'
@@ -674,7 +797,7 @@ const Header = () => {
             </Link>
           ))}
           <div className='mb-[3.5rem] mt-[2.5rem] flex items-center justify-center space-x-[0.75rem]'>
-            {socialNetwork.map((item, index) => (
+            {socialNetwork.map((item: SocialNetwork, index: number) => (
               <Link
                 href={item.link}
                 key={index}

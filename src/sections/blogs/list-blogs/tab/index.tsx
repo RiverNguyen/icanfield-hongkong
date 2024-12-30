@@ -1,30 +1,25 @@
 'use client'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {Category} from '@/types/blogs.interface'
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 
-// INIT DATA
-const categories = [
-  {name: 'Tất cả', value: 'all'},
-  {name: 'Sự kiện', value: 'event'},
-  {name: 'Tin định cư', value: 'news'},
-  {name: 'Tin du học', value: 'guide'},
-  {name: 'Câu chuyện thành công', value: 'other'},
-]
-
-const IndexTabs = () => {
+const IndexTabs = ({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
+}: {
+  categories: Category[]
+  selectedCategory: Category
+  setSelectedCategory: (category: Category) => void
+}) => {
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()
 
-  const [selectedCategory, setSelectedCategory] = useState<Category>(
-    categories[0],
-  )
-
   useEffect(() => {
     if (searchParams?.get('category')) {
       const category = categories.find(
-        (category) => category.value === searchParams.get('category'),
+        (category: Category) => category.value === searchParams.get('category'),
       )
       setSelectedCategory(category ?? categories[0])
     }

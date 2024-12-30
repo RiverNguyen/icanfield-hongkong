@@ -1,11 +1,11 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {useEffect, useRef, useState} from 'react'
-import './style.css'
+import useIsMobile from '@/hooks/useIsMobile'
 import {cn} from '@/lib/utils'
 import ImageBanner from '@/sections/aboutus/banner/ImageBanner'
-import useIsMobile from '@/hooks/useIsMobile'
 import ImageBannerMb from '@/sections/aboutus/banner/ImageBannerMb'
+import {useEffect, useRef, useState} from 'react'
+import './style.css'
 
 export default function BannerAboutus() {
   const [activeInterFace, setActiveInterFace] = useState<boolean>(false)

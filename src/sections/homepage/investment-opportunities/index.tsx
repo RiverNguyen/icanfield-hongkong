@@ -28,7 +28,7 @@ export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
         }
       },
       {
-        threshold: 0.3,
+        threshold: 0.1,
       },
     )
     if (ref.current) observer.observe(ref.current)
@@ -91,6 +91,7 @@ function ItemInvestmentOpportunities({
   const spanRef = useRef<HTMLSpanElement>(null)
   const pRef = useRef<HTMLParagraphElement>(null)
   useEffect(() => {
+    if (typeof window === 'undefined') return
     if (window.innerWidth > 640) return
     if (!spanRef.current || !pRef.current) return
     if (itemKey === activeIndex) {

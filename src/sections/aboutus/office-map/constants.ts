@@ -34,32 +34,26 @@ const officeMap: IOfficeMapProps = {
   countries: [
     [
       {
-        name: 'China',
-        label: 'China',
-        flag: '/imgs/about-us/office-map/Australia.png',
+        name: 'Canada',
+        label: 'Canada',
+        flag: '/imgs/about-us/office-map/Canada.png',
       },
     ],
     [
       {
         name: 'Australia',
-        label: 'Australia',
+        label: 'ÚC',
         flag: '/imgs/about-us/office-map/Australia.png',
       },
     ],
     [
       {
         name: 'Vietnam',
-        label: 'Việt nam',
+        label: 'Việt Nam',
         flag: '/imgs/about-us/office-map/vietnam.png',
       },
     ],
-    [
-      {
-        name: 'Canada',
-        label: 'Canada',
-        flag: '/imgs/about-us/office-map/Canada.png',
-      },
-    ],
+
     [
       {
         name: 'Caribe',
@@ -68,46 +62,33 @@ const officeMap: IOfficeMapProps = {
       },
     ],
     [
+      // Mảng các nước EU
       {
-        name: 'Estonia',
-        flag: '/imgs/about-us/office-map/eu.png',
-      },
-      {
-        name: 'Denmark',
-        // flag: '/imgs/about-us/office-map/eu.png',
-      },
-      {
-        name: 'Ireland',
-        // flag: '/imgs/about-us/office-map/eu.png',
-      },
-      {
-        name: 'Lithuania',
-        // flag: '/imgs/about-us/office-map/eu.png',
-      },
-      {
-        name: 'Finland',
-        // flag: '/imgs/about-us/office-map/eu.png',
-      },
-      {
-        name: 'United Kingdom',
-        // flag: '/imgs/about-us/office-map/eu.png',
-      },
-      {
-        name: 'Iceland',
-        // flag: '/imgs/about-us/office-map/eu.png',
+        name: 'Germany',
         label: 'EU',
+        flag: '/imgs/homepage/header/eu-flag2.png',
       },
       {
-        name: 'Latavia',
-        // flag: '/imgs/about-us/office-map/eu.png',
+        name: 'France',
       },
       {
-        name: 'Nauy',
-        // flag: '/imgs/about-us/office-map/eu.png',
+        name: 'Italy',
+      },
+      {
+        name: 'Spain',
+      },
+      {
+        name: 'Netherlands',
       },
       {
         name: 'Sweden',
-        // flag: '/imgs/about-us/office-map/eu.png',
+      },
+    ],
+    [
+      {
+        name: 'United States of America',
+        label: 'Mỹ',
+        flag: '/imgs/homepage/header/d-america-flag.jpg',
       },
     ],
   ],
