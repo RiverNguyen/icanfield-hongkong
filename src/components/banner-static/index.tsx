@@ -29,10 +29,11 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
       />
       <div className='absolute inset-0 h-full w-full bg-black/30'></div>
       <div className='absolute inset-0 h-full w-full bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
+      {children}
       <div
         className={cn(
           'z-1 relative mx-auto mt-[5.81rem] flex max-w-full flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:flex-wrap sm:px-0',
-          {'mt-[1.5rem]': !!children},
+          {'mt-[3.94rem] sm:mt-[1.5rem]': !!children},
         )}
       >
         {titleTop && titleBottom && description && (

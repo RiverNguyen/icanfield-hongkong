@@ -1,4 +1,5 @@
 import {BannerStatic} from '@/components/banner-static'
+import {Breadcrumb} from '@/components/breadcrumb'
 import blogBanner from '@/sections/blogs/banner/constants'
 import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
 import {FeaturedNews} from '@/sections/blogs/featured-news'
@@ -13,7 +14,14 @@ interface IPageBlogsProps {
 export const PageBlogs: FC<IPageBlogsProps> = ({}) => {
   return (
     <>
-      <BannerStatic {...blogBanner}></BannerStatic>
+      <BannerStatic {...blogBanner}>
+        <Breadcrumb
+          items={[
+            {label: 'Home', href: '/'},
+            {label: 'Blogs', href: '/blogs'},
+          ]}
+        />
+      </BannerStatic>
       <FeaturedNews {...featuredNews} />
       <ListBlogs />
       <WrapperConnectUs />

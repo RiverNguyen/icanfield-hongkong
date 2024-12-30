@@ -84,7 +84,7 @@ const IndexSortAndSearchPosts = ({
       >
         <button
           onClick={() => setIsOpenSelectCategory(!isOpenSelectCategory)}
-          className='flex h-[3rem] w-full items-center justify-between rounded-[0.5rem] bg-[#F3F3F3] px-4'
+          className='flex h-[3rem] w-full items-center justify-between rounded-[0.5rem] bg-[#F3F3F3] px-[0.75rem] sm:px-4'
         >
           <span className='flex items-center whitespace-nowrap text-[1rem] font-normal leading-[1.5] tracking-[-0.02rem] text-greyscaletext-body xsm:line-clamp-1 xsm:text-[0.75rem] xsm:text-[#3F2214]'>
             <b className='whitespace-nowrap font-medium xsm:font-bold'>
