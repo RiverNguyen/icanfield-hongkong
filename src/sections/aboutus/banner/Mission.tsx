@@ -27,7 +27,7 @@ export default function Mission() {
     if (ref.current) observer.observe(ref.current)
   }, [])
   return (
-    <section className='relative h-[100.25rem] xsm:h-[56.375rem]'>
+    <section className='relative h-[88.25rem] xsm:h-[56.375rem]'>
       <ImageV2
         className='h-[82rem] w-full translate-y-[-16rem] object-contain opacity-[0.8] xsm:h-[62.5rem] xsm:object-cover'
         alt=''
@@ -36,7 +36,6 @@ export default function Mission() {
         src={'/imgs/about-us/BG-sky.png'}
       />
       <div
-        ref={ref}
         className='absolute bottom-0 z-20 h-[64.9375rem] w-full xsm:h-[21.4375rem]'
       >
         <ImageV2
@@ -62,9 +61,10 @@ export default function Mission() {
         src={'/imgs/about-us/silk-strip.png'}
       />
       <div
+        ref={ref}
         className={cn(
           activeInterFace ? 'mission__fadein' : '',
-          'absolute bottom-[3.5rem] left-[50%] z-10 translate-x-[-50%] transition-all sm:translate-y-[100%] sm:opacity-0 xsm:bottom-[2.5rem] xsm:w-full xsm:px-[1rem]',
+          'absolute bottom-[3.5rem] left-[50%] z-10 translate-x-[-50%] transition-all sm:translate-y-[25%] xsm:bottom-[2.5rem] xsm:w-full xsm:px-[1rem]',
         )}
       >
         <div className='mb-[2.5rem] flex flex-col items-center space-y-[0.625rem] xsm:space-y-[0.5rem]'>

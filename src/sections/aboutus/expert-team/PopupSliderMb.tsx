@@ -1,4 +1,6 @@
+"use client"
 import ImageV2 from "@/components/image/ImageV2";
+import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import { cn } from "@/lib/utils";
 import ItemExpertTeam from "@/sections/aboutus/expert-team/ItemExpertTeam";
 
@@ -19,11 +21,14 @@ export default function PopupSliderMb({
   data: DataType;
   index: number;
 }) {
+  
   return (
     <>
       <div
         onClick={() => {
           setToggleMB(false);
+          //hook
+          useBodyScrollLock(false)
         }}
         className={cn(
           "fixed inset-0 bg-[#00000054] z-[39] transition-all duration-1000",
@@ -39,12 +44,14 @@ export default function PopupSliderMb({
         )}
       >
         <div className="overflow-hidden overflow-y-auto scrollbar-hidden h-[37.5rem]">
-          <p className="text-brown heading2 font-optima font-semibold">
-            {data?.name}
-          </p>
-          <p className="mt-[0.38rem] text-orangetext-500 text-[0.75rem] font-medium tracking-[-0.015rem]">
-            {data?.position}
-          </p>
+          <div className="sticky top-0 bg-white z-10">
+            <p className="text-brown heading2 font-optima font-semibold">
+              {data?.name}
+            </p>
+            <p className="mt-[0.38rem] text-orangetext-500 text-[0.75rem] font-medium tracking-[-0.015rem]">
+              {data?.position}
+            </p>
+          </div>
           <ItemExpertTeam
             className="xsm:mx-auto xsm:w-[16.87925rem] xsm:h-[19.59588rem] [&_svg]:xsm:h-[19.59588rem] xsm:before:absolute xsm:before:bg-white xsm:before:w-full xsm:before:h-[0.1rem] xsm:before:top-[1.3rem] xsm:before:z-10"
             index={index}
@@ -57,8 +64,10 @@ export default function PopupSliderMb({
         <div
           onClick={() => {
             setToggleMB(false);
+            // hook
+            useBodyScrollLock(false)
           }}
-          className="absolute top-[1.25rem] right-[1rem]"
+          className="absolute top-[1.25rem] right-[1rem] z-20"
         >
           <ImageV2
             className="size-[1.5rem] object-contain"
