@@ -25,10 +25,10 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
         alt={backgroundImage.alt}
         width={1600 * 2}
         height={478 * 2}
-        className='absolute bottom-0 left-0 right-0 top-[3.75rem] h-full w-full object-cover sm:top-[6.44rem]'
+        className='absolute inset-0 h-full w-full object-cover'
       />
-      <div className='absolute bottom-0 left-0 right-0 top-0 bg-black/30'></div>
-      <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
+      <div className='absolute inset-0 h-full w-full bg-black/30'></div>
+      <div className='absolute inset-0 h-full w-full bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
       <div
         className={cn(
           'z-1 relative mx-auto mt-[5.81rem] flex max-w-full flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:flex-wrap sm:px-0',

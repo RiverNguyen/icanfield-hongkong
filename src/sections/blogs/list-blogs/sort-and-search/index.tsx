@@ -5,25 +5,27 @@ import useClickOutside from '@/hooks/useClickOutSide'
 import {cn} from '@/lib/utils'
 import {SortOption} from '@/types/blogs.interface'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
-// INIT DATA
-const sortOptions = [
-  {name: 'Tất cả', value: 'all'},
-  {name: 'Mới nhất', value: 'newest'},
-  {name: 'Phổ biến nhất', value: 'popular'},
-]
-
-const IndexSortAndSearchPosts = () => {
+const IndexSortAndSearchPosts = ({
+  sortOptions,
+  setSelectedSortOption,
+  setSearch,
+  selectedSortOption,
+  search,
+}: {
+  sortOptions: SortOption[]
+  setSelectedSortOption: React.Dispatch<React.SetStateAction<SortOption>>
+  setSearch: React.Dispatch<React.SetStateAction<string>>
+  selectedSortOption: SortOption
+  search: string
+}) => {
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()
 
-  const [search, setSearch] = React.useState<string>('')
   const [isOpenSelectCategory, setIsOpenSelectCategory] =
-    React.useState<boolean>(false)
-  const [selectedSortOption, setSelectedSortOption] =
-    React.useState<SortOption>(sortOptions[0])
+    useState<boolean>(false)
 
   // hook
   const {ref, isOutside} = useClickOutside<HTMLDivElement>()
