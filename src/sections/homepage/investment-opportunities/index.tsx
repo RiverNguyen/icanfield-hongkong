@@ -37,10 +37,10 @@ export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
       className='investment-opportunities'
     >
       <div className='flex flex-col items-center p-[2.5rem_1rem_1.5rem] sm:sticky sm:top-0 sm:h-[15.06rem] sm:p-[1.25rem_0_0]'>
-        <span className='investment-opportunities__subtitle sub-12 translate-y-[15.62rem] font-medium uppercase text-greyscaletext-400 opacity-0 sm:font-semibold'>
+        <span className='investment-opportunities__subtitle translate-y-[15.62rem] font-medium uppercase text-greyscaletext-400 opacity-0 sub-12 sm:font-semibold'>
           {subtitle}
         </span>
-        <h2 className='investment-opportunities__title heading1 m-[0.75rem_0_0] text-center font-optima font-semibold text-brown sm:m-[0.94rem_0_4.5rem] sm:max-w-[52.75rem] sm:translate-y-[29.38rem]'>
+        <h2 className='investment-opportunities__title m-[0.75rem_0_0] text-center font-optima font-semibold text-brown heading1 sm:m-[0.94rem_0_4.5rem] sm:max-w-[52.75rem] sm:translate-y-[29.38rem]'>
           {title}
         </h2>
       </div>
@@ -169,7 +169,7 @@ function ItemInvestmentOpportunities({
             className='flex h-[3rem] items-center justify-center rounded-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] sm:inline-flex sm:justify-start sm:bg-btn-gradient xsm:mt-8 xsm:border xsm:border-Text-Text-Grey-Disable'
             href={link}
           >
-            <span className='body-14-m text-bodytext sm:text-white'>
+            <span className='text-bodytext body-14-m sm:text-white'>
               Tìm hiểu thêm
             </span>
             <ArrowRight className='ml-[0.5rem] size-[1.5rem] text-bodytext sm:text-white xsm:translate-y-[-2px]' />

@@ -268,7 +268,7 @@ const Header = () => {
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
       <div className='header-top bg-[linear-gradient(118deg,#2E1506_69.75%,#95502F_142.7%,#F5C178_182.76%)] xsm:hidden'>
-        <div className='section-container flex items-center justify-between'>
+        <div className='flex items-center justify-between section-container'>
           <div className='flex items-center space-x-[0.94rem]'>
             <div className='relative'>
               <div className='z-1 pointer-events-none absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08]'></div>
@@ -395,7 +395,7 @@ const Header = () => {
         </div>
       </div>
       <div className='header-bottom relative bg-white xsm:hidden'>
-        <div className='section-container flex h-[4.37rem] items-center justify-between'>
+        <div className='flex h-[4.37rem] items-center justify-between section-container'>
           {/* left */}
           <div className='flex h-full items-center space-x-[2.5rem]'>
             {menu.slice(0, -2).map((item: MenuItem, index) =>
@@ -650,7 +650,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className='section-container relative flex h-[3.75rem] items-center justify-between bg-white py-[0.62rem] sm:hidden'>
+      <div className='relative flex h-[3.75rem] items-center justify-between bg-white py-[0.62rem] section-container sm:hidden'>
         <Link href={'/'}>
           <ImageV2
             src='/imgs/homepage/header/d-IC-mb.png'
@@ -872,7 +872,7 @@ const Header = () => {
                 className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)]'
               >
                 <ImageV2
-                  src={item.icon ||''}
+                  src={item.icon || ''}
                   alt='logo'
                   width={40}
                   height={40}
@@ -920,11 +920,14 @@ const Header = () => {
         </>
       </div>
       <div
-        className={`fixed bottom-0 left-0 z-[51] h-full w-full flex  items-end transition-all duration-300 sm:hidden ${isOpenedChild ? 'opacity-1 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-0 left-0 z-[51] flex h-full w-full items-end transition-all duration-300 sm:hidden ${isOpenedChild ? 'opacity-1 pointer-events-auto' : 'pointer-events-none opacity-0'}`}
       >
-        <div className='bg-[rgba(0,0,0,0.16)] h-full w-full absolute z-10' onClick={handleToggleChild}></div>
         <div
-          className={`h-fit max-h-[50vh] relative z-20 w-full translate-y-0 rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[1.5rem] transition-all duration-300 sm:hidden ${isOpenedChild ? 'translate-y-0' : 'translate-y-[150%]'}`}
+          className='absolute z-10 h-full w-full bg-[rgba(0,0,0,0.16)]'
+          onClick={handleToggleChild}
+        ></div>
+        <div
+          className={`relative z-20 h-fit max-h-[50vh] w-full translate-y-0 rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[1.5rem] transition-all duration-300 sm:hidden ${isOpenedChild ? 'translate-y-0' : 'translate-y-[150%]'}`}
         >
           <div className='flex items-center justify-between pb-4'>
             <span className='text-[0.875rem] font-semibold tracking-[-0.0175rem] text-brown'>

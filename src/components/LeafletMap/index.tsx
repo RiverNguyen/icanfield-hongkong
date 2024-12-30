@@ -14,6 +14,7 @@ export interface ICountry {
 interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
+  // eslint-disable-next-line no-unused-vars
   onClick?: (country: ICountry) => void
   className?: string
   borderCountries?: string
