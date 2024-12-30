@@ -2,8 +2,6 @@
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
 import {cn} from '@/lib/utils'
-import ImageBanner from '@/sections/aboutus/banner/ImageBanner'
-import ImageBannerMb from '@/sections/aboutus/banner/ImageBannerMb'
 import {useEffect, useRef, useState} from 'react'
 import './style.css'
 
@@ -30,10 +28,16 @@ export default function BannerAboutus() {
   return (
     <section
       ref={ref}
-      className='relative z-10 h-[100vh] w-full overflow-hidden'
+      className='relative z-10 sm:h-[100vh] w-full overflow-hidden'
     >
       {isMobile ? (
-        <ImageBannerMb className='h-[100vh] w-full' />
+        <ImageV2
+          className='w-full h-full'
+          alt=''
+          width={1600}
+          height={700}
+          src={'/imgs/about-us/banner/d-hero_bannermbv2.webp'}
+        />
       ) : (
         <ImageV2
           className='w-full h-full'

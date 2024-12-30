@@ -70,7 +70,7 @@ const fakedata = [
   },
 ]
 
-export const ExpertTeam: FC<IExpertTeamProps> = () => {
+export default function ExpertTeam() {
   const isMobile = useIsMobile()
   const [toggleMB, setToggleMB] = useState<boolean>(false)
   const [idActivePopupMB, setIdActivePopupMB] = useState<number>(0)
@@ -84,7 +84,7 @@ export const ExpertTeam: FC<IExpertTeamProps> = () => {
   }
   return (
     <section className='relative bg-[linear-gradient(180deg,rgba(255,244,228,0.50)_0%,rgba(249,245,240,0.80)_16.83%,#F6F6F4_50.9%)] pb-[10.75rem] pl-[5rem] pt-[5rem] xsm:pb-[4rem] xsm:pl-0 xsm:pt-[4rem]'>
-      <h2 className='heading1 w-[44.3125rem] font-optima font-medium text-brown xsm:mb-[1.5rem] xsm:w-full xsm:px-[1rem]'>
+      <h2 className='heading1 w-[44.3125rem] font-optima font-semibold text-brown xsm:mb-[1.5rem] xsm:w-full xsm:px-[1rem]'>
         Đội Ngũ Chuyên Gia Tinh Hoa Kiến Tạo Hành Trình Thành Công
       </h2>
       {!isMobile ? (
@@ -108,7 +108,7 @@ export const ExpertTeam: FC<IExpertTeamProps> = () => {
                   <div
                     key={i}
                     className={cn(
-                      'scrollbar-hidden absolute h-[28rem] w-full overflow-hidden overflow-y-auto p-[2rem_12.75rem_1.56rem_2.5rem] transition-all duration-500',
+                      'scrollbar-hidden absolute h-[28rem] w-full overflow-hidden overflow-y-auto p-[0rem_14.75rem_1.56rem_2.5rem] transition-all duration-500',
                       activeIndex < i &&
                         'top-[7rem] z-[-1] opacity-0 duration-500',
                       activeIndex > i &&
@@ -116,13 +116,15 @@ export const ExpertTeam: FC<IExpertTeamProps> = () => {
                       activeIndex === i && 'top-0 z-[1] duration-1000',
                     )}
                   >
-                    <span className='heading4 font-semibold text-brown'>
-                      {e?.name}
-                    </span>
-                    <p className='body-14 mb-[1.5rem] mt-[0.25rem] text-orangetext-500'>
-                      {e?.position}
-                    </p>
-                    <div className='[&_p]:body16 [&_p]:tracking-[-0.02rem] [&_p]:text-bodytext'>
+                    <div className='sticky top-0 bg-white pt-[2rem] pb-[1rem]'>
+                      <span className='heading4 font-semibold text-brown'>
+                        {e?.name}
+                      </span>
+                      <p className='body-14 mt-[0.25rem] text-orangetext-500'>
+                        {e?.position}
+                      </p>
+                    </div>
+                    <div className='pb-[1rem] [&_p]:text-justify [&_p]:body16 [&_p]:tracking-[-0.02rem] [&_p]:text-bodytext'>
                       <p>{e?.content}</p>
                     </div>
                   </div>
@@ -164,8 +166,9 @@ export const ExpertTeam: FC<IExpertTeamProps> = () => {
               {fakedata?.map((e: IExpertTeamProps, index: number) => (
                 <SwiperSlide
                   className={cn(
-                    '!w-[29.18769rem] [&.swiper-slide-active_.item-expert-team]:w-[29.18769rem] [&.swiper-slide-active_.path-svg]:scale-[1] [&.swiper-slide-next]:pl-[4rem]',
-                    nextIndex + 1 === index && '!translate-x-[-5rem]',
+                    '!w-[29.18769rem] transition-all duration-500 opacity-0 [&.swiper-slide-active]:opacity-100 [&.swiper-slide-next]:opacity-100 [&.swiper-slide-active_.item-expert-team]:w-[29.18769rem] [&.swiper-slide-active_.path-svg]:scale-[1] [&.swiper-slide-next]:pl-[4rem]',
+                    nextIndex + 1 === index && '!translate-x-[-5rem] opacity-100',
+                    nextIndex + 1 === fakedata?.length && index === 0 && '!translate-x-[-5rem] opacity-100',
                   )}
                   key={index}
                 >
