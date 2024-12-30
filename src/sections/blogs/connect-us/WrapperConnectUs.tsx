@@ -2,20 +2,31 @@
 import ImageV2 from '@/components/image/ImageV2'
 import {cn} from '@/lib/utils'
 import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 const WrapperConnectUs = () => {
   const [isActive, setIsActive] = useState(false)
-
+  const sectionFef = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsActive(true)
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.1,
+      },
+    )
+    if (sectionFef.current) observer.observe(sectionFef.current)
+  }, [])
   return (
-    <section className='relative h-[118.25rem] w-full overflow-hidden bg-white xsm:h-[73.4rem]'>
-      <button
-        onClick={() => setIsActive(!isActive)}
-        className='absolute left-[2rem] top-[2rem] z-50 size-[2.5rem] rounded-full bg-black text-white flex-center'
-      >
-        T
-      </button>
-      <div className='pointer-events-none absolute left-0 top-0 z-[1] h-[56.9rem] w-full transition-all duration-500'>
+    <section
+      ref={sectionFef}
+      className='relative h-[118.25rem] w-full overflow-hidden bg-white xsm:h-[73.4rem]'
+    >
+      <div className='ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute left-0 top-0 z-[1] h-[56.9rem] w-full transition-all duration-800'>
         <ImageV2
           className={cn(
             'size-full object-fill opacity-0 xsm:hidden',
@@ -30,7 +41,7 @@ const WrapperConnectUs = () => {
       </div>
       <ImageV2
         className={cn(
-          'pointer-events-none absolute -top-[5rem] left-[2rem] z-[2] h-[71.8rem] w-[64.5rem] translate-y-[20rem] opacity-50 transition-all duration-500 xsm:hidden',
+          'ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute -top-[5rem] left-[2rem] z-[2] h-[71.8rem] w-[64.5rem] translate-y-[20rem] opacity-50 transition-all duration-800 xsm:hidden',
           isActive && 'translate-y-0 opacity-100',
         )}
         alt='liberties'
@@ -60,7 +71,7 @@ const WrapperConnectUs = () => {
       <div className='bg-[background: linear-gradient(180deg,#F6F6F4_0%,rgba(246,246,244,0.00)_100%)] pointer-events-none absolute left-0 top-0 h-[17rem] w-full sm:hidden'></div>
       <ImageV2
         className={cn(
-          'pointer-events-none absolute left-[27rem] top-[7.75rem] z-[5] h-auto w-[5.8rem] -translate-x-[5rem] translate-y-[2rem] object-contain opacity-0 transition-all duration-300 xsm:hidden',
+          'ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute left-[27rem] top-[7.75rem] z-[5] h-auto w-[5.8rem] -translate-x-[5rem] translate-y-[2rem] object-contain opacity-0 transition-all duration-800 xsm:hidden',
           isActive && 'translate-x-0 translate-y-0 opacity-100 delay-500',
         )}
         alt='airport'
@@ -71,7 +82,7 @@ const WrapperConnectUs = () => {
       />
       <ImageV2
         className={cn(
-          'pointer-events-none absolute left-[36.88rem] top-[26rem] z-[5] h-auto w-[12.56rem] -translate-x-[10rem] translate-y-[10rem] object-contain opacity-0 transition-all duration-500 xsm:hidden',
+          'ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute left-[36.88rem] top-[26rem] z-[5] h-auto w-[12.56rem] -translate-x-[10rem] translate-y-[10rem] object-contain opacity-0 transition-all duration-800 xsm:hidden',
           isActive && 'translate-x-0 translate-y-0 opacity-100 delay-500',
         )}
         alt='airport'

@@ -72,6 +72,9 @@ const config: Config = {
       transitionTimingFunction: {
         'pagination-bezier': 'cubic-bezier(0.77, 0.05, 0.26, 1.02)', // Bounce effect
       },
+      transitionDuration: {
+        '800': '800ms',
+      },
     },
   },
   plugins: [
