@@ -14,9 +14,6 @@ const fakeContent = `
 
   <h2>Phần Tiêu Đề 2</h2>
   <p>Nunc scelerisque, nulla in sagittis luctus, felis velit hendrerit risus, a eleifend libero augue id augue. Vestibulum quis diam vel ligula congue vestibulum.</p>
-  <blockquote>
-    "Một câu nói nổi bật ở đây, nhấn mạnh ý tưởng quan trọng."
-  </blockquote>
 
   <h2>Phần Tiêu Đề 3</h2>
   <p>Praesent malesuada, sem vitae fermentum vehicula, nisi ex bibendum elit, a consectetur lorem est in sapien. Sed lacinia mauris nec elit efficitur vehicula.</p>
@@ -28,7 +25,7 @@ const fakeContent = `
 `;
 export default function BlogDetail() {
   return (
-    <section className='mb-[6.31rem] mt-[5rem] xsm:pt-[3rem] flex xsm:flex-col sm:space-x-[3.75rem] section-container pt-[7rem]'>
+    <section className='sm:mb-[6.31rem] xsm:pt-[3rem] xsm:pb-[1.5rem] flex xsm:flex-col sm:space-x-[3.75rem] section-container pt-[7rem]'>
       <AsideDetail dataContent={fakeContent} />
       <ContentDetail dataContent={fakeContent} />
     </section>

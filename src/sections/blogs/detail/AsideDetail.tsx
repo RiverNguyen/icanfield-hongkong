@@ -1,69 +1,30 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
+import Share from '@/components/share/Share';
 import useIsMobile from '@/hooks/useIsMobile'
 import IndexAside from '@/sections/blogs/detail/IndexAside'
-import {usePathname} from 'next/navigation'
-import {useEffect, useState} from 'react'
 
 export default function AsideDetail({dataContent}: {dataContent: string}) {
   const isMobile = useIsMobile();
-  const [copyUrl, setCopyUrl] = useState(false)
-  const [currentUrl, setCurrentUrl] = useState('')
-  const pathname = usePathname()
-  useEffect(() => {
-    const fullUrl = `${window.location.origin}${pathname}${window.location.search}`
-    setCurrentUrl(fullUrl)
-  }, [])
-  const handleCopuUrl = () => {
-    setCopyUrl(true)
-    navigator.clipboard.writeText(currentUrl)
-    setTimeout(() => {
-      setCopyUrl(false)
-    }, 2000)
-  }
   return (
     <aside className='w-[19rem] xsm:w-full'>
-      <p className='text-orangetext-300 body-14 sm:mb-[6.37rem]'>
+      <p className='text-orangetext-300 body-14 sm:mb-[6.37rem] xsm:text-[0.75rem] xsm:leading-[1.4] tracking-[-0.035rem] xsm:mb-[0.75rem]'>
         Ngày 24, tháng 6, 2023
       </p>
       {isMobile && (
-        <h1 className='sm:hidden font-optima text-[1.125rem] text-orangetext-900 font-medium leading-[1.3] tracking-[-0.0225rem]'>Chương trình thẻ thường trú nhân Malta (MPRP) sẽ tăng phí từ ngày 01/01/2025 – Những điều nhà đầu tư cần biết</h1>
+        <h1 className='sm:hidden mb-[1.5rem] font-optima text-[1.125rem] text-orangetext-900 font-medium leading-[1.3] tracking-[-0.0225rem]'>Chương trình thẻ thường trú nhân Malta (MPRP) sẽ tăng phí từ ngày 01/01/2025 – Những điều nhà đầu tư cần biết</h1>
       )}
-      <div className='sticky top-[8.4375rem] pb-[1rem]'>
-        <div className='mb-[1.5rem] p-[1.5rem] rounded-[0.75rem] border-[2px] border-solid border-[#eee] bg-[#F6F5F3]'>
-          <p className='text-orangetext-900 text-[1.25rem] font-semibold tracking-[-0.0125rem] mb-[1.62rem]'>
-            Nội dung bài viết
-          </p>
+      <div className='sm:sticky sm:top-[8.4375rem] sm:pb-[1rem]'>
+        <div className='mb-[1.5rem] p-[1.5rem] xsm:p-[0.94rem_1rem] rounded-[0.75rem] xsm:rounded-[0.625rem] border-[2px] border-solid border-[#eee] xsm:border-[0.4px] xsm:border-[rgba(0,0,0,0.10)] bg-[#F6F5F3]'>
+          <div className='w-full xsm:flex xsm:justify-between xsm:items-center mb-[1.62rem] xsm:mb-[0.75rem]'>
+            <p className='text-orangetext-900 text-[1.25rem] font-semibold tracking-[-0.0125rem] xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
+              Nội dung bài viết
+            </p>
+            <ImageV2 className='sm:hidden size-[2.25rem] filter brightness-[100] invert-[100]' width={20} height={20} alt='' src={'/icons/blogs/down.svg'} />
+          </div>
           <IndexAside htmlString={dataContent} />
         </div>
-        <div className='flex items-center space-x-[0.75rem]'>
-          <p className='text-orangetext-900 body16-s'>Chia sẻ qua</p>
-          <div className='cursor-pointer flex-center size-[2.75rem] rounded-[1.9375rem] border-[1px] border-solid border-[rgba(0,0,0,0.10)]'>
-            <ImageV2
-              className='object-contain size-[1.5rem]'
-              width={24}
-              height={24}
-              alt=''
-              src={'/icons/detail-blogs/fb.svg'}
-            />
-          </div>
-          <div
-            onClick={handleCopuUrl}
-            className='cursor-pointer flex-center size-[2.75rem] rounded-[1.9375rem] border-[1px] border-solid border-[rgba(0,0,0,0.10)]'
-          >
-            {copyUrl ? (
-              ''
-            ) : (
-              <ImageV2
-                className='object-contain size-[1.5rem]'
-                width={24}
-                height={24}
-                alt=''
-                src={'/icons/detail-blogs/link.svg'}
-              />
-            )}
-          </div>
-        </div>
+        <Share className='xsm:hidden'/>
       </div>
     </aside>
   )

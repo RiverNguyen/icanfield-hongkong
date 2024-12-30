@@ -42,15 +42,15 @@ export default function IndexAside({htmlString}: {htmlString: string}) {
     }
   }
   return (
-    <ul className='pl-[1.75rem] list-disc space-y-[1.5rem] border-l-[0.25rem] border-solid border-[rgba(107,54,0,0.11)]'>
+    <ul className='pl-[1.75rem] xsm:pl-[1.25rem] sm:list-disc space-y-[1.5rem] xsm:space-y-[0.25rem] sm:border-l-[0.25rem] sm:border-solid sm:border-[rgba(107,54,0,0.11)] ul_auto'>
       {h2Contents?.map((content: {text: string; id: string}, index: number) => (
         <li
           key={index}
           className={cn(
-            'transition-all cursor-pointer text-[1rem] font-medium tracking-[-0.01rem]',
+            'transition-all cursor-pointer text-[1rem] font-medium tracking-[-0.01rem] xsm:text-[0.75rem]',
             activeSection === content.id
               ? 'text-orangetext-800'
-              : 'text-[rgba(0,18,36,0.54)]',
+              : 'text-[rgba(0,18,36,0.54)] xsm:text-orangetext-800',
           )}
         >
           <Link
@@ -60,7 +60,7 @@ export default function IndexAside({htmlString}: {htmlString: string}) {
               handleScroll(content.id) // Cuộn đến phần tử với ID tương ứng
             }}
             className={cn(
-              'transition-all text-[1rem] font-medium tracking-[-0.01rem]',
+              'transition-all text-[1rem] font-medium tracking-[-0.01rem] xsm:text-orangetext-800 xsm:text-[0.75rem] xsm:font-medium xsm:tracking-[-0.0075rem]',
               activeSection === content.id
                 ? 'text-orangetext-800'
                 : 'text-[rgba(0,18,36,0.54)]',
