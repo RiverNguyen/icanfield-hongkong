@@ -208,8 +208,8 @@ const MapDiscover = () => {
             </div>
           </div>
         </div>
-        <div className='z-10 flex w-[28.3125rem] flex-col pt-[5.12rem] xsm:w-full'>
-          <div className='flex flex-col space-y-[1.5rem] xsm:px-4'>
+        <div className='z-10 flex w-[28.3125rem] flex-col pt-[5.12rem]  xsm:px-4 xsm:w-full'>
+          <div className='flex flex-col space-y-[1.5rem]'>
             {listProgramInfomation.map((item, index) => (
               <div
                 key={index}
@@ -251,7 +251,7 @@ const MapDiscover = () => {
           </div>
           <Link
             href={'/'}
-            className='relative mt-[1.5rem] flex h-[4.875rem] w-full items-center overflow-hidden rounded-[0.5rem]'
+            className='relative mt-[1.5rem] flex h-[4.875rem] w-full items-center overflow-hidden rounded-[0.5rem] xsm:h-[4rem]'
           >
             <ImageV2
               src={'/imgs/homepage/map-discover/canada.webp'}
@@ -269,7 +269,7 @@ const MapDiscover = () => {
                 chương trình liên quan
               </span>
             </div>
-            <div className='absolute right-[0.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)]'>
+            <div className='absolute right-[0.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)] xsm:w-[3rem] xsm:h-[3.5rem]'>
               <ImageV2
                 src={'/icons/homepage/map-discover/arrow.svg'}
                 alt='Icanfield'

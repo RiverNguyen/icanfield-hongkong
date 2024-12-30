@@ -50,28 +50,6 @@ const Header = () => {
       href: '/events',
     },
   ]
-  const listItemLeftBottomHeader = [
-    {
-      title: 'Định cư Canada',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/canada-flag2.png',
-    },
-    {
-      title: 'Định cư Mỹ',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-america-flag.jpg',
-    },
-    {
-      title: 'Định cư Caribe',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-carribe-flag.png',
-    },
-    {
-      title: 'Định cư Châu Âu',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/eu-flag2.png',
-    },
-  ]
   const menu = [
     {
       title: 'Định cư Canada',
@@ -748,19 +726,28 @@ const Header = () => {
           className={`dropdown-menu absolute left-0 top-[100%] z-50 h-screen w-full overflow-auto bg-white p-[1.5rem_1rem] pb-[3.5rem] transition-all duration-300 ${!isCloseMenu ? 'translate-x-[150%]' : 'translate-x-0'}`}
         >
           <div className='grid grid-cols-2 gap-[0.5rem]'>
-            {listItemLeftBottomHeader.map((item, index) => (
+            {menu.slice(0, 4).map((item: MenuItem, index: number) => (
               <Link
                 href={item.href}
                 key={index}
                 className='flex flex-col justify-between rounded-[1rem] bg-[#F1F0EC] p-4'
               >
-                <div className='relative mb-3 size-[2.25rem] rounded-[50%] border-[2px] border-[#B08E61]'>
+                <div className={'flex items-center justify-between'}>
+                  <div className='relative mb-3 size-[2.25rem] rounded-[50%] border-[2px] border-[#B08E61]'>
+                    <ImageV2
+                      src={item?.imgUrl || ''}
+                      alt='logo'
+                      width={80}
+                      height={80}
+                      className='absolute h-full w-full rounded-[50%] object-cover'
+                    />
+                  </div>
                   <ImageV2
-                    src={item.imgUrl}
-                    alt='logo'
-                    width={80}
-                    height={80}
-                    className='absolute h-full w-full rounded-[50%] object-cover'
+                    src='/icons/homepage/header/arrow-down-mb.svg'
+                    alt='arrow'
+                    width={40}
+                    height={40}
+                    className={`size-[1.5rem] object-contain ${item.children ? 'block' : 'hidden'}`}
                   />
                 </div>
                 <span className='text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>

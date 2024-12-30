@@ -96,7 +96,7 @@ function ItemInvestmentOpportunities({
     if (!spanRef.current || !pRef.current) return
     if (itemKey === activeIndex) {
       pRef.current.style.maxHeight = '0px'
-      pRef.current.style.maxHeight = `${spanRef.current.offsetHeight}px`
+      pRef.current.style.maxHeight = `${spanRef.current.offsetHeight + 30}px`
     } else {
       pRef.current.style.maxHeight = '0px'
     }
@@ -162,13 +162,13 @@ function ItemInvestmentOpportunities({
           >
             <span
               ref={spanRef}
-              className='text-[1rem] leading-[150%] text-greyscaletext-900'
+              className='text-[1rem] leading-[150%] text-greyscaletext-900 xsm:text-[0.875rem]'
             >
               {description}
             </span>
           </p>
           <Link
-            className='xsm:border-Text-Text-Grey-Disable sm:bg-btn-gradient flex h-[3rem] items-center justify-center rounded-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] sm:inline-flex sm:justify-start xsm:border'
+            className='xsm:border-Text-Text-Grey-Disable sm:bg-btn-gradient flex h-[3rem] items-center justify-center rounded-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] sm:inline-flex sm:justify-start xsm:border xsm:mt-8'
             href={link}
           >
             <span className='body-14-m text-bodytext sm:text-white'>
