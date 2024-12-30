@@ -14,9 +14,15 @@ const BannerHomepage = () => {
   const [isClient, setIsClient] = useState(false)
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
   const isSelecting = useRef(false)
+  const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
+  const [keyFilter, setKeyFilter] = React.useState('')
+  const [selectedItems, setSelectedItems] = useState<{
+    [key: number]: {label: string; slug: string}
+  }>([])
   useEffect(() => {
     setIsClient(true)
   }, [])
+
   //handle click dropdown filter
   const [openFilters, setOpenFilters] = React.useState(
     new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
@@ -28,46 +34,48 @@ const BannerHomepage = () => {
     )
   }
   //handle click outside filter
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (isSelecting.current) return
-      if (
-        dropdownRefs.current.some(
-          (ref) => ref && ref.contains(event.target as Node),
-        )
-      ) {
-        return
-      }
-      setOpenFilters((prev) => prev.map(() => false))
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
-  //handle click dropdown filter'
-  const [selectedItems, setSelectedItems] = useState<{
-    [key: number]: {label: string; slug: string}
-  }>([])
-
   const handleSelect = (
     filterIndex: number,
     selectedValue: {label: string; slug: string},
   ) => {
+    // Đánh dấu trạng thái đang chọn
     isSelecting.current = true
+
+    // Cập nhật item đã chọn
     setSelectedItems((prev) => ({
       ...prev,
       [filterIndex]: selectedValue,
     }))
+
+    // Đóng dropdown của filter hiện tại
     setOpenFilters((prev) =>
       prev.map((isOpen, i) => (i === filterIndex ? false : isOpen)),
     )
-    isSelecting.current = false
+
+    // Reset trạng thái sau khi tất cả cập nhật hoàn thành
+    setTimeout(() => {
+      isSelecting.current = false
+    }, 200) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
   }
+  //handle click outside filter
+  const handleClickOutside = (e: MouseEvent) => {
+    if (isSelecting.current) return // Nếu đang chọn thì không xử lý
+    if (
+      dropdownRefs.current.every(
+        (ref) => ref && !ref.contains(e.target as Node),
+      )
+    ) {
+      setOpenFilters(new Array(filterOptions.length).fill(false)) // Đóng tất cả dropdown
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside)
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
   //handle click popup filter
-  const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
-  const [keyFilter, setKeyFilter] = React.useState('')
   const handleClickPopupFilter = (key: string) => {
     setKeyFilter(key)
     setOpenPopupFilter(true)
