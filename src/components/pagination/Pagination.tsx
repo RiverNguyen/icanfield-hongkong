@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import ReactPaginate from 'react-paginate'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
@@ -8,7 +10,7 @@ type TProps = {
   pageCurrent: number
   pageCount: number
   className?: string
-  setCurrentPage: (page: number) => void
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
 }
 const Pagination = forwardRef(
   (
@@ -52,12 +54,12 @@ const Pagination = forwardRef(
         pageClassName='size-[2.5rem] xsm:size-[2rem] rounded-[0.75rem] flex-center border border-solid border-[#CFCECE] text-[#3F2214] text-[0.875rem] font-bold leading-normal bg-white [&>a]:size-full [&>a]:flex-center select-none lg:hover:bg-[#3F2214]/20 xsm:text-[0.7rem]'
         previousLabel={
           <button className='group size-[2.5rem] rounded-[0.75rem] flex-center lg:hover:bg-[#3F2214]/20 sm:!mr-[0.62rem] xsm:size-[2rem]'>
-            <ICArrowPagination className='ease-pagination-bezier size-[1.23656rem] transition-all duration-300 lg:group-hover:scale-[1.2]' />
+            <ICArrowPagination className='size-[1.23656rem] transition-all duration-300 ease-pagination-bezier lg:group-hover:scale-[1.2]' />
           </button>
         }
         nextLabel={
           <button className='group size-[2.5rem] rounded-[0.75rem] flex-center lg:hover:bg-[#3F2214]/20 sm:!ml-[0.62rem] xsm:size-[2rem]'>
-            <ICArrowPagination className='ease-pagination-bezier size-[1.23656rem] rotate-180 transition-all duration-300 lg:group-hover:scale-[1.2]' />
+            <ICArrowPagination className='size-[1.23656rem] rotate-180 transition-all duration-300 ease-pagination-bezier lg:group-hover:scale-[1.2]' />
           </button>
         }
         breakClassName='size-[2.5rem] xsm:size-[2rem] rounded-[0.75rem] flex-center border border-solid border-[#CFCECE] text-[#3F2214] text-[0.875rem] font-bold leading-normal bg-white select-none lg:hover:bg-[#3F2214]/20'
@@ -69,6 +71,7 @@ const Pagination = forwardRef(
         pageCount={pageCount}
         renderOnZeroPageCount={null}
         marginPagesDisplayed={isMobile ? 1 : 2}
+        forcePage={pageCurrent - 1}
         className={cn(
           'mx-auto flex w-fit items-center space-x-[1rem]',
           className,
@@ -78,7 +81,8 @@ const Pagination = forwardRef(
   },
 )
 
-export default Pagination
+Pagination.displayName = 'Pagination'
+export {Pagination}
 
 const ICArrowPagination = ({className}: {className?: string}) => {
   return (
