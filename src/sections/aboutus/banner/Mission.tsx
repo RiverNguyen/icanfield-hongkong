@@ -5,8 +5,9 @@ import {cn} from '@/lib/utils'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
 import {useEffect, useRef, useState} from 'react'
 import './style.css'
+import { dataMission } from '@/types/dataAcfAboutus.interface'
 
-export default function Mission() {
+export default function Mission({dataMission}: {dataMission: dataMission}) {
   const [activeInterFace, setActiveInterFace] = useState<boolean>(false)
   const ref = useRef<HTMLDivElement>(null)
   const isMobile = useIsMobile()
@@ -69,77 +70,83 @@ export default function Mission() {
       >
         <div className='mb-[2.5rem] flex flex-col items-center space-y-[0.625rem] xsm:space-y-[0.5rem]'>
           <span className='body16 xsm:sub-12 font-semibold text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
-            SỨ MỆNH CỦA ICANFIELD
+            {dataMission?.label}
           </span>
           <h2 className='xsm:heading1 w-[55.875rem] text-center font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:w-full'>
-            Dịch chuyển nụ cười, kiến tạo thịnh vượng Đầu tư định cư quốc tế là
-            chìa khoá mở ra điều kỳ diệu cho tương lai.
+            {dataMission?.title}
           </h2>
         </div>
         <div className='flex h-[60rem] w-[74.75rem] flex-col items-center justify-start rounded-[2.5rem] bg-[linear-gradient(180deg,rgba(220,157,96,0.92)_-18.75%,rgba(123,87,53,0.50)_54.27%,rgba(255,255,255,0.45)_63.95%)] opacity-[0.95] xsm:h-[38.5rem] xsm:w-full xsm:p-[1.5rem_1rem]'>
           <p className='xsm:heading2 mb-[2rem] w-[49.3125rem] text-center text-[2.25rem] font-semibold leading-[1.2] tracking-[-0.045rem] text-textwhitetest sm:mt-[2.44rem] xsm:w-full'>
-            iCanfield – Cam kết mang đến cho bạn giải pháp đầu tư & định cư phù
-            hợp nhất.
+            {dataMission?.decscripts}
           </p>
           <div className='flex sm:space-x-[6rem] xsm:grid xsm:grid-cols-2 xsm:gap-[2rem]'>
-            <div className='flex flex-col items-center'>
-              <CountNumber
-                interFace={!activeInterFace}
-                delay={isMobile ? 0 : 900}
-                number={1520}
-                suffix='+'
-                className={{
-                  suffixClass: 'text-[1.875rem] font-bold text-white',
-                  numberClass: 'text-white',
-                }}
-              />
-              <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
-              <p className='body16-m xsm:sub-12 text-white xsm:font-medium xsm:tracking-[-0.015rem]'>
-                Định cư thành công
-              </p>
-            </div>
-            <div className='flex flex-col items-center'>
-              <CountNumber
-                interFace={!activeInterFace}
-                delay={isMobile ? 0 : 900}
-                number={365}
-                suffix='+'
-                className={{
-                  suffixClass: 'text-[1.875rem] font-bold text-white',
-                  numberClass: 'text-white',
-                }}
-              />
-              <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
-              <p className='body16-m text-white'>Định cư thành công</p>
-            </div>
-            <div className='flex flex-col items-center'>
-              <CountNumber
-                interFace={!activeInterFace}
-                delay={isMobile ? 0 : 900}
-                number={250}
-                suffix='+'
-                className={{
-                  suffixClass: 'text-[1.875rem] font-bold text-white',
-                  numberClass: 'text-white',
-                }}
-              />
-              <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
-              <p className='body16-m text-white'>Định cư thành công</p>
-            </div>
-            <div className='flex flex-col items-center'>
-              <CountNumber
-                interFace={!activeInterFace}
-                delay={isMobile ? 0 : 900}
-                number={90}
-                suffix='+'
-                className={{
-                  suffixClass: 'text-[1.875rem] font-bold text-white',
-                  numberClass: 'text-white',
-                }}
-              />
-              <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
-              <p className='body16-m text-white'>Định cư thành công</p>
-            </div>
+            {dataMission?.parameter?.successful_settlement?.data && dataMission?.parameter?.successful_settlement?.title && (
+              <div className='flex flex-col items-center'>
+                <CountNumber
+                  interFace={!activeInterFace}
+                  delay={isMobile ? 0 : 900}
+                  number={dataMission?.parameter?.successful_settlement?.data}
+                  suffix='+'
+                  className={{
+                    suffixClass: 'text-[1.875rem] font-bold text-white',
+                    numberClass: 'text-white',
+                  }}
+                />
+                <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
+                <p className='body16-m xsm:sub-12 text-white xsm:font-medium xsm:tracking-[-0.015rem]'>
+                  {dataMission?.parameter?.successful_settlement?.title}
+                </p>
+              </div>
+            )}
+            {dataMission?.parameter?.study_abroad_successfully?.data && dataMission?.parameter?.study_abroad_successfully?.title && (
+              <div className='flex flex-col items-center'>
+                <CountNumber
+                  interFace={!activeInterFace}
+                  delay={isMobile ? 0 : 900}
+                  number={dataMission?.parameter?.study_abroad_successfully?.data}
+                  suffix='+'
+                  className={{
+                    suffixClass: 'text-[1.875rem] font-bold text-white',
+                    numberClass: 'text-white',
+                  }}
+                />
+                <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
+                <p className='body16-m text-white'>{dataMission?.parameter?.study_abroad_successfully?.title}</p>
+              </div>
+            )}
+            {dataMission?.parameter?.investing_in_foreign_real_estate?.data && dataMission?.parameter?.investing_in_foreign_real_estate?.title && (
+              <div className='flex flex-col items-center'>
+                <CountNumber
+                  interFace={!activeInterFace}
+                  delay={isMobile ? 0 : 900}
+                  number={dataMission?.parameter?.investing_in_foreign_real_estate?.data}
+                  suffix='+'
+                  className={{
+                    suffixClass: 'text-[1.875rem] font-bold text-white',
+                    numberClass: 'text-white',
+                  }}
+                />
+                <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
+                <p className='body16-m text-white'>{dataMission?.parameter?.investing_in_foreign_real_estate?.title}</p>
+              </div>
+            )}
+            {dataMission?.parameter?.global_partner?.data && dataMission?.parameter?.global_partner?.title && (
+              <div className='flex flex-col items-center'>
+                <CountNumber
+                  interFace={!activeInterFace}
+                  delay={isMobile ? 0 : 900}
+                  number={dataMission?.parameter?.global_partner?.data}
+                  suffix='+'
+                  className={{
+                    suffixClass: 'text-[1.875rem] font-bold text-white',
+                    numberClass: 'text-white',
+                  }}
+                />
+                <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
+                <p className='body16-m text-white'>{dataMission?.parameter?.global_partner?.title}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

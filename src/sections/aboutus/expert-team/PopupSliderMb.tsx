@@ -3,13 +3,8 @@ import ImageV2 from "@/components/image/ImageV2";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import { cn } from "@/lib/utils";
 import ItemExpertTeam from "@/sections/aboutus/expert-team/ItemExpertTeam";
+import { IExpertTeamPropsItem } from "@/types/dataAcfAboutus.interface";
 
-type DataType = {
-  name: string;
-  position: string;
-  srcimage: string;
-  content: string;
-};
 export default function PopupSliderMb({
   toggleMB,
   setToggleMB,
@@ -18,7 +13,7 @@ export default function PopupSliderMb({
 }: {
   toggleMB: boolean;
   setToggleMB: (value: boolean) => void;
-  data: DataType;
+  data: IExpertTeamPropsItem;
   index: number;
 }) {
   
@@ -55,10 +50,11 @@ export default function PopupSliderMb({
           <ItemExpertTeam
             className="xsm:mx-auto xsm:w-[16.87925rem] xsm:h-[19.59588rem] [&_svg]:xsm:h-[19.59588rem] xsm:before:absolute xsm:before:bg-white xsm:before:w-full xsm:before:h-[0.1rem] xsm:before:top-[1.3rem] xsm:before:z-10"
             index={index}
-            srcImage={data?.srcimage}
+            srcImage={data?.image?.url}
           />
-          <div className="mt-[1.5rem] [&_p]:body-14 [&_p]:text-bodytext">
-            <p>{data?.content}</p>
+          <div 
+            dangerouslySetInnerHTML={{__html: data?.describe}}
+            className="mt-[1.5rem] [&_p]:body-14 [&_p]:text-bodytext">
           </div>
         </div>
         <div

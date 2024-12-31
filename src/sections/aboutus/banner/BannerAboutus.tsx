@@ -4,8 +4,9 @@ import useIsMobile from '@/hooks/useIsMobile'
 import {cn} from '@/lib/utils'
 import {useEffect, useRef, useState} from 'react'
 import './style.css'
+import { dataAcfBanner } from '@/types/dataAcfAboutus.interface'
 
-export default function BannerAboutus() {
+export default function BannerAboutus({dataAcfBanner}: {dataAcfBanner: dataAcfBanner}) {
   const [activeInterFace, setActiveInterFace] = useState<boolean>(false)
   const ref = useRef<HTMLSelectElement>(null)
   const isMobile = useIsMobile()
@@ -33,18 +34,18 @@ export default function BannerAboutus() {
       {isMobile ? (
         <ImageV2
           className='w-full h-full'
-          alt=''
+          alt={dataAcfBanner?.images_background_mb?.alt}
           width={1600}
           height={700}
-          src={'/imgs/about-us/banner/d-hero_bannermbv2.webp'}
+          src={dataAcfBanner?.images_background_mb?.url}
         />
       ) : (
         <ImageV2
           className='w-full h-full'
-          alt=''
+          alt={dataAcfBanner?.images_background_pc?.alt}
           width={1600}
           height={700}
-          src={'/imgs/about-us/banner/d-hero_bannerv2.webp'}
+          src={dataAcfBanner?.images_background_pc?.url}
         />
       )}
       <ImageV2
@@ -64,14 +65,14 @@ export default function BannerAboutus() {
         )}
       >
         <p className='font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-white xsm:text-[1.75rem] xsm:font-semibold xsm:tracking-[-0.035rem]'>
-          Chúng tôi là
+          {dataAcfBanner?.we_are?.title}
         </p>
         <ImageV2
           className='h-[10.35025rem] w-[33.6875rem] object-contain xsm:h-[5.60719rem] xsm:w-[18.25rem]'
-          alt=''
+          alt={dataAcfBanner?.we_are?.image_about_us?.alt}
           width={539}
           height={165}
-          src={'/imgs/about-us/d-name-icanfield.png'}
+          src={dataAcfBanner?.we_are?.image_about_us?.url}
         />
         <h1 className='fixed top-[-100%] opacity-0'>Icanfield Việt Nam</h1>
       </div>
@@ -81,20 +82,13 @@ export default function BannerAboutus() {
           'absolute bottom-[3rem] left-[5rem] w-[41.625rem] space-y-[1.19rem] transition-all sm:translate-y-[100%] sm:opacity-0 xsm:bottom-0 xsm:left-[50%] xsm:w-full xsm:translate-x-[-50%] xsm:space-y-[1rem] xsm:p-[2.5rem_1rem]',
         )}
       >
-        <span className='font-optima text-[2.25rem] font-semibold leading-[1.3] tracking-[-0.09rem] text-brown xsm:text-[1.25rem] xsm:leading-[1.2] xsm:tracking-[-0.025rem]'>
-          Tập đoàn Di trú Hàng đầu <br /> Khu vực Châu Á - Thái Bình Dương
+        <span 
+          dangerouslySetInnerHTML={{__html: dataAcfBanner?.label_group}} 
+          className='font-optima text-[2.25rem] font-semibold leading-[1.3] tracking-[-0.09rem] text-brown xsm:text-[1.25rem] xsm:leading-[1.2] xsm:tracking-[-0.025rem]'>
         </span>
-        <div className='body-14 tracking-[-0.00875rem] text-greyscaletext-800'>
-          <p>
-            Là thành viên của iCanfield Group, iCanfield Vietnam tự hào cung cấp
-            dịch vụ tư vấn đầu tư quốc tế và định cư toàn cầu theo mô hình
-            One-Stop Shop.
-            <br />
-            Chúng tôi đồng hành cùng các nhà đầu tư Việt Nam, giúp tối ưu hóa
-            thời gian và chi phí, đồng thời mang lại hiệu quả đầu tư vượt trội.
-            Chúng tôi đồng hành cùng các nhà đầu tư Việt Nam, giúp tối ưu hóa
-            thời gian và chi phí, đồng thời mang lại hiệu quả đầu tư vượt trội.
-          </p>
+        <div 
+          dangerouslySetInnerHTML={{__html: dataAcfBanner?.decscripts}} 
+          className='body-14 tracking-[-0.00875rem] text-greyscaletext-800'>
         </div>
       </div>
     </section>
