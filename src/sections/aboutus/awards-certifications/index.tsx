@@ -1,21 +1,21 @@
 'use client'
 
 import ImageV2 from '@/components/image/ImageV2'
-import {IImageV2} from '@/types/image.interface'
+import { Media } from '@/types/image.interface'
 import {FC, useEffect, useState} from 'react'
 import 'swiper/css'
 import {Swiper, SwiperSlide} from 'swiper/react'
 
 export interface IAwardsCertificationsProps {
-  logo: IImageV2
+  logo: Media
   title: string
   items: IAwardsCertificationsItem[]
-  background: IImageV2
+  background: Media
 }
 
 interface IAwardsCertificationsItem {
   title: string
-  image: IImageV2
+  image: Media
 }
 
 const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
@@ -41,8 +41,8 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
   return (
     <section className='xsm:overflow-hidden pb-[5rem] bg-[linear-gradient(180deg,#F6F6F4_76.05%,#F7EDDE_100%)]'>
       <ImageV2
-        alt={logo.alt}
-        src={logo.src}
+        alt={logo?.alt}
+        src={logo?.url}
         width={255 * 2}
         height={80 * 2}
         className='m-auto block h-[3rem] w-[8.50894rem] object-contain sm:h-[5.625rem] sm:w-[15.95425rem]'
@@ -69,7 +69,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
           spaceBetween={spaceBetween}
           className='!z-10 mx-auto min-h-[14.5rem] select-none sm:min-h-[24rem] sm:max-w-[74.38rem] xsm:!pl-[1rem]'
         >
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <SwiperSlide
               key={index}
               className='mb-auto mt-auto !flex !w-[15.25rem] flex-col items-center justify-center p-[0.5rem] sm:!w-[20.625rem]'
@@ -86,11 +86,13 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
 export default AwardsCertifications
 
 function ItemAwardsCertifications({title, image}: IAwardsCertificationsItem) {
+  console.log(title);
+  console.log(image);
   return (
     <>
       <ImageV2
         alt={image.alt}
-        src={image.src}
+        src={image.url}
         width={330 * 2}
         height={310 * 2}
         className='mb-[1rem] h-auto w-full object-contain sm:mb-[1.25rem]'
@@ -103,7 +105,7 @@ function ItemAwardsCertifications({title, image}: IAwardsCertificationsItem) {
 }
 
 interface IBackgroundImageProps {
-  image: IImageV2
+  image: Media
   className: string
 }
 
@@ -222,7 +224,7 @@ function BackgroundImage({image, className}: IBackgroundImageProps) {
           id='image0_1426_50243'
           width={4096}
           height={2731}
-          xlinkHref={image.src}
+          xlinkHref={image.url}
         />
       </defs>
     </svg>

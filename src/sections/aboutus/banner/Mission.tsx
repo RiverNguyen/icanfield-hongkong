@@ -112,7 +112,9 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
                   }}
                 />
                 <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
-                <p className='body16-m text-white'>{dataMission?.parameter?.study_abroad_successfully?.title}</p>
+                <p className='body16-m xsm:sub-12 text-white xsm:font-medium xsm:tracking-[-0.015rem]'>
+                  {dataMission?.parameter?.study_abroad_successfully?.title}
+                </p>
               </div>
             )}
             {dataMission?.parameter?.investing_in_foreign_real_estate?.data && dataMission?.parameter?.investing_in_foreign_real_estate?.title && (
@@ -128,7 +130,9 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
                   }}
                 />
                 <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
-                <p className='body16-m text-white'>{dataMission?.parameter?.investing_in_foreign_real_estate?.title}</p>
+                <p className='body16-m xsm:sub-12 text-white xsm:font-medium xsm:tracking-[-0.015rem]'>
+                  {dataMission?.parameter?.investing_in_foreign_real_estate?.title}
+                </p>
               </div>
             )}
             {dataMission?.parameter?.global_partner?.data && dataMission?.parameter?.global_partner?.title && (
@@ -144,7 +148,9 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
                   }}
                 />
                 <div className='my-[0.5rem] h-[0.0625rem] w-full bg-white opacity-[0.4]'></div>
-                <p className='body16-m text-white'>{dataMission?.parameter?.global_partner?.title}</p>
+                <p className='body16-m xsm:sub-12 text-white xsm:font-medium xsm:tracking-[-0.015rem]'>
+                  {dataMission?.parameter?.global_partner?.title}
+                </p>
               </div>
             )}
           </div>
