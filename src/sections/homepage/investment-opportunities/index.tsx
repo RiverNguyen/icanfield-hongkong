@@ -1,22 +1,20 @@
 'use client'
-import React, {FC, useEffect, useRef, useState} from 'react'
 import ImageV2 from '@/components/image/ImageV2'
-import Link from 'next/link'
-import './style.css'
 import ArrowRight from '@/components/svg/ArrowRight'
 import {cn} from '@/lib/utils'
+import {Media} from '@/types/image.interface'
+import Link from 'next/link'
+import {FC, useEffect, useRef, useState} from 'react'
+import './style.css'
 
 export interface IInvestmentOpportunities {
-  items: IItemInvestmentOpportunities[]
-  subtitle: string
-  title: string
+  data: {items: IItemInvestmentOpportunities[]; subtitle: string; title: string}
 }
 
 export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
-  items,
-  subtitle,
-  title,
+  data,
 }) => {
+  const {items, subtitle, title} = data
   const [activeIndex, setActiveIndex] = useState<number>(-1)
   const ref = useRef<HTMLSelectElement>(null)
   useEffect(() => {
@@ -64,10 +62,10 @@ export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
 export interface IItemInvestmentOpportunities {
   title: string
   description: string
-  image: string
+  image: Media
   link: string
-  backgroundPc: string
-  backgroundMb: string
+  background_pc: Media
+  background_mb: Media
 }
 
 interface IItemInvestmentOpportunitiesProps
@@ -78,8 +76,8 @@ interface IItemInvestmentOpportunitiesProps
 }
 
 function ItemInvestmentOpportunities({
-  backgroundPc,
-  backgroundMb,
+  background_pc,
+  background_mb,
   description,
   image,
   link,
@@ -115,25 +113,25 @@ function ItemInvestmentOpportunities({
     >
       <ImageV2
         className='absolute bottom-0 left-0 right-0 top-0 size-full object-cover xsm:hidden'
-        src={backgroundPc}
-        alt={title}
-        width={1600 * 2}
-        height={547 * 2}
+        src={background_pc.url}
+        alt={background_pc.alt}
+        width={background_pc.width * 2}
+        height={background_pc.height * 2}
       />
       <ImageV2
         className='absolute bottom-0 left-0 right-0 h-[38.56rem] w-full object-cover sm:hidden'
-        src={backgroundMb}
-        alt={title}
-        width={1600 * 2}
-        height={547 * 2}
+        src={background_mb.url}
+        alt={background_mb.alt}
+        width={background_mb.width * 2}
+        height={background_mb.height * 2}
       />
       <div className='relative mx-auto flex flex-col items-center sm:max-w-[82rem] sm:flex-row sm:items-stretch'>
         <ImageV2
           className='h-[12.5rem] w-[17.24138rem] object-cover sm:h-[18.125rem] sm:w-[25rem]'
-          src={image}
-          alt={title}
-          width={456 * 2}
-          height={290 * 2}
+          src={image.url}
+          alt={image.alt}
+          width={image.width * 2}
+          height={image.height * 2}
         />
         <div className='p-[2.5rem_1rem_1.25rem] sm:ml-[10rem] sm:space-y-[1.75rem] sm:p-0'>
           <h3
@@ -168,7 +166,7 @@ function ItemInvestmentOpportunities({
             </span>
           </p>
           <Link
-            className='xsm:border-Text-Text-Grey-Disable sm:bg-btn-gradient flex h-[3rem] items-center justify-center rounded-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] sm:inline-flex sm:justify-start xsm:border xsm:mt-8'
+            className='flex h-[3rem] items-center justify-center rounded-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] sm:inline-flex sm:justify-start sm:bg-btn-gradient xsm:mt-8 xsm:border xsm:border-Text-Text-Grey-Disable'
             href={link}
           >
             <span className='body-14-m text-bodytext sm:text-white'>

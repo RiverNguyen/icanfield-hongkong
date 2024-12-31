@@ -1,18 +1,26 @@
 'use client'
-import React, {useState} from 'react'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Navigation} from 'swiper/modules'
-import {talentedTeam} from './constants'
-import 'swiper/css'
 import ImageV2 from '@/components/image/ImageV2'
-const TalentedTeam = () => {
+import {Media} from '@/types/image.interface'
+import {useState} from 'react'
+import 'swiper/css'
+import {Navigation} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+interface ITalentedTeamProps {
+  data: {
+    title: string
+    talented_team: {
+      image: Media
+      name: string
+      position: string
+    }[]
+  }
+}
+const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
   const [activeIndex, setActiveIndex] = useState(0) // Theo dõi slide active
   return (
     <section className='talented-team py-[6.5rem] xsm:py-[2.5rem]'>
-      <h2 className='heading1 text-center font-optima text-brown'>
-        Đội ngũ tài năng từ iCanfield
-      </h2>
-      <div className='section-container relative mx-auto mt-[2.5rem] w-[83.75rem] xsm:w-full xsm:px-0 xsm:mt-[1.5rem]'>
+      <h2 className='heading1 text-center font-optima text-brown'>{title}</h2>
+      <div className='section-container relative mx-auto mt-[2.5rem] w-[83.75rem] xsm:mt-[1.5rem] xsm:w-full xsm:px-0'>
         <Swiper
           spaceBetween={23}
           slidesPerView={5}
@@ -37,17 +45,17 @@ const TalentedTeam = () => {
             },
           }}
         >
-          {talentedTeam.map((item, index) => (
+          {talented_team.map((item, index) => (
             <SwiperSlide
               key={index}
               className='!overflow-visible'
             >
               <div className='flex cursor-pointer flex-col items-center justify-center !overflow-visible'>
                 <ImageV2
-                  src={item.imgUrl}
-                  alt={item.name}
-                  width={300}
-                  height={300}
+                  src={item.image.url}
+                  alt={item.image.alt}
+                  width={item.image.width * 2}
+                  height={item.image.height * 2}
                   className='h-[22.04544rem] w-full scale-95 object-contain transition-transform duration-300 hover:scale-100'
                 />
                 <div

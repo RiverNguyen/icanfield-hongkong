@@ -1,16 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import React, {useEffect, useState} from 'react'
-import ReactPlayer from 'react-player'
-import {convertToIframe} from '@/utils/convertToIframe'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Autoplay} from 'swiper/modules'
-import 'swiper/css'
-import {filterOptions, dataVideo, bannerDataImage} from './constants'
 import {FilterOption} from '@/types/bannerFilter.interface'
-import {useRef} from 'react'
-const BannerHomepage = () => {
-  const haveVideo = true
+import {convertToIframe} from '@/utils/convertToIframe'
+import React, {useEffect, useRef, useState} from 'react'
+import ReactPlayer from 'react-player'
+import 'swiper/css'
+import {Autoplay, EffectFade} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {filterOptions} from './constants'
+
+export interface IDataMedia {
+  type: 'upload' | 'youtube' | 'tiktok' | 'slide'
+  [key: string]: any
+}
+
+export interface IBannerHomepageProps {
+  data: IDataMedia
+}
+
+const BannerHomepage = ({data}: IBannerHomepageProps) => {
   const [isClient, setIsClient] = useState(false)
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
   const isSelecting = useRef(false)
@@ -83,11 +92,11 @@ const BannerHomepage = () => {
   const currentFilter = filterOptions.find((filter) => filter.key === keyFilter)
   return (
     <section className='relative mt-[6.44rem] h-[42.8125rem] w-full xsm:mt-[2.25rem] xsm:h-[33.06rem] xsm:bg-background'>
-      {haveVideo ? (
+      {data.type != 'slide' ? (
         <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
-          {isClient && dataVideo.type === 'upload' ? (
+          {isClient && data.type === 'upload' ? (
             <ReactPlayer
-              url={dataVideo.url}
+              url={data[data.type].url}
               playing
               loop
               muted
@@ -98,7 +107,7 @@ const BannerHomepage = () => {
           ) : (
             isClient && (
               <ReactPlayer
-                url={convertToIframe(dataVideo)}
+                url={convertToIframe(data)}
                 playing
                 loop
                 muted
@@ -113,39 +122,47 @@ const BannerHomepage = () => {
         <div className='absolute left-0 top-0 z-[0] h-full w-full xsm:relative xsm:h-[14.625rem]'>
           <Swiper
             autoplay={{
-              delay: 2500,
+              delay: 3500,
               disableOnInteraction: false,
             }}
+            effect='fade'
             loop={true}
             speed={800}
-            modules={[Autoplay]}
+            modules={[Autoplay, EffectFade]}
             className='mySwiper !h-full'
           >
-            {bannerDataImage.map((item, index) => (
-              <SwiperSlide
-                key={index}
-                className='!h-full'
-              >
-                <ImageV2
-                  src={item}
-                  alt='banner'
-                  width={1920}
-                  height={600}
-                  className='h-full w-full object-cover'
-                />
-              </SwiperSlide>
-            ))}
+            {data[data.type].map(
+              (
+                item: {url: string; alt: string; width: number; height: number},
+                index: number,
+              ) => (
+                <SwiperSlide
+                  key={index}
+                  className='!h-full'
+                >
+                  <ImageV2
+                    src={item.url}
+                    alt={item.alt}
+                    width={item.width * 2}
+                    height={item.height * 2}
+                    className='h-full w-full object-cover'
+                  />
+                </SwiperSlide>
+              ),
+            )}
           </Swiper>
         </div>
       )}
       <div className='overlay pointer-events-none absolute z-[1] h-full w-full bg-[linear-gradient(180deg,rgba(150,146,142,0.00)_55.02%,#96928E_95.27%)] opacity-[0.24] xsm:hidden'></div>
-      <ImageV2
-        src='/imgs/homepage/banner/d-text.png'
-        alt='banner'
-        width={560}
-        height={173}
-        className='absolute left-1/2 top-[17.31rem] z-[2] h-[6.76769rem] w-[22.02719rem] -translate-x-1/2 object-contain xsm:hidden'
-      />
+      {data?.logo && (
+        <ImageV2
+          src={data.logo.url}
+          alt={data.logo.alt}
+          width={data.logo.width * 2}
+          height={data.logo.height * 2}
+          className='pointer-events-none absolute left-1/2 top-[17.31rem] z-[2] h-[6.76769rem] w-[22.02719rem] -translate-x-1/2 object-contain xsm:hidden'
+        />
+      )}
       <div className='banner-filter absolute bottom-[3.81rem] left-1/2 z-[2] flex h-[4.19rem] w-[71.5rem] -translate-x-1/2 rounded-[0.75rem] bg-[#fff] xsm:hidden'>
         <div className='h-full w-[0.75rem] rounded-bl-[0.75rem] rounded-tl-[0.75rem] bg-[linear-gradient(180deg,#95502F_20.03%,#F5C178_100%)]'></div>
         <div className='flex w-full items-end justify-between p-[0.5rem]'>
