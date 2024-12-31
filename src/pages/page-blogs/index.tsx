@@ -5,13 +5,18 @@ import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
 import {FeaturedNews} from '@/sections/blogs/featured-news'
 import featuredNews from '@/sections/blogs/featured-news/constants'
 import ListBlogs from '@/sections/blogs/list-blogs'
+import {ApiResponse, Category} from '@/types/blogs.interface'
 import {FC} from 'react'
 
 interface IPageBlogsProps {
-  test: string
+  dataPosts: ApiResponse
+  dataCategories: Category[]
 }
 
-export const PageBlogs: FC<IPageBlogsProps> = ({}) => {
+// INIT DATA
+const categoryItemAll = {id: 0, name: 'Tất cả', slug: 'all', taxonomy: 'all'}
+
+export const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
   return (
     <>
       <BannerStatic {...blogBanner}>
@@ -23,7 +28,10 @@ export const PageBlogs: FC<IPageBlogsProps> = ({}) => {
         />
       </BannerStatic>
       <FeaturedNews {...featuredNews} />
-      <ListBlogs />
+      <ListBlogs
+        dataPosts={dataPosts}
+        dataCategories={[categoryItemAll, ...dataCategories]}
+      />
       <WrapperConnectUs />
     </>
   )
