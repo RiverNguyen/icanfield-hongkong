@@ -5,7 +5,6 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      console.log(window.innerWidth)
       setIsMobile(window.innerWidth <= 639) // Thay đổi ngưỡng tại đây nếu cần
     }
 

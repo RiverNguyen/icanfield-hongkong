@@ -4,9 +4,9 @@ import ArrowRight from '@/components/svg/ArrowRight'
 import {cn} from '@/lib/utils'
 import {IImageV2} from '@/types/image.interface'
 import Link from 'next/link'
-import React, {FC, useState} from 'react'
-import {SwiperSlide, Swiper} from 'swiper/react'
+import {FC, useState} from 'react'
 import {Navigation} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
 import './style.css'
 
 export interface INewsFlowProps {
@@ -27,7 +27,7 @@ const NewsFlow: FC<INewsFlowProps> = ({
 }) => {
   const [latestNewsItemIndex, setLatestNewsItemIndex] = useState(0)
   return (
-    <section className='space-y-[1.5rem] bg-white pt-[2.5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] sm:space-y-[2.5rem] sm:rounded-[4rem_4rem_0rem_0rem] sm:p-[5rem_0_6.5rem]'>
+    <section className='relative z-10 space-y-[1.5rem] bg-white pt-[2.5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] sm:space-y-[2.5rem] sm:rounded-[4rem_4rem_0rem_0rem] sm:p-[5rem_0_6.5rem] xsm:mb-[4rem]'>
       <h2 className='heading1 mx-auto max-w-[90rem] px-[1rem] font-optima font-semibold text-brown sm:px-0'>
         {title}
       </h2>
@@ -70,7 +70,7 @@ const NewsFlow: FC<INewsFlowProps> = ({
               href={'#'}
               className='flex items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem]'
             >
-              <span className='body-14-m text-white'>Xem thêm</span>
+              <span className='body-14-m text-white'>Xem tất cả</span>
               <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white' />
             </Link>
             <button className='latest-news__prev ml-auto size-[2.5rem] rounded-full bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:hidden'>
@@ -164,9 +164,14 @@ function NewsFeatured({
             </p>
           )}
         </div>
-        <Link href={link} className='mt-auto inline-flex cursor-pointer items-center self-start rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] xsm:hidden relative z-10 group hover:bg-white'>
-          <span className='body-14-m text-white group-hover:text-greentext'>Chi tiết bài viết</span>
-          <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white group-hover:text-greentext' />
+        <Link
+          href={link}
+          className='group/btn relative z-10 mt-auto inline-flex cursor-pointer items-center self-start rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] hover:bg-white xsm:hidden'
+        >
+          <span className='body-14-m text-white group-hover/btn:text-greentext'>
+            Chi tiết bài viết
+          </span>
+          <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white group-hover/btn:text-greentext' />
         </Link>
         <Link
           className='absolute bottom-0 left-0 right-0 top-0 group-hover:text-greentext'

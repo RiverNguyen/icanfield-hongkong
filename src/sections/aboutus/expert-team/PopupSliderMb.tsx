@@ -26,16 +26,16 @@ export default function PopupSliderMb({
           useBodyScrollLock(false)
         }}
         className={cn(
-          "fixed inset-0 bg-[#00000054] z-[39] transition-all duration-1000",
+          'fixed inset-0 z-[39] bg-[#00000054] transition-all duration-1000',
           toggleMB
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none z-[-10]"
+            ? 'pointer-events-auto opacity-100'
+            : 'pointer-events-none z-[-10] opacity-0',
         )}
       ></div>
       <div
         className={cn(
-          "transition-all duration-700 fixed z-40 bottom-0 left-0 w-[23.4375rem] h-[37.5rem] p-[1rem_1rem_2.5rem_1rem] rounded-[1rem_1rem_0rem_0rem] bg-white",
-          toggleMB ? "translate-y-0" : "translate-y-[100%]"
+          'fixed bottom-0 left-0 z-40 h-[37.5rem] w-[23.4375rem] rounded-[1rem_1rem_0rem_0rem] bg-white p-[1rem_1rem_2.5rem_1rem] transition-all duration-700',
+          toggleMB ? 'translate-y-0' : 'translate-y-[100%]',
         )}
       >
         <div className="overflow-hidden overflow-y-auto scrollbar-hidden h-[37.5rem]">
@@ -48,7 +48,7 @@ export default function PopupSliderMb({
             </p>
           </div>
           <ItemExpertTeam
-            className="xsm:mx-auto xsm:w-[16.87925rem] xsm:h-[19.59588rem] [&_svg]:xsm:h-[19.59588rem] xsm:before:absolute xsm:before:bg-white xsm:before:w-full xsm:before:h-[0.1rem] xsm:before:top-[1.3rem] xsm:before:z-10"
+            className='xsm:mx-auto xsm:h-[19.59588rem] xsm:w-[16.87925rem] xsm:before:absolute xsm:before:top-[1.3rem] xsm:before:z-10 xsm:before:h-[0.1rem] xsm:before:w-full xsm:before:bg-white [&_svg]:xsm:h-[19.59588rem]'
             index={index}
             srcImage={data?.image?.url}
           />
@@ -66,14 +66,14 @@ export default function PopupSliderMb({
           className="absolute top-[1.25rem] right-[1rem] z-20"
         >
           <ImageV2
-            className="size-[1.5rem] object-contain"
+            className='size-[1.5rem] object-contain'
             width={24}
             height={24}
-            alt=""
-            src={"/icons/close.svg"}
+            alt=''
+            src={'/icons/close.svg'}
           />
         </div>
       </div>
     </>
-  );
+  )
 }
