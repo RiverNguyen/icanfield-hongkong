@@ -2,9 +2,8 @@
 import {Feature, FeatureCollection, GeoJsonObject} from 'geojson'
 import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import {FC, useCallback, useEffect, useState} from 'react'
+import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
-import {useRef} from 'react'
 import './styles.css'
 export interface ICountry {
   name: string
@@ -86,10 +85,8 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 
   const getFillColor = useCallback((feature: Feature) => {
     if (!feature.properties) return '#F0EFE7' // Màu mặc định
-    console.log(euCountries)
     const countryName = feature.properties.name
     if (euCountries.has(countryName) && countryName !== 'Vietnam') {
-      console.log('hehe')
       return '#D0C1BA' // Màu cho các quốc gia EU
     }
 

@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
+import {loginForm} from '@/actions/loginForm'
+import {logoutForm} from '@/actions/logoutForm'
+import RevalidatePath from '@/actions/revalidatePath'
 import {Button} from '@/components/ui/button'
 import {
   Card,
@@ -21,14 +24,11 @@ import {
 import {Input} from '@/components/ui/input'
 import {Label} from '@/components/ui/label'
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs'
-import {useForm} from 'react-hook-form'
-import {z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {loginForm} from '@/actions/loginForm'
 import {useTransition} from 'react'
-import {logoutForm} from '@/actions/logoutForm'
-import RevalidatePath from '@/actions/revalidatePath'
+import {useForm} from 'react-hook-form'
 import {toast} from 'sonner'
+import {z} from 'zod'
 
 const formSchema = z.object({
   email: z.string().email({
@@ -40,9 +40,7 @@ const formSchema = z.object({
 })
 
 export function FormAuth({session}: any) {
-  console.log('🚀 ~ FormAuth ~ session:', session)
   const [isPending, setTransition] = useTransition()
-  console.log('🚀 ~ FormAuth ~ isPending:', isPending)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,7 +51,6 @@ export function FormAuth({session}: any) {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log('🚀 ~ onSubmit ~ values:', values)
     handleSignIn(values)
   }
 
@@ -66,7 +63,6 @@ export function FormAuth({session}: any) {
       }).then((res) => {
         RevalidatePath('/')
         toast.success('Login successfully')
-        console.log('🚀 ~ setTransition ~ res:', res)
       })
     })
   }
@@ -74,7 +70,6 @@ export function FormAuth({session}: any) {
   function handleSignOut() {
     setTransition(() => {
       logoutForm().then((res) => {
-        console.log('🚀 ~ setTransition ~ res:', res)
         toast.error('Logout successfully')
       })
     })
