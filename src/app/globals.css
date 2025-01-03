@@ -38,10 +38,18 @@ html {
   .dark {
   }
 }
+.background_clip--text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .section-container {
   @apply mx-auto max-w-[90rem] xsm:px-4;
 }
 @layer components {
+  .hero-title {
+    @apply font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem];
+  }
   .heading1 {
     @apply text-[3rem] leading-[1.2] tracking-[-0.06rem] xsm:text-[1.5rem] xsm:leading-[1.3];
   }
