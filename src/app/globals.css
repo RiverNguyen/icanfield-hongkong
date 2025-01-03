@@ -59,6 +59,9 @@ html {
   .heading3 {
     @apply text-[2rem] leading-[1.2] tracking-[-0.04rem];
   }
+  .heading3-s {
+    @apply text-[1.25rem] leading-[1.33];
+  }
   .heading4 {
     @apply text-[1.5rem] leading-[1.4] tracking-[-0.03rem];
   }
