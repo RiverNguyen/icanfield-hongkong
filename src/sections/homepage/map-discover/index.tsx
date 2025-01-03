@@ -39,7 +39,7 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
   const handleNavbarNationalities = (value: string, flag: string) => {
     setNavbarNationalitiesActive(value)
     setUrlImageButton(flag)
-    console.log(urlImageButton)
+
     setIsChangeCountry(true)
   }
   //handle zoom map
@@ -63,14 +63,17 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
             className='h-[9.63756rem] w-[35.37506rem] object-contain xsm:h-[4.76769rem] xsm:w-[17.5rem]'
           />
           <span className='absolute bottom-0 right-0 font-optima text-[1.375rem] leading-[1.3] tracking-[-0.055rem] text-brown xsm:text-[0.75rem]'>
-           {data.slogan}
+            {data.slogan}
           </span>
         </div>
         <div className='ml-[4.81rem] w-[38.5rem] xsm:ml-0 xsm:mt-[2.5rem] xsm:w-full xsm:px-4'>
           <h2 className='mb-[1.19rem] font-optima text-[2.25rem] font-semibold leading-[1.3] tracking-[-0.09rem] text-brown xsm:mb-[1.25rem] xsm:w-full xsm:text-[1.25rem] xsm:tracking-[-0.025rem]'>
             {data.title}
           </h2>
-          <div className='[&_p]:mb-[1rem] [&_p]:text-[0.875rem] [&_p]:leading-[1.5] [&_p]:text-greyscaletext-800 xsm:[&_p]:mb-[0.75rem] xsm:[&_p]:text-[0.875rem]' dangerouslySetInnerHTML={{__html: data.description}}></div>
+          <div
+            className='[&_p]:mb-[1rem] [&_p]:text-[0.875rem] [&_p]:leading-[1.5] [&_p]:text-greyscaletext-800 xsm:[&_p]:mb-[0.75rem] xsm:[&_p]:text-[0.875rem]'
+            dangerouslySetInnerHTML={{__html: data.description}}
+          ></div>
         </div>
         <ImageV2
           src={'/imgs/homepage/map-discover/city-final-2.png'}

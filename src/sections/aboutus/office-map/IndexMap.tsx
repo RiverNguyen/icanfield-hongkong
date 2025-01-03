@@ -28,12 +28,10 @@ const IndexMap = ({countries}: IIndexMapProps) => {
         document.body.classList.remove('no-scroll')
       }
     }
-    console.log(customGeoJson)
   }, [open])
   const handleClickMarker = (country: ICountry) => {
     setCountrySelected(country.label ? country.label : country.name)
     setOpen(true)
-    console.log(country)
   }
   return (
     <div className=''>

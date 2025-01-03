@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {jwtDecode} from 'jwt-decode'
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
-import {jwtDecode} from 'jwt-decode'
 import fetchData from './fetch/fetchData'
 
 declare module 'next-auth' {
@@ -35,7 +35,6 @@ async function refreshAccessToken(token: any) {
       refreshToken: res.refreshToken ?? token.refreshToken,
     }
   } catch (error) {
-    console.log('🚀 ~ refreshAccessToken ~ error:', error)
     return {
       ...token,
       error: 'RefreshAccessTokenError',
@@ -114,7 +113,6 @@ export const {
           }
           throw new Error(res?.message)
         } catch (error) {
-          console.log('🚀 ~ authorize: ~ error:', error)
           throw new Error('test')
         }
       },

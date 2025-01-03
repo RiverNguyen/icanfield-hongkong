@@ -1,10 +1,10 @@
+import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import BannerHomepage from '@/sections/homepage/banner'
 import FormHomepage from '@/sections/homepage/form-homepage'
 import GlobalImmigration from '@/sections/homepage/global-immigration'
 import {InvestmentOpportunities} from '@/sections/homepage/investment-opportunities'
 import NewsFlow from '@/sections/homepage/news-homepage'
-import newFlow from '@/sections/homepage/news-homepage/constants'
 import ProudJourney from '@/sections/homepage/proud-journey'
 import TalentedTeam from '@/sections/homepage/talented-team'
 import endpoints from '@/utils/endpoints'
@@ -13,12 +13,23 @@ const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
   ssr: false, // Nếu component không cần server-side rendering
 })
 const HomePage = async () => {
-  const data = await fetchDataACF({
+  const homeRequest = {
     api: endpoints.homepage + '?_fields=acf&acf_format=standard',
     option: {
       revalidate: 600,
     },
-  })
+  }
+  const newsRequest = {
+    api: endpoints.homeFeatured,
+    option: {
+      revalidate: 600,
+    },
+  }
+  const [homeResponse, newsResponse] = await Promise.all([
+    fetchDataACF(homeRequest),
+    fetchData(newsRequest),
+  ])
+
   const {
     home_banner,
     home_global_immigration,
@@ -26,7 +37,8 @@ const HomePage = async () => {
     investment_opportunities,
     home_talented_team,
     home_proud_journey,
-  } = data?.acf
+  } = homeResponse?.acf
+
   return (
     <main className='bg-background'>
       <BannerHomepage data={home_banner} />
@@ -36,7 +48,7 @@ const HomePage = async () => {
       <TalentedTeam data={home_talented_team} />
       <ProudJourney data={home_proud_journey} />
       <FormHomepage />
-      <NewsFlow {...newFlow} />
+      <NewsFlow data={newsResponse} />
     </main>
   )
 }

@@ -2,19 +2,15 @@
 import ImageV2 from "@/components/image/ImageV2";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import ItemExpertTeam from "@/sections/aboutus/expert-team/ItemExpertTeam";
-interface IExpertTeamProps {
-  name: string;
-  position: string;
-  srcimage: string;
-  content: string;
-}
+import { IExpertTeamPropsItem } from "@/types/dataAcfAboutus.interface";
+
 export default function ItemSliderMb({
   data,
   index,
   setToggleMB,
   setIdActivePopupMB,
 }: {
-  data: IExpertTeamProps;
+  data: IExpertTeamPropsItem;
   index: number;
   setToggleMB: (value: boolean) => void;
   setIdActivePopupMB: (value: number) => void;
@@ -29,7 +25,7 @@ export default function ItemSliderMb({
       <ItemExpertTeam
         className="xsm:before:absolute xsm:before:bg-white xsm:before:w-full xsm:before:h-[0.2rem] xsm:before:top-[2.9rem] xsm:before:z-10"
         index={index}
-        srcImage={data?.srcimage}
+        srcImage={data?.image?.url}
       />
       <p className="text-brown heading2 font-semibold mt-[1.5rem]">
         {data?.name}
