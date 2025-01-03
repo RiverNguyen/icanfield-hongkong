@@ -61,7 +61,7 @@ function Info({title, label, icon}: IInfoProps) {
     <div className='mb-[0.62rem] flex items-center space-x-[1rem] last:mb-0 sm:mb-[1.5rem] xsm:border-b xsm:border-b-[rgba(0,0,0,0.10)] xsm:pb-[0.62rem]'>
       <div className='size-[3rem] rounded-[0.75rem] bg-[rgba(117,117,117,0.08)] p-[1rem] sm:size-[4.25rem] sm:p-[1.25rem]'>
         <ImageV2
-          src={icon.src}
+          src={icon.src || ''}
           alt={icon.alt}
           width={24 * 2}
           height={24 * 2}

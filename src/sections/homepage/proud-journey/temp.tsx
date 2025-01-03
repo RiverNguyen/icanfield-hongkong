@@ -132,7 +132,7 @@ function ProudJourneyItem({avatar, image, name, job}: IItemProudJourney) {
       <div className='box__image relative size-full select-none transition-all duration-100'>
         <ImageV2
           className='size-full rounded-[1rem] object-cover transition-all duration-100'
-          src={image.src}
+          src={image.src || ''}
           alt={image.alt}
           fill
           sizes='25vw'
@@ -142,7 +142,7 @@ function ProudJourneyItem({avatar, image, name, job}: IItemProudJourney) {
         <div className='size-[3.5rem] flex-shrink-0 rounded-full border-[1.5px] border-solid border-white'>
           <ImageV2
             className='size-full rounded-full object-cover'
-            src={avatar.src}
+            src={avatar.src || ''}
             alt={avatar.alt}
             width={56 * 2}
             height={56 * 2}
