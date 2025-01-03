@@ -48,7 +48,7 @@ html {
 }
 @layer components {
   .hero-title {
-    @apply font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem];
+    @apply font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] xsm:text-[1.75rem] xsm:tracking-[-0.035rem];
   }
   .heading1 {
     @apply text-[3rem] leading-[1.2] tracking-[-0.06rem] xsm:text-[1.5rem] xsm:leading-[1.3];
