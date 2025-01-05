@@ -35,7 +35,9 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
   const searchParams = useSearchParams()
 
   const [selectedCategory, setSelectedCategory] = useState<Category>(
-    dataCategories[0],
+    dataCategories.length
+      ? dataCategories[0]
+      : {id: 0, name: 'All', slug: 'all', taxonomy: ''}, // Default fallback
   )
   const [search, setSearch] = useState<string>('')
   const [selectedSortOption, setSelectedSortOption] = useState<SortOption>(
@@ -74,13 +76,8 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
   }, [posts])
 
   const dataLatest = useMemo(() => {
-    return searchParams?.size ? posts?.data : dataPosts.data
+    return Array.isArray(posts?.data) ? posts?.data : dataPosts.data
   }, [searchParams, posts, dataPosts.data])
-
-  if (!Array.isArray(dataCategories) || !Array.isArray(dataPosts.data)) {
-    console.error('Invalid dataCategories or dataPosts')
-    return null
-  }
   return (
     <section
       ref={sectionRef}
