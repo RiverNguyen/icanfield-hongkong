@@ -5,7 +5,7 @@ import {useState} from 'react'
 import 'swiper/css'
 import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
-interface ITalentedTeamProps {
+export interface ITalentedTeamProps {
   data: {
     title: string
     talented_team: {
