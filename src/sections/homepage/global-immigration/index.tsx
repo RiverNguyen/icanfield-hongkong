@@ -95,7 +95,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
         />
         {/* <div className="xsm:hidden absolute w-full h-[55.6875rem] opacity-[0.5] top-0 left-0 bg-[linear-gradient(0deg,rgba(92,50,30,0.10)_0%,#5C321E_100%)]"></div> */}
       </div>
-      <div className='text-container-animation z-[35] translate-y-[15rem] object-cover opacity-0 transition-all sm:absolute sm:right-[6.37rem] sm:top-[5rem] xsm:hidden xsm:w-full xsm:px-[1rem] xsm:pt-[2.5rem]'>
+      <div className='text-container-animation z-[35] translate-y-[15rem] object-cover opacity-0 transition-all duration-1000 sm:absolute sm:right-[6.37rem] sm:top-[5rem] xsm:hidden xsm:w-full xsm:px-[1rem] xsm:pt-[2.5rem]'>
         <h2 className='heading1 mb-[1rem] w-[39.1875rem] font-optima font-semibold text-brown xsm:mb-[0.75rem] xsm:w-full xsm:tracking-[-0.045rem]'>
           {data.title}
         </h2>

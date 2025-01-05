@@ -13,7 +13,7 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import {listProgramInfomation} from './contanst'
 import './styles.css'
 
-interface IMapDiscoverProps {
+export interface IMapDiscoverProps {
   data: {
     logo: Media
     slogan: string
