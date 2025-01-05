@@ -1,5 +1,4 @@
 'use client'
-import {Dropdown} from '@/components/dropdownMenuMb'
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
 import {
@@ -121,20 +120,6 @@ const Header = () => {
       imgUrl: '/imgs/homepage/header/d-Uc.webp',
     },
   ]
-  const listDifferentProgram = [
-    {
-      title: 'Định cư Úc',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-Uc.webp',
-      flagUrl: '/imgs/homepage/header/d-uc-flag.png',
-    },
-    {
-      title: 'Bất động sản Úc',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-bds.webp',
-      flagUrl: '/imgs/homepage/header/d-uc-flag.png',
-    },
-  ]
   const listMenuMobileLast = [
     {
       title: 'Cẩm nang iCanfield',
@@ -181,6 +166,7 @@ const Header = () => {
   const [urlImageSupportCustomer, setUrlImageSupportCustomer] = React.useState<
     string | null
   >(null)
+  const [isCloseMenu, setIsCloseMenu] = React.useState(false)
   const refDropdownLanguage = React.useRef<HTMLDivElement>(null)
   //function handle language dropdown
   const handleOpenLanguage = () => {
@@ -228,50 +214,9 @@ const Header = () => {
     setUrlImageSupportCustomer(url)
   }
   //header Mobile
-  const [isCloseMenu, setIsCloseMenu] = React.useState(false)
   const handleToggleMenu = () => {
     setIsCloseMenu(!isCloseMenu)
   }
-  //dropdown menu mb
-  const [isActiveDropdown, setIsActiveDropdown] = React.useState<{
-    [key: string]: boolean
-  }>({
-    differentProgram: false,
-    supportCustomer: false,
-  })
-
-  const [dropdownHeights, setDropdownHeights] = React.useState<{
-    [key: string]: number
-  }>({
-    differentProgram: 0,
-    supportCustomer: 0,
-  })
-
-  const refDropdowns = React.useRef<{
-    [key: string]: React.RefObject<HTMLDivElement>
-  }>({
-    differentProgram: React.createRef(),
-    supportCustomer: React.createRef(),
-  })
-
-  // Handle toggle dropdown
-  const handleToggleDropdown = (key: string) => {
-    setIsActiveDropdown((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }))
-  }
-
-  // Update height on dropdown state change
-  React.useEffect(() => {
-    Object.keys(isActiveDropdown).forEach((key) => {
-      const ref = refDropdowns.current[key]?.current
-      setDropdownHeights((prev) => ({
-        ...prev,
-        [key]: isActiveDropdown[key] && ref ? ref.scrollHeight : 0,
-      }))
-    })
-  }, [isActiveDropdown])
   // handle toggle popup Language mobile
   const [isActivedLanguageMb, setIsActivedLanguageMb] = React.useState(false)
   //function handle language dropdown
@@ -756,22 +701,7 @@ const Header = () => {
               </Link>
             ))}
           </div>
-          <Dropdown
-            title='Các chương trình khác'
-            listItems={listDifferentProgram}
-            isActive={isActiveDropdown.differentProgram}
-            handleToggle={() => handleToggleDropdown('differentProgram')}
-            refDropdown={refDropdowns.current.differentProgram}
-            height={dropdownHeights.differentProgram}
-          />
-          <Dropdown
-            title='Hỗ trợ khách hàng'
-            listItems={listDifferentProgram}
-            isActive={isActiveDropdown.supportCustomer}
-            handleToggle={() => handleToggleDropdown('supportCustomer')}
-            refDropdown={refDropdowns.current.supportCustomer}
-            height={dropdownHeights.supportCustomer}
-          />
+
           {listMenuMobileLast.map((item, index) => (
             <Link
               href={item.href}
