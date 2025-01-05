@@ -16,13 +16,14 @@ export default function PopupSliderMb({
   data: IExpertTeamPropsItem
   index: number
 }) {
+  const lockScroll = useBodyScrollLock(false)
   return (
     <>
       <div
         onClick={() => {
           setToggleMB(false)
           //hook
-          useBodyScrollLock(false)
+          lockScroll()
         }}
         className={cn(
           'fixed inset-0 z-[39] bg-[#00000054] transition-all duration-1000',
@@ -60,7 +61,7 @@ export default function PopupSliderMb({
           onClick={() => {
             setToggleMB(false)
             // hook
-            useBodyScrollLock(false)
+            lockScroll()
           }}
           className='absolute right-[1rem] top-[1.25rem] z-20'
         >
