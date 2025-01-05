@@ -6,8 +6,7 @@ import {FeaturedNews} from '@/sections/blogs/featured-news'
 import featuredNews from '@/sections/blogs/featured-news/constants'
 import ListBlogs from '@/sections/blogs/list-blogs'
 import {ApiResponse, Category} from '@/types/blogs.interface'
-import {FC} from 'react'
-import {Suspense} from 'react'
+import {FC, Suspense} from 'react'
 interface IPageBlogsProps {
   dataPosts: ApiResponse
   dataCategories: Category[]
@@ -17,18 +16,6 @@ interface IPageBlogsProps {
 const categoryItemAll = {id: 0, name: 'Tất cả', slug: 'all', taxonomy: 'all'}
 
 const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
-  let dataCategoriesWithAll
-  if (
-    dataCategories &&
-    Array.isArray(dataCategories) &&
-    dataCategories.length
-  ) {
-    console.log('dataCategories', dataCategories)
-    dataCategoriesWithAll = [categoryItemAll, ...dataCategories]
-    console.log('dataCategoriesWithAll', dataCategoriesWithAll)
-  } else {
-    dataCategoriesWithAll = [categoryItemAll]
-  }
   return (
     <>
       <BannerStatic {...blogBanner}>
@@ -43,12 +30,14 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
       <Suspense fallback={<div>Loading...</div>}>
         <ListBlogs
           dataPosts={dataPosts}
-          dataCategories={dataCategoriesWithAll}
+          dataCategories={[categoryItemAll, ...dataCategories]}
         />
       </Suspense>
       <WrapperConnectUs />
     </>
   )
 }
+
+export default PageBlogs
 
 export default PageBlogs
