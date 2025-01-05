@@ -1,28 +1,31 @@
+"use client"
 import ImageV2 from "@/components/image/ImageV2";
+import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import ItemExpertTeam from "@/sections/aboutus/expert-team/ItemExpertTeam";
-interface IExpertTeamProps {
-  name: string;
-  position: string;
-  srcimage: string;
-  content: string;
-}
+import { IExpertTeamPropsItem } from "@/types/dataAcfAboutus.interface";
+
 export default function ItemSliderMb({
   data,
   index,
   setToggleMB,
   setIdActivePopupMB,
 }: {
-  data: IExpertTeamProps;
+  data: IExpertTeamPropsItem;
   index: number;
   setToggleMB: (value: boolean) => void;
   setIdActivePopupMB: (value: number) => void;
 }) {
+  const handlePreview = () => {
+    setToggleMB(true);
+    setIdActivePopupMB(index);
+    useBodyScrollLock(true)
+  }
   return (
     <div className="p-[0rem_1rem_1rem_1rem] w-[17rem] rounded-[1rem] bg-white">
       <ItemExpertTeam
         className="xsm:before:absolute xsm:before:bg-white xsm:before:w-full xsm:before:h-[0.2rem] xsm:before:top-[2.9rem] xsm:before:z-10"
         index={index}
-        srcImage={data?.srcimage}
+        srcImage={data?.image?.url}
       />
       <p className="text-brown heading2 font-semibold mt-[1.5rem]">
         {data?.name}
@@ -31,10 +34,7 @@ export default function ItemSliderMb({
         {data?.position}
       </p>
       <div
-        onClick={() => {
-          setToggleMB(true);
-          setIdActivePopupMB(index);
-        }}
+        onClick={handlePreview}
         className="p-[0.5rem_0.75rem_0.5rem_1rem] space-x-[0.5rem] flex-center rounded-[0.5rem] border-[1px] border-solid border-[rgba(18,18,18,0.16)]"
       >
         <p className="text-[0.875rem] font-medium tracking-[-0.0175rem] text-greyscaletext-body">

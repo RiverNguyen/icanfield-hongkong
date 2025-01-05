@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import {Input} from '@/components/ui/input'
@@ -5,25 +6,29 @@ import useClickOutside from '@/hooks/useClickOutSide'
 import {cn} from '@/lib/utils'
 import {SortOption} from '@/types/blogs.interface'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
+import {useDebounceCallback} from 'usehooks-ts'
 
-// INIT DATA
-const sortOptions = [
-  {name: 'Tất cả', value: 'all'},
-  {name: 'Mới nhất', value: 'newest'},
-  {name: 'Phổ biến nhất', value: 'popular'},
-]
-
-const IndexSortAndSearchPosts = () => {
+const IndexSortAndSearchPosts = ({
+  sortOptions,
+  setSelectedSortOption,
+  setSearch,
+  selectedSortOption,
+  search,
+}: {
+  sortOptions: SortOption[]
+  setSelectedSortOption: React.Dispatch<React.SetStateAction<SortOption>>
+  setSearch: React.Dispatch<React.SetStateAction<string>>
+  selectedSortOption: SortOption
+  search: string
+}) => {
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()
+  const debounced = useDebounceCallback(setSearch, 500)
 
-  const [search, setSearch] = React.useState<string>('')
   const [isOpenSelectCategory, setIsOpenSelectCategory] =
-    React.useState<boolean>(false)
-  const [selectedSortOption, setSelectedSortOption] =
-    React.useState<SortOption>(sortOptions[0])
+    useState<boolean>(false)
 
   // hook
   const {ref, isOutside} = useClickOutside<HTMLDivElement>()
@@ -46,14 +51,28 @@ const IndexSortAndSearchPosts = () => {
     }
   }, [isOutside])
 
+  useEffect(() => {
+    const paramNew = new URLSearchParams(searchParams ?? '')
+    if (search) {
+      paramNew.set('search', search)
+    } else {
+      paramNew.delete('search')
+    }
+    router.push(pathName + '?' + paramNew.toString(), {
+      scroll: false,
+    })
+  }, [search])
+
   //handle select sort option
   const handleSelectSortOption = (sortOption: SortOption) => {
     setSelectedSortOption(sortOption)
     const paramNew = new URLSearchParams(searchParams ?? '')
     if (sortOption.value === 'all') {
       paramNew.delete('sort')
+      paramNew.delete('orderby')
     } else {
       paramNew.set('sort', sortOption.value)
+      paramNew.set('orderby', sortOption.orderBy)
     }
     router.push(pathName + '?' + paramNew.toString(), {
       scroll: false,
@@ -62,16 +81,7 @@ const IndexSortAndSearchPosts = () => {
 
   // handle search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
-    const paramNew = new URLSearchParams(searchParams ?? '')
-    if (e.target.value) {
-      paramNew.set('search', e.target.value)
-    } else {
-      paramNew.delete('search')
-    }
-    router.push(pathName + '?' + paramNew.toString(), {
-      scroll: false,
-    })
+    debounced(e.target.value)
   }
 
   return (
@@ -82,7 +92,7 @@ const IndexSortAndSearchPosts = () => {
       >
         <button
           onClick={() => setIsOpenSelectCategory(!isOpenSelectCategory)}
-          className='flex h-[3rem] w-full items-center justify-between rounded-[0.5rem] bg-[#F3F3F3] px-4'
+          className='flex h-[3rem] w-full items-center justify-between rounded-[0.5rem] bg-[#F3F3F3] px-[0.75rem] sm:px-4'
         >
           <span className='flex items-center whitespace-nowrap text-[1rem] font-normal leading-[1.5] tracking-[-0.02rem] text-greyscaletext-body xsm:line-clamp-1 xsm:text-[0.75rem] xsm:text-[#3F2214]'>
             <b className='whitespace-nowrap font-medium xsm:font-bold'>
@@ -123,7 +133,7 @@ const IndexSortAndSearchPosts = () => {
           className={`absolute left-[1rem] top-1/2 size-[1.5rem] -translate-y-1/2 xsm:left-[0.5rem] xsm:size-[1.125rem] ${search ? '[&>path]:stroke-black' : ''}`}
         />
         <Input
-          value={search}
+          defaultValue={search}
           onChange={handleSearch}
           className='body14 size-full rounded-[0.5rem] border-none bg-[#F3F3F3] pl-[3rem] pr-[0.5rem] font-medium tracking-[-0.0175rem] placeholder:text-greyscaletext-200 xsm:pl-[1.88rem] xsm:text-[0.75rem] xsm:placeholder:text-[0.75rem]'
           placeholder='Tìm kiếm trong Blog'

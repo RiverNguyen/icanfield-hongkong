@@ -3,7 +3,7 @@
 import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
 import {cn} from '@/lib/utils'
-import {IImageV2} from '@/types/image.interface'
+import {Media} from '@/types/image.interface'
 import {FC, useEffect, useRef, useState} from 'react'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
@@ -13,19 +13,23 @@ import {Swiper as SwiperType} from 'swiper/types'
 import './style.css'
 
 export interface IProudJourneyProps {
-  title: string
-  items: IItemProudJourney[]
+  data: {
+    title: string
+    proud_journey: IItemProudJourney[]
+  }
 }
 
 export interface IItemProudJourney {
-  image: IImageV2
-  avatar: IImageV2
+  image: Media
+  avatar: Media
   name: string
-  job: string
+  position: string
   content: string
 }
 
-const ProudJourney: FC<IProudJourneyProps> = ({items, title}) => {
+const ProudJourney: FC<IProudJourneyProps> = ({
+  data: {title, proud_journey: items},
+}) => {
   const swiperRef = useRef<SwiperType | null>(null)
   const swiperRef2 = useRef<SwiperType | null>(null)
   const [spaceBetween, setSpaceBetween] = useState(1.5)
@@ -171,7 +175,7 @@ function ProudJourneyItem({
   avatar,
   image,
   name,
-  job,
+  position,
   content,
 }: IItemProudJourney) {
   return (
@@ -179,7 +183,7 @@ function ProudJourneyItem({
       <div className='box__image relative h-[11.25rem] select-none transition-all duration-100 sm:size-full'>
         <ImageV2
           className='rounded-[0.5rem] object-cover transition-all duration-100 sm:size-full sm:rounded-[1rem]'
-          src={image.src}
+          src={image.url}
           alt={image.alt}
           fill
           sizes='25vw'
@@ -194,10 +198,10 @@ function ProudJourneyItem({
         <div className='box__user-border size-[2.5rem] flex-shrink-0 rounded-full border-[2px] border-solid border-[#95502F] sm:size-[3.5rem] sm:border-[1.5px] sm:border-white'>
           <ImageV2
             className='size-full rounded-full object-cover'
-            src={avatar.src}
+            src={avatar.url}
             alt={avatar.alt}
-            width={56 * 2}
-            height={56 * 2}
+            width={avatar.width * 2}
+            height={avatar.height * 2}
           />
         </div>
         <div className=''>
@@ -205,7 +209,7 @@ function ProudJourneyItem({
             {name}
           </h3>
           <span className='text-[0.75rem] font-medium leading-[0.975rem] tracking-[0.00875rem] text-[#B3B3B3;] sm:leading-[1.3rem] sm:text-white'>
-            {job}
+            {position}
           </span>
         </div>
       </div>

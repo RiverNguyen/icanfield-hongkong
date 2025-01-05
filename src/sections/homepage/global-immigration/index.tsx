@@ -1,9 +1,22 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
-import {useRef, useState, useEffect} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import './styles.css'
-const GlobalImmigration = () => {
+
+export interface IGlobalImmigrationProps {
+  data: {
+    title: string
+    description: string
+    count_number: {
+      number: string
+      label: string
+      title: string
+    }[]
+  }
+}
+
+const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
   const refSection = useRef(null)
   const [isActive, setIsActive] = useState(false)
   useEffect(() => {
@@ -84,81 +97,31 @@ const GlobalImmigration = () => {
       </div>
       <div className='text-container-animation z-[35] translate-y-[15rem] object-cover opacity-0 transition-all sm:absolute sm:right-[6.37rem] sm:top-[5rem] xsm:hidden xsm:w-full xsm:px-[1rem] xsm:pt-[2.5rem]'>
         <h2 className='heading1 mb-[1rem] w-[39.1875rem] font-optima font-semibold text-brown xsm:mb-[0.75rem] xsm:w-full xsm:tracking-[-0.045rem]'>
-          ICanfield tiên phong kiến tạo lộ trình định cư toàn cầu
+          {data.title}
         </h2>
         <p className='body16 xsm:body-14 w-[33.0625rem] text-greyscaletext-body xsm:w-full'>
-          Với 12+ năm kinh nghiệm, iCanfield tự hào là cầu nối giúp hàng nghìn
-          gia đình hiện thực hóa giấc mơ định cư nước ngoài
+          {data.description}
         </p>
         <div className='mt-[3rem] grid grid-cols-2 gap-[2.5rem] xsm:mt-[1.5rem] xsm:gap-[1.5rem]'>
-          <div>
-            <div className='flex items-end space-x-[0.69rem] xsm:space-x-[0.39rem]'>
-              <CountNumber
-                number={12}
-                interFace={!isActive}
-                suffix='+'
-                delay={500}
-              />
-              <p className='sub-12 font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'>
-                NĂM <br /> kinh nghiệm
-              </p>
-            </div>
-            <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
-            <p className='body16-m xsm:sub-12 text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
-              Tư vấn Đầu tư định cư Quốc tế
-            </p>
-          </div>
-          <div>
-            <div className='flex items-end space-x-[0.69rem] xsm:space-x-[0.39rem]'>
-              <CountNumber
-                number={2100}
-                interFace={!isActive}
-                suffix='+'
-                delay={500}
-              />
-              <p className='sub-12 font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'>
-                HỒ SƠ <br /> khách hàng
-              </p>
-            </div>
-            <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
-            <p className='body16-m xsm:sub-12 text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
-              Đầu tư, định cư và du học thành công
-            </p>
-          </div>
-          <div>
-            <div className='flex items-end space-x-[0.69rem] xsm:space-x-[0.39rem]'>
-              <CountNumber
-                number={25}
-                interFace={!isActive}
-                suffix='+'
-                delay={500}
-              />
-              <p className='sub-12 font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'>
-                NĂM <br /> kinh nghiệm
-              </p>
-            </div>
-            <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
-            <p className='body16-m xsm:sub-12 text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
-              Đội ngũ cộng sự luật sư
-            </p>
-          </div>
-          <div>
-            <div className='flex items-end space-x-[0.69rem] xsm:space-x-[0.39rem]'>
-              <CountNumber
-                number={12}
-                suffix='+'
-                interFace={!isActive}
-                delay={500}
-              />
-              <p className='sub-12 font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'>
-                Dự án <br /> đầu tư
-              </p>
-            </div>
-            <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
-            <p className='body16-m xsm:sub-12 text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
-              Thành công và sinh lời cao
-            </p>
-          </div>
+          {data.count_number.map((item, index) => {
+            return (
+              <div key={index}>
+                <div className='flex items-end space-x-[0.69rem] xsm:space-x-[0.39rem]'>
+                  <CountNumber
+                    number={parseInt(item.number)}
+                    interFace={!isActive}
+                    suffix='+'
+                    delay={500}
+                  />
+                  <div className='sub-12 font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]' dangerouslySetInnerHTML={{__html: item.label}}></div>
+                </div>
+                <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
+                <p className='body16-m xsm:sub-12 text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
+                  {item.title}
+                </p>
+              </div>
+            )
+          })}
         </div>
       </div>
       <div className='mt-[0.875rem] sm:hidden'>

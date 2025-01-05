@@ -22,7 +22,6 @@ export const loginForm = async (values: Values) => {
 
     return true
   } catch (error) {
-    console.log('🚀 ~ loginForm ~ error:', error)
     return false
   }
 }

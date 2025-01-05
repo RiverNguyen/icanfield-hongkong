@@ -1,12 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ImageV2 from '@/components/image/ImageV2'
+import {Category, DataItem} from '@/types/blogs.interface'
 import Link from 'next/link'
-import React from 'react'
 
-const ItemBlog = ({data}: any) => {
+interface IProps {
+  data: DataItem
+}
+
+const ItemBlog = ({data}: IProps) => {
+  function handleFindPrimaryCategory(category: Category[]) {
+    return category.find((category: Category) => category.primary)?.name
+  }
   return (
     <Link
-      href={'/'}
+      prefetch={false}
+      href={data?.slug ? `/blogs/${data?.slug}` : '/blogs'}
       className='rounded-[1.04663rem group relative block h-[32.5rem] w-full overflow-hidden rounded-[1.25rem] p-[2rem] xsm:h-[25rem] xsm:p-[1.5rem]'
     >
       <ImageV2
@@ -28,15 +36,15 @@ const ItemBlog = ({data}: any) => {
         </div>
         <div>
           <div className='flex h-[1.625rem] w-fit items-center rounded-[0.375rem] bg-[rgba(248,244,241,0.48)] px-[0.75rem] text-[0.75rem] font-bold uppercase leading-[1.2] text-white backdrop-blur-[15px] xsm:h-[1.36063rem] xsm:px-[0.63rem] xsm:text-[0.625rem]'>
-            TIN TỨC DU HỌC
+            {handleFindPrimaryCategory(data.category)}
           </div>
           <h3 className='my-[0.68rem] line-clamp-2 font-optima text-[1.25rem] font-semibold leading-normal text-white xsm:my-[0.74rem] xsm:text-[0.875rem]'>
-            Cập nhật chính sách du học Úc dành cho sinh viên quốc tế năm 2024
+            {data.title}
           </h3>
           <div className='flex items-center'>
             <ICCalendar className='mr-[0.38rem] h-auto w-[1.01794rem] flex-shrink-0 xsm:mr-[0.32rem] xsm:w-[0.85238rem]' />
             <span className='text-[0.875rem] font-normal leading-normal text-greyscaletext-100 xsm:text-[0.75rem]'>
-              23/10/2024
+              {data.date}
             </span>
           </div>
         </div>
@@ -47,7 +55,7 @@ const ItemBlog = ({data}: any) => {
 
 export default ItemBlog
 
-const ICArrow = ({className}: {className?: string}) => {
+export const ICArrow = ({className}: {className?: string}) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -68,7 +76,7 @@ const ICArrow = ({className}: {className?: string}) => {
   )
 }
 
-const ICCalendar = ({className}: {className?: string}) => {
+export const ICCalendar = ({className}: {className?: string}) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

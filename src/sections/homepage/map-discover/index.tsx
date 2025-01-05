@@ -1,18 +1,28 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import React, {useEffect} from 'react'
+import {ICountry, LeafletMap} from '@/components/LeafletMap'
+import officeMap from '@/sections/aboutus/office-map/constants'
+import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
+import {Media} from '@/types/image.interface'
+import {FeatureCollection} from 'geojson'
+import 'leaflet/dist/leaflet.css'
 import Link from 'next/link'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import React, {useEffect} from 'react'
 import 'swiper/css'
+import {Swiper, SwiperSlide} from 'swiper/react'
 import {listProgramInfomation} from './contanst'
 import './styles.css'
-import {LeafletMap} from '@/components/LeafletMap'
-import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
-import {FeatureCollection} from 'geojson'
-import officeMap from '@/sections/aboutus/office-map/constants'
-import {ICountry} from '@/components/LeafletMap'
-import 'leaflet/dist/leaflet.css'
-const MapDiscover = () => {
+
+interface IMapDiscoverProps {
+  data: {
+    logo: Media
+    slogan: string
+    title: string
+    description: string
+  }
+}
+
+const MapDiscover = ({data}: IMapDiscoverProps) => {
   const [navbarNationalitiesActive, setNavbarNationalitiesActive] =
     React.useState(officeMap?.countries[0][0].label || 'Unknown')
   const [isChangeCountry, setIsChangeCountry] = React.useState(false)
@@ -29,7 +39,7 @@ const MapDiscover = () => {
   const handleNavbarNationalities = (value: string, flag: string) => {
     setNavbarNationalitiesActive(value)
     setUrlImageButton(flag)
-    console.log(urlImageButton)
+
     setIsChangeCountry(true)
   }
   //handle zoom map
@@ -46,34 +56,24 @@ const MapDiscover = () => {
       <div className='map-discover__header relative flex items-start pb-[4.94rem] xsm:flex-col xsm:pb-[3rem]'>
         <div className='relative z-10 ml-[11rem] xsm:mx-auto'>
           <ImageV2
-            src={'/imgs/homepage/map-discover/icanfield.webp'}
-            alt='Icanfield'
-            width={1410}
-            height={386}
+            src={data.logo.url}
+            alt={data.logo.alt}
+            width={data.logo.width * 2}
+            height={data.logo.height * 2}
             className='h-[9.63756rem] w-[35.37506rem] object-contain xsm:h-[4.76769rem] xsm:w-[17.5rem]'
           />
           <span className='absolute bottom-0 right-0 font-optima text-[1.375rem] leading-[1.3] tracking-[-0.055rem] text-brown xsm:text-[0.75rem]'>
-            Vươn xa với tương lai bền vững
+            {data.slogan}
           </span>
         </div>
         <div className='ml-[4.81rem] w-[38.5rem] xsm:ml-0 xsm:mt-[2.5rem] xsm:w-full xsm:px-4'>
           <h2 className='mb-[1.19rem] font-optima text-[2.25rem] font-semibold leading-[1.3] tracking-[-0.09rem] text-brown xsm:mb-[1.25rem] xsm:w-full xsm:text-[1.25rem] xsm:tracking-[-0.025rem]'>
-            HÃY CÙNG iCANFIELD KHÁM PHÁ Hành trình vươn xa với tương lai bền
-            vững
+            {data.title}
           </h2>
-          <div className='[&_p]:mb-[1rem] [&_p]:text-[0.875rem] [&_p]:leading-[1.5] [&_p]:text-greyscaletext-800 xsm:[&_p]:mb-[0.75rem] xsm:[&_p]:text-[0.875rem]'>
-            <p>
-              Cùng chúng tôi mở ra cánh cửa đến với những cơ hội định cư và đầu
-              tư quốc tế. Với đội ngũ chuyên gia hàng đầu, iCanfield không chỉ
-              mang đến những giải pháp chiến lược mà còn giúp bạn khám phá những
-              điểm đến lý tưởng và tận dụng tối đa giá trị đầu tư.
-            </p>
-            <p>
-              Hãy để hành trình của bạn bắt đầu tại đây, nơi mỗi bước đi đều
-              được hỗ trợ bởi kiến thức sâu rộng và sự tận tâm. Định hình tương
-              lai, kiến tạo giấc mơ - tất cả đều trong tầm tay của bạn.
-            </p>
-          </div>
+          <div
+            className='[&_p]:mb-[1rem] [&_p]:text-[0.875rem] [&_p]:leading-[1.5] [&_p]:text-greyscaletext-800 xsm:[&_p]:mb-[0.75rem] xsm:[&_p]:text-[0.875rem]'
+            dangerouslySetInnerHTML={{__html: data.description}}
+          ></div>
         </div>
         <ImageV2
           src={'/imgs/homepage/map-discover/city-final-2.png'}
@@ -150,7 +150,9 @@ const MapDiscover = () => {
                                 ? 'active xsm:bg-[#5C321E]'
                                 : 'border-[#5C321E]'
                             }`}
-                            onClick={() => handleNavbarNationalities(nameLabel, imgSrc)}
+                            onClick={() =>
+                              handleNavbarNationalities(nameLabel, imgSrc)
+                            }
                           >
                             <div
                               className={`relative flex size-[1.75rem] rounded-[50%] bg-white shadow-[1px_2px_6px_0px_rgba(0,0,0,0.25)] backdrop-blur-[10px] xsm:size-[1.35rem] ${
@@ -208,7 +210,7 @@ const MapDiscover = () => {
             </div>
           </div>
         </div>
-        <div className='z-10 flex w-[28.3125rem] flex-col pt-[5.12rem]  xsm:px-4 xsm:w-full'>
+        <div className='z-10 flex w-[28.3125rem] flex-col pt-[5.12rem] xsm:w-full xsm:px-4'>
           <div className='flex flex-col space-y-[1.5rem]'>
             {listProgramInfomation.map((item, index) => (
               <div
@@ -269,7 +271,7 @@ const MapDiscover = () => {
                 chương trình liên quan
               </span>
             </div>
-            <div className='absolute right-[0.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)] xsm:w-[3rem] xsm:h-[3.5rem]'>
+            <div className='absolute right-[0.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)] xsm:h-[3.5rem] xsm:w-[3rem]'>
               <ImageV2
                 src={'/icons/homepage/map-discover/arrow.svg'}
                 alt='Icanfield'

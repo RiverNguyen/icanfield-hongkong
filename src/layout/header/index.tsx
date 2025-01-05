@@ -225,7 +225,7 @@ const Header = () => {
     setIsActiveOverlay(!isActiveOverlay)
   }
   return (
-    <header className='fixed left-0 top-0 z-[40] w-full'>
+    <header className='fixed left-0 top-0 z-[50] w-full'>
       <div className='header-top bg-[linear-gradient(118deg,#2E1506_69.75%,#95502F_142.7%,#F5C178_182.76%)] xsm:hidden'>
         <div className='section-container flex items-center justify-between'>
           <div className='flex items-center space-x-[0.94rem]'>
