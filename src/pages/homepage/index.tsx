@@ -15,7 +15,6 @@ import ProudJourney, {
 import TalentedTeam from '@/sections/homepage/talented-team'
 import {Media} from '@/types/image.interface'
 import dynamic from 'next/dynamic'
-
 const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
   ssr: false, // Nếu component không cần server-side rendering
   loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
