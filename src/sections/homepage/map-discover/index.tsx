@@ -55,7 +55,7 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
       <div className='map-discover__header relative flex items-start pb-[4.94rem] xsm:flex-col xsm:pb-[3rem]'>
         <div className='relative z-10 ml-[11rem] xsm:mx-auto'>
           <ImageV2
-            src={data.logo.url}
+            src={data.logo.url || ''}
             alt={data.logo.alt}
             width={data.logo.width * 2}
             height={data.logo.height * 2}
@@ -162,7 +162,7 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
                             >
                               <div className='absolute bottom-0 left-0 z-[1] h-full w-full rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
                               <ImageV2
-                                src={imgSrc}
+                                src={imgSrc || ''}
                                 alt={nameLabel}
                                 width={200}
                                 height={200}

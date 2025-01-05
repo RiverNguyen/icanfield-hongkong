@@ -47,12 +47,12 @@ export const Dropdown = ({
       >
         {listItems.map((item, index) => (
           <Link
-            href={item.href}
+            href={item.href || '/'}
             key={index}
             className='flex items-center space-x-[0.5rem] py-4'
           >
             <ImageV2
-              src={item.flagUrl}
+              src={item.flagUrl || ''}
               alt='logo'
               width={80}
               height={80}

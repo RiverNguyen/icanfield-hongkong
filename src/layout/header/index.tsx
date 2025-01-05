@@ -325,12 +325,12 @@ const Header = () => {
           <div className='flex items-center space-x-[2.73rem]'>
             {listItemTopHeader.map((item: TopHeaderItem, index) => (
               <Link
-                href={item.href}
+                href={item.href || '/'}
                 key={index}
                 className='flex items-center space-x-[0.62rem]'
               >
                 <ImageV2
-                  src={item.linkIcon}
+                  src={item.linkIcon || ''}
                   alt='logo'
                   width={40}
                   height={40}
@@ -348,7 +348,7 @@ const Header = () => {
               <div className='relative flex size-[1.2rem] rounded-[50%] bg-[rgba(255,255,255,0.25)] backdrop-blur-[10px]'>
                 <div className='absolute bottom-0 left-0 z-[1] h-full w-full rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
                 <ImageV2
-                  src={isCurrentLanguage.flagUrl}
+                  src={isCurrentLanguage.flagUrl || ''}
                   alt='logo'
                   width={200}
                   height={200}
@@ -381,7 +381,7 @@ const Header = () => {
                       {item.text}
                     </span>
                     <ImageV2
-                      src={item.flagUrl}
+                      src={item.flagUrl || ''}
                       alt='logo'
                       width={40}
                       height={40}
@@ -546,7 +546,7 @@ const Header = () => {
                         <Image
                           src={
                             urlImage
-                              ? urlImage
+                              ? urlImage || ''
                               : item?.children[0]?.imgUrl || ''
                           }
                           alt='logo'
@@ -635,8 +635,8 @@ const Header = () => {
                     <ImageV2
                       src={
                         urlImageSupportCustomer
-                          ? urlImageSupportCustomer
-                          : listItemSupportCustomer[0].imgUrl
+                          ? urlImageSupportCustomer || ''
+                          : listItemSupportCustomer[0].imgUrl || ''
                       }
                       alt='logo'
                       width={500}
@@ -724,7 +724,7 @@ const Header = () => {
                 >
                   {item?.background && (
                     <ImageV2
-                      src={item?.background}
+                      src={item?.background || ''}
                       alt='logo'
                       width={500}
                       height={500}
@@ -762,7 +762,7 @@ const Header = () => {
                 >
                   {item?.background && (
                     <ImageV2
-                      src={item?.background}
+                      src={item?.background || ''}
                       alt='logo'
                       width={500}
                       height={500}
@@ -867,12 +867,12 @@ const Header = () => {
           <div className='mb-[3.5rem] mt-[2.5rem] flex items-center justify-center space-x-[0.75rem]'>
             {socialNetwork.map((item: SocialNetwork, index: number) => (
               <Link
-                href={item.link}
+                href={item.link || '/'}
                 key={index}
                 className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)]'
               >
                 <ImageV2
-                  src={item.icon}
+                  src={item.icon ||''}
                   alt='logo'
                   width={40}
                   height={40}
@@ -906,7 +906,7 @@ const Header = () => {
               key={index}
             >
               <ImageV2
-                src={item.flagUrl}
+                src={item.flagUrl || ''}
                 alt='logo'
                 width={40}
                 height={40}

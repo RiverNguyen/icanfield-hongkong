@@ -40,7 +40,7 @@ export default function ItemPioneering({
         height={400}
         width={708}
         alt={data?.image?.alt}
-        src={data?.image?.url}
+        src={data?.image?.url || ''}
       />
     </div>
   )

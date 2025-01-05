@@ -37,7 +37,7 @@ export default function BannerAboutus({dataAcfBanner}: {dataAcfBanner: dataAcfBa
           alt={dataAcfBanner?.images_background_mb?.alt}
           width={1600}
           height={700}
-          src={dataAcfBanner?.images_background_mb?.url}
+          src={dataAcfBanner?.images_background_mb?.url || ''}
         />
       ) : (
         <ImageV2
@@ -45,7 +45,7 @@ export default function BannerAboutus({dataAcfBanner}: {dataAcfBanner: dataAcfBa
           alt={dataAcfBanner?.images_background_pc?.alt}
           width={1600}
           height={700}
-          src={dataAcfBanner?.images_background_pc?.url}
+          src={dataAcfBanner?.images_background_pc?.url || ''}
         />
       )}
       <ImageV2
@@ -72,7 +72,7 @@ export default function BannerAboutus({dataAcfBanner}: {dataAcfBanner: dataAcfBa
           alt={dataAcfBanner?.we_are?.image_about_us?.alt}
           width={539}
           height={165}
-          src={dataAcfBanner?.we_are?.image_about_us?.url}
+          src={dataAcfBanner?.we_are?.image_about_us?.url || ''}
         />
         <h1 className='fixed top-[-100%] opacity-0'>Icanfield Việt Nam</h1>
       </div>

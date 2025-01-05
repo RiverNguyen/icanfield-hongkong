@@ -3,7 +3,6 @@
 'use client'
 import {useEffect, useMemo, useRef, useState} from 'react'
 import useSWR from 'swr'
-
 import ItemBlog from '@/components/itemBlog'
 import {fetcher} from '@/lib/swr'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
@@ -16,7 +15,7 @@ import {
 } from '@/types/blogs.interface'
 import endpoints from '@/utils/endpoints'
 import {useSearchParams} from 'next/navigation'
-import {LIMIT_POSTS} from '@/app/blogs/page'
+import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import {Pagination} from '@/components/pagination/Pagination'
 import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
 
@@ -78,6 +77,10 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
     return searchParams?.size ? posts?.data : dataPosts.data
   }, [searchParams, posts, dataPosts.data])
 
+  if (!Array.isArray(dataCategories) || !Array.isArray(dataPosts.data)) {
+    console.error('Invalid dataCategories or dataPosts')
+    return null
+  }
   return (
     <section
       ref={sectionRef}

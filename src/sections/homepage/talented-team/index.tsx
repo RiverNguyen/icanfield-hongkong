@@ -52,7 +52,7 @@ const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
             >
               <div className='flex cursor-pointer flex-col items-center justify-center !overflow-visible'>
                 <ImageV2
-                  src={item.image.url}
+                  src={item.image.url || ''}
                   alt={item.image.alt}
                   width={item.image.width * 2}
                   height={item.image.height * 2}
