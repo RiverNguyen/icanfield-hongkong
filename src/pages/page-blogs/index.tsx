@@ -16,6 +16,18 @@ interface IPageBlogsProps {
 const categoryItemAll = {id: 0, name: 'Tất cả', slug: 'all', taxonomy: 'all'}
 
 const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
+  let dataCategoriesWithAll
+  if (
+    dataCategories &&
+    Array.isArray(dataCategories) &&
+    dataCategories.length
+  ) {
+    console.log('dataCategories', dataCategories)
+    dataCategoriesWithAll = [categoryItemAll, ...dataCategories]
+    console.log('dataCategoriesWithAll', dataCategoriesWithAll)
+  } else {
+    dataCategoriesWithAll = [categoryItemAll]
+  }
   return (
     <>
       <BannerStatic {...blogBanner}>
@@ -30,7 +42,7 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
       <Suspense fallback={<div>Loading...</div>}>
         <ListBlogs
           dataPosts={dataPosts}
-          dataCategories={[categoryItemAll, ...dataCategories]}
+          dataCategories={dataCategoriesWithAll}
         />
       </Suspense>
       <WrapperConnectUs />
