@@ -78,11 +78,6 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
   const dataLatest = useMemo(() => {
     return Array.isArray(posts?.data) ? posts?.data : dataPosts.data
   }, [searchParams, posts, dataPosts.data])
-
-  if (!Array.isArray(dataCategories) || !Array.isArray(dataPosts.data)) {
-    console.error('Invalid dataCategories or dataPosts')
-    return null
-  }
   return (
     <section
       ref={sectionRef}

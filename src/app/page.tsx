@@ -1,7 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
-import endpoints from '@/utils/endpoints'
 import HomePage from '@/pages/homepage'
+import endpoints from '@/utils/endpoints'
 
 export default async function Home() {
   const homeRequest = {
@@ -23,7 +23,12 @@ export default async function Home() {
       fetchData(newsRequest),
     ])
 
-    return <HomePage homeData={homeResponse} newsData={newsResponse} />
+    return (
+      <HomePage
+        homeData={homeResponse}
+        newsData={newsResponse}
+      />
+    )
   } catch (error) {
     console.error('Error fetching data:', error)
     return <div>Error loading page content.</div>
