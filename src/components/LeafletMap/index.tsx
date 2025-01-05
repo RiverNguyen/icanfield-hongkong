@@ -4,7 +4,6 @@ import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
-import {useRef} from 'react'
 import './styles.css'
 export interface ICountry {
   name: string

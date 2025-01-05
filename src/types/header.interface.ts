@@ -9,6 +9,8 @@ export interface MenuItem {
   href: string
   imgUrl?: string // Dùng dấu ? để biểu thị rằng thuộc tính này là tùy chọn
   children?: MenuItem[] // Nếu menu có con, nó cũng sẽ có cấu trúc giống `MenuItem`
+  background?: string
+  count?: number
 }
 export interface SocialNetwork {
   title: string
