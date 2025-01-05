@@ -79,7 +79,7 @@ export const SuccessPopup: FC<ISuccessPopupProps> = ({
               className='flex size-[2.5rem] items-center justify-center rounded-[0.625rem] border border-black/10 p-[0.57rem] sm:size-[2.75rem] sm:p-[0.62rem]'
             >
               <ImageV2
-                src={item.icon.url}
+                src={item.icon.url || ''}
                 alt={item.icon.alt}
                 width={item.icon.width}
                 height={item.icon.height}
