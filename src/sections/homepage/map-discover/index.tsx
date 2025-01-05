@@ -27,9 +27,9 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
     React.useState(officeMap?.countries[0][0].label || 'Unknown')
   const [isChangeCountry, setIsChangeCountry] = React.useState(false)
   const [isMobile, setIsMobile] = React.useState(false)
-  const [urlImageButton, setUrlImageButton] = React.useState(
-    officeMap?.countries[0][0].flag || '/imgs/default-flag.png',
-  )
+  // const [urlImageButton, setUrlImageButton] = React.useState(
+  //   officeMap?.countries[0][0].flag || '/imgs/default-flag.png',
+  // )
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
@@ -37,9 +37,8 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
   }, [])
   // handle click navbar nationalities
   const handleNavbarNationalities = (value: string, flag: string) => {
+    console.log(flag)
     setNavbarNationalitiesActive(value)
-    setUrlImageButton(flag)
-
     setIsChangeCountry(true)
   }
   //handle zoom map
