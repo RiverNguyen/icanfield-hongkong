@@ -61,6 +61,9 @@ const config: Config = {
         'primary-yellow': '#DAF2AF',
         'Text-Text-Grey-Disable': 'var(--Phase-1-Text-Text-Grey-Disable)',
       },
+      boxShadow: {
+        SHADOW: '0px 1.203px 4.812px 0px rgba(0, 0, 0, 0.10)',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

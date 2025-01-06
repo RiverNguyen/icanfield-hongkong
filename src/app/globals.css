@@ -89,6 +89,9 @@ html {
   .sub-12 {
     @apply text-[0.75rem] leading-[1.5];
   }
+  .sub-12-m {
+    @apply text-[0.75rem] font-medium leading-[1.5] tracking-[-0.015rem];
+  }
   .sub-10 {
     @apply text-[0.625rem] leading-[1.5];
   }
