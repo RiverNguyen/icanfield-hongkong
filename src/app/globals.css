@@ -167,6 +167,33 @@ html {
     filter: brightness(0) saturate(100%) invert(28%) sepia(7%) saturate(1108%)
       hue-rotate(335deg) brightness(97%) contrast(84%);
   }
+  .program-benefits__item-bg {
+    background: linear-gradient(
+      97deg,
+      rgba(92, 50, 30, 0.45) -3.86%,
+      rgba(149, 80, 47, 0.45) 51.97%,
+      rgba(245, 193, 120, 0.45) 117.18%
+    );
+    backdrop-filter: blur(25px);
+  }
+  .program-benefits__item-title-gradient {
+    background: var(
+      --Phase-1-dfd,
+      linear-gradient(180deg, #fff 0%, #d7b578 100%)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .program-benefits__item-title-gradient--hover {
+    background: var(
+      --Phase-1-butt,
+      linear-gradient(97deg, #5c321e -3.86%, #95502f 51.97%, #f5c178 117.18%)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 @media (max-width: 639px) {
   html {
