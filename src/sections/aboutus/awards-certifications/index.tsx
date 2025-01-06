@@ -1,7 +1,7 @@
 'use client'
 
 import ImageV2 from '@/components/image/ImageV2'
-import { Media } from '@/types/image.interface'
+import {Media} from '@/types/image.interface'
 import {FC, useEffect, useState} from 'react'
 import 'swiper/css'
 import {Swiper, SwiperSlide} from 'swiper/react'
@@ -39,10 +39,10 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
     })
   }, [])
   return (
-    <section className='xsm:overflow-hidden pb-[5rem] bg-[linear-gradient(180deg,#F6F6F4_76.05%,#F7EDDE_100%)]'>
+    <section className='bg-[linear-gradient(180deg,#F6F6F4_76.05%,#F7EDDE_100%)] pb-[5rem] xsm:overflow-hidden'>
       <ImageV2
         alt={logo?.alt}
-        src={logo?.url}
+        src={logo?.url || ''}
         width={255 * 2}
         height={80 * 2}
         className='m-auto block h-[3rem] w-[8.50894rem] object-contain sm:h-[5.625rem] sm:w-[15.95425rem]'
@@ -53,7 +53,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
       <div className='relative'>
         <div className='absolute top-[-5rem] h-[16.25rem] w-[56rem] sm:left-0 sm:right-0 sm:top-[-9.44rem] sm:h-[23.8125rem] sm:w-full xsm:left-1/2 xsm:-translate-x-1/2'>
           <BackgroundImage
-            image={background}
+            image={background || {url: '', alt: ''}}
             className='absolute left-0 top-0 z-10 h-full w-full'
           />
         </div>
@@ -86,8 +86,8 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
 export default AwardsCertifications
 
 function ItemAwardsCertifications({title, image}: IAwardsCertificationsItem) {
-  console.log(title);
-  console.log(image);
+  console.log(title)
+  console.log(image)
   return (
     <>
       <ImageV2
@@ -224,7 +224,7 @@ function BackgroundImage({image, className}: IBackgroundImageProps) {
           id='image0_1426_50243'
           width={4096}
           height={2731}
-          xlinkHref={image.url}
+          xlinkHref={image.url ? image.url : ''}
         />
       </defs>
     </svg>

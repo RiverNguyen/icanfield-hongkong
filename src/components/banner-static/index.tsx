@@ -21,7 +21,7 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
   return (
     <section className='relative min-h-[28.75rem] overflow-hidden pt-[3.75rem] sm:min-h-[36.45rem] sm:pt-[6.44rem]'>
       <ImageV2
-        src={backgroundImage.src}
+        src={backgroundImage.src || ''}
         alt={backgroundImage.alt}
         width={1600 * 2}
         height={478 * 2}

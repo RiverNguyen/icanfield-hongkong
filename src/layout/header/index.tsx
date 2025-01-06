@@ -1,5 +1,4 @@
 'use client'
-import {Dropdown} from '@/components/dropdownMenuMb'
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
 import {
@@ -55,11 +54,15 @@ const Header = () => {
       title: 'Định cư Canada',
       href: '/',
       imgUrl: '/imgs/homepage/header/canada-flag2.png',
+      background: '/imgs/homepage/header/d-card-canada.webp',
+      count: 54,
     },
     {
       title: 'Định cư Mỹ',
       href: '/',
       imgUrl: '/imgs/homepage/header/d-america-flag.jpg',
+      background: '/imgs/homepage/header/d-card-my.webp',
+      count: 24,
       children: [
         {
           title: 'Các chương trình định cư',
@@ -77,11 +80,15 @@ const Header = () => {
       title: 'Định cư Caribe',
       href: '/',
       imgUrl: '/imgs/homepage/header/d-carribe-flag.png',
+      background: '/imgs/homepage/header/d-card-caribe.webp',
+      count: 32,
     },
     {
       title: 'Định cư Châu Âu',
       href: '/',
       imgUrl: '/imgs/homepage/header/eu-flag2.png',
+      background: '/imgs/homepage/header/d-card-eu.webp',
+      count: 36,
     },
     {
       title: 'Các chương trình khác',
@@ -121,21 +128,28 @@ const Header = () => {
       imgUrl: '/imgs/homepage/header/d-Uc.webp',
     },
   ]
-  const listDifferentProgram = [
-    {
-      title: 'Định cư Úc',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-Uc.webp',
-      flagUrl: '/imgs/homepage/header/d-uc-flag.png',
-    },
-    {
-      title: 'Bất động sản Úc',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-bds.webp',
-      flagUrl: '/imgs/homepage/header/d-uc-flag.png',
-    },
-  ]
   const listMenuMobileLast = [
+    {
+      title: 'Hỗ trợ khách hàng',
+      href: '/',
+      children: [
+        {
+          title: 'Thẩm định hồ sơ',
+          href: '/',
+          imgUrl: '/imgs/homepage/header/d-Uc.webp',
+        },
+        {
+          title: 'So sánh chương trình',
+          href: '/',
+          imgUrl: '/imgs/homepage/header/d-bds.webp',
+        },
+        {
+          title: 'Thông tin hộ chiếu',
+          href: '/',
+          imgUrl: '/imgs/homepage/header/d-Uc.webp',
+        },
+      ],
+    },
     {
       title: 'Cẩm nang iCanfield',
       href: '/',
@@ -181,7 +195,12 @@ const Header = () => {
   const [urlImageSupportCustomer, setUrlImageSupportCustomer] = React.useState<
     string | null
   >(null)
+  const [isCloseMenu, setIsCloseMenu] = React.useState(false)
   const refDropdownLanguage = React.useRef<HTMLDivElement>(null)
+  const [selectedChild, setSelectedChild] = React.useState<MenuItem | null>(
+    null,
+  )
+  const [isOpenedChild, setIsOpenedChild] = React.useState(false)
   //function handle language dropdown
   const handleOpenLanguage = () => {
     setIsActivedLanguage(!isActivedLanguage)
@@ -228,56 +247,23 @@ const Header = () => {
     setUrlImageSupportCustomer(url)
   }
   //header Mobile
-  const [isCloseMenu, setIsCloseMenu] = React.useState(false)
   const handleToggleMenu = () => {
     setIsCloseMenu(!isCloseMenu)
   }
-  //dropdown menu mb
-  const [isActiveDropdown, setIsActiveDropdown] = React.useState<{
-    [key: string]: boolean
-  }>({
-    differentProgram: false,
-    supportCustomer: false,
-  })
-
-  const [dropdownHeights, setDropdownHeights] = React.useState<{
-    [key: string]: number
-  }>({
-    differentProgram: 0,
-    supportCustomer: 0,
-  })
-
-  const refDropdowns = React.useRef<{
-    [key: string]: React.RefObject<HTMLDivElement>
-  }>({
-    differentProgram: React.createRef(),
-    supportCustomer: React.createRef(),
-  })
-
-  // Handle toggle dropdown
-  const handleToggleDropdown = (key: string) => {
-    setIsActiveDropdown((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }))
-  }
-
-  // Update height on dropdown state change
-  React.useEffect(() => {
-    Object.keys(isActiveDropdown).forEach((key) => {
-      const ref = refDropdowns.current[key]?.current
-      setDropdownHeights((prev) => ({
-        ...prev,
-        [key]: isActiveDropdown[key] && ref ? ref.scrollHeight : 0,
-      }))
-    })
-  }, [isActiveDropdown])
   // handle toggle popup Language mobile
   const [isActivedLanguageMb, setIsActivedLanguageMb] = React.useState(false)
   //function handle language dropdown
   const handleOpenLanguageMb = () => {
     setIsActivedLanguageMb(!isActivedLanguageMb)
     setIsActiveOverlay(!isActiveOverlay)
+  }
+  //handle select child menu
+  const handleSelectChild = (item: MenuItem) => {
+    setSelectedChild(item)
+  }
+  //handle toggle child menu
+  const handleToggleChild = () => {
+    setIsOpenedChild(!isOpenedChild)
   }
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
@@ -339,12 +325,12 @@ const Header = () => {
           <div className='flex items-center space-x-[2.73rem]'>
             {listItemTopHeader.map((item: TopHeaderItem, index) => (
               <Link
-                href={item.href}
+                href={item.href || '/'}
                 key={index}
                 className='flex items-center space-x-[0.62rem]'
               >
                 <ImageV2
-                  src={item.linkIcon}
+                  src={item.linkIcon || ''}
                   alt='logo'
                   width={40}
                   height={40}
@@ -362,7 +348,7 @@ const Header = () => {
               <div className='relative flex size-[1.2rem] rounded-[50%] bg-[rgba(255,255,255,0.25)] backdrop-blur-[10px]'>
                 <div className='absolute bottom-0 left-0 z-[1] h-full w-full rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
                 <ImageV2
-                  src={isCurrentLanguage.flagUrl}
+                  src={isCurrentLanguage.flagUrl || ''}
                   alt='logo'
                   width={200}
                   height={200}
@@ -395,7 +381,7 @@ const Header = () => {
                       {item.text}
                     </span>
                     <ImageV2
-                      src={item.flagUrl}
+                      src={item.flagUrl || ''}
                       alt='logo'
                       width={40}
                       height={40}
@@ -560,7 +546,7 @@ const Header = () => {
                         <Image
                           src={
                             urlImage
-                              ? urlImage
+                              ? urlImage || ''
                               : item?.children[0]?.imgUrl || ''
                           }
                           alt='logo'
@@ -649,8 +635,8 @@ const Header = () => {
                     <ImageV2
                       src={
                         urlImageSupportCustomer
-                          ? urlImageSupportCustomer
-                          : listItemSupportCustomer[0].imgUrl
+                          ? urlImageSupportCustomer || ''
+                          : listItemSupportCustomer[0].imgUrl || ''
                       }
                       alt='logo'
                       width={500}
@@ -725,73 +711,168 @@ const Header = () => {
         <div
           className={`dropdown-menu absolute left-0 top-[100%] z-50 h-screen w-full overflow-auto bg-white p-[1.5rem_1rem] pb-[3.5rem] transition-all duration-300 ${!isCloseMenu ? 'translate-x-[150%]' : 'translate-x-0'}`}
         >
-          <div className='grid grid-cols-2 gap-[0.5rem]'>
-            {menu.slice(0, 4).map((item: MenuItem, index: number) => (
-              <Link
-                href={item.href}
-                key={index}
-                className='flex flex-col justify-between rounded-[1rem] bg-[#F1F0EC] p-4'
-              >
-                <div className={'flex items-center justify-between'}>
-                  <div className='relative mb-3 size-[2.25rem] rounded-[50%] border-[2px] border-[#B08E61]'>
+          <div className='flex flex-col space-y-3'>
+            {menu.slice(0, 4).map((item: MenuItem, index: number) =>
+              item.children ? (
+                <div
+                  key={index}
+                  className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
+                  onClick={() => {
+                    handleSelectChild(item)
+                    handleToggleChild()
+                  }}
+                >
+                  {item?.background && (
                     <ImageV2
-                      src={item?.imgUrl || ''}
+                      src={item?.background || ''}
                       alt='logo'
-                      width={80}
-                      height={80}
-                      className='absolute h-full w-full rounded-[50%] object-cover'
+                      width={500}
+                      height={500}
+                      className='absolute left-0 top-0 h-full w-full rounded-[0.5rem] object-cover'
                     />
+                  )}
+                  <div className='relative z-10 w-[9.06rem]'>
+                    <span className='text-[1rem] font-semibold leading-[150%] tracking-[-0.01rem] text-white'>
+                      {item?.title}
+                    </span>
+                    <ImageV2
+                      src={'/icons/homepage/header/line-mb.svg'}
+                      alt='logo'
+                      width={40}
+                      height={40}
+                      className='my-[0.25rem] w-full'
+                    />
+                    <span className='text-[0.75rem] font-normal leading-[1.5] text-white opacity-85'>
+                      {item?.count ? item?.count : 3} chương trình
+                    </span>
                   </div>
                   <ImageV2
-                    src='/icons/homepage/header/arrow-down-mb.svg'
-                    alt='arrow'
+                    src={'/icons/homepage/header/arrow_mb.svg'}
+                    alt='logo'
                     width={40}
                     height={40}
-                    className={`size-[1.5rem] object-contain ${item.children ? 'block' : 'hidden'}`}
+                    className='z-10 ml-[0.81rem] size-[1.625rem]'
                   />
                 </div>
-                <span className='text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-                  {item.title}
-                </span>
-              </Link>
-            ))}
+              ) : (
+                <Link
+                  href={item.href}
+                  key={index}
+                  className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
+                >
+                  {item?.background && (
+                    <ImageV2
+                      src={item?.background || ''}
+                      alt='logo'
+                      width={500}
+                      height={500}
+                      className='absolute left-0 top-0 h-full w-full rounded-[0.5rem] object-cover'
+                    />
+                  )}
+                  <div className='relative z-10 w-[9.06rem]'>
+                    <span className='text-[1rem] font-semibold leading-[150%] tracking-[-0.01rem] text-white'>
+                      {item?.title}
+                    </span>
+                    <ImageV2
+                      src={'/icons/homepage/header/line-mb.svg'}
+                      alt='logo'
+                      width={40}
+                      height={40}
+                      className='my-[0.25rem] w-full'
+                    />
+                    <span className='text-[0.75rem] font-normal leading-[1.5] text-white opacity-85'>
+                      {item?.count ? item?.count : 3} chương trình
+                    </span>
+                  </div>
+                  <ImageV2
+                    src={'/icons/homepage/header/arrow_mb.svg'}
+                    alt='logo'
+                    width={40}
+                    height={40}
+                    className='z-10 ml-[0.81rem] size-[1.625rem]'
+                  />
+                </Link>
+              ),
+            )}
           </div>
-          <Dropdown
-            title='Các chương trình khác'
-            listItems={listDifferentProgram}
-            isActive={isActiveDropdown.differentProgram}
-            handleToggle={() => handleToggleDropdown('differentProgram')}
-            refDropdown={refDropdowns.current.differentProgram}
-            height={dropdownHeights.differentProgram}
-          />
-          <Dropdown
-            title='Hỗ trợ khách hàng'
-            listItems={listDifferentProgram}
-            isActive={isActiveDropdown.supportCustomer}
-            handleToggle={() => handleToggleDropdown('supportCustomer')}
-            refDropdown={refDropdowns.current.supportCustomer}
-            height={dropdownHeights.supportCustomer}
-          />
-          {listMenuMobileLast.map((item, index) => (
-            <Link
-              href={item.href}
-              key={index}
-              className='mt-2 block w-full rounded-[0.75rem] bg-[#F1F0EC] p-4'
-            >
-              <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-                {item.title}
-              </span>
-            </Link>
-          ))}
+          <div
+            className='mb-3 mt-3 flex w-full items-center justify-between rounded-[0.75rem] bg-[#F1F0EC] p-4'
+            onClick={() => {
+              handleSelectChild(menu[4])
+              handleToggleChild()
+            }}
+          >
+            <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
+              Các chương trình khác
+            </span>
+            <ImageV2
+              src='/icons/homepage/header/arrow_normal_mb.svg'
+              alt='arrow'
+              width={40}
+              height={40}
+              className='size-[1.125rem] object-contain'
+            />
+          </div>
+          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+            {listMenuMobileLast.map((item, index) =>
+              item.children ? (
+                <div key={index}>
+                  <div
+                    className='flex items-center justify-between'
+                    onClick={() => {
+                      handleSelectChild(item)
+                      handleToggleChild()
+                    }}
+                  >
+                    <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
+                      {item.title}
+                    </span>
+                    <ImageV2
+                      src='/icons/homepage/header/arrow_normal_mb.svg'
+                      alt='arrow'
+                      width={40}
+                      height={40}
+                      className='size-[1.125rem] object-contain'
+                    />
+                  </div>
+                  {index < listMenuMobileLast.length - 1 && (
+                    <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  href={'/'}
+                  key={index}
+                >
+                  <div className='flex items-center justify-between'>
+                    <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
+                      {item.title}
+                    </span>
+                    <ImageV2
+                      src='/icons/homepage/header/arrow_normal_mb.svg'
+                      alt='arrow'
+                      width={40}
+                      height={40}
+                      className='size-[1.125rem] object-contain'
+                    />
+                  </div>
+                  {index < listMenuMobileLast.length - 1 && (
+                    <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
+                  )}
+                </Link>
+              ),
+            )}
+          </div>
+
           <div className='mb-[3.5rem] mt-[2.5rem] flex items-center justify-center space-x-[0.75rem]'>
             {socialNetwork.map((item: SocialNetwork, index: number) => (
               <Link
-                href={item.link}
+                href={item.link || '/'}
                 key={index}
                 className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)]'
               >
                 <ImageV2
-                  src={item.icon}
+                  src={item.icon ||''}
                   alt='logo'
                   width={40}
                   height={40}
@@ -825,7 +906,7 @@ const Header = () => {
               key={index}
             >
               <ImageV2
-                src={item.flagUrl}
+                src={item.flagUrl || ''}
                 alt='logo'
                 width={40}
                 height={40}
@@ -837,6 +918,53 @@ const Header = () => {
             </div>
           ))}
         </>
+      </div>
+      <div
+        className={`fixed bottom-0 left-0 z-[51] h-full w-full flex  items-end transition-all duration-300 sm:hidden ${isOpenedChild ? 'opacity-1 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+      >
+        <div className='bg-[rgba(0,0,0,0.16)] h-full w-full absolute z-10' onClick={handleToggleChild}></div>
+        <div
+          className={`h-fit max-h-[50vh] relative z-20 w-full translate-y-0 rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[1.5rem] transition-all duration-300 sm:hidden ${isOpenedChild ? 'translate-y-0' : 'translate-y-[150%]'}`}
+        >
+          <div className='flex items-center justify-between pb-4'>
+            <span className='text-[0.875rem] font-semibold tracking-[-0.0175rem] text-brown'>
+              {selectedChild?.title}
+            </span>
+            <ImageV2
+              src={'/icons/homepage/header/close-popup.svg'}
+              alt='close'
+              width={40}
+              height={40}
+              className='size-[1.5rem] object-contain'
+              onClick={handleToggleChild}
+            />
+          </div>
+          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+            {selectedChild?.children?.map((item: MenuItem, index: number) => (
+              <Link
+                href={item.href}
+                key={index}
+              >
+                <div className='flex items-center justify-between'>
+                  <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
+                    {item.title}
+                  </span>
+                  <ImageV2
+                    src='/icons/homepage/header/arrow_normal_mb.svg'
+                    alt='arrow'
+                    width={40}
+                    height={40}
+                    className='size-[1.125rem] object-contain'
+                  />
+                </div>
+                {selectedChild?.children &&
+                  index < selectedChild.children.length - 1 && (
+                    <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
+                  )}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
       <div
         className={`overlay-menu pointer-events-none fixed left-0 top-0 z-[50] h-full w-full bg-[rgba(0,0,0,0.16)] xsm:pointer-events-auto ${isActiveOverlay ? 'block' : 'hidden'}`}

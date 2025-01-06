@@ -113,6 +113,9 @@ html {
   .body16 {
     @apply text-[1rem] leading-[1.5];
   }
+  .body13 {
+    @apply text-[0.8125rem] leading-[1.5] tracking-[-0.00813rem];
+  }
   .body16-m {
     @apply text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem];
   }
@@ -167,6 +170,30 @@ html {
     filter: brightness(0) saturate(100%) invert(28%) sepia(7%) saturate(1108%)
       hue-rotate(335deg) brightness(97%) contrast(84%);
   }
+
+  .heading16 {
+    @apply text-[1rem] leading-[1.5];
+  }
+  /* PC/Headings/Hero Title 2 */
+  .heading-hero-title-2 {
+    @apply text-[3.25rem] leading-[1.2] tracking-[-0.065rem];
+  }
+
+  .phase-1-text-gradient {
+    background: var(
+      --Phase-1-text,
+      linear-gradient(98deg, #95502f 41.26%, #f5c178 97.06%)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .advantages-benefits__item-content {
+    @apply body13 text-greyscaletext-body;
+  }
+  .advantages-benefits__item-content ul {
+    @apply list-disc pl-[1.5rem] xsm:pl-[1.2rem];
+  }
 }
 @media (max-width: 639px) {
   html {
@@ -177,6 +204,11 @@ html {
   }
   .ul_auto {
     list-style-type: auto;
+  }
+  .advantages-benefits__item-content {
+    font-size: 0.875rem;
+    line-height: 150%; /* 1.3125rem */
+    letter-spacing: -0.00875rem;
   }
 }
 

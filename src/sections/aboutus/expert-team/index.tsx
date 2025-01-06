@@ -1,5 +1,5 @@
 'use client'
-import {FC, useState} from 'react'
+import {useState} from 'react'
 import 'swiper/css'
 import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
