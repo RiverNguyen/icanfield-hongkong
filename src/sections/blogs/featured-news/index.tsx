@@ -102,7 +102,7 @@ function FeaturedNewSlidePC({
         {items.map((item, idx) => (
           <SwiperSlide key={idx}>
             <ImageV2
-              src={item.backgroundImage.src}
+              src={item.backgroundImage.src || ''}
               alt={item.backgroundImage.alt}
               width={1434 * 2}
               height={554 * 2}
@@ -239,7 +239,7 @@ function FeaturedNewSlideMobile({
           {items.map((item, idx) => (
             <SwiperSlide key={idx}>
               <ImageV2
-                src={item.backgroundImage.src}
+                src={item.backgroundImage.src || ''}
                 alt={item.backgroundImage.alt}
                 width={1434 * 2}
                 height={554 * 2}

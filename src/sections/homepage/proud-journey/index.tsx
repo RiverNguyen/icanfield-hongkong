@@ -183,7 +183,7 @@ function ProudJourneyItem({
       <div className='box__image relative h-[11.25rem] select-none transition-all duration-100 sm:size-full'>
         <ImageV2
           className='rounded-[0.5rem] object-cover transition-all duration-100 sm:size-full sm:rounded-[1rem]'
-          src={image.url}
+          src={image.url ||''}
           alt={image.alt}
           fill
           sizes='25vw'
@@ -198,7 +198,7 @@ function ProudJourneyItem({
         <div className='box__user-border size-[2.5rem] flex-shrink-0 rounded-full border-[2px] border-solid border-[#95502F] sm:size-[3.5rem] sm:border-[1.5px] sm:border-white'>
           <ImageV2
             className='size-full rounded-full object-cover'
-            src={avatar.url}
+            src={avatar.url || ''}
             alt={avatar.alt}
             width={avatar.width * 2}
             height={avatar.height * 2}

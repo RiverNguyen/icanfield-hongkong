@@ -3,7 +3,6 @@
 'use client'
 import {useEffect, useMemo, useRef, useState} from 'react'
 import useSWR from 'swr'
-
 import ItemBlog from '@/components/itemBlog'
 import {fetcher} from '@/lib/swr'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
@@ -16,7 +15,7 @@ import {
 } from '@/types/blogs.interface'
 import endpoints from '@/utils/endpoints'
 import {useSearchParams} from 'next/navigation'
-import {LIMIT_POSTS} from '@/app/blogs/page'
+import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import {Pagination} from '@/components/pagination/Pagination'
 import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
 
@@ -36,7 +35,9 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
   const searchParams = useSearchParams()
 
   const [selectedCategory, setSelectedCategory] = useState<Category>(
-    dataCategories[0],
+    dataCategories.length
+      ? dataCategories[0]
+      : {id: 0, name: 'All', slug: 'all', taxonomy: ''}, // Default fallback
   )
   const [search, setSearch] = useState<string>('')
   const [selectedSortOption, setSelectedSortOption] = useState<SortOption>(
@@ -75,9 +76,8 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
   }, [posts])
 
   const dataLatest = useMemo(() => {
-    return searchParams?.size ? posts?.data : dataPosts.data
+    return Array.isArray(posts?.data) ? posts?.data : dataPosts.data
   }, [searchParams, posts, dataPosts.data])
-
   return (
     <section
       ref={sectionRef}
