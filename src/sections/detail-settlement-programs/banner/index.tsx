@@ -9,6 +9,8 @@ export interface IBannerProps {
   description?: string
   backgroundImage: Media
   children?: React.ReactNode
+  className?: string
+  backgroundOverlay?: string
 }
 
 export const Banner: FC<IBannerProps> = ({
@@ -17,9 +19,11 @@ export const Banner: FC<IBannerProps> = ({
   description,
   backgroundImage,
   children,
+  className,
+  backgroundOverlay = 'linear-gradient(180deg,rgba(246,246,244,0.00)_76.15%,#F6F6F4_98.8%),linear-gradient(180deg,rgba(0,0,0,0.45)_12%,rgba(0,0,0,0.00)_100%)',
 }) => {
   return (
-    <section className='relative min-h-[33.5rem] overflow-hidden pt-[3.75rem] sm:min-h-[55.9375rem] sm:pt-[6.44rem] xsm:rounded-[0_0_1rem_1rem]'>
+    <section className={`relative min-h-[33.5rem] overflow-hidden pt-[3.75rem] sm:min-h-[55.9375rem] sm:pt-[6.44rem] xsm:rounded-[0_0_1rem_1rem] ${className}`}>
       <ImageV2
         src={backgroundImage.url}
         alt={backgroundImage.alt}
@@ -27,7 +31,7 @@ export const Banner: FC<IBannerProps> = ({
         height={478 * 2}
         className='absolute inset-0 h-full w-full object-cover'
       />
-      <div className='absolute inset-0 hidden h-full w-full bg-[linear-gradient(180deg,rgba(246,246,244,0.00)_76.15%,#F6F6F4_98.8%),linear-gradient(180deg,rgba(0,0,0,0.45)_12%,rgba(0,0,0,0.00)_100%)] sm:block'></div>
+      <div className={`absolute inset-0 hidden h-full w-full bg-[${backgroundOverlay}] sm:block`}></div>
       <div className='absolute left-0 top-0 h-[40.25rem] w-full bg-[linear-gradient(180deg,rgba(246,246,244,0.00)_76.15%,#F6F6F4_98.8%),linear-gradient(180deg,rgba(0,0,0,0.45)_12%,rgba(0,0,0,0.00)_100%)] sm:hidden'></div>
       {children}
       <div
