@@ -51,7 +51,7 @@ const ProjectInvestorDeveloper = ({
         </p>
       </div>
       <div className='z-10 flex w-full items-end space-x-6 xsm:flex-col-reverse xsm:space-x-0'>
-        <div className='h-[23.75rem w-full flex-1 rounded-3xl border border-white/60 bg-[linear-gradient(95deg,rgba(124,62,33,0.50)_-4.54%,rgba(245,193,120,0.50)_95.42%)] p-6 backdrop-blur-[25px] xsm:rounded-none xsm:border-none xsm:p-4'>
+        <div className='h-[23.75rem w-full flex-1 rounded-3xl border border-white/10 bg-[linear-gradient(95deg,rgba(124,62,33,0.50)_-4.54%,rgba(245,193,120,0.50)_95.42%)] bg-origin-border p-6 backdrop-blur-[25px] xsm:rounded-none xsm:border-none xsm:p-4'>
           <div className='flex items-center space-x-4'>
             <div className='flex h-16 w-16 items-center justify-center rounded-xl bg-white xsm:h-[3.367rem] xsm:w-[3.367rem]'>
               <ImageV2
