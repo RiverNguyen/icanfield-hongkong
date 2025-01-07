@@ -5,18 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import ItemBlog from "@/components/itemBlog";
 import { Pagination } from 'swiper/modules';
-
-interface dataItemBlog {
-  category: [
-    {name: string}
-  ]
-  title: string
-  slug: string
-  image: {
-    url: string
-    alt: string
-  }
-}
+import { DataItem } from "@/types/blogs.interface";
 
 export default function RelatedArticles({dataRelatedPosts}: {dataRelatedPosts: []}) {
   return (
@@ -67,7 +56,7 @@ export default function RelatedArticles({dataRelatedPosts}: {dataRelatedPosts: [
         }}
         className="mySwiper !px-[5rem] xsm:!px-[1rem] [&_.swiper-pagination]:pagination [&_.swiper-pagination-bullet]:pagination-bullet [&_.swiper-pagination-bullet-active]:pagination-bullet--active"
       >
-        {Array.isArray(dataRelatedPosts) && dataRelatedPosts.map((e: dataItemBlog, index: number) => (
+        {Array.isArray(dataRelatedPosts) && dataRelatedPosts.map((e: DataItem, index: number) => (
           <SwiperSlide key={index} className="sm:!w-[28.35rem] sm:mr-[2rem] sm:last:mr-0">
             <ItemBlog data={e} />
           </SwiperSlide>
