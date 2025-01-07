@@ -21,8 +21,8 @@ const InfoItem = ({image, title, value}: InfoItemProps) => {
         height={300}
         className='absolute inset-0 h-full w-full object-cover'
       />
-      <div className='z-10 flex w-full flex-row items-center space-x-4 space-y-0 rounded-[0.5rem] border border-black/10 bg-white/65 p-4 shadow-[0px_-1px_20px_0px_rgba(0,0,0,0.04)] backdrop-blur-[20px] xsm:flex-col xsm:space-x-0 xsm:space-y-2 xsm:p-2'>
-        <div className='flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-[0.5rem] border border-white/25 bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] xsm:h-5 xsm:w-5 xsm:border-none xsm:bg-none'>
+      <div className='z-10 flex w-full flex-row items-center space-x-4 space-y-0 rounded-[0.5rem] border border-black/10 bg-white/65 p-4 shadow-[0px_-1px_20px_0px_rgba(0,0,0,0.04)] backdrop-blur-[20px] xsm:flex-col xsm:items-start xsm:space-x-0 xsm:space-y-2 xsm:p-2'>
+        <div className='flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-[0.5rem] border border-white/25 bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] bg-origin-border xsm:h-5 xsm:w-5 xsm:border-none xsm:bg-none'>
           <ImageV2
             alt={title}
             src='/icons/detail-eb5/check.svg'
@@ -32,7 +32,7 @@ const InfoItem = ({image, title, value}: InfoItemProps) => {
           />
         </div>
         <div className='flex-col space-y-1'>
-          <p className='sub-14 xsm:sub-12 font-medium text-greyscaletext-400 xsm:font-normal'>
+          <p className='sub-14 xsm:sub-12 font-medium tracking-[-0.00875rem] text-greyscaletext-400 xsm:font-normal'>
             {title}
           </p>
           <p className='heading3-s font-semibold text-Phase-1-Brown xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'>
@@ -123,7 +123,7 @@ const ProjectOverview = ({
             />
           ))}
         </div>
-        <div className='flex w-[47.6875rem] flex-col space-y-6 xsm:w-full xsm:space-y-4'>
+        <div className='z-10 flex w-[47.6875rem] flex-col space-y-6 xsm:w-full xsm:space-y-4'>
           <h1 className='heading1 font-optima font-semibold text-Phase-1-Brown'>
             {title}
           </h1>
@@ -134,9 +134,9 @@ const ProjectOverview = ({
         <ImageV2
           src='/imgs/detail-eb5/bg.webp'
           alt='bg'
-          width={1200}
+          width={1600}
           height={800}
-          className='absolute -bottom-[10%] left-0 right-0 w-full object-cover xsm:hidden'
+          className='absolute -bottom-10 left-0 w-[100rem] object-cover opacity-80 xsm:hidden'
         />
       </div>
       <ProjectSlider images={images} />

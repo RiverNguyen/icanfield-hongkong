@@ -10,7 +10,7 @@ type LocationItem = {
 
 const LocationItem = ({description, image, title}: LocationItem) => {
   return (
-    <div className='shadow-SHADOW relative flex items-start space-x-6 overflow-hidden rounded-3xl bg-white p-6'>
+    <div className='relative flex items-start space-x-6 overflow-hidden rounded-3xl bg-white p-6 shadow-SHADOW'>
       <div className='absolute -top-[0.02088rem] right-0 h-[7.5rem] w-[7.5rem] rotate-90 transform bg-[radial-gradient(95.02%_94.67%_at_-6.67%_-10.42%,#F5C178_34.9%,rgba(255,255,255,0.00)_100%)] opacity-80' />
       <ImageV2
         src={image}
@@ -32,7 +32,7 @@ const LocationItem = ({description, image, title}: LocationItem) => {
 
 const LocationItemMobile = ({description, image, title}: LocationItem) => {
   return (
-    <div className='shadow-SHADOW flex flex-col space-y-4 rounded-3xl bg-white p-4'>
+    <div className='flex flex-col space-y-4 rounded-3xl bg-white p-4 shadow-SHADOW'>
       <ImageV2
         src={image}
         alt='location'
@@ -77,13 +77,13 @@ const ProjectLocation = ({
         <h1 className='heading1 font-optima font-semibold text-Phase-1-Brown'>
           {title}
         </h1>
-        <p className='body16 xsm:body-14 mt-[0.875rem] text-greyscaletext-body'>
+        <p className='body16-m xsm:body-14 mt-[0.875rem] text-greyscaletext-body'>
           {description}
         </p>
         <h4 className='heading4 mt-14 font-optima font-semibold text-Phase-1-Brown xsm:mt-8 xsm:text-[1.125rem] xsm:leading-[1.4] xsm:tracking-[-0.0225rem]'>
           {subTitle}
         </h4>
-        <p className='body16 xsm:body-14 mt-4 text-greyscaletext-body'>
+        <p className='body16-m xsm:body-14 mt-4 text-greyscaletext-body'>
           {subDescription}
         </p>
         <div className='mt-6 flex flex-col space-y-8 xsm:mt-4 xsm:space-y-4'>
@@ -105,7 +105,7 @@ const ProjectLocation = ({
           })}
         </div>
       </div>
-      <div className='h-[49.25rem] w-[47.825rem] py-20 xsm:aspect-square xsm:h-auto xsm:w-full xsm:py-0'>
+      <div className='sticky top-8 h-[49.25rem] w-[47.825rem] py-20 xsm:static xsm:aspect-square xsm:h-auto xsm:w-full xsm:py-0'>
         <ImageV2
           src={locationImage}
           alt='location'

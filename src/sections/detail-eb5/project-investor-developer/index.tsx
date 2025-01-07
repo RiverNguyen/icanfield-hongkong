@@ -67,7 +67,7 @@ const ProjectInvestorDeveloper = ({
                 <h3 className='sub-24S xsm:body16-s font-semibold text-white'>
                   {investor.title}
                 </h3>
-                <p className='sub-14 xsm:sub-12-m mt-1 font-medium text-white/85'>
+                <p className='body-14 xsm:sub-12-m mt-1 font-medium text-white/85'>
                   Chủ đầu tư dự án
                 </p>
               </div>
@@ -135,13 +135,13 @@ const ProjectInvestorDeveloper = ({
           >
             <TabsList className='grid h-auto w-full grid-cols-2 p-3 xsm:p-2'>
               <TabsTrigger
-                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4'
+                className='heading3-s rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown data-[state=active]:shadow-SHADOW xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='investor'
               >
                 Chủ đầu tư dự án
               </TabsTrigger>
               <TabsTrigger
-                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4'
+                className='heading3-s rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown data-[state=active]:shadow-SHADOW xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='developer'
               >
                 Đơn vị phát triển dự án
