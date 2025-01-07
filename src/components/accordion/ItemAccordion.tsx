@@ -23,7 +23,7 @@ export default function ItemAccordion() {
             className="space-y-[2.5rem] xsm:space-y-[1.5rem]"
         >
             {new Array(5).fill(0).map((e, index) => (
-                <AccordionItem value={"item-" + index} className="border-b-0">
+                <AccordionItem key={index} value={"item-" + index} className="border-b-0">
                     <AccordionTrigger className="p-0 [&_svg]:hidden hover:no-underline [&_.iconadd_path]:data-[state=closed]:stroke-[#333333] [&_.path-2]:data-[state=open]:rotate-0">
                         <p className="body16-s xsm:body-14-s bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] background_clip--text">Có những chương trình định cư Canada nào phổ biến?</p>
                         <IConAdd className="iconadd size-[1.25rem] !block object-contain xsm:ml-[1rem]" />

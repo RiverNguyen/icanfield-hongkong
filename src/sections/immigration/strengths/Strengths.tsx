@@ -11,7 +11,7 @@ export default function Strengths({
 }: {
   dataStrength: dataStrength[];
 }) {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
   const [indexActive, setIndexActive] = useState<number>(0);
   const handleMouseEnter = (index: number) => {
     setIndexActive(index);
@@ -22,25 +22,25 @@ export default function Strengths({
         <div className="w-full overflow-hidden overflow-x-auto sm:hidden">
           <div className="flex p-[1rem] w-max items-center space-x-[1rem]">
             {dataStrength?.map((e: dataStrength, index: number) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="relative w-[19.375rem] h-[22rem] flex flex-col justify-end rounded-[1rem] shadow-[0px_-3px_8px_0px_rgba(0,0,0,0.10)]"
               >
                 <div className="absolute top-[2.93rem] left-0 z-[9] h-[6.4375rem] w-full bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)]"></div>
-                <ImageV2 
+                <ImageV2
                   className="absolute top-0 left-0 w-full h-[9.54219rem] object-cover rounded-[1rem]"
                   alt={e?.img_bg?.alt}
-                  width={310} 
-                  height={152} 
-                  src={e?.img_bg?.url} 
+                  width={310}
+                  height={152}
+                  src={e?.img_bg?.url}
                 />
                 <div className="relative z-10 min-h-[14.625rem] p-[1.25rem] rounded-[1rem] bg-[linear-gradient(0deg,#5C321E_0%,#95502F_100%)]">
-                  <ImageV2 
+                  <ImageV2
                     className="size-[2.5rem] object-contain"
-                    alt={e?.img_icon?.alt} 
-                    width={40} 
-                    height={40} 
-                    src={e?.img_icon?.url} 
+                    alt={e?.img_icon?.alt}
+                    width={40}
+                    height={40}
+                    src={e?.img_icon?.url}
                   />
                   <p className="body-14-b text-white mt-[1.25rem] mb-[0.5rem]">
                     {e?.title}
@@ -61,7 +61,7 @@ export default function Strengths({
                 key={index}
                 className={cn(
                   "size-full object-cover absolute transition-all duration-500 opacity-0",
-                  indexActive === index && "opacity-100" 
+                  indexActive === index && "opacity-100"
                 )}
                 width={1600}
                 height={860}
@@ -75,6 +75,7 @@ export default function Strengths({
             <div className="relative w-[59.75rem] mt-[1.62rem]">
               {dataStrength?.map((e: dataStrength, index: number) => (
                 <div
+                  key={index}
                   className={cn(
                     "absolute w-full flex items-center justify-between transition-all duration-500",
                     indexActive === index ? "opacity-100" : "opacity-0"
@@ -88,7 +89,9 @@ export default function Strengths({
                       {e?.label}
                     </p>
                   </div>
-                  <p className="w-[21.375rem] pc-13se uppercase">{e?.decscript}</p>
+                  <p className="w-[21.375rem] pc-13se uppercase">
+                    {e?.decscript}
+                  </p>
                 </div>
               ))}
             </div>
