@@ -72,7 +72,7 @@ const ProjectInvestorDeveloper = ({
                 </p>
               </div>
             ) : (
-              <h3 className='sub-24S xsm:body16-s font-semibold text-white'>
+              <h3 className='sub-24S xsm:body16-s font-semibold uppercase text-white'>
                 Các đơn vị <br />
                 phát triển dự án
               </h3>
