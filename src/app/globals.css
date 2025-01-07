@@ -66,6 +66,9 @@ html {
   .heading6 {
     @apply text-[1.125rem] leading-[1.5];
   }
+  .pc-sub-3 {
+    @apply text-[1.25rem] leading-[1.33] tracking-[-0.025rem];
+  }
   .sub-14 {
     @apply text-[0.875rem] leading-[1.5];
   }

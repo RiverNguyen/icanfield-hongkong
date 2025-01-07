@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type {Config} from 'tailwindcss'
+import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
