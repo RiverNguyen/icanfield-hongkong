@@ -28,7 +28,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
   return (
     <section className='relative z-10 space-y-[1.5rem] bg-white pt-[2.5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] sm:space-y-[2.5rem] sm:rounded-[4rem_4rem_0rem_0rem] sm:p-[5rem_0_6.5rem] xsm:mb-[4rem]'>
       <h2 className='heading1 mx-auto max-w-[90rem] px-[1rem] font-optima font-semibold text-brown sm:px-0'>
-        {title}
+        {title || 'Tin tức mới nhất'}
       </h2>
       <div className='mx-auto flex flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:px-0'>
         {itemsNewsFeatured.map((item, index) => (

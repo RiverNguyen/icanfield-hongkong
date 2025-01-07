@@ -22,7 +22,7 @@ export default function BannerImmigration() {
           <h1 className="text-[5rem] font-medium leading-[1.2] tracking-[-0.1rem] font-optima background_clip--text xsm:text-[2.5rem] xsm:leading-[1.3] xsm:tracking-[-0.05rem] bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)]">
             ĐỊNH CƯ CANADA
           </h1>
-          <p className="hero-title text-[#474736]">Khởi Đầu Tương Lai Mới</p>
+          <p className='hero-title text-[#474736]'>Khởi Đầu Tương Lai Mới</p>
         </div>
       </div>
       {isMobile ? (
@@ -84,5 +84,5 @@ export default function BannerImmigration() {
         </div>
       )}
     </section>
-  );
+  )
 }

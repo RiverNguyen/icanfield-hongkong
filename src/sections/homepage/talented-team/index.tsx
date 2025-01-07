@@ -5,7 +5,7 @@ import {useState} from 'react'
 import 'swiper/css'
 import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
-interface ITalentedTeamProps {
+export interface ITalentedTeamProps {
   data: {
     title: string
     talented_team: {
@@ -52,7 +52,7 @@ const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
             >
               <div className='flex cursor-pointer flex-col items-center justify-center !overflow-visible'>
                 <ImageV2
-                  src={item.image.url}
+                  src={item.image.url || ''}
                   alt={item.image.alt}
                   width={item.image.width * 2}
                   height={item.image.height * 2}
