@@ -1,0 +1,11 @@
+.up-down {
+    animation: activePlane 0.5s ease infinite alternate;
+}
+@keyframes activePlane {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-1.06rem);
+    }
+}
