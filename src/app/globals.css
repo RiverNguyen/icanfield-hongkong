@@ -43,10 +43,8 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.section-container {
-  @apply mx-auto max-w-[90rem] xsm:px-4;
-}
 @layer components {
+<<<<<<< HEAD
   .hero-title {
     @apply font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] xsm:text-[1.75rem] xsm:tracking-[-0.035rem];
   }
@@ -131,6 +129,8 @@ html {
   .inter22-m {
     @apply text-[1.375rem] font-medium leading-[1.4] tracking-[-0.0875rem];
   }
+=======
+>>>>>>> 5529897 ([code]: done settlement)
   .content-p {
     @apply inter18 my-[0.5rem] text-greyscaletext-body xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
   }
@@ -165,7 +165,9 @@ html {
   .pagination-bullet--active {
     @apply xsm:border-white xsm:bg-[#5C321E] xsm:!opacity-100 xsm:before:absolute xsm:before:left-[50%] xsm:before:top-[50%] xsm:before:size-[0.75rem] xsm:before:translate-x-[-50%] xsm:before:translate-y-[-50%] xsm:before:rounded-[100%] xsm:before:border-[0.5px] xsm:before:border-solid xsm:before:border-[#5C321E];
   }
-
+  .pc-13se {
+    @apply text-[0.8125rem] font-semibold tracking-[-0.00813rem];
+  }
   .popup-icon-filter {
     filter: brightness(0) saturate(100%) invert(28%) sepia(7%) saturate(1108%)
       hue-rotate(335deg) brightness(97%) contrast(84%);
@@ -195,12 +197,13 @@ html {
     @apply list-disc pl-[1.5rem] xsm:pl-[1.2rem];
   }
 }
+.duration-2000 {
+  transition-duration: 2000ms;
+  animation-duration: 2000ms;
+}
 @media (max-width: 639px) {
   html {
     font-size: 4.26666vw;
-  }
-  .section-container {
-    max-width: 100%;
   }
   .ul_auto {
     list-style-type: auto;
@@ -211,7 +214,6 @@ html {
     letter-spacing: -0.00875rem;
   }
 }
-
 @media (max-width: 1024px) {
   .hidden-scrollbar::-webkit-scrollbar {
     -webkit-appearance: none;

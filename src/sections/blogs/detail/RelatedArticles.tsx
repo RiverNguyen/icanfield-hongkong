@@ -1,5 +1,6 @@
 'use client'
 
+<<<<<<< HEAD
 import ImageV2 from '@/components/image/ImageV2'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation} from 'swiper/modules'
@@ -16,6 +17,14 @@ import {DataItem} from '@/types/blogs.interface'
 //     alt: string
 //   }
 // }
+=======
+import ImageV2 from "@/components/image/ImageV2";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import ItemBlog from "@/components/itemBlog";
+import { Pagination } from 'swiper/modules';
+import { DataItem } from "@/types/blogs.interface";
+>>>>>>> 5529897 ([code]: done settlement)
 
 export default function RelatedArticles({
   dataRelatedPosts,
@@ -70,6 +79,7 @@ export default function RelatedArticles({
         }}
         className='mySwiper [&_.swiper-pagination]:pagination [&_.swiper-pagination-bullet]:pagination-bullet [&_.swiper-pagination-bullet-active]:pagination-bullet--active !px-[5rem] xsm:!px-[1rem]'
       >
+<<<<<<< HEAD
         {Array.isArray(dataRelatedPosts) &&
           dataRelatedPosts.map((e: DataItem, index: number) => (
             <SwiperSlide
@@ -79,6 +89,13 @@ export default function RelatedArticles({
               <ItemBlog data={e} />
             </SwiperSlide>
           ))}
+=======
+        {Array.isArray(dataRelatedPosts) && dataRelatedPosts.map((e: DataItem, index: number) => (
+          <SwiperSlide key={index} className="sm:!w-[28.35rem] sm:mr-[2rem] sm:last:mr-0">
+            <ItemBlog data={e} />
+          </SwiperSlide>
+        ))}
+>>>>>>> 5529897 ([code]: done settlement)
       </Swiper>
     </section>
   )
