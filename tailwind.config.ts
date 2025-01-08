@@ -182,6 +182,9 @@ const config: Config = {
         '.sub-24S': {
           '@apply text-[1.5rem] leading-[133.3%] tracking-[-0.03rem]': {},
         },
+        '.sub-20B': {
+          '@apply text-[1.25rem] leading-[133.3%] font-bold tracking-[-0.025rem]': {},
+        },
         '.body16': {
           '@apply text-[1rem] leading-[1.5]': {},
         },
@@ -191,11 +194,17 @@ const config: Config = {
         '.body16-s': {
           '@apply text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem]': {},
         },
+        '.body16-b': {
+          '@apply text-[1rem] font-bold leading-[1.5] tracking-[-0.02rem]': {},
+        },
         '.body16-r55': {
           '@apply text-[1rem] leading-[1.55]': {},
         },
         '.inter18': {
           '@apply text-[1.125rem] leading-[1.5] tracking-[-0.01125rem]': {},
+        },
+        '.title18M': {
+          '@apply text-[1.125rem] leading-[1.2] tracking-[-0.0225rem] font-medium': {},
         },
         '.inter22-m': {
           '@apply text-[1.375rem] font-medium leading-[1.4] tracking-[-0.0875rem]': {},
