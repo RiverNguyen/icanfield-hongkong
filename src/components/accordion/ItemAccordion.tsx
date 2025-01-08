@@ -1,29 +1,29 @@
-"use client"
+'use client'
 
-import IConAdd from "@/components/accordion/IConAdd"
+import IConAdd from '@/components/accordion/IConAdd'
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-  } from "@/components/ui/accordion"
-import { useEffect, useState } from "react";
+  } from '@/components/ui/accordion'
+import { useEffect, useState } from 'react'
 
 export default function ItemAccordion() {
-    const [open, setOpen] = useState<string>("item-0");
+    const [open, setOpen] = useState<string>('item-0')
     useEffect(() => {
-        setOpen("item-0");
-      }, []);
+        setOpen('item-0')
+      }, [])
     return (
-        <Accordion 
+        <Accordion
             value={open}
             onValueChange={setOpen}
-            type="single" 
-            collapsible 
+            type="single"
+            collapsible
             className="space-y-[2.5rem] xsm:space-y-[1.5rem]"
         >
             {new Array(5).fill(0).map((e, index) => (
-                <AccordionItem key={index} value={"item-" + index} className="border-b-0">
+                <AccordionItem key={index} value={'item-' + index} className="border-b-0">
                     <AccordionTrigger className="p-0 [&_svg]:hidden hover:no-underline [&_.iconadd_path]:data-[state=closed]:stroke-[#333333] [&_.path-2]:data-[state=open]:rotate-0">
                         <p className="body16-s xsm:body-14-s bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] background_clip--text">Có những chương trình định cư Canada nào phổ biến?</p>
                         <IConAdd className="iconadd size-[1.25rem] !block object-contain xsm:ml-[1rem]" />

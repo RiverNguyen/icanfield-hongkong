@@ -11,6 +11,7 @@ export default function Share({className}: {className?: string}) {
   useEffect(() => {
     const fullUrl = `${window.location.origin}${pathname}${window.location.search}`
     setCurrentUrl(fullUrl)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handleCopuUrl = () => {
     navigator.clipboard.writeText(currentUrl)
@@ -30,7 +31,7 @@ export default function Share({className}: {className?: string}) {
         className,
       )}
     >
-      <p className='body16-s text-orangetext-900'>Chia sẻ qua</p>
+      <p className='text-orangetext-900 body16-s'>Chia sẻ qua</p>
       <div
         onClick={handleShareToFacebook}
         className='size-[2.75rem] cursor-pointer rounded-[1.9375rem] border-[1px] border-solid border-[rgba(0,0,0,0.10)] flex-center xsm:size-[2rem]'

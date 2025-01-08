@@ -1,6 +1,6 @@
-import ButtonBorder from "@/components/button/ButtonBorder";
-import ImageV2 from "@/components/image/ImageV2";
-import Link from "next/link";
+import ButtonBorder from '@/components/button/ButtonBorder'
+import ImageV2 from '@/components/image/ImageV2'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -9,11 +9,11 @@ const Footer = () => {
         <h3 className='heading2 w-[45.29138rem] text-center font-optima font-semibold tracking-[-0.05rem] text-textwhitetest xsm:w-full'>
           Để iCanfield dẫn lối <br /> hành trình quốc tế hóa của bạn!
         </h3>
-        <ButtonBorder title={"Hỗ trợ khách hàng"} link={"#"} />
+        <ButtonBorder title={'Hỗ trợ khách hàng'} link={'#'} />
       </div>
       <ImageV2
         alt="bg-footer"
-        src={"/imgs/homepage/footer/bg-footer.png"}
+        src={'/imgs/homepage/footer/bg-footer.png'}
         width={1600}
         height={522}
         className='absolute bottom-0 left-0 z-0 h-[calc(38.6875rem-6.06rem)] w-full opacity-[0.3] xsm:hidden'
@@ -22,7 +22,7 @@ const Footer = () => {
         <div className='flex sm:justify-between xsm:flex-col'>
           <ImageV2
             alt="logo-footer"
-            src={"/icons/homepage/footer/d-logofooter.svg"}
+            src={'/icons/homepage/footer/d-logofooter.svg'}
             width={190}
             height={223}
             className='h-[13.95613rem] w-[11.875rem] xsm:mx-auto xsm:h-[9.625rem] xsm:w-[8.18975rem]'
@@ -36,7 +36,7 @@ const Footer = () => {
                 <Link href="#" className="flex items-start space-x-[1rem]">
                   <ImageV2
                     alt=""
-                    src={"/icons/homepage/footer/d-icon-local.svg"}
+                    src={'/icons/homepage/footer/d-icon-local.svg'}
                     width={40}
                     height={40}
                     className="size-[1.25rem] object-contain"
@@ -153,7 +153,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

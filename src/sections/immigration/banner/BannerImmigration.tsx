@@ -1,5 +1,6 @@
 'use client'
 import {Breadcrumb} from '@/components/breadcrumb'
+
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
 import '@/sections/immigration/banner/style.css'

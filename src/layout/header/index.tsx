@@ -1,6 +1,8 @@
 'use client'
+
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
+import {isLockScroll} from '@/hooks/useBodyScrollLock'
 import {
   LanguageOption,
   MenuItem,
@@ -16,6 +18,7 @@ import {Autoplay} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {languageOptions} from './constants'
 import './styles.css'
+
 const Header = () => {
   const listPostOutstanding = [
     {
@@ -52,7 +55,7 @@ const Header = () => {
   const menu = [
     {
       title: 'Định cư Canada',
-      href: '/',
+      href: '/dinh-cu-canada',
       imgUrl: '/imgs/homepage/header/canada-flag2.png',
       background: '/imgs/homepage/header/d-card-canada.webp',
       count: 54,
@@ -249,6 +252,7 @@ const Header = () => {
   //header Mobile
   const handleToggleMenu = () => {
     setIsCloseMenu(!isCloseMenu)
+    isLockScroll(!isCloseMenu)
   }
   // handle toggle popup Language mobile
   const [isActivedLanguageMb, setIsActivedLanguageMb] = React.useState(false)
@@ -264,6 +268,10 @@ const Header = () => {
   //handle toggle child menu
   const handleToggleChild = () => {
     setIsOpenedChild(!isOpenedChild)
+  }
+  //close the mobile header
+  const handleBeforeNavigate = () => {
+    setIsCloseMenu(false)
   }
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
@@ -326,12 +334,10 @@ const Header = () => {
             {listItemTopHeader.map((item: TopHeaderItem, index) => (
               <Link
                 href={item.href || '/'}
-                href={item.href || '/'}
                 key={index}
                 className='flex items-center space-x-[0.62rem]'
               >
                 <ImageV2
-                  src={item.linkIcon || ''}
                   src={item.linkIcon || ''}
                   alt='logo'
                   width={40}
@@ -350,7 +356,6 @@ const Header = () => {
               <div className='relative flex size-[1.2rem] rounded-[50%] bg-[rgba(255,255,255,0.25)] backdrop-blur-[10px]'>
                 <div className='absolute bottom-0 left-0 z-[1] h-full w-full rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
                 <ImageV2
-                  src={isCurrentLanguage.flagUrl || ''}
                   src={isCurrentLanguage.flagUrl || ''}
                   alt='logo'
                   width={200}
@@ -384,7 +389,6 @@ const Header = () => {
                       {item.text}
                     </span>
                     <ImageV2
-                      src={item.flagUrl || ''}
                       src={item.flagUrl || ''}
                       alt='logo'
                       width={40}
@@ -424,7 +428,7 @@ const Header = () => {
                       alt='triangle'
                       width={40}
                       height={40}
-                      className='h-[2rem] w-[3rem] translate-x-[60rem] object-contain'
+                      className='h-[2rem] w-[3rem] translate-x-[13.25rem] object-contain'
                     />
                     <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
                       <div className='flex items-start justify-between'>
@@ -551,7 +555,6 @@ const Header = () => {
                           src={
                             urlImage
                               ? urlImage || ''
-                              ? urlImage || ''
                               : item?.children[0]?.imgUrl || ''
                           }
                           alt='logo'
@@ -642,8 +645,6 @@ const Header = () => {
                         urlImageSupportCustomer
                           ? urlImageSupportCustomer || ''
                           : listItemSupportCustomer[0].imgUrl || ''
-                          ? urlImageSupportCustomer || ''
-                          : listItemSupportCustomer[0].imgUrl || ''
                       }
                       alt='logo'
                       width={500}
@@ -732,7 +733,6 @@ const Header = () => {
                   {item?.background && (
                     <ImageV2
                       src={item?.background || ''}
-                      src={item?.background || ''}
                       alt='logo'
                       width={500}
                       height={500}
@@ -765,12 +765,13 @@ const Header = () => {
               ) : (
                 <Link
                   href={item.href}
+                  onClick={() => handleBeforeNavigate()}
+                  prefetch
                   key={index}
                   className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
                 >
                   {item?.background && (
                     <ImageV2
-                      src={item?.background || ''}
                       src={item?.background || ''}
                       alt='logo'
                       width={500}
@@ -822,7 +823,7 @@ const Header = () => {
               className='size-[1.125rem] object-contain'
             />
           </div>
-          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+          <div className='1 flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
             {listMenuMobileLast.map((item, index) =>
               item.children ? (
                 <div key={index}>
@@ -852,6 +853,8 @@ const Header = () => {
                 <Link
                   href={'/'}
                   key={index}
+                  onClick={() => handleBeforeNavigate()}
+                  prefetch
                 >
                   <div className='flex items-center justify-between'>
                     <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
@@ -877,12 +880,13 @@ const Header = () => {
             {socialNetwork.map((item: SocialNetwork, index: number) => (
               <Link
                 href={item.link || '/'}
-                href={item.link || '/'}
                 key={index}
-                className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)]'
+                className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)] xsm:rounded-[100%]'
+                onClick={() => handleBeforeNavigate()}
+                prefetch
               >
                 <ImageV2
-                  src={item.icon ||''}
+                  src={item.icon || ''}
                   alt='logo'
                   width={40}
                   height={40}
@@ -916,7 +920,6 @@ const Header = () => {
               key={index}
             >
               <ImageV2
-                src={item.flagUrl || ''}
                 src={item.flagUrl || ''}
                 alt='logo'
                 width={40}
@@ -953,11 +956,13 @@ const Header = () => {
               onClick={handleToggleChild}
             />
           </div>
-          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+          <div className='tru flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
             {selectedChild?.children?.map((item: MenuItem, index: number) => (
               <Link
                 href={item.href}
                 key={index}
+                onClick={() => handleBeforeNavigate()}
+                prefetch
               >
                 <div className='flex items-center justify-between'>
                   <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>

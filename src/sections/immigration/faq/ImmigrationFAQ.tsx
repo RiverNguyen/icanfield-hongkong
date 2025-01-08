@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import ItemAccordion from "@/components/accordion/ItemAccordion";
-import ButtonBrown from "@/components/button/ButtonBrown";
-import ImageV2 from "@/components/image/ImageV2";
+import ItemAccordion from '@/components/accordion/ItemAccordion'
+import ButtonBrown from '@/components/button/ButtonBrown'
+import ImageV2 from '@/components/image/ImageV2'
 
 export default function ImmigrationFAQ() {
   return (
@@ -12,7 +12,7 @@ export default function ImmigrationFAQ() {
           width={644}
           height={644}
           alt=""
-          src={"/imgs/immigration/immigrationfaq/mask_group.webp"}
+          src={'/imgs/immigration/immigrationfaq/mask_group.webp'}
         />
         <div className="relative z-10 p-[2.5rem] xsm:p-[1rem] xsm:pb-0 pb-0 flex items-center space-x-[2.5rem] xsm:space-x-[1.25rem] mb-[3.25rem] xsm:mb-[1.75rem]">
           <div className="size-[6.25rem] xsm:size-[4.375rem] rounded-[100%] border-[6px] xsm:border-[4.2px] border-solid border-[rgba(0,0,0,0.10)]">
@@ -21,7 +21,7 @@ export default function ImmigrationFAQ() {
               width={100}
               height={100}
               alt=""
-              src={"/imgs/immigration/immigrationfaq/d-image-canada.webp"}
+              src={'/imgs/immigration/immigrationfaq/d-image-canada.webp'}
             />
           </div>
           <div className="space-y-[0.62rem] xsm:space-y-[0.5rem]">
@@ -33,7 +33,7 @@ export default function ImmigrationFAQ() {
               width={100}
               height={100}
               alt=""
-              src={"/imgs/immigration/immigrationfaq/d-contact-form-logo.svg"}
+              src={'/imgs/immigration/immigrationfaq/d-contact-form-logo.svg'}
             />
           </div>
         </div>
@@ -74,5 +74,5 @@ export default function ImmigrationFAQ() {
         <ItemAccordion />
       </div>
     </section>
-  );
+  )
 }

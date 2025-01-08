@@ -12,6 +12,7 @@ export default function PopupSliderMb({
   index,
 }: {
   toggleMB: boolean
+  // eslint-disable-next-line no-unused-vars
   setToggleMB: (value: boolean) => void
   data: IExpertTeamPropsItem
   index: number

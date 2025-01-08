@@ -72,6 +72,7 @@ interface IItemInvestmentOpportunitiesProps
   extends IItemInvestmentOpportunities {
   itemKey: number
   activeIndex: number
+  // eslint-disable-next-line no-unused-vars
   setActiveIndex: (index: number) => void
 }
 
@@ -98,6 +99,7 @@ function ItemInvestmentOpportunities({
     } else {
       pRef.current.style.maxHeight = '0px'
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex])
 
   return (

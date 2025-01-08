@@ -1,21 +1,21 @@
-"use client";
-import ImageV2 from "@/components/image/ImageV2";
-import useIsMobile from "@/hooks/useIsMobile";
-import { cn } from "@/lib/utils";
-import IConLine from "@/sections/immigration/strengths/IConLine";
-import { dataStrength } from "@/types/dataAcfImmigration.interface";
-import { Fragment, useState } from "react";
+'use client'
+import ImageV2 from '@/components/image/ImageV2'
+import useIsMobile from '@/hooks/useIsMobile'
+import { cn } from '@/lib/utils'
+import IConLine from '@/sections/immigration/strengths/IConLine'
+import { dataStrength } from '@/types/dataAcfImmigration.interface'
+import { Fragment, useState } from 'react'
 
 export default function Strengths({
   dataStrength,
 }: {
   dataStrength: dataStrength[];
 }) {
-  const isMobile = useIsMobile();
-  const [indexActive, setIndexActive] = useState<number>(0);
+  const isMobile = useIsMobile()
+  const [indexActive, setIndexActive] = useState<number>(0)
   const handleMouseEnter = (index: number) => {
-    setIndexActive(index);
-  };
+    setIndexActive(index)
+  }
   return (
     <section className="relative z-10 h-[100vh] xsm:h-auto w-full xsm:py-[1.5rem]">
       {isMobile ? (
@@ -60,8 +60,8 @@ export default function Strengths({
               <ImageV2
                 key={index}
                 className={cn(
-                  "size-full object-cover absolute transition-all duration-500 opacity-0",
-                  indexActive === index && "opacity-100"
+                  'size-full object-cover absolute transition-all duration-500 opacity-0',
+                  indexActive === index && 'opacity-100'
                 )}
                 width={1600}
                 height={860}
@@ -77,8 +77,8 @@ export default function Strengths({
                 <div
                   key={index}
                   className={cn(
-                    "absolute w-full flex items-center justify-between transition-all duration-500",
-                    indexActive === index ? "opacity-100" : "opacity-0"
+                    'absolute w-full flex items-center justify-between transition-all duration-500',
+                    indexActive === index ? 'opacity-100' : 'opacity-0'
                   )}
                 >
                   <div className="space-y-[0.31rem]">
@@ -104,10 +104,10 @@ export default function Strengths({
                   <div
                     onMouseEnter={() => handleMouseEnter(index)}
                     className={cn(
-                      "cursor-pointer pt-[1.38rem] pl-[2.5rem] space-y-[0.625rem] rounded-[1rem_1rem_0rem_0rem] flex-1 transition-all duration-500",
+                      'cursor-pointer pt-[1.38rem] pl-[2.5rem] space-y-[0.625rem] rounded-[1rem_1rem_0rem_0rem] flex-1 transition-all duration-500',
                       indexActive === index
-                        ? "[&>p]:opacity-100 h-[10.25rem] bg-[linear-gradient(359deg,#FFE2CC_-11.71%,rgba(255,226,204,0.00)_38.57%),linear-gradient(192deg,#95502F_13.11%,#D79D61_108.7%,#F5C178_165.57%,#F5C178_230.98%)]"
-                        : "[&>p]:opacity-[0.7] h-[8.6875rem] bg-[linear-gradient(0deg,#5C321E_0%,#95502F_100%)]"
+                        ? '[&>p]:opacity-100 h-[10.25rem] bg-[linear-gradient(359deg,#FFE2CC_-11.71%,rgba(255,226,204,0.00)_38.57%),linear-gradient(192deg,#95502F_13.11%,#D79D61_108.7%,#F5C178_165.57%,#F5C178_230.98%)]'
+                        : '[&>p]:opacity-[0.7] h-[8.6875rem] bg-[linear-gradient(0deg,#5C321E_0%,#95502F_100%)]'
                     )}
                   >
                     <ImageV2
@@ -129,5 +129,5 @@ export default function Strengths({
         </>
       )}
     </section>
-  );
+  )
 }
