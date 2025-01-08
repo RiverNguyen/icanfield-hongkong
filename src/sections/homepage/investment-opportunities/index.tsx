@@ -37,10 +37,10 @@ export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
       className='investment-opportunities'
     >
       <div className='flex flex-col items-center p-[2.5rem_1rem_1.5rem] sm:sticky sm:top-0 sm:h-[15.06rem] sm:p-[1.25rem_0_0]'>
-        <span className='investment-opportunities__subtitle sub-12 translate-y-[15.62rem] font-medium uppercase text-greyscaletext-400 opacity-0 sm:font-semibold'>
+        <span className='investment-opportunities__subtitle translate-y-[15.62rem] font-medium uppercase text-greyscaletext-400 opacity-0 sub-12 sm:font-semibold'>
           {subtitle}
         </span>
-        <h2 className='investment-opportunities__title heading1 m-[0.75rem_0_0] text-center font-optima font-semibold text-brown sm:m-[0.94rem_0_4.5rem] sm:max-w-[52.75rem] sm:translate-y-[29.38rem]'>
+        <h2 className='investment-opportunities__title m-[0.75rem_0_0] text-center font-optima font-semibold text-brown heading1 sm:m-[0.94rem_0_4.5rem] sm:max-w-[52.75rem] sm:translate-y-[29.38rem]'>
           {title}
         </h2>
       </div>
@@ -72,6 +72,7 @@ interface IItemInvestmentOpportunitiesProps
   extends IItemInvestmentOpportunities {
   itemKey: number
   activeIndex: number
+  // eslint-disable-next-line no-unused-vars
   setActiveIndex: (index: number) => void
 }
 
@@ -98,6 +99,7 @@ function ItemInvestmentOpportunities({
     } else {
       pRef.current.style.maxHeight = '0px'
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex])
 
   return (
@@ -113,14 +115,14 @@ function ItemInvestmentOpportunities({
     >
       <ImageV2
         className='absolute bottom-0 left-0 right-0 top-0 size-full object-cover xsm:hidden'
-        src={background_pc.url}
+        src={background_pc.url || ''}
         alt={background_pc.alt}
         width={background_pc.width * 2}
         height={background_pc.height * 2}
       />
       <ImageV2
         className='absolute bottom-0 left-0 right-0 h-[38.56rem] w-full object-cover sm:hidden'
-        src={background_mb.url}
+        src={background_mb.url || ''}
         alt={background_mb.alt}
         width={background_mb.width * 2}
         height={background_mb.height * 2}
@@ -128,7 +130,7 @@ function ItemInvestmentOpportunities({
       <div className='relative mx-auto flex flex-col items-center sm:max-w-[82rem] sm:flex-row sm:items-stretch'>
         <ImageV2
           className='h-[12.5rem] w-[17.24138rem] object-cover sm:h-[18.125rem] sm:w-[25rem]'
-          src={image.url}
+          src={image.url || ''}
           alt={image.alt}
           width={image.width * 2}
           height={image.height * 2}
@@ -169,7 +171,7 @@ function ItemInvestmentOpportunities({
             className='flex h-[3rem] items-center justify-center rounded-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] sm:inline-flex sm:justify-start sm:bg-btn-gradient xsm:mt-8 xsm:border xsm:border-Text-Text-Grey-Disable'
             href={link}
           >
-            <span className='body-14-m text-bodytext sm:text-white'>
+            <span className='text-bodytext body-14-m sm:text-white'>
               Tìm hiểu thêm
             </span>
             <ArrowRight className='ml-[0.5rem] size-[1.5rem] text-bodytext sm:text-white xsm:translate-y-[-2px]' />

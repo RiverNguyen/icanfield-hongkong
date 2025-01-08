@@ -114,18 +114,19 @@ const IndexSortAndSearchPosts = ({
             isOpenSelectCategory && 'pointer-events-auto opacity-100',
           )}
         >
-          {sortOptions.map((sortOption: SortOption, index: number) => (
-            <button
-              key={index}
-              className={`h-[3rem] rounded-[0.3rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-orangetext-500 hover:bg-greyscaletext-200/20 xsm:h-[2.625rem] xsm:text-[0.875rem] ${sortOption.value === selectedSortOption.value ? 'bg-greyscaletext-200/20' : ''}`}
-              onClick={() => {
-                handleSelectSortOption(sortOption)
-                setIsOpenSelectCategory(false)
-              }}
-            >
-              {sortOption?.name}
-            </button>
-          ))}
+          {Array.isArray(sortOptions) &&
+            sortOptions.map((sortOption: SortOption, index: number) => (
+              <button
+                key={index}
+                className={`h-[3rem] rounded-[0.3rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-orangetext-500 hover:bg-greyscaletext-200/20 xsm:h-[2.625rem] xsm:text-[0.875rem] ${sortOption.value === selectedSortOption.value ? 'bg-greyscaletext-200/20' : ''}`}
+                onClick={() => {
+                  handleSelectSortOption(sortOption)
+                  setIsOpenSelectCategory(false)
+                }}
+              >
+                {sortOption?.name}
+              </button>
+            ))}
         </div>
       </div>
       <div className='relative h-[3rem] sm:w-[16.9375rem] xsm:h-[2.625rem] xsm:w-[calc((100%-1.25rem)/2)]'>
