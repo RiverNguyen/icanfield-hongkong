@@ -70,10 +70,42 @@ const config: Config = {
         'btn-gradient': 'var(--Phase-1-butt)',
       },
       transitionTimingFunction: {
-        'pagination-bezier': 'cubic-bezier(0.77, 0.05, 0.26, 1.02)', // Bounce effect
+        'pagination-bezier': 'cubic-bezier(0.77, 0.05, 0.26, 1.02)',
       },
       transitionDuration: {
         '800': '800ms',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+        marquee: {
+          '0%': {transform: 'translateX(0%)'},
+          '100%': {transform: 'translateX(-100%)'},
+        },
+        marquee2: {
+          '0%': {transform: 'translateX(100%)'},
+          '100%': {transform: 'translateX(0%)'},
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        marquee: 'marquee 25s linear infinite',
+        marquee2: 'marquee2 25s linear infinite',
       },
     },
   },
@@ -86,6 +118,108 @@ const config: Config = {
         },
         '.absolute-center': {
           '@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2':
+            {},
+        },
+        '.section-container': {
+          '@apply sm:mx-auto sm:max-w-[90rem] xsm:px-4 xsm:max-w-[100%]': {},
+        },
+        '.hero-title': {
+          '@apply font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] xsm:text-[1.75rem] xsm:tracking-[-0.035rem]':
+            {},
+        },
+        '.heading1': {
+          '@apply text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] xsm:text-[1.5rem] xsm:leading-[1.3]':
+            {},
+        },
+        '.heading2': {
+          '@apply text-[2.5rem] leading-[1.2] tracking-[-0.075rem] xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.06rem]':
+            {},
+        },
+        '.heading3': {
+          '@apply text-[2rem] leading-[1.2] tracking-[-0.04rem]': {},
+        },
+        '.heading4': {
+          '@apply text-[1.5rem] leading-[1.4] tracking-[-0.03rem]': {},
+        },
+        '.heading5': {
+          '@apply text-[1.25rem] leading-[1.5] tracking-[-0.025rem]': {},
+        },
+        '.heading6': {
+          '@apply text-[1.125rem] leading-[1.5]': {},
+        },
+        '.sub-14': {
+          '@apply text-[0.875rem] leading-[1.5]': {},
+        },
+        '.body-14': {
+          '@apply text-[0.875rem] leading-[1.5] tracking-[-0.00875rem]': {},
+        },
+        '.body-14-b': {
+          '@apply text-[0.875rem] font-bold leading-[1.5]': {},
+        },
+        '.body-14-s': {
+          '@apply text-[0.875rem] font-semibold leading-[1.5]': {},
+        },
+        '.body-14-m': {
+          '@apply text-[0.875rem] font-medium leading-[1.5] tracking-[-0.00875rem]':
+            {},
+        },
+        '.sub-12': {
+          '@apply text-[0.75rem] leading-[1.5]': {},
+        },
+        '.sub-12-m': {
+          '@apply text-[0.75rem] leading-[1.5] font-medium tracking-[-0.015rem]':
+            {},
+        },
+        '.sub-10': {
+          '@apply text-[0.625rem] leading-[1.5]': {},
+        },
+        '.sub-28B': {
+          '@apply text-[1.75rem] font-bold leading-[1.25] tracking-[-0.0175rem]':
+            {},
+        },
+        '.sub-28Semi': {
+          '@apply text-[1.75rem] font-semibold leading-[1.25] tracking-[-0.0175rem]':
+            {},
+        },
+        '.sub-28M': {
+          '@apply text-[1.75rem] font-medium leading-[1.25] tracking-[-0.0175rem]':
+            {},
+        },
+        '.sub-28R': {
+          '@apply text-[1.75rem] leading-[1.25] tracking-[-0.0175rem]': {},
+        },
+        '.sub-24B': {
+          '@apply text-[1.5rem] font-bold leading-[133.3%]': {},
+        },
+        '.sub-24R': {
+          '@apply text-[1.5rem] leading-[133.3%]': {},
+        },
+        '.sub-24S': {
+          '@apply text-[1.5rem] leading-[133.3%] tracking-[-0.03rem]': {},
+        },
+        '.body16': {
+          '@apply text-[1rem] leading-[1.5]': {},
+        },
+        '.body16-m': {
+          '@apply text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem]':
+            {},
+        },
+        '.body16-s': {
+          '@apply text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem]':
+            {},
+        },
+        '.body16-r55': {
+          '@apply text-[1rem] leading-[1.55]': {},
+        },
+        '.inter18': {
+          '@apply text-[1.125rem] leading-[1.5] tracking-[-0.01125rem]': {},
+        },
+        '.inter22-m': {
+          '@apply text-[1.375rem] font-medium leading-[1.4] tracking-[-0.0875rem]':
+            {},
+        },
+        '.mb12-s': {
+          '@apply xsm:text-[0.75rem] xsm:font-semibold xsm:tracking-[-0.015rem]':
             {},
         },
       })

@@ -5,6 +5,7 @@ import useIsMobile from '@/hooks/useIsMobile'
 
 const addIdsToH2Tags = (htmlString: string) => {
   let index = 1
+  if (!htmlString) return ''
   return htmlString.replace(/<h2[^>]*>/g, (match) => {
     return `${match.slice(0, -1)} id="section-${index++}">`
   })

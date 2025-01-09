@@ -27,8 +27,8 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
   const [latestNewsItemIndex, setLatestNewsItemIndex] = useState<number>(0)
   return (
     <section className='relative z-10 space-y-[1.5rem] bg-white pt-[2.5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] sm:space-y-[2.5rem] sm:rounded-[4rem_4rem_0rem_0rem] sm:p-[5rem_0_6.5rem] xsm:mb-[4rem]'>
-      <h2 className='heading1 mx-auto max-w-[90rem] px-[1rem] font-optima font-semibold text-brown sm:px-0'>
-        {title}
+      <h2 className='mx-auto max-w-[90rem] px-[1rem] font-optima font-semibold text-brown heading1 sm:px-0'>
+        {title || 'Tin tức mới nhất'}
       </h2>
       <div className='mx-auto flex flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:px-0'>
         {itemsNewsFeatured.map((item, index) => (
@@ -45,7 +45,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
               onClick={() => setLatestNewsItemIndex(index)}
               key={index}
               className={cn(
-                'body-14-m relative z-10 mr-[0.94rem] py-[0.5rem] text-black/60 xsm:flex-none',
+                'relative z-10 mr-[0.94rem] py-[0.5rem] text-black/60 body-14-m xsm:flex-none',
                 {
                   'text-orangetext-500 after:absolute after:bottom-[-1px] after:left-0 after:h-[1px] after:w-full after:rounded-[0.5rem] after:bg-orangetext-500 after:content-[""] sm:after:h-[2px]':
                     index == latestNewsItemIndex,
@@ -60,7 +60,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
           <h3 className='text-[1.25rem] font-bold leading-[1.66625rem] tracking-[-0.025rem] text-black/80'>
             {itemsNews[latestNewsItemIndex].title}
           </h3>
-          <p className='body-14 mb-[2.2rem] mt-[0.5rem] text-black/60'>
+          <p className='mb-[2.2rem] mt-[0.5rem] text-black/60 body-14'>
             {itemsNews[latestNewsItemIndex].description}
           </p>
           <div className='mt-[1.5rem] flex items-center justify-center px-[1rem] sm:justify-between sm:px-0 xsm:absolute xsm:bottom-0 xsm:left-0 xsm:right-0'>
@@ -68,7 +68,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
               href={itemsNews[latestNewsItemIndex].link}
               className='flex items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem]'
             >
-              <span className='body-14-m text-white'>Xem tất cả</span>
+              <span className='text-white body-14-m'>Xem tất cả</span>
               <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white' />
             </Link>
             <button className='latest-news__prev ml-auto size-[2.5rem] rounded-full bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:hidden'>
@@ -151,10 +151,10 @@ function NewsFeatured({
       <div className='absolute left-0 top-0 flex h-full w-full flex-col p-[1rem] sm:p-[1.5rem]'>
         <div className='flex justify-between xsm:mt-[0.75rem]'>
           <div className='flex flex-col justify-between'>
-            <p className='xsm:sub-12 sm:sub-14 basis-1/2 self-start text-white opacity-60 xsm:font-medium'>
+            <p className='basis-1/2 self-start text-white opacity-60 sm:sub-14 xsm:font-medium xsm:sub-12'>
               {date}
             </p>
-            <h3 className='xsm:body16-s sm:heading6 mt-[0.75rem] max-w-[20.625rem] font-semibold text-white sm:mt-[0.5rem]'>
+            <h3 className='mt-[0.75rem] max-w-[20.625rem] font-semibold text-white sm:mt-[0.5rem] sm:heading6 xsm:body16-s'>
               {title}
             </h3>
           </div>
@@ -174,7 +174,7 @@ function NewsFeatured({
           href={`/blogs/${link}`}
           className='group/btn relative z-10 mt-auto inline-flex cursor-pointer items-center self-start rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] hover:bg-white xsm:hidden'
         >
-          <span className='body-14-m text-white group-hover/btn:text-greentext'>
+          <span className='text-white body-14-m group-hover/btn:text-greentext'>
             Chi tiết bài viết
           </span>
           <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white group-hover/btn:text-greentext' />
@@ -203,7 +203,7 @@ function LatestNews({title, image, date, slug: link}: ItemNews) {
           {title}
         </h3>
       </Link>
-      <p className='sub-14 font-medium text-greyscaletext-200'>{date}</p>
+      <p className='font-medium text-greyscaletext-200 sub-14'>{date}</p>
     </div>
   )
 }

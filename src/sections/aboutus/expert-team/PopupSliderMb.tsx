@@ -1,9 +1,9 @@
-"use client"
-import ImageV2 from "@/components/image/ImageV2";
-import useBodyScrollLock from "@/hooks/useBodyScrollLock";
-import { cn } from "@/lib/utils";
-import ItemExpertTeam from "@/sections/aboutus/expert-team/ItemExpertTeam";
-import { IExpertTeamPropsItem } from "@/types/dataAcfAboutus.interface";
+'use client'
+import ImageV2 from '@/components/image/ImageV2'
+import useBodyScrollLock from '@/hooks/useBodyScrollLock'
+import {cn} from '@/lib/utils'
+import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
+import {IExpertTeamPropsItem} from '@/types/dataAcfAboutus.interface'
 
 export default function PopupSliderMb({
   toggleMB,
@@ -11,19 +11,20 @@ export default function PopupSliderMb({
   data,
   index,
 }: {
-  toggleMB: boolean;
-  setToggleMB: (value: boolean) => void;
-  data: IExpertTeamPropsItem;
-  index: number;
+  toggleMB: boolean
+  // eslint-disable-next-line no-unused-vars
+  setToggleMB: (value: boolean) => void
+  data: IExpertTeamPropsItem
+  index: number
 }) {
-  
+  const lockScroll = useBodyScrollLock(false)
   return (
     <>
       <div
         onClick={() => {
-          setToggleMB(false);
+          setToggleMB(false)
           //hook
-          useBodyScrollLock(false)
+          lockScroll()
         }}
         className={cn(
           'fixed inset-0 z-[39] bg-[#00000054] transition-all duration-1000',
@@ -38,12 +39,12 @@ export default function PopupSliderMb({
           toggleMB ? 'translate-y-0' : 'translate-y-[100%]',
         )}
       >
-        <div className="overflow-hidden overflow-y-auto scrollbar-hidden h-[37.5rem]">
-          <div className="sticky top-0 bg-white z-10">
-            <p className="text-brown heading2 font-optima font-semibold">
+        <div className='scrollbar-hidden h-[37.5rem] overflow-hidden overflow-y-auto'>
+          <div className='sticky top-0 z-10 bg-white'>
+            <p className='font-optima font-semibold text-brown heading2'>
               {data?.name}
             </p>
-            <p className="mt-[0.38rem] text-orangetext-500 text-[0.75rem] font-medium tracking-[-0.015rem]">
+            <p className='mt-[0.38rem] text-[0.75rem] font-medium tracking-[-0.015rem] text-orangetext-500'>
               {data?.position}
             </p>
           </div>
@@ -52,18 +53,18 @@ export default function PopupSliderMb({
             index={index}
             srcImage={data?.image?.url}
           />
-          <div 
+          <div
             dangerouslySetInnerHTML={{__html: data?.describe}}
-            className="mt-[1.5rem] [&_p]:body-14 [&_p]:text-bodytext">
-          </div>
+            className='mt-[1.5rem] [&_p]:text-bodytext [&_p]:body-14'
+          ></div>
         </div>
         <div
           onClick={() => {
-            setToggleMB(false);
+            setToggleMB(false)
             // hook
-            useBodyScrollLock(false)
+            lockScroll()
           }}
-          className="absolute top-[1.25rem] right-[1rem] z-20"
+          className='absolute right-[1rem] top-[1.25rem] z-20'
         >
           <ImageV2
             className='size-[1.5rem] object-contain'
