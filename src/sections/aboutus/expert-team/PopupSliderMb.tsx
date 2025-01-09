@@ -12,6 +12,7 @@ export default function PopupSliderMb({
   index,
 }: {
   toggleMB: boolean
+  // eslint-disable-next-line no-unused-vars
   setToggleMB: (value: boolean) => void
   data: IExpertTeamPropsItem
   index: number
@@ -40,7 +41,7 @@ export default function PopupSliderMb({
       >
         <div className='scrollbar-hidden h-[37.5rem] overflow-hidden overflow-y-auto'>
           <div className='sticky top-0 z-10 bg-white'>
-            <p className='heading2 font-optima font-semibold text-brown'>
+            <p className='font-optima font-semibold text-brown heading2'>
               {data?.name}
             </p>
             <p className='mt-[0.38rem] text-[0.75rem] font-medium tracking-[-0.015rem] text-orangetext-500'>
@@ -54,7 +55,7 @@ export default function PopupSliderMb({
           />
           <div
             dangerouslySetInnerHTML={{__html: data?.describe}}
-            className='[&_p]:body-14 mt-[1.5rem] [&_p]:text-bodytext'
+            className='mt-[1.5rem] [&_p]:text-bodytext [&_p]:body-14'
           ></div>
         </div>
         <div

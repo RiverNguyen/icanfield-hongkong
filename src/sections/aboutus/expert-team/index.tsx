@@ -66,7 +66,7 @@ export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTea
                         {e?.position}
                       </p>
                     </div>
-                    <div 
+                    <div
                       dangerouslySetInnerHTML={{__html: e?.describe}}
                       className='pb-[1rem] [&_p]:text-justify [&_p]:body16 [&_p]:tracking-[-0.02rem] [&_p]:text-bodytext'>
                     </div>

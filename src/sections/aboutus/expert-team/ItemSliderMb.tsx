@@ -12,7 +12,9 @@ export default function ItemSliderMb({
 }: {
   data: IExpertTeamPropsItem
   index: number
+  // eslint-disable-next-line no-unused-vars
   setToggleMB: (value: boolean) => void
+  // eslint-disable-next-line no-unused-vars
   setIdActivePopupMB: (value: number) => void
 }) {
   const lockScroll = useBodyScrollLock(false)
@@ -29,10 +31,10 @@ export default function ItemSliderMb({
         index={index}
         srcImage={data?.image?.url}
       />
-      <p className='heading2 mt-[1.5rem] font-semibold text-brown'>
+      <p className='mt-[1.5rem] font-semibold text-brown heading2'>
         {data?.name}
       </p>
-      <p className='sub-12 mb-[0.5rem] mt-[0.38rem] font-medium tracking-[-0.015rem] text-orangetext-500'>
+      <p className='mb-[0.5rem] mt-[0.38rem] font-medium tracking-[-0.015rem] text-orangetext-500 sub-12'>
         {data?.position}
       </p>
       <div

@@ -14,6 +14,7 @@ export interface ICountry {
 interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
+  // eslint-disable-next-line no-unused-vars
   onClick?: (country: ICountry) => void
   className?: string
   borderCountries?: string
@@ -55,6 +56,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
         })
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getPosition = useCallback(function (country: string): LatLngTuple {
@@ -81,6 +83,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 
     // Nếu không hợp lệ, trả về [0, 0]
     return [0, 0]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getFillColor = useCallback((feature: Feature) => {
@@ -105,6 +108,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       color: borderCountries, // Border color
       fillOpacity: 1, // Background fill opacity
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   // Zoom to country when click
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
@@ -152,6 +156,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
         clearTimeout(timeoutId)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCountry])
   // Hàm xử lý zoom
   const handleZoomIn = () => {
