@@ -78,7 +78,7 @@ const fakedataStrengths = [
 ]
 export default function Immigration() {
   return (
-    <main className="bg-background">
+    <main className='bg-background'>
       <BannerImmigration />
       <Strengths dataStrength={fakedataStrengths} />
       <Programme />

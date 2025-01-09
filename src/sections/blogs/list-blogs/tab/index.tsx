@@ -1,3 +1,4 @@
+
 'use client'
 import {Category} from '@/types/blogs.interface'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'

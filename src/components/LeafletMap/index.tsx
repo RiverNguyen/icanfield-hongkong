@@ -83,7 +83,6 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 
     // Nếu không hợp lệ, trả về [0, 0]
     return [0, 0]
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
