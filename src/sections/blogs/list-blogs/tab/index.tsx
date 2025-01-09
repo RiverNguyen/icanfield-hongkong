@@ -1,7 +1,7 @@
 
 'use client'
-import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {Category} from '@/types/blogs.interface'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
 
 const IndexTabs = ({
@@ -11,6 +11,7 @@ const IndexTabs = ({
 }: {
   categories: Category[]
   selectedCategory: Category
+  // eslint-disable-next-line no-unused-vars
   setSelectedCategory: (category: Category) => void
 }) => {
   const router = useRouter()
@@ -24,6 +25,7 @@ const IndexTabs = ({
       )
       setSelectedCategory(category ?? categories[0])
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams])
 
   //handle select category

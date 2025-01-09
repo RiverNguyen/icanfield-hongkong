@@ -26,7 +26,12 @@ const WrapperConnectUs = () => {
       ref={sectionFef}
       className='relative h-[118.25rem] w-full overflow-hidden bg-white xsm:bg-[linear-gradient(180deg,#F6F6F4_0%,rgba(246,246,244,0.00)_100%)] xsm:h-[73.4rem]'
     >
-      <div className='ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute left-0 top-0 z-[1] h-[56.9rem] w-full transition-all duration-800'>
+      <div
+        style={{
+          transitionTimingFunction: 'cubic-bezier(0.83,0,0.2,0.98)',
+        }}
+        className='pointer-events-none absolute left-0 top-0 z-[1] h-[56.9rem] w-full transition-all duration-800'
+      >
         <ImageV2
           className={cn(
             'size-full object-fill opacity-0 xsm:hidden',
@@ -40,8 +45,11 @@ const WrapperConnectUs = () => {
         />
       </div>
       <ImageV2
+        style={{
+          transitionTimingFunction: 'cubic-bezier(0.83,0,0.2,0.98)',
+        }}
         className={cn(
-          'ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute -top-[5rem] left-[2rem] z-[2] h-[71.8rem] w-[64.5rem] translate-y-[20rem] opacity-50 transition-all duration-800 xsm:hidden',
+          'pointer-events-none absolute -top-[5rem] left-[2rem] z-[2] h-[71.8rem] w-[64.5rem] translate-y-[20rem] opacity-50 transition-all duration-800 xsm:hidden',
           isActive && 'translate-y-0 opacity-100',
         )}
         alt='liberties'
@@ -70,8 +78,11 @@ const WrapperConnectUs = () => {
       </div>
       <div className='bg-[background: linear-gradient(180deg,#F6F6F4_0%,rgba(246,246,244,0.00)_100%)] pointer-events-none absolute left-0 top-0 h-[17rem] w-full sm:hidden'></div>
       <ImageV2
+        style={{
+          transitionTimingFunction: 'cubic-bezier(0.83,0,0.2,0.98)',
+        }}
         className={cn(
-          'ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute left-[27rem] top-[7.75rem] z-[5] h-auto w-[5.8rem] -translate-x-[5rem] translate-y-[2rem] object-contain opacity-0 transition-all duration-800 xsm:hidden',
+          'pointer-events-none absolute left-[27rem] top-[7.75rem] z-[5] h-auto w-[5.8rem] -translate-x-[5rem] translate-y-[2rem] object-contain opacity-0 transition-all duration-800 xsm:hidden',
           isActive && 'translate-x-0 translate-y-0 opacity-100 delay-500',
         )}
         alt='airport'
@@ -81,8 +92,11 @@ const WrapperConnectUs = () => {
         height={62}
       />
       <ImageV2
+        style={{
+          transitionTimingFunction: 'cubic-bezier(0.83,0,0.2,0.98)',
+        }}
         className={cn(
-          'ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute left-[36.88rem] top-[26rem] z-[5] h-auto w-[12.56rem] -translate-x-[10rem] translate-y-[10rem] object-contain opacity-0 transition-all duration-800 xsm:hidden',
+          'pointer-events-none absolute left-[36.88rem] top-[26rem] z-[5] h-auto w-[12.56rem] -translate-x-[10rem] translate-y-[10rem] object-contain opacity-0 transition-all duration-800 xsm:hidden',
           isActive && 'translate-x-0 translate-y-0 opacity-100 delay-500',
         )}
         alt='airport'
@@ -94,7 +108,7 @@ const WrapperConnectUs = () => {
       <div className='absolute right-[6.13rem] top-[3.38rem] z-10 w-[36.5rem] xsm:right-0 xsm:top-[2.5rem] xsm:w-full xsm:px-[1rem]'>
         <FormConnectUs />
       </div>
-      <div className='section-container absolute bottom-[12.31rem] left-1/2 z-10 w-[90rem] -translate-x-1/2 xsm:bottom-[2rem] xsm:w-full xsm:max-w-full xsm:px-[1rem]'>
+      <div className='absolute bottom-[12.31rem] left-1/2 z-10 w-[90rem] -translate-x-1/2 section-container xsm:bottom-[2rem] xsm:w-full xsm:max-w-full xsm:px-[1rem]'>
         <div className='flex w-full items-center justify-between xsm:flex-col'>
           <ImageV2
             className='h-auto w-[38.9rem] object-contain xsm:w-[18.4rem]'

@@ -1,11 +1,10 @@
 'use client'
 
 import ImageV2 from '@/components/image/ImageV2'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Navigation} from 'swiper/modules'
 import ItemBlog from '@/components/itemBlog'
-import {Pagination} from 'swiper/modules'
 import {DataItem} from '@/types/blogs.interface'
+import {Navigation, Pagination} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
 
 // interface dataItemBlog {
 //   category: [{name: string}]
@@ -24,8 +23,8 @@ export default function RelatedArticles({
 }) {
   return (
     <section className='pb-[11.31rem] pt-[1.5rem] xsm:pb-[2rem]'>
-      <div className='section-container flex items-center justify-between xsm:mb-[1.5rem]'>
-        <p className='heading1 font-optima text-orangetext-900'>
+      <div className='flex items-center justify-between section-container xsm:mb-[1.5rem]'>
+        <p className='font-optima text-orangetext-900 heading1'>
           Các bài viết liên quan
         </p>
         <div className='flex items-center space-x-[0.75rem] xsm:hidden'>
@@ -49,7 +48,7 @@ export default function RelatedArticles({
           </button>
         </div>
       </div>
-      <div className='section-container my-[2rem] h-[0.0625rem] bg-[#E7E7E7] xsm:hidden'></div>
+      <div className='my-[2rem] h-[0.0625rem] bg-[#E7E7E7] section-container xsm:hidden'></div>
       <Swiper
         speed={800}
         navigation={{

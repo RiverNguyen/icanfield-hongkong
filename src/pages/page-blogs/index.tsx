@@ -6,8 +6,7 @@ import {FeaturedNews} from '@/sections/blogs/featured-news'
 import featuredNews from '@/sections/blogs/featured-news/constants'
 import ListBlogs from '@/sections/blogs/list-blogs'
 import {ApiResponse, Category} from '@/types/blogs.interface'
-import {FC} from 'react'
-import {Suspense} from 'react'
+import {FC, Suspense} from 'react'
 interface IPageBlogsProps {
   dataPosts: ApiResponse
   dataCategories: Category[]
