@@ -1,11 +1,11 @@
 'use client'
+import { Breadcrumb } from '@/components/breadcrumb'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
-import {cn} from '@/lib/utils'
-import {useEffect, useRef, useState} from 'react'
+import { cn } from '@/lib/utils'
+import { dataAcfBanner } from '@/types/dataAcfAboutus.interface'
+import { useEffect, useRef, useState } from 'react'
 import './style.css'
-import {dataAcfBanner} from '@/types/dataAcfAboutus.interface'
-import { Breadcrumb } from '@/components/breadcrumb'
 
 export default function BannerAboutus({
   dataAcfBanner,
@@ -39,7 +39,7 @@ export default function BannerAboutus({
       <Breadcrumb
         className='absolute top-[6.4375rem] left-[5rem]'
         items={[
-          {label: 'Home', href: '/'},
+          {label: 'Trang Chủ', href: '/'},
           {label: 'Về chúng tôi', href: ''},
         ]}
       />
@@ -65,10 +65,10 @@ export default function BannerAboutus({
           activeInterFace && 'active__plane',
           'absolute left-[11.83rem] top-[14.87rem] h-[16.69144rem] w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:h-[6.31106rem] xsm:w-[10.14275rem] xsm:rotate-[-5.462deg]',
         )}
-        alt='may-bay'
+        alt=''
         width={399}
         height={267}
-        src={'/imgs/homepage/banner/may-bay-2.webp'}
+        src={'/imgs/homepage/banner/maybayX4.png'}
       />
       <div
         className={cn(

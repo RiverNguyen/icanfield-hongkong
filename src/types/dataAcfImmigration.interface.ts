@@ -1,13 +1,35 @@
 export interface dataStrength {
     title: string
     label: string
-    decscript: string
-    img_bg: {
+    describe: string
+    bacground: {
         url: string
         alt: string
     }
-    img_icon: {
+    icon: {
         url: string
         alt: string
     }
+}
+
+export interface dataBanner { 
+    label: string
+    image_pc: {
+        alt: string
+        url: string
+    }
+    image_mb: {
+        alt: string
+        url: string
+    }
+}
+
+export interface dataAcf { 
+    banner: dataBanner
+    characteristic: dataStrength[]
+}
+
+export interface immigration {
+    name: string
+    acf: dataAcf
 }

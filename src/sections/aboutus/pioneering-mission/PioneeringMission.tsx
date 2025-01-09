@@ -1,6 +1,6 @@
 import ImageV2 from '@/components/image/ImageV2'
 import ItemPioneering from '@/sections/aboutus/pioneering-mission/ItemPioneering'
-import {dataAcfPioneeringMission} from '@/types/dataAcfAboutus.interface'
+import { dataAcfPioneeringMission } from '@/types/dataAcfAboutus.interface'
 
 export default function PioneeringMission({
   dataAcfPioneeringMission,
@@ -25,7 +25,7 @@ export default function PioneeringMission({
           src={'/imgs/about-us/pioneering-mission/bg-pioneering-missionMB.png'}
         />
       </div>
-      <div className='flex xsm:flex-col-reverse'>
+      <div className='flex xsm:flex-col-reverse relative z-10'>
         <div className='space-y-[1.5rem] p-[6.5rem_4rem_2.5rem_5rem] xsm:p-[2.5rem_1rem]'>
           {Array.isArray(dataAcfPioneeringMission?.list_item_mission) &&
             dataAcfPioneeringMission?.list_item_mission?.map((e, index) => (

@@ -1,13 +1,12 @@
-import {BannerStatic} from '@/components/banner-static'
-import {Breadcrumb} from '@/components/breadcrumb'
+import { BannerStatic } from '@/components/banner-static'
+import { Breadcrumb } from '@/components/breadcrumb'
 import blogBanner from '@/sections/blogs/banner/constants'
 import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
-import {FeaturedNews} from '@/sections/blogs/featured-news'
+import { FeaturedNews } from '@/sections/blogs/featured-news'
 import featuredNews from '@/sections/blogs/featured-news/constants'
 import ListBlogs from '@/sections/blogs/list-blogs'
-import {ApiResponse, Category} from '@/types/blogs.interface'
-import {FC} from 'react'
-import {Suspense} from 'react'
+import { ApiResponse, Category } from '@/types/blogs.interface'
+import { FC, Suspense } from 'react'
 interface IPageBlogsProps {
   dataPosts: ApiResponse
   dataCategories: Category[]
@@ -32,8 +31,8 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
       <BannerStatic {...blogBanner}>
         <Breadcrumb
           items={[
-            {label: 'Home', href: '/'},
-            {label: 'Blogs', href: '/blogs'},
+            {label: 'Trang chủ', href: '/'},
+            {label: 'Tin Tức', href: '/blogs'},
           ]}
         />
       </BannerStatic>
