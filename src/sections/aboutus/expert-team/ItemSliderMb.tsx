@@ -31,7 +31,7 @@ export default function ItemSliderMb({
         index={index}
         srcImage={data?.image?.url}
       />
-      <p className='mt-[1.5rem] font-semibold text-brown heading2'>
+      <p className='mt-[1.5rem] font-semibold capitalize text-brown heading2'>
         {data?.name}
       </p>
       <p className='mb-[0.5rem] mt-[0.38rem] font-medium tracking-[-0.015rem] text-orangetext-500 sub-12'>

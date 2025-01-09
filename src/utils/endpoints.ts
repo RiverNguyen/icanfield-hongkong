@@ -14,6 +14,10 @@ const endpoints = {
     id: '317',
     unitTag: 'd349187',
   },
+  contactFormAdvise: {
+    id: '345',
+    unitTag: '1ef1eec',
+  },
 }
 
 export default endpoints

@@ -1,10 +1,11 @@
 'use client'
+import {Breadcrumb} from '@/components/breadcrumb'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
 import {cn} from '@/lib/utils'
+import {dataAcfBanner} from '@/types/dataAcfAboutus.interface'
 import {useEffect, useRef, useState} from 'react'
 import './style.css'
-import {dataAcfBanner} from '@/types/dataAcfAboutus.interface'
 
 export default function BannerAboutus({
   dataAcfBanner,
@@ -33,8 +34,15 @@ export default function BannerAboutus({
   return (
     <section
       ref={ref}
-      className='relative z-10 w-full overflow-hidden sm:h-[100vh]'
+      className='relative z-10 w-full overflow-hidden'
     >
+      <Breadcrumb
+        className='absolute left-[5rem] top-[6.4375rem]'
+        items={[
+          {label: 'Home', href: '/'},
+          {label: 'Về chúng tôi', href: ''},
+        ]}
+      />
       {isMobile ? (
         <ImageV2
           className='h-full w-full'
@@ -65,7 +73,7 @@ export default function BannerAboutus({
       <div
         className={cn(
           activeInterFace && 'active__about',
-          'absolute top-[13.87rem] z-10 space-y-[1.5rem] transition-all sm:right-[11.94rem] sm:translate-y-[100%] sm:opacity-0 xsm:left-[50%] xsm:top-[4.44rem] xsm:w-[18.25rem] xsm:translate-x-[-50%] xsm:space-y-[1rem]',
+          'absolute top-[13.87rem] z-10 space-y-[1.5rem] transition-all sm:right-[11.94rem] sm:translate-y-[100%] sm:opacity-0 xsm:left-[50%] xsm:top-[8.19rem] xsm:w-[18.25rem] xsm:translate-x-[-50%] xsm:space-y-[1rem]',
         )}
       >
         <p className='font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-white xsm:text-[1.75rem] xsm:font-semibold xsm:tracking-[-0.035rem]'>
@@ -92,7 +100,7 @@ export default function BannerAboutus({
         ></span>
         <div
           dangerouslySetInnerHTML={{__html: dataAcfBanner?.decscripts}}
-          className='body-14 tracking-[-0.00875rem] text-greyscaletext-800'
+          className='tracking-[-0.00875rem] text-greyscaletext-800 body-14'
         ></div>
       </div>
     </section>

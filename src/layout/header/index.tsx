@@ -1,4 +1,5 @@
 'use client'
+
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
 import {isLockScroll} from '@/hooks/useBodyScrollLock'
@@ -955,7 +956,7 @@ const Header = () => {
               onClick={handleToggleChild}
             />
           </div>
-          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+          <div className='tru flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
             {selectedChild?.children?.map((item: MenuItem, index: number) => (
               <Link
                 href={item.href}

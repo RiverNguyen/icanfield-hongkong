@@ -34,7 +34,7 @@ export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
   return (
     <section
       ref={ref}
-      className='investment-opportunities'
+      className='investment-opportunities sm:mt-[6.75rem]'
     >
       <div className='flex flex-col items-center p-[2.5rem_1rem_1.5rem] sm:sticky sm:top-0 sm:h-[15.06rem] sm:p-[1.25rem_0_0]'>
         <span className='investment-opportunities__subtitle translate-y-[15.62rem] font-medium uppercase text-greyscaletext-400 opacity-0 sub-12 sm:font-semibold'>
@@ -105,11 +105,11 @@ function ItemInvestmentOpportunities({
   return (
     <div
       className={cn(
-        'shadow-[0px_-64px_60px_0px_rgba(3, 33, 7, 0.02);] sticky top-0 min-h-[24.68rem] overflow-hidden rounded-[1.5rem_1.5rem_0rem_0rem;] bg-[linear-gradient(180deg,#F8F6F3_12%,#E8E0D3_85.5%)] py-[2rem] sm:rounded-none sm:bg-[linear-gradient(180deg,#E8E0D3_31.97%,#F7F6F1_83.45%)] sm:shadow-[0px_-64px_80px_0px_rgba(3,33,7,0.04)]',
+        'shadow-[0px_-64px_60px_0px_rgba(3,33,7,0.02)] sticky top-0 min-h-[24.68rem] overflow-hidden rounded-[1.5rem_1.5rem_0rem_0rem;] bg-[linear-gradient(180deg,#F8F6F3_12%,#E8E0D3_85.5%)] py-[2rem] sm:rounded-none sm:bg-[linear-gradient(180deg,#E8E0D3_31.97%,#F7F6F1_83.45%)] sm:shadow-[0px_-64px_80px_0px_rgba(3,33,7,0.04)]',
         {
-          'rounded-none sm:top-[15.06rem] sm:min-h-[34.1875rem]': itemKey == 0,
-          'sm:top-[20.68rem] sm:min-h-[28.375rem]': itemKey == 1,
-          'sm:top-[26.3rem] sm:min-h-[22.4rem]': itemKey == 2,
+          'rounded-none sm:top-[15rem] sm:min-h-[34.1875rem]': itemKey == 0,
+          'sm:top-[20rem] sm:min-h-[28.975rem]': itemKey == 1,
+          'sm:top-[25rem] sm:min-h-[22.4rem]': itemKey == 2,
         },
       )}
     >

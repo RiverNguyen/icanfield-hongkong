@@ -111,13 +111,18 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
           </>
         ) : (
           <>
-            {Array.isArray(dataLatest) &&
+            {Array.isArray(dataLatest) && dataLatest?.length > 0 ? (
               dataLatest.map((item: DataItem, index: number) => (
                 <ItemBlog
                   data={item}
                   key={index}
                 />
-              ))}
+              ))
+            ) : (
+              <div className='col-start-2 row-start-2 w-full text-center text-brown'>
+                Chưa có bài viết
+              </div>
+            )}
           </>
         )}
       </div>
