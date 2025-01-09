@@ -15,12 +15,18 @@ const IndexSortAndSearchPosts = ({
   setSearch,
   selectedSortOption,
   search,
+  className,
+  placeholder = 'Tìm kiếm trong Blog',
+  backgroundInput = 'bg-[#F3F3F3]',
 }: {
   sortOptions: SortOption[]
   setSelectedSortOption: React.Dispatch<React.SetStateAction<SortOption>>
   setSearch: React.Dispatch<React.SetStateAction<string>>
   selectedSortOption: SortOption
   search: string
+  className?: string
+  placeholder?: string
+  backgroundInput?: string
 }) => {
   const router = useRouter()
   const pathName = usePathname()
@@ -85,17 +91,19 @@ const IndexSortAndSearchPosts = ({
   }
 
   return (
-    <div className='flex items-center justify-between sm:space-x-[1rem]'>
+    <div
+      className={`${className ? className : 'flex items-center justify-between sm:space-x-[1rem]'} `}
+    >
       <div
         ref={ref}
         className='relative sm:min-w-[16.9375rem] xsm:order-2 xsm:w-[calc((100%-1.25rem)/2)]'
       >
         <button
           onClick={() => setIsOpenSelectCategory(!isOpenSelectCategory)}
-          className='flex h-[3rem] w-full items-center justify-between rounded-[0.5rem] bg-[#F3F3F3] px-[0.75rem] sm:px-4'
+          className={`flex h-[3rem] w-full items-center justify-between rounded-[0.5rem] ${backgroundInput} px-[0.75rem] sm:px-4`}
         >
           <span className='flex items-center whitespace-nowrap text-[1rem] font-normal leading-[1.5] tracking-[-0.02rem] text-greyscaletext-body xsm:line-clamp-1 xsm:text-[0.75rem] xsm:text-[#3F2214]'>
-            <b className='whitespace-nowrap font-medium xsm:font-bold'>
+            <b className='whitespace-nowrap font-medium sm:font-bold'>
               Lọc theo:{' '}
             </b>
             {selectedSortOption?.name}
@@ -129,15 +137,15 @@ const IndexSortAndSearchPosts = ({
             ))}
         </div>
       </div>
-      <div className='relative h-[3rem] sm:w-[16.9375rem] xsm:h-[2.625rem] xsm:w-[calc((100%-1.25rem)/2)]'>
+      <div className='relative h-[3rem] sm:w-[16.9375rem] xsm:h-auto xsm:w-[calc((100%-1.25rem)/2)] ]'>
         <ICSearch
           className={`absolute left-[1rem] top-1/2 size-[1.5rem] -translate-y-1/2 xsm:left-[0.5rem] xsm:size-[1.125rem] ${search ? '[&>path]:stroke-black' : ''}`}
         />
         <Input
           defaultValue={search}
           onChange={handleSearch}
-          className='body14 size-full rounded-[0.5rem] border-none bg-[#F3F3F3] pl-[3rem] pr-[0.5rem] font-medium tracking-[-0.0175rem] placeholder:text-greyscaletext-200 xsm:pl-[1.88rem] xsm:text-[0.75rem] xsm:placeholder:text-[0.75rem]'
-          placeholder='Tìm kiếm trong Blog'
+          className={`body14 size-full rounded-[0.5rem] border-none ${backgroundInput} pl-[3rem] pr-[0.5rem] font-medium tracking-[-0.0175rem] placeholder:text-greyscaletext-200 xsm:pl-[1.88rem] xsm:text-[0.75rem] xsm:placeholder:text-[0.75rem]`}
+          placeholder={placeholder}
         />
       </div>
     </div>

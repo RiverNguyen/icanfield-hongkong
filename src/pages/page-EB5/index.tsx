@@ -1,11 +1,13 @@
 import {Breadcrumb} from '@/components/breadcrumb'
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import TeaEB5Section from '@/sections/EB5/eb5-tea-sections'
+import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
+import PioneeringValues from '@/sections/EB5/pioneering-values'
 import React from 'react'
 
 const PageEB5 = () => {
   return (
-    <main>
+    <main className='bg-background'>
       <Banner
         titleTop='ĐẦU TƯ EB-5 AN TOÀN'
         titleBottom='Định Cư Mỹ Dễ Dàng'
@@ -46,6 +48,8 @@ const PageEB5 = () => {
         />
       </Banner>
       <TeaEB5Section/>
+      <PioneeringValues/>
+      <OutstandingProjectEB5/>
     </main>
   )
 }
