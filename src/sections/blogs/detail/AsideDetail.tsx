@@ -48,11 +48,11 @@ export default function AsideDetail({
               Nội dung bài viết
             </p>
             <ImageV2
-              className='size-[2.25rem] brightness-[100] invert-[100] filter sm:hidden'
+              className='size-[2.25rem] xsm:size-[1.25rem] brightness-[100] invert-[100] filter sm:hidden'
               width={20}
               height={20}
               alt=''
-              src={'/icons/blogs/down.svg'}
+              src={'/icons/blogs/downV2.svg'}
             />
           </div>
           <IndexAside htmlString={dataContent} />

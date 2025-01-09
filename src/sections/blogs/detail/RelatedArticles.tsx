@@ -68,7 +68,7 @@ export default function RelatedArticles({
             spaceBetween: 0,
           },
         }}
-        className='mySwiper [&_.swiper-pagination]:pagination [&_.swiper-pagination-bullet]:pagination-bullet [&_.swiper-pagination-bullet-active]:pagination-bullet--active !px-[5rem] xsm:!px-[1rem]'
+        className='mySwiper [&_.swiper-pagination]:pagination [&_.swiper-pagination-bullet]:pagination-bullet [&_.swiper-pagination-bullet.swiper-pagination-bullet-active]:pagination-bullet--active !px-[5rem] xsm:!px-[1rem]'
       >
         {Array.isArray(dataRelatedPosts) &&
           dataRelatedPosts.map((e: DataItem, index: number) => (

@@ -6,13 +6,16 @@ export default function ButtonBorder({
   title,
   link,
   className,
+  target,
 }: {
   title: string
   link: string
   className?: string
+  target?: string
 }) {
   return (
     <Link
+      target={target}
       className={cn(
         'group flex w-max items-center p-[0.5rem_0.75rem_0.5rem_1.5rem] rounded-[0.5rem] border-[1px] border-solid border-textwhite85 transition-all duration-500 hover:bg-white',
         className,

@@ -203,6 +203,12 @@ const config: Config = {
         '.mb12-s': {
           '@apply xsm:text-[0.75rem] xsm:font-semibold xsm:tracking-[-0.015rem]': {},
         },
+        '.mb12-b': {
+          '@apply xsm:text-[0.75rem] xsm:font-bold': {},
+        },
+        '.sub10-m': {
+          '@apply xsm:text-[0.625rem] xsm:font-medium xsm:tracking-[-0.0125rem]': {},
+        },
       })
     }),
   ],

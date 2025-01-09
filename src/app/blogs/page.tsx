@@ -7,13 +7,13 @@ const page = async () => {
   const requestPosts = {
     api: endpoints.blog.list + `?page=1&limit=${LIMIT_POSTS}`,
     option: {
-      revalidate: 600,
+      revalidate: 10,
     },
   }
   const requestCategories = {
     api: endpoints.categories.list + '?_fields=id,name,slug,taxonomy',
     option: {
-      revalidate: 600,
+      revalidate: 10,
     },
   }
   const [dataPosts, dataCategories] = await Promise.all([

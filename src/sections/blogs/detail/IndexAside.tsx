@@ -65,8 +65,8 @@ export default function IndexAside({htmlString}: {htmlString: string}) {
                 ? 'text-orangetext-800'
                 : 'text-[rgba(0,18,36,0.54)]',
             )}
+            dangerouslySetInnerHTML={{__html: content?.text}}
           >
-            {content?.text}
           </Link>
         </li>
       ))}

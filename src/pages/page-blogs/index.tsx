@@ -23,9 +23,7 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
     Array.isArray(dataCategories) &&
     dataCategories.length
   ) {
-    console.log('dataCategories', dataCategories)
     dataCategoriesWithAll = [categoryItemAll, ...dataCategories]
-    console.log('dataCategoriesWithAll', dataCategoriesWithAll)
   } else {
     dataCategoriesWithAll = [categoryItemAll]
   }

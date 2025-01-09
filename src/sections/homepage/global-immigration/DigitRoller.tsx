@@ -29,7 +29,7 @@ export function DigitRoller({
   }, [digit, delay, interFace])
 
   return (
-    <div className='relative h-[2.75rem] w-[2.1rem] overflow-hidden xsm:h-[1.7375rem] xsm:w-[1.25rem]'>
+    <div className='relative h-[2.75rem] w-[2.1rem] overflow-hidden xsm:h-[1.8375rem] xsm:w-[1.35rem]'>
       <div
         ref={digitRef}
         className='absolute transition-transform duration-1000'

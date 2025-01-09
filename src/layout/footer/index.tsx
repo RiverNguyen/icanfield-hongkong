@@ -1,15 +1,88 @@
+"use client"
 import ButtonBorder from "@/components/button/ButtonBorder";
 import ImageV2 from "@/components/image/ImageV2";
+import ICArrowRinght from "@/layout/footer/ICArrowRinght";
+import { contactInformatio, dataFooter, linkInterface } from "@/types/dataFooter.interface";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import CF7Request from '@/fetch/cf7Request'
+import endpoints from "@/utils/endpoints";
+import { isLockScroll } from "@/hooks/useBodyScrollLock";
+import { SuccessPopup } from "@/components/success-popup";
 
-const Footer = () => {
+interface social {
+  icon: {
+    url: string
+    alt: string
+  }
+  link: string
+}
+
+export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
+  const [email, setEmail] = useState<string>('');
+  const [validemail, setValidEmail] = useState<boolean>(false);
+  const [popup, setPopup] = useState<boolean>(false);
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    setValidEmail(!validateEmail(value));
+  };
+
+  const handleSubmit = async () => {
+    if (validateEmail(email)) {
+      const values = {email: email}
+      const request = new CF7Request(values)
+      const response = await request.send(endpoints.contactFormAdvise)
+      setEmail('')
+      if (response?.status) {
+        setPopup(true)
+      }
+      isLockScroll(true)
+      // Đóng popup sau 5 giây
+      timeoutRef.current = setTimeout(closePopup, 3500)
+    } else {
+
+    }
+  };
+  const closePopup = () => {
+    isLockScroll(false)
+    setPopup(false)
+    // Clear the timeout reference
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+  }
   return (
     <footer className='relative bg-orangetext-900 pt-[6rem] xsm:pt-[2.5rem]'>
       <div className='mx-auto mb-[3.25rem] flex flex-col items-center space-y-[1.5rem] xsm:mb-[2.5rem] xsm:space-y-[1rem]'>
-        <h3 className='heading2 w-[45.29138rem] text-center font-optima font-semibold tracking-[-0.05rem] text-textwhitetest xsm:w-full'>
-          Để iCanfield dẫn lối <br /> hành trình quốc tế hóa của bạn!
-        </h3>
-        <ButtonBorder title={"Hỗ trợ khách hàng"} link={"#"} />
+        <h3 
+          dangerouslySetInnerHTML={{
+            __html: dataFooter?.title,
+          }}
+          className='heading2 w-[45.29138rem] text-center font-optima font-semibold tracking-[-0.05rem] text-textwhitetest xsm:w-full'
+        ></h3>
+        <ButtonBorder 
+          target={dataFooter?.customer_support?.target}
+          title={dataFooter?.customer_support?.title} 
+          link={dataFooter?.customer_support?.url} 
+        />
       </div>
       <ImageV2
         alt="bg-footer"
@@ -21,8 +94,8 @@ const Footer = () => {
       <div className='section-container relative h-[calc(38.6875rem-6.06rem)] space-y-[3.5rem] rounded-[2rem_2rem_0_0] bg-[rgba(255,255,255,0.03)] px-[6rem] pt-[4rem] xsm:h-auto xsm:space-y-[2rem] xsm:p-[2.5rem_1rem]'>
         <div className='flex sm:justify-between xsm:flex-col'>
           <ImageV2
-            alt="logo-footer"
-            src={"/icons/homepage/footer/d-logofooter.svg"}
+            alt={dataFooter?.logo_footer?.alt}
+            src={dataFooter?.logo_footer?.url}
             width={190}
             height={223}
             className='h-[13.95613rem] w-[11.875rem] xsm:mx-auto xsm:h-[9.625rem] xsm:w-[8.18975rem]'
@@ -30,91 +103,52 @@ const Footer = () => {
           <div className='mt-[2rem] flex space-x-[5rem] xsm:flex-col xsm:space-x-0 xsm:space-y-[2.5rem]'>
             <div className='w-[17.25rem] space-y-[2rem] xsm:w-full xsm:space-y-[1rem]'>
               <p className='body16 font-medium text-white xsm:font-bold'>
-                THÔNG TIN LIÊN HỆ
+                {dataFooter?.contact_information?.title}
               </p>
               <div className="space-y-[1.25rem] xsm:space-y-[0.75rem]">
-                <Link href="#" className="flex items-start space-x-[1rem]">
-                  <ImageV2
-                    alt=""
-                    src={"/icons/homepage/footer/d-icon-local.svg"}
-                    width={40}
-                    height={40}
-                    className="size-[1.25rem] object-contain"
-                  />
-                  <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
-                    Tầng 12, Tòa nhà President Place 93 Nguyễn Du, P. Bến Nghé,
-                    Quận 1, TP.HCM
-                  </p>
+                {dataFooter?.contact_information?.contact_information_repeater?.map((e: contactInformatio, index: number) => (
+                  <Link 
+                    target={e?.link?.target}
+                    key={index} 
+                    href={e?.link?.url} 
+                    className="flex items-start space-x-[1rem]"
+                  >
+                    <ImageV2
+                      alt=""
+                      src={e?.icon}
+                      width={40}
+                      height={40}
+                      className="size-[1.25rem] object-contain"
+                    />
+                    <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
+                      {e?.link?.title}
+                    </p>
                 </Link>
-                <Link href="#" className="flex items-start space-x-[1rem]">
-                  <ImageV2
-                    alt=''
-                    src={'/icons/homepage/footer/d-icon-local.svg'}
-                    width={40}
-                    height={40}
-                    className='size-[1.25rem] object-contain'
-                  />
-                  <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
-                    contact@icanfield.com
-                  </p>
-                </Link>
-                <Link href="#" className="flex items-start space-x-[1rem]">
-                  <ImageV2
-                    alt=''
-                    src={'/icons/homepage/footer/d-icon-local.svg'}
-                    width={40}
-                    height={40}
-                    className='size-[1.25rem] object-contain'
-                  />
-                  <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
-                    028 3822 0285
-                  </p>
-                </Link>
+                ))}
               </div>
             </div>
             <div className='space-y-[2rem] xsm:space-y-[1rem]'>
               <p className='body16 font-medium text-white xsm:font-bold'>
-                MENU
+                {dataFooter?.menu?.title}
               </p>
               <div className='sm:space-y-[1.25rem] xsm:grid xsm:grid-cols-2 xsm:gap-y-[0.75rem]'>
-                <Link
-                  href='/about-us'
-                  className='flex items-center space-x-[1rem]'
-                >
-                  <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
-                    Về Chúng Tôi
-                  </p>
-                </Link>
-                <Link
-                  href='#'
-                  className='flex items-center space-x-[1rem]'
-                >
-                  <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
-                    Tư vấn định cư
-                  </p>
-                </Link>
-                <Link
-                  href='#'
-                  className='flex items-center space-x-[1rem]'
-                >
-                  <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
-                    Tư vấn đầu tư
-                  </p>
-                </Link>
-                <Link
-                  href='#'
-                  className='flex items-center space-x-[1rem]'
-                >
-                  <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
-                    Tư vấn du học
-                  </p>
-                </Link>
+                {dataFooter?.menu?.menu_repeater?.map((e: linkInterface, index: number) => (
+                  <Link
+                    key={index}
+                    target={e?.target}
+                    href={e?.url}
+                    className='flex items-center space-x-[1rem]'
+                  >
+                    <p className='body16 text-white xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
+                      {e?.title}
+                    </p>
+                  </Link>
+                ))}
               </div>
             </div>
             <div className='w-[21.3125rem] xsm:w-full'>
               <p className='heading5 xsm:body16-s mb-[2rem] font-medium text-white sm:leading-[133.3%] xsm:mb-[1.5rem]'>
-                Kết nối ngay hôm nay, đội ngũ chuyên gia của chúng tôi sẵn sàng
-                hỗ trợ bạn!
+                {dataFooter?.describe}
               </p>
               <span className='sub-14 font-semibold text-white'>
                 Đăng ký để nhận tư vấn
@@ -124,8 +158,19 @@ const Footer = () => {
                   type='email'
                   placeholder='Email của bạn'
                   className='body16 flex-1 tracking-[-0.02rem] placeholder:text-greyscaletext-200 focus:outline-none focus-visible:outline-none'
+                  value={email}
+                  onChange={handleChange}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleSubmit();
+                  }}
                 />
+                <div onClick={handleSubmit} className="cursor-pointer">
+                  <ICArrowRinght className="size-[1.5rem]" />
+                </div>
               </div>
+              {validemail && (
+                <p className="body16 !mt-[0.5rem] tracking-[-0.02rem] text-errtext">Email không hợp lệ</p>
+              )}
             </div>
           </div>
         </div>
@@ -134,15 +179,15 @@ const Footer = () => {
             © 2024 iCanfield. Designed by OKHUB
           </p>
           <div className='flex items-center space-x-[0.75rem] xsm:mb-[1rem]'>
-            {new Array(4).fill(0).map((e, index) => (
+            {dataFooter?.social?.map((e: social, index: number) => (
               <Link
-                href={''}
-                className='flex-center cursor-pointer p-[0.62rem] relative before:transition-all before:duration-700 hover:before:h-[2.75rem] before:absolute before:w-full before:h-0 before:bottom-0 before:left-0 before:rounded-[0.625rem] before:bg-primary-brown before:z-[2]'
                 key={index}
+                href={e?.link}
+                className='flex-center cursor-pointer p-[0.62rem] relative before:transition-all before:duration-700 hover:before:h-[2.75rem] before:absolute before:w-full before:h-0 before:bottom-0 before:left-0 before:rounded-[0.625rem] before:bg-primary-brown before:z-[2]'
               >
                 <ImageV2
                   alt=''
-                  src={'/icons/homepage/footer/d-fb.svg'}
+                  src={e?.icon?.url}
                   width={40}
                   height={40}
                   className='size-[1.5rem] object-contain z-[3]'
@@ -151,9 +196,11 @@ const Footer = () => {
             ))}
           </div>
         </div>
+        <SuccessPopup
+          setActive={closePopup}
+          active={popup}
+        />
       </div>
     </footer>
   );
 };
-
-export default Footer;
