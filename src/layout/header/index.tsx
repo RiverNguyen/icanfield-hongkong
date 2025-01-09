@@ -823,7 +823,7 @@ const Header = () => {
               className='size-[1.125rem] object-contain'
             />
           </div>
-          <div className='1 flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
             {listMenuMobileLast.map((item, index) =>
               item.children ? (
                 <div key={index}>
@@ -956,7 +956,7 @@ const Header = () => {
               onClick={handleToggleChild}
             />
           </div>
-          <div className='tru flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
             {selectedChild?.children?.map((item: MenuItem, index: number) => (
               <Link
                 href={item.href}
