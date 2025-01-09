@@ -19,7 +19,7 @@ export const ProgramBenefits: FC<IProgramBenefitsProps> = ({
   items,
 }) => {
   return (
-    <section className='relative p-[3.5rem_0] sm:min-h-lvh sm:p-[7.94rem_0_7.25rem]'>
+    <section className='relative p-[3.5rem_0] lg:min-h-lvh sm:p-[7.94rem_0_7.25rem]'>
       <ImageV2
         src={backgroundPc.url}
         alt={backgroundPc.alt}
@@ -36,17 +36,17 @@ export const ProgramBenefits: FC<IProgramBenefitsProps> = ({
       />
       <div className='absolute left-0 top-0 h-full w-full bg-[linear-gradient(180deg,rgba(70,59,53,0.80)_7.5%,rgba(70,59,53,0.40)_60%)]'></div>
       <div className='relative px-[1rem] text-white sm:hidden'>
-        <h2 className='heading2 mb-[0.88rem] font-optima font-medium xsm:text-[1.5rem] xsm:font-semibold xsm:tracking-[-0.045rem]'>
+        <h2 className='mb-[0.88rem] font-optima font-medium heading2 xsm:text-[1.5rem] xsm:font-semibold xsm:tracking-[-0.045rem]'>
           {title}
         </h2>
-        <p className='body16 xsm:body-14 font-normal'>{description}</p>
+        <p className='font-normal body16 xsm:body-14'>{description}</p>
       </div>
       <div className='hidden-scrollbar relative mx-auto flex text-white sm:max-w-[90rem] sm:flex-wrap xsm:overflow-auto'>
         <div className='mr-auto max-w-[36.625rem] xsm:hidden'>
-          <h2 className='heading2 mb-[1.25rem] font-optima font-medium'>
+          <h2 className='mb-[1.25rem] font-optima font-medium heading2'>
             {title}
           </h2>
-          <p className='body16 font-normal'>{description}</p>
+          <p className='font-normal body16'>{description}</p>
         </div>
         {items.map((item, index) => (
           <ProgramBenefitsItem
@@ -84,15 +84,15 @@ const ProgramBenefitsItem: FC<IProgramBenefitsItemProps> = ({
         },
       )}
     >
-      <h3 className='body16 font-medium transition-all sm:font-semibold sm:group-hover:text-brown'>
+      <h3 className='font-medium transition-all body16 sm:font-semibold sm:group-hover:text-brown'>
         {title}
       </h3>
       <div className='m-[1rem_0] h-[1px] w-full bg-white/10 sm:group-hover:bg-black/10'></div>
-      <span className='sm:group-hover:program-benefits__item-title-gradient--hover heading1 program-benefits__item-title-gradient max-w-[3.6125rem] self-start font-optima font-semibold leading-none xsm:text-[3rem]'>
+      <span className='sm:group-hover:program-benefits__item-title-gradient--hover program-benefits__item-title-gradient max-w-[3.6125rem] self-start font-optima font-semibold leading-none heading1 xsm:text-[3rem]'>
         {number < 10 ? `0${number}` : number}
       </span>
       <div
-        className='body-14 ml-[1.5rem] flex-1 pb-[1.81rem] font-normal transition-all sm:pb-[3.06rem] sm:group-hover:text-bodytext'
+        className='ml-[1.5rem] flex-1 pb-[1.81rem] font-normal transition-all body-14 sm:pb-[3.06rem] sm:group-hover:text-bodytext'
         dangerouslySetInnerHTML={{__html: content}}
       ></div>
     </div>

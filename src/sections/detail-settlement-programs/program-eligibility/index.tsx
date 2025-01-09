@@ -18,7 +18,7 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
   items,
 }) => {
   return (
-    <section className='relative mt-[3.5rem] overflow-hidden bg-background sm:min-h-dvh sm:pt-[9.94rem] xsm:pb-[20.56rem]'>
+    <section className='relative overflow-hidden bg-background lg:min-h-dvh sm:min-h-[49.25rem] sm:pt-[9.94rem] xsm:pb-[20.56rem]'>
       <ImageV2
         src={background.url}
         alt={background.alt}
@@ -27,10 +27,10 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
         className='absolute right-0 min-h-[24.53731rem] min-w-[49.14544rem] object-contain sm:top-[-4.12rem] sm:h-[40.4375rem] sm:w-[80.99169rem] xsm:bottom-0'
       />
       <div className='relative z-10 mx-auto sm:max-w-[90rem] xsm:px-[1rem]'>
-        <h2 className='heading1 mb-[0.75rem] font-optima font-semibold text-brown sm:mb-[0.88rem]'>
+        <h2 className='mb-[0.75rem] font-optima font-semibold text-brown heading1 sm:mb-[0.88rem]'>
           {title}
         </h2>
-        <p className='body16-r55 xsm:body-14 text-greyscaletext-body sm:max-w-[41.25rem]'>
+        <p className='text-greyscaletext-body body16-r55 sm:max-w-[41.25rem] xsm:body-14'>
           {description}
         </p>
       </div>
@@ -109,7 +109,7 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
             transitionTimingFunction: 'cubic-bezier(0.69, -0.02, 0, 0.99)',
           }}
           ref={pRef}
-          className='body-14 text-greyscaletext-body transition-all duration-500 sm:translate-y-[11.3rem] sm:pb-[4.63rem] sm:group-hover:translate-y-0'
+          className='text-greyscaletext-body transition-all duration-500 body-14 sm:translate-y-[11.3rem] sm:pb-[4.63rem] sm:group-hover:translate-y-0'
         >
           {description}
         </p>

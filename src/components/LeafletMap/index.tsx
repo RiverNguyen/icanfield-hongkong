@@ -57,7 +57,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [mapJson])
 
   const getPosition = useCallback(function (country: string): LatLngTuple {
     const geo: FeatureCollection = mapJson as FeatureCollection

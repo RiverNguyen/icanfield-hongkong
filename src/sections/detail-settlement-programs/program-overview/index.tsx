@@ -47,12 +47,12 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
           alt='mask_group'
           width={1312 * 2}
           height={738 * 2}
-          className='absolute right-0 top-0 h-[25.9375rem] w-[63.875rem] object-contain xsm:hidden'
+          className='absolute right-[-31.42rem] top-[-18.25rem] h-[49.5865rem] w-[111.79638rem] object-contain xsm:hidden'
         />
-        <h2 className='heading1 relative font-optima font-semibold text-brown'>
+        <h2 className='relative font-optima font-semibold text-brown heading1'>
           {title}
         </h2>
-        <p className='body16-r55 relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]'>
+        <p className='relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body body16-r55 sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]'>
           {description}
         </p>
         <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem]'>

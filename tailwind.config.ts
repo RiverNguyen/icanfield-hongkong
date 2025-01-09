@@ -163,6 +163,9 @@ const config: Config = {
           '@apply text-[0.875rem] font-medium leading-[1.5] tracking-[-0.00875rem]':
             {},
         },
+        '.body13': {
+          '@apply text-[0.8125rem] leading-[1.5] tracking-[-0.00813rem]': {},
+        },
         '.sub-12': {
           '@apply text-[0.75rem] leading-[1.5]': {},
         },
@@ -183,6 +186,8 @@ const config: Config = {
         },
         '.sub-28M': {
           '@apply text-[1.75rem] font-medium leading-[1.25] tracking-[-0.0175rem]':
+            {},
+          '@apply text-[1.75rem] font-bold leading-[1.25] tracking-[-0.0175rem]':
             {},
         },
         '.sub-28R': {
@@ -207,6 +212,8 @@ const config: Config = {
         '.body16-s': {
           '@apply text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem]':
             {},
+          '@apply text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem]':
+            {},
         },
         '.body16-r55': {
           '@apply text-[1rem] leading-[1.55]': {},
@@ -220,6 +227,8 @@ const config: Config = {
         },
         '.mb12-s': {
           '@apply xsm:text-[0.75rem] xsm:font-semibold xsm:tracking-[-0.015rem]':
+            {},
+          '@apply text-[1.375rem] font-medium leading-[1.4] tracking-[-0.0875rem]':
             {},
         },
       })

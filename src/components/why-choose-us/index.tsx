@@ -17,13 +17,13 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
   items,
 }) => {
   return (
-    <section className='relative min-h-[40.5625rem] bg-[#F6F6F4] pb-[12.5rem] sm:min-h-lvh sm:pb-[9.56rem] sm:pt-[7.5rem]'>
+    <section className='relative min-h-[40.5625rem] bg-[#F6F6F4] pb-[12.5rem] lg:min-h-lvh sm:pb-[9.56rem] sm:pt-[7.5rem]'>
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-1.webp'}
         alt={'Why Choose Us Background'}
         width={1600 * 2}
         height={788 * 2}
-        className='absolute bottom-0 right-0 h-full w-full xsm:hidden'
+        className='absolute bottom-0 right-0 h-full w-auto object-contain xsm:hidden'
       />
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-1-mb.webp'}
@@ -33,12 +33,12 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         className='absolute bottom-0 left-0 h-auto w-full object-contain sm:hidden'
       />
       <div className='absolute bottom-0 right-0 h-full w-full sm:bg-[linear-gradient(90deg,#FFF_31.02%,rgba(153,153,153,0.00)_70.54%)] xsm:hidden'></div>
-      <div className='relative mx-auto flex justify-between sm:max-w-[90rem] xsm:px-[1rem]'>
+      <div className='relative z-10 mx-auto flex justify-between sm:max-w-[90rem] xsm:px-[1rem]'>
         <div className='max-w-[39.75rem]'>
-          <h2 className='heading1 font-optima font-semibold text-brown'>
+          <h2 className='font-optima font-semibold text-brown heading1'>
             {title}
           </h2>
-          <p className='body16-r55 xsm:body-14 mt-[0.75rem] text-greyscaletext-body sm:mt-[1rem]'>
+          <p className='mt-[0.75rem] text-greyscaletext-body body16-r55 sm:mt-[1rem] xsm:body-14'>
             {description}
           </p>
         </div>
@@ -64,7 +64,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         alt={'Why Choose Us Background'}
         width={1219 * 2}
         height={585 * 2}
-        className='pointer-events-none absolute bottom-0 right-0 h-[36.5625rem] w-[56.75rem] xsm:hidden'
+        className='pointer-events-none absolute bottom-0 right-0 h-full w-auto xsm:hidden'
       />
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-2-mb.webp'}
@@ -108,7 +108,7 @@ export const WhyChooseUsItem: FC<IWhyChooseUsItemProps> = ({
         <h3 className='mb-[0.5rem] mt-[1.5rem] text-[1.5rem] font-bold leading-[1.3] text-brown sm:mt-[2.5rem] xsm:text-[1rem]'>
           {title}
         </h3>
-        <p className='body-14 text-[rgba(18,18,18,0.87)]'>{description}</p>
+        <p className='text-[rgba(18,18,18,0.87)] body-14'>{description}</p>
       </div>
     </div>
   )

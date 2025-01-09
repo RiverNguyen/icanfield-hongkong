@@ -36,7 +36,7 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
   }, [])
 
   return (
-    <section className='relative p-[2.25rem_0_2.25rem] sm:p-[5rem_0_11rem] xsm:rounded-[1.5rem_1.5rem_0rem_0rem] xsm:bg-[linear-gradient(180deg,#FFF_0%,#F6F6F4_100%)] xsm:shadow-[0px_-10px_30px_0px_rgba(131,131,131,0.06)]'>
+    <section className='relative p-[2.25rem_0_2.25rem] sm:p-[5rem_0_0] xsm:rounded-[1.5rem_1.5rem_0rem_0rem] xsm:bg-[linear-gradient(180deg,#FFF_0%,#F6F6F4_100%)] xsm:shadow-[0px_-10px_30px_0px_rgba(131,131,131,0.06)]'>
       <div className='mx-auto flex flex-col items-center text-center sm:max-w-[51.875rem] xsm:px-[1rem]'>
         <span className='sm:heading16 font-medium text-greyscaletext-body/70 sub-12 sm:font-semibold'>
           {subtitle}
