@@ -51,5 +51,3 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
 }
 
 export default PageBlogs
-
-export default PageBlogs
