@@ -4,7 +4,7 @@ const successStoryShare: ISuccessStoryShareProps = {
   title: 'Chia sẻ câu chuyện thành công',
   items: [
     {
-      name: 'Anh Nguyễn Văn Minh',
+      name: 'Anh Nguyễn Văn Minh 1',
       review:
         'Từ một nhân viên văn phòng tại Việt Nam, tôi đã trở thành chủ một nhà hàng Việt ở Toronto.',
       link: '#',
