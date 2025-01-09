@@ -1,5 +1,7 @@
 import {AdvantagesBenefits} from '@/components/advantages-benefits'
 import advantagesBenefits from '@/components/advantages-benefits/constants'
+import {WhyChooseUs} from '@/components/why-choose-us'
+import whyChooseUs from '@/components/why-choose-us/constants'
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import bannerSettlementPrograms from '@/sections/detail-settlement-programs/banner/constants'
 import {ProgramBenefits} from '@/sections/detail-settlement-programs/program-benefits'
@@ -16,6 +18,7 @@ export const DetailSettlementPrograms = () => {
     <>
       <Banner {...bannerSettlementPrograms} />
       <ProgramOverview {...programOverview} />
+      <WhyChooseUs {...whyChooseUs} />
       <ProgramBenefits {...programBenefits} />
       <AdvantagesBenefits {...advantagesBenefits} />
       <SuccessStoryShare {...successStoryShare} />
