@@ -49,7 +49,7 @@ export const SuccessStoryShare: FC<ISuccessStoryShareProps> = ({
         className='absolute bottom-0 left-0 h-full w-full object-cover sm:hidden'
       />
       <div className='relative flex max-w-[85rem] items-center sm:ml-[5rem] xsm:px-[1rem]'>
-        <h2 className='heading1 font-optima font-semibold text-brown'>
+        <h2 className='font-optima font-semibold text-brown heading1'>
           {title}
         </h2>
         <div className='ml-auto flex items-center space-x-[0.75rem]'>
@@ -140,7 +140,7 @@ export const SuccessStoryShareItem: FC<ISuccessStoryShareItemProps> = ({
       </div>
       <div className='flex-1 sm:space-y-[1.5rem] sm:pr-[0.71rem] xsm:mt-[1.25rem]'>
         <h3 className='pc-sub-3 font-bold text-brown'>{name}</h3>
-        <p className='body-14 text-text-grey/70 font-medium italic xsm:m-[0.5rem_0_1rem] xsm:tracking-[-0.0175rem]'>
+        <p className='font-medium italic text-[rgba(18,18,18,0.72)] body-14 xsm:m-[0.5rem_0_1rem] xsm:tracking-[-0.0175rem]'>
           {review}
         </p>
         <Link

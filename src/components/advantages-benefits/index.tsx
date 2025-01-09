@@ -38,14 +38,14 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
   return (
     <section className='relative p-[2.25rem_0_2.25rem] sm:p-[5rem_0_11rem] xsm:rounded-[1.5rem_1.5rem_0rem_0rem] xsm:bg-[linear-gradient(180deg,#FFF_0%,#F6F6F4_100%)] xsm:shadow-[0px_-10px_30px_0px_rgba(131,131,131,0.06)]'>
       <div className='mx-auto flex flex-col items-center text-center sm:max-w-[51.875rem] xsm:px-[1rem]'>
-        <span className='sub-12 sm:heading16 font-medium text-greyscaletext-body/70 sm:font-semibold'>
+        <span className='sm:heading16 font-medium text-greyscaletext-body/70 sub-12 sm:font-semibold'>
           {subtitle}
         </span>
         <div
-          className='heading1 m-[0.5rem_0_1.25rem] font-optima font-semibold text-brown'
+          className='m-[0.5rem_0_1.25rem] font-optima font-semibold text-brown heading1'
           dangerouslySetInnerHTML={{__html: title}}
         ></div>
-        <p className='body-14 sm:body16-r55 text-greyscaletext-body sm:max-w-[39.75rem]'>
+        <p className='text-greyscaletext-body body-14 sm:max-w-[39.75rem] sm:body16-r55'>
           {description}
         </p>
       </div>
@@ -113,7 +113,7 @@ export const AdvantagesBenefitsItem: FC<IAdvantagesBenefitsItemProps> = ({
         />
       </div>
       <div className='flex-1 sm:p-[1rem] xsm:mt-[0.75rem]'>
-        <h3 className='phase-1-text-gradient body16 sm:heading5 font-optima font-medium sm:font-medium'>
+        <h3 className='phase-1-text-gradient font-optima font-medium body16 sm:font-medium sm:heading5'>
           {title}
         </h3>
         <div
