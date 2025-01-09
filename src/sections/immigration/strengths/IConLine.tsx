@@ -14,6 +14,5 @@ export default function IConLine({ className }: { className?: string }) {
           fillOpacity="0.1"
         />
       </svg>
-    );
+    )
   }
-  

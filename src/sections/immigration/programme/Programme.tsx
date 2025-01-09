@@ -1,7 +1,7 @@
-import IConSeeMore from "@/components/icon/IConSeeMore";
-import ImageV2 from "@/components/image/ImageV2";
-import ItemProgramme from "@/sections/immigration/programme/ItemProgramme";
-import "./style.css";
+import IConSeeMore from '@/components/icon/IConSeeMore'
+import ImageV2 from '@/components/image/ImageV2'
+import ItemProgramme from '@/sections/immigration/programme/ItemProgramme'
+import './style.css'
 
 export default function Programme() {
   return (
@@ -12,7 +12,7 @@ export default function Programme() {
           width={1600}
           height={788}
           alt=""
-          src={"/imgs/immigration/programme/d-bg-programmeV2.webp"}
+          src={'/imgs/immigration/programme/d-bg-programmeV2.webp'}
         />
       </div>
       <div className="xsm:w-full relative z-10 section-container flex xsm:flex-col sm:items-start sm:space-x-[6.19rem]">
@@ -44,5 +44,5 @@ export default function Programme() {
         </div>
       </div>
     </section>
-  );
+  )
 }

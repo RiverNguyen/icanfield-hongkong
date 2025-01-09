@@ -36,7 +36,7 @@ export default function BannerAboutus({
       ref={ref}
       className='relative z-10 w-full overflow-hidden'
     >
-      <Breadcrumb 
+      <Breadcrumb
         className='absolute top-[6.4375rem] left-[5rem]'
         items={[
           {label: 'Home', href: '/'},

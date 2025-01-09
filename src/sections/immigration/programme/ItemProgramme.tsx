@@ -1,17 +1,17 @@
-"use client";
-import IConArrow from "@/components/icon/IConArrow";
-import ImageV2 from "@/components/image/ImageV2";
-import useIsMobile from "@/hooks/useIsMobile";
-import { cn } from "@/lib/utils";
-import IConMessager from "@/sections/immigration/programme/IConMessager";
-import Link from "next/link";
+'use client'
+import IConArrow from '@/components/icon/IConArrow'
+import ImageV2 from '@/components/image/ImageV2'
+import useIsMobile from '@/hooks/useIsMobile'
+import { cn } from '@/lib/utils'
+import IConMessager from '@/sections/immigration/programme/IConMessager'
+import Link from 'next/link'
 
 export default function ItemProgramme({ className }: { className?: string }) {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile()
   return (
     <div
       className={cn(
-        "sm:h-[36.75rem] w-full rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)]",
+        'sm:h-[36.75rem] w-full rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)]',
         className
       )}
     >
@@ -21,7 +21,7 @@ export default function ItemProgramme({ className }: { className?: string }) {
           width={464}
           height={297}
           alt=""
-          src={"/imgs/immigration/programme/d-image-item.webp"}
+          src={'/imgs/immigration/programme/d-image-item.webp'}
         />
         <div className="absolute size-full inset-0 rounded-[1.25rem] z-10 bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]"></div>
         <h3 className="absolute z-[11] bottom-[1.5rem] left-[1.5rem] xsm:left-[1rem] xsm:bottom-[4.81rem] line-clamp-1 heading3 xsm:heading2 font-medium text-white">
@@ -84,7 +84,7 @@ export default function ItemProgramme({ className }: { className?: string }) {
       </div>
       <div className="flex justify-between items-center p-[1.25rem] xsm:p-[1rem] xsm:space-x-[0.5rem]">
         <Link
-          href={"#"}
+          href={'#'}
           className="group cursor-pointer flex items-center space-x-[0.75rem]"
         >
           <div className="transition-all group-hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.875rem] xsm:p-[0.75rem] rounded-[1.875rem] bg-[#F4EEEA]">
@@ -95,7 +95,7 @@ export default function ItemProgramme({ className }: { className?: string }) {
           </p>
         </Link>
         <Link
-          href={"#"}
+          href={'#'}
           className="xsm:flex-1 cursor-pointer flex items-center space-x-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]"
         >
           <p className="body-14-m tracking-[-0.0175rem] text-white">
@@ -105,5 +105,5 @@ export default function ItemProgramme({ className }: { className?: string }) {
         </Link>
       </div>
     </div>
-  );
+  )
 }
