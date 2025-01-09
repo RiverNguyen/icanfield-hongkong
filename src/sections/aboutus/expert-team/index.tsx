@@ -59,7 +59,7 @@ export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTea
                     )}
                   >
                     <div className='sticky top-0 bg-white pt-[2rem] pb-[1rem]'>
-                      <span className='heading4 font-semibold text-brown'>
+                      <span className='heading4 font-optima font-semibold text-brown'>
                         {e?.name}
                       </span>
                       <p className='body-14 mt-[0.25rem] text-orangetext-500'>

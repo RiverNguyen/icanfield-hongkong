@@ -5,7 +5,7 @@ import {Media} from '@/types/image.interface'
 import {FC, useEffect, useState} from 'react'
 import 'swiper/css'
 import {Swiper, SwiperSlide} from 'swiper/react'
-
+import {Navigation} from 'swiper/modules'
 export interface IAwardsCertificationsProps {
   logo: Media
   title: string
@@ -57,6 +57,24 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
             className='absolute left-0 top-0 z-10 h-full w-full'
           />
         </div>
+        <button className='xsm:hidden z-20 cursor-pointer awards-certification__prev absolute top-[50%] translate-y-[-8rem] left-[5rem] h-[2.5rem] w-[2.5rem] rounded-[1.5rem] bg-white flex-center'>
+          <ImageV2
+            className='size-[1.5rem] object-cover'
+            alt=''
+            width={1053}
+            height={685}
+            src={'/icons/arrow-right-brown.svg'}
+          />
+        </button>
+        <button className='xsm:hidden z-20 cursor-pointer awards-certification__next absolute top-[50%] translate-y-[-8rem] right-[5rem] h-[2.5rem] w-[2.5rem] rounded-[1.5rem] bg-white flex-center'>
+          <ImageV2
+            className='size-[1.5rem] rotate-180 object-cover'
+            alt=''
+            width={1053}
+            height={685}
+            src={'/icons/arrow-right-brown.svg'}
+          />
+        </button>
         <Swiper
           centeredSlides={true}
           loop={true}
@@ -67,6 +85,11 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
             },
           }}
           spaceBetween={spaceBetween}
+          modules={[Navigation]}
+          navigation={{
+            nextEl: '.awards-certification__next',
+            prevEl: '.awards-certification__prev',
+          }}
           className='!z-10 mx-auto min-h-[14.5rem] select-none sm:min-h-[24rem] sm:max-w-[74.38rem] xsm:!pl-[1rem]'
         >
           {items?.map((item, index) => (
@@ -86,8 +109,6 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
 export default AwardsCertifications
 
 function ItemAwardsCertifications({title, image}: IAwardsCertificationsItem) {
-  console.log(title)
-  console.log(image)
   return (
     <>
       <ImageV2

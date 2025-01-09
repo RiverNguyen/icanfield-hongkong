@@ -36,7 +36,7 @@ const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <Image
-            className='size-[1.5rem] flex-shrink-0 rounded-full object-cover'
+            className='size-[1.5rem] flex-shrink-0 rounded-[100%] object-cover'
             src={'/imgs/map/vn.svg'}
             alt='country'
             width={24}

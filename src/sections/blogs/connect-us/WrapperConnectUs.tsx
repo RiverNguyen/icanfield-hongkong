@@ -24,7 +24,7 @@ const WrapperConnectUs = () => {
   return (
     <section
       ref={sectionFef}
-      className='relative h-[118.25rem] w-full overflow-hidden bg-white xsm:h-[73.4rem]'
+      className='relative h-[118.25rem] w-full overflow-hidden bg-white xsm:bg-[linear-gradient(180deg,#F6F6F4_0%,rgba(246,246,244,0.00)_100%)] xsm:h-[73.4rem]'
     >
       <div className='ease-[cubic-bezier(0.83,0,0.2,0.98)] pointer-events-none absolute left-0 top-0 z-[1] h-[56.9rem] w-full transition-all duration-800'>
         <ImageV2

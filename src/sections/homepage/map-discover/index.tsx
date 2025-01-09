@@ -65,7 +65,7 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
             {data.slogan}
           </span>
         </div>
-        <div className='ml-[4.81rem] w-[38.5rem] xsm:ml-0 xsm:mt-[2.5rem] xsm:w-full xsm:px-4'>
+        <div className='sm:z-10 ml-[4.81rem] w-[38.5rem] xsm:ml-0 xsm:mt-[2.5rem] xsm:w-full xsm:px-4'>
           <h2 className='mb-[1.19rem] font-optima text-[2.25rem] font-semibold leading-[1.3] tracking-[-0.09rem] text-brown xsm:mb-[1.25rem] xsm:w-full xsm:text-[1.25rem] xsm:tracking-[-0.025rem]'>
             {data.title}
           </h2>
@@ -209,36 +209,42 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
             </div>
           </div>
         </div>
-        <div className='z-10 flex w-[28.3125rem] flex-col pt-[5.12rem] xsm:w-full xsm:px-4'>
-          <div className='flex flex-col space-y-[1.5rem]'>
+        <div className='xsm:w-full z-10 flex w-[28.3125rem] flex-col pt-[5.12rem] xsm:px-0'>
+          <div className='hidden-scrollbar flex xsm:px-[1rem] sm:flex-col xsm:space-x-[1rem] sm:space-y-[1.5rem] xsm:w-full overflow-hidden overflow-x-auto'>
             {listProgramInfomation.map((item, index) => (
               <div
                 key={index}
-                className='rounded-[0.63rem] bg-[#F7F6F1] p-3 pb-6'
+                className='xsm:flex xsm:flex-col rounded-[0.63rem] xsm:rounded-[0.75rem] bg-[#F7F6F1] p-3 pb-6 xsm:p-[0.75rem] xsm:w-auto'
               >
-                <div className='flex items-center space-x-[1rem] border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-[1.12rem]'>
+                <div className='xsm:w-[18.75rem] flex items-center space-x-[1rem] border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-[1.12rem] xsm:pb-[0.75rem]'>
                   <ImageV2
                     src={'/imgs/homepage/map-discover/thumb.webp'}
                     alt='Map'
                     width={300}
                     height={200}
-                    className='h-[6.4375rem] w-[8.75rem] rounded-[0.63rem] object-cover'
+                    className='h-[6.4375rem] w-[8.75rem] xsm:size-[5.5rem] rounded-[0.63rem] xsm:rounded-[0.55rem] object-cover'
                   />
                   <div>
-                    <span className='text-[0.625rem] font-bold uppercase leading-[1.5] text-brown'>
-                      Thông tin chương trình
-                    </span>
-                    <h3 className='text-[0.875rem] font-bold uppercase leading-[1.5] tracking-[-0.0175rem] text-brown'>
-                      {item.name}
-                    </h3>
+                    <div>
+                      <span className='xsm:sub10-m xsm:opacity-[0.5] text-[0.625rem] font-bold uppercase leading-[1.5] text-brown'>
+                        Thông tin chương trình
+                      </span>
+                      <h3 className='xsm:line-clamp-2 xsm:body-14-b text-[0.875rem] font-bold sm:uppercase leading-[1.5] tracking-[-0.0175rem] text-brown'>
+                        {item.name}
+                      </h3>
+                    </div>
+                    <div className='sm:hidden space-x-[0.25rem] mt-[0.37rem] p-[0.25rem_0.5rem] flex items-center justify-start rounded-[0.25rem] bg-[rgba(101,67,30,0.15)]'>
+                      <span className='sub-10 tracking-[-0.00625rem] text-greyscaletext-800'>Thời gian xử lý</span>
+                      <p className='text-[0.625rem] font-bold text-greyscaletext-800'>{item?.time}</p>
+                    </div>
                   </div>
                 </div>
-                <div className='flex space-x-[1.5rem] px-4 pt-[0.87rem] [&_div]:flex [&_div]:flex-col [&_div_p]:line-clamp-1 [&_div_p]:text-[0.8125rem] [&_div_p]:font-bold [&_div_p]:leading-[1.5] [&_div_p]:text-greyscaletext-900 [&_div_span]:whitespace-nowrap [&_div_span]:text-[0.6875rem] [&_div_span]:leading-[1.5] [&_div_span]:text-greyscaletext-900'>
+                <div className='flex [&>div]:xsm:bg-white [&>div]:xsm:rounded-[0.5rem] [&>div]:xsm:shadow-[1px_1px_8px_0px_rgba(0,0,0,0.04)] [&>div]:xsm:p-[0.25rem_0.5rem] [&>div]:xsm:flex-1 space-x-[1.5rem] px-4 pt-[0.87rem] xsm:pt-[0.75rem] xsm:px-0 [&_div]:flex [&_div]:flex-col [&_div_p]:line-clamp-1 [&_div_p]:text-[0.8125rem] [&_div_p]:font-bold [&_div_p]:leading-[1.5] [&_div_p]:text-greyscaletext-900 [&_div_span]:whitespace-nowrap [&_div_span]:text-[0.6875rem] [&_div_span]:leading-[1.5] [&_div_span]:text-greyscaletext-900 xsm:space-x-[0.5rem] [&_div_p]:xsm:mb12-b [&_div_span]:xsm:sub-10 [&_div_span]:xsm:tracking-[-0.00625rem] [&_div_span]:xsm:text-greyscaletext-400 [&_div_span]:xsm:opacity-[0.7]'>
                   <div>
                     <span>Ngân sách tối thiểu</span>
                     <p>{item?.minBudget}</p>
                   </div>
-                  <div>
+                  <div className='xsm:!hidden'>
                     <span>Thời gian xử lý</span>
                     <p>{item?.time}</p>
                   </div>
@@ -252,7 +258,7 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
           </div>
           <Link
             href={'/'}
-            className='relative mt-[1.5rem] flex h-[4.875rem] w-full items-center overflow-hidden rounded-[0.5rem] xsm:h-[4rem]'
+            className='relative xsm:px-[1rem] mt-[1.5rem] flex h-[4.875rem] w-full items-center overflow-hidden rounded-[0.5rem] xsm:h-[4rem]'
           >
             <ImageV2
               src={'/imgs/homepage/map-discover/canada.webp'}
@@ -261,8 +267,8 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
               height={200}
               className='h-full w-[9.0625rem] rounded-[0.63rem] object-cover xsm:w-[5.4375rem]'
             />
-            <div className='overlay absolute right-0 top-0 z-[1] h-full w-[25.375rem] bg-[linear-gradient(270deg,#BE0225_82.82%,rgba(190,2,37,0.00)89.29%)] xsm:w-[19.3125rem]'></div>
-            <div className='space-y-[0.12rem]] relative z-10 flex flex-col'>
+            <div className='overlay xsm:rounded-[0.5rem] xsm:right-[1rem] absolute right-0 top-0 z-[1] h-full w-[25.375rem] bg-[linear-gradient(270deg,#BE0225_82.82%,rgba(190,2,37,0.00)89.29%)] xsm:w-[20.3125rem]'></div>
+            <div className='space-y-[0.12rem] relative z-10 flex flex-col'>
               <span className='text-[0.875rem] font-semibold uppercase leading-[1.5] tracking-[-0.0175rem] text-white xsm:text-[0.875rem]'>
                 Khám phá thêm
               </span>
@@ -270,7 +276,7 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
                 chương trình liên quan
               </span>
             </div>
-            <div className='absolute right-[0.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)] xsm:h-[3.5rem] xsm:w-[3rem]'>
+            <div className='absolute right-[0.25rem] xsm:right-[1.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)] xsm:h-[3.5rem] xsm:w-[3rem]'>
               <ImageV2
                 src={'/icons/homepage/map-discover/arrow.svg'}
                 alt='Icanfield'

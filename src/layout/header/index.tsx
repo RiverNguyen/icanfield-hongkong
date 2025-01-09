@@ -1,4 +1,5 @@
 'use client'
+
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
 import {
@@ -16,6 +17,9 @@ import {Autoplay} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {languageOptions} from './constants'
 import './styles.css'
+import { useRouter } from 'next/navigation'
+import { isLockScroll } from '@/hooks/useBodyScrollLock'
+
 const Header = () => {
   const listPostOutstanding = [
     {
@@ -52,7 +56,7 @@ const Header = () => {
   const menu = [
     {
       title: 'Định cư Canada',
-      href: '/',
+      href: '/dinh-cu-canada',
       imgUrl: '/imgs/homepage/header/canada-flag2.png',
       background: '/imgs/homepage/header/d-card-canada.webp',
       count: 54,
@@ -249,6 +253,7 @@ const Header = () => {
   //header Mobile
   const handleToggleMenu = () => {
     setIsCloseMenu(!isCloseMenu)
+    isLockScroll(!isCloseMenu)
   }
   // handle toggle popup Language mobile
   const [isActivedLanguageMb, setIsActivedLanguageMb] = React.useState(false)
@@ -265,6 +270,10 @@ const Header = () => {
   const handleToggleChild = () => {
     setIsOpenedChild(!isOpenedChild)
   }
+  //close the mobile header 
+  const handleBeforeNavigate = async () => {
+    setIsCloseMenu(false)
+  };
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
       <div className='header-top bg-[linear-gradient(118deg,#2E1506_69.75%,#95502F_142.7%,#F5C178_182.76%)] xsm:hidden'>
@@ -420,7 +429,7 @@ const Header = () => {
                       alt='triangle'
                       width={40}
                       height={40}
-                      className='h-[2rem] w-[3rem] translate-x-[60rem] object-contain'
+                      className='h-[2rem] w-[3rem] translate-x-[13.25rem] object-contain'
                     />
                     <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
                       <div className='flex items-start justify-between'>
@@ -757,8 +766,10 @@ const Header = () => {
               ) : (
                 <Link
                   href={item.href}
+                  onClick={(e) => handleBeforeNavigate()}
+                  prefetch 
                   key={index}
-                  className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
+                  className='a relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
                 >
                   {item?.background && (
                     <ImageV2
@@ -813,7 +824,7 @@ const Header = () => {
               className='size-[1.125rem] object-contain'
             />
           </div>
-          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+          <div className='1 flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
             {listMenuMobileLast.map((item, index) =>
               item.children ? (
                 <div key={index}>
@@ -843,6 +854,8 @@ const Header = () => {
                 <Link
                   href={'/'}
                   key={index}
+                  onClick={(e) => handleBeforeNavigate()}
+                  prefetch 
                 >
                   <div className='flex items-center justify-between'>
                     <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
@@ -869,7 +882,9 @@ const Header = () => {
               <Link
                 href={item.link || '/'}
                 key={index}
-                className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)]'
+                className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] xsm:rounded-[100%] border-[1px] border-[rgba(0,0,0,0.10)]'
+                onClick={(e) => handleBeforeNavigate()}
+                prefetch 
               >
                 <ImageV2
                   src={item.icon ||''}
@@ -939,11 +954,13 @@ const Header = () => {
               onClick={handleToggleChild}
             />
           </div>
-          <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
+          <div className='tru flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
             {selectedChild?.children?.map((item: MenuItem, index: number) => (
               <Link
                 href={item.href}
                 key={index}
+                onClick={(e) => handleBeforeNavigate()}
+                prefetch 
               >
                 <div className='flex items-center justify-between'>
                   <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>

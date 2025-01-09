@@ -18,7 +18,7 @@ export interface ITalentedTeamProps {
 const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
   const [activeIndex, setActiveIndex] = useState(0) // Theo dõi slide active
   return (
-    <section className='talented-team py-[6.5rem] xsm:py-[2.5rem]'>
+    <section className='talented-team py-[6.5rem] xsm:py-[2.5rem] xsm:pb-0'>
       <h2 className='heading1 text-center font-optima text-brown'>{title}</h2>
       <div className='section-container relative mx-auto mt-[2.5rem] w-[83.75rem] xsm:mt-[1.5rem] xsm:w-full xsm:px-0'>
         <Swiper

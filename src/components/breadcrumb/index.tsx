@@ -7,11 +7,14 @@ interface IBreadcrumbProps {
     label: string
     href: string
   }[]
+  className?: string
 }
 
-export const Breadcrumb: FC<IBreadcrumbProps> = ({items}) => {
+export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className}) => {
   return (
-    <nav className='relative z-10 mx-auto max-w-[90rem] py-[1.5rem] xsm:hidden'>
+    <nav className={cn('relative z-10 mx-auto max-w-[90rem] py-[1.5rem] xsm:hidden',
+      className
+    )}>
       <ul className='flex items-center space-x-[0.5rem] text-white'>
         {items.map((item, idx) => {
           if (idx === items.length - 1) {
