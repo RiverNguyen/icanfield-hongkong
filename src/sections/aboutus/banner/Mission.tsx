@@ -72,8 +72,8 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
           <span className='body16 xsm:sub-12 font-semibold text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
             {dataMission?.label}
           </span>
-          <h2 
-            dangerouslySetInnerHTML={{__html: dataMission?.title}} 
+          <h2
+            dangerouslySetInnerHTML={{__html: dataMission?.title}}
             className='xsm:heading1 w-[55.875rem] text-center font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:w-full'>
           </h2>
         </div>

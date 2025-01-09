@@ -2,6 +2,7 @@
 
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
+import { isLockScroll } from '@/hooks/useBodyScrollLock'
 import {
   LanguageOption,
   MenuItem,
@@ -11,14 +12,12 @@ import {
 } from '@/types/header.interface'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import 'swiper/css'
-import {Autoplay} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {languageOptions} from './constants'
+import { Autoplay } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { languageOptions } from './constants'
 import './styles.css'
-import { useRouter } from 'next/navigation'
-import { isLockScroll } from '@/hooks/useBodyScrollLock'
 
 const Header = () => {
   const listPostOutstanding = [
@@ -270,10 +269,10 @@ const Header = () => {
   const handleToggleChild = () => {
     setIsOpenedChild(!isOpenedChild)
   }
-  //close the mobile header 
-  const handleBeforeNavigate = async () => {
+  //close the mobile header
+  const handleBeforeNavigate = () => {
     setIsCloseMenu(false)
-  };
+  }
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
       <div className='header-top bg-[linear-gradient(118deg,#2E1506_69.75%,#95502F_142.7%,#F5C178_182.76%)] xsm:hidden'>
@@ -692,12 +691,12 @@ const Header = () => {
               alt='down'
               width={40}
               height={40}
-              className='ml-[0.38rem] size-[1.125rem] object-contain'
+              className='ml-[0.38rem]  object-contain size-[1.125rem]'
             />
           </div>
           <button
             onClick={handleToggleMenu}
-            className='relative flex h-[2.125rem] w-[3.125rem] items-center justify-center rounded-[0.38rem] bg-[rgba(0,0,0,0.10)]'
+            className='relative flex h-[2.125rem] w-[3.125rem] items-center justify-center  rounded-[0.38rem] bg-[rgba(0,0,0,0.10)]'
             aria-label='Toggle Menu'
             aria-expanded={isCloseMenu}
           >
@@ -766,10 +765,10 @@ const Header = () => {
               ) : (
                 <Link
                   href={item.href}
-                  onClick={(e) => handleBeforeNavigate()}
-                  prefetch 
+                  onClick={() => handleBeforeNavigate()}
+                  prefetch
                   key={index}
-                  className='a relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
+                  className=' flex relative h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
                 >
                   {item?.background && (
                     <ImageV2
@@ -854,8 +853,8 @@ const Header = () => {
                 <Link
                   href={'/'}
                   key={index}
-                  onClick={(e) => handleBeforeNavigate()}
-                  prefetch 
+                  onClick={() => handleBeforeNavigate()}
+                  prefetch
                 >
                   <div className='flex items-center justify-between'>
                     <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
@@ -883,8 +882,8 @@ const Header = () => {
                 href={item.link || '/'}
                 key={index}
                 className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] xsm:rounded-[100%] border-[1px] border-[rgba(0,0,0,0.10)]'
-                onClick={(e) => handleBeforeNavigate()}
-                prefetch 
+                onClick={() => handleBeforeNavigate()}
+                prefetch
               >
                 <ImageV2
                   src={item.icon ||''}
@@ -959,8 +958,8 @@ const Header = () => {
               <Link
                 href={item.href}
                 key={index}
-                onClick={(e) => handleBeforeNavigate()}
-                prefetch 
+                onClick={() => handleBeforeNavigate()}
+                prefetch
               >
                 <div className='flex items-center justify-between'>
                   <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>

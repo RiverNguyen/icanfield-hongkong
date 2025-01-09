@@ -1,14 +1,14 @@
-"use client"
-import ButtonBorder from "@/components/button/ButtonBorder";
-import ImageV2 from "@/components/image/ImageV2";
-import ICArrowRinght from "@/layout/footer/ICArrowRinght";
-import { contactInformatio, dataFooter, linkInterface } from "@/types/dataFooter.interface";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+'use client'
+import ButtonBorder from '@/components/button/ButtonBorder'
+import ImageV2 from '@/components/image/ImageV2'
+import ICArrowRinght from '@/layout/footer/ICArrowRinght'
+import { contactInformatio, dataFooter, linkInterface } from '@/types/dataFooter.interface'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 import CF7Request from '@/fetch/cf7Request'
-import endpoints from "@/utils/endpoints";
-import { isLockScroll } from "@/hooks/useBodyScrollLock";
-import { SuccessPopup } from "@/components/success-popup";
+import endpoints from '@/utils/endpoints'
+import { isLockScroll } from '@/hooks/useBodyScrollLock'
+import { SuccessPopup } from '@/components/success-popup'
 
 interface social {
   icon: {
@@ -19,14 +19,14 @@ interface social {
 }
 
 export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
-  const [email, setEmail] = useState<string>('');
-  const [validemail, setValidEmail] = useState<boolean>(false);
-  const [popup, setPopup] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>('')
+  const [validemail, setValidEmail] = useState<boolean>(false)
+  const [popup, setPopup] = useState<boolean>(false)
 
   const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -39,10 +39,10 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setEmail(value);
-    setValidEmail(!validateEmail(value));
-  };
+    const value = e.target.value
+    setEmail(value)
+    setValidEmail(!validateEmail(value))
+  }
 
   const handleSubmit = async () => {
     if (validateEmail(email)) {
@@ -59,7 +59,7 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
     } else {
 
     }
-  };
+  }
   const closePopup = () => {
     isLockScroll(false)
     setPopup(false)
@@ -72,21 +72,21 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
   return (
     <footer className='relative bg-orangetext-900 pt-[6rem] xsm:pt-[2.5rem]'>
       <div className='mx-auto mb-[3.25rem] flex flex-col items-center space-y-[1.5rem] xsm:mb-[2.5rem] xsm:space-y-[1rem]'>
-        <h3 
+        <h3
           dangerouslySetInnerHTML={{
             __html: dataFooter?.title,
           }}
           className='heading2 w-[45.29138rem] text-center font-optima font-semibold tracking-[-0.05rem] text-textwhitetest xsm:w-full'
         ></h3>
-        <ButtonBorder 
+        <ButtonBorder
           target={dataFooter?.customer_support?.target}
-          title={dataFooter?.customer_support?.title} 
-          link={dataFooter?.customer_support?.url} 
+          title={dataFooter?.customer_support?.title}
+          link={dataFooter?.customer_support?.url}
         />
       </div>
       <ImageV2
         alt="bg-footer"
-        src={"/imgs/homepage/footer/bg-footer.png"}
+        src={'/imgs/homepage/footer/bg-footer.png'}
         width={1600}
         height={522}
         className='absolute bottom-0 left-0 z-0 h-[calc(38.6875rem-6.06rem)] w-full opacity-[0.3] xsm:hidden'
@@ -107,10 +107,10 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
               </p>
               <div className="space-y-[1.25rem] xsm:space-y-[0.75rem]">
                 {dataFooter?.contact_information?.contact_information_repeater?.map((e: contactInformatio, index: number) => (
-                  <Link 
+                  <Link
                     target={e?.link?.target}
-                    key={index} 
-                    href={e?.link?.url} 
+                    key={index}
+                    href={e?.link?.url}
                     className="flex items-start space-x-[1rem]"
                   >
                     <ImageV2
@@ -161,7 +161,7 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
                   value={email}
                   onChange={handleChange}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') handleSubmit();
+                    if (e.key === 'Enter') handleSubmit()
                   }}
                 />
                 <div onClick={handleSubmit} className="cursor-pointer">
@@ -202,5 +202,5 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
         />
       </div>
     </footer>
-  );
+  )
 };
