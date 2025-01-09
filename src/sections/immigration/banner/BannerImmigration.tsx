@@ -28,9 +28,9 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
         </div>
       </div>
       {isMobile ? (
-        <div className="relative size-full sm:hidden">
+        <div className='relative size-full sm:hidden'>
           <ImageV2
-            className="size-full"
+            className='size-full'
             fill
             alt={dataAcf?.image_mb?.alt}
             src={dataAcf?.image_mb?.url}
@@ -46,39 +46,39 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
             height={820}
           />
           <ImageV2
-            className="w-full h-[51.25rem] top-[-4.37rem] absolute z-10"
+            className='absolute top-[-4.37rem] z-10 h-[51.25rem] w-full'
             src={'/imgs/immigration/banner/sun.webp'}
-            alt=""
+            alt=''
             width={1600}
             height={820}
           />
-          <div className="absolute top-0 left-0 z-[11] w-full h-[41.4375rem] opacity-[0.7] bg-[linear-gradient(94deg,#FFF_25.06%,rgba(255,255,255,0.00)_51.89%)]"></div>
+          <div className='absolute left-0 top-0 z-[11] h-[41.4375rem] w-full bg-[linear-gradient(94deg,#FFF_25.06%,rgba(255,255,255,0.00)_51.89%)] opacity-[0.7]'></div>
           <ImageV2
-            className="w-full h-[41.125rem] absolute top-[-13.5rem] left-0 z-[12]"
+            className='absolute left-0 top-[-13.5rem] z-[12] h-[41.125rem] w-full'
             src={'/imgs/immigration/banner/cloud.webp'}
-            alt=""
+            alt=''
             width={1600}
             height={820}
           />
           <ImageV2
-            className="w-full h-[36.0625rem] absolute left-0 bottom-[-14rem] z-[21]"
+            className='absolute bottom-[-14rem] left-0 z-[21] h-[36.0625rem] w-full'
             src={'/imgs/immigration/banner/silk-strip.webp'}
-            alt=""
+            alt=''
             width={1600}
             height={820}
           />
-          <div className="w-full h-[33.5rem] overflow-hidden justify-end flex items-center absolute left-0 top-[12.31rem] z-[12]">
+          <div className='absolute left-0 top-[12.31rem] z-[12] flex h-[33.5rem] w-full items-center justify-end overflow-hidden'>
             <ImageV2
-              className="flying__clouds size-full"
+              className='flying__clouds size-full'
               src={'/imgs/immigration/banner/flying-cloudsV2.webp'}
-              alt=""
+              alt=''
               width={1600}
               height={820}
             />
             <ImageV2
-              className="flying__clouds size-full"
+              className='flying__clouds size-full'
               src={'/imgs/immigration/banner/flying-cloudsV2.webp'}
-              alt=""
+              alt=''
               width={1600}
               height={820}
             />

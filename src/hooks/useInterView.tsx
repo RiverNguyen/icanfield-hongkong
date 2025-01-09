@@ -38,9 +38,11 @@ const useInterView = ({
 
     return () => {
       if (elementRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(elementRef.current)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetOnExitTop, shouldUnobserve, threshold])
 
   return {isVisible, elementRef}

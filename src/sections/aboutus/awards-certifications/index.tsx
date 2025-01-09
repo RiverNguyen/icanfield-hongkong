@@ -4,8 +4,8 @@ import ImageV2 from '@/components/image/ImageV2'
 import {Media} from '@/types/image.interface'
 import {FC, useEffect, useState} from 'react'
 import 'swiper/css'
-import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
 export interface IAwardsCertificationsProps {
   logo: Media
   title: string
@@ -57,7 +57,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
             className='absolute left-0 top-0 z-10 h-full w-full'
           />
         </div>
-        <button className='xsm:hidden z-20 cursor-pointer awards-certification__prev absolute top-[50%] translate-y-[-8rem] left-[5rem] h-[2.5rem] w-[2.5rem] rounded-[1.5rem] bg-white flex-center'>
+        <button className='awards-certification__prev absolute left-[5rem] top-[50%] z-20 h-[2.5rem] w-[2.5rem] translate-y-[-8rem] cursor-pointer rounded-[1.5rem] bg-white flex-center xsm:hidden'>
           <ImageV2
             className='size-[1.5rem] object-cover'
             alt=''
@@ -66,7 +66,7 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
             src={'/icons/arrow-right-brown.svg'}
           />
         </button>
-        <button className='xsm:hidden z-20 cursor-pointer awards-certification__next absolute top-[50%] translate-y-[-8rem] right-[5rem] h-[2.5rem] w-[2.5rem] rounded-[1.5rem] bg-white flex-center'>
+        <button className='awards-certification__next absolute right-[5rem] top-[50%] z-20 h-[2.5rem] w-[2.5rem] translate-y-[-8rem] cursor-pointer rounded-[1.5rem] bg-white flex-center xsm:hidden'>
           <ImageV2
             className='size-[1.5rem] rotate-180 object-cover'
             alt=''

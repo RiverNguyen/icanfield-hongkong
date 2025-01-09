@@ -12,6 +12,7 @@ export default function PopupSliderMb({
   index,
 }: {
   toggleMB: boolean
+  // eslint-disable-next-line no-unused-vars
   setToggleMB: (value: boolean) => void
   data: IExpertTeamPropsItem
   index: number
@@ -54,7 +55,7 @@ export default function PopupSliderMb({
           />
           <div
             dangerouslySetInnerHTML={{__html: data?.describe}}
-            className='[&_p]:body-14 mt-[1.5rem] [&_p]:text-bodytext'
+            className='mt-[1.5rem] [&_p]:text-bodytext [&_p]:body-14'
           ></div>
         </div>
         <div

@@ -33,7 +33,7 @@ export default function AsideDetail({
   const formattedDate = formatDate(date)
   return (
     <aside className='w-[19rem] xsm:w-full'>
-      <p className='body-14 tracking-[-0.035rem] text-orangetext-300 sm:mb-[6.37rem] xsm:mb-[0.75rem] xsm:text-[0.75rem] xsm:leading-[1.4]'>
+      <p className='tracking-[-0.035rem] text-orangetext-300 body-14 sm:mb-[6.37rem] xsm:mb-[0.75rem] xsm:text-[0.75rem] xsm:leading-[1.4]'>
         {formattedDate}
       </p>
       {isMobile && (
@@ -48,7 +48,7 @@ export default function AsideDetail({
               Nội dung bài viết
             </p>
             <ImageV2
-              className='size-[2.25rem] xsm:size-[1.25rem] brightness-[100] invert-[100] filter sm:hidden'
+              className='size-[2.25rem] brightness-[100] invert-[100] filter sm:hidden xsm:size-[1.25rem]'
               width={20}
               height={20}
               alt=''

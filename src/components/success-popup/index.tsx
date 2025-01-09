@@ -9,6 +9,7 @@ import {FC, useEffect, useState} from 'react'
 interface ISuccessPopupProps {
   className?: string
   active: boolean
+  // eslint-disable-next-line no-unused-vars
   setActive: (active: boolean) => void
 }
 

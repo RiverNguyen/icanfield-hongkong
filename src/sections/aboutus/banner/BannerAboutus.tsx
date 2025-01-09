@@ -37,7 +37,7 @@ export default function BannerAboutus({
       className='relative z-10 w-full overflow-hidden'
     >
       <Breadcrumb
-        className='absolute top-[6.4375rem] left-[5rem]'
+        className='absolute left-[5rem] top-[6.4375rem]'
         items={[
           {label: 'Trang Chủ', href: '/'},
           {label: 'Về chúng tôi', href: ''},
@@ -100,7 +100,7 @@ export default function BannerAboutus({
         ></span>
         <div
           dangerouslySetInnerHTML={{__html: dataAcfBanner?.decscripts}}
-          className='body-14 tracking-[-0.00875rem] text-greyscaletext-800'
+          className='tracking-[-0.00875rem] text-greyscaletext-800 body-14'
         ></div>
       </div>
     </section>

@@ -2,18 +2,19 @@ import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
 import FormHomepage from '@/sections/homepage/form-homepage'
 import GlobalImmigration from '@/sections/homepage/global-immigration'
 import {
-  InvestmentOpportunities,
   IItemInvestmentOpportunities,
+  InvestmentOpportunities,
 } from '@/sections/homepage/investment-opportunities'
-import NewsFlow from '@/sections/homepage/news-homepage'
+import NewsFlow, {
+  ItemNews,
+  ItemNewsFeatured,
+} from '@/sections/homepage/news-homepage'
 import ProudJourney, {
   IItemProudJourney,
 } from '@/sections/homepage/proud-journey'
 import TalentedTeam from '@/sections/homepage/talented-team'
-import dynamic from 'next/dynamic'
 import {Media} from '@/types/image.interface'
-import {ItemNewsFeatured} from '@/sections/homepage/news-homepage'
-import {ItemNews} from '@/sections/homepage/news-homepage'
+import dynamic from 'next/dynamic'
 const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
   ssr: false, // Nếu component không cần server-side rendering
   loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading

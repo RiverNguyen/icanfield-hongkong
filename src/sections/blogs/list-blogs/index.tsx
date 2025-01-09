@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
-import {useEffect, useMemo, useRef, useState} from 'react'
-import useSWR from 'swr'
 import ItemBlog from '@/components/itemBlog'
+import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
+import {Pagination} from '@/components/pagination/Pagination'
 import {fetcher} from '@/lib/swr'
+import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
 import IndexTabs from '@/sections/blogs/list-blogs/tab'
 import {
@@ -15,9 +16,8 @@ import {
 } from '@/types/blogs.interface'
 import endpoints from '@/utils/endpoints'
 import {useSearchParams} from 'next/navigation'
-import {LIMIT_POSTS} from '@/sections/blogs/constant'
-import {Pagination} from '@/components/pagination/Pagination'
-import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
+import {useEffect, useMemo, useRef, useState} from 'react'
+import useSWR from 'swr'
 
 const sortOptions = [
   {name: 'Tất cả', value: 'all', orderBy: 'all'},
@@ -81,7 +81,7 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
   return (
     <section
       ref={sectionRef}
-      className='list-blogs section-container mb-[6.75rem] pt-[6.75rem] xsm:mb-[3.25rem] xsm:pt-[3rem]'
+      className='list-blogs mb-[6.75rem] pt-[6.75rem] section-container xsm:mb-[3.25rem] xsm:pt-[3rem]'
     >
       <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:mb-[1rem] xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>
         Tin tức khác
@@ -111,15 +111,18 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
           </>
         ) : (
           <>
-            {Array.isArray(dataLatest) && dataLatest?.length > 0 ?
+            {Array.isArray(dataLatest) && dataLatest?.length > 0 ? (
               dataLatest.map((item: DataItem, index: number) => (
                 <ItemBlog
                   data={item}
                   key={index}
                 />
-              )) : (
-                <div className='text-brown w-full text-center col-start-2 row-start-2'>Chưa có bài viết</div>
-              )}
+              ))
+            ) : (
+              <div className='col-start-2 row-start-2 w-full text-center text-brown'>
+                Chưa có bài viết
+              </div>
+            )}
           </>
         )}
       </div>
