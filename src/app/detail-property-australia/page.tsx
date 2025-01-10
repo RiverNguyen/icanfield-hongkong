@@ -31,8 +31,8 @@ const page = () => {
         <div className='sticky top-[6.44rem] flex-1 xsm:hidden'>
           <FAQForm />
         </div>
-        <FAQFormMobile />
       </section>
+      <FAQFormMobile />
       <ProjectOther />
     </div>
   )

@@ -287,7 +287,7 @@ export const FAQFormMobile = ({className}: {className?: string}) => {
       ref={ref}
       className={cn(
         'fixed bottom-0 left-0 right-0 z-20 hidden transform transition-all duration-800 ease-in-out xsm:block',
-        open ? 'translate-y-0' : 'translate-y-[calc(100%-4.42863rem)]',
+        open ? 'translate-y-0' : 'translate-y-[calc(100%-4.375rem)]',
         className,
       )}
     >
@@ -305,10 +305,10 @@ export const FAQFormMobile = ({className}: {className?: string}) => {
         <ImageV2
           alt=''
           src='/icons/detail-property/polygon.svg'
-          width={50}
+          width={100}
           height={50}
           className={cn(
-            'absolute left-1/2 top-3 h-5 w-5 -translate-x-1/2 transform object-cover transition-all duration-300',
+            'absolute left-1/2 top-3 h-[0.5625rem] w-[0.875rem] -translate-x-1/2 transform object-cover transition-all duration-300',
             open ? 'rotate-180' : 'rotate-0',
           )}
         />
