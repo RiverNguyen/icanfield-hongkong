@@ -1,4 +1,4 @@
-import {BannerStatic} from '@/components/banner-static'
+import { BannerStatic } from '@/components/banner-static'
 import { Breadcrumb } from '@/components/breadcrumb'
 import BlogDetail from '@/sections/blogs/detail/BlogDetail'
 import RelatedArticles from '@/sections/blogs/detail/RelatedArticles'
@@ -32,7 +32,7 @@ export default function IndexDetailBlog({
         <BannerStatic backgroundImage={dataBackgroundImage}>
           <Breadcrumb
             items={[
-              {label: 'Home', href: '/'},
+              {label: 'Trang chủ', href: '/'},
               {label: 'Tin Tức', href: '/blogs'},
               {label: dataDetailBlog?.data?.title, href: ''},
             ]}

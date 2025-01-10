@@ -1,6 +1,6 @@
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import {FC} from 'react'
+import { FC } from 'react'
 
 interface IBreadcrumbProps {
   items: {
@@ -20,7 +20,7 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className}) => {
           if (idx === items.length - 1) {
             return (
               <li key={idx}>
-                <span className='text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem]'>
+                <span className='last--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem]'>
                   {item.label}
                 </span>
               </li>
@@ -31,7 +31,7 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className}) => {
                 <li key={idx}>
                   <Link
                     className={cn(
-                      'text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem]',
+                      'item--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem]',
                       {'text-white/80': idx === 0},
                     )}
                     href={item.href}
