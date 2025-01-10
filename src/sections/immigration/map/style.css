@@ -1,0 +1,28 @@
+.leaflet-container {
+  background: transparent;
+}
+
+.leaflet-interactive:hover {
+  fill: #bc9247;
+}
+
+.region-label {
+  width: auto !important;
+}
+.region-label p {
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 0.75rem */
+  letter-spacing: -0.00625rem;
+  text-transform: uppercase;
+  background: var(
+    --Phase-1-N-TITLE,
+    linear-gradient(90deg, #5c4e47 0%, #5c4235 100%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

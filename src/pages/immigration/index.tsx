@@ -1,6 +1,7 @@
 import BannerImmigration from '@/sections/immigration/banner/BannerImmigration'
 import DossierAppraisal from '@/sections/immigration/dossier-appraisal/DossierAppraisal'
 import ImmigrationFAQ from '@/sections/immigration/faq/ImmigrationFAQ'
+import {CanadaMap} from '@/sections/immigration/map'
 import Programme from '@/sections/immigration/programme/Programme'
 import Strengths from '@/sections/immigration/strengths/Strengths'
 
@@ -85,6 +86,7 @@ export default function Immigration() {
       <ImmigrationFAQ />
       <DossierAppraisal />
       {/* <RelatedArticles /> */}
+      <CanadaMap />
     </main>
   )
 }

@@ -1,6 +1,5 @@
-import DetailSettlementPrograms from '@/pages/detail-settlement-programs'
+import Immigration from '@/pages/immigration'
 
 export default function page() {
-  // return <Immigration />
-  return <DetailSettlementPrograms />
+  return <Immigration />
 }

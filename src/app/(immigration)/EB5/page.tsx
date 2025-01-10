@@ -1,3 +1,7 @@
 export default function page() {
-  return <div>page</div>
+  return (
+    <section>
+      <h1>EB5</h1>
+    </section>
+  )
 }
