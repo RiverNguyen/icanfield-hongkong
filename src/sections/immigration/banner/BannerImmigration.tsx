@@ -15,8 +15,8 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
           <Breadcrumb
             className='[&_.item--li]:text-[rgba(18,18,18,0.38)] [&_.last--li]:text-brown'
             items={[
-              { label: "Trang chủ", href: "/" },
-              { label: "Định cư Canada", href: "" },
+              { label: 'Trang chủ', href: '/' },
+              { label: 'Định cư Canada', href: '' },
             ]}
           />
         }

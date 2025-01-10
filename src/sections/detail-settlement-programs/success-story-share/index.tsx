@@ -10,8 +10,8 @@ import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 
 export interface ISuccessStoryShareProps {
-  title: string
-  items: ISuccessStoryShareItem[]
+  title?: string
+  items?: ISuccessStoryShareItem[]
 }
 
 export const SuccessStoryShare: FC<ISuccessStoryShareProps> = ({
@@ -33,7 +33,7 @@ export const SuccessStoryShare: FC<ISuccessStoryShareProps> = ({
     })
   }, [])
   return (
-    <section className='relative min-h-[56rem] sm:pt-[4.38rem] xsm:p-[3.5rem_0_20.53rem]'>
+    <section className='relative min-h-[56rem] sm:pt-[4.38rem] xsm:mt-[1px] xsm:p-[3.5rem_0_20.53rem]'>
       <ImageV2
         src={'/imgs/detail-settlement-programs/success-story-share-bg-2.webp'}
         alt='Success Story Share'
@@ -73,16 +73,18 @@ export const SuccessStoryShare: FC<ISuccessStoryShareProps> = ({
             prevEl: '.story-share__prev',
           }}
         >
-          {items.map((item, index) => (
-            <SwiperSlide
-              className='!max-w-[18.75rem] sm:!max-w-[33.95313rem]'
-              key={index}
-            >
-              <SuccessStoryShareItem {...item} />
-            </SwiperSlide>
-          ))}
-          {items.length < 6
-            ? items.map((item, index) => (
+          {items &&
+            items.map((item, index) => (
+              <SwiperSlide
+                className='!max-w-[18.75rem] sm:!max-w-[33.95313rem]'
+                key={index}
+              >
+                <SuccessStoryShareItem {...item} />
+              </SwiperSlide>
+            ))}
+          {(items?.length ?? 0) < 6
+            ? items &&
+              items.map((item, index) => (
                 <SwiperSlide
                   className='!max-w-[18.75rem] sm:!max-w-[33.95313rem]'
                   key={index}
@@ -145,7 +147,7 @@ export const SuccessStoryShareItem: FC<ISuccessStoryShareItemProps> = ({
         </p>
         <Link
           className='mt-auto inline-flex h-[3rem] items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:w-full'
-          href={link}
+          href={'/blogs/' + link}
         >
           <span className='body14 font-medium -tracking-[0.0175rem] text-white'>
             Xem câu chuyện

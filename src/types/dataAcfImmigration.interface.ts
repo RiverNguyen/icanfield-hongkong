@@ -12,7 +12,7 @@ export interface dataStrength {
     }
 }
 
-export interface dataBanner { 
+export interface dataBanner {
     label: string
     image_pc: {
         alt: string
@@ -24,7 +24,7 @@ export interface dataBanner {
     }
 }
 
-export interface dataAcf { 
+export interface dataAcf {
     banner: dataBanner
     characteristic: dataStrength[]
 }
