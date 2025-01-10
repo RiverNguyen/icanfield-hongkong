@@ -1,7 +1,6 @@
 import ImageV2 from '@/components/image/ImageV2'
-import ItemPioneering from '@/sections/aboutus/pioneering-mission/ItemPioneering'
 import { dataAcfPioneeringMission } from '@/types/dataAcfAboutus.interface'
-
+import ItemPioneering from '@/components/aboutus/pioneering-mission/ItemPioneering'
 export default function PioneeringMission({
   dataAcfPioneeringMission,
 }: {

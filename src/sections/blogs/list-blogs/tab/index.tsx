@@ -27,7 +27,6 @@ const IndexTabs = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams])
-
   //handle select category
   const handleSelectCategory = (category: Category) => {
     setSelectedCategory(category)
