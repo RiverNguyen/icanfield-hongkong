@@ -1,23 +1,24 @@
 import ImageV2 from '@/components/image/ImageV2'
+import ItemPioneering from '@/sections/aboutus/pioneering-mission/ItemPioneering'
 import { dataAcfPioneeringMission } from '@/types/dataAcfAboutus.interface'
-import ItemPioneering from '@/components/aboutus/pioneering-mission/ItemPioneering'
+
 export default function PioneeringMission({
   dataAcfPioneeringMission,
 }: {
   dataAcfPioneeringMission: dataAcfPioneeringMission
 }) {
   return (
-    <section className='w-full bg-background pt-[5rem]'>
+    <section className='new w-full bg-background pt-[5rem]'>
       <div className='w-full sm:sticky sm:top-[100vh] xsm:relative'>
         <ImageV2
-          className='absolute left-0 h-[100vh] w-full sm:top-[-100vh] xsm:top-0 xsm:hidden'
+          className='xsm:hidden absolute left-0 h-[100vh] w-full sm:top-[-100vh] xsm:top-0'
           width={1600}
           height={788}
           alt=''
           src={'/imgs/about-us/pioneering-mission/bg-pioneering-mission.webp'}
         />
         <ImageV2
-          className='absolute left-0 top-0 h-[25rem] w-full sm:hidden'
+          className='sm:hidden absolute left-0 top-0 h-[25rem] w-full'
           width={1600}
           height={788}
           alt=''
