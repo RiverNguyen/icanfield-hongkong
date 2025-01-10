@@ -87,7 +87,7 @@ const ProjectTransparency = () => {
               {item.title}
             </h3>
             <div
-              className='group-hover: xsm:text-[&_p]:text-[rgba(18,18,18,0.87)] px-4 [&_p]:mt-[1rem] [&_p]:text-[1rem] [&_p]:font-normal [&_p]:leading-[150%] [&_p]:tracking-[-0.02rem] xsm:[&_p]:text-[rgba(18,18,18,0.87)] [&_p]:text-white xsm:[&_p]:mt-2 xsm:[&_p]:text-[0.875rem] xsm:[&_p]:tracking-[-0.03rem]'
+              className='group-hover: xsm:text-[&_p]:text-[rgba(18,18,18,0.87)] px-4 [&_p]:mt-[1rem] [&_p]:text-[1rem] [&_p]:font-normal [&_p]:leading-[150%] [&_p]:tracking-[-0.02rem] xsm:[&_p]:text-[rgba(18,18,18,0.87)] group-hover:[&_p]:text-[rgba(18,18,18,0.87)] [&_p]:text-white xsm:[&_p]:mt-2 xsm:[&_p]:text-[0.875rem] xsm:[&_p]:tracking-[-0.03rem]'
               dangerouslySetInnerHTML={{__html: item.desc}}
             ></div>
 
