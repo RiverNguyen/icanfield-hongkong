@@ -1,11 +1,11 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
-import {useEffect, useRef, useState} from 'react'
-import './style.css'
 import { dataMission } from '@/types/dataAcfAboutus.interface'
+import { useEffect, useRef, useState } from 'react'
+import './style.css'
 
 export default function Mission({dataMission}: {dataMission: dataMission}) {
   const [activeInterFace, setActiveInterFace] = useState<boolean>(false)
@@ -74,7 +74,7 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
           </span>
           <h2
             dangerouslySetInnerHTML={{__html: dataMission?.title}}
-            className='xsm:heading1 w-[55.875rem] text-center font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:w-full'>
+            className='xsm:heading1 xsm:px-[0.1rem] w-[55.875rem] text-center font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:w-full'>
           </h2>
         </div>
         <div className='flex h-[60rem] w-[74.75rem] flex-col items-center justify-start rounded-[2.5rem] bg-[linear-gradient(180deg,rgba(220,157,96,0.92)_-18.75%,rgba(123,87,53,0.50)_54.27%,rgba(255,255,255,0.45)_63.95%)] opacity-[0.95] xsm:h-[38.5rem] xsm:w-full xsm:p-[1.5rem_1rem]'>

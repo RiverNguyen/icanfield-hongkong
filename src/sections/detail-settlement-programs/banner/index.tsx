@@ -4,28 +4,37 @@ import {Media} from '@/types/image.interface'
 import {FC} from 'react'
 
 export interface IBannerProps {
-  titleTop?: string
-  titleBottom?: string
+  title_line_1?: string
+  title_line_2?: string
   description?: string
-  backgroundImage: Media
+  background_pc?: Media
+  background_mb?: Media
   children?: React.ReactNode
 }
 
 export const Banner: FC<IBannerProps> = ({
-  titleTop,
-  titleBottom,
+  title_line_1: titleTop,
+  title_line_2: titleBottom,
   description,
-  backgroundImage,
+  background_pc: backgroundPc,
+  background_mb: backgroundMb,
   children,
 }) => {
   return (
     <section className='relative min-h-[33.5rem] overflow-hidden pt-[3.75rem] sm:min-h-[55.9375rem] sm:pt-[6.44rem] xsm:rounded-[0_0_1rem_1rem]'>
       <ImageV2
-        src={backgroundImage.url}
-        alt={backgroundImage.alt}
+        src={backgroundPc ? backgroundPc.url : '/fallbackImage.gif'}
+        alt={backgroundPc ? backgroundPc.alt : '/fallbackImage.gif'}
         width={1600 * 2}
         height={478 * 2}
-        className='absolute inset-0 h-full w-full object-cover'
+        className='absolute inset-0 h-full w-full object-cover xsm:hidden'
+      />
+      <ImageV2
+        src={backgroundMb ? backgroundMb.url : '/fallbackImage.gif'}
+        alt={backgroundMb ? backgroundMb.alt : '/fallbackImage.gif'}
+        width={1600 * 2}
+        height={478 * 2}
+        className='absolute inset-0 h-full w-full object-cover sm:hidden'
       />
       <div className='absolute inset-0 hidden h-full w-full bg-[linear-gradient(180deg,rgba(246,246,244,0.00)_76.15%,#F6F6F4_98.8%),linear-gradient(180deg,rgba(0,0,0,0.45)_12%,rgba(0,0,0,0.00)_100%)] sm:block'></div>
       <div className='absolute left-0 top-0 h-[40.25rem] w-full bg-[linear-gradient(180deg,rgba(246,246,244,0.00)_76.15%,#F6F6F4_98.8%),linear-gradient(180deg,rgba(0,0,0,0.45)_12%,rgba(0,0,0,0.00)_100%)] sm:hidden'></div>

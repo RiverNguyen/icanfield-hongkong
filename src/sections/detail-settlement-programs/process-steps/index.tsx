@@ -5,9 +5,9 @@ import {Media} from '@/types/image.interface'
 import {FC, memo, useEffect, useRef, useState} from 'react'
 
 export interface IProcessStepsProps {
-  title: string
-  description: string
-  steps: IProcessStepItem[]
+  title?: string
+  description?: string
+  steps?: IProcessStepItem[]
 }
 
 const progressDuration = 20000 // Total duration for all steps
@@ -19,7 +19,7 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
 }) => {
   const [currentStep, setCurrentStep] = useState(0) // Current step index
   const [progressArray, setProgressArray] = useState(
-    Array(steps.length).fill(0),
+    Array(steps?.length || 0).fill(0),
   ) // Progress for each step
 
   const [scrollPercent, setScrollPercent] = useState(0)
@@ -52,7 +52,7 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
     return () => window.removeEventListener('scroll', handleScroll) // Dọn sự kiện khi component bị hủy
   }, [])
 
-  const stepDuration = progressDuration / steps.length // Duration for each step
+  const stepDuration = steps?.length ? progressDuration / steps.length : 0 // Duration for each step
 
   useEffect(() => {
     const intervalRef = setInterval(() => {
@@ -65,14 +65,14 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
         // If step is complete, move to next step or reset to 0
         if (newProgress[currentStep] >= 100) {
           newProgress[currentStep] = 0
-          setCurrentStep((prevStep) => (prevStep + 1) % steps.length) // Loop to the first step
+          setCurrentStep((prevStep) => (prevStep + 1) % (steps?.length || 1)) // Loop to the first step
         }
         return newProgress
       })
     }, stepDuration / 100) // Update progress every interval to reach 100% for each step
 
     return () => clearInterval(intervalRef) // Cleanup on component unmount or step change
-  }, [currentStep, steps.length, stepDuration])
+  }, [currentStep, steps?.length, stepDuration])
 
   return (
     <section
@@ -88,28 +88,30 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
         </p>
       </div>
       <div className='mx-auto mt-[4rem] flex max-w-[90rem] space-x-[3.21rem] transition-all duration-800 xsm:hidden'>
-        {steps.map((step, index) => (
-          <ProcessStepItem
-            key={index}
-            step={index + 1}
-            {...step}
-            progress={progressArray[index]}
-            isActive={index === currentStep}
-            setStep={() => {
-              setCurrentStep(index)
-              setProgressArray((prevProgress) => prevProgress.fill(0))
-            }}
-          />
-        ))}
+        {steps &&
+          steps.map((step, index) => (
+            <ProcessStepItem
+              key={index}
+              step={index + 1}
+              {...step}
+              progress={progressArray[index]}
+              isActive={index === currentStep}
+              setStep={() => {
+                setCurrentStep(index)
+                setProgressArray((prevProgress) => prevProgress.fill(0))
+              }}
+            />
+          ))}
       </div>
       <div className='relative space-y-[4rem] sm:hidden'>
-        {steps.map((step, index) => (
-          <ProcessStepItemMb
-            key={index}
-            step={index + 1}
-            {...step}
-          />
-        ))}
+        {steps &&
+          steps.map((step, index) => (
+            <ProcessStepItemMb
+              key={index}
+              step={index + 1}
+              {...step}
+            />
+          ))}
         <div className='absolute left-1/2 top-0 !mt-0 h-full w-[1px] -translate-x-1/2 bg-black/10'>
           <div
             style={{
@@ -125,9 +127,9 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
 }
 
 interface IProcessStepItem {
-  title: string
-  description: string
-  image: Media
+  title?: string
+  description?: string
+  image?: Media
 }
 
 interface IProcessStepItemProps extends IProcessStepItem {
@@ -217,10 +219,10 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
         </p>
       </div>
       <ImageV2
-        src={image.url}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
+        src={image?.url || ''}
+        alt={image?.alt || ''}
+        width={image?.width || 1000}
+        height={image?.height || 1000}
         className='mt-auto block h-[16.875rem] w-full rounded-[1.125rem] object-cover transition-all duration-800'
       />
     </div>
@@ -240,10 +242,10 @@ const ProcessStepItemMb: FC<IProcessStepItemMbProps> = memo(
         })}
       >
         <ImageV2
-          src={image.url}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
+          src={image?.url || ''}
+          alt={image?.alt || ''}
+          width={image?.width || 1000}
+          height={image?.height || 1000}
           className={cn(
             'sticky top-[3.75rem] size-[10rem] rounded-[0.5rem] object-cover',
             {
@@ -252,7 +254,7 @@ const ProcessStepItemMb: FC<IProcessStepItemMbProps> = memo(
             },
           )}
         />
-        <div>
+        <div className='flex-1'>
           <span className='inline-block rounded-[1.375rem] bg-brown p-[0.4375rem_0.75rem] text-[0.75rem] font-semibold uppercase text-[#F3F3F3]'>
             Giai đoạn {step < 10 ? `0${step}` : step}
           </span>
@@ -264,7 +266,7 @@ const ProcessStepItemMb: FC<IProcessStepItemMbProps> = memo(
                 'text-left': step % 2 === 1,
               },
             )}
-            dangerouslySetInnerHTML={{__html: title}}
+            dangerouslySetInnerHTML={{__html: title || ''}}
           ></div>
           <p
             className={cn(

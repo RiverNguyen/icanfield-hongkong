@@ -1,27 +1,30 @@
 'use client'
 
+import { Breadcrumb } from '@/components/breadcrumb'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
 import '@/sections/immigration/banner/style.css'
+import { dataBanner } from '@/types/dataAcfImmigration.interface'
 
-export default function BannerImmigration() {
+export default function BannerImmigration({name, dataAcf}: {name: string, dataAcf: dataBanner}) {
   const isMobile = useIsMobile()
   return (
-    <section className='relative h-[58.125rem] w-full sm:mt-[6.4375rem] xsm:h-[50.75rem]'>
-      <div className='absolute left-[5rem] top-0 z-20 space-y-[0.875rem] xsm:left-0 xsm:top-[calc(3.75rem+4.69rem)]'>
-        {/* {!isMobile &&
+    <section className="w-full h-[58.125rem] xsm:h-[50.75rem] relative sm:mt-[6.4375rem]">
+      <div className="absolute top-0 left-[5rem] xsm:top-[calc(3.75rem+4.69rem)] xsm:left-0 z-20 space-y-[0.875rem]">
+        {!isMobile &&
           <Breadcrumb
+            className='[&_.item--li]:text-[rgba(18,18,18,0.38)] [&_.last--li]:text-brown'
             items={[
-              { label: "Home", href: "/" },
-              { label: "Blogs", href: "#" },
+              { label: 'Trang chủ', href: '/' },
+              { label: 'Định cư Canada', href: '' },
             ]}
           />
-        } */}
-        <div className='space-y-[0.25rem] section-container xsm:px-[0.5rem]'>
-          <h1 className='background_clip--text bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] font-optima text-[5rem] font-medium leading-[1.2] tracking-[-0.1rem] xsm:text-[2.5rem] xsm:leading-[1.3] xsm:tracking-[-0.05rem]'>
-            ĐỊNH CƯ CANADA
+        }
+        <div className="space-y-[0.25rem] section-container xsm:px-[0.5rem]">
+          <h1 className="uppercase text-[5rem] font-medium leading-[1.2] tracking-[-0.1rem] font-optima background_clip--text xsm:text-[2.5rem] xsm:leading-[1.3] xsm:tracking-[-0.05rem] bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)]">
+            ĐỊNH CƯ {name}
           </h1>
-          <p className='text-[#474736] hero-title'>Khởi Đầu Tương Lai Mới</p>
+          <p className="hero-title text-[#474736]">{dataAcf?.label}</p>
         </div>
       </div>
       {isMobile ? (
@@ -29,16 +32,16 @@ export default function BannerImmigration() {
           <ImageV2
             className='size-full'
             fill
-            alt=''
-            src={'/imgs/immigration/banner/d-hero_bannerMB.webp'}
+            alt={dataAcf?.image_mb?.alt}
+            src={dataAcf?.image_mb?.url}
           />
         </div>
       ) : (
-        <div className='relative size-full xsm:hidden'>
+        <div className="size-full relative xsm:hidden z-10">
           <ImageV2
-            className='absolute z-20 size-full'
-            src={'/imgs/immigration/banner/d-main_content_containerV2.webp'}
-            alt=''
+            className="size-full absolute z-20"
+            src={dataAcf?.image_pc?.url}
+            alt={dataAcf?.image_pc?.alt}
             width={1600}
             height={820}
           />

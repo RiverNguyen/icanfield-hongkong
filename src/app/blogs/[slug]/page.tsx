@@ -2,6 +2,13 @@ import fetchData from '@/fetch/fetchData'
 import IndexDetailBlog from '@/pages/detail-blog'
 
 export default async function page({params}: {params: {slug: string}}) {
-  const [data] = await Promise.all([fetchData({api: '/blogs/' + params.slug})])
+  const [data] = await Promise.all([
+    fetchData({
+      api: '/blogs/' + params.slug,
+      option: {
+        revalidate: 10,
+      },
+    })
+  ])
   return <IndexDetailBlog dataDetailBlog={data} />
 }
