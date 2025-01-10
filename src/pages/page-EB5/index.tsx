@@ -1,4 +1,6 @@
 import {Breadcrumb} from '@/components/breadcrumb'
+import ProjectTransparency from '@/components/project-transparency'
+import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import TeaEB5Section from '@/sections/EB5/eb5-tea-sections'
 import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
@@ -50,6 +52,8 @@ const PageEB5 = () => {
       <TeaEB5Section/>
       <PioneeringValues/>
       <OutstandingProjectEB5/>
+      <ProjectTransparency/>
+      <WrapperConnectUs/>
     </main>
   )
 }
