@@ -96,7 +96,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
         <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
           {isClient && data.type === 'upload' ? (
             <ReactPlayer
-              url={data[data.type].url}
+              url={data[data.type].url || ''}
               playing
               loop
               muted
@@ -107,7 +107,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
           ) : (
             isClient && (
               <ReactPlayer
-                url={convertToIframe(data)}
+                url={convertToIframe(data) || ''}
                 playing
                 loop
                 muted
@@ -141,7 +141,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
                   className='!h-full'
                 >
                   <ImageV2
-                    src={item.url}
+                    src={item.url || ''}
                     alt={item.alt}
                     width={item.width * 2}
                     height={item.height * 2}
@@ -156,7 +156,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
       <div className='overlay pointer-events-none absolute z-[1] h-full w-full bg-[linear-gradient(180deg,rgba(150,146,142,0.00)_55.02%,#96928E_95.27%)] opacity-[0.24] xsm:hidden'></div>
       {data?.logo && (
         <ImageV2
-          src={data.logo.url}
+          src={data.logo.url || ''}
           alt={data.logo.alt}
           width={data.logo.width * 2}
           height={data.logo.height * 2}
@@ -181,7 +181,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
                   >
                     <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
                       <ImageV2
-                        src={item?.icon}
+                        src={item?.icon || ''}
                         alt='icon'
                         width={40}
                         height={40}
@@ -268,7 +268,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
               >
                 <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
                   <ImageV2
-                    src={item?.icon}
+                    src={item?.icon || ''}
                     alt='icon'
                     width={40}
                     height={40}

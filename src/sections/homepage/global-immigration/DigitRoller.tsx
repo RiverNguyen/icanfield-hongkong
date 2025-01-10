@@ -1,7 +1,7 @@
 'use client'
 
-import {cn} from '@/lib/utils'
-import {useEffect, useRef} from 'react'
+import { cn } from '@/lib/utils'
+import { useEffect, useRef } from 'react'
 
 interface DigitRollerProps {
   digit: number
@@ -23,13 +23,13 @@ export function DigitRoller({
     if (digitRef.current && !interFace) {
       const element = digitRef.current
       setTimeout(() => {
-        element.style.transform = 'translateY(calc(-100% + 2.5rem))'
+        element.style.transform = 'translateY(calc(-100% + 2.55rem))'
       }, delay)
     }
   }, [digit, delay, interFace])
 
   return (
-    <div className='relative h-[2.75rem] w-[2.1rem] overflow-hidden xsm:h-[1.7375rem] xsm:w-[1.25rem]'>
+    <div className='relative h-[2.75rem] w-[2.1rem] overflow-hidden xsm:h-[1.8575rem] xsm:w-[1.35rem]'>
       <div
         ref={digitRef}
         className='absolute transition-transform duration-1000'

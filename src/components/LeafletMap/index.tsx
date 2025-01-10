@@ -2,9 +2,8 @@
 import {Feature, FeatureCollection, GeoJsonObject} from 'geojson'
 import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import {FC, useCallback, useEffect, useState} from 'react'
+import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
-import {useRef} from 'react'
 import './styles.css'
 export interface ICountry {
   name: string
@@ -15,6 +14,7 @@ export interface ICountry {
 interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
+  // eslint-disable-next-line no-unused-vars
   onClick?: (country: ICountry) => void
   className?: string
   borderCountries?: string
@@ -56,7 +56,8 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
         })
       })
     }
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mapJson])
 
   const getPosition = useCallback(function (country: string): LatLngTuple {
     const geo: FeatureCollection = mapJson as FeatureCollection
@@ -82,14 +83,13 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 
     // Nếu không hợp lệ, trả về [0, 0]
     return [0, 0]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getFillColor = useCallback((feature: Feature) => {
     if (!feature.properties) return '#F0EFE7' // Màu mặc định
-    console.log(euCountries)
     const countryName = feature.properties.name
     if (euCountries.has(countryName) && countryName !== 'Vietnam') {
-      console.log('hehe')
       return '#D0C1BA' // Màu cho các quốc gia EU
     }
 
@@ -108,6 +108,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       color: borderCountries, // Border color
       fillOpacity: 1, // Background fill opacity
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   // Zoom to country when click
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
@@ -155,6 +156,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
         clearTimeout(timeoutId)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCountry])
   // Hàm xử lý zoom
   const handleZoomIn = () => {
@@ -225,7 +227,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
                 html: `<div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0 xsm:!pointer-events-none">
                   <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound xsm:!w-[2rem] xsm:!h-auto"/>
                   <img src="${
-                    countryObj.flag && countryObj.flag
+                    (countryObj.flag && countryObj.flag) || ''
                   }" alt="VIỆT NAM" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full xsm:!size-[1rem] xsm:top-[0.6rem]"/>
                   ${
                     isMobile

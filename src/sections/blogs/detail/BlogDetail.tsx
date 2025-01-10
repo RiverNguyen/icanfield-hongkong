@@ -14,9 +14,9 @@ export default function BlogDetail({
 }) {
   return (
     <section className='sm:mb-[6.31rem] xsm:pt-[3rem] xsm:pb-[1.5rem] flex xsm:flex-col sm:space-x-[3.75rem] section-container pt-[7rem]'>
-      <AsideDetail 
+      <AsideDetail
         date={date}
-        dataContent={dataContentDetailBlog} 
+        dataContent={dataContentDetailBlog}
         title={title}
       />
       <ContentDetail

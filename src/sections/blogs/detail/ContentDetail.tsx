@@ -5,6 +5,7 @@ import useIsMobile from '@/hooks/useIsMobile'
 
 const addIdsToH2Tags = (htmlString: string) => {
   let index = 1
+  if (!htmlString) return ''
   return htmlString.replace(/<h2[^>]*>/g, (match) => {
     return `${match.slice(0, -1)} id="section-${index++}">`
   })
@@ -28,7 +29,7 @@ export default function ContentDetail({
         </h1>
       )}
       <div
-        className='flex-1 [&_h2]:mb-[1000px] [&_h2]:content-h2 [&_img]:content-img [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li'
+        className='flex-1 [&_h2]:content-h2 [&_img]:content-img [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li'
         dangerouslySetInnerHTML={{__html: htmlWithIds}}
       ></div>
       <div className='h-[0.0625rem] w-full bg-[rgba(0,0,0,0.04)] my-[1.5rem]'></div>

@@ -1,13 +1,12 @@
-import {BannerStatic} from '@/components/banner-static'
-import {Breadcrumb} from '@/components/breadcrumb'
+import { BannerStatic } from '@/components/banner-static'
+import { Breadcrumb } from '@/components/breadcrumb'
 import blogBanner from '@/sections/blogs/banner/constants'
 import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
-import {FeaturedNews} from '@/sections/blogs/featured-news'
+import { FeaturedNews } from '@/sections/blogs/featured-news'
 import featuredNews from '@/sections/blogs/featured-news/constants'
 import ListBlogs from '@/sections/blogs/list-blogs'
-import {ApiResponse, Category} from '@/types/blogs.interface'
-import {FC} from 'react'
-
+import { ApiResponse, Category } from '@/types/blogs.interface'
+import { FC, Suspense } from 'react'
 interface IPageBlogsProps {
   dataPosts: ApiResponse
   dataCategories: Category[]
@@ -16,23 +15,37 @@ interface IPageBlogsProps {
 // INIT DATA
 const categoryItemAll = {id: 0, name: 'Tất cả', slug: 'all', taxonomy: 'all'}
 
-export const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
+const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories}) => {
+  let dataCategoriesWithAll
+  if (
+    dataCategories &&
+    Array.isArray(dataCategories) &&
+    dataCategories.length
+  ) {
+    dataCategoriesWithAll = [categoryItemAll, ...dataCategories]
+  } else {
+    dataCategoriesWithAll = [categoryItemAll]
+  }
   return (
     <>
       <BannerStatic {...blogBanner}>
         <Breadcrumb
           items={[
-            {label: 'Home', href: '/'},
-            {label: 'Blogs', href: '/blogs'},
+            {label: 'Trang chủ', href: '/'},
+            {label: 'Tin Tức', href: '/blogs'},
           ]}
         />
       </BannerStatic>
       <FeaturedNews {...featuredNews} />
-      <ListBlogs
-        dataPosts={dataPosts}
-        dataCategories={[categoryItemAll, ...dataCategories]}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ListBlogs
+          dataPosts={dataPosts}
+          dataCategories={dataCategoriesWithAll}
+        />
+      </Suspense>
       <WrapperConnectUs />
     </>
   )
 }
+
+export default PageBlogs

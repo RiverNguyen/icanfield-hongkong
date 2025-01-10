@@ -12,8 +12,8 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
-import {useState, useTransition} from 'react'
 import {cn} from '@/lib/utils'
+import {useState, useTransition} from 'react'
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -49,8 +49,8 @@ const FormConnectUs = () => {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
     setTransition(async () => {
-      console.log('🚀 ~ onSubmit ~ values:', values)
       await new Promise((resolve) => setTimeout(resolve, 2000))
       form.reset()
     })

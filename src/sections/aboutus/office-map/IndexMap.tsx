@@ -28,12 +28,10 @@ const IndexMap = ({countries}: IIndexMapProps) => {
         document.body.classList.remove('no-scroll')
       }
     }
-    console.log(customGeoJson)
   }, [open])
   const handleClickMarker = (country: ICountry) => {
     setCountrySelected(country.label ? country.label : country.name)
     setOpen(true)
-    console.log(country)
   }
   return (
     <div className=''>
@@ -107,7 +105,7 @@ function MarkerButton({onClick, name, label, flag}: IMarkerButtonProps) {
       <span className='after:content relative block h-[2.25rem] w-[2.25rem] overflow-hidden rounded-full bg-black/10 p-[0.125rem] after:overflow-hidden'>
         {flag && (
           <ImageV2
-            src={flag}
+            src={flag || ''}
             alt={name}
             width={48}
             height={48}

@@ -1,21 +1,19 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
-import {PageBlogs} from '@/pages/page-blogs'
+import PageBlogs from '@/pages/page-blogs'
 import endpoints from '@/utils/endpoints'
-
-export const LIMIT_POSTS = 9
-
+import {LIMIT_POSTS} from '@/sections/blogs/constant'
 const page = async () => {
   const requestPosts = {
     api: endpoints.blog.list + `?page=1&limit=${LIMIT_POSTS}`,
     option: {
-      revalidate: 600,
+      revalidate: 10,
     },
   }
   const requestCategories = {
     api: endpoints.categories.list + '?_fields=id,name,slug,taxonomy',
     option: {
-      revalidate: 600,
+      revalidate: 10,
     },
   }
   const [dataPosts, dataCategories] = await Promise.all([

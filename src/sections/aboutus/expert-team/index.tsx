@@ -1,16 +1,16 @@
 'use client'
-import {FC, useState} from 'react'
-import 'swiper/css'
-import {Navigation} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import './style.css'
-import {cn} from '@/lib/utils'
-import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
 import ImageV2 from '@/components/image/ImageV2'
+import useIsMobile from '@/hooks/useIsMobile'
+import { cn } from '@/lib/utils'
+import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
 import ItemSliderMb from '@/sections/aboutus/expert-team/ItemSliderMb'
 import PopupSliderMb from '@/sections/aboutus/expert-team/PopupSliderMb'
-import useIsMobile from '@/hooks/useIsMobile'
 import { IExpertTeamProps, IExpertTeamPropsItem } from '@/types/dataAcfAboutus.interface'
+import { useState } from 'react'
+import 'swiper/css'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import './style.css'
 
 export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTeamProps}) {
   const isMobile = useIsMobile()
@@ -59,14 +59,14 @@ export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTea
                     )}
                   >
                     <div className='sticky top-0 bg-white pt-[2rem] pb-[1rem]'>
-                      <span className='heading4 font-semibold text-brown'>
+                      <span className='heading4 capitalize font-optima font-semibold text-brown'>
                         {e?.name}
                       </span>
                       <p className='body-14 mt-[0.25rem] text-orangetext-500'>
                         {e?.position}
                       </p>
                     </div>
-                    <div 
+                    <div
                       dangerouslySetInnerHTML={{__html: e?.describe}}
                       className='pb-[1rem] [&_p]:text-justify [&_p]:body16 [&_p]:tracking-[-0.02rem] [&_p]:text-bodytext'>
                     </div>

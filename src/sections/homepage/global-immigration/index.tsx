@@ -1,7 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
-import {useEffect, useRef, useState} from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './styles.css'
 
 export interface IGlobalImmigrationProps {
@@ -80,8 +80,8 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
           height={733}
         />
         <ImageV2
-          className='absolute right-[12.37rem] top-[30.69rem] z-[30] h-[30.9725rem] w-[25.16263rem] object-cover xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/familyv2.webp'}
+          className='absolute right-[12.37rem] top-[30.69rem] z-[31] h-[30.9725rem] w-[25.16263rem] object-cover xsm:hidden'
+          src={'/imgs/homepage/globalImmigration/familyV2-x4.png'}
           alt=''
           width={378}
           height={534}
@@ -95,11 +95,11 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
         />
         {/* <div className="xsm:hidden absolute w-full h-[55.6875rem] opacity-[0.5] top-0 left-0 bg-[linear-gradient(0deg,rgba(92,50,30,0.10)_0%,#5C321E_100%)]"></div> */}
       </div>
-      <div className='text-container-animation z-[35] translate-y-[15rem] object-cover opacity-0 transition-all sm:absolute sm:right-[6.37rem] sm:top-[5rem] xsm:hidden xsm:w-full xsm:px-[1rem] xsm:pt-[2.5rem]'>
-        <h2 className='heading1 mb-[1rem] w-[39.1875rem] font-optima font-semibold text-brown xsm:mb-[0.75rem] xsm:w-full xsm:tracking-[-0.045rem]'>
+      <div className='text-container-animation z-[35] translate-y-[15rem] object-cover opacity-0 transition-all duration-1000 sm:absolute sm:right-[6.37rem] sm:top-[5rem] xsm:w-full xsm:px-[1rem] xsm:pt-[2.5rem]'>
+        <h2 className='mb-[1rem] w-[39.1875rem] font-optima font-semibold text-brown heading1 xsm:mb-[0.75rem] xsm:w-full xsm:tracking-[-0.045rem]'>
           {data.title}
         </h2>
-        <p className='body16 xsm:body-14 w-[33.0625rem] text-greyscaletext-body xsm:w-full'>
+        <p className='w-[33.0625rem] text-greyscaletext-body body16 xsm:w-full xsm:body-14'>
           {data.description}
         </p>
         <div className='mt-[3rem] grid grid-cols-2 gap-[2.5rem] xsm:mt-[1.5rem] xsm:gap-[1.5rem]'>
@@ -113,10 +113,13 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
                     suffix='+'
                     delay={500}
                   />
-                  <div className='sub-12 font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]' dangerouslySetInnerHTML={{__html: item.label}}></div>
+                  <div
+                    className='font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown sub-12 xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'
+                    dangerouslySetInnerHTML={{__html: item.label}}
+                  ></div>
                 </div>
                 <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
-                <p className='body16-m xsm:sub-12 text-greyscaletext-400 xsm:font-medium xsm:tracking-[-0.015rem]'>
+                <p className='text-greyscaletext-400 body16-m xsm:font-medium xsm:tracking-[-0.015rem] xsm:sub-12'>
                   {item.title}
                 </p>
               </div>
