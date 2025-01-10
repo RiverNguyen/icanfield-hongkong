@@ -33,3 +33,41 @@ export interface immigration {
     name: string
     acf: dataAcf
 }
+
+export interface information {
+    investment_level: {
+        title: string
+        value: string
+    }
+    review_time: {
+        title: string
+        from: string
+        to: string
+    }
+}
+export interface interest { 
+    amount_of_benefits: string
+    title_interest:{
+        title: string
+    }[]
+}
+export interface dataProgramsAcf { 
+    id: number
+    title: string
+    slug: string
+    featured_image: string
+    acf: {
+        information: information
+        interest: interest
+    }
+}
+export interface dataPrograms { 
+    success: boolean
+    data: dataProgramsAcf[]
+    pagination: {
+        current_page: number
+        per_page: number
+        total_posts: number
+        total_pages: number
+    }
+}

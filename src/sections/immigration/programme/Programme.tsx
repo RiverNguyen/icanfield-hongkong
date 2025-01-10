@@ -1,9 +1,30 @@
+"use client"
 import IConSeeMore from '@/components/icon/IConSeeMore'
 import ImageV2 from '@/components/image/ImageV2'
 import ItemProgramme from '@/sections/immigration/programme/ItemProgramme'
+import { dataPrograms, dataProgramsAcf } from '@/types/dataAcfImmigration.interface'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import './style.css'
 
-export default function Programme() {
+export default function Programme({ dataPrograms, slug }: { dataPrograms: dataPrograms, slug: string }) {
+  const searchParams = useSearchParams()
+  const [listPrograms, setListPrograms] = useState<dataPrograms>()
+  useEffect(() => {
+    setListPrograms(dataPrograms)
+  }, [])
+//   const query = useMemo(() => {
+//     if (!searchParams?.size) return null
+//     return `${endpoints.settlementPrograms}?page=${currentPage}&limit=${LIMIT_POSTS}${selectedCategory.slug !== 'all' ? `&tax=${handleGetTaxonomy(selectedCategory.slug)}&${handleGetTaxonomy(selectedCategory.slug)}=${selectedCategory.slug}` : ''}${search ? `&s=${search}` : ''}${selectedSortOption.value !== sortOptions[0].value ? `&order=${selectedSortOption.value}` : ''}${selectedSortOption.orderBy !== sortOptions[0].orderBy ? `&orderby=${selectedSortOption.orderBy}` : ''}`
+//   }, [
+//     searchParams,
+//   ])
+
+//   const {data: posts, isLoading} = useSWR(query, fetcher, {
+//     revalidateIfStale: false,
+//     revalidateOnReconnect: false,
+//   })
+// console.log(searchParams);
   return (
     <section className="w-full relative sm:pt-[7.75rem] mt-[5rem]">
       <div className="w-full sm:sticky sm:top-[100vh] xsm:relative">
@@ -30,10 +51,12 @@ export default function Programme() {
         </div>
         <div className="flex-1 xsm:w-full flex flex-col items-center pb-[9.5rem] xsm:pb-[2.5rem]">
           <div className="w-full grid grid-cols-2 xsm:grid-cols-1 gap-[1.5rem] pb-[12.59rem] xsm:pb-[2rem]">
-            {new Array(10).fill(0).map((e, index) => (
+            {listPrograms?.data?.map((e: dataProgramsAcf, index: number) => (
               <ItemProgramme
                 key={index}
                 className="sm:even:translate-y-[7.5rem]"
+                dataPostProgramme={e}
+                slug={slug}
               />
             ))}
           </div>
