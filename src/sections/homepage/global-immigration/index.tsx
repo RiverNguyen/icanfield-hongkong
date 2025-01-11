@@ -1,7 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
-import {useEffect, useRef, useState} from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './styles.css'
 
 export interface IGlobalImmigrationProps {
@@ -80,8 +80,8 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
           height={733}
         />
         <ImageV2
-          className='absolute right-[12.37rem] top-[30.69rem] z-[30] h-[30.9725rem] w-[25.16263rem] object-cover xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/familyv2-net.png'}
+          className='absolute right-[12.37rem] top-[30.69rem] z-[31] h-[30.9725rem] w-[25.16263rem] object-cover xsm:hidden'
+          src={'/imgs/homepage/globalImmigration/familyV2-x4.png'}
           alt=''
           width={378}
           height={534}

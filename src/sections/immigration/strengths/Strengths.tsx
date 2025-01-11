@@ -29,24 +29,24 @@ export default function Strengths({
                 <div className="absolute top-[2.93rem] left-0 z-[9] h-[6.4375rem] w-full bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)]"></div>
                 <ImageV2
                   className="absolute top-0 left-0 w-full h-[9.54219rem] object-cover rounded-[1rem]"
-                  alt={e?.img_bg?.alt}
+                  alt={e?.bacground?.alt}
                   width={310}
                   height={152}
-                  src={e?.img_bg?.url}
+                  src={e?.bacground?.url}
                 />
                 <div className="relative z-10 min-h-[14.625rem] p-[1.25rem] rounded-[1rem] bg-[linear-gradient(0deg,#5C321E_0%,#95502F_100%)]">
                   <ImageV2
                     className="size-[2.5rem] object-contain"
-                    alt={e?.img_icon?.alt}
+                    alt={e?.icon?.alt}
                     width={40}
                     height={40}
-                    src={e?.img_icon?.url}
+                    src={e?.icon?.url}
                   />
                   <p className="body-14-b text-white mt-[1.25rem] mb-[0.5rem]">
                     {e?.title}
                   </p>
                   <p className="body-14 font-normal text-[rgba(255,255,255,0.85)] line-clamp-5">
-                    {e?.decscript}
+                    {e?.describe}
                   </p>
                 </div>
               </div>
@@ -65,8 +65,8 @@ export default function Strengths({
                 )}
                 width={1600}
                 height={860}
-                alt={e?.img_bg?.alt}
-                src={e?.img_bg?.url}
+                alt={e?.bacground?.alt}
+                src={e?.bacground?.url}
               />
             ))}
           </div>
@@ -90,7 +90,7 @@ export default function Strengths({
                     </p>
                   </div>
                   <p className="w-[21.375rem] pc-13se uppercase">
-                    {e?.decscript}
+                    {e?.describe}
                   </p>
                 </div>
               ))}
@@ -114,8 +114,8 @@ export default function Strengths({
                       className="size-[2.5rem] "
                       width={38}
                       height={34}
-                      alt={e?.img_icon?.alt}
-                      src={e?.img_icon?.url}
+                      alt={e?.icon?.alt}
+                      src={e?.icon?.url}
                     />
                     <p className="text-white text-[0.75rem] font-bold uppercase">
                       {e?.title}

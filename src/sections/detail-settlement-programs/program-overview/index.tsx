@@ -7,17 +7,17 @@ import {convertToIframe} from '@/utils/convertToIframe'
 import {FC, useEffect, useRef, useState} from 'react'
 import ReactPlayer, {ReactPlayerProps} from 'react-player'
 export interface IProgramOverviewProps {
-  title: string
-  description: string
-  media: IDataMedia & {
-    thumbnail: Media
-  }
+  title?: string
+  description?: string
+  media?: IDataMedia
+  thumbnail?: Media
 }
 
 export const ProgramOverview: FC<IProgramOverviewProps> = ({
   title,
   description,
   media,
+  thumbnail,
 }) => {
   const playerRef = useRef<ReactPlayer>(null)
   const [playerProps, setPlayerProps] = useState<ReactPlayerProps>({
@@ -58,6 +58,7 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
         <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem]'>
           <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative'>
             {isClient &&
+              media &&
               (media.type === 'upload' ? (
                 <ReactPlayer
                   ref={playerRef}
@@ -85,10 +86,10 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
               ))}
           </div>
           <ImageV2
-            src={media.thumbnail.url}
-            alt={media.thumbnail.alt}
-            width={media.thumbnail.width ? media.thumbnail.width : 1312 * 2}
-            height={media.thumbnail.height ? media.thumbnail.height : 738 * 2}
+            src={thumbnail ? thumbnail.url : ''}
+            alt={thumbnail ? thumbnail.alt : ''}
+            width={thumbnail && thumbnail.width ? thumbnail.width : 1312 * 2}
+            height={thumbnail && thumbnail.height ? thumbnail.height : 738 * 2}
             className={cn(
               'absolute left-0 top-0 h-full w-full object-cover transition-all',
               {

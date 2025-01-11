@@ -4,9 +4,10 @@ import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
 import { cn } from '@/lib/utils'
 import IConMessager from '@/sections/immigration/programme/IConMessager'
+import { dataProgramsAcf } from '@/types/dataAcfImmigration.interface'
 import Link from 'next/link'
 
-export default function ItemProgramme({ className }: { className?: string }) {
+export default function ItemProgramme({ className,dataPostProgramme, slug }: { className?: string, dataPostProgramme: dataProgramsAcf, slug: string }) {
   const isMobile = useIsMobile()
   return (
     <div
@@ -20,26 +21,28 @@ export default function ItemProgramme({ className }: { className?: string }) {
           className="size-full object-cover rounded-[1.25rem]"
           width={464}
           height={297}
-          alt=""
-          src={'/imgs/immigration/programme/d-image-item.webp'}
+          alt={dataPostProgramme?.slug}
+          src={dataPostProgramme?.featured_image}
         />
         <div className="absolute size-full inset-0 rounded-[1.25rem] z-10 bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]"></div>
         <h3 className="absolute z-[11] bottom-[1.5rem] left-[1.5rem] xsm:left-[1rem] xsm:bottom-[4.81rem] line-clamp-1 heading3 xsm:heading2 font-medium text-white">
-          START-UP VISA (SUV)
+          {dataPostProgramme?.title}
         </h3>
         {isMobile && (
           <div className="flex items-center space-x-[0.5rem] sm:hidden">
             <div className="p-[0.5rem_0.75rem] flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)] blur-[10px]">
               <p className="body-14-m text-[rgba(255,255,255,0.85)]">
-                Mức đầu tư
+                {dataPostProgramme?.acf?.information?.investment_level?.title}
               </p>
-              <p className="body16-s text-white">100 triệu USD</p>
+              <p className="body16-s text-white">{dataPostProgramme?.acf?.information?.investment_level?.value}</p>
             </div>
             <div>
               <p className="body-14-m text-[rgba(255,255,255,0.85)]">
-                Mức đầu tư
+                {dataPostProgramme?.acf?.information?.review_time?.title}
               </p>
-              <p className="body16-s text-white">100 triệu USD</p>
+              <p className="body16-s text-white">
+                {dataPostProgramme?.acf?.information?.review_time?.from}-{dataPostProgramme?.acf?.information?.review_time?.to} tháng
+              </p>
             </div>
           </div>
         )}
@@ -47,15 +50,15 @@ export default function ItemProgramme({ className }: { className?: string }) {
       {!isMobile && (
         <div className="xsm:hidden w-full p-[1.25rem_1.5rem] flex items-center justify-between">
           <div>
-            <p className="body16-m text-greyscaletext-200">Mức đầu tư</p>
+            <p className="body16-m text-greyscaletext-200">{dataPostProgramme?.acf?.information?.investment_level?.title}</p>
             <p className="text-[1.125rem] text-orangetext-500 font-semibold leading-[133.3%] tracking-[-0.0225rem]">
-              100 triệu USD
+              {dataPostProgramme?.acf?.information?.investment_level?.value}
             </p>
           </div>
           <div>
-            <p className="body16-m text-greyscaletext-200">Mức đầu tư</p>
+            <p className="body16-m text-greyscaletext-200">{dataPostProgramme?.acf?.information?.review_time?.title}</p>
             <p className="text-[1.125rem] text-orangetext-500 font-semibold leading-[133.3%] tracking-[-0.0225rem]">
-              100 triệu USD
+              {dataPostProgramme?.acf?.information?.review_time?.from}-{dataPostProgramme?.acf?.information?.review_time?.to} tháng
             </p>
           </div>
         </div>
@@ -65,20 +68,17 @@ export default function ItemProgramme({ className }: { className?: string }) {
           <div className="flex items-center justify-between w-full">
             <p className="body16-m text-brown xsm:body-14-m">Quyền lợi</p>
             <p className="flex items-center p-[0.125rem_0.625rem] rounded-[1.5625rem] bg-[rgba(0,0,0,0.10)] body-14-s xsm:text-[0.625rem] xsm:font-bold xsm:leading-[1.2] xsm:tracking-[-0.00625rem] xsm:uppercase text-brown">
-              4+
+              {dataPostProgramme?.acf?.interest?.amount_of_benefits}+
             </p>
           </div>
           <ul className="list-disc pl-[1.5rem]">
-            <li className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C]">
-              <p className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C] line-clamp-1">
-                Không giới hạn độ tuổi
-              </p>
-            </li>
-            <li className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C]">
-              <p className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C] line-clamp-1">
-                Không bắt buộc phải có kinh nghiệm quản lý hoặc kinh doanh
-              </p>
-            </li>
+            {Array.isArray(dataPostProgramme?.acf?.interest?.title_interest) && dataPostProgramme?.acf?.interest?.title_interest?.map((e: {title: string}, index: number) => (
+              <li key={index} className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C]">
+                <p className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C] line-clamp-1">
+                  {e?.title}
+                </p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -95,7 +95,7 @@ export default function ItemProgramme({ className }: { className?: string }) {
           </p>
         </Link>
         <Link
-          href={'#'}
+          href={'/' + slug + '/' + dataPostProgramme?.slug}
           className="xsm:flex-1 cursor-pointer flex items-center space-x-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]"
         >
           <p className="body-14-m tracking-[-0.0175rem] text-white">

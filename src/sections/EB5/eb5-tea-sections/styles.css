@@ -1,0 +1,28 @@
+.swiper-tea-eb5 .swiper-slide .container-item__eb5 {
+  align-items: start;
+  transition: 0.5s ease-in-out;
+}
+.swiper-tea-eb5 .swiper-slide .container-item__eb5 .item-tea-eb5 {
+  transform: scale(85%);
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+}
+.swiper-tea-eb5 .swiper-slide.swiper-slide-active .container-item__eb5 {
+  align-items: end;
+  transition: 0.5s ease-in-out;
+}
+.swiper-tea-eb5 .swiper-slide.swiper-slide-active .container-item__eb5.item-second {
+  align-items: start;
+  transition: 0.5s ease-in-out;
+}
+.swiper-tea-eb5
+  .swiper-slide.swiper-slide-active
+  .container-item__eb5
+  .item-tea-eb5 {
+  transform: scale(1);
+  overflow: visible;
+  transition: 0.5s ease-in-out;
+}
+.swiper-tea-eb5 .swiper-slide.swiper-slide-prev .container-item__eb5 {
+  align-items: flex-end;
+}

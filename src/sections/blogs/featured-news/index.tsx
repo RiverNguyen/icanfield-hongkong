@@ -3,10 +3,10 @@
 import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
 import Calendar from '@/components/svg/Calendar'
-import {cn} from '@/lib/utils'
-import {IImageV2} from '@/types/image.interface'
+import { cn } from '@/lib/utils'
+import { IImageV2 } from '@/types/image.interface'
 import Link from 'next/link'
-import {FC, useRef} from 'react'
+import { FC, useRef } from 'react'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/effect-fade'
@@ -19,8 +19,8 @@ import {
   Navigation,
   Pagination,
 } from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Swiper as ISwiper} from 'swiper/types'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as ISwiper } from 'swiper/types'
 import './style.css'
 interface IFeaturedNewsItem {
   categories: string[]
@@ -182,7 +182,7 @@ function FeaturedNewSlidePC({
               height='23'
               viewBox='0 0 22 23'
               fill='none'
-              className='size-[1.75rem] group-hover:filter group-hover:brightness-[100] group-hover:invert-[100]'
+              className='size-[1.75rem] translate-y-[-0.1rem] group-hover:filter group-hover:brightness-[100] group-hover:invert-[100]'
             >
               <path
                 d='M11.5586 8.44098L18.4766 14.7359C18.6198 14.8648 18.6914 15.0295 18.6914 15.23C18.6914 15.4306 18.6198 15.5953 18.4766 15.7242C18.319 15.8674 18.1328 15.939 17.918 15.939C17.7031 15.939 17.5241 15.8674 17.3809 15.7242L11 9.94489L4.61914 15.7242C4.47591 15.8674 4.29687 15.939 4.08203 15.939C3.86719 15.939 3.68099 15.8674 3.52344 15.7242C3.38021 15.5953 3.30859 15.4306 3.30859 15.23C3.30859 15.0295 3.38021 14.8648 3.52344 14.7359L10.4414 8.44098C10.599 8.29775 10.7852 8.22614 11 8.22614C11.2148 8.22614 11.401 8.29775 11.5586 8.44098Z'
@@ -198,7 +198,7 @@ function FeaturedNewSlidePC({
               height='23'
               viewBox='0 0 22 23'
               fill='none'
-              className='size-[1.75rem] group-hover:filter group-hover:brightness-[100] group-hover:invert-[100]'
+              className='size-[1.75rem] translate-y-[0.2rem] group-hover:filter group-hover:brightness-[100] group-hover:invert-[100]'
             >
               <path
                 d='M10.4414 14.559L3.52344 8.2641C3.38021 8.13519 3.30859 7.97048 3.30859 7.76996C3.30859 7.56944 3.38021 7.40473 3.52344 7.27582C3.68099 7.13259 3.86719 7.06098 4.08203 7.06098C4.29688 7.06098 4.47591 7.13259 4.61914 7.27582L11 13.0551L17.3809 7.27582C17.5241 7.13259 17.7031 7.06097 17.918 7.06097C18.1328 7.06097 18.319 7.13259 18.4766 7.27582C18.6198 7.40472 18.6914 7.56944 18.6914 7.76996C18.6914 7.97048 18.6198 8.13519 18.4766 8.2641L11.5586 14.559C11.401 14.7023 11.2148 14.7739 11 14.7739C10.7852 14.7739 10.599 14.7023 10.4414 14.559Z'
