@@ -72,7 +72,7 @@ const ProjectLocation = ({
 }: ProjectLocationProps) => {
   const isMobile = useIsMobile()
   return (
-    <section className='flex space-x-[6.5rem] pl-20 xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4'>
+    <section className='flex space-x-[6.5rem] pl-20 xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4 sm:pb-[5rem]'>
       <div className='flex-1 pt-20 xsm:pt-4'>
         <h1 className='heading1 font-optima font-semibold text-Phase-1-Brown'>
           {title}
