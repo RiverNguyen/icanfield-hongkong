@@ -4,34 +4,34 @@ import {Media} from '@/types/image.interface'
 import {FC} from 'react'
 
 export interface IProgramBenefitsProps {
-  title: string
-  description: string
-  backgroundPc: Media
-  backgroundMb: Media
-  items: IProgramBenefitsItem[]
+  title?: string
+  description?: string
+  background_pc?: Media
+  background_mb?: Media
+  items?: IProgramBenefitsItem[]
 }
 
 export const ProgramBenefits: FC<IProgramBenefitsProps> = ({
   title,
   description,
-  backgroundPc,
-  backgroundMb,
+  background_pc: backgroundPc,
+  background_mb: backgroundMb,
   items,
 }) => {
   return (
     <section className='relative p-[3.5rem_0] lg:min-h-lvh sm:p-[7.94rem_0_7.25rem]'>
       <ImageV2
-        src={backgroundPc.url}
-        alt={backgroundPc.alt}
-        width={backgroundPc.width}
-        height={backgroundPc.height}
+        src={backgroundPc?.url || ''}
+        alt={backgroundPc?.alt || ''}
+        width={backgroundPc?.width || 1000}
+        height={backgroundPc?.height || 1000}
         className='absolute left-0 top-0 h-full w-full xsm:hidden'
       />
       <ImageV2
-        src={backgroundMb.url}
-        alt={backgroundMb.alt}
-        width={backgroundMb.width}
-        height={backgroundMb.height}
+        src={backgroundMb?.url || ''}
+        alt={backgroundMb?.alt || ''}
+        width={backgroundMb?.width || 1000}
+        height={backgroundMb?.height || 1000}
         className='absolute left-0 top-0 h-full w-full sm:hidden'
       />
       <div className='absolute left-0 top-0 h-full w-full bg-[linear-gradient(180deg,rgba(70,59,53,0.80)_7.5%,rgba(70,59,53,0.40)_60%)]'></div>
@@ -48,21 +48,22 @@ export const ProgramBenefits: FC<IProgramBenefitsProps> = ({
           </h2>
           <p className='font-normal body16'>{description}</p>
         </div>
-        {items.map((item, index) => (
-          <ProgramBenefitsItem
-            {...item}
-            key={index}
-            number={index + 1}
-          />
-        ))}
+        {items &&
+          items.map((item: IProgramBenefitsItem, index) => (
+            <ProgramBenefitsItem
+              {...item}
+              key={index}
+              number={index + 1}
+            />
+          ))}
       </div>
     </section>
   )
 }
 
 interface IProgramBenefitsItem {
-  title: string
-  content: string
+  title?: string
+  content?: string
 }
 
 interface IProgramBenefitsItemProps extends IProgramBenefitsItem {
@@ -93,7 +94,7 @@ const ProgramBenefitsItem: FC<IProgramBenefitsItemProps> = ({
       </span>
       <div
         className='ml-[1.5rem] flex-1 pb-[1.81rem] font-normal transition-all body-14 sm:pb-[3.06rem] sm:group-hover:text-bodytext'
-        dangerouslySetInnerHTML={{__html: content}}
+        dangerouslySetInnerHTML={{__html: content || ''}}
       ></div>
     </div>
   )

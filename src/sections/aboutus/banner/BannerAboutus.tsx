@@ -68,7 +68,7 @@ export default function BannerAboutus({
         alt=''
         width={399}
         height={267}
-        src={'/imgs/homepage/banner/maybayX4.png'}
+        src={'/imgs/about-us/banner/maybayX4.png'}
       />
       <div
         className={cn(

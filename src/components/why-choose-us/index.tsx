@@ -4,10 +4,10 @@ import {Media} from '@/types/image.interface'
 import {FC} from 'react'
 
 export interface IWhyChooseUsProps {
-  title: string
-  description: string
-  logo: Media
-  items: IWhyChooseUsItem[]
+  title?: string
+  description?: string
+  logo?: Media
+  items?: IWhyChooseUsItem[]
 }
 
 export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
@@ -43,21 +43,22 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
           </p>
         </div>
         <ImageV2
-          src={logo.url}
-          alt={logo.alt}
-          width={logo.width * 2}
-          height={logo.height * 2}
+          src={logo?.url || ''}
+          alt={logo?.alt || ''}
+          width={logo?.width || 1000}
+          height={logo?.height || 1000}
           className='mr-[5.41rem] h-[8.65525rem] w-auto select-none xsm:hidden'
         />
       </div>
       <div className='scrollbar-hidden relative mx-auto mt-[2rem] flex max-w-[90rem] space-x-[1rem] overflow-scroll sm:mt-[2.69rem] sm:space-x-[1.25rem] xsm:pl-[1rem]'>
-        {items.map((item, index) => (
-          <WhyChooseUsItem
-            key={index}
-            {...item}
-            number={index + 1}
-          />
-        ))}
+        {items &&
+          items.map((item, index) => (
+            <WhyChooseUsItem
+              key={index}
+              {...item}
+              number={index + 1}
+            />
+          ))}
       </div>
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-2.webp'}
@@ -78,8 +79,8 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
 }
 
 interface IWhyChooseUsItem {
-  title: string
-  description: string
+  title?: string
+  description?: string
 }
 
 interface IWhyChooseUsItemProps extends IWhyChooseUsItem {
