@@ -4,7 +4,7 @@ import Immigration from '@/pages/immigration';
 import endpoints from '@/utils/endpoints';
 
 export default async function page({ params }: { params: { slug: string } }) {
-    const [dataAcf, dataPrograms] = await Promise.all([
+    const [dataAcf, dataPrograms, postRelate] = await Promise.all([
         fetchDataACF({
             api: '/' + endpoints.taxonomiesSettlement + '?slug=' + params?.slug + '&acf_format=standard',
             option: {
@@ -17,6 +17,19 @@ export default async function page({ params }: { params: { slug: string } }) {
                 revalidate: 10,
             },
         }),
+        fetchData({
+            api: '/posts-by-taxonomy?slug=' + params?.slug,
+            option: {
+                revalidate: 10,
+            },
+        }),
     ])
-    return <Immigration slug={params?.slug} dataImmigration={dataAcf[0]} dataPrograms={dataPrograms} />
+    return (
+        <Immigration
+            slug={params?.slug}
+            dataImmigration={dataAcf[0]}
+            dataPrograms={dataPrograms}
+            postRelate={postRelate}
+        />
+    )
 }

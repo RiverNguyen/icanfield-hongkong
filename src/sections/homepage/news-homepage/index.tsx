@@ -1,12 +1,12 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
-import {cn} from '@/lib/utils'
-import {Media} from '@/types/image.interface'
+import { cn } from '@/lib/utils'
+import { Media } from '@/types/image.interface'
 import Link from 'next/link'
-import {FC, useState} from 'react'
-import {Navigation} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import { FC, useState } from 'react'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import './style.css'
 
 export interface INewsFlowProps {
@@ -128,7 +128,7 @@ export interface ItemNews {
   }[]
 }
 export interface ItemNewsFeatured extends ItemNews {
-  articleLogo?: Media
+  articlelogo?: Media
 }
 
 function NewsFeatured({
@@ -136,7 +136,7 @@ function NewsFeatured({
   image,
   date,
   slug: link,
-  articleLogo,
+  articlelogo: articleLogo,
 }: ItemNewsFeatured) {
   return (
     <div className='group relative h-[15rem] flex-none overflow-hidden rounded-[1rem] sm:h-[22.125rem] sm:flex-1 sm:first:mr-[1.5rem] xsm:first:mb-[1rem]'>
