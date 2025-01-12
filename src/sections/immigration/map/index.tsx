@@ -116,7 +116,7 @@ const CanadaMap = () => {
             countries={canadianCities}
             mapJson={customGeoJson as FeatureCollection}
             className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
-            borderCountries='#7F7C6E'
+            borderCountries='#D7B57899'
             zoomDesktop={2.9}
             onClick={handleClickCountry}
             zoomMobile={2}
