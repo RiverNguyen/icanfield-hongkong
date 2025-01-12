@@ -1,7 +1,7 @@
 import {IFeaturedNewsProps} from '@/sections/blogs/featured-news'
 
 const featuredNews: IFeaturedNewsProps = {
-  title: 'Tin Tức Nổi Bật',
+  title: 'Tin Nổi Bật',
   items: [
     {
       backgroundImage: {

@@ -1,9 +1,36 @@
-// import ImageV2 from '@/components/image/ImageV2'
-// import Pagination from '@/components/pagination/Pagination'
-// import Image from 'next/image'
-
+import fetchData from '@/fetch/fetchData'
+import fetchDataACF from '@/fetch/fetchDataACF'
 import HomePage from '@/pages/homepage'
+import endpoints from '@/utils/endpoints'
 
 export default async function Home() {
-  return <HomePage />
+  const homeRequest = {
+    api: endpoints.homepage + '?_fields=acf&acf_format=standard',
+    option: {
+      revalidate: 10,
+    },
+  }
+  const newsRequest = {
+    api: endpoints.homeFeatured,
+    option: {
+      revalidate: 10,
+    },
+  }
+
+  try {
+    const [homeResponse, newsResponse] = await Promise.all([
+      fetchDataACF(homeRequest),
+      fetchData(newsRequest),
+    ])
+console.log(newsResponse);
+    return (
+      <HomePage
+        homeData={homeResponse}
+        newsData={newsResponse}
+      />
+    )
+  } catch (error) {
+    console.error('Error fetching data:', error)
+    return <div>Error loading page content.</div>
+  }
 }

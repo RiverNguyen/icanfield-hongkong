@@ -24,6 +24,7 @@ export default async function getMetadata(request: string) {
     // Convert the error to a string or handle based on its type
     // const errorMessage = error instanceof Error ? error.message : String(error)
     // throw new Error(`${env.API}${request.api}: ${errorMessage}`)
+    console.error('Error fetching metadata:', error)
     return null
   }
 }

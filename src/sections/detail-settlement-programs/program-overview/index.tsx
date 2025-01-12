@@ -7,17 +7,17 @@ import {convertToIframe} from '@/utils/convertToIframe'
 import {FC, useEffect, useRef, useState} from 'react'
 import ReactPlayer, {ReactPlayerProps} from 'react-player'
 export interface IProgramOverviewProps {
-  title: string
-  description: string
-  media: IDataMedia & {
-    thumbnail: Media
-  }
+  title?: string
+  description?: string
+  media?: IDataMedia
+  thumbnail?: Media
 }
 
 export const ProgramOverview: FC<IProgramOverviewProps> = ({
   title,
   description,
   media,
+  thumbnail,
 }) => {
   const playerRef = useRef<ReactPlayer>(null)
   const [playerProps, setPlayerProps] = useState<ReactPlayerProps>({
@@ -47,17 +47,18 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
           alt='mask_group'
           width={1312 * 2}
           height={738 * 2}
-          className='absolute right-0 top-0 h-[25.9375rem] w-[63.875rem] object-contain xsm:hidden'
+          className='absolute right-[-31.42rem] top-[-18.25rem] h-[49.5865rem] w-[111.79638rem] object-contain xsm:hidden'
         />
-        <h2 className='heading1 relative font-optima font-semibold text-brown'>
+        <h2 className='relative font-optima font-semibold text-brown heading1'>
           {title}
         </h2>
-        <p className='body16-r55 relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]'>
+        <p className='relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body body16-r55 sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]'>
           {description}
         </p>
         <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem]'>
           <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative'>
             {isClient &&
+              media &&
               (media.type === 'upload' ? (
                 <ReactPlayer
                   ref={playerRef}
@@ -85,10 +86,10 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
               ))}
           </div>
           <ImageV2
-            src={media.thumbnail.url}
-            alt={media.thumbnail.alt}
-            width={media.thumbnail.width ? media.thumbnail.width : 1312 * 2}
-            height={media.thumbnail.height ? media.thumbnail.height : 738 * 2}
+            src={thumbnail ? thumbnail.url : ''}
+            alt={thumbnail ? thumbnail.alt : ''}
+            width={thumbnail && thumbnail.width ? thumbnail.width : 1312 * 2}
+            height={thumbnail && thumbnail.height ? thumbnail.height : 738 * 2}
             className={cn(
               'absolute left-0 top-0 h-full w-full object-cover transition-all',
               {
