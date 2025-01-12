@@ -2,7 +2,7 @@ import {
   AdvantagesBenefits,
   IAdvantagesBenefitsProps,
 } from '@/components/advantages-benefits'
-import {IWhyChooseUsProps, WhyChooseUs} from '@/components/why-choose-us'
+import { IWhyChooseUsProps, WhyChooseUs } from '@/components/why-choose-us'
 import {
   Banner,
   IBannerProps,
@@ -28,7 +28,8 @@ import {
   SuccessStoryShare,
 } from '@/sections/detail-settlement-programs/success-story-share'
 import ImmigrationFAQ from '@/sections/immigration/faq/ImmigrationFAQ'
-import {FC} from 'react'
+import { immigration } from '@/types/dataAcfImmigration.interface'
+import { FC } from 'react'
 
 interface IDetailSettlementProgramsProps {
   banner: IBannerProps
@@ -39,6 +40,7 @@ interface IDetailSettlementProgramsProps {
   why_choose_us: IWhyChooseUsProps
   process_steps: IProcessStepsProps
   story_share: ISuccessStoryShareProps
+  acfNation: immigration
 }
 
 const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
@@ -50,6 +52,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   why_choose_us,
   process_steps,
   story_share,
+  acfNation,
 }) => {
   return (
     <>
@@ -61,7 +64,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
       <WhyChooseUs {...why_choose_us} />
       <ProcessSteps {...process_steps} />
       <SuccessStoryShare {...story_share} />
-      <ImmigrationFAQ />
+      <ImmigrationFAQ dataFAQ={acfNation?.acf?.faq_nation} flag={acfNation?.acf?.flag} />
     </>
   )
 }
