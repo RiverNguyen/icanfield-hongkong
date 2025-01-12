@@ -17,7 +17,7 @@ export default function IConAdd({className}: {className?: string}) {
                 strokeLinejoin="round"
             />
             <path
-                className="path-2 rotate-90 translate-x-[1.05rem] xsm:translate-x-[1.2rem] transition-all"
+                className="path-2 rotate-90 translate-x-[100%] xsm:translate-x-[1.2rem] transition-all"
                 d="M15 10L5 10"
                 stroke="url(#paint0_linear_3048_20464)"
                 strokeWidth="2.5"

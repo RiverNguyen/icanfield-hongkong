@@ -12,7 +12,7 @@ export default function ItemProgramme({ className,dataPostProgramme, slug }: { c
   return (
     <div
       className={cn(
-        'sm:h-[36.75rem] w-full rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)]',
+        'xsm:z-[9] sm:h-[36.75rem] w-full rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)]',
         className
       )}
     >
@@ -29,14 +29,16 @@ export default function ItemProgramme({ className,dataPostProgramme, slug }: { c
           {dataPostProgramme?.title}
         </h3>
         {isMobile && (
-          <div className="flex items-center space-x-[0.5rem] sm:hidden">
-            <div className="p-[0.5rem_0.75rem] flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)] blur-[10px]">
-              <p className="body-14-m text-[rgba(255,255,255,0.85)]">
-                {dataPostProgramme?.acf?.information?.investment_level?.title}
-              </p>
-              <p className="body16-s text-white">{dataPostProgramme?.acf?.information?.investment_level?.value}</p>
-            </div>
-            <div>
+          <div className="flex items-center space-x-[0.5rem] sm:hidden absolute bottom-[0.5rem] z-[11] w-full px-[0.5rem]">
+            {dataPostProgramme?.acf?.information?.investment_level?.value && (
+              <div className="p-[0.5rem_0.75rem] flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)]">
+                <p className="body-14-m text-[rgba(255,255,255,0.85)]">
+                  {dataPostProgramme?.acf?.information?.investment_level?.title}
+                </p>
+                <p className="body16-s text-white">{dataPostProgramme?.acf?.information?.investment_level?.value}</p>
+              </div>
+            )}
+            <div className='p-[0.5rem_0.75rem] flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)]'>
               <p className="body-14-m text-[rgba(255,255,255,0.85)]">
                 {dataPostProgramme?.acf?.information?.review_time?.title}
               </p>
@@ -63,25 +65,29 @@ export default function ItemProgramme({ className,dataPostProgramme, slug }: { c
           </div>
         </div>
       )}
-      <div className="px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]">
-        <div className="space-y-[0.625rem] p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem] rounded-[0.75rem] bg-background">
-          <div className="flex items-center justify-between w-full">
-            <p className="body16-m text-brown xsm:body-14-m">Quyền lợi</p>
-            <p className="flex items-center p-[0.125rem_0.625rem] rounded-[1.5625rem] bg-[rgba(0,0,0,0.10)] body-14-s xsm:text-[0.625rem] xsm:font-bold xsm:leading-[1.2] xsm:tracking-[-0.00625rem] xsm:uppercase text-brown">
-              {dataPostProgramme?.acf?.interest?.amount_of_benefits}+
-            </p>
+      {Array.isArray(dataPostProgramme?.acf?.interest?.title_interest) ? (
+        <div className="px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]">
+          <div className="space-y-[0.625rem] p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem] rounded-[0.75rem] bg-background">
+            <div className="flex items-center justify-between w-full">
+              <p className="body16-m text-brown xsm:body-14-m">Quyền lợi</p>
+              <p className="flex items-center p-[0.125rem_0.625rem] rounded-[1.5625rem] bg-[rgba(0,0,0,0.10)] body-14-s xsm:text-[0.625rem] xsm:font-bold xsm:leading-[1.2] xsm:tracking-[-0.00625rem] xsm:uppercase text-brown">
+                {dataPostProgramme?.acf?.interest?.amount_of_benefits}+
+              </p>
+            </div>
+            <ul className="list-disc pl-[1.5rem]">
+              {Array.isArray(dataPostProgramme?.acf?.interest?.title_interest) && dataPostProgramme?.acf?.interest?.title_interest?.map((e: {title: string}, index: number) => (
+                <li key={index} className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C]">
+                  <p className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C] line-clamp-1">
+                    {e?.title}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="list-disc pl-[1.5rem]">
-            {Array.isArray(dataPostProgramme?.acf?.interest?.title_interest) && dataPostProgramme?.acf?.interest?.title_interest?.map((e: {title: string}, index: number) => (
-              <li key={index} className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C]">
-                <p className="body16 xsm:body-14 sm:tracking-[-0.02rem] text-[#5C5C5C] line-clamp-1">
-                  {e?.title}
-                </p>
-              </li>
-            ))}
-          </ul>
         </div>
-      </div>
+      ) : (
+        <div className='h-[8rem] w-full flex'></div>
+      )}
       <div className="flex justify-between items-center p-[1.25rem] xsm:p-[1rem] xsm:space-x-[0.5rem]">
         <Link
           href={'#'}

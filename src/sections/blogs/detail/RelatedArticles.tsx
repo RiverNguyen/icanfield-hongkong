@@ -2,27 +2,19 @@
 
 import ImageV2 from '@/components/image/ImageV2'
 import ItemBlog from '@/components/itemBlog'
-import {DataItem} from '@/types/blogs.interface'
-import {Navigation, Pagination} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
-
-// interface dataItemBlog {
-//   category: [{name: string}]
-//   title: string
-//   slug: string
-//   image: {
-//     url: string
-//     alt: string
-//   }
-// }
-
+import { cn } from '@/lib/utils'
+import { DataItem } from '@/types/blogs.interface'
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 export default function RelatedArticles({
   dataRelatedPosts,
+  className
 }: {
-  dataRelatedPosts: []
+  dataRelatedPosts: DataItem[]
+  className?: string
 }) {
   return (
-    <section className='pb-[11.31rem] pt-[1.5rem] xsm:pb-[2rem]'>
+    <section className={cn('pb-[11.31rem] pt-[1.5rem] xsm:pb-[2rem]', className)}>
       <div className='flex items-center justify-between section-container xsm:mb-[1.5rem]'>
         <p className='font-optima text-orangetext-900 heading1'>
           Các bài viết liên quan
