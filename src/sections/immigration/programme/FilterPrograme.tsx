@@ -15,7 +15,7 @@ export default function FilterProgramme({
   setSearch,
   backgroundInput = 'bg-[#EEE]',
   search,
-  placeholder = 'Tìm kiếm trong Blog',
+  placeholder = 'Tìm kiếm trong chương trình',
   sectionRef
 }: {
   sortOptions: SortOptionProgramme[]
@@ -43,7 +43,7 @@ export default function FilterProgramme({
   const handleSelectSortOption = (sortOption: SortOptionProgramme) => {
     setSelectedSortOption(sortOption)
     const paramNew = new URLSearchParams(searchParams ?? '')
-    if (sortOption.value === 'all') {
+    if (sortOption.value === 'All') {
       paramNew.delete('order')
       paramNew.delete('page')
     } else {
@@ -67,9 +67,11 @@ export default function FilterProgramme({
     router.push(pathName + '?' + paramNew.toString(), {
       scroll: false,
     })
-    if (sectionRef.current instanceof HTMLElement) {
-      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-    } 
+    if (search) {
+      if (sectionRef.current instanceof HTMLElement) {
+        sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }, [search])
     // handle search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
