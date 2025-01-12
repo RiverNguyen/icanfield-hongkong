@@ -1,4 +1,5 @@
 import fetchData from '@/fetch/fetchData'
+import fetchDataACF from '@/fetch/fetchDataACF'
 import DetailSettlementPrograms from '@/pages/detail-settlement-programs'
 import endpoints from '@/utils/endpoints'
 
@@ -15,7 +16,7 @@ export default async function page({
         revalidate: 600,
       },
     })
-    const fetchAcfNation = fetchData({
+    const fetchAcfNation = fetchDataACF({
       api:
         '/' +
         endpoints.taxonomiesSettlement +
@@ -32,13 +33,15 @@ export default async function page({
     ])
     const data = {
       ...programResponse,
-      acfNation: dataAcfNation[0],
+      data: {
+        ...programResponse.data,
+        acfNation: dataAcfNation[0],
+      },
     }
-    console.log(data)
     if (data.status === 404) {
       return <div>{String('error')}</div>
     }
-    return <DetailSettlementPrograms {...data} />
+    return <DetailSettlementPrograms {...data.data} />
   } catch (error) {
     return <div>{String(error)}</div>
   }

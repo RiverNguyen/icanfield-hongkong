@@ -7,6 +7,7 @@ import {projectOverviewProps} from '@/sections/detail-eb5/project-overview/const
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import {Breadcrumb} from '@/components/breadcrumb'
 import CapitalStructure from '@/components/chart/CapitalStructure'
+import {ProcessSteps} from '@/sections/detail-settlement-programs/process-steps'
 
 const fakeData = {
   title: 'Cấu trúc vốn EB-5 an toàn',
@@ -25,6 +26,237 @@ const fakeData = {
       browser: 'Vốn từ khoản vay cao cấp',
       visitors: 44.8,
       fill: 'BC9247',
+    },
+  ],
+}
+const fakeDataStep = {
+  title: 'Tiến trình dự án',
+  description:
+    'Palm Springs Hotel được triển khai với lộ trình rõ ràng, cam kết đảm bảo đúng tiến độ để mang đến sự an tâm cho các nhà đầu tư.',
+  steps: [
+    {
+      title: 'Khởi công dự án',
+      description:
+        'Chuẩn bị hồ sơ, Luật sư di trú sẽ đại diện nộp đơn định cư I-526E và hồ sơ chứng minh nguồn tiền lên Sở di trú USCIS.',
+      image: {
+        ID: 506,
+        id: 506,
+        title: 'image',
+        filename: 'image-scaled.webp',
+        filesize: 113108,
+        url: 'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-scaled.webp',
+        link: 'https://cms.icanfield.okhub-tech.com/settlement-program/settlement-program-1-awesome-youve-been-using-contact-form-cfdb7-for-more-than-1-week-may-we-ask-you-to-give-it-a-5-star-rating-on-wordpress-ok-you-deserved-it-i-already-did-no-not-good-e-11/image-2/',
+        alt: '',
+        author: '1',
+        description: '',
+        caption: '',
+        name: 'image-2',
+        status: 'inherit',
+        uploaded_to: 386,
+        date: '2025-01-10 07:01:15',
+        modified: '2025-01-10 07:01:15',
+        menu_order: 0,
+        mime_type: 'image/webp',
+        type: 'image',
+        subtype: 'webp',
+        icon: 'https://cms.icanfield.okhub-tech.com/wp-includes/images/media/default.png',
+        width: 2560,
+        height: 991,
+        sizes: {
+          thumbnail:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-150x150.webp',
+          'thumbnail-width': 150,
+          'thumbnail-height': 150,
+          medium:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-300x116.webp',
+          'medium-width': 300,
+          'medium-height': 116,
+          medium_large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-768x297.webp',
+          'medium_large-width': 768,
+          'medium_large-height': 297,
+          large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1024x396.webp',
+          'large-width': 1024,
+          'large-height': 396,
+          '1536x1536':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1536x594.webp',
+          '1536x1536-width': 1536,
+          '1536x1536-height': 594,
+          '2048x2048':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2048x793.webp',
+          '2048x2048-width': 2048,
+          '2048x2048-height': 793,
+        },
+      },
+    },
+    {
+      title: 'Xây dựng phần thô',
+      description:
+        'Chúng tôi hỗ trợ chuẩn bị hồ sơ đầy đủ và nộp đến cơ quan có thẩm quyền theo yêu cầu chương trình định cư.',
+      image: {
+        ID: 475,
+        id: 475,
+        title: 'd-process-steps-item',
+        filename: 'd-process-steps-item-scaled.webp',
+        filesize: 123520,
+        url: 'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-process-steps-item-scaled.webp',
+        link: 'https://cms.icanfield.okhub-tech.com/story-share/anh-nguyen-van-minh/d-process-steps-item/',
+        alt: '',
+        author: '1',
+        description: '',
+        caption: '',
+        name: 'd-process-steps-item',
+        status: 'inherit',
+        uploaded_to: 468,
+        date: '2025-01-10 04:33:56',
+        modified: '2025-01-10 04:33:56',
+        menu_order: 0,
+        mime_type: 'image/webp',
+        type: 'image',
+        subtype: 'webp',
+        icon: 'https://cms.icanfield.okhub-tech.com/wp-includes/images/media/default.png',
+        width: 2560,
+        height: 991,
+        sizes: {
+          thumbnail:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-process-steps-item-150x150.webp',
+          'thumbnail-width': 150,
+          'thumbnail-height': 150,
+          medium:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-process-steps-item-300x116.webp',
+          'medium-width': 300,
+          'medium-height': 116,
+          medium_large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-process-steps-item-768x297.webp',
+          'medium_large-width': 768,
+          'medium_large-height': 297,
+          large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-process-steps-item-1024x396.webp',
+          'large-width': 1024,
+          'large-height': 396,
+          '1536x1536':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-process-steps-item-1536x594.webp',
+          '1536x1536-width': 1536,
+          '1536x1536-height': 594,
+          '2048x2048':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-process-steps-item-2048x793.webp',
+          '2048x2048-width': 2048,
+          '2048x2048-height': 793,
+        },
+      },
+    },
+    {
+      title: 'Hoàn thiện nội thất',
+      description:
+        'Chuẩn bị hồ sơ, Luật sư di trú sẽ đại diện nộp đơn định cư I-526E và hồ sơ chứng minh nguồn tiền lên Sở di trú USCIS.',
+      image: {
+        ID: 507,
+        id: 507,
+        title: 'image',
+        filename: 'image-1-scaled.webp',
+        filesize: 108132,
+        url: 'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1-scaled.webp',
+        link: 'https://cms.icanfield.okhub-tech.com/settlement-program/settlement-program-1-awesome-youve-been-using-contact-form-cfdb7-for-more-than-1-week-may-we-ask-you-to-give-it-a-5-star-rating-on-wordpress-ok-you-deserved-it-i-already-did-no-not-good-e-11/image-3/',
+        alt: '',
+        author: '1',
+        description: '',
+        caption: '',
+        name: 'image-3',
+        status: 'inherit',
+        uploaded_to: 386,
+        date: '2025-01-10 07:02:15',
+        modified: '2025-01-10 07:02:15',
+        menu_order: 0,
+        mime_type: 'image/webp',
+        type: 'image',
+        subtype: 'webp',
+        icon: 'https://cms.icanfield.okhub-tech.com/wp-includes/images/media/default.png',
+        width: 2560,
+        height: 991,
+        sizes: {
+          thumbnail:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1-150x150.webp',
+          'thumbnail-width': 150,
+          'thumbnail-height': 150,
+          medium:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1-300x116.webp',
+          'medium-width': 300,
+          'medium-height': 116,
+          medium_large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1-768x297.webp',
+          'medium_large-width': 768,
+          'medium_large-height': 297,
+          large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1-1024x396.webp',
+          'large-width': 1024,
+          'large-height': 396,
+          '1536x1536':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1-1536x594.webp',
+          '1536x1536-width': 1536,
+          '1536x1536-height': 594,
+          '2048x2048':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-1-2048x793.webp',
+          '2048x2048-width': 2048,
+          '2048x2048-height': 793,
+        },
+      },
+    },
+    {
+      title: 'Hoàn thiện & Vận hành',
+      description:
+        'Chuẩn bị hồ sơ, Luật sư di trú sẽ đại diện nộp đơn định cư I-526E và hồ sơ chứng minh nguồn tiền lên Sở di trú USCIS.',
+      image: {
+        ID: 509,
+        id: 509,
+        title: 'image',
+        filename: 'image-2.webp',
+        filesize: 484816,
+        url: 'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2.webp',
+        link: 'https://cms.icanfield.okhub-tech.com/settlement-program/settlement-program-1-awesome-youve-been-using-contact-form-cfdb7-for-more-than-1-week-may-we-ask-you-to-give-it-a-5-star-rating-on-wordpress-ok-you-deserved-it-i-already-did-no-not-good-e-11/image-4/',
+        alt: '',
+        author: '1',
+        description: '',
+        caption: '',
+        name: 'image-4',
+        status: 'inherit',
+        uploaded_to: 386,
+        date: '2025-01-10 07:03:34',
+        modified: '2025-01-10 07:03:34',
+        menu_order: 0,
+        mime_type: 'image/webp',
+        type: 'image',
+        subtype: 'webp',
+        icon: 'https://cms.icanfield.okhub-tech.com/wp-includes/images/media/default.png',
+        width: 784,
+        height: 1080,
+        sizes: {
+          thumbnail:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2-150x150.webp',
+          'thumbnail-width': 150,
+          'thumbnail-height': 150,
+          medium:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2-218x300.webp',
+          'medium-width': 218,
+          'medium-height': 300,
+          medium_large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2-768x1058.webp',
+          'medium_large-width': 768,
+          'medium_large-height': 1058,
+          large:
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2-743x1024.webp',
+          'large-width': 743,
+          'large-height': 1024,
+          '1536x1536':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2.webp',
+          '1536x1536-width': 784,
+          '1536x1536-height': 1080,
+          '2048x2048':
+            'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/image-2.webp',
+          '2048x2048-width': 784,
+          '2048x2048-height': 1080,
+        },
+      },
     },
   ],
 }
@@ -72,6 +304,7 @@ const DetailEB5 = () => {
       </Banner>
       <ProjectOverview {...projectOverviewProps} />
       <CapitalStructure dataCapitalStructure={fakeData} />
+      <ProcessSteps {...fakeDataStep} />
       <ProjectLocation {...projectLocationProps} />
       <ProjectInvestorDeveloper {...projectInvestorDeveloperProps} />
     </div>
