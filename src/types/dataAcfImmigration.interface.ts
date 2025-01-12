@@ -12,7 +12,7 @@ export interface dataStrength {
     }
 }
 
-export interface dataBanner { 
+export interface dataBanner {
     label: string
     image_pc: {
         alt: string

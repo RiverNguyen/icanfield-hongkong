@@ -40,7 +40,7 @@ export default function Programme({ dataPrograms, slug }: { dataPrograms: dataPr
     slugOrder,
     search
   ])
-  const {data: posts, isLoading} = useSWR(query, fetcher, {
+  const {data: posts} = useSWR(query, fetcher, {
     revalidateIfStale: false,
     revalidateOnReconnect: false,
   })
