@@ -21,7 +21,7 @@ const PioneeringValues = () => {
   }
   return (
     <section className='bg-background pt-[3rem] sm:-translate-y-[3rem]'>
-      <div className='section-container relative flex items-end justify-between overflow-hidden pb-[2.75rem] xsm:flex-col xsm:items-start xsm:pb-[1.72rem]'>
+      <div className='relative flex items-end justify-between overflow-hidden pb-[2.75rem] section-container xsm:flex-col xsm:items-start xsm:pb-[1.72rem]'>
         <h2 className='flex-1 [&_p]:font-optima [&_p]:text-[3rem] [&_p]:font-semibold [&_p]:leading-[1.2] [&_p]:tracking-[-0.06rem] [&_p]:text-Phase-1-Brown xsm:[&_p]:text-[1.25rem]'>
           <p>
             {' '}
@@ -58,7 +58,7 @@ const PioneeringValues = () => {
           />
         </div>
       </div>
-      <div className='section-container relative h-[41.5rem] w-full overflow-hidden rounded-[1.25rem] bg-white xsm:h-[20.4rem] xsm:w-full xsm:rounded-none'>
+      <div className='relative h-[41.5rem] w-full overflow-hidden rounded-[1.25rem] bg-white section-container xsm:h-[20.4rem] xsm:w-full xsm:rounded-none'>
         <LeafletMapCountries
           countries={states}
           mapJson={customGeoJson as FeatureCollection}
@@ -109,7 +109,7 @@ const PioneeringValues = () => {
           className={`durantion-500 absolute bottom-0 left-0 z-10 h-[70vh] w-full bg-white p-4 transition-all ${isOpenPopup ? 'translate-y-0' : 'translate-y-full'}`}
         >
           <div
-            className='pb-[2rem] w-fit mx-auto'
+            className='mx-auto w-fit pb-[2rem]'
             onClick={handleTogglePopup}
           >
             <div className='mx-auto h-[0.25rem] w-[3rem] rounded-full bg-[rgba(0,0,0,0.10)]'></div>
