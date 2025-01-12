@@ -1,62 +1,82 @@
-const countries = [
+export const canadianCities = [
   [
     {
-      name: 'Canada',
-      label: 'Canada',
-      flag: '/imgs/about-us/office-map/Canada.png',
+      name: 'Yukon Territory',
+      label: 'Yukon Territory',
+      flag: '/imgs/about-us/office-map/Yukon.png',
+      projectNumber: 5,
     },
   ],
   [
     {
-      name: 'Australia',
-      label: 'ÚC',
-      flag: '/imgs/about-us/office-map/Australia.png',
+      name: 'Northwest Territories',
+      label: 'Northwest Territories',
+      flag: '/imgs/about-us/office-map/NorthwestTerritories.png',
+      projectNumber: 8,
     },
   ],
   [
     {
-      name: 'Vietnam',
-      label: 'Việt Nam',
-      flag: '/imgs/about-us/office-map/vietnam.png',
-    },
-  ],
-
-  [
-    {
-      name: 'Caribe',
-      label: 'Caribe',
-      flag: '/imgs/about-us/office-map/Caribe.png',
-    },
-  ],
-  [
-    // Mảng các nước EU
-    {
-      name: 'Germany',
-      label: 'EU',
-      flag: '/imgs/homepage/header/eu-flag2.png',
-    },
-    {
-      name: 'France',
-    },
-    {
-      name: 'Italy',
-    },
-    {
-      name: 'Spain',
-    },
-    {
-      name: 'Netherlands',
-    },
-    {
-      name: 'Sweden',
+      name: 'Nunavut',
+      label: 'Nunavut',
+      flag: '/imgs/about-us/office-map/Nunavut.png',
+      projectNumber: 3,
     },
   ],
   [
     {
-      name: 'United States of America',
-      label: 'Mỹ',
-      flag: '/imgs/homepage/header/d-america-flag.jpg',
+      name: 'British Columbia',
+      label: 'British Columbia',
+      flag: '/imgs/about-us/office-map/BritishColumbia.png',
+      projectNumber: 15,
+    },
+  ],
+  [
+    {
+      name: 'Alberta',
+      label: 'Alberta',
+      flag: '/imgs/about-us/office-map/Alberta.png',
+      projectNumber: 20,
+    },
+  ],
+  [
+    {
+      name: 'Saskatchewan',
+      label: 'Saskatchewan',
+      flag: '/imgs/about-us/office-map/Saskatchewan.png',
+      projectNumber: 12,
+    },
+  ],
+  [
+    {
+      name: 'Manitoba',
+      label: 'Manitoba',
+      flag: '/imgs/about-us/office-map/Manitoba.png',
+      projectNumber: 9,
+    },
+  ],
+  [
+    {
+      name: 'Ontario',
+      label: 'Ontario',
+      flag: '/imgs/about-us/office-map/Ontario.png',
+      projectNumber: 18,
+    },
+  ],
+  [
+    {
+      name: 'Quebec',
+      label: 'Quebec',
+      flag: '/imgs/about-us/office-map/Quebec.png',
+      projectNumber: 22,
+    },
+  ],
+  [
+    {
+      name: 'Newfoundland',
+      label: 'Newfoundland',
+      flag: '/imgs/about-us/office-map/Newfoundland.png',
+      projectNumber: 7,
     },
   ],
 ]
-export default countries

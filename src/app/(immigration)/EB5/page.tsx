@@ -1,7 +1,5 @@
-export default function page() {
-  return (
-    <section>
-      <h1>EB5</h1>
-    </section>
-  )
+import PageEB5 from '@/pages/page-EB5'
+
+export default function Page() {
+  return <PageEB5 />
 }

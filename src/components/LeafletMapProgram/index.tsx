@@ -33,7 +33,7 @@ interface ILeafletMapProps {
 // INIT COUNTRY OF EU
 const euCountries = new Set()
 
-export const LeafletMapCountries: FC<ILeafletMapProps> = ({
+export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
   mapJson,
   countries,
   onClick,
@@ -48,11 +48,12 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
   isControlZoom = false,
   center = [47, -121.4905],
   centerMobile = [42, -107.3025],
-  fillColor= '#BC9247'
+  fillColor = '#BC9247',
 }) => {
   const [isMobile, setIsMobile] = useState(false)
   const mapRef = useRef<L.Map | null>(null)
-
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
+  const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
@@ -90,29 +91,39 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
     return [0, 0]
   }, [])
 
-  const getFillColor = useCallback((feature: Feature) => {
-    if (!feature.properties) return '#f6f6f6' // Màu mặc định
-    const countryName = feature.properties.name
-    if (euCountries.has(countryName) && countryName !== 'Vietnam') {
-      return fillColor // Màu cho các quốc gia EU
-    }
+  const getFillColor = useCallback(
+    (feature: Feature) => {
+      if (!feature.properties) return '#f6f6f6' // Màu mặc định
+      const countryName = feature.properties.name
 
-    // Xử lý màu cho các quốc gia cụ thể
-    const specialColors: {[key: string]: string} = {}
-    return specialColors[countryName] || '#F6f6f6' // Mặc định màu nền
-  }, [])
+      // Kiểm tra quốc gia được chọn
+      if (selectedCountry === countryName) {
+        return '#BC9247' // Màu nổi bật cho quốc gia được chọn
+      }
 
-  const geoJsonStyle = useCallback((feature: Feature) => {
-    return {
-      fillColor: getFillColor(feature), // Define a function to dynamically assign colors
-      weight: 0.281, // Border thickness
-      opacity: 1, // Border opacity
-      color: borderCountries, // Border color
-      fillOpacity: 1, // Background fill opacity
-    }
-  }, [])
+      // Màu cho các quốc gia EU
+      if (euCountries.has(countryName) && countryName !== 'Vietnam') {
+        return fillColor
+      }
+
+      // Xử lý màu cho các quốc gia đặc biệt
+      const specialColors: {[key: string]: string} = {}
+      return specialColors[countryName] || '#f6f6f6' // Màu mặc định
+    },
+    [selectedCountry],
+  )
+  const geoJsonStyle = useCallback(
+    (feature: Feature) => ({
+      fillColor: getFillColor(feature), // Màu nền
+      weight: 0.281, // Độ dày viền
+      opacity: 1, // Độ mờ viền
+      color: borderCountries, // Màu viền
+      fillOpacity: 1, // Độ mờ nền
+    }),
+    [getFillColor],
+  )
   // Zoom to country when click
-  const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
+
   const handleCountryClick = (countryName: string) => {
     const position = getPosition(countryName)
     if (mapRef.current && isZoomClick) {
@@ -197,6 +208,30 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
       <GeoJSON
         data={mapJson as GeoJsonObject}
         style={geoJsonStyle as GeoJSONOptions}
+        onEachFeature={(feature, layer) => {
+          // Thêm event click vào từng khu vực
+          layer.on('click', () => {
+            const countryName = feature.properties?.name || 'Unknown'
+            const clickedCountry = countries.find(
+              (country) => country[0].name === countryName,
+            )
+
+            if (clickedCountry) {
+              const countryObj: ICountry = {
+                name: clickedCountry[0].name,
+                label: clickedCountry[0].label,
+                flag: clickedCountry[0].flag,
+                projectNumber: clickedCountry[0].projectNumber,
+              }
+
+              if (onClick) {
+                onClick(countryObj)
+              }
+              setSelectedCountry(countryObj.name)
+              handleCountryClick(countryObj.name)
+            }
+          })
+        }}
       />
       {countries.map((country, index) => {
         let countryObj: ICountry = {
@@ -226,37 +261,16 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
             position={position} // Tọa độ Canada
             icon={
               new L.DivIcon({
-                html: `<div class="custom-marker absolute !left-0 top-0 xsm:!pointer-events-none">
-                    <div class="flex items-center relative">
-                        <div class='size-[0.75rem] bg-[#DAF2AF] rounded-full mr-1 xsm:size-[0.375rem]'></div>
-                        <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">EB-5</span>
-                        <div class='flex items-center justify-around absolute bg-white w-[8.63rem] py-2 rounded-[0.63rem] bottom-0 left-1/2 -translate-x-1/2 shadow-lg  transition-all duration-300 opacity-0 info-tag '>
-                              <div class='flex items-center justify-center p-4 rounded-[0.5rem] bg-primary-brown'>
-                                <img src='/icons/EB5/pioneering-values/project.svg' class='size-[1.01563rem] object-cover' />
-                              </div>
-                              <div class='flex flex-col '>
-                                    <span class='text-greentext font-normal leading-[1.25] text-[2rem]'>${countryObj?.projectNumber || 1}</span>
-                                    <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>Dự án EB-5</span>
-                              </div>
-                        </div>
-                    </div>
-                      <div class='text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.625rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem] xsm:text-[0.5rem] xsm:px-1 xsm:py-[0.12rem] xsm:bg-[#F7F6F1] shadow-[0px_1.371px_5.482px_0px_rgba(0,0,0,0.10)] xsm:h-auto xsm:pt-1'>
+                html: `<div class="custom-marker absolute !-left-0 top-0 xsm:!pointer-events-none">
+                      <div class='bg-[linear-gradient(90deg,#5C4E47_0%,#5C4235_100%)] text-transparent bg-clip-text text-[0.625rem] font-semibold leading-[1.2] tracking-[-0.00625rem] uppercase absolute bottom-[-0.1rem]  '>
                         ${countryObj.label ? countryObj.label : countryObj.name}
                       </div>
               </div>`,
                 className:
-                  'my-div-icon !w-[5rem] !h-[3.26rem] relative marker-custom__nation  xsm:!pointer-events-none group',
+                  'my-div-icon !w-[5rem] !h-[3.26rem] relative marker-custom__nation  xsm:!pointer-events-none group !pointer-events-none',
                 iconSize: [30, 30],
               })
             }
-            eventHandlers={{
-              click: () => {
-                if (onClick) {
-                  onClick(countryObj)
-                }
-                handleCountryClick(countryObj.name)
-              },
-            }}
           ></Marker>
         )
       })}
