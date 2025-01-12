@@ -2,7 +2,7 @@ import {
   AdvantagesBenefits,
   IAdvantagesBenefitsProps,
 } from '@/components/advantages-benefits'
-import { IWhyChooseUsProps, WhyChooseUs } from '@/components/why-choose-us'
+import {IWhyChooseUsProps, WhyChooseUs} from '@/components/why-choose-us'
 import {
   Banner,
   IBannerProps,
@@ -28,8 +28,8 @@ import {
   SuccessStoryShare,
 } from '@/sections/detail-settlement-programs/success-story-share'
 import ImmigrationFAQ from '@/sections/immigration/faq/ImmigrationFAQ'
-import { immigration } from '@/types/dataAcfImmigration.interface'
-import { FC } from 'react'
+import {immigration} from '@/types/dataAcfImmigration.interface'
+import {FC} from 'react'
 
 interface IDetailSettlementProgramsProps {
   banner: IBannerProps
@@ -64,7 +64,10 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
       <WhyChooseUs {...why_choose_us} />
       <ProcessSteps {...process_steps} />
       <SuccessStoryShare {...story_share} />
-      <ImmigrationFAQ dataFAQ={acfNation?.acf?.faq_nation} flag={acfNation?.acf?.flag} />
+      <ImmigrationFAQ
+        dataFAQ={acfNation?.acf?.faq_nation}
+        flag={acfNation?.acf?.flag}
+      />
     </>
   )
 }
