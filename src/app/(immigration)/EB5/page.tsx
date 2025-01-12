@@ -1,5 +1,5 @@
 import PageEB5 from '@/pages/page-EB5'
 
-export default function Page() {
+export default async function page() {
   return <PageEB5 />
 }
