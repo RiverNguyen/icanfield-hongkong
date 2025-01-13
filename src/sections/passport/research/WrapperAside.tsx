@@ -16,7 +16,7 @@ const WrapperAside = () => {
   }, [searchParams])
 
   return (
-    <div className='h-fit w-[29rem] flex-shrink-0'>
+    <div className='h-fit w-[29rem] flex-shrink-0 xsm:w-full'>
       <SearchPassport setCodePostal={setCodePostal} />
       {codePostal && <ResultPassport codePostal={codePostal} />}
     </div>

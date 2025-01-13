@@ -109,19 +109,23 @@ const MapPassport = () => {
     })
   }
   return (
-    <div className='relative size-full bg-white'>
+    <div className='relative size-full bg-white xsm:min-h-[16.125rem] xsm:bg-transparent'>
       <MapContainer
         key={isMobile ? 'mobile-map' : 'desktop-map'}
-        style={{background: '#fff !important'}}
+        style={{
+          background: isMobile ? 'transparent !important' : '#fff !important',
+        }}
         id='map_passport'
         center={[40, 0]}
-        zoom={isMobile ? 1 : 1.5}
-        minZoom={0.5}
+        zoom={isMobile ? 0.4 : 1.5}
+        minZoom={0.1}
         maxZoom={18}
         zoomSnap={0.1}
-        zoomDelta={isMobile ? 1 : 0.5}
-        className={'z-[5] h-full w-full !bg-white'}
-        zoomControl={true}
+        zoomDelta={isMobile ? 0.5 : 0.5}
+        className={
+          'z-[5] h-full w-full !bg-white xsm:min-h-[16.125rem] xsm:!bg-transparent'
+        }
+        zoomControl={isMobile ? false : true}
         dragging={isMobile ? false : true}
         ref={mapRef}
         scrollWheelZoom={false}
