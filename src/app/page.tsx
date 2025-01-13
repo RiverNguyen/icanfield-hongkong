@@ -22,7 +22,6 @@ export default async function Home() {
       fetchDataACF(homeRequest),
       fetchData(newsRequest),
     ])
-console.log(newsResponse);
     return (
       <HomePage
         homeData={homeResponse}

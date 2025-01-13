@@ -23,13 +23,9 @@ export default function IndexDetailBlog({
 }: {
   dataDetailBlog: dataDetailBlog
 }) {
-  const dataBackgroundImage = {
-    src: dataDetailBlog?.data?.banner?.url,
-    alt: dataDetailBlog?.data?.banner?.alt,
-  }
   return (
     <>
-        <BannerStatic backgroundImage={dataBackgroundImage}>
+        <BannerStatic backgroundImage={dataDetailBlog?.data?.banner}>
           <Breadcrumb
             items={[
               {label: 'Trang chủ', href: '/'},

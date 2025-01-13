@@ -46,7 +46,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false)
   const mapRef = useRef<L.Map | null>(null)
-
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
@@ -86,30 +86,43 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const getFillColor = useCallback((feature: Feature) => {
-    if (!feature.properties) return '#F0EFE7' // Màu mặc định
-    const countryName = feature.properties.name
-    if (euCountries.has(countryName) && countryName !== 'Vietnam') {
-      return '#D0C1BA' // Màu cho các quốc gia EU
-    }
+  const getFillColor = useCallback(
+    (feature: Feature) => {
+      if (!feature.properties) return '#F0EFE7' // Màu mặc định
+      const countryName = feature.properties.name
 
-    // Xử lý màu cho các quốc gia cụ thể
-    const specialColors: {[key: string]: string} = {
-      Vietnam: '#EA3434',
-    }
-    return specialColors[countryName] || '#F0EFE7' // Mặc định màu nền
-  }, [])
+      // Ưu tiên kiểm tra quốc gia được chọn
+      if (selectedCountry === countryName) {
+        return '#BC9247' // Màu nổi bật cho quốc gia được chọn
+      }
 
-  const geoJsonStyle = useCallback((feature: Feature) => {
-    return {
-      fillColor: getFillColor(feature), // Define a function to dynamically assign colors
-      weight: 1, // Border thickness
-      opacity: 1, // Border opacity
-      color: borderCountries, // Border color
-      fillOpacity: 1, // Background fill opacity
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+      // Kiểm tra quốc gia EU
+      if (euCountries.has(countryName) && countryName !== 'Vietnam') {
+        return '#D0C1BA' // Màu cho các quốc gia EU
+      }
+
+      // Xử lý màu cho các quốc gia cụ thể
+      const specialColors: {[key: string]: string} = {
+        Vietnam: '#D4C0B6',
+      }
+      return specialColors[countryName] || '#F3F3F3'
+    },
+    [selectedCountry],
+  )
+
+  const geoJsonStyle = useCallback(
+    (feature: Feature) => {
+      return {
+        fillColor: getFillColor(feature), // Define a function to dynamically assign colors
+        weight: 0.81, // Border thickness
+        opacity: 1, // Border opacity
+        color: borderCountries, // Border color
+        fillOpacity: 1, // Background fill opacity
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [getFillColor],
+  )
   // Zoom to country when click
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
   const handleCountryClick = (countryName: string) => {
@@ -248,6 +261,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
                   onClick(countryObj)
                 }
                 handleCountryClick(countryObj.name)
+                setSelectedCountry(countryObj.name)
               },
             }}
           ></Marker>

@@ -16,8 +16,6 @@ const categoryItemAll = {id: 0, name: 'Tất cả', slug: 'all', taxonomy: 'all'
 
 const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage}) => {
   let dataCategoriesWithAll
-  let dataBanner
-  let datafeatured
   if (
     dataCategories &&
     Array.isArray(dataCategories) &&
@@ -27,13 +25,13 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage}) =
   } else {
     dataCategoriesWithAll = [categoryItemAll]
   }
-  dataBanner = {
+  const dataBanner = {
     titleTop: dataPage?.banner_blogs_page?.title_line_1,
     titleBottom: dataPage?.banner_blogs_page?.title_line_2,
     description: dataPage?.banner_blogs_page?.description,
     backgroundImage: dataPage?.banner_blogs_page?.background,
   }
-  datafeatured = {
+  const datafeatured = {
     title: dataPage?.featured_news?.title,
     items: dataPage?.featured_news_blogs_page
   }
