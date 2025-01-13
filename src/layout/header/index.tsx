@@ -28,23 +28,6 @@ const Header = ({
   data: dataHeader
   dataFooter: dataFooter
 }) => {
-  const listItemSupportCustomer = [
-    {
-      title: 'Thẩm định hồ sơ',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-Uc.webp',
-    },
-    {
-      title: 'So sánh chương trình',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-bds.webp',
-    },
-    {
-      title: 'Thông tin hộ chiếu',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-Uc.webp',
-    },
-  ]
   const listMenuMobileLast = [
     data?.icanfield_handbook,
     data?.support_customer,
@@ -546,7 +529,7 @@ const Header = ({
                       src={
                         urlImageSupportCustomer
                           ? urlImageSupportCustomer || ''
-                          : listItemSupportCustomer[0].imgUrl || ''
+                          : data?.support_customer?.list_support[0].image.url || ''
                       }
                       alt='logo'
                       width={500}
