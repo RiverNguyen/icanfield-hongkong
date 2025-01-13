@@ -31,7 +31,7 @@ const PageEB5 = () => {
           title: 'string',
           filename: 'string',
           filesize: 1,
-          url: '/imgs/EB5/banner/d-bg.webp',
+          url: '/imgs/EB5/Banner/d-bg.webp',
           link: 'string',
           alt: 'string',
           author: 'string',
@@ -60,7 +60,7 @@ const PageEB5 = () => {
       </Banner>
       <TeaEB5Section />
       <PioneeringValues />
-      <Suspense fallback={<p>Loading...</p>}>cls
+      <Suspense fallback={<p>Loading...</p>}>
         <OutstandingProjectEB5 />
       </Suspense>
       <ProjectTransparency />

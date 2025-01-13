@@ -192,7 +192,7 @@ const MapDiscover = ({data}: IMapDiscoverProps) => {
                 countries={officeMap?.countries}
                 mapJson={customGeoJson as FeatureCollection}
                 className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
-                borderCountries='#D7B578'
+                borderCountries='#7F7C6E'
                 zoomDesktop={1.8}
                 isZoomClick={true}
                 changeCountry={

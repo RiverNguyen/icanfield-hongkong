@@ -114,7 +114,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
     (feature: Feature) => {
       return {
         fillColor: getFillColor(feature), // Define a function to dynamically assign colors
-        weight: 0.81, // Border thickness
+        weight: 0.3, // Border thickness
         opacity: 1, // Border opacity
         color: borderCountries, // Border color
         fillOpacity: 1, // Background fill opacity
