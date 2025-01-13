@@ -26,6 +26,7 @@ const config: Config = {
       },
       colors: {
         textwhite85: 'rgba(255,255,255,0.85)',
+        'Phase-1-Gradient': '#B08E61',
         textwhitetest: '#f7f6f1',
         background: '#F6F6F4',
         'Phase-1-Brown': '#5C321E',

@@ -1,0 +1,16 @@
+<svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="check">
+<circle id="Ellipse 263" cx="12.0052" cy="13" r="11.6667" transform="rotate(180 12.0052 13)" fill="#5C321E"/>
+<path id="Vector 784 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M24.2573 1.84963C24.6164 2.1729 24.6456 2.72616 24.3223 3.08535L14.1284 14.2822C12.9915 15.5455 11.0666 15.703 9.73946 14.6413L5.6253 11.3499C5.24794 11.048 5.18676 10.4974 5.48865 10.1201C5.79053 9.74271 6.34116 9.68153 6.71852 9.98341L10.8327 13.2747C11.4359 13.7573 12.3109 13.6858 12.8277 13.1115L23.0215 1.91466C23.3448 1.55547 23.8981 1.52635 24.2573 1.84963Z" fill="url(#paint0_linear_2812_19831)" stroke="url(#paint1_linear_2812_19831)" stroke-width="1.5" stroke-linecap="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_2812_19831" x1="14.9219" y1="1.625" x2="14.9219" y2="15.3444" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#D7B578"/>
+</linearGradient>
+<linearGradient id="paint1_linear_2812_19831" x1="14.9219" y1="1.625" x2="14.9219" y2="15.3444" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#D7B578"/>
+</linearGradient>
+</defs>
+</svg>

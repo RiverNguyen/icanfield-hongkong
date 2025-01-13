@@ -5,10 +5,10 @@ import {Media} from '@/types/image.interface'
 import {FC, useRef} from 'react'
 
 export interface IProgramEligibilityProps {
-  title: string
-  description: string
-  background: Media
-  items: IProgramEligibilityItem[]
+  title?: string
+  description?: string
+  background?: Media
+  items?: IProgramEligibilityItem[]
 }
 
 export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
@@ -18,12 +18,12 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
   items,
 }) => {
   return (
-    <section className='relative overflow-hidden bg-background lg:min-h-dvh sm:min-h-[49.25rem] sm:pt-[9.94rem] xsm:pb-[20.56rem]'>
+    <section className='relative overflow-hidden bg-background lg:min-h-dvh sm:min-h-[49.25rem] sm:pt-[9.94rem] xsm:pb-[20.56rem] xsm:pt-[3.5rem]'>
       <ImageV2
-        src={background.url}
-        alt={background.alt}
-        width={background.width}
-        height={background.height}
+        src={background?.url || ''}
+        alt={background?.alt || ''}
+        width={background?.width || 1000}
+        height={background?.height || 1000}
         className='absolute right-0 min-h-[24.53731rem] min-w-[49.14544rem] object-contain sm:top-[-4.12rem] sm:h-[40.4375rem] sm:w-[80.99169rem] xsm:bottom-0'
       />
       <div className='relative z-10 mx-auto sm:max-w-[90rem] xsm:px-[1rem]'>
@@ -36,12 +36,13 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
       </div>
       <div className='bottom-0 left-0 right-0 h-[31.1875rem] bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)] sm:absolute xsm:hidden'></div>
       <div className='relative flex sm:absolute sm:bottom-[6.25rem] sm:left-1/2 sm:w-[90rem] sm:-translate-x-1/2 sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:flex-col xsm:space-y-[0.88rem] xsm:px-[1rem]'>
-        {items.map((item, index) => (
-          <ProgramEligibilityItem
-            key={index}
-            {...item}
-          />
-        ))}
+        {items &&
+          items.map((item, index) => (
+            <ProgramEligibilityItem
+              key={index}
+              {...item}
+            />
+          ))}
       </div>
       <Marquee />
     </section>
@@ -49,9 +50,9 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
 }
 
 interface IProgramEligibilityItem {
-  icon: Media
-  title: string
-  description: string
+  icon?: Media
+  title?: string
+  description?: string
 }
 
 interface IProgramEligibilityItemProps extends IProgramEligibilityItem {
@@ -88,10 +89,10 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
       className='group self-end rounded-[1.25rem] p-[1.5rem] text-white transition-all duration-500 sm:min-h-[16rem] sm:w-[15.75rem] sm:bg-[linear-gradient(180deg,#3F2214_31.22%,#A55934_100%)] sm:p-[2.25rem_1rem_2.25rem_1.63rem] sm:hover:bg-white sm:hover:bg-[radial-gradient(55.47%_55.27%_at_15.35%_3.04%,#F5C178_34.24%,rgba(255,255,255,0.00)_100%)] xsm:bg-white xsm:bg-[radial-gradient(67.03%_57.2%_at_7%_6.15%,rgba(245,193,120,0.20)_34.24%,rgba(255,255,255,0.00)_100%)] xsm:shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)]'
     >
       <ImageV2
-        src={icon.url}
-        alt={icon.alt}
-        width={icon.width}
-        height={icon.height}
+        src={icon?.url || ''}
+        alt={icon?.alt || ''}
+        width={icon?.width || 1000}
+        height={icon?.height || 1000}
         className='sm:group-hover:program-eligibility__icon-filter xsm:program-eligibility__icon-filter size-[2.875rem] !object-contain'
       />
       <h3 className='mb-[0.5rem] mt-[1rem] text-[1.25rem] font-semibold transition-all duration-500 sm:mt-[1.2rem] sm:group-hover:text-brown xsm:text-brown'>

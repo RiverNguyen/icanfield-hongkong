@@ -18,6 +18,8 @@ const endpoints = {
     id: '345',
     unitTag: '1ef1eec',
   },
+  taxonomiesSettlement: 'nation',
+  settlementPrograms: '/settlement-programs'
 }
 
 export default endpoints

@@ -10,6 +10,7 @@ import Link from 'next/link'
 import {useRef} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Swiper as SwiperType} from 'swiper/types'
+import ImageV2 from '@/components/image/ImageV2'
 
 type PopupMarkerProps = {
   open: boolean
@@ -35,14 +36,20 @@ const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
     >
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
-          <Image
-            className='size-[1.5rem] flex-shrink-0 rounded-[100%] object-cover'
-            src={'/imgs/map/vn.svg'}
-            alt='country'
-            width={24}
-            height={24}
-            quality={95}
-          />
+          <div
+            className={
+              'relative flex size-[1.75rem] rounded-[50%] bg-[#B08E61] shadow-[1px_2px_6px_0px_rgba(0,0,0,0.25)] backdrop-blur-[10px] xsm:size-[1.35rem]'
+            }
+          >
+            <div className='absolute bottom-0 left-0 z-[1] h-full w-full rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
+            <ImageV2
+              src={'/imgs/about-us/office-map/Canada.png'}
+              alt={'Canada'}
+              width={200}
+              height={200}
+              className='absolute left-1/2 top-1/2 z-0 size-[1.5rem] -translate-x-1/2 -translate-y-1/2 scale-[1.05] rounded-[50%] xsm:left-0 xsm:top-0 xsm:size-[1.25rem] xsm:translate-x-[1px] xsm:translate-y-[1px] xsm:scale-[1]'
+            />
+          </div>
           <span className='ml-[0.5rem] text-[0.875rem] font-semibold leading-normal tracking-[-0.00875rem] text-greyscaletext-body'>
             Văn phòng tại {countrySelected}
           </span>

@@ -1,6 +1,6 @@
 import ImageV2 from '@/components/image/ImageV2'
+import { dataAcfPioneeringMissionItem } from '@/types/dataAcfAboutus.interface'
 import './style.css'
-import {dataAcfPioneeringMissionItem} from '@/types/dataAcfAboutus.interface'
 
 export default function ItemPioneering({
   index,
@@ -10,7 +10,7 @@ export default function ItemPioneering({
   data: dataAcfPioneeringMissionItem
 }) {
   return (
-    <div className='item__pioneering group relative h-[25rem] w-[43.85rem] overflow-hidden rounded-[1.5rem] bg-white shadow-[0px_4px_10px_0px_rgba(0,0,0,0.03)] xsm:h-[11.875rem] xsm:w-full xsm:rounded-[0.75rem] xsm:shadow-[0px_1.938px_4.845px_0px_rgba(0,0,0,0.03)]'>
+    <div className='hhh item__pioneering group relative h-[25rem] w-[43.85rem] overflow-hidden rounded-[1.5rem] bg-white shadow-[0px_4px_10px_0px_rgba(0,0,0,0.03)] xsm:h-[11.875rem] xsm:w-full xsm:rounded-[0.75rem] xsm:shadow-[0px_1.938px_4.845px_0px_rgba(0,0,0,0.03)]'>
       <ImageV2
         className='pointer-events-none absolute bottom-0 right-0 h-[25rem] w-[31rem] xsm:hidden'
         height={400}
@@ -40,7 +40,7 @@ export default function ItemPioneering({
         height={400}
         width={708}
         alt={data?.image?.alt}
-        src={data?.image?.url || ''}
+        src={data?.image?.url}
       />
     </div>
   )

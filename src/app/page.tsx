@@ -7,13 +7,13 @@ export default async function Home() {
   const homeRequest = {
     api: endpoints.homepage + '?_fields=acf&acf_format=standard',
     option: {
-      revalidate: 600,
+      revalidate: 10,
     },
   }
   const newsRequest = {
     api: endpoints.homeFeatured,
     option: {
-      revalidate: 600,
+      revalidate: 10,
     },
   }
 
@@ -22,7 +22,6 @@ export default async function Home() {
       fetchDataACF(homeRequest),
       fetchData(newsRequest),
     ])
-
     return (
       <HomePage
         homeData={homeResponse}

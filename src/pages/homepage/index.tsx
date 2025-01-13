@@ -1,4 +1,4 @@
-import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
+import BannerHomepage, { IBannerHomepageProps } from '@/sections/homepage/banner'
 import FormHomepage from '@/sections/homepage/form-homepage'
 import GlobalImmigration from '@/sections/homepage/global-immigration'
 import {
@@ -13,7 +13,7 @@ import ProudJourney, {
   IItemProudJourney,
 } from '@/sections/homepage/proud-journey'
 import TalentedTeam from '@/sections/homepage/talented-team'
-import {Media} from '@/types/image.interface'
+import { Media } from '@/types/image.interface'
 import dynamic from 'next/dynamic'
 const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
   ssr: false, // Nếu component không cần server-side rendering
