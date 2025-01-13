@@ -1,0 +1,7 @@
+#map_passport .leaflet-control-attribution.leaflet-control {
+  display: none !important;
+}
+#map_passport .leaflet-control-container > div {
+  top: auto;
+  bottom: 8px;
+}

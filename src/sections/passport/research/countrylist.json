@@ -1,0 +1,4033 @@
+[
+  {
+    "id": 1,
+    "name": "Afghanistan",
+    "code": "AF",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 25,
+      "vulnerability": 58,
+      "gdp_ave": 0.7,
+      "total_score": 22.6,
+      "rank": 130
+    }
+  },
+  {
+    "id": 2,
+    "name": "Albania",
+    "code": "AL",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 41.3,
+      "vulnerability": 41.1,
+      "gdp_ave": 2.58,
+      "total_score": 34.3,
+      "rank": 81
+    }
+  },
+  {
+    "id": 3,
+    "name": "Algeria",
+    "code": "DZ",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 32.9,
+      "vulnerability": 38.7,
+      "gdp_ave": 5.72,
+      "total_score": 33.3,
+      "rank": 84
+    }
+  },
+  {
+    "id": 4,
+    "name": "Angola",
+    "code": "AO",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 25.5,
+      "vulnerability": 50.6,
+      "gdp_ave": 2.41,
+      "total_score": 25.8,
+      "rank": 117
+    }
+  },
+  {
+    "id": 5,
+    "name": "Anguilla",
+    "code": "AI",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 6,
+    "name": "Antigua and Barbuda",
+    "code": "AG",
+    "region_id": 4,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 44.8,
+      "vulnerability": 46.8,
+      "gdp_ave": 5.9399999999999995,
+      "total_score": 34.7,
+      "rank": 78
+    }
+  },
+  {
+    "id": 7,
+    "name": "Argentina",
+    "code": "AR",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 37.7,
+      "vulnerability": 39.1,
+      "gdp_ave": 15.45,
+      "total_score": 38,
+      "rank": 61
+    }
+  },
+  {
+    "id": 8,
+    "name": "Armenia",
+    "code": "AM",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 51.1,
+      "vulnerability": 38.1,
+      "gdp_ave": 2.09,
+      "total_score": 38.4,
+      "rank": 60
+    }
+  },
+  {
+    "id": 9,
+    "name": "Aruba",
+    "code": "AW",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 10,
+    "name": "Australia",
+    "code": "AU",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 70.3,
+      "vulnerability": 30.6,
+      "gdp_ave": 62.74,
+      "total_score": 67.5,
+      "rank": 8
+    }
+  },
+  {
+    "id": 11,
+    "name": "Austria",
+    "code": "AT",
+    "region_id": 5,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 69.6,
+      "vulnerability": 26.7,
+      "gdp_ave": 34.08,
+      "total_score": 59,
+      "rank": 18
+    }
+  },
+  {
+    "id": 12,
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 45.1,
+      "vulnerability": 39.8,
+      "gdp_ave": 2.98,
+      "total_score": 36.1,
+      "rank": 71
+    }
+  },
+  {
+    "id": 13,
+    "name": "Bahamas",
+    "code": "BS",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 43.1,
+      "vulnerability": 44.4,
+      "gdp_ave": 11.04,
+      "total_score": 36.6,
+      "rank": 67
+    }
+  },
+  {
+    "id": 14,
+    "name": "Bahrain",
+    "code": "BH",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 47.7,
+      "vulnerability": 44.4,
+      "gdp_ave": 9.73,
+      "total_score": 37.7,
+      "rank": 64
+    }
+  },
+  {
+    "id": 15,
+    "name": "Bangladesh",
+    "code": "BD",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 27.4,
+      "vulnerability": 54.3,
+      "gdp_ave": 10.57,
+      "total_score": 27.9,
+      "rank": 105
+    }
+  },
+  {
+    "id": 16,
+    "name": "Barbados",
+    "code": "BB",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 53.9,
+      "vulnerability": 37.8,
+      "gdp_ave": 6.63,
+      "total_score": 40.9,
+      "rank": 48
+    }
+  },
+  {
+    "id": 17,
+    "name": "Belarus",
+    "code": "BY",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 52.5,
+      "vulnerability": 33.1,
+      "gdp_ave": 4.47,
+      "total_score": 41.3,
+      "rank": 47
+    }
+  },
+  {
+    "id": 18,
+    "name": "Belgium",
+    "code": "BE",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 59.6,
+      "vulnerability": 32.1,
+      "gdp_ave": 35.3,
+      "total_score": 54.3,
+      "rank": 24
+    }
+  },
+  {
+    "id": 19,
+    "name": "Belize",
+    "code": "BZ",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 33,
+      "vulnerability": 45.1,
+      "gdp_ave": 1.69,
+      "total_score": 29.8,
+      "rank": 98
+    }
+  },
+  {
+    "id": 20,
+    "name": "Benin",
+    "code": "BJ",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 32.9,
+      "vulnerability": 57.7,
+      "gdp_ave": 0.89,
+      "total_score": 25.4,
+      "rank": 119
+    }
+  },
+  {
+    "id": 21,
+    "name": "Bermuda",
+    "code": "BM",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": null
+  },
+  {
+    "id": 22,
+    "name": "Bhutan",
+    "code": "BT",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 48,
+      "vulnerability": 52.8,
+      "gdp_ave": 1.23,
+      "total_score": 32.1,
+      "rank": 90
+    }
+  },
+  {
+    "id": 23,
+    "name": "Bolivia",
+    "code": "BO",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 28.3,
+      "vulnerability": 46.8,
+      "gdp_ave": 2.33,
+      "total_score": 27.9,
+      "rank": 105
+    }
+  },
+  {
+    "id": 24,
+    "name": "Bonaire; St. Eustatius and Saba",
+    "code": "BQ",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 25,
+    "name": "Bosnia and Herzegovina",
+    "code": "BA",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 36.9,
+      "vulnerability": 36.4,
+      "gdp_ave": 3.09,
+      "total_score": 34.5,
+      "rank": 80
+    }
+  },
+  {
+    "id": 26,
+    "name": "Botswana",
+    "code": "BW",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 42.9,
+      "vulnerability": 45,
+      "gdp_ave": 3.09,
+      "total_score": 33.7,
+      "rank": 83
+    }
+  },
+  {
+    "id": 27,
+    "name": "Brazil",
+    "code": "BR",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 34.9,
+      "vulnerability": 38.1,
+      "gdp_ave": 46.92,
+      "total_score": 47.9,
+      "rank": 29
+    }
+  },
+  {
+    "id": 28,
+    "name": "Brunei",
+    "code": "BN",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 51.7,
+      "vulnerability": 35.8,
+      "gdp_ave": 12.08,
+      "total_score": 42.7,
+      "rank": 43
+    }
+  },
+  {
+    "id": 29,
+    "name": "Bulgaria",
+    "code": "BG",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 46.9,
+      "vulnerability": 33.8,
+      "gdp_ave": 6.35,
+      "total_score": 39.8,
+      "rank": 53
+    }
+  },
+  {
+    "id": 30,
+    "name": "Burkina Faso",
+    "code": "BF",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 29.7,
+      "vulnerability": 54.4,
+      "gdp_ave": 0.78,
+      "total_score": 25.3,
+      "rank": 120
+    }
+  },
+  {
+    "id": 31,
+    "name": "Burundi",
+    "code": "BI",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 26.8,
+      "vulnerability": 55.9,
+      "gdp_ave": 0.05,
+      "total_score": 23.7,
+      "rank": 127
+    }
+  },
+  {
+    "id": 32,
+    "name": "Cambodia",
+    "code": "KH",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 28.9,
+      "vulnerability": 52.2,
+      "gdp_ave": 1.31,
+      "total_score": 26,
+      "rank": 116
+    }
+  },
+  {
+    "id": 33,
+    "name": "Cameroon",
+    "code": "CM",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 25.7,
+      "vulnerability": 47.2,
+      "gdp_ave": 1.77,
+      "total_score": 26.8,
+      "rank": 111
+    }
+  },
+  {
+    "id": 34,
+    "name": "Canada",
+    "code": "CA",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 65.5,
+      "vulnerability": 29.2,
+      "gdp_ave": 68.59,
+      "total_score": 68.3,
+      "rank": 5
+    }
+  },
+  {
+    "id": 35,
+    "name": "Cape Verde Islands",
+    "code": "CV",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 43.9,
+      "vulnerability": 42.3,
+      "gdp_ave": 1.23,
+      "total_score": 34.3,
+      "rank": 81
+    }
+  },
+  {
+    "id": 36,
+    "name": "Cayman Islands",
+    "code": "KY",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 37,
+    "name": "Central African Republic",
+    "code": "CF",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 14,
+      "vulnerability": 56.1,
+      "gdp_ave": 0.14,
+      "total_score": 19.3,
+      "rank": 135
+    }
+  },
+  {
+    "id": 38,
+    "name": "Chad",
+    "code": "TD",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 19,
+      "vulnerability": 62.2,
+      "gdp_ave": 0.47,
+      "total_score": 19.1,
+      "rank": 136
+    }
+  },
+  {
+    "id": 39,
+    "name": "Chile",
+    "code": "CL",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 54.6,
+      "vulnerability": 31.7,
+      "gdp_ave": 13.3,
+      "total_score": 45.4,
+      "rank": 36
+    }
+  },
+  {
+    "id": 40,
+    "name": "China",
+    "code": "CN",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 53.2,
+      "vulnerability": 38.8,
+      "gdp_ave": 54.4,
+      "total_score": 56.3,
+      "rank": 22
+    }
+  },
+  {
+    "id": 41,
+    "name": "Colombia",
+    "code": "CO",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 37.7,
+      "vulnerability": 40.9,
+      "gdp_ave": 10.45,
+      "total_score": 35.8,
+      "rank": 74
+    }
+  },
+  {
+    "id": 42,
+    "name": "Comoro Islands",
+    "code": "KM",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 28.9,
+      "vulnerability": 52.5,
+      "gdp_ave": 0.51,
+      "total_score": 25.6,
+      "rank": 118
+    }
+  },
+  {
+    "id": 43,
+    "name": "Congo (Rep.)",
+    "code": "CG",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 22.4,
+      "vulnerability": 51.2,
+      "gdp_ave": 0.97,
+      "total_score": 24,
+      "rank": 125
+    }
+  },
+  {
+    "id": 44,
+    "name": "Congo (Dem. Rep.)",
+    "code": "CD",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 23.7,
+      "vulnerability": 59.2,
+      "gdp_ave": 1.58,
+      "total_score": 22,
+      "rank": 132
+    }
+  },
+  {
+    "id": 45,
+    "name": "Cook Islands",
+    "code": "CK",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 46,
+    "name": "Costa Rica",
+    "code": "CR",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 45.9,
+      "vulnerability": 36,
+      "gdp_ave": 6.99,
+      "total_score": 39,
+      "rank": 57
+    }
+  },
+  {
+    "id": 47,
+    "name": "Cote d'Ivoire",
+    "code": "CI",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 30.3,
+      "vulnerability": 50.9,
+      "gdp_ave": 2.74,
+      "total_score": 27.4,
+      "rank": 108
+    }
+  },
+  {
+    "id": 48,
+    "name": "Croatia",
+    "code": "HR",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 49.9,
+      "vulnerability": 36.6,
+      "gdp_ave": 7.71,
+      "total_score": 40.3,
+      "rank": 50
+    }
+  },
+  {
+    "id": 49,
+    "name": "Cuba",
+    "code": "CU",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 34.3,
+      "vulnerability": 42.1,
+      "gdp_ave": 7.23,
+      "total_score": 33.1,
+      "rank": 86
+    }
+  },
+  {
+    "id": 50,
+    "name": "Curacao",
+    "code": "CW",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 51,
+    "name": "Cyprus",
+    "code": "CY",
+    "region_id": 5,
+    "is_program": 1,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 52.2,
+      "vulnerability": 34.7,
+      "gdp_ave": 12.5,
+      "total_score": 43.3,
+      "rank": 40
+    }
+  },
+  {
+    "id": 52,
+    "name": "Czechia",
+    "code": "CZ",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 56.1,
+      "vulnerability": 29.5,
+      "gdp_ave": 17.26,
+      "total_score": 48,
+      "rank": 28
+    }
+  },
+  {
+    "id": 53,
+    "name": "Denmark",
+    "code": "DK",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 77.1,
+      "vulnerability": 34,
+      "gdp_ave": 37.11,
+      "total_score": 60.1,
+      "rank": 15
+    }
+  },
+  {
+    "id": 54,
+    "name": "Djibouti",
+    "code": "DJ",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 32.9,
+      "vulnerability": 47.8,
+      "gdp_ave": 1.44,
+      "total_score": 28.9,
+      "rank": 101
+    }
+  },
+  {
+    "id": 55,
+    "name": "Dominica",
+    "code": "DM",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 51.5,
+      "vulnerability": 41.7,
+      "gdp_ave": 2.92,
+      "total_score": 37.6,
+      "rank": 65
+    }
+  },
+  {
+    "id": 56,
+    "name": "Dominican Republic",
+    "code": "DO",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 35.2,
+      "vulnerability": 42.3,
+      "gdp_ave": 5.41,
+      "total_score": 32.8,
+      "rank": 87
+    }
+  },
+  {
+    "id": 57,
+    "name": "Ecuador",
+    "code": "EC",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 33.7,
+      "vulnerability": 43.9,
+      "gdp_ave": 5.3,
+      "total_score": 31.7,
+      "rank": 91
+    }
+  },
+  {
+    "id": 58,
+    "name": "Egypt",
+    "code": "EG",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 34,
+      "vulnerability": 43.9,
+      "gdp_ave": 12.56,
+      "total_score": 34.2,
+      "rank": 82
+    }
+  },
+  {
+    "id": 59,
+    "name": "El Salvador",
+    "code": "SV",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 34.5,
+      "vulnerability": 44.2,
+      "gdp_ave": 2.25,
+      "total_score": 30.9,
+      "rank": 94
+    }
+  },
+  {
+    "id": 60,
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 23.7,
+      "vulnerability": 44.4,
+      "gdp_ave": 3.25,
+      "total_score": 27.5,
+      "rank": 107
+    }
+  },
+  {
+    "id": 61,
+    "name": "Eritrea",
+    "code": "ER",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 21,
+      "vulnerability": 58.7,
+      "gdp_ave": 0.2,
+      "total_score": 20.8,
+      "rank": 134
+    }
+  },
+  {
+    "id": 62,
+    "name": "Estonia",
+    "code": "EE",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 62.2,
+      "vulnerability": 34.1,
+      "gdp_ave": 10.74,
+      "total_score": 46.3,
+      "rank": 33
+    }
+  },
+  {
+    "id": 63,
+    "name": "Ethiopia",
+    "code": "ET",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 31.6,
+      "vulnerability": 55.8,
+      "gdp_ave": 3.55,
+      "total_score": 26.4,
+      "rank": 113
+    }
+  },
+  {
+    "id": 64,
+    "name": "Falkland Islands",
+    "code": "FK",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": null
+  },
+  {
+    "id": 65,
+    "name": "Fiji",
+    "code": "FJ",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 43.9,
+      "vulnerability": 42.2,
+      "gdp_ave": 2.18,
+      "total_score": 34.6,
+      "rank": 79
+    }
+  },
+  {
+    "id": 66,
+    "name": "Finland",
+    "code": "FI",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 74.8,
+      "vulnerability": 28.2,
+      "gdp_ave": 29.14,
+      "total_score": 58.6,
+      "rank": 20
+    }
+  },
+  {
+    "id": 67,
+    "name": "France",
+    "code": "FR",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 66.7,
+      "vulnerability": 29,
+      "gdp_ave": 66.75,
+      "total_score": 68.2,
+      "rank": 6
+    }
+  },
+  {
+    "id": 68,
+    "name": "French Guiana",
+    "code": "GF",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": null
+  },
+  {
+    "id": 69,
+    "name": "French Polynesia",
+    "code": "PF",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 70,
+    "name": "French West Indies",
+    "code": "FW",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 71,
+    "name": "Gabon",
+    "code": "GA",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 28.1,
+      "vulnerability": 41.8,
+      "gdp_ave": 3.3,
+      "total_score": 29.9,
+      "rank": 97
+    }
+  },
+  {
+    "id": 72,
+    "name": "The Gambia",
+    "code": "GM",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 31.4,
+      "vulnerability": 53,
+      "gdp_ave": 0.25,
+      "total_score": 26.2,
+      "rank": 115
+    }
+  },
+  {
+    "id": 73,
+    "name": "Georgia",
+    "code": "GE",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 56.8,
+      "vulnerability": 38.8,
+      "gdp_ave": 2.19,
+      "total_score": 40.1,
+      "rank": 51
+    }
+  },
+  {
+    "id": 74,
+    "name": "Germany",
+    "code": "DE",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 69.5,
+      "vulnerability": 28.4,
+      "gdp_ave": 69.85,
+      "total_score": 70.3,
+      "rank": 2
+    }
+  },
+  {
+    "id": 75,
+    "name": "Ghana",
+    "code": "GH",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 35.3,
+      "vulnerability": 45.5,
+      "gdp_ave": 2.9,
+      "total_score": 30.9,
+      "rank": 94
+    }
+  },
+  {
+    "id": 76,
+    "name": "Gibraltar",
+    "code": "GI",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 77,
+    "name": "Greece",
+    "code": "GR",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 52.5,
+      "vulnerability": 31.9,
+      "gdp_ave": 13.24,
+      "total_score": 44.6,
+      "rank": 37
+    }
+  },
+  {
+    "id": 78,
+    "name": "Grenada",
+    "code": "GD",
+    "region_id": 4,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 52.3,
+      "vulnerability": 37.4,
+      "gdp_ave": 3.9,
+      "total_score": 39.6,
+      "rank": 54
+    }
+  },
+  {
+    "id": 79,
+    "name": "Guam",
+    "code": "GU",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 80,
+    "name": "Guatemala",
+    "code": "GT",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 31.9,
+      "vulnerability": 44.9,
+      "gdp_ave": 4.22,
+      "total_score": 30.4,
+      "rank": 96
+    }
+  },
+  {
+    "id": 81,
+    "name": "Guinea",
+    "code": "GN",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 31.6,
+      "vulnerability": 53,
+      "gdp_ave": 0.85,
+      "total_score": 26.5,
+      "rank": 112
+    }
+  },
+  {
+    "id": 82,
+    "name": "Guinea-Bissau",
+    "code": "GW",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 26.8,
+      "vulnerability": 62.9,
+      "gdp_ave": 0.22,
+      "total_score": 21.4,
+      "rank": 133
+    }
+  },
+  {
+    "id": 83,
+    "name": "Guyana",
+    "code": "GY",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 31.4,
+      "vulnerability": 45.2,
+      "gdp_ave": 3.03,
+      "total_score": 29.7,
+      "rank": 99
+    }
+  },
+  {
+    "id": 84,
+    "name": "Haiti",
+    "code": "HT",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 23.8,
+      "vulnerability": 53,
+      "gdp_ave": 0.85,
+      "total_score": 23.9,
+      "rank": 126
+    }
+  },
+  {
+    "id": 85,
+    "name": "Honduras",
+    "code": "HN",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 26.9,
+      "vulnerability": 46.1,
+      "gdp_ave": 1.6099999999999999,
+      "total_score": 27.5,
+      "rank": 107
+    }
+  },
+  {
+    "id": 86,
+    "name": "Hong Kong (SAR China)",
+    "code": "HK",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 87,
+    "name": "Hungary",
+    "code": "HU",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 49.9,
+      "vulnerability": 35.1,
+      "gdp_ave": 11.52,
+      "total_score": 42.1,
+      "rank": 46
+    }
+  },
+  {
+    "id": 88,
+    "name": "Iceland",
+    "code": "IS",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 72.6,
+      "vulnerability": 31.4,
+      "gdp_ave": 26.12,
+      "total_score": 55.8,
+      "rank": 23
+    }
+  },
+  {
+    "id": 89,
+    "name": "India",
+    "code": "IN",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 36.3,
+      "vulnerability": 50.3,
+      "gdp_ave": 50.73,
+      "total_score": 45.6,
+      "rank": 35
+    }
+  },
+  {
+    "id": 90,
+    "name": "Indonesia",
+    "code": "ID",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 38.1,
+      "vulnerability": 44.6,
+      "gdp_ave": 33.86,
+      "total_score": 42.4,
+      "rank": 45
+    }
+  },
+  {
+    "id": 91,
+    "name": "Iran",
+    "code": "IR",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 39.7,
+      "vulnerability": 38.9,
+      "gdp_ave": 7.12,
+      "total_score": 36,
+      "rank": 72
+    }
+  },
+  {
+    "id": 92,
+    "name": "Iraq",
+    "code": "IQ",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 30.7,
+      "vulnerability": 43.6,
+      "gdp_ave": 6.74,
+      "total_score": 31.3,
+      "rank": 93
+    }
+  },
+  {
+    "id": 93,
+    "name": "Ireland",
+    "code": "IE",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 60,
+      "vulnerability": 31.5,
+      "gdp_ave": 49.69,
+      "total_score": 59.4,
+      "rank": 17
+    }
+  },
+  {
+    "id": 94,
+    "name": "Israel",
+    "code": "IL",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 53.1,
+      "vulnerability": 31.5,
+      "gdp_ave": 31.37,
+      "total_score": 51,
+      "rank": 25
+    }
+  },
+  {
+    "id": 95,
+    "name": "Italy",
+    "code": "IT",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 52.4,
+      "vulnerability": 31.4,
+      "gdp_ave": 63.59,
+      "total_score": 61.5,
+      "rank": 13
+    }
+  },
+  {
+    "id": 96,
+    "name": "Jamaica",
+    "code": "JM",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 39.5,
+      "vulnerability": 42.4,
+      "gdp_ave": 2.3,
+      "total_score": 33.1,
+      "rank": 86
+    }
+  },
+  {
+    "id": 97,
+    "name": "Japan",
+    "code": "JP",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 71.8,
+      "vulnerability": 36.1,
+      "gdp_ave": 67.26,
+      "total_score": 67.7,
+      "rank": 7
+    }
+  },
+  {
+    "id": 98,
+    "name": "Jordan",
+    "code": "JO",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 40.2,
+      "vulnerability": 37.5,
+      "gdp_ave": 3.04,
+      "total_score": 35.2,
+      "rank": 77
+    }
+  },
+  {
+    "id": 99,
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 51.6,
+      "vulnerability": 34.2,
+      "gdp_ave": 9.02,
+      "total_score": 42.1,
+      "rank": 46
+    }
+  },
+  {
+    "id": 100,
+    "name": "Kenya",
+    "code": "KE",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 30,
+      "vulnerability": 51.8,
+      "gdp_ave": 3.76,
+      "total_score": 27.3,
+      "rank": 109
+    }
+  },
+  {
+    "id": 101,
+    "name": "Kiribati",
+    "code": "KI",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 102,
+    "name": "Kosovo",
+    "code": "XK",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 103,
+    "name": "Kuwait",
+    "code": "KW",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 42.8,
+      "vulnerability": 37,
+      "gdp_ave": 13.81,
+      "total_score": 39.9,
+      "rank": 52
+    }
+  },
+  {
+    "id": 104,
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 39.2,
+      "vulnerability": 34.2,
+      "gdp_ave": 0.6,
+      "total_score": 35.2,
+      "rank": 77
+    }
+  },
+  {
+    "id": 105,
+    "name": "Laos",
+    "code": "LA",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 32.5,
+      "vulnerability": 51.4,
+      "gdp_ave": 1.58,
+      "total_score": 27.5,
+      "rank": 107
+    }
+  },
+  {
+    "id": 106,
+    "name": "Latvia",
+    "code": "LV",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 57.9,
+      "vulnerability": 37.9,
+      "gdp_ave": 8.54,
+      "total_score": 42.8,
+      "rank": 42
+    }
+  },
+  {
+    "id": 107,
+    "name": "Lebanon",
+    "code": "LB",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 29.8,
+      "vulnerability": 41.2,
+      "gdp_ave": 2.84,
+      "total_score": 30.5,
+      "rank": 95
+    }
+  },
+  {
+    "id": 108,
+    "name": "Lesotho",
+    "code": "LS",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 30.9,
+      "vulnerability": 45.9,
+      "gdp_ave": 0.29,
+      "total_score": 28.5,
+      "rank": 103
+    }
+  },
+  {
+    "id": 109,
+    "name": "Liberia",
+    "code": "LR",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 28,
+      "vulnerability": 60.5,
+      "gdp_ave": 0.23,
+      "total_score": 22.6,
+      "rank": 130
+    }
+  },
+  {
+    "id": 110,
+    "name": "Libya",
+    "code": "LY",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 28,
+      "vulnerability": 41.9,
+      "gdp_ave": 2.23,
+      "total_score": 29.4,
+      "rank": 100
+    }
+  },
+  {
+    "id": 111,
+    "name": "Lithuania",
+    "code": "LT",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 59.5,
+      "vulnerability": 36.2,
+      "gdp_ave": 10.32,
+      "total_score": 44.6,
+      "rank": 37
+    }
+  },
+  {
+    "id": 112,
+    "name": "Luxembourg",
+    "code": "LU",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 66.6,
+      "vulnerability": 28.9,
+      "gdp_ave": 52.2,
+      "total_score": 63.3,
+      "rank": 11
+    }
+  },
+  {
+    "id": 113,
+    "name": "Macao (SAR China)",
+    "code": "MO",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 114,
+    "name": "North Macedonia",
+    "code": "MK",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 46.6,
+      "vulnerability": 35.9,
+      "gdp_ave": 2.79,
+      "total_score": 37.9,
+      "rank": 62
+    }
+  },
+  {
+    "id": 115,
+    "name": "Madagascar",
+    "code": "MG",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 26.5,
+      "vulnerability": 54.6,
+      "gdp_ave": 0.46,
+      "total_score": 24.1,
+      "rank": 124
+    }
+  },
+  {
+    "id": 116,
+    "name": "Malawi",
+    "code": "MW",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 28.2,
+      "vulnerability": 54.8,
+      "gdp_ave": 0.51,
+      "total_score": 24.6,
+      "rank": 122
+    }
+  },
+  {
+    "id": 117,
+    "name": "Malaysia",
+    "code": "MY",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 51,
+      "vulnerability": 36.8,
+      "gdp_ave": 14.65,
+      "total_score": 43,
+      "rank": 41
+    }
+  },
+  {
+    "id": 118,
+    "name": "Maldives",
+    "code": "MV",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 43.4,
+      "vulnerability": 49.3,
+      "gdp_ave": 2.96,
+      "total_score": 32.3,
+      "rank": 89
+    }
+  },
+  {
+    "id": 119,
+    "name": "Mali",
+    "code": "ML",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 29.8,
+      "vulnerability": 59.8,
+      "gdp_ave": 0.77,
+      "total_score": 23.6,
+      "rank": 128
+    }
+  },
+  {
+    "id": 120,
+    "name": "Malta",
+    "code": "MT",
+    "region_id": 5,
+    "is_program": 1,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 50.2,
+      "vulnerability": 31.9,
+      "gdp_ave": 12.35,
+      "total_score": 43.5,
+      "rank": 39
+    }
+  },
+  {
+    "id": 121,
+    "name": "Marshall Islands",
+    "code": "MH",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 122,
+    "name": "Mauritania",
+    "code": "MR",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 35.9,
+      "vulnerability": 55.8,
+      "gdp_ave": 0.84,
+      "total_score": 27,
+      "rank": 110
+    }
+  },
+  {
+    "id": 123,
+    "name": "Mauritius",
+    "code": "MU",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 55.4,
+      "vulnerability": 42.1,
+      "gdp_ave": 3.92,
+      "total_score": 39.1,
+      "rank": 56
+    }
+  },
+  {
+    "id": 124,
+    "name": "Mayotte",
+    "code": "YT",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": null
+  },
+  {
+    "id": 125,
+    "name": "Mexico",
+    "code": "MX",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 37.3,
+      "vulnerability": 40.4,
+      "gdp_ave": 36.26,
+      "total_score": 44.4,
+      "rank": 38
+    }
+  },
+  {
+    "id": 126,
+    "name": "Micronesia",
+    "code": "FM",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 35.3,
+      "vulnerability": 57.9,
+      "gdp_ave": 1.44,
+      "total_score": 26.3,
+      "rank": 114
+    }
+  },
+  {
+    "id": 127,
+    "name": "Moldova",
+    "code": "MD",
+    "region_id": 5,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 42.7,
+      "vulnerability": 41.4,
+      "gdp_ave": 2.19,
+      "total_score": 34.5,
+      "rank": 80
+    }
+  },
+  {
+    "id": 128,
+    "name": "Mongolia",
+    "code": "MN",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 46.3,
+      "vulnerability": 39,
+      "gdp_ave": 2.02,
+      "total_score": 36.4,
+      "rank": 68
+    }
+  },
+  {
+    "id": 129,
+    "name": "Montenegro",
+    "code": "ME",
+    "region_id": 5,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 47.8,
+      "vulnerability": 35.3,
+      "gdp_ave": 3.32,
+      "total_score": 38.6,
+      "rank": 59
+    }
+  },
+  {
+    "id": 130,
+    "name": "Montserrat",
+    "code": "MS",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 131,
+    "name": "Morocco",
+    "code": "MA",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 42.1,
+      "vulnerability": 37.7,
+      "gdp_ave": 4.68,
+      "total_score": 36.3,
+      "rank": 69
+    }
+  },
+  {
+    "id": 132,
+    "name": "Mozambique",
+    "code": "MZ",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 27.5,
+      "vulnerability": 51.3,
+      "gdp_ave": 0.48,
+      "total_score": 25.6,
+      "rank": 118
+    }
+  },
+  {
+    "id": 133,
+    "name": "Myanmar",
+    "code": "MM",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 27.1,
+      "vulnerability": 53.7,
+      "gdp_ave": 2.93,
+      "total_score": 25.4,
+      "rank": 119
+    }
+  },
+  {
+    "id": 134,
+    "name": "Namibia",
+    "code": "NA",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 37.8,
+      "vulnerability": 47,
+      "gdp_ave": 1.99,
+      "total_score": 30.9,
+      "rank": 94
+    }
+  },
+  {
+    "id": 135,
+    "name": "Nauru",
+    "code": "NR",
+    "region_id": 8,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 136,
+    "name": "Nepal",
+    "code": "NP",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 35,
+      "vulnerability": 51,
+      "gdp_ave": 1.3900000000000001,
+      "total_score": 28.5,
+      "rank": 103
+    }
+  },
+  {
+    "id": 137,
+    "name": "Netherlands",
+    "code": "NL",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 69.2,
+      "vulnerability": 33.8,
+      "gdp_ave": 50.4,
+      "total_score": 61.9,
+      "rank": 12
+    }
+  },
+  {
+    "id": 138,
+    "name": "New Caledonia",
+    "code": "NC",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 139,
+    "name": "New Zealand",
+    "code": "NZ",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 71.2,
+      "vulnerability": 28,
+      "gdp_ave": 24.19,
+      "total_score": 55.8,
+      "rank": 23
+    }
+  },
+  {
+    "id": 140,
+    "name": "Nicaragua",
+    "code": "NI",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 27,
+      "vulnerability": 44.5,
+      "gdp_ave": 1.07,
+      "total_score": 27.9,
+      "rank": 105
+    }
+  },
+  {
+    "id": 141,
+    "name": "Niger",
+    "code": "NE",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 33.8,
+      "vulnerability": 67.7,
+      "gdp_ave": 0.52,
+      "total_score": 22.2,
+      "rank": 131
+    }
+  },
+  {
+    "id": 142,
+    "name": "Nigeria",
+    "code": "NG",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 23.4,
+      "vulnerability": 49.3,
+      "gdp_ave": 13.97,
+      "total_score": 29.4,
+      "rank": 100
+    }
+  },
+  {
+    "id": 143,
+    "name": "North Korea",
+    "code": "KP",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 144,
+    "name": "Niue",
+    "code": "NU",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 145,
+    "name": "Northern Mariana Islands",
+    "code": "MP",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 146,
+    "name": "Norway",
+    "code": "NO",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 77.3,
+      "vulnerability": 24.9,
+      "gdp_ave": 40,
+      "total_score": 64.1,
+      "rank": 10
+    }
+  },
+  {
+    "id": 147,
+    "name": "Oman",
+    "code": "OM",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 50.6,
+      "vulnerability": 40.3,
+      "gdp_ave": 8.37,
+      "total_score": 39.6,
+      "rank": 54
+    }
+  },
+  {
+    "id": 148,
+    "name": "Pakistan",
+    "code": "PK",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 28.5,
+      "vulnerability": 51.8,
+      "gdp_ave": 8.39,
+      "total_score": 28.4,
+      "rank": 104
+    }
+  },
+  {
+    "id": 149,
+    "name": "Palau Islands",
+    "code": "PW",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 150,
+    "name": "Panama",
+    "code": "PA",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 38.9,
+      "vulnerability": 38.7,
+      "gdp_ave": 6.91,
+      "total_score": 35.7,
+      "rank": 75
+    }
+  },
+  {
+    "id": 151,
+    "name": "Papua New Guinea",
+    "code": "PG",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 27.9,
+      "vulnerability": 52.4,
+      "gdp_ave": 1.8,
+      "total_score": 25.8,
+      "rank": 117
+    }
+  },
+  {
+    "id": 152,
+    "name": "Paraguay",
+    "code": "PY",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 36.2,
+      "vulnerability": 39.7,
+      "gdp_ave": 3.11,
+      "total_score": 33.2,
+      "rank": 85
+    }
+  },
+  {
+    "id": 153,
+    "name": "Peru",
+    "code": "PE",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 41.1,
+      "vulnerability": 43.8,
+      "gdp_ave": 8.68,
+      "total_score": 35.3,
+      "rank": 76
+    }
+  },
+  {
+    "id": 154,
+    "name": "Philippines",
+    "code": "PH",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 33.4,
+      "vulnerability": 46.2,
+      "gdp_ave": 12.32,
+      "total_score": 33.2,
+      "rank": 85
+    }
+  },
+  {
+    "id": 155,
+    "name": "Poland",
+    "code": "PL",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 54.7,
+      "vulnerability": 31.7,
+      "gdp_ave": 24.87,
+      "total_score": 49.3,
+      "rank": 27
+    }
+  },
+  {
+    "id": 156,
+    "name": "Portugal",
+    "code": "PT",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 58.3,
+      "vulnerability": 31.9,
+      "gdp_ave": 16.42,
+      "total_score": 47.6,
+      "rank": 30
+    }
+  },
+  {
+    "id": 157,
+    "name": "Puerto Rico",
+    "code": "PR",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 158,
+    "name": "Qatar",
+    "code": "QA",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 50.9,
+      "vulnerability": 36,
+      "gdp_ave": 25.92,
+      "total_score": 46.9,
+      "rank": 32
+    }
+  },
+  {
+    "id": 159,
+    "name": "Reunion",
+    "code": "RE",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": null
+  },
+  {
+    "id": 160,
+    "name": "Romania",
+    "code": "RO",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 42.5,
+      "vulnerability": 39.2,
+      "gdp_ave": 13.03,
+      "total_score": 38.8,
+      "rank": 58
+    }
+  },
+  {
+    "id": 161,
+    "name": "Russian Federation",
+    "code": "RU",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 54.9,
+      "vulnerability": 33.1,
+      "gdp_ave": 49.54,
+      "total_score": 57.1,
+      "rank": 21
+    }
+  },
+  {
+    "id": 162,
+    "name": "Rwanda",
+    "code": "RW",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 41.5,
+      "vulnerability": 56.6,
+      "gdp_ave": 0.52,
+      "total_score": 28.5,
+      "rank": 103
+    }
+  },
+  {
+    "id": 163,
+    "name": "Samoa",
+    "code": "WS",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 43.5,
+      "vulnerability": 47.9,
+      "gdp_ave": 1.65,
+      "total_score": 32.4,
+      "rank": 88
+    }
+  },
+  {
+    "id": 164,
+    "name": "American Samoa",
+    "code": "AS",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 165,
+    "name": "Sao Tome and Principe",
+    "code": "ST",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 36.2,
+      "vulnerability": 51.4,
+      "gdp_ave": 0.83,
+      "total_score": 28.6,
+      "rank": 102
+    }
+  },
+  {
+    "id": 166,
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 50.8,
+      "vulnerability": 38.9,
+      "gdp_ave": 29.93,
+      "total_score": 47.3,
+      "rank": 31
+    }
+  },
+  {
+    "id": 167,
+    "name": "Senegal",
+    "code": "SN",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 34.8,
+      "vulnerability": 52.7,
+      "gdp_ave": 1.25,
+      "total_score": 27.8,
+      "rank": 106
+    }
+  },
+  {
+    "id": 168,
+    "name": "Serbia",
+    "code": "RS",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 45,
+      "vulnerability": 41.8,
+      "gdp_ave": 4.82,
+      "total_score": 36,
+      "rank": 72
+    }
+  },
+  {
+    "id": 169,
+    "name": "Seychelles",
+    "code": "SC",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 46.4,
+      "vulnerability": 43,
+      "gdp_ave": 4.55,
+      "total_score": 36,
+      "rank": 72
+    }
+  },
+  {
+    "id": 170,
+    "name": "Sierra Leone",
+    "code": "SL",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 31.8,
+      "vulnerability": 56.3,
+      "gdp_ave": 0.2,
+      "total_score": 25.2,
+      "rank": 121
+    }
+  },
+  {
+    "id": 171,
+    "name": "Singapore",
+    "code": "SG",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 80.5,
+      "vulnerability": 38.1,
+      "gdp_ave": 36.07,
+      "total_score": 59.5,
+      "rank": 16
+    }
+  },
+  {
+    "id": 172,
+    "name": "Slovakia",
+    "code": "SK",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 51.4,
+      "vulnerability": 35.2,
+      "gdp_ave": 11.39,
+      "total_score": 42.5,
+      "rank": 44
+    }
+  },
+  {
+    "id": 173,
+    "name": "Slovenia",
+    "code": "SI",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 61.1,
+      "vulnerability": 29.5,
+      "gdp_ave": 12.52,
+      "total_score": 48,
+      "rank": 28
+    }
+  },
+  {
+    "id": 174,
+    "name": "Solomon Islands",
+    "code": "SB",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 41.3,
+      "vulnerability": 56.4,
+      "gdp_ave": 0.88,
+      "total_score": 28.6,
+      "rank": 102
+    }
+  },
+  {
+    "id": 175,
+    "name": "Somalia",
+    "code": "SO",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 35.5,
+      "vulnerability": 67.6,
+      "gdp_ave": 0.26,
+      "total_score": 22.7,
+      "rank": 129
+    }
+  },
+  {
+    "id": 176,
+    "name": "South Africa",
+    "code": "ZA",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 36.6,
+      "vulnerability": 40.6,
+      "gdp_ave": 12.55,
+      "total_score": 36.2,
+      "rank": 70
+    }
+  },
+  {
+    "id": 177,
+    "name": "South Korea",
+    "code": "KR",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 72.8,
+      "vulnerability": 36.6,
+      "gdp_ave": 63.55,
+      "total_score": 66.6,
+      "rank": 9
+    }
+  },
+  {
+    "id": 178,
+    "name": "South Sudan",
+    "code": "SS",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": null
+  },
+  {
+    "id": 179,
+    "name": "Spain",
+    "code": "ES",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 54.1,
+      "vulnerability": 28.7,
+      "gdp_ave": 50.69,
+      "total_score": 58.7,
+      "rank": 19
+    }
+  },
+  {
+    "id": 180,
+    "name": "Sri Lanka",
+    "code": "LK",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 39.8,
+      "vulnerability": 47,
+      "gdp_ave": 3.91,
+      "total_score": 32.3,
+      "rank": 89
+    }
+  },
+  {
+    "id": 181,
+    "name": "St. Helena",
+    "code": "SH",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": null
+  },
+  {
+    "id": 182,
+    "name": "St. Kitts and Nevis",
+    "code": "KN",
+    "region_id": 4,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 56.9,
+      "vulnerability": 42.4,
+      "gdp_ave": 7.86,
+      "total_score": 40.8,
+      "rank": 49
+    }
+  },
+  {
+    "id": 183,
+    "name": "St. Lucia",
+    "code": "LC",
+    "region_id": 4,
+    "is_program": 1,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 44.7,
+      "vulnerability": 35,
+      "gdp_ave": 3.71,
+      "total_score": 37.8,
+      "rank": 63
+    }
+  },
+  {
+    "id": 184,
+    "name": "St. Maarten",
+    "code": "MF",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 185,
+    "name": "St. Vincent and the Grenadines",
+    "code": "VC",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 186,
+    "name": "Sudan",
+    "code": "SD",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 26.9,
+      "vulnerability": 61.5,
+      "gdp_ave": 0.72,
+      "total_score": 22,
+      "rank": 132
+    }
+  },
+  {
+    "id": 187,
+    "name": "Suriname",
+    "code": "SR",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 32.9,
+      "vulnerability": 38,
+      "gdp_ave": 2.07,
+      "total_score": 32.3,
+      "rank": 89
+    }
+  },
+  {
+    "id": 188,
+    "name": "eSwatini",
+    "code": "SZ",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 30.8,
+      "vulnerability": 51.2,
+      "gdp_ave": 1.46,
+      "total_score": 27,
+      "rank": 110
+    }
+  },
+  {
+    "id": 189,
+    "name": "Sweden",
+    "code": "SE",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 72.9,
+      "vulnerability": 28.5,
+      "gdp_ave": 38.97,
+      "total_score": 61.1,
+      "rank": 14
+    }
+  },
+  {
+    "id": 190,
+    "name": "Switzerland",
+    "code": "CH",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 69.9,
+      "vulnerability": 25,
+      "gdp_ave": 60.45,
+      "total_score": 68.4,
+      "rank": 4
+    }
+  },
+  {
+    "id": 191,
+    "name": "Syria",
+    "code": "SY",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 23,
+      "vulnerability": 46.1,
+      "gdp_ave": 1.13,
+      "total_score": 26,
+      "rank": 116
+    }
+  },
+  {
+    "id": 192,
+    "name": "Taiwan (Chinese Taipei)",
+    "code": "TW",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 193,
+    "name": "Tajikistan",
+    "code": "TJ",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 32.8,
+      "vulnerability": 39,
+      "gdp_ave": 0.48,
+      "total_score": 31.4,
+      "rank": 92
+    }
+  },
+  {
+    "id": 194,
+    "name": "Tanzania",
+    "code": "TZ",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 30.1,
+      "vulnerability": 52,
+      "gdp_ave": 2.23,
+      "total_score": 26.8,
+      "rank": 111
+    }
+  },
+  {
+    "id": 195,
+    "name": "Thailand",
+    "code": "TH",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 47.6,
+      "vulnerability": 41.9,
+      "gdp_ave": 18.28,
+      "total_score": 41.3,
+      "rank": 47
+    }
+  },
+  {
+    "id": 196,
+    "name": "Timor-Leste",
+    "code": "TL",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 38.5,
+      "vulnerability": 49.9,
+      "gdp_ave": 0.54,
+      "total_score": 29.7,
+      "rank": 99
+    }
+  },
+  {
+    "id": 197,
+    "name": "Togo",
+    "code": "TG",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 32.6,
+      "vulnerability": 50.5,
+      "gdp_ave": 0.49,
+      "total_score": 27.5,
+      "rank": 107
+    }
+  },
+  {
+    "id": 198,
+    "name": "Tonga",
+    "code": "TO",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 40.2,
+      "vulnerability": 56.7,
+      "gdp_ave": 1.8900000000000001,
+      "total_score": 28.5,
+      "rank": 103
+    }
+  },
+  {
+    "id": 199,
+    "name": "Trinidad and Tobago",
+    "code": "TT",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": {
+      "readiness": 34.2,
+      "vulnerability": 35.7,
+      "gdp_ave": 7.18,
+      "total_score": 35.2,
+      "rank": 77
+    }
+  },
+  {
+    "id": 200,
+    "name": "Tunisia",
+    "code": "TN",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 43.1,
+      "vulnerability": 38.2,
+      "gdp_ave": 2.65,
+      "total_score": 35.9,
+      "rank": 73
+    }
+  },
+  {
+    "id": 201,
+    "name": "Türkiye",
+    "code": "TR",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 47.8,
+      "vulnerability": 34.8,
+      "gdp_ave": 25.54,
+      "total_score": 46.2,
+      "rank": 34
+    }
+  },
+  {
+    "id": 202,
+    "name": "Turkmenistan",
+    "code": "TM",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 24,
+      "vulnerability": 39.5,
+      "gdp_ave": 4.53,
+      "total_score": 29.7,
+      "rank": 99
+    }
+  },
+  {
+    "id": 203,
+    "name": "Turks and Caicos Islands",
+    "code": "TC",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 204,
+    "name": "Tuvalu",
+    "code": "TV",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": null
+  },
+  {
+    "id": 205,
+    "name": "Uganda",
+    "code": "UG",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 29.3,
+      "vulnerability": 58.1,
+      "gdp_ave": 1.3599999999999999,
+      "total_score": 24.2,
+      "rank": 123
+    }
+  },
+  {
+    "id": 206,
+    "name": "Ukraine",
+    "code": "UA",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 42.8,
+      "vulnerability": 36.8,
+      "gdp_ave": 6.22,
+      "total_score": 37.4,
+      "rank": 66
+    }
+  },
+  {
+    "id": 207,
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": {
+      "readiness": 58.2,
+      "vulnerability": 35.7,
+      "gdp_ave": 26.49,
+      "total_score": 49.6,
+      "rank": 26
+    }
+  },
+  {
+    "id": 208,
+    "name": "United Kingdom",
+    "code": "GB",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": {
+      "readiness": 69.2,
+      "vulnerability": 28.7,
+      "gdp_ave": 67.63,
+      "total_score": 69.4,
+      "rank": 3
+    }
+  },
+  {
+    "id": 209,
+    "name": "United States",
+    "code": "US",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 66.4,
+      "vulnerability": 32.1,
+      "gdp_ave": 77.36,
+      "total_score": 70.6,
+      "rank": 1
+    }
+  },
+  {
+    "id": 210,
+    "name": "Uruguay",
+    "code": "UY",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 49.6,
+      "vulnerability": 39.2,
+      "gdp_ave": 8.16,
+      "total_score": 39.5,
+      "rank": 55
+    }
+  },
+  {
+    "id": 211,
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 38.3,
+      "vulnerability": 38,
+      "gdp_ave": 2.45,
+      "total_score": 34.3,
+      "rank": 81
+    }
+  },
+  {
+    "id": 212,
+    "name": "Vanuatu",
+    "code": "VU",
+    "region_id": 8,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 8,
+      "name": "OCEANIA"
+    },
+    "climate": {
+      "readiness": 36.2,
+      "vulnerability": 54.1,
+      "gdp_ave": 1.1400000000000001,
+      "total_score": 27.8,
+      "rank": 106
+    }
+  },
+  {
+    "id": 213,
+    "name": "Venezuela",
+    "code": "VE",
+    "region_id": 3,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 3,
+      "name": "AMERICAS"
+    },
+    "climate": {
+      "readiness": 19.9,
+      "vulnerability": 38.8,
+      "gdp_ave": 21.53,
+      "total_score": 34.2,
+      "rank": 82
+    }
+  },
+  {
+    "id": 214,
+    "name": "Vietnam",
+    "code": "VN",
+    "region_id": 6,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 6,
+      "name": "ASIA"
+    },
+    "climate": {
+      "readiness": 42.1,
+      "vulnerability": 48,
+      "gdp_ave": 9.34,
+      "total_score": 34.5,
+      "rank": 80
+    }
+  },
+  {
+    "id": 215,
+    "name": "British Virgin Islands",
+    "code": "VG",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 216,
+    "name": "US Virgin Islands",
+    "code": "VI",
+    "region_id": 4,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 4,
+      "name": "CARIBBEAN"
+    },
+    "climate": null
+  },
+  {
+    "id": 217,
+    "name": "Yemen",
+    "code": "YE",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": null
+  },
+  {
+    "id": 218,
+    "name": "Zambia",
+    "code": "ZM",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 32.8,
+      "vulnerability": 51.7,
+      "gdp_ave": 0.84,
+      "total_score": 27.3,
+      "rank": 109
+    }
+  },
+  {
+    "id": 219,
+    "name": "Zimbabwe",
+    "code": "ZW",
+    "region_id": 1,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 1,
+      "name": "AFRICA"
+    },
+    "climate": {
+      "readiness": 21.6,
+      "vulnerability": 51.8,
+      "gdp_ave": 0.94,
+      "total_score": 23.6,
+      "rank": 128
+    }
+  },
+  {
+    "id": 220,
+    "name": "Liechtenstein",
+    "code": "LI",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 221,
+    "name": "Monaco",
+    "code": "MC",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 1,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 222,
+    "name": "San Marino",
+    "code": "SM",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 223,
+    "name": "Vatican City",
+    "code": "VA",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 224,
+    "name": "Andorra",
+    "code": "AD",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 225,
+    "name": "Palestinian Territory",
+    "code": "PS",
+    "region_id": 7,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 7,
+      "name": "MIDDLE EAST"
+    },
+    "climate": null
+  },
+  {
+    "id": 226,
+    "name": "Faroe Islands",
+    "code": "FO",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  },
+  {
+    "id": 227,
+    "name": "Greenland",
+    "code": "GL",
+    "region_id": 5,
+    "is_program": 0,
+    "is_rbi": 0,
+    "region": {
+      "id": 5,
+      "name": "EUROPE"
+    },
+    "climate": null
+  }
+]
