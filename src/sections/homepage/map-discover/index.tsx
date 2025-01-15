@@ -1,7 +1,6 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {LeafletMap} from '@/components/LeafletMap'
-import officeMap from '@/sections/aboutus/office-map/constants'
+import {ICountry, LeafletMap} from '@/components/LeafletMap'
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import {Media} from '@/types/image.interface'
 import {FeatureCollection} from 'geojson'
@@ -176,13 +175,13 @@ const MapDiscover = ({
                 >
                   <div
                     className={`navbar-nationalities-item relative flex cursor-pointer items-center space-x-[0.5rem] xsm:rounded-[0.375rem] xsm:border-[1px] xsm:border-[rgba(0,0,0,0.10)] xsm:p-[0.38rem] ${
-                      navbarNationalitiesActive === item?.data_nation[0]?.label
+                      navbarNationalitiesActive === item?.data_nation[0]?.name
                         ? 'active xsm:bg-[#5C321E]'
                         : 'border-[#5C321E]'
                     }`}
                     onClick={() =>
                       handleNavbarNationalities(
-                        item?.data_nation[0]?.label,
+                        item?.data_nation[0]?.name,
                         item?.image_button,
                         item?.slug,
                       )
@@ -190,8 +189,7 @@ const MapDiscover = ({
                   >
                     <div
                       className={`relative flex size-[1.75rem] rounded-[50%] bg-white shadow-[1px_2px_6px_0px_rgba(0,0,0,0.25)] backdrop-blur-[10px] xsm:size-[1.35rem] ${
-                        navbarNationalitiesActive ===
-                        item?.data_nation[0]?.label
+                        navbarNationalitiesActive === item?.data_nation[0]?.name
                           ? 'xsm:bg-[rgba(255,255,255,0.2)]'
                           : 'xsm:bg-white'
                       }`}
@@ -207,8 +205,7 @@ const MapDiscover = ({
                     </div>
                     <span
                       className={`text-[0.875rem] font-medium uppercase leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body xsm:text-[0.8125rem] ${
-                        navbarNationalitiesActive ===
-                        item?.data_nation[0]?.label
+                        navbarNationalitiesActive === item?.data_nation[0]?.name
                           ? 'xsm:text-white'
                           : 'xsm:text-brown'
                       }`}
@@ -224,12 +221,13 @@ const MapDiscover = ({
             <div className='map-content absolute bottom-0 left-0 h-full w-full overflow-hidden xsm:relative xsm:w-full'>
               <div className='overlay-right absolute right-0 z-10 h-full w-[9.5rem] bg-[linear-gradient(-90deg,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
               <LeafletMap
-                countries={officeMap?.countries}
+                countries={dataMap.countries_data as ICountry[][]}
                 mapJson={customGeoJson as FeatureCollection}
                 className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
                 borderCountries='#7F7C6E'
                 zoomDesktop={1.8}
                 isZoomClick={true}
+                setActiveCountry={setNavbarNationalitiesActive}
                 changeCountry={
                   isMobile
                     ? navbarNationalitiesActive
@@ -246,7 +244,9 @@ const MapDiscover = ({
         </div>
         <div className='z-10 flex w-[28.3125rem] flex-col pt-[3.12rem] xsm:w-full xsm:px-0'>
           <Loading isLoading={isLoading} />
-          <div className={`${isLoading?'hidden':''} sm:min-h-[27.48rem] hidden-scrollbar flex overflow-hidden overflow-x-auto sm:flex-col sm:space-y-[1.5rem] xsm:w-full xsm:space-x-[1rem] xsm:px-[1rem]`}>
+          <div
+            className={`${isLoading ? 'hidden' : ''} hidden-scrollbar flex overflow-hidden overflow-x-auto sm:min-h-[27.48rem] sm:flex-col sm:space-y-[1.5rem] xsm:w-full xsm:space-x-[1rem] xsm:px-[1rem]`}
+          >
             {Array.isArray(dataPost) && dataPost.length > 0 ? (
               Array.isArray(dataPost) &&
               dataPost.map((item, index: number) => (

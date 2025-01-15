@@ -16,6 +16,7 @@ interface ILeafletMapProps {
   countries: ICountry[][]
   // eslint-disable-next-line no-unused-vars
   onClick?: (country: ICountry) => void
+  setActiveCountry?: (country: string) => void
   className?: string
   borderCountries?: string
   zoomMobile?: number
@@ -35,6 +36,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   countries,
   onClick,
   className,
+  setActiveCountry,
   borderCountries,
   zoomMobile = 0.5,
   zoomDesktop = 1.5,
@@ -103,7 +105,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
 
       // Xử lý màu cho các quốc gia cụ thể
       const specialColors: {[key: string]: string} = {
-        Vietnam: '#D4C0B6',
+        Vietnam: '#FF0000',
       }
       return specialColors[countryName] || '#F3F3F3'
     },
@@ -127,7 +129,9 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
   const handleCountryClick = (countryName: string) => {
     const position = getPosition(countryName)
+    console.log('position', countryName)
     if (mapRef.current && isZoomClick) {
+      
       if (zoomedCountry === countryName) {
         // Nếu quốc gia đã được zoom, bỏ zoom
         mapRef.current.flyTo([40, 0], isMobile ? zoomMobile : 1.5)
@@ -141,7 +145,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   }
   const findCountry = (label: string) => {
     for (let i = 0; i < countries.length; i++) {
-      const country = countries[i].find((country) => country.label === label)
+      const country = countries[i].find((country) => country.label === label || country.name === label)
       if (country) {
         return country.name // Return the name of the country if found
       }
@@ -150,7 +154,6 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   }
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
-
     if (
       changeCountry !== '' &&
       changeCountry !== null &&
@@ -260,6 +263,9 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
                 if (onClick) {
                   onClick(countryObj)
                 }
+                if (setActiveCountry) {
+                  setActiveCountry(countryObj.name)
+                }
                 handleCountryClick(countryObj.name)
                 setSelectedCountry(countryObj.name)
               },
@@ -267,6 +273,26 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
           ></Marker>
         )
       })}
+      <Marker
+        key='vietnam'
+        position={getPosition('Vietnam')}
+        icon={
+          new L.DivIcon({
+            html: `
+        <div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
+          <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound"/>
+          <img src="/imgs/about-us/office-map/vietnam.png" alt="VIỆT NAM" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full"/>
+          <div class="text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]">
+            VIỆT NAM
+          </div>
+        </div>`,
+            className:
+              'my-div-icon !w-[5rem] !h-[3.26rem] relative !-mt-[3.26rem] !pointer-events-none',
+            iconSize: [30, 30],
+          })
+        }
+
+      ></Marker>
     </MapContainer>
   )
 }

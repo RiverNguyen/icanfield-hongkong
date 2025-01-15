@@ -23,7 +23,7 @@ export default function ItemAccordion({listFAQ}: {listFAQ: dataListFAQ[]}) {
             collapsible
             className="space-y-[2.5rem] xsm:space-y-[1.5rem]"
         >
-            {listFAQ?.map((e: dataListFAQ, index: number) => (
+            {listFAQ && listFAQ?.map((e: dataListFAQ, index: number) => (
                 <AccordionItem key={index} value={'item-' + index} className="border-b-0">
                     <AccordionTrigger className="[&_.title-accordion]:data-[state=closed]:text-greyscaletext-body [&_.title-accordion]:data-[state=open]:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] p-0 [&_svg]:hidden hover:no-underline [&_.iconadd_path]:data-[state=closed]:stroke-[#333333] [&_.path-2]:data-[state=open]:rotate-0">
                         <p className="flex-1 title-accordion body16-s xsm:body-14-s bg-greyscaletext-body background_clip--text">

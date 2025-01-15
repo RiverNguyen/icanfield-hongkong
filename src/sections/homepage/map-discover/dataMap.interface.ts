@@ -1,3 +1,5 @@
+import {ICountry} from '@/components/LeafletMap'
+import { ImageHeader } from '@/types/dataHeader.interface'
 // Định nghĩa kiểu dữ liệu cho đối tượng Nation
 interface Nation {
   label: string
@@ -52,8 +54,17 @@ interface Languages {
 // Định nghĩa interface chính cho dữ liệu tổng thể
 interface DataMapHomepage {
   map_data: MapData[]
-  countries_data: CountriesData[] // Nếu cần cụ thể hơn, có thể định nghĩa kiểu cho countries_data
+  countries_data: ICountry[][] // Nếu cần cụ thể hơn, có thể định nghĩa kiểu cho countries_data
   posts: Post[]
+  offices_data: ItemOfficeData[]
+}
+export interface ItemOfficeData {
+  gallery_image: ImageHeader[]
+  description:string
+  location: string
+  business_hours: string
+  link_google_map: string
+  slug: string
 }
 interface CountriesData {
   label: string
