@@ -5,6 +5,9 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+body.no-scroll {
+  overflow: hidden !important;
+}
 .swiper-button-disabled {
   cursor: not-allowed;
 }
