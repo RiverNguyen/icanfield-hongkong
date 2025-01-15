@@ -70,7 +70,7 @@ export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
 
     // Nếu không có `features`, trả về [0, 0]
     if (!geo.features || geo.features.length === 0) return [0, 0]
-    console.log(country)
+    // console.log(country)
     // Tìm feature có thuộc tính `name` khớp với `country`
     const position = geo.features.find((feature: Feature) => {
       return (
@@ -79,7 +79,7 @@ export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
           country.trim().toLowerCase()
       )
     })
-    console.log(position)
+    // console.log(position)
     // Nếu không tìm thấy feature, trả về [0, 0]
     if (!position || !position.properties) return [0, 0]
 

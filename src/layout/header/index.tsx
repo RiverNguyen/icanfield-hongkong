@@ -11,7 +11,7 @@ import {
   Program,
   ChildProgram,
 } from '@/types/dataHeader.interface'
-import { social } from '@/layout/footer'
+import {social} from '@/layout/footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, {useRef} from 'react'
@@ -48,11 +48,13 @@ const Header = ({
   const [selectedChild, setSelectedChild] = React.useState<
     Program | {label: string; childrens: ChildProgram[]} | null
   >(null)
+  const refDisableHover = React.useRef<HTMLDivElement>(null)
   const [isOpenedChild, setIsOpenedChild] = React.useState(false)
   //function handle language dropdown
   const handleOpenLanguage = () => {
     setIsActivedLanguage(!isActivedLanguage)
   }
+
   //function handle change language
   const handleChangeLanguage = (item: Language) => {
     setIsCurrentLanguage(item)
@@ -120,6 +122,20 @@ const Header = ({
   const handleBeforeNavigate = () => {
     setIsCloseMenu(false)
     setIsOpenedChild(false)
+  }
+  //hanlde disable hover
+  const handleDisableHover = () => {
+    if (refDisableHover.current) {
+      // Vô hiệu hóa hover
+      refDisableHover.current.style.pointerEvents = 'none'
+
+      // Bật lại sau 0.5s
+      setTimeout(() => {
+        if (refDisableHover.current) {
+          refDisableHover.current.style.pointerEvents = 'auto'
+        }
+      }, 1000)
+    }
   }
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
@@ -282,7 +298,10 @@ const Header = ({
         </div>
       </div>
       <div className='header-bottom relative bg-white xsm:hidden'>
-        <div className='flex h-[4.37rem] items-center justify-between section-container'>
+        <div
+          className='flex h-[4.37rem] items-center justify-between section-container'
+          ref={refDisableHover}
+        >
           {/* left */}
           <div className='flex h-full items-center space-x-[2.5rem]'>
             {data?.settlement_programs?.list_of_program.map(
@@ -331,6 +350,7 @@ const Header = ({
                                     <Link
                                       href={child.link}
                                       className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                      onClick={handleDisableHover}
                                     >
                                       <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                         {child.label}
@@ -421,6 +441,7 @@ const Header = ({
                               <Link
                                 href={child.link}
                                 className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                onClick={handleDisableHover}
                               >
                                 <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                   {child.label}
@@ -510,6 +531,7 @@ const Header = ({
                               <Link
                                 href={child.link}
                                 className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                onClick={handleDisableHover}
                               >
                                 <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                   {child.label}
@@ -529,7 +551,8 @@ const Header = ({
                       src={
                         urlImageSupportCustomer
                           ? urlImageSupportCustomer || ''
-                          : data?.support_customer?.list_support[0].image.url || ''
+                          : data?.support_customer?.list_support[0].image.url ||
+                            ''
                       }
                       alt='logo'
                       width={500}

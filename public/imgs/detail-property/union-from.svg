@@ -2,9 +2,9 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M217.475 17.8577C217.173 17.0664 216.745 16.3224 216.203 15.6561L205.851 2.94756C204.268 1.0045 201.866 -0.0845926 199.362 0.00514105L187.5 0.430128L175.638 0.00514105C173.134 -0.0845926 170.732 1.0045 169.149 2.94756L158.797 15.6561C158.255 16.3224 157.827 17.0664 157.525 17.8577H16C7.16344 17.8577 0 25.0212 0 33.8577V70.8577H375V33.8577C375 25.0212 367.837 17.8577 359 17.8577H217.475Z" fill="url(#paint0_linear_3315_24119)"/>
 <defs>
 <linearGradient id="paint0_linear_3315_24119" x1="-2.37517e-05" y1="-24.4628" x2="353.854" y2="211.411" gradientUnits="userSpaceOnUse">
-<stop stop-color="#5C321E"/>
-<stop offset="0.461217" stop-color="#95502F"/>
-<stop offset="1" stop-color="#F5C178"/>
+<stop stopColor="#5C321E"/>
+<stop offset="0.461217" stopColor="#95502F"/>
+<stop offset="1" stopColor="#F5C178"/>
 </linearGradient>
 </defs>
 </svg>
