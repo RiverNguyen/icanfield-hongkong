@@ -23,11 +23,11 @@ const ICChat = ({className}: {className?: string}) => {
         >
           <stop
             offset='0.260551'
-            stop-color='#95502F'
+            stopColor='#95502F'
           />
           <stop
             offset='1'
-            stop-color='#F5C178'
+            stopColor='#F5C178'
           />
         </linearGradient>
       </defs>
