@@ -75,14 +75,17 @@ export interface IDataAcfDetailEB5 {
       investor: {
         name: string
         logo: Media
-        years_of_experience: string
-        project_completed: string
-        job_creation: string
         description: string
+        thumbnail: Media
+        achievements: {
+          name: string
+          value: string
+        }[]
       }
       development: {
         description: string
         logos: Media[]
+        thumbnail: Media
       }
     }
   }

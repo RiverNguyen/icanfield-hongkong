@@ -40,7 +40,7 @@ const DetailEB5 = ({data}: {data: IDataAcfDetailEB5}) => {
       />
       <ProcessSteps {...acf.eb5_projects_detail_progress} />
       <ProjectLocation {...acf.eb5_projects_detail_location} />
-      <ProjectInvestorDeveloper {...projectInvestorDeveloperProps} />
+      <ProjectInvestorDeveloper {...acf.eb5_projects_detail_quality} />
     </div>
   )
 }
