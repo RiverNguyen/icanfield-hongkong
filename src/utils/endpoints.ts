@@ -19,7 +19,12 @@ const endpoints = {
     unitTag: '1ef1eec',
   },
   taxonomiesSettlement: 'nation',
-  settlementPrograms: '/settlement-programs'
+  settlementPrograms: '/settlement-programs',
+  eb5Project: {
+    page: '/pages/521?_fields=acf&acf_format=standard',
+    list: '/eb5-projects',
+    categories: '/eb5-categories?_fields=id,name,slug,taxonomy',
+  },
 }
 
 export default endpoints

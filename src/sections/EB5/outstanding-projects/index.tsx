@@ -1,23 +1,41 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
-import React from 'react'
-import {useState, useEffect, useMemo, useRef} from 'react'
+import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
+import ItemProjectsOutstanding from '@/components/itemProjects'
+import {IProject} from '@/components/itemProjects/itemProjects.interface'
+import {Pagination} from '@/components/pagination/Pagination'
+import {fetcher} from '@/lib/swr'
+import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
 import IndexTabs from '@/sections/blogs/list-blogs/tab'
 import {Category, SortOption} from '@/types/blogs.interface'
-import {categories, fakeDataProjects} from './constants'
-import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
 import endpoints from '@/utils/endpoints'
 import {useSearchParams} from 'next/navigation'
-import {LIMIT_POSTS} from '@/sections/blogs/constant'
+import {FC, useEffect, useMemo, useRef, useState} from 'react'
 import useSWR from 'swr'
-import {fetcher} from '@/lib/swr'
-import {Pagination} from '@/components/pagination/Pagination'
-import {Project} from '@/components/itemProjects/itemProjects.interface'
-import ItemProjectsOutstanding from '@/components/itemProjects'
 
-const OutstandingProjectEB5 = () => {
+export interface IOutstandingProjectEB5Props {
+  listItems: {
+    success: boolean
+    total: number
+    totalPages: number
+    page: number
+    limit: number
+    data: IProject[]
+  }
+  categories: {
+    id: number
+    name: string
+    slug: string
+    taxonomy: string
+  }[]
+}
+
+const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
+  listItems,
+  categories,
+}) => {
   const sortOptions = [
     {name: 'Tất cả', value: 'all', orderBy: 'all'},
     {name: 'Mới nhất', value: 'DESC', orderBy: 'date'},
@@ -26,14 +44,14 @@ const OutstandingProjectEB5 = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
   const [search, setSearch] = useState<string>('')
-  const [totalPage, setTotalPage] = useState<number>(
-    fakeDataProjects.totalPages || 1,
-  )
+  const [totalPage, setTotalPage] = useState<number>(listItems.totalPages || 1)
+
   const [selectedCategory, setSelectedCategory] = useState<Category>(
     categories.length
       ? categories[0]
       : {id: 0, name: 'All', slug: 'all', taxonomy: ''}, // Default fallback
   )
+
   const [selectedSortOption, setSelectedSortOption] = useState<SortOption>(
     sortOptions[0],
   )
@@ -46,7 +64,7 @@ const OutstandingProjectEB5 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const query = useMemo(() => {
     if (!searchParams?.size) return null
-    return `${endpoints.blog.list}?page=${currentPage}&limit=${LIMIT_POSTS}${selectedCategory.slug !== 'all' ? `&tax=${handleGetTaxonomy(selectedCategory.slug)}&${handleGetTaxonomy(selectedCategory.slug)}=${selectedCategory.slug}` : ''}${search ? `&s=${search}` : ''}${selectedSortOption.value !== sortOptions[0].value ? `&order=${selectedSortOption.value}` : ''}${selectedSortOption.orderBy !== sortOptions[0].orderBy ? `&orderby=${selectedSortOption.orderBy}` : ''}`
+    return `${endpoints.eb5Project.list}?page=${currentPage}&limit=${LIMIT_POSTS}${selectedCategory.slug !== 'all' ? `&tax=${handleGetTaxonomy(selectedCategory.slug)}&${handleGetTaxonomy(selectedCategory.slug)}=${selectedCategory.slug}` : ''}${search ? `&s=${search}` : ''}${selectedSortOption.value !== sortOptions[0].value ? `&order=${selectedSortOption.value}` : ''}${selectedSortOption.orderBy !== sortOptions[0].orderBy ? `&orderby=${selectedSortOption.orderBy}` : ''}`
   }, [
     searchParams,
     currentPage,
@@ -65,9 +83,10 @@ const OutstandingProjectEB5 = () => {
       setTotalPage(posts.totalPages)
     }
   }, [posts])
+  console.log(query)
   const dataLatest = useMemo(() => {
-    return Array.isArray(posts?.data) ? posts?.data : fakeDataProjects.data
-  }, [searchParams, posts, fakeDataProjects.data])
+    return Array.isArray(posts?.data) ? posts?.data : listItems.data
+  }, [searchParams, posts, listItems.data])
   return (
     <section
       className='pt-[3.5rem]'
@@ -75,7 +94,7 @@ const OutstandingProjectEB5 = () => {
     >
       <div className='section-container'>
         <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown'>
-          Dự án EB-5 tiêu biểu{' '}
+          Dự án EB-5 tiêu biểu
         </h2>
         <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:mb-[2.19rem] xsm:flex-col'>
           <IndexTabs
@@ -105,7 +124,7 @@ const OutstandingProjectEB5 = () => {
           ) : (
             <>
               {Array.isArray(dataLatest) &&
-                dataLatest.map((item: Project, index: number) => (
+                dataLatest.map((item: IProject, index: number) => (
                   <ItemProjectsOutstanding
                     key={index}
                     {...item}
