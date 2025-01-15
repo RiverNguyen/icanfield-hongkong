@@ -12,12 +12,14 @@ const CanadaMap = dynamic(() => import('@/sections/immigration/map'), {
 })
 import {Suspense} from 'react'
 import {DataItem} from '@/types/blogs.interface'
+import { Data } from '@/sections/immigration/map'
 
 interface ImmigrationProps {
   dataImmigration: immigration
   dataPrograms: dataPrograms
   slug: string
   postRelate: DataItem[]
+  dataMap: Data
 }
 
 const Immigration: React.FC<ImmigrationProps> = ({
@@ -25,6 +27,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
   dataPrograms,
   slug,
   postRelate,
+  dataMap
 }) => {
   return (
     <main className='bg-background'>
@@ -32,7 +35,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
         name={dataImmigration?.name}
         dataAcf={dataImmigration?.acf?.banner}
       />
-      <CanadaMap />
+      <CanadaMap slug={slug} data={dataMap} />
       <Strengths dataStrength={dataImmigration?.acf?.characteristic} />
       <Suspense fallback={<div>Loading...</div>}>
         <Programme

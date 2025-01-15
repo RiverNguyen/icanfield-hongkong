@@ -19,7 +19,9 @@ const endpoints = {
     unitTag: '1ef1eec',
   },
   taxonomiesSettlement: 'nation',
-  settlementPrograms: '/settlement-programs'
+  settlementPrograms: '/settlement-programs',
+  filter: '/filter-data-settlement_hp',
+  homepageMap: '/data-map-homepage',
 }
 
 export default endpoints
