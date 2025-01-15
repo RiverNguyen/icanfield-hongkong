@@ -32,3 +32,35 @@ export interface ApiResponse {
   limit: number
   data: DataItem[]
 }
+
+export interface ApiAcfBannerBlogsPage {
+  title_line_1: string
+  title_line_2: string
+  description: string
+  background: {
+    alt: string
+    url: string
+  }
+}
+
+export interface IFeaturedNewsItem {
+  categories: string[]
+  title: string
+  excerpt: string
+  backgroundImage: string
+  link: string
+  date: string
+  slug: string
+}
+
+export interface ApiAcfFeaturedNewsBlogsPage {
+  title: string
+  featured_news_blogs_page: IFeaturedNewsItem[]
+}
+
+export interface ApiAcfPage {
+  banner_blogs_page: ApiAcfBannerBlogsPage
+  featured_news: ApiAcfFeaturedNewsBlogsPage
+  featured_news_blogs_page: IFeaturedNewsItem[]
+}
+

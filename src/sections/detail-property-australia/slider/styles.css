@@ -1,0 +1,13 @@
+/* dot animation */
+.dot-animation {
+  animation: dot-animation 15s forwards;
+}
+
+@keyframes dot-animation {
+  0% {
+    width: 0.5rem;
+  }
+  100% {
+    width: 100%;
+  }
+}

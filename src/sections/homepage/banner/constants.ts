@@ -16,7 +16,7 @@ export const filterOptions = [
   },
   {
     label: 'Mục đích đầu tư',
-    key: 'purpose',
+    key: 'investment-purpose',
     icon: '/icons/homepage/banner/filter-widgets.svg',
     selected: 'Có thêm quốc tịch',
     children: [
@@ -29,7 +29,7 @@ export const filterOptions = [
   },
   {
     label: 'Ngân sách dự kiến',
-    key: 'budget',
+    key: 'expected-budget',
     icon: '/icons/homepage/banner/filter-budget.svg',
     selected: '500,000 USD',
     children: [

@@ -23,7 +23,7 @@ const PageEB5 = () => {
         title_line_1='ĐẦU TƯ EB-5 AN TOÀN'
         title_line_2='Định Cư Mỹ Dễ Dàng'
         description='Chương trình mở ra cơ hội tuyệt vời cho các nhà đầu tư nước ngoài và gia đình của họ.'
-        backgroundOverlay='linear-gradient(180deg,rgba(0,0,0,0.50)_24.02%,rgba(0,0,0,0.00)86.12%)'
+        backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.50)_24.02%,rgba(0,0,0,0.00)86.12%)]'
         className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
         background_pc={{
           ID: 1,
@@ -31,7 +31,7 @@ const PageEB5 = () => {
           title: 'string',
           filename: 'string',
           filesize: 1,
-          url: '/imgs/EB5/banner/d-bg.webp',
+          url: '/imgs/EB5/Banner/d-bg.webp',
           link: 'string',
           alt: 'string',
           author: 'string',
@@ -60,7 +60,7 @@ const PageEB5 = () => {
       </Banner>
       <TeaEB5Section />
       <PioneeringValues />
-      <Suspense fallback={<p>Loading...</p>}>cls
+      <Suspense fallback={<p>Loading...</p>}>
         <OutstandingProjectEB5 />
       </Suspense>
       <ProjectTransparency />

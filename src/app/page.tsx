@@ -16,17 +16,31 @@ export default async function Home() {
       revalidate: 10,
     },
   }
-
+  const FilterBanner = {
+    api: endpoints.filter,
+    option: {
+      revalidate: 10,
+    },
+  }
+  const HomepageMap = {
+    api: endpoints.homepageMap,
+    option: {
+      revalidate: 10,
+    },
+  }
   try {
-    const [homeResponse, newsResponse] = await Promise.all([
+    const [homeResponse, newsResponse, dataFilter,homepageMap] = await Promise.all([
       fetchDataACF(homeRequest),
       fetchData(newsRequest),
+      fetchData(FilterBanner),
+      fetchData(HomepageMap),
     ])
-console.log(newsResponse);
     return (
       <HomePage
         homeData={homeResponse}
         newsData={newsResponse}
+        dataFilter={dataFilter?.data}
+        dataMap={homepageMap?.data}
       />
     )
   } catch (error) {

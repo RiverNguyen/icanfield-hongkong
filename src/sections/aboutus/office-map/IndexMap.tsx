@@ -9,17 +9,32 @@ import ChevronRight from '@/components/svg/ChevronRight'
 import {cn} from '@/lib/utils'
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import PopupMarker from '@/sections/aboutus/office-map/PopupMarker'
+import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
 import {FeatureCollection} from 'geojson'
 import {useEffect, useState} from 'react'
 
-interface IIndexMapProps {
-  countries: ICountry[][]
-}
+// interface IIndexMapProps {
+//   countries: ICountry[][]
+// }
 
-const IndexMap = ({countries}: IIndexMapProps) => {
+const IndexMap = ({
+  countries,
+  dataOffice,
+}: {
+  countries: ICountry[][]
+  dataOffice: ItemOfficeData[]
+}) => {
   const [open, setOpen] = useState(false)
   const [countrySelected, setCountrySelected] = useState<string | null>(null)
-
+  const [flagSelected, setFlagSelected] = useState<string | null>(null)
+  const [dataOfficeSelected, setDataOfficeSelected] =
+    useState<ItemOfficeData | null>(null)
+  useEffect(() => {
+    const office = dataOffice.find((item) => item.slug === countrySelected)
+    if (office) {
+      setDataOfficeSelected(office)
+    }
+  }, [countrySelected])
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (open) {
@@ -31,6 +46,7 @@ const IndexMap = ({countries}: IIndexMapProps) => {
   }, [open])
   const handleClickMarker = (country: ICountry) => {
     setCountrySelected(country.label ? country.label : country.name)
+    setFlagSelected(country.flag || null)
     setOpen(true)
   }
   return (
@@ -57,6 +73,8 @@ const IndexMap = ({countries}: IIndexMapProps) => {
         open={open}
         setOpen={setOpen}
         countrySelected={countrySelected}
+        flagSelected={flagSelected}
+        dataOfficeSelected={dataOfficeSelected as ItemOfficeData}
       />
       <div className='mt-4 grid grid-cols-2 gap-[0.5rem] sm:hidden'>
         {countries.map((country, index) => {
@@ -117,7 +135,7 @@ function MarkerButton({onClick, name, label, flag}: IMarkerButtonProps) {
         <span className='text-[0.5rem] font-medium leading-[1.5] tracking-[-0.005rem] text-tagtext'>
           Văn phòng
         </span>
-        <span className='body-14-s text-brown'>{label}</span>
+        <span className='text-brown body-14-s'>{label}</span>
       </div>
       <ChevronRight className='size-[1.5rem] text-tagtext' />
     </button>

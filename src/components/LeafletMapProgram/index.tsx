@@ -70,12 +70,16 @@ export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
 
     // Nếu không có `features`, trả về [0, 0]
     if (!geo.features || geo.features.length === 0) return [0, 0]
-
+    console.log(country)
     // Tìm feature có thuộc tính `name` khớp với `country`
     const position = geo.features.find((feature: Feature) => {
-      return feature.properties && feature.properties.name === country
+      return (
+        feature.properties &&
+        feature.properties.name.trim().toLowerCase() ===
+          country.trim().toLowerCase()
+      )
     })
-
+    console.log(position)
     // Nếu không tìm thấy feature, trả về [0, 0]
     if (!position || !position.properties) return [0, 0]
 
@@ -115,7 +119,7 @@ export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
   const geoJsonStyle = useCallback(
     (feature: Feature) => ({
       fillColor: getFillColor(feature), // Màu nền
-      weight: 0.281, // Độ dày viền
+      weight: 0.4, // Độ dày viền
       opacity: 1, // Độ mờ viền
       color: borderCountries, // Màu viền
       fillOpacity: 1, // Độ mờ nền
