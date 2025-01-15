@@ -123,7 +123,7 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
                   <div className='flex w-fit items-center justify-center rounded-[0.75rem] bg-[rgba(117,117,117,0.08)] p-[1.25rem] xsm:p-4'>
                     <ImageV2
                       src={item.icon.url}
-                      alt={item.icon.alt}
+                      alt={'icon'}
                       width={50}
                       height={50}
                       className='size-[1.45831rem] object-contain'

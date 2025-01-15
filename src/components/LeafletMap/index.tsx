@@ -129,7 +129,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
   const handleCountryClick = (countryName: string) => {
     const position = getPosition(countryName)
-    console.log('position', countryName)
+    // console.log('position', countryName)
     if (mapRef.current && isZoomClick) {
       
       if (zoomedCountry === countryName) {
