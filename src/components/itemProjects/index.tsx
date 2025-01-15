@@ -55,7 +55,7 @@ const ItemProjectsOutstanding = (data: IProject) => {
         </div>
       </div>
       <div className='px-[1.5rem] py-[1.25rem]'>
-        <div className='col grid grid-cols-2 gap-x-[6rem] gap-y-[1.12rem] xsm:grid-cols-[3fr_2fr] xsm:gap-x-0 xsm:gap-y-3 [&>div]:flex-col [&>div]:space-y-1 [&>div_p]:line-clamp-1 [&>div_p]:text-[1rem] [&>div_p]:font-bold [&>div_p]:leading-[1.33] [&>div_p]:tracking-[-0.02rem] [&>div_p]:text-orangetext-500 [&>div_span]:text-[0.875rem] [&>div_span]:leading-[1.5] [&>div_span]:tracking-[-0.00875rem] [&>div_span]:text-greyscaletext-200'>
+        <div className='col grid grid-cols-2 gap-x-[2rem] gap-y-[1.12rem] xsm:grid-cols-[3fr_2fr] xsm:gap-x-0 xsm:gap-y-3 [&>div]:flex-col [&>div]:space-y-1 [&>div_p]:line-clamp-1 [&>div_p]:text-[1rem] [&>div_p]:font-bold [&>div_p]:leading-[1.33] [&>div_p]:tracking-[-0.02rem] [&>div_p]:text-orangetext-500 [&>div_span]:text-[0.875rem] [&>div_span]:leading-[1.5] [&>div_span]:tracking-[-0.00875rem] [&>div_span]:text-greyscaletext-200'>
           <div className=''>
             <span>Loại hình:</span>
             <p>{type}</p>
@@ -66,11 +66,11 @@ const ItemProjectsOutstanding = (data: IProject) => {
           </div>
           <div>
             <span>Tỷ lệ vốn EB-5:</span>
-            <p>{eb5_capital_ratio}</p>
+            <p>{eb5_capital_ratio}%</p>
           </div>
           <div>
             <span>Việc làm tạo ra:</span>
-            <p>{jobs_created}</p>
+            <p>{jobs_created}%</p>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ const IndexSortAndSearchPosts = ({
   selectedSortOption,
   search,
   className,
-  placeholder = 'Tìm kiếm trong Blog',
+  placeholder = 'Tìm kiếm trong danh sách',
   backgroundInput = 'bg-[#F3F3F3]',
 }: {
   sortOptions: SortOption[]
@@ -137,7 +137,7 @@ const IndexSortAndSearchPosts = ({
             ))}
         </div>
       </div>
-      <div className='relative h-[3rem] sm:w-[16.9375rem] xsm:h-auto xsm:w-[calc((100%-1.25rem)/2)] ]'>
+      <div className='] relative h-[3rem] sm:w-[16.9375rem] xsm:h-auto xsm:w-[calc((100%-1.25rem)/2)]'>
         <ICSearch
           className={`absolute left-[1rem] top-1/2 size-[1.5rem] -translate-y-1/2 xsm:left-[0.5rem] xsm:size-[1.125rem] ${search ? '[&>path]:stroke-black' : ''}`}
         />

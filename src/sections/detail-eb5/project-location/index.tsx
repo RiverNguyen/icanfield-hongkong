@@ -1,6 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
+import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
 
 type LocationItem = {
   title: string
@@ -8,13 +9,17 @@ type LocationItem = {
   image: string
 }
 
-const LocationItem = ({description, image, title}: LocationItem) => {
+const LocationItem = ({
+  description,
+  thumbnail,
+  title,
+}: IDataAcfDetailEB5['acf']['eb5_projects_detail_location']['prime_location'][0]) => {
   return (
-    <div className='relative flex items-start space-x-6 overflow-hidden rounded-3xl bg-white p-6 shadow-SHADOW'>
+    <div className='shadow-SHADOW relative flex items-start space-x-6 overflow-hidden rounded-3xl bg-white p-6'>
       <div className='absolute -top-[0.02088rem] right-0 h-[7.5rem] w-[7.5rem] rotate-90 transform bg-[radial-gradient(95.02%_94.67%_at_-6.67%_-10.42%,#F5C178_34.9%,rgba(255,255,255,0.00)_100%)] opacity-80' />
       <ImageV2
-        src={image}
-        alt='location'
+        src={thumbnail.url}
+        alt={thumbnail.alt}
         width={200}
         height={200}
         className='h-[12.5rem] w-[12.5rem] rounded-[0.5rem] object-cover'
@@ -24,18 +29,22 @@ const LocationItem = ({description, image, title}: LocationItem) => {
           {title}
         </h2>
         <div className='h-[1px] w-full bg-[linear-gradient(90deg,rgba(112,115,124,0.22)_24.3%,rgba(112,115,124,0.00)_82.57%)]' />
-        <p className='body-14 text-greyscaletext-body'>{description}</p>
+        <p className='text-greyscaletext-body body-14'>{description}</p>
       </div>
     </div>
   )
 }
 
-const LocationItemMobile = ({description, image, title}: LocationItem) => {
+const LocationItemMobile = ({
+  description,
+  thumbnail,
+  title,
+}: IDataAcfDetailEB5['acf']['eb5_projects_detail_location']['prime_location'][0]) => {
   return (
-    <div className='flex flex-col space-y-4 rounded-3xl bg-white p-4 shadow-SHADOW'>
+    <div className='shadow-SHADOW flex flex-col space-y-4 rounded-3xl bg-white p-4'>
       <ImageV2
-        src={image}
-        alt='location'
+        src={thumbnail.url}
+        alt={thumbnail.alt}
         width={200}
         height={200}
         className='h-[12.5rem] w-full rounded-[0.5rem] object-cover'
@@ -45,7 +54,7 @@ const LocationItemMobile = ({description, image, title}: LocationItem) => {
           {title}
         </h2>
         <div className='h-[1px] w-full bg-[linear-gradient(90deg,rgba(112,115,124,0.22)_24.3%,rgba(112,115,124,0.00)_82.57%)]' />
-        <p className='body-14 font-normal text-greyscaletext-body'>
+        <p className='font-normal text-greyscaletext-body body-14'>
           {description}
         </p>
       </div>
@@ -64,30 +73,30 @@ export type ProjectLocationProps = {
 
 const ProjectLocation = ({
   description,
-  locationImage,
-  locationItems,
-  subDescription,
-  subTitle,
-  title,
-}: ProjectLocationProps) => {
+  title_section,
+  subtitle,
+  description_subtitle,
+  google_map,
+  prime_location,
+}: IDataAcfDetailEB5['acf']['eb5_projects_detail_location']) => {
   const isMobile = useIsMobile()
   return (
-    <section className='flex space-x-[6.5rem] pl-20 xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4 sm:pb-[5rem]'>
+    <section className='flex space-x-[6.5rem] pl-20 sm:pb-[5rem] xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4'>
       <div className='flex-1 pt-20 xsm:pt-4'>
-        <h1 className='heading1 font-optima font-semibold text-Phase-1-Brown'>
-          {title}
+        <h1 className='font-optima font-semibold text-Phase-1-Brown heading1'>
+          {title_section}
         </h1>
-        <p className='body16-m xsm:body-14 mt-[0.875rem] text-greyscaletext-body'>
+        <p className='mt-[0.875rem] text-greyscaletext-body body16-m xsm:body-14'>
           {description}
         </p>
-        <h4 className='heading4 mt-14 font-optima font-semibold text-Phase-1-Brown xsm:mt-8 xsm:text-[1.125rem] xsm:leading-[1.4] xsm:tracking-[-0.0225rem]'>
-          {subTitle}
+        <h4 className='mt-14 font-optima font-semibold text-Phase-1-Brown heading4 xsm:mt-8 xsm:text-[1.125rem] xsm:leading-[1.4] xsm:tracking-[-0.0225rem]'>
+          {subtitle}
         </h4>
-        <p className='body16-m xsm:body-14 mt-4 text-greyscaletext-body'>
-          {subDescription}
+        <p className='mt-4 text-greyscaletext-body body16-m xsm:body-14'>
+          {description_subtitle}
         </p>
         <div className='mt-6 flex flex-col space-y-8 xsm:mt-4 xsm:space-y-4'>
-          {locationItems.map((item, index) => {
+          {prime_location.map((item, index) => {
             if (isMobile) {
               return (
                 <LocationItemMobile
@@ -107,8 +116,8 @@ const ProjectLocation = ({
       </div>
       <div className='sticky top-8 h-[49.25rem] w-[47.825rem] py-20 xsm:static xsm:aspect-square xsm:h-auto xsm:w-full xsm:py-0'>
         <ImageV2
-          src={locationImage}
-          alt='location'
+          src={google_map.url}
+          alt={google_map.alt}
           width={800}
           height={700}
           className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl'

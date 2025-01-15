@@ -46,11 +46,12 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
   const [search, setSearch] = useState<string>('')
   const [totalPage, setTotalPage] = useState<number>(listItems.totalPages || 1)
 
-  const [selectedCategory, setSelectedCategory] = useState<Category>(
-    categories.length
-      ? categories[0]
-      : {id: 0, name: 'All', slug: 'all', taxonomy: ''}, // Default fallback
-  )
+  const [selectedCategory, setSelectedCategory] = useState<Category>({
+    id: 0,
+    name: 'Tất cả',
+    slug: 'all',
+    taxonomy: '',
+  })
 
   const [selectedSortOption, setSelectedSortOption] = useState<SortOption>(
     sortOptions[0],
@@ -83,7 +84,6 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
       setTotalPage(posts.totalPages)
     }
   }, [posts])
-  console.log(query)
   const dataLatest = useMemo(() => {
     return Array.isArray(posts?.data) ? posts?.data : listItems.data
   }, [searchParams, posts, listItems.data])
@@ -98,7 +98,10 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
         </h2>
         <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:mb-[2.19rem] xsm:flex-col'>
           <IndexTabs
-            categories={categories}
+            categories={[
+              {id: 0, name: 'Tất cả', slug: 'all', taxonomy: ''},
+              ...categories,
+            ]}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />

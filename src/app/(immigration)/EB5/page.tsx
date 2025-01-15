@@ -1,6 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import PageEB5 from '@/pages/page-EB5'
+import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
 
 export default async function page() {
@@ -19,7 +20,7 @@ export default async function page() {
         },
       }),
       fetchData({
-        api: endpoints.eb5Project.list,
+        api: endpoints.eb5Project.list + `?page=1&limit=${LIMIT_POSTS}`,
         option: {
           revalidate: 10,
         },
@@ -27,7 +28,6 @@ export default async function page() {
     ]
 
     const [page, categories, list] = await Promise.all(req)
-    console.log(list)
     if (page.status === 404) {
       return <div>{String('error')}</div>
     }
