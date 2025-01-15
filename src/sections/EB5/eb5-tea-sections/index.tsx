@@ -65,7 +65,7 @@ const TeaEB5Section = () => {
           <div className='container-item__eb5 flex h-full w-full items-end justify-start'>
             <div className='item-tea-eb5 relative h-[30.8125rem] w-[52rem] rounded-[1.5rem] p-[3rem]'>
               <ImageV2
-                src='/imgs/EB5/banner/d-sky.webp'
+                src='/imgs/EB5/Banner/d-sky.webp'
                 alt='tea-eb5-1'
                 width={1600}
                 height={1600}
@@ -91,7 +91,7 @@ const TeaEB5Section = () => {
                 </p>
               </div>
               <ImageV2
-                src={'/imgs/EB5/banner/statue.webp'}
+                src={'/imgs/EB5/Banner/statue.webp'}
                 alt='tea-eb5-1'
                 width={1600}
                 height={1600}
@@ -104,7 +104,7 @@ const TeaEB5Section = () => {
           <div className='container-item__eb5 item-second flex h-full w-full items-start justify-start'>
             <div className='item-tea-eb5 relative h-[30.8125rem] w-[52rem] rounded-[1.5rem] p-[3rem]'>
               <ImageV2
-                src='/imgs/EB5/banner/d-city.webp'
+                src='/imgs/EB5/Banner/d-city.webp'
                 alt='tea-eb5-1'
                 width={1600}
                 height={1600}
@@ -129,7 +129,7 @@ const TeaEB5Section = () => {
                 </p>
               </div>
               <ImageV2
-                src={'/imgs/EB5/banner/tower.webp'}
+                src={'/imgs/EB5/Banner/tower.webp'}
                 alt='tea-eb5-1'
                 width={1600}
                 height={1600}
@@ -143,14 +143,14 @@ const TeaEB5Section = () => {
         <div className='relative rounded-[1rem] bg-white'>
           <div className='relative'>
             <ImageV2
-              src='/imgs/EB5/banner/d-sky.webp'
+              src='/imgs/EB5/Banner/d-sky.webp'
               alt='tea-eb5-1'
               width={500}
               height={500}
               className='h-[12.70275rem] rounded-[1.5rem] object-cover'
             />
             <ImageV2
-              src='/imgs/EB5/banner/d-statue_mb.webp'
+              src='/imgs/EB5/Banner/d-statue_mb.webp'
               alt='tea-eb5-1'
               width={500}
               height={500}
@@ -196,14 +196,14 @@ const TeaEB5Section = () => {
         <div className='relative rounded-[1rem] bg-white'>
           <div className='relative'>
             <ImageV2
-              src='/imgs/EB5/banner/d-city.webp'
+              src='/imgs/EB5/Banner/d-city.webp'
               alt='tea-eb5-1'
               width={500}
               height={500}
               className='h-[12.70275rem] rounded-[1.5rem] object-cover'
             />
             <ImageV2
-              src='/imgs/EB5/banner/d-tower_mb.webp'
+              src='/imgs/EB5/Banner/d-tower_mb.webp'
               alt='tea-eb5-1'
               width={500}
               height={500}

@@ -4,6 +4,7 @@ import ImageV2 from '@/components/image/ImageV2'
 import {FilterOption} from '@/types/bannerFilter.interface'
 import {convertToIframe} from '@/utils/convertToIframe'
 import React, {useEffect, useRef, useState} from 'react'
+import {FilterData} from './bannerHp.interface'
 import ReactPlayer from 'react-player'
 import 'swiper/css'
 import {Autoplay, EffectFade} from 'swiper/modules'
@@ -19,7 +20,13 @@ export interface IBannerHomepageProps {
   data: IDataMedia
 }
 
-const BannerHomepage = ({data}: IBannerHomepageProps) => {
+const BannerHomepage = ({
+  data,
+  dataFilter,
+}: {
+  data: IDataMedia
+  dataFilter: FilterData
+}) => {
   const [isClient, setIsClient] = useState(false)
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
   const isSelecting = useRef(false)
@@ -31,8 +38,29 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
   useEffect(() => {
     setIsClient(true)
   }, [])
+  //handle update FilterOption when dataFilter
+  const [filterOptionsLastest, setFilterOptionsLastest] =
+    useState(filterOptions)
 
+  useEffect(() => {
+    const updatedFilterOptions = filterOptions.map((option) => {
+      const dataKey = dataFilter[option.key as keyof FilterData]
+      if (dataKey) {
+        return {
+          ...option,
+          children: dataKey.map((item) => ({
+            label: item.name,
+            slug: item.slug,
+          })),
+        }
+      }
+      return option
+    })
+
+    setFilterOptionsLastest(updatedFilterOptions)
+  }, [])
   //handle click dropdown filter
+
   const [openFilters, setOpenFilters] = React.useState(
     new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
   )
@@ -90,6 +118,10 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
     setOpenPopupFilter(true)
   }
   const currentFilter = filterOptions.find((filter) => filter.key === keyFilter)
+  //handle Search
+  const searchFilter = () => {
+    console.log('search', selectedItems)
+  }
   return (
     <section className='relative mt-[6.44rem] h-[42.8125rem] w-full xsm:mt-[2.25rem] xsm:h-[33.06rem] xsm:bg-background'>
       {data.type != 'slide' ? (
@@ -167,7 +199,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
         <div className='h-full w-[0.75rem] rounded-bl-[0.75rem] rounded-tl-[0.75rem] bg-[linear-gradient(180deg,#95502F_20.03%,#F5C178_100%)]'></div>
         <div className='flex w-full items-end justify-between p-[0.5rem]'>
           <div className='flex flex-1 items-center justify-between'>
-            {filterOptions.map((item, filterIndex) => (
+            {filterOptionsLastest.map((item, filterIndex) => (
               <React.Fragment key={filterIndex}>
                 <div
                   className={`flex h-full w-full cursor-pointer flex-wrap items-center self-end rounded-[0.5rem] bg-white px-3 py-2 transition-all duration-300 ${!openFilters[filterIndex] ? 'hover:bg-[rgba(60,8,8,0.08)]' : ''}`}
@@ -244,7 +276,7 @@ const BannerHomepage = ({data}: IBannerHomepageProps) => {
               </React.Fragment>
             ))}
           </div>
-          <button className='ml-2 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] px-[2rem]'>
+          <button className='ml-2 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] px-[2rem]' onClick={searchFilter}>
             <ImageV2
               src='/icons/homepage/banner/search.svg'
               alt='filter'

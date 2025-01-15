@@ -4,7 +4,7 @@ import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
 import Calendar from '@/components/svg/Calendar'
 import { cn } from '@/lib/utils'
-import { IImageV2 } from '@/types/image.interface'
+import { IFeaturedNewsItem } from '@/types/blogs.interface'
 import Link from 'next/link'
 import { FC, useRef } from 'react'
 import 'swiper/css'
@@ -22,21 +22,13 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Swiper as ISwiper } from 'swiper/types'
 import './style.css'
-interface IFeaturedNewsItem {
-  categories: string[]
-  title: string
-  excerpt: string
-  backgroundImage: IImageV2
-  link: string
-  date: string
-}
 
 export interface IFeaturedNewsProps {
   title: string
   items: IFeaturedNewsItem[]
 }
 
-export const FeaturedNews: FC<IFeaturedNewsProps> = ({title, items}) => {
+export const FeaturedNews: FC<IFeaturedNewsProps> = ({ title, items }) => {
   return (
     <section className='mx-auto mt-[3rem] max-w-[90rem] px-[1rem] sm:mt-[5rem] sm:px-0'>
       <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>
@@ -99,11 +91,11 @@ function FeaturedNewSlidePC({
         modules={[EffectFade, Navigation, Controller]}
         className='image-swiper h-[34.625rem]'
       >
-        {items.map((item, idx) => (
+        {items?.map((item, idx) => (
           <SwiperSlide key={idx}>
             <ImageV2
-              src={item.backgroundImage.src || ''}
-              alt={item.backgroundImage.alt}
+              src={item.backgroundImage || ''}
+              alt={item.title}
               width={1434 * 2}
               height={554 * 2}
               className='absolute left-0 top-0 h-full w-full object-cover'
@@ -116,14 +108,14 @@ function FeaturedNewSlidePC({
                 </span>
                 <Calendar className='mr-[0.22rem] size-[0.89663rem]' />
                 <span className='text-[0.78456rem] leading-[114.286%]'>
-                  14.10.2024
+                  {item?.date}
                 </span>
               </div>
               <h3 className='max-w-[40.9375rem] font-optima text-[2.24156rem] font-medium leading-[1.2] tracking-[-0.05606rem]'>
-                {item.title} index {idx + 1}
+                {item.title}
               </h3>
               <Link
-                href={'#'}
+                href={'/blogs/' + item?.slug}
                 className='inline-flex items-center rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] transition hover:bg-white hover:text-brown'
               >
                 <span>Chi tiết bài viết</span>
@@ -165,7 +157,7 @@ function FeaturedNewSlidePC({
         modules={[Autoplay, Navigation, Pagination, Controller]}
         className='swiper-content !absolute right-[2.51rem] top-[5.62rem] !z-20 !size-[20rem] !overflow-visible text-white'
       >
-        {items.map((item, idx) => (
+        {items?.map((item, idx) => (
           <SwiperSlide
             className='!h-[5rem] !pr-[2.7rem]'
             key={idx}
@@ -236,11 +228,11 @@ function FeaturedNewSlideMobile({
           }}
           className='image-swiper featured-news__slide h-[34.625rem]'
         >
-          {items.map((item, idx) => (
+          {items?.map((item, idx) => (
             <SwiperSlide key={idx}>
               <ImageV2
-                src={item.backgroundImage.src || ''}
-                alt={item.backgroundImage.alt}
+                src={item.backgroundImage || ''}
+                alt={item.title}
                 width={1434 * 2}
                 height={554 * 2}
                 className='absolute left-0 top-0 h-full w-full object-cover'
@@ -253,14 +245,14 @@ function FeaturedNewSlideMobile({
                   </span>
                   <Calendar className='mr-[0.22rem] size-[0.89663rem]' />
                   <span className='text-[0.75rem] leading-[114.286%]'>
-                    14.10.2024
+                    {item?.date}
                   </span>
                 </div>
                 <h3 className='font-optima text-[1.125rem] font-medium leading-[1.2] tracking-[-0.05606rem]'>
-                  {item.title} index {idx + 1}
+                  {item.title}
                 </h3>
                 <Link
-                  href={'#'}
+                  href={'/blogs/' + item?.slug}
                   className='inline-flex items-center py-[0.2rem]'
                 >
                   <span className='text-[0.75rem] font-medium leading-[1.5] tracking-[-0.015re]'>

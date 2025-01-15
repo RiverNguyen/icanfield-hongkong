@@ -1,13 +1,15 @@
 import ImageV2 from '@/components/image/ImageV2'
-import {cn} from '@/lib/utils'
-import {IImageV2} from '@/types/image.interface'
-import {FC} from 'react'
+import { cn } from '@/lib/utils'
+import { FC } from 'react'
 
 export interface IBannerStaticProps {
   titleTop?: string
   titleBottom?: string
   description?: string
-  backgroundImage: IImageV2
+  backgroundImage: {
+    url: string
+    alt: string
+  }
   children?: React.ReactNode
 }
 
@@ -21,8 +23,8 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
   return (
     <section className='relative min-h-[28.75rem] overflow-hidden pt-[3.75rem] sm:min-h-[36.45rem] sm:pt-[6.44rem]'>
       <ImageV2
-        src={backgroundImage.src || ''}
-        alt={backgroundImage.alt}
+        src={backgroundImage?.url || ''}
+        alt={backgroundImage?.alt}
         width={1600 * 2}
         height={478 * 2}
         className='absolute inset-0 h-full w-full object-cover'

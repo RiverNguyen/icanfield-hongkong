@@ -14,7 +14,7 @@ import endpoints from '@/utils/endpoints'
 import Link from 'next/link'
 import {useEffect, useRef, useState} from 'react'
 
-interface social {
+export interface social {
   icon: {
     url: string
     alt: string

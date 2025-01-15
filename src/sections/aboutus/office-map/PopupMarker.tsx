@@ -11,14 +11,25 @@ import {useRef} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Swiper as SwiperType} from 'swiper/types'
 import ImageV2 from '@/components/image/ImageV2'
+import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
+import { ImageHeader } from '@/types/dataHeader.interface'
 
 type PopupMarkerProps = {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   countrySelected: string | null
+  flagSelected: string | null
+  dataOfficeSelected: ItemOfficeData
 }
 
-const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
+const PopupMarker = ({
+  open,
+  setOpen,
+  countrySelected,
+  flagSelected,
+  dataOfficeSelected,
+}: PopupMarkerProps) => {
+  console.log('dataOfficeSelected', dataOfficeSelected)
   const swiperRef = useRef<SwiperType | null>(null)
   const handleNextSlide = () => {
     swiperRef.current?.slideNext()
@@ -43,7 +54,7 @@ const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
           >
             <div className='absolute bottom-0 left-0 z-[1] h-full w-full rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
             <ImageV2
-              src={'/imgs/about-us/office-map/Canada.png'}
+              src={flagSelected || ''}
               alt={'Canada'}
               width={200}
               height={200}
@@ -70,14 +81,12 @@ const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
           }}
           className='!h-[14.625rem] w-full rounded-[0.75rem]'
         >
-          {Array(10)
-            .fill(0)
-            .map((item: any, index: number) => (
+          {dataOfficeSelected?.gallery_image?.map((item: ImageHeader, index: number) => (
               <SwiperSlide key={index}>
                 <Image
                   className='size-full rounded-[0.75rem] object-cover'
-                  src={`https://swiperjs.com/demos/images/nature-${index + 1}.jpg`}
-                  alt='slide item'
+                  src={item.url}
+                  alt={item.alt}
                   width={360}
                   height={235}
                   quality={90}
@@ -101,23 +110,22 @@ const PopupMarker = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
         </div>
       </div>
       <p className='mb-[1rem] text-[1rem] font-normal leading-normal tracking-[-0.02rem] text-bodytext'>
-        Là văn phòng chính thức với hơn 10 năm hoạt động, mạng lưới 1,400 đối
-        tác toàn cầu của là lợi thế lớn giúp khách hàng đạt mục tiêu.
+        {dataOfficeSelected?.description}
       </p>
       <div className='flex items-center'>
         <ICLocation className='mr-[0.5rem] size-[1.5rem] flex-shrink-0' />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
-          Val-d'Or, QC J9P 0J6, Canada
+          {dataOfficeSelected?.location}
         </span>
       </div>
       <div className='mb-[1rem] mt-[0.62rem] flex items-center'>
         <ICWatch className='mr-[0.5rem] size-[1.5rem] flex-shrink-0' />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
-          Đang mở cửa
+          {dataOfficeSelected?.business_hours}
         </span>
       </div>
       <Link
-        href={'/'}
+        href={dataOfficeSelected?.link_google_map || ''}
         target='_blank'
         className='group flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] border border-solid border-[rgba(18,18,18,0.16)] transition-all duration-200 lg:hover:border-none lg:hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'
       >
