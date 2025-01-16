@@ -32,6 +32,7 @@ const config: Config = {
         'Phase-1-Brown': '#5C321E',
         brown: '#5C321E',
         greentext: '#254432',
+        title: '#254432',
         bodytext: '#5C5C5C',
         tagtext: '#A39A9A',
         inputtext: '#ffffff40',

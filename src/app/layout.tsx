@@ -44,13 +44,20 @@ export default async function RootLayout({
       revalidate: 60,
     },
   }
-  const [dataFooter] = await Promise.all([
+  const requestHeader = {
+    api: '/header-options?acf_format=standard',
+    option: {
+      revalidate: 60,
+    },
+  }
+  const [dataFooter,dataHeader] = await Promise.all([
     fetchData(requestFooter),
+    fetchData(requestHeader),
   ])
   return (
     <html lang='en'>
       <body className={` ${optima.variable} ${inter.className} antialiased`}>
-        <Header />
+        <Header data ={dataHeader?.data} dataFooter={dataFooter.data}/>
         {children}
         <Toaster
           theme='light'

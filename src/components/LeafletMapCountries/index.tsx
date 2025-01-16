@@ -9,7 +9,7 @@ export interface ICountry {
   name: string
   label?: string
   flag?: string
-  projectNumber?: number
+  number_of_projects?: number
 }
 
 interface ILeafletMapProps {
@@ -69,12 +69,11 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
 
     // Nếu không có `features`, trả về [0, 0]
     if (!geo.features || geo.features.length === 0) return [0, 0]
-
     // Tìm feature có thuộc tính `name` khớp với `country`
     const position = geo.features.find((feature: Feature) => {
-      return feature.properties && feature.properties.name === country
+      return feature.properties && feature.properties.name.trim().toLowerCase() === country.trim().toLowerCase()
     })
-
+    // console.log(position)
     // Nếu không tìm thấy feature, trả về [0, 0]
     if (!position || !position.properties) return [0, 0]
 
@@ -203,7 +202,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
           name: country[0].name,
           label: country[0].label,
           flag: country[0].flag,
-          projectNumber: country[0].projectNumber,
+          number_of_projects: country[0].number_of_projects,
         }
         let position: LatLngTuple = getPosition(country[0].name)
         if (countries.length > 1) {
@@ -216,7 +215,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
               name: newPosition.name,
               label: newPosition.label,
               flag: newPosition.flag,
-              projectNumber: newPosition.projectNumber,
+              number_of_projects: newPosition.number_of_projects,
             }
           }
         }
@@ -235,7 +234,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
                                 <img src='/icons/EB5/pioneering-values/project.svg' class='size-[1.01563rem] object-cover' />
                               </div>
                               <div class='flex flex-col '>
-                                    <span class='text-greentext font-normal leading-[1.25] text-[2rem]'>${countryObj?.projectNumber || 1}</span>
+                                    <span class='text-greentext font-normal leading-[1.25] text-[2rem]'>${countryObj?.number_of_projects || 1}</span>
                                     <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>Dự án EB-5</span>
                               </div>
                         </div>

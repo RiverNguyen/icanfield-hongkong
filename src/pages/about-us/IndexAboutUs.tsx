@@ -5,23 +5,37 @@ import BannerAboutus from '@/sections/aboutus/banner/BannerAboutus'
 import Mission from '@/sections/aboutus/banner/Mission'
 import ExpertTeam from '@/sections/aboutus/expert-team'
 import {OfficeMap} from '@/sections/aboutus/office-map'
-import officeMap from '@/sections/aboutus/office-map/constants'
 import PioneeringMission from '@/sections/aboutus/pioneering-mission/PioneeringMission'
+import {DataMapHomepage} from '@/sections/homepage/map-discover/dataMap.interface'
+import {IOfficeMapProps} from '@/sections/aboutus/office-map'
 import {
   IExpertTeamProps,
   dataAcfBanner,
   dataAcfPioneeringMission,
   dataMission,
 } from '@/types/dataAcfAboutus.interface'
-
 interface dataAcf {
   banner_about_us: dataAcfBanner
   icanfields_mission: dataMission
   pioneering_mission: dataAcfPioneeringMission
   elite_team_of_experts_creating_a_successful_journey: IExpertTeamProps
   awards_certifications: IAwardsCertificationsProps
+  icanfield_office: IOfficeMapProps
 }
-const IndexAboutUs = ({dataAcf}: {dataAcf: dataAcf}) => {
+const IndexAboutUs = ({
+  dataAcf,
+  dataMap,
+}: {
+  dataAcf: dataAcf
+  dataMap: DataMapHomepage
+}) => {
+  const officeMap:IOfficeMapProps = {
+      description: dataAcf?.icanfield_office?.description,
+      subtitle: dataAcf?.icanfield_office?.subtitle,
+      title: dataAcf?.icanfield_office?.title,
+      info: dataAcf?.icanfield_office?.info,
+      countries: dataMap,
+  }
   return (
     <>
       <BannerAboutus dataAcfBanner={dataAcf?.banner_about_us} />

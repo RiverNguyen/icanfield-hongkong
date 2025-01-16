@@ -57,7 +57,7 @@ const FormConnectUs = () => {
   }
   return (
     <div className='relative h-fit w-full'>
-      <h2 className='heading3 mb-[2rem] font-optima font-medium text-Phase-1-Brown xsm:mb-[1.88rem] xsm:text-[1.5rem]'>
+      <h2 className='mb-[2rem] font-optima font-medium text-Phase-1-Brown heading3 xsm:mb-[1.88rem] xsm:text-[1.5rem]'>
         Hãy kết nối với chúng tôi
       </h2>
       <Form {...form}>
@@ -72,7 +72,7 @@ const FormConnectUs = () => {
               <FormItem className='relative space-x-0 space-y-0'>
                 <FormLabel
                   className={cn(
-                    'body16 absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200',
+                    'absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200 body16',
                     (focus.fullName || field.value) &&
                       'pointer-events-none opacity-0',
                   )}
@@ -82,7 +82,7 @@ const FormConnectUs = () => {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] xsm:h-[2.75rem]'
+                    className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 xsm:h-[2.75rem]'
                     type='text'
                     {...field}
                     onFocus={() =>
@@ -105,7 +105,7 @@ const FormConnectUs = () => {
                 <FormItem className='relative space-x-0 space-y-0'>
                   <FormLabel
                     className={cn(
-                      'body16 absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200',
+                      'absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200 body16',
                       (focus.email || field.value) &&
                         'pointer-events-none opacity-0',
                     )}
@@ -115,7 +115,7 @@ const FormConnectUs = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] xsm:h-[2.75rem]'
+                      className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 xsm:h-[2.75rem]'
                       type='text'
                       {...field}
                       onFocus={() =>
@@ -137,7 +137,7 @@ const FormConnectUs = () => {
                 <FormItem className='relative space-x-0 space-y-0'>
                   <FormLabel
                     className={cn(
-                      'body16 absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200',
+                      'absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200 body16',
                       (focus.phone || field.value) &&
                         'pointer-events-none opacity-0',
                     )}
@@ -149,7 +149,7 @@ const FormConnectUs = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] xsm:h-[2.75rem]'
+                      className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 xsm:h-[2.75rem]'
                       type='tel'
                       {...field}
                       onChange={(e) => {
@@ -178,7 +178,7 @@ const FormConnectUs = () => {
               <FormItem className='relative space-x-0 space-y-0'>
                 <FormControl>
                   <Input
-                    className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] placeholder:text-[1rem] placeholder:font-normal placeholder:leading-normal placeholder:-tracking-[0.02rem] placeholder:text-greyscaletext-200 xsm:h-[2.75rem]'
+                    className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 placeholder:text-[1rem] placeholder:font-normal placeholder:leading-normal placeholder:-tracking-[0.02rem] placeholder:text-greyscaletext-200 xsm:h-[2.75rem]'
                     type='text'
                     placeholder='Lời nhắn của bạn'
                     {...field}

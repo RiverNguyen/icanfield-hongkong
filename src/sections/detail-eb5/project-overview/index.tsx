@@ -4,19 +4,19 @@ import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import useIsMobile from '@/hooks/useIsMobile'
 import 'swiper/css'
+import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
+import {Media} from '@/types/image.interface'
 
-type InfoItemProps = {
-  title: string
-  value: string
-  image: string
-}
-
-const InfoItem = ({image, title, value}: InfoItemProps) => {
+const InfoItem = ({
+  thumbnail,
+  title,
+  subtitle,
+}: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding'][0]) => {
   return (
     <div className='relative flex h-[18.75rem] w-full items-end overflow-hidden rounded-2xl border border-white/25 p-2 xsm:h-[11.25rem] xsm:rounded-xl xsm:p-0'>
       <ImageV2
         alt={title}
-        src={image}
+        src={thumbnail.url}
         width={300}
         height={300}
         className='absolute inset-0 h-full w-full object-cover'
@@ -32,11 +32,11 @@ const InfoItem = ({image, title, value}: InfoItemProps) => {
           />
         </div>
         <div className='flex-col space-y-1'>
-          <p className='sub-14 xsm:sub-12 font-medium tracking-[-0.00875rem] text-greyscaletext-400 xsm:font-normal'>
+          <p className='font-medium tracking-[-0.00875rem] text-greyscaletext-400 sub-14 xsm:font-normal xsm:sub-12'>
             {title}
           </p>
           <p className='heading3-s font-semibold text-Phase-1-Brown xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'>
-            {value}
+            {subtitle}
           </p>
         </div>
       </div>
@@ -45,7 +45,7 @@ const InfoItem = ({image, title, value}: InfoItemProps) => {
 }
 
 type ProjectSliderProps = {
-  images: string[]
+  images: IDataAcfDetailEB5['acf']['eb5_projects_detail_overview']['album']
 }
 
 const ProjectSlider = ({images}: ProjectSliderProps) => {
@@ -63,14 +63,14 @@ const ProjectSlider = ({images}: ProjectSliderProps) => {
           nextEl: '.image-next',
         }}
       >
-        {images.map((image, index) => (
+        {images.map((image: Media, index: number) => (
           <SwiperSlide
             key={index}
             className='!h-[34.58331rem] !w-[51.875rem] xsm:!h-[12.5rem] xsm:!w-[18.75rem]'
           >
             <ImageV2
-              src={image}
-              alt=''
+              src={image.url}
+              alt={image.alt}
               width={500}
               height={500}
               className='h-full w-full rounded-2xl object-cover xsm:rounded-[0.5rem]'
@@ -99,36 +99,35 @@ const ProjectSlider = ({images}: ProjectSliderProps) => {
   )
 }
 
-export type ProjectOverviewProps = {
-  title: string
-  description: string
-  infoItems: InfoItemProps[]
-  images: string[]
-}
-
 const ProjectOverview = ({
-  title,
-  description,
-  infoItems,
-  images,
-}: ProjectOverviewProps) => {
+  outstanding,
+  overview,
+}: {
+  outstanding: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding']
+  overview: IDataAcfDetailEB5['acf']['eb5_projects_detail_overview']
+}) => {
   return (
     <section>
-      <div className='section-container -mt-[20.25rem] relative z-[21] flex flex-col space-y-16 rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
+      <div className='relative z-[21] -mt-[20.25rem] flex flex-col space-y-16 rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 section-container xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
         <div className='grid w-full grid-cols-3 gap-6 xsm:grid-cols-2 xsm:gap-2 xsm:rounded-[1.25rem] xsm:bg-white/75 xsm:p-2 xsm:backdrop-blur-[25px]'>
-          {infoItems.map((item, index) => (
-            <InfoItem
-              key={index}
-              {...item}
-            />
-          ))}
+          {outstanding.map(
+            (
+              item: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding'][0],
+              index: number,
+            ) => (
+              <InfoItem
+                key={index}
+                {...item}
+              />
+            ),
+          )}
         </div>
         <div className='z-10 flex w-[47.6875rem] flex-col space-y-6 xsm:w-full xsm:space-y-4'>
-          <h1 className='heading1 font-optima font-semibold text-Phase-1-Brown'>
-            {title}
+          <h1 className='font-optima font-semibold text-Phase-1-Brown heading1'>
+            {overview.title_section}
           </h1>
-          <p className='body16 xsm:body-14 text-greyscaletext-body'>
-            {description}
+          <p className='text-greyscaletext-body body16 xsm:body-14'>
+            {overview.description}
           </p>
         </div>
         <ImageV2
@@ -139,7 +138,7 @@ const ProjectOverview = ({
           className='absolute -bottom-10 left-0 w-[100rem] object-cover opacity-80 xsm:hidden'
         />
       </div>
-      <ProjectSlider images={images} />
+      <ProjectSlider images={overview.album} />
     </section>
   )
 }

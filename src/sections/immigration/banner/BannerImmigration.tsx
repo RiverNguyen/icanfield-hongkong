@@ -61,7 +61,7 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
             height={820}
           />
           <ImageV2
-            className='absolute bottom-[-14rem] left-0 z-[21] h-[36.0625rem] w-full'
+            className='absolute bottom-[-14rem] left-0 z-[21] h-[36.0625rem] w-full pointer-events-none'
             src={'/imgs/immigration/banner/silk-strip.webp'}
             alt=''
             width={1600}

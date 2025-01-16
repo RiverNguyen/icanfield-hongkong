@@ -1,4 +1,4 @@
-import BannerHomepage, { IBannerHomepageProps } from '@/sections/homepage/banner'
+import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
 import FormHomepage from '@/sections/homepage/form-homepage'
 import GlobalImmigration from '@/sections/homepage/global-immigration'
 import {
@@ -13,8 +13,10 @@ import ProudJourney, {
   IItemProudJourney,
 } from '@/sections/homepage/proud-journey'
 import TalentedTeam from '@/sections/homepage/talented-team'
-import { Media } from '@/types/image.interface'
+import {Media} from '@/types/image.interface'
 import dynamic from 'next/dynamic'
+import {DataMapHomepage} from '@/sections/homepage/map-discover/dataMap.interface'
+import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
 const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
   ssr: false, // Nếu component không cần server-side rendering
   loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
@@ -73,9 +75,13 @@ interface NewsData {
 const HomePage = ({
   homeData,
   newsData,
+  dataFilter,
+  dataMap,
 }: {
   homeData: HomeData
   newsData: NewsData
+  dataFilter: FilterData
+  dataMap: DataMapHomepage
 }) => {
   const {
     home_banner,
@@ -87,11 +93,21 @@ const HomePage = ({
   } = homeData?.acf || {}
   return (
     <main className='bg-background'>
-      {home_banner && <BannerHomepage data={home_banner} />}
+      {home_banner && (
+        <BannerHomepage
+          data={home_banner}
+          dataFilter={dataFilter}
+        />
+      )}
       {home_global_immigration && (
         <GlobalImmigration data={home_global_immigration} />
       )}
-      {home_map_discover && <MapDiscover data={home_map_discover} />}
+      {home_map_discover && (
+        <MapDiscover
+          data={home_map_discover}
+          dataMap={dataMap}
+        />
+      )}
       {investment_opportunities && (
         <InvestmentOpportunities data={investment_opportunities} />
       )}

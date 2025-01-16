@@ -8,9 +8,9 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
-import {datacapitalSource} from '@/types/dataAcfChart.interface'
 import {useEffect, useState} from 'react'
 import useIsMobile from '@/hooks/useIsMobile'
+import {initChart} from '@/components/chart/constant'
 
 interface chartData {
   browser: string
@@ -18,12 +18,16 @@ interface chartData {
   fill: string
   index: number
 }
+interface ItemCapital {
+  convert_percent: string
+  title: string
+}
 export function ComponentChart({
   isInterView,
   dataCapitalSource,
 }: {
   isInterView: boolean
-  dataCapitalSource: datacapitalSource[]
+  dataCapitalSource: ItemCapital[]
 }) {
   const isMobile = useIsMobile()
   const [chartData, setChartData] = useState<chartData[]>()
@@ -32,9 +36,10 @@ export function ComponentChart({
   const [secondaryIndex, setSecondaryIndex] = useState<number>(1)
   useEffect(() => {
     const capitalWithIndex = dataCapitalSource?.map(
-      (item: datacapitalSource, index: number) => ({
-        ...item,
-        fill: '#' + item?.fill,
+      (item: ItemCapital, index: number) => ({
+        browser: initChart[index].title,
+        visitors: Number(item.convert_percent),
+        fill: initChart[index].fill,
         index: index,
       }),
     )

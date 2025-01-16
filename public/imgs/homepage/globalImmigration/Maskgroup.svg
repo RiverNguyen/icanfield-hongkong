@@ -22,25 +22,25 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1551_7027" result="shape"/>
 </filter>
 <linearGradient id="paint0_linear_1551_7027" x1="784.477" y1="872.983" x2="784.477" y2="127.029" gradientUnits="userSpaceOnUse">
-<stop offset="0.214" stop-color="#D9D9D9" stop-opacity="0"/>
-<stop offset="0.354" stop-color="#D9D9D9"/>
+<stop offset="0.214" stopColor="#D9D9D9" stop-opacity="0"/>
+<stop offset="0.354" stopColor="#D9D9D9"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1551_7027" x1="906.339" y1="211.84" x2="603.35" y2="884.337" gradientUnits="userSpaceOnUse">
-<stop stop-color="#95502F"/>
-<stop offset="0.498461" stop-color="#D79D61"/>
-<stop offset="0.713408" stop-color="#F5C178"/>
-<stop offset="1" stop-color="#F5C178"/>
+<stop stopColor="#95502F"/>
+<stop offset="0.498461" stopColor="#D79D61"/>
+<stop offset="0.713408" stopColor="#F5C178"/>
+<stop offset="1" stopColor="#F5C178"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1551_7027" x1="1078.84" y1="135.455" x2="1101.37" y2="558.41" gradientUnits="userSpaceOnUse">
-<stop offset="0.0909901" stop-color="#F7F6F1"/>
-<stop offset="0.234982" stop-color="#F7F6F1" stop-opacity="0.940929"/>
-<stop offset="0.345073" stop-color="#F7F6F1" stop-opacity="0.779934"/>
-<stop offset="0.539239" stop-color="#F7F6F1" stop-opacity="0.479882"/>
-<stop offset="0.871651" stop-color="#F7F6F1" stop-opacity="0"/>
+<stop offset="0.0909901" stopColor="#F7F6F1"/>
+<stop offset="0.234982" stopColor="#F7F6F1" stop-opacity="0.940929"/>
+<stop offset="0.345073" stopColor="#F7F6F1" stop-opacity="0.779934"/>
+<stop offset="0.539239" stopColor="#F7F6F1" stop-opacity="0.479882"/>
+<stop offset="0.871651" stopColor="#F7F6F1" stop-opacity="0"/>
 </linearGradient>
 <linearGradient id="paint3_linear_1551_7027" x1="-167.568" y1="1088.54" x2="279.406" y2="125.405" gradientUnits="userSpaceOnUse">
-<stop offset="0.324833" stop-color="#F7F6F1"/>
-<stop offset="0.658166" stop-color="#F7F6F1" stop-opacity="0"/>
+<stop offset="0.324833" stopColor="#F7F6F1"/>
+<stop offset="0.658166" stopColor="#F7F6F1" stop-opacity="0"/>
 </linearGradient>
 </defs>
 </svg>

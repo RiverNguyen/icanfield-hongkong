@@ -8,14 +8,26 @@ import {useRef} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Swiper as SwiperType} from 'swiper/types'
 import ImageV2 from '@/components/image/ImageV2'
+import {DetailItem} from '@/sections/immigration/map'
+import {ImageHeader} from '@/types/dataHeader.interface'
 
 type PopupMarkerProps = {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   countrySelected: string | null
+  dataProvince: ProviderItem
 }
-
-const PopupCountry = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
+interface ProviderItem {
+  name: string
+  label: string
+  details: DetailItem
+}
+const PopupCountry = ({
+  open,
+  setOpen,
+  countrySelected,
+  dataProvince,
+}: PopupMarkerProps) => {
   const swiperRef = useRef<SwiperType | null>(null)
   const handleNextSlide = () => {
     swiperRef.current?.slideNext()
@@ -53,20 +65,20 @@ const PopupCountry = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
           }}
           className='!h-[14.625rem] w-full rounded-[0.75rem]'
         >
-          {Array(10)
-            .fill(0)
-            .map((item: any, index: number) => (
+          {dataProvince?.details?.gallery_image.map(
+            (item: ImageHeader, index: number) => (
               <SwiperSlide key={index}>
                 <Image
                   className='size-full rounded-[0.75rem] object-cover'
-                  src={`https://swiperjs.com/demos/images/nature-${index + 1}.jpg`}
-                  alt='slide item'
+                  src={item.url}
+                  alt={item.alt}
                   width={360}
                   height={235}
                   quality={90}
                 />
               </SwiperSlide>
-            ))}
+            ),
+          )}
         </Swiper>
         <div className='absolute bottom-[0.75rem] right-[0.75rem] z-10 flex space-x-[0.5rem]'>
           <button
@@ -84,10 +96,9 @@ const PopupCountry = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
         </div>
       </div>
       <p className='mb-[1rem] text-[1rem] font-normal leading-normal tracking-[-0.02rem] text-bodytext'>
-        Là văn phòng chính thức với hơn 10 năm hoạt động, mạng lưới 1,400 đối
-        tác toàn cầu của là lợi thế lớn giúp khách hàng đạt mục tiêu.
+        {dataProvince?.details?.description}
       </p>
-      <div className='flex items-center mb-[0.62rem]'>
+      <div className='mb-[0.62rem] flex items-center'>
         <ImageV2
           src={'/icons/immigration/map-section/star2.svg'}
           alt='map'
@@ -96,10 +107,10 @@ const PopupCountry = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
           className='size-[1.25rem] object-contain'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
-        Thủ phủ: Toronto
+          Thủ phủ: {dataProvince?.details?.metropolis}
         </span>
       </div>
-      <div className='flex items-center mb-[0.62rem]'>
+      <div className='mb-[0.62rem] flex items-center'>
         <ImageV2
           src={'/icons/immigration/map-section/map2.svg'}
           alt='map'
@@ -108,7 +119,7 @@ const PopupCountry = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
           className='size-[1.25rem] object-contain'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
-        Diện tích: 1,076,000 km²
+          Diện tích: {dataProvince?.details?.acreage}
         </span>
       </div>
       <div className='flex items-center'>
@@ -120,7 +131,7 @@ const PopupCountry = ({open, setOpen, countrySelected}: PopupMarkerProps) => {
           className='size-[1.25rem] object-contain'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
-        Dân số: 14 triệu người
+          Dân số: {dataProvince?.details?.population}
         </span>
       </div>
       <Link

@@ -3,39 +3,42 @@ import fetchDataACF from '@/fetch/fetchDataACF'
 import Immigration from '@/pages/immigration'
 import endpoints from '@/utils/endpoints'
 
-export default async function page({ params }: { params: { slug: string } }) {
-  const requestAcf = {
-    api:
-      '/' +
-      endpoints.taxonomiesSettlement +
-      '?slug=' +
-      params?.slug +
-      '&acf_format=standard',
-    option: {
-      revalidate: 10,
-    },
-  }
-  const requestPrograms = {
-    api:
-      endpoints.settlementPrograms +
-      '?page=1&per_page=8&order=asc&' +
-      endpoints.taxonomiesSettlement +
-      '=' +
-      params?.slug,
-    option: {
-      revalidate: 10,
-    },
-  }
-  const requestRelate = {
-    api: '/posts-by-taxonomy?slug=' + params?.slug,
-    option: {
-      revalidate: 10,
-    },
-  }
-  const [dataAcf, dataPrograms, postRelate] = await Promise.all([
-    fetchDataACF(requestAcf),
-    fetchData(requestPrograms),
-    fetchData(requestRelate),
+export default async function page({params}: {params: {slug: string}}) {
+  const [dataAcf, dataPrograms, postRelate, dataMap] = await Promise.all([
+    fetchDataACF({
+      api:
+        '/' +
+        endpoints.taxonomiesSettlement +
+        '?slug=' +
+        params?.slug +
+        '&acf_format=standard',
+      option: {
+        revalidate: 10,
+      },
+    }),
+    fetchData({
+      api:
+        endpoints.settlementPrograms +
+        '?page=1&per_page=8&order=asc&' +
+        endpoints.taxonomiesSettlement +
+        '=' +
+        params?.slug,
+      option: {
+        revalidate: 10,
+      },
+    }),
+    fetchData({
+      api: '/posts-by-taxonomy?slug=' + params?.slug,
+      option: {
+        revalidate: 10,
+      },
+    }),
+    fetchData({
+      api: `/data-map-with-slug/?slug=${params.slug}`,
+      option: {
+        revalidate: 10,
+      },
+    }),
   ])
   return (
     <Immigration
@@ -43,6 +46,7 @@ export default async function page({ params }: { params: { slug: string } }) {
       dataImmigration={dataAcf[0]}
       dataPrograms={dataPrograms}
       postRelate={postRelate}
+      dataMap={dataMap?.data}
     />
   )
 }
