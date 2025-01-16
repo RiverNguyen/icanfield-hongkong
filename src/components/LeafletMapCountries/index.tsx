@@ -73,7 +73,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
     const position = geo.features.find((feature: Feature) => {
       return feature.properties && feature.properties.name.trim().toLowerCase() === country.trim().toLowerCase()
     })
-    console.log(position)
+    // console.log(position)
     // Nếu không tìm thấy feature, trả về [0, 0]
     if (!position || !position.properties) return [0, 0]
 
