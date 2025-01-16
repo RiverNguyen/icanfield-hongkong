@@ -6,7 +6,16 @@ import customGeoJson from './usa.geo.json'
 import {states} from '@/sections/EB5/pioneering-values/constants'
 import {FeatureCollection} from 'geojson'
 import 'leaflet/dist/leaflet.css'
-const PioneeringValues = () => {
+import {ICountry} from '@/components/LeafletMap'
+const PioneeringValues = ({
+  data,
+}: {
+  data: {
+    title: string
+    description: string
+    data_state_usa: ICountry[]
+  }
+}) => {
   const [isZoomInClick, setIsZoomInClick] = React.useState(false)
   const [isZoomOutClick, setIsZoomOutClick] = React.useState(false)
   const [isOpenPopup, setIsOpenPopup] = React.useState(false)
@@ -19,19 +28,17 @@ const PioneeringValues = () => {
   const handleTogglePopup = () => {
     setIsOpenPopup(!isOpenPopup)
   }
+  console.log(data)
+  const convertedData = data?.data_state_usa.map((item: ICountry) => [item])
   return (
     <section className='bg-background pt-[3rem] sm:-translate-y-[3rem]'>
       <div className='relative flex items-end justify-between overflow-hidden pb-[2.75rem] section-container xsm:flex-col xsm:items-start xsm:pb-[1.72rem]'>
-        <h2 className='flex-1 [&_p]:font-optima [&_p]:text-[3rem] [&_p]:font-semibold [&_p]:leading-[1.2] [&_p]:tracking-[-0.06rem] [&_p]:text-Phase-1-Brown xsm:[&_p]:text-[1.25rem]'>
-          <p>
-            {' '}
-            Sứ Mệnh Tiên Phong <br /> Giá Trị Dẫn Lối Thành Công
-          </p>
-        </h2>
+        <h2
+          className='flex-1 [&_p]:font-optima [&_p]:text-[3rem] [&_p]:font-semibold [&_p]:leading-[1.2] [&_p]:tracking-[-0.06rem] [&_p]:text-Phase-1-Brown xsm:[&_p]:text-[1.25rem]'
+          dangerouslySetInnerHTML={{__html: data?.title}}
+        ></h2>
         <p className='z-10 w-[34.3125rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-greyscaletext-400 xsm:mt-4 xsm:w-full xsm:text-[0.875rem] xsm:leading-[1.5] xsm:tracking-[-0.00875rem]'>
-          Chương trình mở ra cơ hội tuyệt vời cho các nhà đầu tư nước ngoài và
-          gia đình, cho phép nhà đầu tư sở hữu thẻ xanh và tiến gần hơn đến việc
-          trở thành công dân Mỹ.
+          {data?.description}
         </p>
         <ImageV2
           src={'/imgs/EB5/Pioneering-values/bg-city.webp'}
@@ -60,7 +67,7 @@ const PioneeringValues = () => {
       </div>
       <div className='relative h-[41.5rem] w-full overflow-hidden rounded-[1.25rem] bg-white section-container xsm:h-[20.4rem] xsm:w-full xsm:rounded-none'>
         <LeafletMapCountries
-          countries={states}
+          countries={convertedData}
           mapJson={customGeoJson as FeatureCollection}
           className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
           borderCountries='#B6B3A7'

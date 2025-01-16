@@ -16,6 +16,7 @@ import OutstandingProjectEB5, {
 import {FC, Suspense} from 'react'
 // import PioneeringValues from '@/sections/EB5/pioneering-values'
 import dynamic from 'next/dynamic'
+import {ICountry} from '@/components/LeafletMap'
 const PioneeringValues = dynamic(
   () => import('@/sections/EB5/pioneering-values'),
   {
@@ -31,10 +32,16 @@ interface IPageEB5Props {
     safety_standards: IProjectTransparencyProps['data']
     listItems: IOutstandingProjectEB5Props['listItems']
     categories: IOutstandingProjectEB5Props['categories']
+    section_map: {
+      title: string
+      description: string
+      data_state_usa: ICountry[]
+    }
   }
 }
 
 const PageEB5: FC<IPageEB5Props> = ({data}) => {
+ 
   return (
     <main className='bg-background'>
       <Banner
@@ -50,7 +57,7 @@ const PageEB5: FC<IPageEB5Props> = ({data}) => {
         />
       </Banner>
       <TeaEB5Section data={data?.eb_5_projects_field_incentive_zones} />
-      <PioneeringValues />
+      <PioneeringValues data={data?.section_map} />
       <Suspense fallback={<p>Loading...</p>}>
         <OutstandingProjectEB5
           listItems={data?.listItems}
