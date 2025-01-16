@@ -80,10 +80,10 @@ export const ProcessSteps: FC<
     >
       <div className='mx-auto flex justify-between sm:max-w-[90rem] xsm:mb-[1.62rem] xsm:flex-col'>
         <h2 className='font-optima font-semibold text-brown heading1'>
-          {title_section}
+          {title_section || 'Process Steps'}
         </h2>
         <p className='text-bodytext sm:max-w-[37.9375rem] sm:text-greyscaletext-700 sm:body16 xsm:mt-[1rem] xsm:body-14'>
-          {description}
+          {description || 'Follow these steps to get your settlement program'}
         </p>
       </div>
       <div className='mx-auto mt-[4rem] flex max-w-[90rem] space-x-[3.21rem] transition-all duration-800 xsm:hidden'>
@@ -199,7 +199,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
           },
         )}
       >
-        {title}
+        {title || ''}
       </h3>
       <div
         ref={textContainerRef}

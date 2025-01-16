@@ -36,14 +36,14 @@ export const OfficeMap: FC<IOfficeMapProps> = ({
           <p className='mb-[1.5rem] text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-bodytext sm:mb-[3rem] sm:text-[1rem] sm:tracking-[-0.02rem]'>
             {description}
           </p>
-          {info.map((item, index) => (
+          {info?.map((item, index) => (
             <Info
               key={index}
               {...item}
             />
           ))}
         </div>
-        <IndexMap countries={countries.countries_data} dataOffice={countries?.offices_data} />
+        <IndexMap countries={countries?.countries_data} dataOffice={countries?.offices_data} />
       </div>
     </section>
   )

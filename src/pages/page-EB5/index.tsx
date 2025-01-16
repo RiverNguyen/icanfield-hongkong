@@ -64,7 +64,7 @@ const PageEB5: FC<IPageEB5Props> = ({data}) => {
           categories={data?.categories}
         />
       </Suspense>
-      <ProjectTransparency data={data.safety_standards} />
+      <ProjectTransparency data={data?.safety_standards} />
       <WrapperConnectUs />
     </main>
   )
