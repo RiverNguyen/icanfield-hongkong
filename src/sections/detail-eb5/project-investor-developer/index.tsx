@@ -1,6 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs'
+import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
 import {useState} from 'react'
 
 export type ProjectInvestorDeveloperProps = {
@@ -25,12 +26,12 @@ export type ProjectInvestorDeveloperProps = {
 }
 
 const ProjectInvestorDeveloper = ({
-  title,
+  title_section,
   description,
-  developer,
   investor,
-}: ProjectInvestorDeveloperProps) => {
-  const [tab, setTab] = useState<'investor' | 'developer'>('developer')
+  development,
+}: IDataAcfDetailEB5['acf']['eb5_projects_detail_quality']) => {
+  const [tab, setTab] = useState<'investor' | 'developer'>('investor')
 
   return (
     <div className='relative flex h-[50rem] w-full items-end p-20 xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0'>
@@ -43,10 +44,11 @@ const ProjectInvestorDeveloper = ({
       />
       <div className='absolute inset-0 rounded-t-[2rem] bg-black/30' />
       <div className='absolute left-20 top-[4.02rem] z-10 w-[38.8125rem] px-4 py-8 xsm:static xsm:w-full'>
-        <h1 className='heading1 font-optima font-semibold text-greyscaletext-50'>
-          {title}
-        </h1>
-        <p className='body16 xsm:body-14 mt-[0.625rem] text-white'>
+        <h2
+          className='font-optima font-semibold text-greyscaletext-50 heading1'
+          dangerouslySetInnerHTML={{__html: title_section}}
+        ></h2>
+        <p className='mt-[0.625rem] text-white body16 xsm:body-14'>
           {description}
         </p>
       </div>
@@ -55,7 +57,7 @@ const ProjectInvestorDeveloper = ({
           <div className='flex items-center space-x-4'>
             <div className='flex h-16 w-16 items-center justify-center rounded-xl bg-white xsm:h-[3.367rem] xsm:w-[3.367rem]'>
               <ImageV2
-                alt={title}
+                alt='icon'
                 src='/icons/detail-eb5/check-v2.svg'
                 width={24}
                 height={24}
@@ -64,15 +66,15 @@ const ProjectInvestorDeveloper = ({
             </div>
             {tab === 'investor' ? (
               <div>
-                <h3 className='sub-24S xsm:body16-s font-semibold text-white'>
-                  {investor.title}
+                <h3 className='font-semibold text-white sub-24S xsm:body16-s'>
+                  {investor.name}
                 </h3>
-                <p className='body-14 xsm:sub-12-m mt-1 font-medium text-white/85'>
+                <p className='mt-1 font-medium text-white/85 body-14 xsm:sub-12-m'>
                   Chủ đầu tư dự án
                 </p>
               </div>
             ) : (
-              <h3 className='sub-24S xsm:body16-s font-semibold uppercase text-white'>
+              <h3 className='font-semibold uppercase text-white sub-24S xsm:body16-s'>
                 Các đơn vị <br />
                 phát triển dự án
               </h3>
@@ -83,8 +85,8 @@ const ProjectInvestorDeveloper = ({
               <>
                 <div className='h-[6.625rem] w-full rounded-2xl bg-white/15 p-6 flex-center'>
                   <ImageV2
-                    src={investor.logo}
-                    alt={investor.title}
+                    src={investor.logo.url}
+                    alt={investor.logo.alt}
                     width={400}
                     height={300}
                     className='h-10 w-auto xsm:h-[1.7rem]'
@@ -96,11 +98,11 @@ const ProjectInvestorDeveloper = ({
                       key={index}
                       className='flex flex-col justify-center space-y-[0.375rem] rounded-xl bg-white/15 px-4 py-3 xsm:p-3'
                     >
-                      <h4 className='hero-title xsm:heading1 text-white'>
+                      <h4 className='text-white hero-title xsm:heading1'>
                         {achievement.value}
                       </h4>
                       <div className='h-[1px] w-full bg-white/20' />
-                      <p className='body16-m xsm:body-14 font-normal text-white'>
+                      <p className='font-normal text-white body16-m xsm:body-14'>
                         {achievement.name}
                       </p>
                     </div>
@@ -109,14 +111,14 @@ const ProjectInvestorDeveloper = ({
               </>
             ) : (
               <div className='grid grid-cols-2 gap-4'>
-                {developer.logos.map((logo, index) => (
+                {development.logos.map((logo, index) => (
                   <div
                     key={index}
                     className='h-[7.125rem] w-full rounded-xl bg-white/15 p-[1.3125rem] flex-center xsm:h-[5.75rem]'
                   >
                     <ImageV2
-                      src={logo}
-                      alt='Developer'
+                      src={logo.url}
+                      alt={logo.alt}
                       width={400}
                       height={300}
                       className='h-full w-auto'
@@ -135,13 +137,13 @@ const ProjectInvestorDeveloper = ({
           >
             <TabsList className='grid h-auto w-full grid-cols-2 p-3 xsm:p-2'>
               <TabsTrigger
-                className='heading3-s rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown data-[state=active]:shadow-SHADOW xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
+                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='investor'
               >
                 Chủ đầu tư dự án
               </TabsTrigger>
               <TabsTrigger
-                className='heading3-s rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown data-[state=active]:shadow-SHADOW xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
+                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='developer'
               >
                 Đơn vị phát triển dự án
@@ -153,18 +155,17 @@ const ProjectInvestorDeveloper = ({
             >
               <div className='flex h-[28rem] items-start space-x-6 rounded-2xl rounded-b-3xl bg-white p-6 shadow-[0px_-1px_6.3px_0px_rgba(0,0,0,0.04)] xsm:h-auto xsm:flex-col xsm:space-x-0 xsm:space-y-4 xsm:rounded-b-none xsm:p-4'>
                 <div className='flex flex-col space-y-4'>
-                  <h1 className='heading3 font-optima font-medium uppercase text-Phase-1-Brown xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
-                    Chủ đầu tư {investor.title}
-                  </h1>
-                  <div className='body-14 flex flex-col space-y-2 text-greyscaletext-300'>
-                    {investor.description.map((desc, index) => (
-                      <p key={index}>{desc}</p>
-                    ))}
-                  </div>
+                  <h2 className='font-optima font-medium uppercase text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
+                    Chủ đầu tư {investor.name}
+                  </h2>
+                  <div
+                    className='flex flex-col space-y-2 text-greyscaletext-300 body-14'
+                    dangerouslySetInnerHTML={{__html: investor.description}}
+                  ></div>
                 </div>
                 <ImageV2
-                  src={investor.image}
-                  alt='Investor'
+                  src={investor.thumbnail.url}
+                  alt={investor.thumbnail.alt}
                   width={600}
                   height={600}
                   className='h-full w-[18.25rem] rounded-xl object-cover xsm:h-[14.29169rem] xsm:w-full'
@@ -177,18 +178,17 @@ const ProjectInvestorDeveloper = ({
             >
               <div className='flex h-[28rem] items-start space-x-6 rounded-2xl rounded-b-3xl bg-white p-6 shadow-[0px_-1px_6.3px_0px_rgba(0,0,0,0.04)] xsm:h-auto xsm:flex-col xsm:space-x-0 xsm:space-y-4 xsm:rounded-b-none xsm:p-4'>
                 <div className='flex flex-col space-y-4'>
-                  <h1 className='heading3 font-optima font-medium uppercase text-Phase-1-Brown xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
-                    {developer.title}
-                  </h1>
-                  <div className='body-14 flex flex-col space-y-2 text-greyscaletext-300'>
-                    {developer.description.map((desc, index) => (
-                      <p key={index}>{desc}</p>
-                    ))}
-                  </div>
+                  <h2 className='font-optima font-medium uppercase text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
+                    CÁC ĐƠN VỊ PHÁT TRIỂN UY TÍN
+                  </h2>
+                  <div
+                    className='flex flex-col space-y-2 text-greyscaletext-300 body-14'
+                    dangerouslySetInnerHTML={{__html: investor.description}}
+                  ></div>
                 </div>
                 <ImageV2
-                  src={developer.image}
-                  alt='Developer'
+                  src={development.thumbnail.url}
+                  alt={development.thumbnail.alt}
                   width={600}
                   height={600}
                   className='h-full w-[18.25rem] rounded-xl object-cover xsm:h-[14.29169rem] xsm:w-full'

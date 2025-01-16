@@ -1,13 +1,22 @@
-export interface Project {
-  link: string
+import {Media} from '@/types/image.interface'
+
+interface Location {
+  id: number
   name: string
-  location: string
+  slug: string
+  taxonomy: string
+  primary: boolean
+}
+
+export interface IProject {
+  id: number
+  location: Location[]
+  slug: string
+  title: string
+  image: Media
   type: string
-  scale: string
-  ub5CapitalRatio: string
-  jobsCreatedRatio: string
-  image: {
-    alt: string
-    src: string
-  }
+  project_scale: number
+  eb5_capital_ratio: number
+  jobs_created: number
+  contact: string
 }

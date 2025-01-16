@@ -1,6 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import {cn} from '@/lib/utils'
+import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
 import {Media} from '@/types/image.interface'
 import {FC, memo, useEffect, useRef, useState} from 'react'
 
@@ -12,14 +13,12 @@ export interface IProcessStepsProps {
 
 const progressDuration = 20000 // Total duration for all steps
 
-export const ProcessSteps: FC<IProcessStepsProps> = ({
-  title,
-  description,
-  steps,
-}) => {
+export const ProcessSteps: FC<
+  IDataAcfDetailEB5['acf']['eb5_projects_detail_progress']
+> = ({title_section, description, timeline}) => {
   const [currentStep, setCurrentStep] = useState(0) // Current step index
   const [progressArray, setProgressArray] = useState(
-    Array(steps?.length || 0).fill(0),
+    Array(timeline?.length || 0).fill(0),
   ) // Progress for each step
 
   const [scrollPercent, setScrollPercent] = useState(0)
@@ -52,7 +51,7 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
     return () => window.removeEventListener('scroll', handleScroll) // Dọn sự kiện khi component bị hủy
   }, [])
 
-  const stepDuration = steps?.length ? progressDuration / steps.length : 0 // Duration for each step
+  const stepDuration = timeline?.length ? progressDuration / timeline.length : 0 // Duration for each step
 
   useEffect(() => {
     const intervalRef = setInterval(() => {
@@ -65,14 +64,14 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
         // If step is complete, move to next step or reset to 0
         if (newProgress[currentStep] >= 100) {
           newProgress[currentStep] = 0
-          setCurrentStep((prevStep) => (prevStep + 1) % (steps?.length || 1)) // Loop to the first step
+          setCurrentStep((prevStep) => (prevStep + 1) % (timeline?.length || 1)) // Loop to the first step
         }
         return newProgress
       })
     }, stepDuration / 100) // Update progress every interval to reach 100% for each step
 
     return () => clearInterval(intervalRef) // Cleanup on component unmount or step change
-  }, [currentStep, steps?.length, stepDuration])
+  }, [currentStep, stepDuration])
 
   return (
     <section
@@ -81,15 +80,15 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
     >
       <div className='mx-auto flex justify-between sm:max-w-[90rem] xsm:mb-[1.62rem] xsm:flex-col'>
         <h2 className='font-optima font-semibold text-brown heading1'>
-          {title}
+          {title_section}
         </h2>
         <p className='text-bodytext sm:max-w-[37.9375rem] sm:text-greyscaletext-700 sm:body16 xsm:mt-[1rem] xsm:body-14'>
           {description}
         </p>
       </div>
       <div className='mx-auto mt-[4rem] flex max-w-[90rem] space-x-[3.21rem] transition-all duration-800 xsm:hidden'>
-        {steps &&
-          steps.map((step, index) => (
+        {timeline &&
+          timeline.map((step, index) => (
             <ProcessStepItem
               key={index}
               step={index + 1}
@@ -104,8 +103,8 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
           ))}
       </div>
       <div className='relative space-y-[4rem] sm:hidden'>
-        {steps &&
-          steps.map((step, index) => (
+        {timeline &&
+          timeline.map((step, index) => (
             <ProcessStepItemMb
               key={index}
               step={index + 1}
@@ -127,9 +126,10 @@ export const ProcessSteps: FC<IProcessStepsProps> = ({
 }
 
 interface IProcessStepItem {
-  title?: string
-  description?: string
-  image?: Media
+  specific_time: string
+  title: string
+  content: string
+  thumbnail: Media
 }
 
 interface IProcessStepItemProps extends IProcessStepItem {
@@ -141,9 +141,9 @@ interface IProcessStepItemProps extends IProcessStepItem {
 
 export const ProcessStepItem: FC<IProcessStepItemProps> = ({
   title,
-  description,
-  image,
-  step,
+  specific_time,
+  content,
+  thumbnail,
   isActive,
   progress,
   setStep,
@@ -179,7 +179,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
             {'border-brown bg-brown text-[#F3F3F3]': isActive},
           )}
         >
-          Bước {step < 10 ? `0${step}` : step}
+          {specific_time}
         </span>
         <div className='relative h-[0.07031rem] w-full flex-1 overflow-hidden rounded-full bg-black/10'>
           <span
@@ -215,14 +215,14 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
           ref={textContentRef}
           className='line-clamp-3'
         >
-          {description}
+          {content}
         </p>
       </div>
       <ImageV2
-        src={image?.url || ''}
-        alt={image?.alt || ''}
-        width={image?.width || 1000}
-        height={image?.height || 1000}
+        src={thumbnail?.url || ''}
+        alt={thumbnail?.alt || ''}
+        width={thumbnail?.width || 1000}
+        height={thumbnail?.height || 1000}
         className='mt-auto block h-[16.875rem] w-full rounded-[1.125rem] object-cover transition-all duration-800'
       />
     </div>
@@ -234,7 +234,7 @@ interface IProcessStepItemMbProps extends IProcessStepItem {
 }
 
 const ProcessStepItemMb: FC<IProcessStepItemMbProps> = memo(
-  ({description, image, step, title}) => {
+  ({specific_time, content, thumbnail, step, title}) => {
     return (
       <div
         className={cn('flex', {
@@ -242,10 +242,10 @@ const ProcessStepItemMb: FC<IProcessStepItemMbProps> = memo(
         })}
       >
         <ImageV2
-          src={image?.url || ''}
-          alt={image?.alt || ''}
-          width={image?.width || 1000}
-          height={image?.height || 1000}
+          src={thumbnail?.url || ''}
+          alt={thumbnail?.alt || ''}
+          width={thumbnail?.width || 1000}
+          height={thumbnail?.height || 1000}
           className={cn(
             'sticky top-[3.75rem] size-[10rem] rounded-[0.5rem] object-cover',
             {
@@ -256,7 +256,7 @@ const ProcessStepItemMb: FC<IProcessStepItemMbProps> = memo(
         />
         <div className='flex-1'>
           <span className='inline-block rounded-[1.375rem] bg-brown p-[0.4375rem_0.75rem] text-[0.75rem] font-semibold uppercase text-[#F3F3F3]'>
-            Giai đoạn {step < 10 ? `0${step}` : step}
+            {specific_time}
           </span>
           <div
             className={cn(
@@ -277,7 +277,7 @@ const ProcessStepItemMb: FC<IProcessStepItemMbProps> = memo(
               },
             )}
           >
-            {description}
+            {content}
           </p>
         </div>
       </div>

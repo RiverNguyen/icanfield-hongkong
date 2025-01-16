@@ -1,10 +1,19 @@
 import {Breadcrumb} from '@/components/breadcrumb'
-import ProjectTransparency from '@/components/project-transparency'
+import ProjectTransparency, {
+  IProjectTransparencyProps,
+} from '@/components/project-transparency'
 import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
-import {Banner} from '@/sections/detail-settlement-programs/banner'
-import TeaEB5Section from '@/sections/EB5/eb5-tea-sections'
-import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
-import {Suspense} from 'react'
+import {
+  Banner,
+  IBannerProps,
+} from '@/sections/detail-settlement-programs/banner'
+import TeaEB5Section, {
+  ITeaEB5SectionItemProps,
+} from '@/sections/EB5/eb5-tea-sections'
+import OutstandingProjectEB5, {
+  IOutstandingProjectEB5Props,
+} from '@/sections/EB5/outstanding-projects'
+import {FC, Suspense} from 'react'
 // import PioneeringValues from '@/sections/EB5/pioneering-values'
 import dynamic from 'next/dynamic'
 const PioneeringValues = dynamic(
@@ -14,56 +23,41 @@ const PioneeringValues = dynamic(
     loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
   },
 )
-import React from 'react'
 
-const PageEB5 = () => {
+interface IPageEB5Props {
+  data: {
+    clone_banner: IBannerProps
+    eb_5_projects_field_incentive_zones: ITeaEB5SectionItemProps[]
+    safety_standards: IProjectTransparencyProps['data']
+    listItems: IOutstandingProjectEB5Props['listItems']
+    categories: IOutstandingProjectEB5Props['categories']
+  }
+}
+
+const PageEB5: FC<IPageEB5Props> = ({data}) => {
   return (
     <main className='bg-background'>
       <Banner
-        title_line_1='ĐẦU TƯ EB-5 AN TOÀN'
-        title_line_2='Định Cư Mỹ Dễ Dàng'
-        description='Chương trình mở ra cơ hội tuyệt vời cho các nhà đầu tư nước ngoài và gia đình của họ.'
+        {...data?.clone_banner}
         backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.50)_24.02%,rgba(0,0,0,0.00)86.12%)]'
         className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
-        background_pc={{
-          ID: 1,
-          id: 1,
-          title: 'string',
-          filename: 'string',
-          filesize: 1,
-          url: '/imgs/EB5/Banner/d-bg.webp',
-          link: 'string',
-          alt: 'string',
-          author: 'string',
-          description: 'string',
-          caption: 'string',
-          name: 'string',
-          status: 'string',
-          uploaded_to: 1000,
-          date: 'string',
-          modified: 'string',
-          menu_order: 1000,
-          mime_type: 'string',
-          type: 'string',
-          subtype: 'string',
-          icon: 'string',
-          width: 1000,
-          height: 1000,
-        }}
       >
         <Breadcrumb
           items={[
             {label: 'Home', href: '/'},
-            {label: 'Blogs', href: '#'},
+            {label: 'Dự án EB-5', href: '/EB5'},
           ]}
         />
       </Banner>
-      <TeaEB5Section />
+      <TeaEB5Section data={data?.eb_5_projects_field_incentive_zones} />
       <PioneeringValues />
       <Suspense fallback={<p>Loading...</p>}>
-        <OutstandingProjectEB5 />
+        <OutstandingProjectEB5
+          listItems={data?.listItems}
+          categories={data?.categories}
+        />
       </Suspense>
-      <ProjectTransparency />
+      <ProjectTransparency data={data.safety_standards} />
       <WrapperConnectUs />
     </main>
   )

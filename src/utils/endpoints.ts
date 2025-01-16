@@ -20,6 +20,11 @@ const endpoints = {
   },
   taxonomiesSettlement: 'nation',
   settlementPrograms: '/settlement-programs',
+  eb5Project: {
+    page: '/pages/521?_fields=acf&acf_format=standard',
+    list: '/eb5-projects',
+    categories: '/eb5-categories?_fields=id,name,slug,taxonomy',
+  },
   filter: '/filter-data-settlement_hp',
   homepageMap: '/data-map-homepage',
 }
