@@ -68,13 +68,13 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
             height={820}
           />
           <div className='absolute left-0 top-[12.31rem] z-[12] flex h-[33.5rem] w-full items-center justify-end overflow-hidden'>
-            <ImageV2
+            {/* <ImageV2
               className='flying__clouds size-full'
               src={'/imgs/immigration/banner/flying-cloudsV2.webp'}
               alt=''
               width={1600}
               height={820}
-            />
+            /> */}
             <ImageV2
               className='flying__clouds size-full'
               src={'/imgs/immigration/banner/flying-cloudsV2.webp'}

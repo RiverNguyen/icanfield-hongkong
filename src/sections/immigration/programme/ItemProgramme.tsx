@@ -16,15 +16,15 @@ export default function ItemProgramme({ className,dataPostProgramme, slug }: { c
         className
       )}
     >
-      <div className="w-full h-[18.5625rem] xsm:h-[14.25rem] relative rounded-[1.25rem]">
+      <div className="w-full h-[18.5625rem] xsm:h-[14.25rem] relative rounded-[1.25rem_1.25rem_0_0]">
         <ImageV2
-          className="size-full object-cover rounded-[1.25rem]"
+          className="size-full object-cover rounded-[1.25rem_1.25rem_0_0]"
           width={464}
           height={297}
           alt={dataPostProgramme?.slug}
           src={dataPostProgramme?.featured_image}
         />
-        <div className="absolute size-full inset-0 rounded-[1.25rem] z-10 bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]"></div>
+        <div className="absolute size-full inset-0 rounded-[1.25rem_1.25rem_0_0] z-10 bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]"></div>
         <h3 className="absolute z-[11] bottom-[1.5rem] left-[1.5rem] xsm:left-[1rem] xsm:bottom-[4.81rem] line-clamp-1 heading3 xsm:heading2 font-medium text-white">
           {dataPostProgramme?.title}
         </h3>
@@ -86,7 +86,7 @@ export default function ItemProgramme({ className,dataPostProgramme, slug }: { c
           </div>
         </div>
       ) : (
-        <div className='h-[8rem] w-full flex'></div>
+        <div className='h-[7rem] w-full flex'></div>
       )}
       <div className="flex justify-between items-center p-[1.25rem] xsm:p-[1rem] xsm:space-x-[0.5rem]">
         <Link

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type {Config} from 'tailwindcss'
+import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
@@ -133,7 +133,7 @@ const config: Config = {
             {},
         },
         '.heading2': {
-          '@apply text-[2.5rem] leading-[1.2] tracking-[-0.075rem] xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.06rem]':
+          '@apply text-[2.5rem] font-semibold leading-[1.2] tracking-[-0.075rem] xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.06rem]':
             {},
         },
         '.heading3': {
@@ -188,8 +188,6 @@ const config: Config = {
         '.sub-28M': {
           '@apply text-[1.75rem] font-medium leading-[1.25] tracking-[-0.0175rem]':
             {},
-          '@apply text-[1.75rem] font-bold leading-[1.25] tracking-[-0.0175rem]':
-            {},
         },
         '.sub-28R': {
           '@apply text-[1.75rem] leading-[1.25] tracking-[-0.0175rem]': {},
@@ -213,7 +211,9 @@ const config: Config = {
         '.body16-s': {
           '@apply text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem]':
             {},
-          '@apply text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem]':
+        },
+        '.body16-b': {
+          '@apply text-[1rem] font-bold leading-[1.5] tracking-[-0.01rem]':
             {},
         },
         '.body16-r55': {

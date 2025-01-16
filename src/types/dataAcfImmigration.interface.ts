@@ -109,6 +109,7 @@ export interface dataProgramsAcf {
         information: information
         interest: interest
     }
+    nation: string[]
 }
 export interface dataPrograms { 
     success: boolean

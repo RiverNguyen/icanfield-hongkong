@@ -43,6 +43,11 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+html > body[data-scroll-locked] {
+  overflow: auto !important;
+  --removed-body-scroll-bar-size: 0px;
+  margin-right: 0 !important;
+}
 @layer components {
   .content-p {
     @apply my-[0.5rem] text-greyscaletext-body inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
