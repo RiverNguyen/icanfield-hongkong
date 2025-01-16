@@ -3,13 +3,15 @@
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
 import {isLockScroll} from '@/hooks/useBodyScrollLock'
+import {dataFooter} from '@/types/dataFooter.interface'
 import {
-  LanguageOption,
-  MenuItem,
-  PostOutstanding,
-  SocialNetwork,
-  TopHeaderItem,
-} from '@/types/header.interface'
+  dataHeader,
+  OutstandingPost,
+  Language,
+  Program,
+  ChildProgram,
+} from '@/types/dataHeader.interface'
+import {social} from '@/layout/footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, {useRef} from 'react'
@@ -19,178 +21,21 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import {languageOptions} from './constants'
 import './styles.css'
 
-const Header = () => {
-  const listPostOutstanding = [
-    {
-      title: 'Ứng dụng vật liệu sinh học trong căn hộ ở Ecopark',
-      href: '/',
-    },
-    {
-      title: 'Tìm hiểu về bê tông khí chưng áp',
-      href: '/',
-    },
-    {
-      title:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, a?',
-      href: '/',
-    },
-  ]
-  const listItemTopHeader = [
-    {
-      title: 'sự kiện',
-      linkIcon: '/icons/homepage/header/event.svg',
-      href: '/events',
-    },
-    {
-      title: 'tin định cư',
-      linkIcon: '/icons/homepage/header/flag.svg',
-      href: '/events',
-    },
-    {
-      title: 'liên hệ',
-      linkIcon: '/icons/homepage/header/gmail.svg',
-      href: '/events',
-    },
-  ]
-  const menu = [
-    {
-      title: 'Định cư Canada',
-      href: '/dinh-cu-canada',
-      imgUrl: '/imgs/homepage/header/canada-flag2.png',
-      background: '/imgs/homepage/header/d-card-canada.webp',
-      count: 54,
-    },
-    {
-      title: 'Định cư Mỹ',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-america-flag.jpg',
-      background: '/imgs/homepage/header/d-card-my.webp',
-      count: 24,
-      children: [
-        {
-          title: 'Các chương trình định cư',
-          href: '/',
-          imgUrl: '/imgs/homepage/header/d-Uc.webp',
-        },
-        {
-          title: 'Dự án EB-5',
-          href: '/',
-          imgUrl: '/imgs/homepage/header/d-bds.webp',
-        },
-      ],
-    },
-    {
-      title: 'Định cư Caribe',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-carribe-flag.png',
-      background: '/imgs/homepage/header/d-card-caribe.webp',
-      count: 32,
-    },
-    {
-      title: 'Định cư Châu Âu',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/eu-flag2.png',
-      background: '/imgs/homepage/header/d-card-eu.webp',
-      count: 36,
-    },
-    {
-      title: 'Các chương trình khác',
-      href: '/',
-      children: [
-        {
-          title: 'Định cư Úc',
-          href: '/',
-          imgUrl: '/imgs/homepage/header/d-Uc.webp',
-        },
-        {
-          title: 'Bất động sản Úc',
-          href: '/',
-          imgUrl: '/imgs/homepage/header/d-bds.webp',
-        },
-      ],
-    },
-    {
-      title: 'Cẩm nang iCanfield',
-      href: '/',
-    },
-  ]
-  const listItemSupportCustomer = [
-    {
-      title: 'Thẩm định hồ sơ',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-Uc.webp',
-    },
-    {
-      title: 'So sánh chương trình',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-bds.webp',
-    },
-    {
-      title: 'Thông tin hộ chiếu',
-      href: '/',
-      imgUrl: '/imgs/homepage/header/d-Uc.webp',
-    },
-  ]
+const Header = ({
+  data,
+  dataFooter,
+}: {
+  data: dataHeader
+  dataFooter: dataFooter
+}) => {
   const listMenuMobileLast = [
-    {
-      title: 'Hỗ trợ khách hàng',
-      href: '/',
-      children: [
-        {
-          title: 'Thẩm định hồ sơ',
-          href: '/',
-          imgUrl: '/imgs/homepage/header/d-Uc.webp',
-        },
-        {
-          title: 'So sánh chương trình',
-          href: '/',
-          imgUrl: '/imgs/homepage/header/d-bds.webp',
-        },
-        {
-          title: 'Thông tin hộ chiếu',
-          href: '/',
-          imgUrl: '/imgs/homepage/header/d-Uc.webp',
-        },
-      ],
-    },
-    {
-      title: 'Cẩm nang iCanfield',
-      href: '/',
-    },
-    {
-      title: 'Sự kiện',
-      href: '/',
-    },
-    {
-      title: 'Liên hệ',
-      href: '/',
-    },
-  ]
-  const socialNetwork = [
-    {
-      title: 'facebook',
-      link: '/',
-      icon: '/icons/homepage/header/facebook.svg',
-    },
-    {
-      title: 'instagram',
-      link: '/',
-      icon: '/icons/homepage/header/instagram.svg',
-    },
-    {
-      title: 'linkedin',
-      link: '/',
-      icon: '/icons/homepage/header/linkedin.svg',
-    },
-    {
-      title: 'youtube',
-      link: '/',
-      icon: '/icons/homepage/header/youtube.svg',
-    },
+    data?.icanfield_handbook,
+    data?.support_customer,
+    data?.contact,
   ]
   const [isActivedLanguage, setIsActivedLanguage] = React.useState(false) //handle language dropdown
   const [isCurrentLanguage, setIsCurrentLanguage] = React.useState(
-    languageOptions[1],
+    data?.language?.languages[0] || languageOptions[0],
   ) //handle current language
   const [isActiveOverlay, setIsActiveOverlay] = React.useState(false) //handle overlay menu
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -200,16 +45,18 @@ const Header = () => {
   >(null)
   const [isCloseMenu, setIsCloseMenu] = React.useState(false)
   const refDropdownLanguage = React.useRef<HTMLDivElement>(null)
-  const [selectedChild, setSelectedChild] = React.useState<MenuItem | null>(
-    null,
-  )
+  const [selectedChild, setSelectedChild] = React.useState<
+    Program | {label: string; childrens: ChildProgram[]} | null
+  >(null)
+  const refDisableHover = React.useRef<HTMLDivElement>(null)
   const [isOpenedChild, setIsOpenedChild] = React.useState(false)
   //function handle language dropdown
   const handleOpenLanguage = () => {
     setIsActivedLanguage(!isActivedLanguage)
   }
+
   //function handle change language
-  const handleChangeLanguage = (item: LanguageOption) => {
+  const handleChangeLanguage = (item: Language) => {
     setIsCurrentLanguage(item)
     setIsActivedLanguage(false)
   }
@@ -262,7 +109,9 @@ const Header = () => {
     setIsActiveOverlay(!isActiveOverlay)
   }
   //handle select child menu
-  const handleSelectChild = (item: MenuItem) => {
+  const handleSelectChild = (
+    item: Program | {label: string; childrens: ChildProgram[]},
+  ) => {
     setSelectedChild(item)
   }
   //handle toggle child menu
@@ -272,6 +121,21 @@ const Header = () => {
   //close the mobile header
   const handleBeforeNavigate = () => {
     setIsCloseMenu(false)
+    setIsOpenedChild(false)
+  }
+  //hanlde disable hover
+  const handleDisableHover = () => {
+    if (refDisableHover.current) {
+      // Vô hiệu hóa hover
+      refDisableHover.current.style.pointerEvents = 'none'
+
+      // Bật lại sau 0.5s
+      setTimeout(() => {
+        if (refDisableHover.current) {
+          refDisableHover.current.style.pointerEvents = 'auto'
+        }
+      }, 1000)
+    }
   }
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
@@ -281,7 +145,7 @@ const Header = () => {
             <div className='relative'>
               <div className='z-1 pointer-events-none absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08]'></div>
               <Link
-                href={'/blogs'}
+                href={data?.news_business.link || '/'}
                 className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'
               >
                 <ImageV2
@@ -291,8 +155,8 @@ const Header = () => {
                   height={40}
                   className='size-[0.875rem] translate-y-[-1px] object-contain'
                 />
-                <span className='text-[0.75rem] font-medium leading-[1.5] text-white'>
-                  TIN DOANH NGHIỆP
+                <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
+                  {data?.news_business.label || ''}
                 </span>
               </Link>
             </div>
@@ -314,41 +178,70 @@ const Header = () => {
                 modules={[Autoplay]}
                 className='swiper-outstanding-post !h-full'
               >
-                {listPostOutstanding.map((item: PostOutstanding, index) => (
-                  <SwiperSlide
-                    key={index}
-                    className='!flex !h-full !w-fit !items-center'
-                  >
-                    <Link
-                      href={item.href}
-                      className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
+                {data?.news_business?.outstanding_news.map(
+                  (item: OutstandingPost, index) => (
+                    <SwiperSlide
+                      key={index}
+                      className='!flex !h-full !w-fit !items-center'
                     >
-                      {item.title}
-                    </Link>
-                  </SwiperSlide>
-                ))}
+                      <Link
+                        href={`/blogs/${item?.post_name}` || '/'}
+                        className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
+                      >
+                        {item?.post_title}
+                      </Link>
+                    </SwiperSlide>
+                  ),
+                )}
               </Swiper>
             </div>
           </div>
           <div className='flex items-center space-x-[2.73rem]'>
-            {listItemTopHeader.map((item: TopHeaderItem, index) => (
-              <Link
-                href={item.href || '/'}
-                key={index}
-                className='flex items-center space-x-[0.62rem]'
-              >
-                <ImageV2
-                  src={item.linkIcon || ''}
-                  alt='logo'
-                  width={40}
-                  height={40}
-                  className='size-[0.875rem] object-contain'
-                />
-                <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
-                  {item.title}
-                </span>
-              </Link>
-            ))}
+            <Link
+              href={data?.events?.link || '/'}
+              className='flex items-center space-x-[0.62rem]'
+            >
+              <ImageV2
+                src={'/icons/homepage/header/event.svg'}
+                alt='logo'
+                width={40}
+                height={40}
+                className='size-[0.875rem] object-contain'
+              />
+              <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
+                {data?.events?.label || ''}
+              </span>
+            </Link>
+            <Link
+              href={data?.settlement_news?.link || '/'}
+              className='flex items-center space-x-[0.62rem]'
+            >
+              <ImageV2
+                src={'/icons/homepage/header/flag.svg'}
+                alt='logo'
+                width={40}
+                height={40}
+                className='size-[0.875rem] object-contain'
+              />
+              <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
+                {data?.settlement_news?.label || ''}
+              </span>
+            </Link>
+            <Link
+              href={data?.contact?.link || '/'}
+              className='flex items-center space-x-[0.62rem]'
+            >
+              <ImageV2
+                src={'/icons/homepage/header/gmail.svg'}
+                alt='logo'
+                width={40}
+                height={40}
+                className='size-[0.875rem] object-contain'
+              />
+              <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
+                {data?.contact?.label || ''}
+              </span>
+            </Link>
             <div
               className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem]'
               onClick={handleOpenLanguage}
@@ -356,7 +249,7 @@ const Header = () => {
               <div className='relative flex size-[1.2rem] rounded-[50%] bg-[rgba(255,255,255,0.25)] backdrop-blur-[10px]'>
                 <div className='absolute bottom-0 left-0 z-[1] h-full w-full rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
                 <ImageV2
-                  src={isCurrentLanguage.flagUrl || ''}
+                  src={isCurrentLanguage?.image_flag?.url || ''}
                   alt='logo'
                   width={200}
                   height={200}
@@ -364,7 +257,7 @@ const Header = () => {
                 />
               </div>
               <span className='text-[0.75rem] font-medium leading-[1.5] text-white'>
-                {isCurrentLanguage.text}
+                {isCurrentLanguage.label}
               </span>
               <ImageV2
                 src='/icons/homepage/header/arrow-down.svg'
@@ -377,117 +270,129 @@ const Header = () => {
                 ref={refDropdownLanguage}
                 className={`absolute left-0 top-[120%] z-[2] !ml-0 flex h-fit w-full flex-col space-y-1 rounded-[0.25rem] border-[1px] border-[rgba(0,0,0,0.10)] bg-white p-2 shadow-[1px_2px_24px_0px_rgba(0,0,0,0.16)] ${isActivedLanguage ? 'block' : 'hidden'}`}
               >
-                {languageOptions.map((item: LanguageOption, index: number) => (
-                  <div
-                    key={index}
-                    className='flex items-center space-x-[0.5rem] hover:scale-105'
-                    onClick={() => handleChangeLanguage(item)}
-                  >
-                    <span
-                      className={`text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.value === item.value ? 'font-semibold' : 'font-medium'} `}
+                {data?.language?.languages.map(
+                  (item: Language, index: number) => (
+                    <div
+                      key={index}
+                      className='grid grid-cols-2 items-center space-x-[0.5rem] hover:scale-105'
+                      onClick={() => handleChangeLanguage(item)}
                     >
-                      {item.text}
-                    </span>
-                    <ImageV2
-                      src={item.flagUrl || ''}
-                      alt='logo'
-                      width={40}
-                      height={40}
-                      className='size-[1rem] rounded-[50%] object-contain'
-                    />
-                  </div>
-                ))}
+                      <span
+                        className={`text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
+                      >
+                        {item.label}
+                      </span>
+                      <ImageV2
+                        src={item?.image_flag?.url || ''}
+                        alt='logo'
+                        width={40}
+                        height={40}
+                        className='size-[1rem] rounded-[50%] object-contain'
+                      />
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className='header-bottom relative bg-white xsm:hidden'>
-        <div className='flex h-[4.37rem] items-center justify-between section-container'>
+        <div
+          className='flex h-[4.37rem] items-center justify-between section-container'
+          ref={refDisableHover}
+        >
           {/* left */}
           <div className='flex h-full items-center space-x-[2.5rem]'>
-            {menu.slice(0, -2).map((item: MenuItem, index) =>
-              item.children ? (
-                <div
-                  key={index}
-                  className='item-has-children group flex h-full cursor-pointer items-center space-x-[0.25rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <span>{item.title}</span>
-                  <ImageV2
-                    src='/icons/homepage/header/arrow-down-brown.svg'
-                    alt='arrow'
-                    width={40}
-                    height={40}
-                    className='size-[1rem] object-contain'
-                  />
-                  <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+            {data?.settlement_programs?.list_of_program.map(
+              (item: Program, index) =>
+                item.childrens ? (
+                  <div
+                    key={index}
+                    className='item-has-children group flex h-full cursor-pointer items-center space-x-[0.25rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <span>{item.label}</span>
                     <ImageV2
-                      src='/icons/homepage/header/triangle.svg'
-                      alt='triangle'
+                      src='/icons/homepage/header/arrow-down-brown.svg'
+                      alt='arrow'
                       width={40}
                       height={40}
-                      className='h-[2rem] w-[3rem] translate-x-[13.25rem] object-contain'
+                      className='size-[1rem] object-contain'
                     />
-                    <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
-                      <div className='flex items-start justify-between'>
-                        <div>
-                          <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
-                            {item.title}
-                          </p>
-                          <div className='flex flex-col'>
-                            {item.children.map(
-                              (child: MenuItem, childIndex) => (
-                                <div
-                                  key={childIndex}
-                                  className='flex flex-col'
-                                  onMouseEnter={() =>
-                                    handleChangeUrlImage(child.imgUrl || '')
-                                  }
-                                >
-                                  <Link
-                                    href={child.href}
-                                    className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                    <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+                      <ImageV2
+                        src='/icons/homepage/header/triangle.svg'
+                        alt='triangle'
+                        width={40}
+                        height={40}
+                        className='h-[2rem] w-[3rem] translate-x-[13.25rem] object-contain'
+                      />
+                      <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                        <div className='flex h-full items-start justify-between'>
+                          <div>
+                            <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                              {item.label}
+                            </p>
+                            <div className='flex flex-col'>
+                              {item.childrens.map(
+                                (child: ChildProgram, childIndex) => (
+                                  <div
+                                    key={childIndex}
+                                    className='flex flex-col'
+                                    onMouseEnter={() =>
+                                      handleChangeUrlImage(
+                                        child.image?.url || '',
+                                      )
+                                    }
                                   >
-                                    <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
-                                      {child.title}
-                                    </p>
-                                    {item.children &&
-                                      childIndex < item.children.length - 1 && (
-                                        <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
-                                      )}
-                                  </Link>
-                                </div>
-                              ),
-                            )}
+                                    <Link
+                                      href={child.link}
+                                      className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                      onClick={handleDisableHover}
+                                    >
+                                      <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                        {child.label}
+                                      </p>
+                                      {item.childrens &&
+                                        childIndex <
+                                          item.childrens.length - 1 && (
+                                          <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                        )}
+                                    </Link>
+                                  </div>
+                                ),
+                              )}
+                            </div>
                           </div>
+                          <Image
+                            src={
+                              urlImage || item.childrens[0]?.image?.url || ''
+                            }
+                            alt='preview'
+                            width={500}
+                            height={500}
+                            className='h-full w-[38.125rem] rounded-[1rem] object-cover'
+                          />
                         </div>
-                        <Image
-                          src={urlImage || item.children[0]?.imgUrl || ''}
-                          alt='preview'
-                          width={500}
-                          height={500}
-                          className='h-full w-[38.125rem] rounded-[1rem] object-cover'
-                        />
                       </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className='flex h-full items-center text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
-                >
-                  {item.title}
-                </Link>
-              ),
+                ) : (
+                  <Link
+                    key={index}
+                    href={item.link}
+                    className='flex h-full items-center text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
+                  >
+                    {item.label}
+                  </Link>
+                ),
             )}
           </div>
           <Link href={'/'}>
             <ImageV2
-              src='/imgs/homepage/header/IC.png'
+              src={data?.logo?.url}
               alt='logo'
               width={200}
               height={200}
@@ -496,86 +401,85 @@ const Header = () => {
           </Link>
           {/* right */}
           <div className='flex h-full items-center space-x-[2rem]'>
-            {menu.slice(-2).map((item: MenuItem, index) =>
-              item.children ? (
-                <div
-                  key={index}
-                  className='item-has-children group flex h-full cursor-pointer items-center space-x-[0.25rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <span>{item.title}</span>
-                  <ImageV2
-                    src='/icons/homepage/header/arrow-down-brown.svg'
-                    alt='logo'
-                    width={40}
-                    height={40}
-                    className='size-[1rem] object-contain'
-                  />
-                  <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
-                    <ImageV2
-                      src='/icons/homepage/header/triangle.svg'
-                      alt='logo'
-                      width={40}
-                      height={40}
-                      className='h-[2rem] w-[3rem] translate-x-[60rem] object-contain'
-                    />
-                    <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
-                      <div className='flex items-start justify-between'>
-                        <div className=''>
-                          <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
-                            {item.title}
-                          </p>
-                          <div className='flex flex-col'>
-                            {item.children.map((child: MenuItem, index) => (
-                              <div
-                                key={index}
-                                className='flex flex-col'
-                                onMouseEnter={() =>
-                                  handleChangeUrlImage(child?.imgUrl || '')
-                                }
+            <div
+              className='item-has-children group flex h-full cursor-pointer items-center space-x-[0.25rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span>{data?.other_programs?.label}</span>
+              <ImageV2
+                src='/icons/homepage/header/arrow-down-brown.svg'
+                alt='logo'
+                width={40}
+                height={40}
+                className='size-[1rem] object-contain'
+              />
+              <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+                <ImageV2
+                  src='/icons/homepage/header/triangle.svg'
+                  alt='logo'
+                  width={40}
+                  height={40}
+                  className='h-[2rem] w-[3rem] translate-x-[60rem] object-contain'
+                />
+                <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                  <div className='flex h-full items-start justify-between'>
+                    <div className=''>
+                      <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                        {data?.other_programs?.label}
+                      </p>
+                      <div className='flex flex-col'>
+                        {data?.other_programs?.program_list.map(
+                          (child: ChildProgram, index) => (
+                            <div
+                              key={index}
+                              className='flex flex-col'
+                              onMouseEnter={() =>
+                                handleChangeUrlImage(child?.image?.url || '')
+                              }
+                            >
+                              <Link
+                                href={child.link}
+                                className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                onClick={handleDisableHover}
                               >
-                                <Link
-                                  href={child.href}
-                                  className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
-                                >
-                                  <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
-                                    {child.title}
-                                  </p>
-                                  {item.children &&
-                                    index < item.children.length - 1 && (
-                                      <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
-                                    )}
-                                </Link>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        <Image
-                          src={
-                            urlImage
-                              ? urlImage || ''
-                              : item?.children[0]?.imgUrl || ''
-                          }
-                          alt='logo'
-                          width={500}
-                          height={500}
-                          className='h-[full] w-[38.125rem] rounded-[1rem] object-cover'
-                        />
+                                <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                  {child.label}
+                                </p>
+                                {data?.other_programs?.program_list &&
+                                  index <
+                                    data?.other_programs?.program_list.length -
+                                      1 && (
+                                    <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                  )}
+                              </Link>
+                            </div>
+                          ),
+                        )}
                       </div>
                     </div>
+                    <Image
+                      src={
+                        urlImage
+                          ? urlImage || ''
+                          : data?.other_programs?.program_list[0]?.image?.url ||
+                            ''
+                      }
+                      alt='logo'
+                      width={500}
+                      height={500}
+                      className='h-[full] w-[38.125rem] rounded-[1rem] object-cover'
+                    />
                   </div>
                 </div>
-              ) : (
-                <Link
-                  href={item.href}
-                  key={index}
-                  className='flex h-full items-center text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
-                >
-                  {item.title}
-                </Link>
-              ),
-            )}
+              </div>
+            </div>
+            <Link
+              href={data?.icanfield_handbook?.link || '/'}
+              className='flex h-full items-center text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-[#333]'
+            >
+              {data?.icanfield_handbook?.label}
+            </Link>
             <div
               className='group flex cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[#2E1506] p-[0.5rem_1.375rem_0.5rem_1.125rem]'
               onMouseEnter={handleMouseEnter}
@@ -589,7 +493,7 @@ const Header = () => {
                 className='size-[1.5rem] object-contain'
               />
               <span className='text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] text-white'>
-                Hỗ trợ khách hàng
+                {data?.support_customer?.label}
               </span>
               <ImageV2
                 src='/icons/homepage/header/down-white.svg'
@@ -607,31 +511,34 @@ const Header = () => {
                   className='h-[2rem] w-[3rem] translate-x-[84rem] object-contain'
                 />
                 <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
-                  <div className='flex items-start justify-between'>
+                  <div className='flex h-full items-start justify-between'>
                     <div className=''>
                       <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
-                        Hỗ trợ khách hàng
+                        {data?.support_customer?.label}
                       </p>
                       <div className='flex flex-col'>
-                        {listItemSupportCustomer.map(
-                          (child: MenuItem, index) => (
+                        {data?.support_customer?.list_support.map(
+                          (child: ChildProgram, index) => (
                             <div
                               key={index}
                               className='flex flex-col'
                               onMouseEnter={() =>
                                 handleChangeUrlImageSupportCustomer(
-                                  child.imgUrl || '',
+                                  child.image?.url || '',
                                 )
                               }
                             >
                               <Link
-                                href={child.href}
+                                href={child.link}
                                 className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                onClick={handleDisableHover}
                               >
                                 <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
-                                  {child.title}
+                                  {child.label}
                                 </p>
-                                {index < listItemSupportCustomer.length - 1 && (
+                                {index <
+                                  data?.support_customer?.list_support.length -
+                                    1 && (
                                   <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
                                 )}
                               </Link>
@@ -644,12 +551,13 @@ const Header = () => {
                       src={
                         urlImageSupportCustomer
                           ? urlImageSupportCustomer || ''
-                          : listItemSupportCustomer[0].imgUrl || ''
+                          : data?.support_customer?.list_support[0].image.url ||
+                            ''
                       }
                       alt='logo'
                       width={500}
                       height={500}
-                      className='h-[full] w-[38.125rem] rounded-[1rem] object-cover'
+                      className='h-full w-[38.125rem] rounded-[1rem] object-cover'
                     />
                   </div>
                 </div>
@@ -661,7 +569,7 @@ const Header = () => {
       <div className='relative flex h-[3.75rem] items-center justify-between bg-white py-[0.62rem] section-container sm:hidden'>
         <Link href={'/'}>
           <ImageV2
-            src='/imgs/homepage/header/d-IC-mb.png'
+            src={data?.logo_mb?.url || '/imgs/homepage/header/d-IC-mb.png'}
             alt='logo'
             width={100}
             height={100}
@@ -675,7 +583,7 @@ const Header = () => {
           >
             <div className='relative mr-1 size-[1rem] rounded-[50%]'>
               <ImageV2
-                src='/imgs/homepage/header/vn-flag2.png'
+                src={isCurrentLanguage?.image_flag?.url || ''}
                 alt='logo'
                 width={40}
                 height={40}
@@ -684,7 +592,7 @@ const Header = () => {
               <div className='absolute top-0 z-[1] h-full w-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.00)58%,rgba(255,255,255,0.70)97.11%)]'></div>
             </div>
             <span className='text-[0.75rem] font-medium leading-[1.5] text-greyscaletext-600'>
-              VN
+              {isCurrentLanguage.label}
             </span>
             <ImageV2
               src={'/icons/homepage/header/arrow-down-brown-mb.svg'}
@@ -720,100 +628,104 @@ const Header = () => {
           className={`dropdown-menu absolute left-0 top-[100%] z-50 h-screen w-full overflow-auto bg-white p-[1.5rem_1rem] pb-[3.5rem] transition-all duration-300 ${!isCloseMenu ? 'translate-x-[150%]' : 'translate-x-0'}`}
         >
           <div className='flex flex-col space-y-3'>
-            {menu.slice(0, 4).map((item: MenuItem, index: number) =>
-              item.children ? (
-                <div
-                  key={index}
-                  className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
-                  onClick={() => {
-                    handleSelectChild(item)
-                    handleToggleChild()
-                  }}
-                >
-                  {item?.background && (
+            {data?.settlement_programs?.list_of_program.map(
+              (item: Program, index: number) =>
+                item.childrens ? (
+                  <div
+                    key={index}
+                    className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
+                    onClick={() => {
+                      handleSelectChild(item)
+                      handleToggleChild()
+                    }}
+                  >
+                    {item?.background_mobile && (
+                      <ImageV2
+                        src={item?.background_mobile.url || ''}
+                        alt='logo'
+                        width={500}
+                        height={500}
+                        className='absolute left-0 top-0 h-full w-full rounded-[0.5rem] object-cover'
+                      />
+                    )}
+                    <div className='relative z-10 w-[9.06rem]'>
+                      <span className='text-[1rem] font-semibold leading-[150%] tracking-[-0.01rem] text-white'>
+                        {item?.label}
+                      </span>
+                      <ImageV2
+                        src={'/icons/homepage/header/line-mb.svg'}
+                        alt='logo'
+                        width={40}
+                        height={40}
+                        className='my-[0.25rem] w-full'
+                      />
+                      <span className='text-[0.75rem] font-normal leading-[1.5] text-white opacity-85'>
+                        {item?.count ? item?.count : 3} chương trình
+                      </span>
+                    </div>
                     <ImageV2
-                      src={item?.background || ''}
-                      alt='logo'
-                      width={500}
-                      height={500}
-                      className='absolute left-0 top-0 h-full w-full rounded-[0.5rem] object-cover'
-                    />
-                  )}
-                  <div className='relative z-10 w-[9.06rem]'>
-                    <span className='text-[1rem] font-semibold leading-[150%] tracking-[-0.01rem] text-white'>
-                      {item?.title}
-                    </span>
-                    <ImageV2
-                      src={'/icons/homepage/header/line-mb.svg'}
-                      alt='logo'
-                      width={40}
-                      height={40}
-                      className='my-[0.25rem] w-full'
-                    />
-                    <span className='text-[0.75rem] font-normal leading-[1.5] text-white opacity-85'>
-                      {item?.count ? item?.count : 3} chương trình
-                    </span>
-                  </div>
-                  <ImageV2
-                    src={'/icons/homepage/header/arrow_mb.svg'}
-                    alt='logo'
-                    width={40}
-                    height={40}
-                    className='z-10 ml-[0.81rem] size-[1.625rem]'
-                  />
-                </div>
-              ) : (
-                <Link
-                  href={item.href}
-                  onClick={() => handleBeforeNavigate()}
-                  prefetch
-                  key={index}
-                  className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
-                >
-                  {item?.background && (
-                    <ImageV2
-                      src={item?.background || ''}
-                      alt='logo'
-                      width={500}
-                      height={500}
-                      className='absolute left-0 top-0 h-full w-full rounded-[0.5rem] object-cover'
-                    />
-                  )}
-                  <div className='relative z-10 w-[9.06rem]'>
-                    <span className='text-[1rem] font-semibold leading-[150%] tracking-[-0.01rem] text-white'>
-                      {item?.title}
-                    </span>
-                    <ImageV2
-                      src={'/icons/homepage/header/line-mb.svg'}
+                      src={'/icons/homepage/header/arrow_mb.svg'}
                       alt='logo'
                       width={40}
                       height={40}
-                      className='my-[0.25rem] w-full'
+                      className='z-10 ml-[0.81rem] size-[1.625rem]'
                     />
-                    <span className='text-[0.75rem] font-normal leading-[1.5] text-white opacity-85'>
-                      {item?.count ? item?.count : 3} chương trình
-                    </span>
                   </div>
-                  <ImageV2
-                    src={'/icons/homepage/header/arrow_mb.svg'}
-                    alt='logo'
-                    width={40}
-                    height={40}
-                    className='z-10 ml-[0.81rem] size-[1.625rem]'
-                  />
-                </Link>
-              ),
+                ) : (
+                  <Link
+                    href={item.link}
+                    onClick={() => handleBeforeNavigate()}
+                    prefetch
+                    key={index}
+                    className='relative flex h-[4.8125rem] w-full items-center justify-end rounded-[0.5rem] pr-[1.12rem]'
+                  >
+                    {item?.background_mobile && (
+                      <ImageV2
+                        src={item?.background_mobile?.url || ''}
+                        alt='logo'
+                        width={500}
+                        height={500}
+                        className='absolute left-0 top-0 h-full w-full rounded-[0.5rem] object-cover'
+                      />
+                    )}
+                    <div className='relative z-10 w-[9.06rem]'>
+                      <span className='text-[1rem] font-semibold leading-[150%] tracking-[-0.01rem] text-white'>
+                        {item?.label}
+                      </span>
+                      <ImageV2
+                        src={'/icons/homepage/header/line-mb.svg'}
+                        alt='logo'
+                        width={40}
+                        height={40}
+                        className='my-[0.25rem] w-full'
+                      />
+                      <span className='text-[0.75rem] font-normal leading-[1.5] text-white opacity-85'>
+                        {item?.count ? item?.count : 3} chương trình
+                      </span>
+                    </div>
+                    <ImageV2
+                      src={'/icons/homepage/header/arrow_mb.svg'}
+                      alt='logo'
+                      width={40}
+                      height={40}
+                      className='z-10 ml-[0.81rem] size-[1.625rem]'
+                    />
+                  </Link>
+                ),
             )}
           </div>
           <div
             className='mb-3 mt-3 flex w-full items-center justify-between rounded-[0.75rem] bg-[#F1F0EC] p-4'
             onClick={() => {
-              handleSelectChild(menu[4])
+              handleSelectChild({
+                label: data?.other_programs.label,
+                childrens: data?.other_programs.program_list,
+              })
               handleToggleChild()
             }}
           >
             <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-              Các chương trình khác
+              {data?.other_programs.label}
             </span>
             <ImageV2
               src='/icons/homepage/header/arrow_normal_mb.svg'
@@ -824,60 +736,59 @@ const Header = () => {
             />
           </div>
           <div className='flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
-            {listMenuMobileLast.map((item, index) =>
-              item.children ? (
-                <div key={index}>
-                  <div
-                    className='flex items-center justify-between'
-                    onClick={() => {
-                      handleSelectChild(item)
-                      handleToggleChild()
-                    }}
-                  >
-                    <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-                      {item.title}
-                    </span>
-                    <ImageV2
-                      src='/icons/homepage/header/arrow_normal_mb.svg'
-                      alt='arrow'
-                      width={40}
-                      height={40}
-                      className='size-[1.125rem] object-contain'
-                    />
-                  </div>
-                  {index < listMenuMobileLast.length - 1 && (
-                    <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
-                  )}
+            <div>
+              <div
+                className='flex items-center justify-between'
+                onClick={() => {
+                  handleSelectChild({
+                    label: data?.support_customer.label,
+                    childrens: data?.support_customer.list_support,
+                  })
+                  handleToggleChild()
+                }}
+              >
+                <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
+                  {data?.support_customer.label}
+                </span>
+                <ImageV2
+                  src='/icons/homepage/header/arrow_normal_mb.svg'
+                  alt='arrow'
+                  width={40}
+                  height={40}
+                  className='size-[1.125rem] object-contain'
+                />
+              </div>
+
+              <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
+            </div>
+            {listMenuMobileLast.map((item, index) => (
+              <Link
+                href={'link' in item ? item.link : '/'}
+                key={index}
+                onClick={() => handleBeforeNavigate()}
+                prefetch
+              >
+                <div className='flex items-center justify-between'>
+                  <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
+                    {item.label}
+                  </span>
+                  <ImageV2
+                    src='/icons/homepage/header/arrow_normal_mb.svg'
+                    alt='arrow'
+                    width={40}
+                    height={40}
+                    className='size-[1.125rem] object-contain'
+                  />
                 </div>
-              ) : (
-                <Link
-                  href={'/'}
-                  key={index}
-                  onClick={() => handleBeforeNavigate()}
-                  prefetch
-                >
-                  <div className='flex items-center justify-between'>
-                    <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-                      {item.title}
-                    </span>
-                    <ImageV2
-                      src='/icons/homepage/header/arrow_normal_mb.svg'
-                      alt='arrow'
-                      width={40}
-                      height={40}
-                      className='size-[1.125rem] object-contain'
-                    />
-                  </div>
-                  {index < listMenuMobileLast.length - 1 && (
-                    <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
-                  )}
-                </Link>
-              ),
-            )}
+                {index < listMenuMobileLast.length - 1 && (
+                  <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
+                )}
+              </Link>
+            ))}
           </div>
 
           <div className='mb-[3.5rem] mt-[2.5rem] flex items-center justify-center space-x-[0.75rem]'>
-            {socialNetwork.map((item: SocialNetwork, index: number) => (
+            {dataFooter?.social.map((item: social, index: number) => (
               <Link
                 href={item.link || '/'}
                 key={index}
@@ -886,11 +797,11 @@ const Header = () => {
                 prefetch
               >
                 <ImageV2
-                  src={item.icon || ''}
+                  src={item.icon?.url || ''}
                   alt='logo'
                   width={40}
                   height={40}
-                  className='size-[1.5rem] object-contain'
+                  className='size-[1.5rem] object-contain [filter:brightness(0)_saturate(100%)_invert(15%)_sepia(58%)_saturate(1201%)_hue-rotate(345deg)_brightness(97%)_contrast(83%)]'
                 />
               </Link>
             ))}
@@ -914,19 +825,25 @@ const Header = () => {
           />
         </div>
         <>
-          {languageOptions.map((item: LanguageOption, index: number) => (
+          {data?.language?.languages.map((item: Language, index: number) => (
             <div
               className='flex items-center space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] p-[1rem_0.75rem]'
               key={index}
+              onClick={() => {
+                handleChangeLanguage(item)
+                handleOpenLanguageMb()
+              }}
             >
               <ImageV2
-                src={item.flagUrl || ''}
+                src={item.image_flag?.url || ''}
                 alt='logo'
                 width={40}
                 height={40}
                 className='size-[1.5rem] rounded-[50%] object-contain'
               />
-              <span className='text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body'>
+              <span
+                className={`${isCurrentLanguage.label === item.label ? 'font-bold' : 'font-normal'} text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body`}
+              >
                 {item.label}
               </span>
             </div>
@@ -945,7 +862,7 @@ const Header = () => {
         >
           <div className='flex items-center justify-between pb-4'>
             <span className='text-[0.875rem] font-semibold tracking-[-0.0175rem] text-brown'>
-              {selectedChild?.title}
+              {selectedChild?.label}
             </span>
             <ImageV2
               src={'/icons/homepage/header/close-popup.svg'}
@@ -957,31 +874,34 @@ const Header = () => {
             />
           </div>
           <div className='tru flex flex-col rounded-[0.75rem] bg-[#F1F0EC] p-4'>
-            {selectedChild?.children?.map((item: MenuItem, index: number) => (
-              <Link
-                href={item.href}
-                key={index}
-                onClick={() => handleBeforeNavigate()}
-                prefetch
-              >
-                <div className='flex items-center justify-between'>
-                  <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-                    {item.title}
-                  </span>
-                  <ImageV2
-                    src='/icons/homepage/header/arrow_normal_mb.svg'
-                    alt='arrow'
-                    width={40}
-                    height={40}
-                    className='size-[1.125rem] object-contain'
-                  />
-                </div>
-                {selectedChild?.children &&
-                  index < selectedChild.children.length - 1 && (
-                    <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
-                  )}
-              </Link>
-            ))}
+            {Array.isArray(selectedChild?.childrens) &&
+              selectedChild?.childrens.map(
+                (item: ChildProgram, index: number) => (
+                  <Link
+                    href={item.link || '/'}
+                    key={index}
+                    onClick={() => handleBeforeNavigate()}
+                    prefetch
+                  >
+                    <div className='flex items-center justify-between'>
+                      <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
+                        {item.label}
+                      </span>
+                      <ImageV2
+                        src='/icons/homepage/header/arrow_normal_mb.svg'
+                        alt='arrow'
+                        width={40}
+                        height={40}
+                        className='size-[1.125rem] object-contain'
+                      />
+                    </div>
+                    {selectedChild?.childrens &&
+                      index < selectedChild.childrens.length - 1 && (
+                        <div className='my-4 h-[1px] w-full bg-[rgba(0,0,0,0.10)]'></div>
+                      )}
+                  </Link>
+                ),
+              )}
           </div>
         </div>
       </div>

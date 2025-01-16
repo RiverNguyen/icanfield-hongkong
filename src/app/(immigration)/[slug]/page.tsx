@@ -4,7 +4,7 @@ import Immigration from '@/pages/immigration'
 import endpoints from '@/utils/endpoints'
 
 export default async function page({params}: {params: {slug: string}}) {
-  const [dataAcf, dataPrograms, postRelate] = await Promise.all([
+  const [dataAcf, dataPrograms, postRelate, dataMap] = await Promise.all([
     fetchDataACF({
       api:
         '/' +
@@ -33,6 +33,12 @@ export default async function page({params}: {params: {slug: string}}) {
         revalidate: 10,
       },
     }),
+    fetchData({
+      api: `/data-map-with-slug/?slug=${params.slug}`,
+      option: {
+        revalidate: 10,
+      },
+    }),
   ])
   return (
     <Immigration
@@ -40,6 +46,7 @@ export default async function page({params}: {params: {slug: string}}) {
       dataImmigration={dataAcf[0]}
       dataPrograms={dataPrograms}
       postRelate={postRelate}
+      dataMap={dataMap?.data}
     />
   )
 }

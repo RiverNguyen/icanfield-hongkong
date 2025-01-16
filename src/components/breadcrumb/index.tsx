@@ -31,7 +31,7 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className}) => {
           } else {
             return (
               <Fragment key={idx}>
-                <li key={idx}>
+                <li>
                   <Link
                     className={cn(
                       'item--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem]',

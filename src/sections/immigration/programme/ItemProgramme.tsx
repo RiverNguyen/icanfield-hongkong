@@ -30,17 +30,15 @@ export default function ItemProgramme({ className,dataPostProgramme, slug }: { c
         </h3>
         {isMobile && (
           <div className="flex items-center space-x-[0.5rem] sm:hidden absolute bottom-[0.5rem] z-[11] w-full px-[0.5rem]">
-            {dataPostProgramme?.acf?.information?.investment_level?.value && (
-              <div className="p-[0.5rem_0.75rem] flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)]">
-                <p className="body-14-m text-[rgba(255,255,255,0.85)]">
-                  {dataPostProgramme?.acf?.information?.investment_level?.title}
-                </p>
-                <p className="body16-s text-white">{dataPostProgramme?.acf?.information?.investment_level?.value}</p>
-              </div>
-            )}
+            <div className="p-[0.5rem_0.75rem] flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)]">
+              <p className="body-14-m text-[rgba(255,255,255,0.85)]">
+                {dataPostProgramme?.acf?.information?.investment_level?.title || 'Mức đầu tư'}
+              </p>
+              <p className="body16-s text-white">{dataPostProgramme?.acf?.information?.investment_level?.value || 'Chưa có thông tin'}</p>
+            </div>
             <div className='p-[0.5rem_0.75rem] flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)]'>
               <p className="body-14-m text-[rgba(255,255,255,0.85)]">
-                {dataPostProgramme?.acf?.information?.review_time?.title}
+                {dataPostProgramme?.acf?.information?.review_time?.title || 'Thời gian xét duyệt'}
               </p>
               <p className="body16-s text-white">
                 {dataPostProgramme?.acf?.information?.review_time?.from}-{dataPostProgramme?.acf?.information?.review_time?.to} tháng
@@ -52,13 +50,13 @@ export default function ItemProgramme({ className,dataPostProgramme, slug }: { c
       {!isMobile && (
         <div className="xsm:hidden w-full p-[1.25rem_1.5rem] flex items-center justify-between">
           <div>
-            <p className="body16-m text-greyscaletext-200">{dataPostProgramme?.acf?.information?.investment_level?.title}</p>
+            <p className="body16-m text-greyscaletext-200">{dataPostProgramme?.acf?.information?.investment_level?.title || 'Mức đầu tư'}</p>
             <p className="text-[1.125rem] text-orangetext-500 font-semibold leading-[133.3%] tracking-[-0.0225rem]">
-              {dataPostProgramme?.acf?.information?.investment_level?.value}
+              {dataPostProgramme?.acf?.information?.investment_level?.value || 'Chưa có thông tin'}
             </p>
           </div>
           <div>
-            <p className="body16-m text-greyscaletext-200">{dataPostProgramme?.acf?.information?.review_time?.title}</p>
+            <p className="body16-m text-greyscaletext-200">{dataPostProgramme?.acf?.information?.review_time?.title || 'Thời gian xét duyệt'}</p>
             <p className="text-[1.125rem] text-orangetext-500 font-semibold leading-[133.3%] tracking-[-0.0225rem]">
               {dataPostProgramme?.acf?.information?.review_time?.from}-{dataPostProgramme?.acf?.information?.review_time?.to} tháng
             </p>

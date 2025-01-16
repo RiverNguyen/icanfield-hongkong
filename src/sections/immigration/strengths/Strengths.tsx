@@ -21,7 +21,7 @@ export default function Strengths({
       {isMobile ? (
         <div className="w-full overflow-hidden overflow-x-auto sm:hidden">
           <div className="flex p-[1rem] w-max items-center space-x-[1rem]">
-            {dataStrength?.map((e: dataStrength, index: number) => (
+            {dataStrength && dataStrength?.map((e: dataStrength, index: number) => (
               <div
                 key={index}
                 className="relative w-[19.375rem] h-[22rem] flex flex-col justify-end rounded-[1rem] shadow-[0px_-3px_8px_0px_rgba(0,0,0,0.10)]"
@@ -56,7 +56,7 @@ export default function Strengths({
       ) : (
         <>
           <div className="size-full relative xsm:hidden">
-            {dataStrength?.map((e: dataStrength, index: number) => (
+            {dataStrength && dataStrength?.map((e: dataStrength, index: number) => (
               <ImageV2
                 key={index}
                 className={cn(
@@ -73,7 +73,7 @@ export default function Strengths({
           <div className="xsm:hidden absolute size-full inset-0 z-10 pl-[5rem] pt-[5rem]">
             <IConLine className="w-[59.75rem] ml-[-5rem]" />
             <div className="relative w-[59.75rem] mt-[1.62rem]">
-              {dataStrength?.map((e: dataStrength, index: number) => (
+              {dataStrength && dataStrength?.map((e: dataStrength, index: number) => (
                 <div
                   key={index}
                   className={cn(
@@ -99,7 +99,7 @@ export default function Strengths({
           <div className="xsm:hidden absolute w-full h-[18.75rem] bottom-0 z-10">
             <div className="size-full bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)]"></div>
             <div className="absolute bottom-0 w-full h-[8.6875rem] flex items-end">
-              {dataStrength?.map((e: dataStrength, index: number) => (
+              {dataStrength && dataStrength?.map((e: dataStrength, index: number) => (
                 <Fragment key={index}>
                   <div
                     onMouseEnter={() => handleMouseEnter(index)}

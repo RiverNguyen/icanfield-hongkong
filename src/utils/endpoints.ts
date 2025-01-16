@@ -25,6 +25,8 @@ const endpoints = {
     list: '/eb5-projects',
     categories: '/eb5-categories?_fields=id,name,slug,taxonomy',
   },
+  filter: '/filter-data-settlement_hp',
+  homepageMap: '/data-map-homepage',
 }
 
 export default endpoints
