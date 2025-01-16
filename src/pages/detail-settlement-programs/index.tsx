@@ -54,6 +54,11 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   story_share,
   acfNation,
 }) => {
+  const PropProcessSteps = {
+    title_section: process_steps?.title || '',
+    description: process_steps?.description || '',
+    timeline: process_steps?.steps || [],
+  }
   return (
     <>
       <Banner {...banner} />
@@ -62,7 +67,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
       <ProgramBenefits {...program_benefits} />
       <ProgramEligibility {...program_eligibility} />
       <WhyChooseUs {...why_choose_us} />
-      <ProcessSteps {...process_steps} />
+      <ProcessSteps {...PropProcessSteps} />
       <SuccessStoryShare {...story_share} />
       <ImmigrationFAQ
         dataFAQ={acfNation?.acf?.faq_nation}

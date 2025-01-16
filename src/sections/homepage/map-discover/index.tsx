@@ -221,7 +221,7 @@ const MapDiscover = ({
             <div className='map-content absolute bottom-0 left-0 h-full w-full overflow-hidden xsm:relative xsm:w-full'>
               <div className='overlay-right absolute right-0 z-10 h-full w-[9.5rem] bg-[linear-gradient(-90deg,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
               <LeafletMap
-                countries={dataMap.countries_data as ICountry[][]}
+                countries={dataMap?.countries_data as ICountry[][]}
                 mapJson={customGeoJson as FeatureCollection}
                 className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
                 borderCountries='#7F7C6E'
