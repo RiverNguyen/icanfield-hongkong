@@ -63,8 +63,8 @@ export default function Strengths({
                   'size-full object-cover absolute transition-all duration-500 opacity-0',
                   indexActive === index && 'opacity-100'
                 )}
-                width={1600}
-                height={860}
+                width={2600}
+                height={1860}
                 alt={e?.bacground?.alt}
                 src={e?.bacground?.url}
               />
@@ -85,7 +85,7 @@ export default function Strengths({
                     <h2 className="text-[2.625rem] font-medium leading-[1.2] tracking-[-0.0525rem] uppercase font-optima background_clip--text bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)]">
                       {e?.title}
                     </h2>
-                    <p className="text-[rgba(18,18,18,0.87)] font-optima text-[1.875rem] font-medium leading-[1.2] tracking-[-0.0375rem] capitalize">
+                    <p className="text-[rgba(18,18,18,0.87)] font-optima text-[1.875rem] font-medium leading-[1.2] tracking-[-0.0375rem]">
                       {e?.label}
                     </p>
                   </div>

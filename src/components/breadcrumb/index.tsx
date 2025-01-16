@@ -8,9 +8,10 @@ interface IBreadcrumbProps {
     href: string
   }[]
   className?: string
+  color?: string
 }
 
-export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className}) => {
+export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className, color= 'bg-white/60'}) => {
   return (
     <nav
       className={cn(
@@ -43,7 +44,9 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className}) => {
                   </Link>
                 </li>
                 <li>
-                  <span className='block size-[0.3125rem] rounded-full bg-white/60'></span>
+                  <span
+                    className={`block size-[0.3125rem] rounded-full ${color}`}
+                  ></span>
                 </li>
               </Fragment>
             )

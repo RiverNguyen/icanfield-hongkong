@@ -64,7 +64,7 @@ function Info({data, label, icon}: IInfoProps) {
           alt={label}
           width={24 * 2}
           height={24 * 2}
-          className='h-full w-full object-contain'
+          className='h-full w-full object-contain mr-2'
         />
       </div>
       <div>

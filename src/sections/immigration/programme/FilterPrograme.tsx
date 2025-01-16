@@ -43,7 +43,7 @@ export default function FilterProgramme({
   const handleSelectSortOption = (sortOption: SortOptionProgramme) => {
     setSelectedSortOption(sortOption)
     const paramNew = new URLSearchParams(searchParams ?? '')
-    if (sortOption.value === 'All') {
+    if (sortOption.value === 'all') {
       paramNew.delete('order')
       paramNew.delete('page')
     } else {

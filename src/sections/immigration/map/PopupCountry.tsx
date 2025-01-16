@@ -104,7 +104,7 @@ const PopupCountry = ({
           alt='map'
           width={50}
           height={50}
-          className='size-[1.25rem] object-contain'
+          className='size-[1.25rem] object-contain mr-1'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
           Thủ phủ: {dataProvince?.details?.metropolis}
@@ -116,7 +116,7 @@ const PopupCountry = ({
           alt='map'
           width={50}
           height={50}
-          className='size-[1.25rem] object-contain'
+          className='size-[1.25rem] object-contain mr-1'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
           Diện tích: {dataProvince?.details?.acreage}
@@ -128,7 +128,7 @@ const PopupCountry = ({
           alt='map'
           width={50}
           height={50}
-          className='size-[1.25rem] object-contain'
+          className='size-[1.25rem] object-contain mr-1'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
           Dân số: {dataProvince?.details?.population}

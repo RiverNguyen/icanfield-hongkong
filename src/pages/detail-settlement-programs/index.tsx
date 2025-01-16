@@ -2,6 +2,7 @@ import {
   AdvantagesBenefits,
   IAdvantagesBenefitsProps,
 } from '@/components/advantages-benefits'
+import {Breadcrumb} from '@/components/breadcrumb'
 import {IWhyChooseUsProps, WhyChooseUs} from '@/components/why-choose-us'
 import {
   Banner,
@@ -32,6 +33,7 @@ import {immigration} from '@/types/dataAcfImmigration.interface'
 import {FC} from 'react'
 
 interface IDetailSettlementProgramsProps {
+  post_title: string
   banner: IBannerProps
   program_overview: IProgramOverviewProps
   advantages_benefits: IAdvantagesBenefitsProps
@@ -44,6 +46,7 @@ interface IDetailSettlementProgramsProps {
 }
 
 const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
+  post_title,
   banner,
   program_overview,
   advantages_benefits,
@@ -61,7 +64,18 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   }
   return (
     <>
-      <Banner {...banner} />
+      <Banner {...banner}>
+        <Breadcrumb
+          items={[
+            {label: 'Trang chủ', href: '/'},
+            {
+              label: `Các chương trình định cư ${acfNation.name}`,
+              href: `/${acfNation.slug}`,
+            },
+            {label: `${post_title}`, href: '/'},
+          ]}
+        />
+      </Banner>
       <ProgramOverview {...program_overview} />
       <AdvantagesBenefits {...advantages_benefits} />
       <ProgramBenefits {...program_benefits} />

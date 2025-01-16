@@ -86,13 +86,13 @@ const ProjectLocation = ({
         <h1 className='font-optima font-semibold text-Phase-1-Brown heading1'>
           {title_section}
         </h1>
-        <p className='mt-[0.875rem] text-greyscaletext-body body16-m xsm:body-14'>
+        <p className='mt-[0.875rem] text-[1rem] font-normal text-greyscaletext-body xsm:body-14'>
           {description}
         </p>
         <h4 className='mt-14 font-optima font-semibold text-Phase-1-Brown heading4 xsm:mt-8 xsm:text-[1.125rem] xsm:leading-[1.4] xsm:tracking-[-0.0225rem]'>
           {subtitle}
         </h4>
-        <p className='mt-4 text-greyscaletext-body body16-m xsm:body-14'>
+        <p className='mt-4 text-[1rem] font-normal text-greyscaletext-body xsm:body-14'>
           {description_subtitle}
         </p>
         <div className='mt-6 flex flex-col space-y-8 xsm:mt-4 xsm:space-y-4'>
@@ -120,8 +120,15 @@ const ProjectLocation = ({
           alt={google_map.alt}
           width={800}
           height={700}
-          className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl'
+          className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl hidden'
         />
+        <iframe
+          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5358.6204155786445!2d106.69577621180586!3d10.776953189327571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fd88bf552d1%3A0x285b4b38a9fba6b4!2siCanfield%20Vietnam!5e1!3m2!1svi!2s!4v1737021186383!5m2!1svi!2s'
+          width='600'
+          height='450'
+          loading='lazy'
+           className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl'
+        ></iframe>
       </div>
     </section>
   )

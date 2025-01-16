@@ -21,7 +21,7 @@ export default function CapitalStructure({
 
   return (
     <section className='section-container sm:py-[3.62rem]'>
-      <h2 className='text-brown heading1 sm:mb-[2.5rem] xsm:mb-[1.5rem] xsm:py-[1rem]'>
+      <h2 className='text-brown heading1 sm:mb-[2.5rem] xsm:mb-[1.5rem] xsm:py-[1rem] font-optima'>
         {dataCapitalStructure.title_section}
       </h2>
       <div
@@ -58,7 +58,7 @@ export default function CapitalStructure({
                           <p className='text-[#333] body-14 xsm:sub-12'>
                             {initChart[index].title}
                           </p>
-                          <p className='sub-20B xsm:body16-b text-brown'>
+                          <p className='sub-20B xsm:body16-b text-brown font-bold '>
                             {e?.title}
                           </p>
                         </div>

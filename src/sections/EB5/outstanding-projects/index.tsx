@@ -111,7 +111,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
             selectedSortOption={selectedSortOption}
             setSearch={setSearch}
             setSelectedSortOption={setSelectedSortOption}
-            className='grid grid-cols-2 gap-4 xsm:flex'
+            className='sm:flex sm:flex-row-reverse gap-x-3 xsm:flex'
             backgroundInput='bg-[#EEE]'
           />
         </div>
