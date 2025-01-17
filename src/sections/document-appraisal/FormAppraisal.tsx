@@ -319,7 +319,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                     })
                                                 }
                                             }}
-                                            className="bg-transparent absolute top-0 left-0 size-full z-40"
+                                            className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                         >
                                         </div>
                                         <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
@@ -431,7 +431,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         })
                                                     }
                                                 }}
-                                                className="bg-transparent absolute top-0 left-0 size-full z-40"
+                                                className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                             >
                                             </div>
                                             <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
@@ -514,7 +514,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         })
                                                     }
                                                 }}
-                                                className="bg-transparent absolute top-0 left-0 size-full z-40"
+                                                className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                             >
                                             </div>
                                             <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
@@ -597,7 +597,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         })
                                                     }
                                                 }}
-                                                className="bg-transparent absolute top-0 left-0 size-full z-40"
+                                                className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                             >
                                             </div>
                                             <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
