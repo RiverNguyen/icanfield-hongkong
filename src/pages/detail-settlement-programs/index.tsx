@@ -73,8 +73,8 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
           items={[
             {label: 'Trang chủ', href: '/'},
             {
-              label: `Các chương trình định cư ${acfNation.name}`,
-              href: `/${acfNation.slug}`,
+              label: `Các chương trình định cư ${acfNation?.name}`,
+              href: `/${acfNation?.slug}`,
             },
             {label: `${post_title}`, href: '/'},
           ]}
