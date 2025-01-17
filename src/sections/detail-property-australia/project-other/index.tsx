@@ -1,7 +1,56 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {Pagination} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import ItemProjectsOutstanding from '@/components/itemProjects'
+import { IProject } from '@/components/itemProjects/itemProjects.interface'
+import { Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+const data = [
+  {
+    id: 222,
+    location: [
+      {
+        id: 11,
+        name: 'Canada',
+        slug: 'canada',
+        taxonomy: 'string',
+        primary: true
+      }
+    ],
+    slug: 'Dự-án-Hudson-Yards',
+    title: 'Dự án Hudson Yards',
+    image: {
+      ID: 88,
+      id: 88,
+      title: 'bacgroud',
+      filename: 'sss',
+      filesize: 59961081,
+      url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+      link: 'string',
+      alt: 'string',
+      author: 'string',
+      description: 'string',
+      caption: 'string',
+      name: 'string',
+      status: 'string',
+      uploaded_to: 1,
+      date: 'string',
+      modified: 'string',
+      menu_order: 1,
+      mime_type: 'string',
+      type: 'string',
+      subtype: 'string',
+      icon: 'string',
+      width: 1622,
+      height: 800,
+    },
+    type: '',
+    project_scale: 2,
+    eb5_capital_ratio: 2,
+    jobs_created: 2,
+    contact: 'string',
+  }
+]
 
 const ProjectOther = () => {
   return (
@@ -46,13 +95,16 @@ const ProjectOther = () => {
           }}
           className='h-full w-full'
         >
-          {[1, 2, 3, 4, 5].map((_, index) => (
+          {data?.map((item: IProject, index) => (
             <SwiperSlide
               key={index}
-              className='h-full w-full'
+              className='h-full w-full [&>a]:block'
             >
               {/* fake item */}
-              <div className='h-full w-full rounded-2xl bg-black' />
+              <ItemProjectsOutstanding
+                key={index}
+                {...item}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

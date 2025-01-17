@@ -1,8 +1,8 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
-import {Navigation} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 type SliderProps = {
   items: {
@@ -28,7 +28,7 @@ const Slider = ({items}: SliderProps) => {
         {items.map((item, index) => (
           <SwiperSlide
             key={index}
-            className='relative !w-[17.875rem] xsm:!w-[11.63856rem]'
+            className='relative xsm:!w-[11.63856rem]'
           >
             <ImageV2
               src={item.image}
