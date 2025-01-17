@@ -1,13 +1,29 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
+import ItemAustralia from '@/components/itemAustralia'
+import {fetcher} from '@/lib/swr'
+import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
 import {Pagination} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
+import useSWR from 'swr'
 
-const ProjectOther = () => {
+const fetcherWithCustomBase = (url: string) =>
+  fetcher(url, process.env.NEXT_PUBLIC_API_ACF)
+
+const ProjectOther = ({id}: {id: number}) => {
+  const {data: dataOther} = useSWR(
+    id ? `/australia-real-estat?exclude=${id}&per_page=5` : null,
+    fetcherWithCustomBase,
+    {
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
+    },
+  )
+
   return (
-    <section className='section-container mt-[6.25rem] xsm:mt-8'>
+    <section className='mt-[6.25rem] section-container xsm:mt-8'>
       <div className='flex w-full items-end justify-between'>
-        <h1 className='heading1 font-optima font-semibold tracking-[-0.045rem] text-orangetext-900 xsm:text-2xl xsm:leading-[1.2]'>
+        <h1 className='font-optima font-semibold tracking-[-0.045rem] text-orangetext-900 heading1 xsm:text-2xl xsm:leading-[1.2]'>
           Các dự án khác
         </h1>
         <button className='flex h-[3rem] items-center justify-center rounded-[0.5rem] bg-btn-gradient px-[0.75rem] pl-[1.5rem] xsm:hidden'>
@@ -46,15 +62,26 @@ const ProjectOther = () => {
           }}
           className='h-full w-full'
         >
-          {[1, 2, 3, 4, 5].map((_, index) => (
-            <SwiperSlide
-              key={index}
-              className='h-full w-full'
-            >
-              {/* fake item */}
-              <div className='h-full w-full rounded-2xl bg-black' />
-            </SwiperSlide>
-          ))}
+          {Array.isArray(dataOther) &&
+            dataOther?.map((item: IDataAcfDetailAustralia, index) => (
+              <SwiperSlide
+                key={index}
+                className='h-full w-full [&>a]:block'
+              >
+                {/* fake item */}
+                <ItemAustralia
+                  location={item.acf.banner.location}
+                  title={item.title.rendered}
+                  info={Array.from(
+                    Object.keys(item.acf.banner.info).map(
+                      (i) => item.acf.banner.info[i],
+                    ),
+                  )}
+                  image={item.featured_media}
+                  slug={item.slug}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
       <div className='mt-6 hidden w-full flex-col items-center xsm:flex'>

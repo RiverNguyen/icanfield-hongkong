@@ -1,5 +1,6 @@
 import { BannerStatic } from '@/components/banner-static'
 import { Breadcrumb } from '@/components/breadcrumb'
+import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
 import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
 import { FeaturedNews } from '@/sections/blogs/featured-news'
 import ListBlogs from '@/sections/blogs/list-blogs'
@@ -52,7 +53,9 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage}) =
           dataCategories={dataCategoriesWithAll}
         />
       </Suspense>
-      <WrapperConnectUs />
+      <WrapperConnectUs>
+        <FormConnectUs />
+      </WrapperConnectUs>
     </>
   )
 }

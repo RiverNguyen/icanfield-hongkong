@@ -1,10 +1,13 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {cn} from '@/lib/utils'
-import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
-import {useEffect, useRef, useState} from 'react'
+import { cn } from '@/lib/utils'
+import { useEffect, useRef, useState } from 'react'
 
-const WrapperConnectUs = () => {
+const WrapperConnectUs = ({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) => {
   const [isActive, setIsActive] = useState(false)
   const sectionFef = useRef<HTMLElement>(null)
   useEffect(() => {
@@ -106,7 +109,7 @@ const WrapperConnectUs = () => {
         height={165}
       />
       <div className='absolute right-[6.13rem] top-[3.38rem] z-10 w-[36.5rem] xsm:right-0 xsm:top-[2.5rem] xsm:w-full xsm:px-[1rem]'>
-        <FormConnectUs />
+        {children}
       </div>
       <div className='absolute bottom-[12.31rem] left-1/2 z-10 w-[90rem] -translate-x-1/2 section-container xsm:bottom-[2rem] xsm:w-full xsm:max-w-full xsm:px-[1rem]'>
         <div className='flex w-full items-center justify-between xsm:flex-col'>
