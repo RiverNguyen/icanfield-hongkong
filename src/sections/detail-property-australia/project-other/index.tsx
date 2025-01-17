@@ -19,7 +19,7 @@ const ProjectOther = ({id}: {id: number}) => {
       revalidateOnReconnect: false,
     },
   )
-
+console.log(dataOther)
   return (
     <section className='mt-[6.25rem] section-container xsm:mt-8'>
       <div className='flex w-full items-end justify-between'>

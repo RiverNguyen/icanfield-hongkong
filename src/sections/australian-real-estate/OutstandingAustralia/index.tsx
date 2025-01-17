@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
+import ItemAustralia from '@/components/itemAustralia'
+import {IItemAustralia} from '@/components/itemAustralia/itemAustralia.interface'
 import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
-import ItemProjectsOutstanding from '@/components/itemProjects'
-import {IProject} from '@/components/itemProjects/itemProjects.interface'
 import {Pagination} from '@/components/pagination/Pagination'
 import {fetcher} from '@/lib/swr'
-import {LIMIT_POSTS} from '@/sections/blogs/constant'
+// import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
 import IndexTabs from '@/sections/blogs/list-blogs/tab'
 import {Category, SortOption} from '@/types/blogs.interface'
-import endpoints from '@/utils/endpoints'
+// import endpoints from '@/utils/endpoints'
 import {useSearchParams} from 'next/navigation'
-import {FC, useEffect, useMemo, useRef, useState} from 'react'
+import {FC, Fragment, useEffect, useMemo, useRef, useState} from 'react'
 import useSWR from 'swr'
 
 export interface IOutstandingProjectEB5Props {
@@ -22,7 +22,7 @@ export interface IOutstandingProjectEB5Props {
     totalPages: number
     page: number
     limit: number
-    data: IProject[]
+    data: IItemAustralia[]
   }
   categories: {
     id: number
@@ -32,20 +32,21 @@ export interface IOutstandingProjectEB5Props {
   }[]
 }
 
-const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
+const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({
   listItems,
   categories,
 }) => {
   const sortOptions = [
     {name: 'Tất cả', value: 'all', orderBy: 'all'},
     {name: 'Mới nhất', value: 'DESC', orderBy: 'date'},
-    {name: 'Phổ biến nhất', value: 'ASC', orderBy: 'index'},
+    {name: 'Cũ nhất', value: 'ASC', orderBy: 'date'},
+    {name: 'A-Z', value: 'A-Z', orderBy: 'title'},
+    {name: 'Z-A', value: 'Z-A', orderBy: 'title'},
   ]
   const sectionRef = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
   const [search, setSearch] = useState<string>('')
   const [totalPage, setTotalPage] = useState<number>(listItems.totalPages || 1)
-
   const [selectedCategory, setSelectedCategory] = useState<Category>({
     id: 0,
     name: 'Tất cả',
@@ -56,24 +57,30 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
   const [selectedSortOption, setSelectedSortOption] = useState<SortOption>(
     sortOptions[0],
   )
-  function handleGetTaxonomy(categorySlug: string) {
-    return categories.find(
-      (category: Category) => category.slug === categorySlug,
-    )?.taxonomy
-  }
+//   function handleGetTaxonomy(categorySlug: string) {
+//     return categories.find(
+//       (category: Category) => category.slug === categorySlug,
+//     )?.taxonomy
+//   }
 
   const [currentPage, setCurrentPage] = useState<number>(1)
   const query = useMemo(() => {
     if (!searchParams?.size) return null
-    return `${endpoints.eb5Project.list}?page=${currentPage}&limit=${LIMIT_POSTS}${selectedCategory.slug !== 'all' ? `&tax=${handleGetTaxonomy(selectedCategory.slug)}&${handleGetTaxonomy(selectedCategory.slug)}=${selectedCategory.slug}` : ''}${search ? `&s=${search}` : ''}${selectedSortOption.value !== sortOptions[0].value ? `&order=${selectedSortOption.value}` : ''}${selectedSortOption.orderBy !== sortOptions[0].orderBy ? `&orderby=${selectedSortOption.orderBy}` : ''}`
-  }, [
-    searchParams,
-    currentPage,
-    selectedCategory.slug,
-    search,
-    selectedSortOption.value,
-    selectedSortOption.orderBy,
-  ])
+
+    let url = `/get-post-australia?page=${currentPage}&limit=9`
+
+    // Thêm tham số sort nếu có
+    if (selectedSortOption.value !== 'all') {
+      url += `&sort=${selectedSortOption.value}`
+    }
+
+    // Thêm tham số orderby nếu có
+    if (selectedSortOption.orderBy !== 'date') {
+      url += `&orderby=${selectedSortOption.orderBy}`
+    }
+
+    return url
+  }, [selectedSortOption.value, selectedSortOption.orderBy, currentPage])
 
   const {data: posts, isLoading} = useSWR(query, fetcher, {
     revalidateIfStale: false,
@@ -93,10 +100,10 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
       ref={sectionRef}
     >
       <div className='section-container'>
-        <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown xsm:text-[1.5rem]'>
+        <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown'>
           Dự án EB-5 tiêu biểu
         </h2>
-        <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:mb-[2.19rem] xsm:flex-col xsm:sticky xsm:top-[3.75rem] xsm:bg-background xsm:pb-1'>
+        <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:sticky xsm:top-[3.75rem] xsm:mb-[2.19rem] xsm:flex-col xsm:bg-background xsm:pb-1'>
           <IndexTabs
             categories={[
               {id: 0, name: 'Tất cả', slug: 'all', taxonomy: ''},
@@ -111,7 +118,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
             selectedSortOption={selectedSortOption}
             setSearch={setSearch}
             setSelectedSortOption={setSelectedSortOption}
-            className='sm:flex sm:flex-row-reverse gap-x-3 xsm:flex'
+            className='gap-x-3 sm:flex sm:flex-row-reverse xsm:flex'
             backgroundInput='bg-[#EEE]'
           />
         </div>
@@ -127,11 +134,10 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
           ) : (
             <>
               {Array.isArray(dataLatest) &&
-                dataLatest.map((item: IProject, index: number) => (
-                  <ItemProjectsOutstanding
-                    key={index}
-                    {...item}
-                  />
+                dataLatest.map((item, index: number) => (
+                  <Fragment key={index}>
+                    <ItemAustralia {...item} />
+                  </Fragment>
                 ))}
             </>
           )}
@@ -148,4 +154,4 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
   )
 }
 
-export default OutstandingProjectEB5
+export default OutstandingAustralia

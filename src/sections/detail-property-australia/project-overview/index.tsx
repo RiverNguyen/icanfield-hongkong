@@ -5,7 +5,7 @@ const ProjectOverview = ({content}: {content: string}) => {
         Tổng quan dự án
       </h2>
       <div
-        className='mt-[1.88rem]'
+        className='mt-[1.88rem] [&_p]:tex-[1rem] [&_p]:leading-[1.5] [&_p]:tracking-[-0.02rem] [&_p]:mt-[0.88rem] text-[#5C5C5C] xsm:mt-4 xsm:text-[0.875rem] xsm:leading-[1.5] xsm:tracking-[-0.0175rem] ]'
         dangerouslySetInnerHTML={{__html: content}}
       ></div>
     </div>

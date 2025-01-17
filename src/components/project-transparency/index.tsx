@@ -74,11 +74,11 @@ const ProjectTransparency: FC<IProjectTransparencyProps> = ({data}) => {
               0{index + 1}
             </span>
             <div className='mx-auto mb-4 mt-3 h-[0.0625rem] w-[16.5rem] bg-[linear-gradient(90deg,rgba(255,255,255,0.25)_0%,rgba(255,255,255,0.00)100%)] group-hover:bg-[linear-gradient(90deg,rgba(0,0,0,0.10)0%,rgba(0,0,0,0.00)100%)] xsm:mb-4 xsm:ml-4 xsm:mt-0 xsm:bg-[linear-gradient(90deg,rgba(0,0,0,0.10)0%,rgba(0,0,0,0.00)100%)]'></div>
-            <h3 className='line-clamp-2 px-4 text-[1.25rem] font-semibold leading-[1.33] tracking-[-0.025rem] text-white group-hover:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] group-hover:bg-clip-text group-hover:text-transparent sm:font-optima xsm:mb-2 xsm:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] xsm:bg-clip-text xsm:text-[1rem] xsm:font-bold xsm:text-transparent'>
+            <h3 className='line-clamp-2 px-4 text-[1.25rem] font-semibold leading-[1.33] tracking-[-0.025rem] text-white group-hover:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] group-hover:bg-clip-text group-hover:text-transparent xsm:mb-2 xsm:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] xsm:bg-clip-text xsm:text-[1rem] xsm:font-bold xsm:text-transparent'>
               {item.title}
             </h3>
             <div
-              className='xsm:text-[&_p]:text-[rgba(18,18,18,0.87)] px-4 [&_p]:mt-[1rem] [&_p]:text-[1rem] [&_p]:font-normal [&_p]:leading-[150%] [&_p]:tracking-[-0.02rem] [&_p]:text-white [&_p]:group-hover:text-[#121212DE] xsm:[&_p]:mt-2 xsm:[&_p]:text-[0.875rem] xsm:[&_p]:tracking-[-0.03rem] xsm:[&_p]:text-[rgba(18,18,18,0.87)]'
+              className='xsm:text-[&_p]:text-[rgba(18,18,18,0.87)] px-4 [&_p]:mt-[1rem] [&_p]:text-[1rem] [&_p]:font-normal [&_p]:leading-[150%] text-white group-hover:text-[#121212DE] [&_p]:tracking-[-0.02rem] [&_p]:text-white [&_p]:group-hover:text-[#121212DE] xsm:[&_p]:mt-2 xsm:[&_p]:text-[0.875rem] xsm:[&_p]:tracking-[-0.03rem] xsm:[&_p]:text-[rgba(18,18,18,0.87)]'
               dangerouslySetInnerHTML={{__html: item.description}}
             ></div>
           </div>
