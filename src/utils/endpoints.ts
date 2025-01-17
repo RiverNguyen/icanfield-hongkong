@@ -18,6 +18,10 @@ const endpoints = {
     id: '345',
     unitTag: '1ef1eec',
   },
+  contactFormSettlementDocuments: {
+    id: '822',
+    unitTag: 'a407308',
+  },
   taxonomiesSettlement: 'nation',
   settlementPrograms: '/settlement-programs',
   eb5Project: {
