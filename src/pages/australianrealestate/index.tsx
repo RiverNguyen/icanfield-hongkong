@@ -17,156 +17,15 @@ import {Term} from '@/sections/homepage/banner/bannerHp.interface'
 import {Media} from '@/types/image.interface'
 import {Suspense} from 'react'
 import {BenefitsProps} from '@/sections/australian-real-estate/Benefits'
-// const advantages_benefits = {
-//   subtitle: 'CÁC ĐIỀU KIỆN ĐẦU TƯ',
-//   title: 'Điều kiện đầu tư bất động sản tại Úc cho người Việt Nam',
-//   slogan: 'Bất động sản Úc – Đầu tư vững chắc cho tương lai.',
-//   description:
-//     'Bất động sản Úc mang đến cơ hội tận hưởng cuộc sống chất lượng, môi trường lý tưởng và tiềm năng phát triển bền vững. Khám phá những lợi thế vượt trội để xây dựng tương lai vững chắc cho bạn và gia đình.',
-//   background_pc: {
-//     ID: 88,
-//     id: 88,
-//     title: 'bacgroud',
-//     filename: 'sss',
-//     filesize: 59961081,
-//     url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
-//     link: 'string',
-//     alt: 'string',
-//     author: 'string',
-//     description: 'string',
-//     caption: 'string',
-//     name: 'string',
-//     status: 'string',
-//     uploaded_to: 1,
-//     date: 'string',
-//     modified: 'string',
-//     menu_order: 1,
-//     mime_type: 'string',
-//     type: 'string',
-//     subtype: 'string',
-//     icon: 'string',
-//     width: 1622,
-//     height: 800,
-//   },
-//   background_mb: {
-//     ID: 88,
-//     id: 88,
-//     title: 'bacgroud',
-//     filename: 'sss',
-//     filesize: 59961081,
-//     url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg-mb.webp',
-//     link: 'string',
-//     alt: 'string',
-//     author: 'string',
-//     description: 'string',
-//     caption: 'string',
-//     name: 'string',
-//     status: 'string',
-//     uploaded_to: 1,
-//     date: 'string',
-//     modified: 'string',
-//     menu_order: 1,
-//     mime_type: 'string',
-//     type: 'string',
-//     subtype: 'string',
-//     icon: 'string',
-//     width: 1622,
-//     height: 800,
-//   },
-//   items: [
-//     {
-//       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-//       content:
-//         'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
-//       image: {
-//         ID: 88,
-//         id: 88,
-//         title: 'bacgroud',
-//         filename: 'sss',
-//         filesize: 59961081,
-//         url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
-//         link: 'string',
-//         alt: 'string',
-//         author: 'string',
-//         description: 'string',
-//         caption: 'string',
-//         name: 'string',
-//         status: 'string',
-//         uploaded_to: 1,
-//         date: 'string',
-//         modified: 'string',
-//         menu_order: 1,
-//         mime_type: 'string',
-//         type: 'string',
-//         subtype: 'string',
-//         icon: 'string',
-//         width: 1622,
-//         height: 800,
-//       },
-//     },
-//     {
-//       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-//       content:
-//         'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
-//       image: {
-//         ID: 88,
-//         id: 88,
-//         title: 'bacgroud',
-//         filename: 'sss',
-//         filesize: 59961081,
-//         url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
-//         link: 'string',
-//         alt: 'string',
-//         author: 'string',
-//         description: 'string',
-//         caption: 'string',
-//         name: 'string',
-//         status: 'string',
-//         uploaded_to: 1,
-//         date: 'string',
-//         modified: 'string',
-//         menu_order: 1,
-//         mime_type: 'string',
-//         type: 'string',
-//         subtype: 'string',
-//         icon: 'string',
-//         width: 1622,
-//         height: 800,
-//       },
-//     },
-//     {
-//       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-//       content:
-//         'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
-//       image: {
-//         ID: 88,
-//         id: 88,
-//         title: 'bacgroud',
-//         filename: 'sss',
-//         filesize: 59961081,
-//         url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
-//         link: 'string',
-//         alt: 'string',
-//         author: 'string',
-//         description: 'string',
-//         caption: 'string',
-//         name: 'string',
-//         status: 'string',
-//         uploaded_to: 1,
-//         date: 'string',
-//         modified: 'string',
-//         menu_order: 1,
-//         mime_type: 'string',
-//         type: 'string',
-//         subtype: 'string',
-//         icon: 'string',
-//         width: 1622,
-//         height: 800,
-//       },
-//     },
-//   ],
-// }
-
+import dynamic from 'next/dynamic'
+import {ICountry} from '@/components/LeafletMap'
+const PioneeringValuesAustralia = dynamic(
+  () => import('@/sections/australian-real-estate/section-map'),
+  {
+    ssr: false, // Nếu component không cần server-side rendering
+    loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
+  },
+)
 const data = {
   listItems: {
     success: true,
@@ -696,6 +555,11 @@ interface dataAcf {
       footer_content: string
     }
   }
+  section_map:{
+        title: string
+        description: string
+        data_state_usa: ICountry[]
+  }
 }
 
 export default function AustralianRealEstate({
@@ -708,7 +572,6 @@ export default function AustralianRealEstate({
   const dataInvestment = {
     data: {...dataAcf?.investment_process_australia?.safety_standards},
   }
-  console.log(dataInvestment)
   return (
     <main className='bg-background'>
       <Banner
@@ -741,6 +604,7 @@ export default function AustralianRealEstate({
             'flex w-[38.625rem] flex-col items-start xsm:w-full xsm:px-0 [&>div]:text-start',
         }}
       />
+      <PioneeringValuesAustralia data={dataAcf.section_map} />
       <Suspense fallback={<p>Loading...</p>}>
         <OutstandingProjectEB5
           listItems={data?.listItems}
