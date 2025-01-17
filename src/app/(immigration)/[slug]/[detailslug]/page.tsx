@@ -27,15 +27,23 @@ export default async function page({
         revalidate: 10,
       },
     })
-    const [programResponse, dataAcfNation] = await Promise.all([
+    const requestTaxonomies = {
+      api: '/taxonomies-settlement',
+      option: {
+        revalidate: 10,
+      },
+    }
+    const [programResponse, dataAcfNation,dataTaxonomies] = await Promise.all([
       fetchProgramData,
       fetchAcfNation,
+      fetchData(requestTaxonomies),
     ])
     const data = {
       ...programResponse,
       data: {
         ...programResponse.data,
         acfNation: dataAcfNation[0],
+        dataTaxonomies: dataTaxonomies?.nation,
       },
     }
     if (data.status === 404) {

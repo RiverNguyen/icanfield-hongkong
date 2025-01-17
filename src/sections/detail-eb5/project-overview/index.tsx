@@ -25,7 +25,7 @@ const InfoItem = ({
         <div className='flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-[0.5rem] border border-white/25 bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] bg-origin-border xsm:h-5 xsm:w-5 xsm:border-none xsm:bg-none'>
           <ImageV2
             alt={title}
-            src='/icons/detail-eb5/check.svg'
+            src='/imgs/detail-eb5/check.svg'
             width={24}
             height={24}
             className='h-6 w-6 xsm:h-4 xsm:w-4'
@@ -35,7 +35,7 @@ const InfoItem = ({
           <p className='font-medium tracking-[-0.00875rem] text-greyscaletext-400 sub-14 xsm:font-normal xsm:sub-12'>
             {title}
           </p>
-          <p className='heading3-s font-semibold text-Phase-1-Brown xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'>
+          <p className='heading3-s font-semibold text-Phase-1-Brown xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem] xsm:text-[0.87rem] xsm:line-clamp-1'>
             {subtitle}
           </p>
         </div>
@@ -108,7 +108,7 @@ const ProjectOverview = ({
 }) => {
   return (
     <section>
-      <div className='relative z-[21] -mt-[20.25rem] flex flex-col space-y-16 rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 section-container xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
+      <div className='relative z-[21] overflow-hidden -mt-[20.25rem] flex flex-col space-y-16 rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 section-container xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
         <div className='grid w-full grid-cols-3 gap-6 xsm:grid-cols-2 xsm:gap-2 xsm:rounded-[1.25rem] xsm:bg-white/75 xsm:p-2 xsm:backdrop-blur-[25px]'>
           {outstanding.map(
             (
@@ -131,11 +131,11 @@ const ProjectOverview = ({
           </p>
         </div>
         <ImageV2
-          src='/imgs/detail-eb5/bg.webp'
+          src='/imgs/detail-eb5/bg_3.webp'
           alt='bg'
           width={1600}
           height={800}
-          className='absolute -bottom-10 left-0 w-[100rem] object-cover opacity-80 xsm:hidden'
+          className='absolute -bottom-10 right-[-10rem] w-[70rem] object-cover opacity-80 xsm:hidden'
         />
       </div>
       <ProjectSlider images={overview.album} />

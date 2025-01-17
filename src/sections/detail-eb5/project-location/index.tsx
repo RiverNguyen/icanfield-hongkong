@@ -45,8 +45,8 @@ const LocationItemMobile = ({
       <ImageV2
         src={thumbnail.url}
         alt={thumbnail.alt}
-        width={200}
-        height={200}
+        width={800}
+        height={800}
         className='h-[12.5rem] w-full rounded-[0.5rem] object-cover'
       />
       <div className='flex flex-1 flex-col space-y-4 p-2'>
@@ -81,18 +81,18 @@ const ProjectLocation = ({
 }: IDataAcfDetailEB5['acf']['eb5_projects_detail_location']) => {
   const isMobile = useIsMobile()
   return (
-    <section className='flex space-x-[6.5rem] pl-20 sm:pb-[5rem] xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4'>
+    <section className='flex space-x-[6.5rem] pl-20 sm:pb-[5rem] xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4 xsm:mt-[9rem]'>
       <div className='flex-1 pt-20 xsm:pt-4'>
         <h1 className='font-optima font-semibold text-Phase-1-Brown heading1'>
           {title_section}
         </h1>
-        <p className='mt-[0.875rem] text-greyscaletext-body body16-m xsm:body-14'>
+        <p className='mt-[0.875rem] text-[1rem] font-normal text-greyscaletext-body xsm:body-14'>
           {description}
         </p>
         <h4 className='mt-14 font-optima font-semibold text-Phase-1-Brown heading4 xsm:mt-8 xsm:text-[1.125rem] xsm:leading-[1.4] xsm:tracking-[-0.0225rem]'>
           {subtitle}
         </h4>
-        <p className='mt-4 text-greyscaletext-body body16-m xsm:body-14'>
+        <p className='mt-4 text-[1rem] font-normal text-greyscaletext-body xsm:body-14'>
           {description_subtitle}
         </p>
         <div className='mt-6 flex flex-col space-y-8 xsm:mt-4 xsm:space-y-4'>
@@ -115,13 +115,16 @@ const ProjectLocation = ({
         </div>
       </div>
       <div className='sticky top-8 h-[49.25rem] w-[47.825rem] py-20 xsm:static xsm:aspect-square xsm:h-auto xsm:w-full xsm:py-0'>
-        <ImageV2
-          src={google_map.url}
-          alt={google_map.alt}
-          width={800}
-          height={700}
+        <iframe
+          src={google_map}
+          width='600'
+          height='450'
+          style={{border: 0}}
+          allowFullScreen
+          loading='lazy'
+          referrerPolicy='no-referrer-when-downgrade'
           className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl'
-        />
+        ></iframe>
       </div>
     </section>
   )

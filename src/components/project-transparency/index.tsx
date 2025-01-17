@@ -26,7 +26,7 @@ const ProjectTransparency: FC<IProjectTransparencyProps> = ({data}) => {
       <div className='pointer-events-none absolute left-1/2 top-[2.81rem] z-10 h-[153.9375rem] w-[186.25rem] -translate-x-1/2 rounded-[50%] bg-[linear-gradient(180deg,#EABB67_0%,#FFF_100%)] opacity-20 shadow-[0px_-5px_50px_0px_rgba(54,42,5,0.15)] xsm:top-[2.81rem] xsm:h-[59.125rem] xsm:w-[61.625rem]'></div>
       <div className='pointer-events-none absolute left-1/2 top-[4.25rem] z-20 h-[138.0625rem] w-[151rem] -translate-x-1/2 rounded-[50%] bg-[linear-gradient(180deg,#FFF_0%,rgba(214,179,116,0.00)14.85%)] opacity-30 shadow-[0px_-5px_50px_0px_rgba(54,42,5,0.15)] xsm:top-[3.38rem] xsm:h-[53rem] xsm:w-[50rem]'></div>
       <ImageV2
-        src='/imgs/EB5/projects-transparency/sydney4.webp'
+        src='/imgs/EB5/projects-transparency/Sydney4.webp'
         alt='banner'
         width={2000}
         height={2000}
