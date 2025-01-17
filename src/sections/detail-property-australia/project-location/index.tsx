@@ -31,17 +31,18 @@ const ProjectLocation = ({
           collapsible
           className='w-full space-y-10 xsm:space-y-[1.875rem]'
         >
-          {accordions.map((accordion, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-            >
-              <AccordionTrigger className='bg-greyscaletext-body bg-clip-text text-transparent body16-s xsm:body-14-s [&[data-state=open]]:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)]'>
-                {accordion.title}
-              </AccordionTrigger>
-              <AccordionContent>{accordion.content}</AccordionContent>
-            </AccordionItem>
-          ))}
+          {Array.isArray(accordions) &&
+            accordions.map((accordion, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+              >
+                <AccordionTrigger className='bg-greyscaletext-body bg-clip-text text-transparent body16-s xsm:body-14-s [&[data-state=open]]:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)]'>
+                  {accordion.title}
+                </AccordionTrigger>
+                <AccordionContent>{accordion.content}</AccordionContent>
+              </AccordionItem>
+            ))}
         </Accordion>
       </div>
     </div>

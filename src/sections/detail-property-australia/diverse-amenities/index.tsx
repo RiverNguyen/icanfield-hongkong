@@ -23,23 +23,24 @@ const Slider = ({
         }}
         className='w-full'
       >
-        {items.map((item, index) => (
-          <SwiperSlide
-            key={index}
-            className='relative xsm:!w-[11.63856rem]'
-          >
-            <ImageV2
-              src={item.image_room?.url}
-              alt={item.image_room?.alt || item.name_room}
-              width={1000}
-              height={1000}
-              className='h-full w-full rounded-2xl object-cover xsm:rounded-[0.5rem]'
-            />
-            <p className='absolute bottom-[0.625rem] right-[0.625rem] rounded-[0.5rem] bg-black/60 px-[0.6875rem] py-2 text-white backdrop-blur-[8px] sub-12 xsm:bottom-[0.4rem] xsm:right-[0.4rem] xsm:rounded-[0.32556rem] xsm:px-[0.44763rem] xsm:py-[0.32556rem] xsm:backdrop-blur-[5px]'>
-              {item.name_room}
-            </p>
-          </SwiperSlide>
-        ))}
+        {Array.isArray(items) &&
+          items.map((item, index) => (
+            <SwiperSlide
+              key={index}
+              className='relative xsm:!w-[11.63856rem]'
+            >
+              <ImageV2
+                src={item.image_room?.url}
+                alt={item.image_room?.alt || item.name_room}
+                width={1000}
+                height={1000}
+                className='h-full w-full rounded-2xl object-cover xsm:rounded-[0.5rem]'
+              />
+              <p className='absolute bottom-[0.625rem] right-[0.625rem] rounded-[0.5rem] bg-black/60 px-[0.6875rem] py-2 text-white backdrop-blur-[8px] sub-12 xsm:bottom-[0.4rem] xsm:right-[0.4rem] xsm:rounded-[0.32556rem] xsm:px-[0.44763rem] xsm:py-[0.32556rem] xsm:backdrop-blur-[5px]'>
+                {item.name_room}
+              </p>
+            </SwiperSlide>
+          ))}
       </Swiper>
       <button className='image-pre absolute -left-5 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#FEEFD9] xsm:hidden'>
         <ImageV2
@@ -80,23 +81,24 @@ const DiverseAmenities = ({
         <h3 className='text-textgreybody body16-s'>Tiện ích</h3>
         <div className='h-[1px] w-full bg-[#EDEDED]' />
         <div className='grid grid-cols-4 gap-[0.625rem] xsm:grid-cols-2'>
-          {utilities.map((item, index) => (
-            <div
-              key={index}
-              className='flex items-center space-x-2'
-            >
-              <ImageV2
-                src='/icons/detail-property/check.svg'
-                alt=''
-                width={50}
-                height={50}
-                className='h-5 w-5 object-cover'
-              />
-              <p className='tracking-[-0.0175rem] body-14-m xsm:sub-12-m'>
-                {item.item}
-              </p>
-            </div>
-          ))}
+          {Array.isArray(utilities) &&
+            utilities.map((item, index) => (
+              <div
+                key={index}
+                className='flex items-center space-x-2'
+              >
+                <ImageV2
+                  src='/icons/detail-property/check.svg'
+                  alt=''
+                  width={50}
+                  height={50}
+                  className='h-5 w-5 object-cover'
+                />
+                <p className='tracking-[-0.0175rem] body-14-m xsm:sub-12-m'>
+                  {item.item}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
       <Slider items={slide_room} />

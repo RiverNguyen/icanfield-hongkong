@@ -10,7 +10,7 @@ export interface Location {
 
 export interface IProject {
   id: number
-  location: Location[]
+  location: Location[] | string
   slug: string
   title: string
   image: Media

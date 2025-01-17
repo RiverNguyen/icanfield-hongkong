@@ -1,8 +1,10 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
+import ItemAustralia from '@/components/itemAustralia'
 import ItemProjectsOutstanding from '@/components/itemProjects'
 import {IProject} from '@/components/itemProjects/itemProjects.interface'
 import {fetcher} from '@/lib/swr'
+import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
 import {Pagination} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import useSWR from 'swr'
@@ -54,8 +56,9 @@ const data = [
   },
 ]
 const fetcherWithCustomBase = (url: string) =>
-  fetcher(url, process.env.NEXT_PUBLIC_API_PASSPORT)
+  fetcher(url, process.env.NEXT_PUBLIC_API_ACF)
 const ProjectOther = ({id}: {id: number}) => {
+  console.log('🚀 ~ ProjectOther ~ id:', id)
   const {data: dataOther} = useSWR(
     id ? `/australia-real-estat?exclude=${id}&per_page=5` : null,
     fetcherWithCustomBase,
@@ -64,6 +67,9 @@ const ProjectOther = ({id}: {id: number}) => {
       revalidateOnReconnect: false,
     },
   )
+
+  console.log('🚀 ~ ProjectOther ~ dataOther:', dataOther)
+
   return (
     <section className='mt-[6.25rem] section-container xsm:mt-8'>
       <div className='flex w-full items-end justify-between'>
@@ -106,18 +112,26 @@ const ProjectOther = ({id}: {id: number}) => {
           }}
           className='h-full w-full'
         >
-          {data?.map((item: IProject, index) => (
-            <SwiperSlide
-              key={index}
-              className='h-full w-full [&>a]:block'
-            >
-              {/* fake item */}
-              <ItemProjectsOutstanding
+          {Array.isArray(dataOther) &&
+            dataOther?.map((item: IDataAcfDetailAustralia, index) => (
+              <SwiperSlide
                 key={index}
-                {...item}
-              />
-            </SwiperSlide>
-          ))}
+                className='h-full w-full [&>a]:block'
+              >
+                {/* fake item */}
+                <ItemAustralia
+                  location={item.acf.banner.location}
+                  title={item.title.rendered}
+                  info={Array.from(
+                    Object.keys(item.acf.banner.info).map(
+                      (i) => item.acf.banner.info[i],
+                    ),
+                  )}
+                  image={item.featured_media}
+                  slug={item.slug}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
       <div className='mt-6 hidden w-full flex-col items-center xsm:flex'>

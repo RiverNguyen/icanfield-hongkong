@@ -43,5 +43,6 @@ export interface IDataAcfDetailAustralia {
       }[]
     }
   }
+  featured_media: Media | null
   ['key']?: any
 }
