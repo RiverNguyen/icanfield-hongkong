@@ -1,0 +1,718 @@
+import ContactV2 from '@/components/ContactV2/ContactV2'
+import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
+import { AdvantagesBenefits } from '@/components/advantages-benefits'
+import { Breadcrumb } from '@/components/breadcrumb'
+import ProjectTransparency from '@/components/project-transparency'
+import { WhyChooseUs } from '@/components/why-choose-us'
+import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
+import Benefits from '@/sections/australian-real-estate/Benefits'
+import { benefitsProps } from '@/sections/australian-real-estate/constants'
+import { Banner } from '@/sections/detail-settlement-programs/banner'
+import { Term } from '@/sections/homepage/banner/bannerHp.interface'
+import { Suspense } from 'react'
+
+const advantages_benefits = {
+  subtitle: 'CÁC ĐIỀU KIỆN ĐẦU TƯ',
+  title: 'Điều kiện đầu tư bất động sản tại Úc cho người Việt Nam',
+  slogan: 'Bất động sản Úc – Đầu tư vững chắc cho tương lai.',
+  description: 'Bất động sản Úc mang đến cơ hội tận hưởng cuộc sống chất lượng, môi trường lý tưởng và tiềm năng phát triển bền vững. Khám phá những lợi thế vượt trội để xây dựng tương lai vững chắc cho bạn và gia đình.',
+  background_pc: {
+    ID: 88,
+    id: 88,
+    title: 'bacgroud',
+    filename: 'sss',
+    filesize: 59961081,
+    url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+    link: 'string',
+    alt: 'string',
+    author: 'string',
+    description: 'string',
+    caption: 'string',
+    name: 'string',
+    status: 'string',
+    uploaded_to: 1,
+    date: 'string',
+    modified: 'string',
+    menu_order: 1,
+    mime_type: 'string',
+    type: 'string',
+    subtype: 'string',
+    icon: 'string',
+    width: 1622,
+    height: 800,
+  },
+  background_mb: {
+    ID: 88,
+    id: 88,
+    title: 'bacgroud',
+    filename: 'sss',
+    filesize: 59961081,
+    url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg-mb.webp',
+    link: 'string',
+    alt: 'string',
+    author: 'string',
+    description: 'string',
+    caption: 'string',
+    name: 'string',
+    status: 'string',
+    uploaded_to: 1,
+    date: 'string',
+    modified: 'string',
+    menu_order: 1,
+    mime_type: 'string',
+    type: 'string',
+    subtype: 'string',
+    icon: 'string',
+    width: 1622,
+    height: 800,
+  },
+  items: [
+    {
+      title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
+      content: 'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+      image: {
+        ID: 88,
+        id: 88,
+        title: 'bacgroud',
+        filename: 'sss',
+        filesize: 59961081,
+        url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
+        link: 'string',
+        alt: 'string',
+        author: 'string',
+        description: 'string',
+        caption: 'string',
+        name: 'string',
+        status: 'string',
+        uploaded_to: 1,
+        date: 'string',
+        modified: 'string',
+        menu_order: 1,
+        mime_type: 'string',
+        type: 'string',
+        subtype: 'string',
+        icon: 'string',
+        width: 1622,
+        height: 800,
+      }
+    },
+    {
+      title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
+      content: 'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+      image: {
+        ID: 88,
+        id: 88,
+        title: 'bacgroud',
+        filename: 'sss',
+        filesize: 59961081,
+        url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
+        link: 'string',
+        alt: 'string',
+        author: 'string',
+        description: 'string',
+        caption: 'string',
+        name: 'string',
+        status: 'string',
+        uploaded_to: 1,
+        date: 'string',
+        modified: 'string',
+        menu_order: 1,
+        mime_type: 'string',
+        type: 'string',
+        subtype: 'string',
+        icon: 'string',
+        width: 1622,
+        height: 800,
+      }
+    },
+    {
+      title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
+      content: 'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+      image: {
+        ID: 88,
+        id: 88,
+        title: 'bacgroud',
+        filename: 'sss',
+        filesize: 59961081,
+        url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
+        link: 'string',
+        alt: 'string',
+        author: 'string',
+        description: 'string',
+        caption: 'string',
+        name: 'string',
+        status: 'string',
+        uploaded_to: 1,
+        date: 'string',
+        modified: 'string',
+        menu_order: 1,
+        mime_type: 'string',
+        type: 'string',
+        subtype: 'string',
+        icon: 'string',
+        width: 1622,
+        height: 800,
+      }
+    }
+  ]
+}
+
+const data = {
+  listItems: {
+    success: true,
+    total: 9,
+    totalPages: 1,
+    page: 1,
+    limit: 9,
+    data: [
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      },
+      {
+        id: 1,
+        location: [
+          {
+            id: 1,
+            name: 'canada',
+            slug: 'Canada',
+            taxonomy: 'canada',
+            primary: true
+          }
+        ],
+        slug: 'string',
+        title: 'string',
+        image: {
+          ID: 88,
+          id: 88,
+          title: 'bacgroud',
+          filename: 'sss',
+          filesize: 59961081,
+          url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1622,
+          height: 800,
+        },
+        type: 'string',
+        project_scale: 1,
+        eb5_capital_ratio: 1,
+        jobs_created: 1,
+        contact: 'string'
+      }
+    ]
+  },
+  categories: [
+    {
+      id: 1,
+      name: 'Canada',
+      slug: 'canada',
+      taxonomy: ''
+    },
+    {
+      id: 1,
+      name: 'Canada',
+      slug: 'canada',
+      taxonomy: ''
+    }
+  ],
+  safety_standards: {
+    title: 'Quy trình đầu tư <br/> Bất động sản tại Úc',
+    items: [
+      {
+        title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
+        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+      },
+      {
+        title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
+        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+      },
+      {
+        title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
+        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+      },
+      {
+        title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
+        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+      },
+      {
+        title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
+        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+      }
+    ],
+    footer_title_left: '<p>Đầu tư hôm nay</p><p><strong>Bất động sản</strong></p>',
+    footer_link_slug: '/',
+    footer_content: 'Đầu tư vào bất động sản Úc không chỉ là một quyết định tài chính, mà còn là bước đi vững chắc để bạn và gia đình tận hưởng một cuộc sống ổn định, an toàn và tràn đầy cơ hội phát triển.'
+  }
+}
+
+const why_choose_us = {
+  title: 'Vì sao lựa chọn chúng tôi',
+  description: 'Icanfield mở ra cánh cửa đến cuộc sống chất lượng, cơ hội phát triển toàn diện và môi trường lý tưởng cho cả gia đình bạn. Cùng khám phá những lợi thế vượt trội từ các chương trình định cư hàng đầu.',
+  logo: {
+    ID: 88,
+    id: 88,
+    title: 'bacgroud',
+    filename: 'sss',
+    filesize: 59961081,
+    url: 'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-logo.webp',
+    link: 'string',
+    alt: 'string',
+
+    author: 'string',
+    description: 'string',
+    caption: 'string',
+    name: 'string',
+    status: 'string',
+    uploaded_to: 1,
+    date: 'string',
+    modified: 'string',
+    menu_order: 1,
+    mime_type: 'string',
+    type: 'string',
+    subtype: 'string',
+    icon: 'string',
+    width: 1622,
+    height: 800,
+  },
+  items: [
+    {
+      title: 'Dịch vụ uy tín',
+      description: 'Với nhiều năm kinh nghiệm trong lĩnh vực di trú và định cư, iCanfield cam kết mang đến giải pháp tối ưu và đáng tin cậy cho bạn.',
+    },
+    {
+      title: 'Hỗ trợ toàn diện',
+      description: 'Chúng tôi hỗ trợ từ tư vấn ban đầu, xử lý hồ sơ, đến hoàn thiện thủ tục, đảm bảo bạn luôn được chăm sóc chu đáo nhất.',
+    },
+    {
+      title: 'Đa dạng lựa chọn',
+      description: 'Từ chương trình định cư, du học đến cơ hội đầu tư, iCanfield cung cấp nhiều giải pháp linh hoạt cho từng cá nhân và gia đình.',
+    }
+  ]
+}
+
+export default function AustralianRealEstate({dataNationSettlement}: {dataNationSettlement: Term[]}) {
+  return (
+    <main className='bg-background'>
+      <Banner
+        title_line_1='Bất Động Sản Úc'
+        title_line_2='Đầu Tư Cho Tương Lai'
+        description='mở ra cơ hội tuyệt vời cho các nhà đầu tư nước ngoài'
+        backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_30%,rgba(240,240,240,0)_64%,rgba(246,246,244,1)_100%)]'
+        className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
+        background_pc={{
+          ID: 1,
+          id: 1,
+          title: 'string',
+          filename: 'string',
+          filesize: 59961081,  
+          url: '/imgs/australianRealEstate/d-bg.webp',
+          link: 'string',
+          alt: 'string',
+          author: 'string',
+          description: 'string',
+          caption: 'string',
+          name: 'string',
+          status: 'string',
+          uploaded_to: 1000,
+          date: 'string',
+          modified: 'string',
+          menu_order: 1000,
+          mime_type: 'string',
+          type: 'string',
+          subtype: 'string',
+          icon: 'string',
+          width: 1000,
+          height: 1000,
+        }}
+      >
+        <Breadcrumb
+          items={[
+            {label: 'Trang chủ', href: '/'},
+            {label: 'Bất động sản Úc', href: '#'},
+          ]}
+        />
+      </Banner>
+      <Benefits {...benefitsProps} />
+      <AdvantagesBenefits
+        {...advantages_benefits}
+        className={{
+          headding: 'xsm:flex-col [&>p]:sm:w-[29.375rem] [&>p]:text-start flex-row section-container sm:max-w-[90rem] justify-between',
+          advantagesHeading: 'xsm:w-full xsm:px-0 flex flex-col items-start [&>div]:text-start w-[38.625rem]'
+        }}
+      />
+      <Suspense fallback={<p>Loading...</p>}>
+        <OutstandingProjectEB5
+          listItems={data?.listItems}
+          categories={data?.categories}
+        />
+      </Suspense>
+      <ProjectTransparency data={data?.safety_standards} />
+      <WhyChooseUs {...why_choose_us} />
+      <ContactV2>
+        <FormInternationalJourney dataNationSettlement={dataNationSettlement} />
+      </ContactV2>
+    </main>
+  )
+}
