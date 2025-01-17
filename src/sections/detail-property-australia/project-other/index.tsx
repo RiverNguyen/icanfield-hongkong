@@ -1,9 +1,11 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import ItemProjectsOutstanding from '@/components/itemProjects'
-import { IProject } from '@/components/itemProjects/itemProjects.interface'
-import { Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import {IProject} from '@/components/itemProjects/itemProjects.interface'
+import {fetcher} from '@/lib/swr'
+import {Pagination} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import useSWR from 'swr'
 
 const data = [
   {
@@ -14,8 +16,8 @@ const data = [
         name: 'Canada',
         slug: 'canada',
         taxonomy: 'string',
-        primary: true
-      }
+        primary: true,
+      },
     ],
     slug: 'Dự-án-Hudson-Yards',
     title: 'Dự án Hudson Yards',
@@ -49,14 +51,23 @@ const data = [
     eb5_capital_ratio: 2,
     jobs_created: 2,
     contact: 'string',
-  }
+  },
 ]
-
-const ProjectOther = () => {
+const fetcherWithCustomBase = (url: string) =>
+  fetcher(url, process.env.NEXT_PUBLIC_API_PASSPORT)
+const ProjectOther = ({id}: {id: number}) => {
+  const {data: dataOther} = useSWR(
+    id ? `/australia-real-estat?exclude=${id}&per_page=5` : null,
+    fetcherWithCustomBase,
+    {
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
+    },
+  )
   return (
-    <section className='section-container mt-[6.25rem] xsm:mt-8'>
+    <section className='mt-[6.25rem] section-container xsm:mt-8'>
       <div className='flex w-full items-end justify-between'>
-        <h1 className='heading1 font-optima font-semibold tracking-[-0.045rem] text-orangetext-900 xsm:text-2xl xsm:leading-[1.2]'>
+        <h1 className='font-optima font-semibold tracking-[-0.045rem] text-orangetext-900 heading1 xsm:text-2xl xsm:leading-[1.2]'>
           Các dự án khác
         </h1>
         <button className='flex h-[3rem] items-center justify-center rounded-[0.5rem] bg-btn-gradient px-[0.75rem] pl-[1.5rem] xsm:hidden'>
