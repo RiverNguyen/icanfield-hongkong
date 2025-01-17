@@ -1,31 +1,37 @@
 import fetchData from '@/fetch/fetchData'
+import fetchDataACF from '@/fetch/fetchDataACF'
 import FormConnectUsV2 from '@/sections/blogs/connect-us/FormConnectUsV2'
-import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
+import WrapperConnectUsV2 from '@/sections/blogs/connect-us/WrapperConnectUsV2'
 import BannerBottom from '@/sections/contact/banner-bottom'
 import BannerTop from '@/sections/contact/banner-top'
-import { bannerTopProps } from '@/sections/contact/banner-top/constants'
 import ContactInfo from '@/sections/contact/contact-info'
-import { contactInfoProps } from '@/sections/contact/contact-info/constants'
 
 const page = async () => {
   const requestTaxonomies = {
     api: '/taxonomies-settlement',
     option: {
-        revalidate: 10,
+      revalidate: 10,
     },
   }
-  const [dataTaxonomies] = await Promise.all([
-    fetchData(requestTaxonomies)
+  const requestPage = {
+    api: '/pages/940?acf_format=standard',
+    option: {
+      revalidate: 10,
+    },
+  }
+  const [dataTaxonomies, dataPage] = await Promise.all([
+    fetchData(requestTaxonomies),
+    fetchDataACF(requestPage)
   ])
   return (
-    <div className='pt-[3.75rem] sm:pt-[6.44rem]'>
-      <BannerTop {...bannerTopProps} />
-      <WrapperConnectUs>
+    <main className=''>
+      <BannerTop {...dataPage?.acf?.banner_contact} />
+      <WrapperConnectUsV2>
         <FormConnectUsV2 dataTaxonomies={dataTaxonomies?.nation} />
-      </WrapperConnectUs>
-      <ContactInfo {...contactInfoProps} />
+      </WrapperConnectUsV2>
+      <ContactInfo {...dataPage?.acf?.information} />
       <BannerBottom />
-    </div>
+    </main>
   )
 }
 

@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { SuccessPopup } from '@/components/success-popup'
 import {
   Form,
   FormControl,
@@ -19,13 +20,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import CF7Request from '@/fetch/cf7Request'
+import { isLockScroll } from '@/hooks/useBodyScrollLock'
 import useIsMobile from '@/hooks/useIsMobile'
 import { cn } from '@/lib/utils'
 import { Term } from '@/sections/homepage/banner/bannerHp.interface'
-import { useState, useTransition } from 'react'
+import endpoints from '@/utils/endpoints'
+import { useRef, useState, useTransition } from 'react'
 
 const formSchema = z.object({
-  fullName: z.string().min(2, {
+  username: z.string().min(2, {
     message: 'Trường này ít nhất phải có 2 ký tự.',
   }),
   email: z.string().email({message: 'Địa chỉ email không hợp lệ.'}),
@@ -36,7 +40,7 @@ const formSchema = z.object({
       /^(999|998|997|996|995|994|993|992|991|990|979|978|977|976|975|974|973|972|971|970|969|968|967|966|965|964|963|962|961|960|899|898|897|896|895|894|893|892|891|890|889|888|887|886|885|884|883|882|881|880|879|878|877|876|875|874|873|872|871|870|859|858|857|856|855|854|853|852|851|850|839|838|837|836|835|834|833|832|831|830|809|808|807|806|805|804|803|802|801|800|699|698|697|696|695|694|693|692|691|690|689|688|687|686|685|684|683|682|681|680|679|678|677|676|675|674|673|672|671|670|599|598|597|596|595|594|593|592|591|590|509|508|507|506|505|504|503|502|501|500|429|428|427|426|425|424|423|422|421|420|389|388|387|386|385|384|383|382|381|380|379|378|377|376|375|374|373|372|371|370|359|358|357|356|355|354|353|352|351|350|299|298|297|296|295|294|293|292|291|290|289|288|287|286|285|284|283|282|281|280|269|268|267|266|265|264|263|262|261|260|259|258|257|256|255|254|253|252|251|250|249|248|247|246|245|244|243|242|241|240|239|238|237|236|235|234|233|232|231|230|229|228|227|226|225|224|223|222|221|220|219|218|217|216|215|214|213|212|211|210|98|95|94|93|92|91|90|86|84|0|82|81|66|65|64|63|62|61|60|58|57|56|55|54|53|52|51|49|48|47|46|45|44|43|41|40|39|36|34|33|32|31|30|27|20|7|1)[0-9]{0,14}$/,
       {message: 'Định dạng không hợp lệ'},
     ),
-  message: z.string(),
+  mess: z.string(),
   nationSettlement: z.string({
     required_error: "Trường này không được để trống.",
   }),
@@ -49,25 +53,46 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
     email: false,
     phone: false,
   })
+  const [isSubmitting, setIsSubmitting] = useState({
+    isSubmitting: false,
+    isSuccess: false,
+  })
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const [textSelect, setTextSelect] = useState<string>('')
   const [isPending, setTransition] = useTransition()
   const [dataPopupMb, setDataPopupMb] = useState<boolean>(false)  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: '',
+      username: '',
       email: '',
       phone: '',
-      message: '',
+      mess: '',
+      nationSettlement: '',
     },
   })
   const { setValue } = form;
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
     setTransition(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      const request = new CF7Request(values)
+      const response = await request.send(endpoints.contactForm)
+      console.log(response);
+      setIsSubmitting({isSubmitting: false, isSuccess: true})
+      isLockScroll(true)
+      timeoutRef.current = setTimeout(closePopup, 5000)
       form.reset()
     })
+  }
+  const closePopup = () => {
+    isLockScroll(false)
+    setIsSubmitting((prev) => ({...prev, isSuccess: false}))
+
+    // Clear the timeout reference
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
   }
   return (
     <div className='relative h-fit w-full'>
@@ -81,7 +106,7 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
         >
           <FormField
             control={form.control}
-            name='fullName'
+            name='username'
             render={({field}) => (
               <FormItem className='relative space-x-0 space-y-0'>
                 <FormLabel
@@ -259,7 +284,7 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
             />
           <FormField
             control={form.control}
-            name='message'
+            name='mess'
             render={({field}) => (
               <FormItem className='relative space-x-0 space-y-0'>
                 <FormControl>
@@ -292,6 +317,10 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
           </button>
         </form>
       </Form>
+      <SuccessPopup
+        setActive={closePopup}
+        active={isSubmitting.isSuccess}
+      />
     </div>
   )
 }

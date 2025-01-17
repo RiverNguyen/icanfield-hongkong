@@ -2,7 +2,7 @@ import ImageV2 from '@/components/image/ImageV2'
 
 const BannerBottom = () => {
   return (
-    <div className='relative -z-10 mt-[20rem] h-[47.125rem] w-full xsm:mt-8 xsm:h-[12.45081rem]'>
+    <div className='relative z-10 mt-[8rem] h-[47.125rem] w-full xsm:mt-8 xsm:h-[12.45081rem]'>
       <div className='absolute bottom-0 left-0 right-0 top-0 h-[49.375rem] w-full bg-[linear-gradient(180deg,rgba(0,0,0,0.00)_27.28%,rgba(0,0,0,0.45)_100%)] xsm:top-auto xsm:h-[10.5625rem]' />
       <ImageV2
         src='/imgs/contact/sky.webp'
