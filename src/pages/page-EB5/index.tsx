@@ -1,4 +1,4 @@
-import {Breadcrumb} from '@/components/breadcrumb'
+import { Breadcrumb } from '@/components/breadcrumb'
 import ProjectTransparency, {
   IProjectTransparencyProps,
 } from '@/components/project-transparency'
@@ -13,10 +13,11 @@ import TeaEB5Section, {
 import OutstandingProjectEB5, {
   IOutstandingProjectEB5Props,
 } from '@/sections/EB5/outstanding-projects'
-import {FC, Suspense} from 'react'
+import { FC, Suspense } from 'react'
 // import PioneeringValues from '@/sections/EB5/pioneering-values'
+import { ICountry } from '@/components/LeafletMap'
+import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
 import dynamic from 'next/dynamic'
-import {ICountry} from '@/components/LeafletMap'
 const PioneeringValues = dynamic(
   () => import('@/sections/EB5/pioneering-values'),
   {
@@ -65,7 +66,9 @@ const PageEB5: FC<IPageEB5Props> = ({data}) => {
         />
       </Suspense>
       <ProjectTransparency data={data?.safety_standards} />
-      <WrapperConnectUs />
+      <WrapperConnectUs>
+        <FormConnectUs />
+      </WrapperConnectUs>
     </main>
   )
 }

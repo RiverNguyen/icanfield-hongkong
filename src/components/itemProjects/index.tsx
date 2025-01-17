@@ -15,11 +15,11 @@ const ItemProjectsOutstanding = (data: IProject) => {
     jobs_created,
     contact,
   } = data
-  console.log('location', location)
+  // console.log('location', location)
   return (
     <Link
       href={'/EB5/' + slug || ''}
-      className='group/item overflow-hidden rounded-[1.25rem] border-[0.8px] border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)]'
+      className='group/item block h-full w-full overflow-hidden rounded-[1.25rem] border-[0.8px] border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)]'
     >
       <div className='relative h-[18.5625rem] w-full overflow-hidden xsm:h-[14.25rem]'>
         <ImageV2
@@ -44,9 +44,16 @@ const ItemProjectsOutstanding = (data: IProject) => {
             />
             <span className='text-[0.875rem] font-bold capitalize leading-[1.33] text-white opacity-[0.72] xsm:text-[0.75rem]'>
               {location &&
-                location.reduce((acc, cur) => {
+                location.reduce((acc, cur, index) => {
                   if (cur.primary) {
                     return cur.name
+                  }
+                  // Nếu không có phần tử nào có thuộc tính `primary`, lấy phần tử đầu tiên
+                  if (
+                    index === location.length - 1 &&
+                    acc === 'Đang cập nhật...'
+                  ) {
+                    return location[0].name
                   }
                   return acc
                 }, 'Đang cập nhật...')}

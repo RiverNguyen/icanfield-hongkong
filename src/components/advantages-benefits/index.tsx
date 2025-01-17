@@ -1,8 +1,8 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {cn} from '@/lib/utils'
-import {Media} from '@/types/image.interface'
-import {FC, useEffect} from 'react'
+import { cn } from '@/lib/utils'
+import { Media } from '@/types/image.interface'
+import { FC, useEffect } from 'react'
 
 const calculateScrollbarWidth = () => {
   return window.innerWidth - document.documentElement.clientWidth
@@ -16,6 +16,10 @@ export interface IAdvantagesBenefitsProps {
   background_pc?: Media
   background_mb?: Media
   items?: IAdvantagesBenefitsItem[]
+  className?: {
+    headding?: string
+    advantagesHeading?: string 
+  }
 }
 
 export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
@@ -26,6 +30,7 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
   background_pc: backgroundPc,
   background_mb: backgroundMb,
   items,
+  className,
 }) => {
   useEffect(() => {
     const scrollbarWidth = calculateScrollbarWidth()
@@ -37,14 +42,18 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
 
   return (
     <section className='relative p-[2.25rem_0_2.25rem] sm:p-[5rem_0_0] xsm:rounded-[1.5rem_1.5rem_0rem_0rem] xsm:bg-[linear-gradient(180deg,#FFF_0%,#F6F6F4_100%)] xsm:pb-0 xsm:shadow-[0px_-10px_30px_0px_rgba(131,131,131,0.06)]'>
-      <div className='mx-auto flex flex-col items-center text-center sm:max-w-[51.875rem] xsm:px-[1rem]'>
-        <span className='sm:heading16 font-medium text-greyscaletext-body/70 sub-12 sm:font-semibold'>
-          {subtitle}
-        </span>
-        <div
-          className='m-[0.5rem_0_1.25rem] font-optima font-semibold text-brown heading1'
-          dangerouslySetInnerHTML={{__html: title || ''}}
-        ></div>
+      <div className={cn('mx-auto flex flex-col items-center text-center sm:max-w-[51.875rem] xsm:px-[1rem]',
+        className?.headding
+      )}>
+        <div className={cn('xsm:px-[1rem]', className?.advantagesHeading)}>
+          <span className='sm:heading16 font-medium text-greyscaletext-body/70 sub-12 sm:font-semibold'>
+            {subtitle}
+          </span>
+          <div
+            className='m-[0.5rem_0_1.25rem] font-optima font-semibold text-brown heading1'
+            dangerouslySetInnerHTML={{__html: title || ''}}
+            ></div>
+        </div>
         <p className='text-greyscaletext-body body-14 sm:max-w-[39.75rem] sm:body16-r55'>
           {description}
         </p>
@@ -54,8 +63,8 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
           <ImageV2
             src={backgroundPc ? backgroundPc.url : ''}
             alt={backgroundPc ? backgroundPc.alt : ''}
-            width={backgroundPc ? backgroundPc.width * 2 : 1000}
-            height={backgroundPc ? backgroundPc.height * 2 : 1000}
+            width={backgroundPc ? backgroundPc.width * 3 : 1000}
+            height={backgroundPc ? backgroundPc.height * 3 : 1000}
             className='absolute left-0 top-0 h-full min-w-[calc(100vw-var(--scrollbar-width))] object-cover xsm:hidden'
           />
           <ImageV2
@@ -114,7 +123,7 @@ export const AdvantagesBenefitsItem: FC<IAdvantagesBenefitsItemProps> = ({
         />
       </div>
       <div className='flex-1 sm:p-[1rem] xsm:mt-[0.75rem]'>
-        <h3 className='phase-1-text-gradient font-optima font-medium body16 sm:font-medium sm:heading5'>
+        <h3 className='phase-1-text-gradient font-optima font-medium body16 sm:font-medium sm:heading5 xsm:font-semibold'>
           {title}
         </h3>
         <div

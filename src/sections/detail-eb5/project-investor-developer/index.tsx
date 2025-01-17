@@ -34,7 +34,7 @@ const ProjectInvestorDeveloper = ({
   const [tab, setTab] = useState<'investor' | 'developer'>('investor')
 
   return (
-    <div className='relative flex h-[50rem] w-full items-end p-20 xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0'>
+    <div className='relative flex h-[50rem] w-full items-end p-20 xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0 xsm:mt-[2.5rem]'>
       <ImageV2
         src='/imgs/detail-eb5/bg-project-investor-developer.webp'
         alt='Investor'
@@ -102,7 +102,7 @@ const ProjectInvestorDeveloper = ({
                         {achievement.value}
                       </h4>
                       <div className='h-[1px] w-full bg-white/20' />
-                      <p className='font-normal text-white body16-m xsm:body-14'>
+                      <p className='font-normal text-white text-[1rem] leading-[1.5] xsm:body-14 xsm:font-normal'>
                         {achievement.name}
                       </p>
                     </div>

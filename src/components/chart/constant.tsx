@@ -1,7 +1,7 @@
 export const initChart = [
   {
     fill: '#9E5431',
-    title: 'Vốn chủ đầu tư',
+    title: 'Vốn từ chủ đầu tư',
   },
   {
     fill: '#BC9247',

@@ -96,7 +96,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
         <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown'>
           Dự án EB-5 tiêu biểu
         </h2>
-        <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:mb-[2.19rem] xsm:flex-col'>
+        <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:mb-[2.19rem] xsm:flex-col xsm:sticky xsm:top-[3.75rem] xsm:bg-background xsm:pb-1'>
           <IndexTabs
             categories={[
               {id: 0, name: 'Tất cả', slug: 'all', taxonomy: ''},
@@ -111,7 +111,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
             selectedSortOption={selectedSortOption}
             setSearch={setSearch}
             setSelectedSortOption={setSelectedSortOption}
-            className='grid grid-cols-2 gap-4 xsm:flex'
+            className='sm:flex sm:flex-row-reverse gap-x-3 xsm:flex'
             backgroundInput='bg-[#EEE]'
           />
         </div>

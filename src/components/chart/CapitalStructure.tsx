@@ -20,8 +20,8 @@ export default function CapitalStructure({
   ]
 
   return (
-    <section className='section-container sm:py-[3.62rem]'>
-      <h2 className='text-brown heading1 sm:mb-[2.5rem] xsm:mb-[1.5rem] xsm:py-[1rem]'>
+    <section className='section-container sm:py-[3.62rem] xsm:mt-[4rem] xsm:mb-[3.5rem]'>
+      <h2 className='text-brown heading1 sm:mb-[2.5rem] xsm:mb-[1rem] font-optima xsm:font-semibold'>
         {dataCapitalStructure.title_section}
       </h2>
       <div
@@ -29,7 +29,7 @@ export default function CapitalStructure({
         className='relative w-[68.3125rem] rounded-[1.5rem] sm:bg-[linear-gradient(90deg,#FFF_57.87%,rgba(255,255,255,0.00)_90.37%)] sm:p-[4.5rem_5rem] xsm:flex xsm:w-full xsm:flex-col-reverse xsm:items-center'
       >
         <div className='xsm:mt-[3.5rem] xsm:w-full xsm:rounded-[1rem] xsm:bg-white xsm:p-[1rem]'>
-          <p className='xsm:title18M mb-[2rem] font-optima text-[#254432] heading3 xsm:mb-[1rem]'>
+          <p className='xsm:title18M mb-[2rem] font-optima text-[#254432] heading3 xsm:mb-[1rem] xsm:text-[1.125rem]'>
             Tổng nguồn vốn: {dataCapitalStructure?.total_capital} triệu USD, bao
             gồm:
           </p>
@@ -58,7 +58,7 @@ export default function CapitalStructure({
                           <p className='text-[#333] body-14 xsm:sub-12'>
                             {initChart[index].title}
                           </p>
-                          <p className='sub-20B xsm:body16-b text-brown'>
+                          <p className='sub-20B xsm:body16-b text-brown font-bold '>
                             {e?.title}
                           </p>
                         </div>

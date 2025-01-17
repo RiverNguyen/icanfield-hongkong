@@ -2,6 +2,7 @@ import {
   AdvantagesBenefits,
   IAdvantagesBenefitsProps,
 } from '@/components/advantages-benefits'
+import {Breadcrumb} from '@/components/breadcrumb'
 import {IWhyChooseUsProps, WhyChooseUs} from '@/components/why-choose-us'
 import {
   Banner,
@@ -30,8 +31,11 @@ import {
 import ImmigrationFAQ from '@/sections/immigration/faq/ImmigrationFAQ'
 import {immigration} from '@/types/dataAcfImmigration.interface'
 import {FC} from 'react'
-
+import ContactV2 from '@/components/ContactV2/ContactV2'
+import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
+import {Term} from '@/sections/homepage/banner/bannerHp.interface'
 interface IDetailSettlementProgramsProps {
+  post_title: string
   banner: IBannerProps
   program_overview: IProgramOverviewProps
   advantages_benefits: IAdvantagesBenefitsProps
@@ -41,9 +45,11 @@ interface IDetailSettlementProgramsProps {
   process_steps: IProcessStepsProps
   story_share: ISuccessStoryShareProps
   acfNation: immigration
+  dataTaxonomies: Term[]
 }
 
 const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
+  post_title,
   banner,
   program_overview,
   advantages_benefits,
@@ -53,15 +59,28 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   process_steps,
   story_share,
   acfNation,
+  dataTaxonomies,
 }) => {
   const PropProcessSteps = {
     title_section: process_steps?.title || '',
     description: process_steps?.description || '',
     timeline: process_steps?.steps || [],
   }
+  console.log(acfNation)
   return (
-    <>
-      <Banner {...banner} />
+    <main className='bg-background'>
+      <Banner {...banner}>
+        <Breadcrumb
+          items={[
+            {label: 'Trang chủ', href: '/'},
+            {
+              label: `Các chương trình định cư ${acfNation?.name}`,
+              href: `/${acfNation?.name}`,
+            },
+            {label: `${post_title}`, href: '/'},
+          ]}
+        />
+      </Banner>
       <ProgramOverview {...program_overview} />
       <AdvantagesBenefits {...advantages_benefits} />
       <ProgramBenefits {...program_benefits} />
@@ -73,7 +92,10 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
         dataFAQ={acfNation?.acf?.faq_nation}
         flag={acfNation?.acf?.flag}
       />
-    </>
+      <ContactV2>
+        <FormInternationalJourney dataNationSettlement={dataTaxonomies} />
+      </ContactV2>
+    </main>
   )
 }
 
