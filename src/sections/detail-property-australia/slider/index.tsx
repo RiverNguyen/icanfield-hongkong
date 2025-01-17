@@ -17,7 +17,7 @@ type SliderItemProps = {
   image: Media
   classNames?: string
   thumb?: boolean
-  link_video: string
+  link_video?: string
 }
 
 const SliderItem = ({

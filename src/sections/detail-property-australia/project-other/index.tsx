@@ -1,64 +1,16 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import ItemAustralia from '@/components/itemAustralia'
-import ItemProjectsOutstanding from '@/components/itemProjects'
-import {IProject} from '@/components/itemProjects/itemProjects.interface'
 import {fetcher} from '@/lib/swr'
 import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
 import {Pagination} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import useSWR from 'swr'
 
-const data = [
-  {
-    id: 222,
-    location: [
-      {
-        id: 11,
-        name: 'Canada',
-        slug: 'canada',
-        taxonomy: 'string',
-        primary: true,
-      },
-    ],
-    slug: 'Dự-án-Hudson-Yards',
-    title: 'Dự án Hudson Yards',
-    image: {
-      ID: 88,
-      id: 88,
-      title: 'bacgroud',
-      filename: 'sss',
-      filesize: 59961081,
-      url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
-      link: 'string',
-      alt: 'string',
-      author: 'string',
-      description: 'string',
-      caption: 'string',
-      name: 'string',
-      status: 'string',
-      uploaded_to: 1,
-      date: 'string',
-      modified: 'string',
-      menu_order: 1,
-      mime_type: 'string',
-      type: 'string',
-      subtype: 'string',
-      icon: 'string',
-      width: 1622,
-      height: 800,
-    },
-    type: '',
-    project_scale: 2,
-    eb5_capital_ratio: 2,
-    jobs_created: 2,
-    contact: 'string',
-  },
-]
 const fetcherWithCustomBase = (url: string) =>
   fetcher(url, process.env.NEXT_PUBLIC_API_ACF)
+
 const ProjectOther = ({id}: {id: number}) => {
-  console.log('🚀 ~ ProjectOther ~ id:', id)
   const {data: dataOther} = useSWR(
     id ? `/australia-real-estat?exclude=${id}&per_page=5` : null,
     fetcherWithCustomBase,
@@ -67,8 +19,6 @@ const ProjectOther = ({id}: {id: number}) => {
       revalidateOnReconnect: false,
     },
   )
-
-  console.log('🚀 ~ ProjectOther ~ dataOther:', dataOther)
 
   return (
     <section className='mt-[6.25rem] section-container xsm:mt-8'>
