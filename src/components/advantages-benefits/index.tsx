@@ -63,8 +63,8 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
           <ImageV2
             src={backgroundPc ? backgroundPc.url : ''}
             alt={backgroundPc ? backgroundPc.alt : ''}
-            width={backgroundPc ? backgroundPc.width * 2 : 1000}
-            height={backgroundPc ? backgroundPc.height * 2 : 1000}
+            width={backgroundPc ? backgroundPc.width * 3 : 1000}
+            height={backgroundPc ? backgroundPc.height * 3 : 1000}
             className='absolute left-0 top-0 h-full min-w-[calc(100vw-var(--scrollbar-width))] object-cover xsm:hidden'
           />
           <ImageV2
@@ -123,7 +123,7 @@ export const AdvantagesBenefitsItem: FC<IAdvantagesBenefitsItemProps> = ({
         />
       </div>
       <div className='flex-1 sm:p-[1rem] xsm:mt-[0.75rem]'>
-        <h3 className='phase-1-text-gradient font-optima font-medium body16 sm:font-medium sm:heading5'>
+        <h3 className='phase-1-text-gradient font-optima font-medium body16 sm:font-medium sm:heading5 xsm:font-semibold'>
           {title}
         </h3>
         <div

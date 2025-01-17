@@ -16,7 +16,7 @@ import useSWR from 'swr'
 import './style.css'
 
 const sortOptions = [
-  {name: 'Tất cả', value: 'All'},
+  {name: 'Tất cả', value: 'all'},
   {name: 'Từ Z-A', value: 'desc'},
   {name: 'Từ A-Z', value: 'asc'},
   {name: 'Thời gian xét duyệt nhanh nhất', value: 'fastest'},
@@ -35,7 +35,7 @@ export default function Programme({
   const sectionRef = useRef<HTMLElement>(null)
   const paramNew = new URLSearchParams(searchParams?.toString() || '')
   const slugPage = searchParams ? Number(searchParams.get('page')) : 1
-  const slugOrder = searchParams ? String(searchParams.get('order')) : null
+  const slugOrder = searchParams ? searchParams.get('order') : ''
   const [listPrograms, setListPrograms] = useState<dataPrograms>()
   const [search, setSearch] = useState<string>('')
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Programme({
   }, [])
   const query = useMemo(() => {
     if (!searchParams?.size) return null
-    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? '&order=' + slugOrder : ''}${search ? '&search=' + search : ''}`
+    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}`
   }, [searchParams, slugPage, slugOrder, search])
   const {data: posts} = useSWR(query, fetcher, {
     revalidateIfStale: false,

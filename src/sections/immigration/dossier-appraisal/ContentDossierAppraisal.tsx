@@ -8,8 +8,8 @@ export default function ContentDossierAppraisal({dataDossierAppraisal}: {dataDos
             <div className="xsm:mx-auto relative w-[35.37519rem] h-[9.63756rem] xsm:w-[20.125rem] xsm:h-[5.49931rem]">
                 <ImageV2
                     className="size-full object-contain"
-                    width={566}
-                    height={154}
+                    width={566 * 2}
+                    height={154 *5}
                     alt={dataDossierAppraisal?.logo?.alt}
                     src={dataDossierAppraisal?.logo?.url}
                 />

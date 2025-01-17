@@ -51,7 +51,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
         dataDossierAppraisal={dataImmigration?.acf?.reach_far}
       />
       <RelatedArticles
-        className='relative z-10 rounded-[4rem_4rem_0rem_0rem] bg-background pb-[6.5rem] pt-[5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] xsm:rounded-[1.5rem_1rem_2rem_1rem]'
+        className='relative z-10 rounded-[4rem_4rem_0rem_0rem] xsm:pt-[1.5rem] bg-background pb-[6.5rem] pt-[5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] xsm:rounded-[1.5rem_1rem_2rem_1rem]'
         dataRelatedPosts={postRelate}
       />
     </main>

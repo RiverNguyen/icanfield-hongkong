@@ -225,7 +225,7 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
                                         className="cursor-pointer p-[0.75rem_1rem] border-b-[1px] border-solid border-[rgba(0,0,0,0.10)]"
                                         value={'Chương trình định cư' + e?.slug}
                                     >
-                                        Chương trình định cư {e?.name}
+                                        Chương trình định cư {e?.name || ''}
                                     </SelectItem>
                                 ))}
                             </SelectContent>
@@ -250,11 +250,11 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
                                     )}
                                     onClick={() => {
                                         setValue('nationSettlement', 'Chương trình định cư' + e?.slug, { shouldValidate: true })
-                                        setTextSelect('Chương trình định cư' + e?.name)
+                                        setTextSelect('Chương trình định cư' + e?.name || '')
                                         setDataPopupMb(false)
                                     }}
                                 >
-                                   Chương trình định cư {e?.name}
+                                   Chương trình định cư {e?.name || ''}
                                 </p>
                             ))}
                         </div>
