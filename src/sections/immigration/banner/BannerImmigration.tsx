@@ -18,6 +18,7 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
               { label: 'Trang chủ', href: '/' },
               { label: 'Định cư Canada', href: '' },
             ]}
+            color='bg-[#5C321E]'
           />
         }
         <div className="space-y-[0.25rem] section-container xsm:px-[0.5rem]">
@@ -42,8 +43,8 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
             className="size-full absolute z-20"
             src={dataAcf?.image_pc?.url}
             alt={dataAcf?.image_pc?.alt}
-            width={1600}
-            height={820}
+            width={3000}
+            height={3000}
           />
           <ImageV2
             className='absolute top-[-4.37rem] z-10 h-[51.25rem] w-full'
@@ -61,11 +62,12 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
             height={820}
           />
           <ImageV2
-            className='absolute bottom-[-14rem] left-0 z-[21] h-[36.0625rem] w-full pointer-events-none'
-            src={'/imgs/immigration/banner/silk-strip.webp'}
+            className='absolute bottom-[-13.5rem] left-0 z-[21] h-[36.0625rem] w-full pointer-events-none object-cover'
+            src={'/imgs/immigration/banner/dai_lua_2.webp'}
             alt=''
-            width={1600}
-            height={820}
+            width={2600}
+            height={1820}
+            quality={100}
           />
           <div className='absolute left-0 top-[12.31rem] z-[12] flex h-[33.5rem] w-full items-center justify-end overflow-hidden'>
             <ImageV2

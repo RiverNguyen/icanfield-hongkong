@@ -1,6 +1,6 @@
 import {Media} from '@/types/image.interface'
 
-interface Location {
+export interface Location {
   id: number
   name: string
   slug: string
@@ -15,7 +15,7 @@ export interface IProject {
   title: string
   image: Media
   type: string
-  project_scale: number
+  project_scale: string
   eb5_capital_ratio: number
   jobs_created: number
   contact: string
