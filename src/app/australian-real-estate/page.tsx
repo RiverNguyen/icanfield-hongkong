@@ -8,6 +8,20 @@ export default async function page() {
       revalidate: 10,
     },
   }
-  const [dataTaxonomies] = await Promise.all([fetchData(requestTaxonomies)])
-  return <AustralianRealEstate dataNationSettlement={dataTaxonomies?.nation} />
+  const requestPosts = {
+    api: '/get-post-australia?page=1&limit=9',
+    option: {
+      revalidate: 10,
+    },
+  }
+  const [dataTaxonomies, dataListPost] = await Promise.all([
+    fetchData(requestTaxonomies),
+    fetchData(requestPosts),
+  ])
+  return (
+    <AustralianRealEstate
+      dataNationSettlement={dataTaxonomies?.nation}
+      dataListPost={dataListPost}
+    />
+  )
 }

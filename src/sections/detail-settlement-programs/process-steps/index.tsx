@@ -194,7 +194,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
       </div>
       <h3
         className={cn(
-          'mt-[1.5rem] text-[1.5rem] font-semibold leading-[1.3] tracking-[-0.03rem] text-bodytext',
+          'mt-[1.5rem] text-[1.5rem] font-bold leading-[1.3] tracking-[-0.03rem] text-bodytext',
           {
             'text-brown': isActive,
             'text-[1.75rem]': isActive,

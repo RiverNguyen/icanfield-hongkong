@@ -2,10 +2,11 @@ import ContactV2 from '@/components/ContactV2/ContactV2'
 import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
 import {AdvantagesBenefits} from '@/components/advantages-benefits'
 import {Breadcrumb} from '@/components/breadcrumb'
+import {IItemAustralia} from '@/components/itemAustralia/itemAustralia.interface'
 import ProjectTransparency from '@/components/project-transparency'
 import {WhyChooseUs} from '@/components/why-choose-us'
-import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
 import Benefits from '@/sections/australian-real-estate/Benefits'
+import OutstandingAustralia from '@/sections/australian-real-estate/OutstandingAustralia'
 import {benefitsProps} from '@/sections/australian-real-estate/constants'
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import {Term} from '@/sections/homepage/banner/bannerHp.interface'
@@ -669,8 +670,17 @@ const why_choose_us = {
 
 export default function AustralianRealEstate({
   dataNationSettlement,
+  dataListPost,
 }: {
   dataNationSettlement: Term[]
+  dataListPost: {
+    success: boolean
+    total: number
+    totalPages: number
+    page: number
+    limit: number
+    data: IItemAustralia[]
+  }
 }) {
   return (
     <main className='bg-background'>
@@ -724,8 +734,8 @@ export default function AustralianRealEstate({
         }}
       />
       <Suspense fallback={<p>Loading...</p>}>
-        <OutstandingProjectEB5
-          listItems={data?.listItems}
+        <OutstandingAustralia
+          listItems={dataListPost}
           categories={data?.categories}
         />
       </Suspense>
