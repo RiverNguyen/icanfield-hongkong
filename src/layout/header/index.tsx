@@ -486,7 +486,7 @@ const Header = ({
               onMouseLeave={handleMouseLeave}
             >
               <ImageV2
-                src='/icons/homepage/header/star.svg'
+                src='/icons/homepage/header/star_2.svg'
                 alt='logo'
                 width={40}
                 height={40}
