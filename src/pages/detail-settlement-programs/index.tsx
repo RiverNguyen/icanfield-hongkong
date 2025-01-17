@@ -66,6 +66,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
     description: process_steps?.description || '',
     timeline: process_steps?.steps || [],
   }
+  console.log(acfNation)
   return (
     <main className='bg-background'>
       <Banner {...banner}>
@@ -74,7 +75,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
             {label: 'Trang chủ', href: '/'},
             {
               label: `Các chương trình định cư ${acfNation?.name}`,
-              href: `/${acfNation?.slug}`,
+              href: `/${acfNation?.name}`,
             },
             {label: `${post_title}`, href: '/'},
           ]}
