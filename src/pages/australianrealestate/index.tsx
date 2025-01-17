@@ -608,7 +608,8 @@ export default function AustralianRealEstate({
       <Suspense fallback={<p>Loading...</p>}>
         <OutstandingProjectEB5
           listItems={data?.listItems}
-          categories={data?.categories}
+          title='Dự án bất động sản Úc'
+          className='flex items-center justify-between mb-[1rem] xsm:flex-col xsm:items-start xsm:mb-0'
         />
       </Suspense>
       <ProjectTransparency

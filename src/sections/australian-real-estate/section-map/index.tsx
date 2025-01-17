@@ -70,13 +70,13 @@ const PioneeringValuesAustralia = ({
           mapJson={customGeoJson as FeatureCollection}
           className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
           borderCountries='#B6B3A7'
-          zoomDesktop={4.2}
+          zoomDesktop={4.35}
           zoomMobile={2.4}
           isZoomClick={false}
           isControlZoom={true}
           isZoomInClick={isZoomInClick}
           isZoomOutClick={isZoomOutClick}
-          center={[-34, 141]}
+          center={[-26, 130]}
         />
         <div className='absolute bottom-[2.69rem] left-[2.38rem] z-[11] flex flex-col space-y-[0.88rem] xsm:hidden'>
           <button
