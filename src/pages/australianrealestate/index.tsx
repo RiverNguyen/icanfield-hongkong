@@ -1,165 +1,171 @@
 import ContactV2 from '@/components/ContactV2/ContactV2'
 import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
-import {AdvantagesBenefits} from '@/components/advantages-benefits'
+import {
+  AdvantagesBenefits,
+  IAdvantagesBenefitsProps,
+} from '@/components/advantages-benefits'
 import {Breadcrumb} from '@/components/breadcrumb'
-import ProjectTransparency from '@/components/project-transparency'
+import ProjectTransparency, {
+  IItemInvestmentOpportunities,
+} from '@/components/project-transparency'
 import {WhyChooseUs} from '@/components/why-choose-us'
 import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
 import Benefits from '@/sections/australian-real-estate/Benefits'
-import {benefitsProps} from '@/sections/australian-real-estate/constants'
+// import {benefitsProps} from '@/sections/australian-real-estate/constants'
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import {Term} from '@/sections/homepage/banner/bannerHp.interface'
+import {Media} from '@/types/image.interface'
 import {Suspense} from 'react'
-
-const advantages_benefits = {
-  subtitle: 'CÁC ĐIỀU KIỆN ĐẦU TƯ',
-  title: 'Điều kiện đầu tư bất động sản tại Úc cho người Việt Nam',
-  slogan: 'Bất động sản Úc – Đầu tư vững chắc cho tương lai.',
-  description:
-    'Bất động sản Úc mang đến cơ hội tận hưởng cuộc sống chất lượng, môi trường lý tưởng và tiềm năng phát triển bền vững. Khám phá những lợi thế vượt trội để xây dựng tương lai vững chắc cho bạn và gia đình.',
-  background_pc: {
-    ID: 88,
-    id: 88,
-    title: 'bacgroud',
-    filename: 'sss',
-    filesize: 59961081,
-    url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
-    link: 'string',
-    alt: 'string',
-    author: 'string',
-    description: 'string',
-    caption: 'string',
-    name: 'string',
-    status: 'string',
-    uploaded_to: 1,
-    date: 'string',
-    modified: 'string',
-    menu_order: 1,
-    mime_type: 'string',
-    type: 'string',
-    subtype: 'string',
-    icon: 'string',
-    width: 1622,
-    height: 800,
-  },
-  background_mb: {
-    ID: 88,
-    id: 88,
-    title: 'bacgroud',
-    filename: 'sss',
-    filesize: 59961081,
-    url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg-mb.webp',
-    link: 'string',
-    alt: 'string',
-    author: 'string',
-    description: 'string',
-    caption: 'string',
-    name: 'string',
-    status: 'string',
-    uploaded_to: 1,
-    date: 'string',
-    modified: 'string',
-    menu_order: 1,
-    mime_type: 'string',
-    type: 'string',
-    subtype: 'string',
-    icon: 'string',
-    width: 1622,
-    height: 800,
-  },
-  items: [
-    {
-      title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-      content:
-        'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
-      image: {
-        ID: 88,
-        id: 88,
-        title: 'bacgroud',
-        filename: 'sss',
-        filesize: 59961081,
-        url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
-        link: 'string',
-        alt: 'string',
-        author: 'string',
-        description: 'string',
-        caption: 'string',
-        name: 'string',
-        status: 'string',
-        uploaded_to: 1,
-        date: 'string',
-        modified: 'string',
-        menu_order: 1,
-        mime_type: 'string',
-        type: 'string',
-        subtype: 'string',
-        icon: 'string',
-        width: 1622,
-        height: 800,
-      },
-    },
-    {
-      title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-      content:
-        'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
-      image: {
-        ID: 88,
-        id: 88,
-        title: 'bacgroud',
-        filename: 'sss',
-        filesize: 59961081,
-        url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
-        link: 'string',
-        alt: 'string',
-        author: 'string',
-        description: 'string',
-        caption: 'string',
-        name: 'string',
-        status: 'string',
-        uploaded_to: 1,
-        date: 'string',
-        modified: 'string',
-        menu_order: 1,
-        mime_type: 'string',
-        type: 'string',
-        subtype: 'string',
-        icon: 'string',
-        width: 1622,
-        height: 800,
-      },
-    },
-    {
-      title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-      content:
-        'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
-      image: {
-        ID: 88,
-        id: 88,
-        title: 'bacgroud',
-        filename: 'sss',
-        filesize: 59961081,
-        url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
-        link: 'string',
-        alt: 'string',
-        author: 'string',
-        description: 'string',
-        caption: 'string',
-        name: 'string',
-        status: 'string',
-        uploaded_to: 1,
-        date: 'string',
-        modified: 'string',
-        menu_order: 1,
-        mime_type: 'string',
-        type: 'string',
-        subtype: 'string',
-        icon: 'string',
-        width: 1622,
-        height: 800,
-      },
-    },
-  ],
-}
+import {BenefitsProps} from '@/sections/australian-real-estate/Benefits'
+// const advantages_benefits = {
+//   subtitle: 'CÁC ĐIỀU KIỆN ĐẦU TƯ',
+//   title: 'Điều kiện đầu tư bất động sản tại Úc cho người Việt Nam',
+//   slogan: 'Bất động sản Úc – Đầu tư vững chắc cho tương lai.',
+//   description:
+//     'Bất động sản Úc mang đến cơ hội tận hưởng cuộc sống chất lượng, môi trường lý tưởng và tiềm năng phát triển bền vững. Khám phá những lợi thế vượt trội để xây dựng tương lai vững chắc cho bạn và gia đình.',
+//   background_pc: {
+//     ID: 88,
+//     id: 88,
+//     title: 'bacgroud',
+//     filename: 'sss',
+//     filesize: 59961081,
+//     url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg.webp',
+//     link: 'string',
+//     alt: 'string',
+//     author: 'string',
+//     description: 'string',
+//     caption: 'string',
+//     name: 'string',
+//     status: 'string',
+//     uploaded_to: 1,
+//     date: 'string',
+//     modified: 'string',
+//     menu_order: 1,
+//     mime_type: 'string',
+//     type: 'string',
+//     subtype: 'string',
+//     icon: 'string',
+//     width: 1622,
+//     height: 800,
+//   },
+//   background_mb: {
+//     ID: 88,
+//     id: 88,
+//     title: 'bacgroud',
+//     filename: 'sss',
+//     filesize: 59961081,
+//     url: '/imgs/detail-settlement-programs/d-advantages-benefits-bg-mb.webp',
+//     link: 'string',
+//     alt: 'string',
+//     author: 'string',
+//     description: 'string',
+//     caption: 'string',
+//     name: 'string',
+//     status: 'string',
+//     uploaded_to: 1,
+//     date: 'string',
+//     modified: 'string',
+//     menu_order: 1,
+//     mime_type: 'string',
+//     type: 'string',
+//     subtype: 'string',
+//     icon: 'string',
+//     width: 1622,
+//     height: 800,
+//   },
+//   items: [
+//     {
+//       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
+//       content:
+//         'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+//       image: {
+//         ID: 88,
+//         id: 88,
+//         title: 'bacgroud',
+//         filename: 'sss',
+//         filesize: 59961081,
+//         url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
+//         link: 'string',
+//         alt: 'string',
+//         author: 'string',
+//         description: 'string',
+//         caption: 'string',
+//         name: 'string',
+//         status: 'string',
+//         uploaded_to: 1,
+//         date: 'string',
+//         modified: 'string',
+//         menu_order: 1,
+//         mime_type: 'string',
+//         type: 'string',
+//         subtype: 'string',
+//         icon: 'string',
+//         width: 1622,
+//         height: 800,
+//       },
+//     },
+//     {
+//       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
+//       content:
+//         'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+//       image: {
+//         ID: 88,
+//         id: 88,
+//         title: 'bacgroud',
+//         filename: 'sss',
+//         filesize: 59961081,
+//         url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
+//         link: 'string',
+//         alt: 'string',
+//         author: 'string',
+//         description: 'string',
+//         caption: 'string',
+//         name: 'string',
+//         status: 'string',
+//         uploaded_to: 1,
+//         date: 'string',
+//         modified: 'string',
+//         menu_order: 1,
+//         mime_type: 'string',
+//         type: 'string',
+//         subtype: 'string',
+//         icon: 'string',
+//         width: 1622,
+//         height: 800,
+//       },
+//     },
+//     {
+//       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
+//       content:
+//         'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+//       image: {
+//         ID: 88,
+//         id: 88,
+//         title: 'bacgroud',
+//         filename: 'sss',
+//         filesize: 59961081,
+//         url: '/imgs/detail-settlement-programs/d-advantages-and-benefits-item.webp',
+//         link: 'string',
+//         alt: 'string',
+//         author: 'string',
+//         description: 'string',
+//         caption: 'string',
+//         name: 'string',
+//         status: 'string',
+//         uploaded_to: 1,
+//         date: 'string',
+//         modified: 'string',
+//         menu_order: 1,
+//         mime_type: 'string',
+//         type: 'string',
+//         subtype: 'string',
+//         icon: 'string',
+//         width: 1622,
+//         height: 800,
+//       },
+//     },
+//   ],
+// }
 
 const data = {
   listItems: {
@@ -666,45 +672,57 @@ const why_choose_us = {
     },
   ],
 }
+interface dataAcf {
+  banner_australia: {
+    clone_banner: {
+      background_pc: Media
+      background_mb: Media
+      title_line_1: string
+      title_line_2: string
+      description: string
+    }
+  }
+  benefits: BenefitsProps
+  clone_advantages_benefits: IAdvantagesBenefitsProps
+  list_programs: {
+    title: string
+  }
+  investment_process_australia: {
+    safety_standards: {
+      title: string
+      items: IItemInvestmentOpportunities[]
+      footer_title_left: string
+      footer_link_slug: string
+      footer_content: string
+    }
+  }
+}
 
 export default function AustralianRealEstate({
   dataNationSettlement,
+  dataAcf,
 }: {
   dataNationSettlement: Term[]
+  dataAcf: dataAcf
 }) {
+  const dataInvestment = {
+    data: {...dataAcf?.investment_process_australia?.safety_standards},
+  }
+  console.log(dataInvestment)
   return (
     <main className='bg-background'>
       <Banner
-        title_line_1='Bất Động Sản Úc'
-        title_line_2='Đầu Tư Cho Tương Lai'
-        description='mở ra cơ hội tuyệt vời cho các nhà đầu tư nước ngoài'
+        title_line_1={dataAcf.banner_australia.clone_banner.title_line_1}
+        title_line_2={dataAcf.banner_australia.clone_banner.title_line_2}
+        description={dataAcf.banner_australia.clone_banner.description}
         backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_30%,rgba(240,240,240,0)_64%,rgba(246,246,244,1)_100%)]'
         className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
-        background_pc={{
-          ID: 1,
-          id: 1,
-          title: 'string',
-          filename: 'string',
-          filesize: 59961081,
-          url: '/imgs/australianRealEstate/d-bg.webp',
-          link: 'string',
-          alt: 'string',
-          author: 'string',
-          description: 'string',
-          caption: 'string',
-          name: 'string',
-          status: 'string',
-          uploaded_to: 1000,
-          date: 'string',
-          modified: 'string',
-          menu_order: 1000,
-          mime_type: 'string',
-          type: 'string',
-          subtype: 'string',
-          icon: 'string',
-          width: 1000,
-          height: 1000,
-        }}
+        background_pc={
+          dataAcf.banner_australia.clone_banner.background_pc as Media
+        }
+        background_mb={
+          dataAcf.banner_australia.clone_banner.background_mb as Media
+        }
       >
         <Breadcrumb
           items={[
@@ -713,9 +731,9 @@ export default function AustralianRealEstate({
           ]}
         />
       </Banner>
-      <Benefits {...benefitsProps} />
+      <Benefits {...dataAcf?.benefits} />
       <AdvantagesBenefits
-        {...advantages_benefits}
+        {...dataAcf.clone_advantages_benefits}
         className={{
           headding:
             'flex-row justify-between section-container sm:max-w-[90rem] xsm:flex-col [&>p]:text-start [&>p]:sm:w-[29.375rem]',
@@ -729,7 +747,12 @@ export default function AustralianRealEstate({
           categories={data?.categories}
         />
       </Suspense>
-      <ProjectTransparency data={data?.safety_standards} />
+      <ProjectTransparency
+        data={dataInvestment.data}
+        fontSize='text-[2rem] [&_strong]:text-[5.625rem]'
+        linkImage = '/imgs/EB5/projects-transparency/sydney2-w.webp'
+        className='h-[92rem]'
+      />
       <WhyChooseUs {...why_choose_us} />
       <ContactV2>
         <FormInternationalJourney dataNationSettlement={dataNationSettlement} />

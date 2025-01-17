@@ -15,18 +15,28 @@ export interface IProjectTransparencyProps {
     footer_link_slug: string
     footer_content: string
   }
+  linkImage?: string
+  fontSize?: string
+  className?: string
 }
 
-const ProjectTransparency: FC<IProjectTransparencyProps> = ({data}) => {
+const ProjectTransparency: FC<IProjectTransparencyProps> = ({
+  data,
+  linkImage = '/imgs/EB5/projects-transparency/Sydney4.webp',
+  fontSize = '[&_strong]:text-[7.5rem] text-[4rem]',
+  className = 'h-[100.94rem]',
+}) => {
   const {items: Criteria} = data || {items: []}
 
   return (
-    <section className='relative mt-[5rem] h-[100.94rem] w-full overflow-hidden xsm:h-[62.81rem]'>
+    <section
+      className={`relative mt-[5rem] w-full overflow-hidden xsm:h-[62.81rem] ${className}`}
+    >
       <div className='pointer-events-none absolute z-0 h-[59rem] w-full bg-[linear-gradient(180deg,#F6F6F4_0%,#ECE6E2_15.4%,#7D3613_84.9%)] xsm:h-[49.56rem]'></div>
       <div className='pointer-events-none absolute left-1/2 top-[2.81rem] z-10 h-[153.9375rem] w-[186.25rem] -translate-x-1/2 rounded-[50%] bg-[linear-gradient(180deg,#EABB67_0%,#FFF_100%)] opacity-20 shadow-[0px_-5px_50px_0px_rgba(54,42,5,0.15)] xsm:top-[2.81rem] xsm:h-[59.125rem] xsm:w-[61.625rem]'></div>
       <div className='pointer-events-none absolute left-1/2 top-[4.25rem] z-20 h-[138.0625rem] w-[151rem] -translate-x-1/2 rounded-[50%] bg-[linear-gradient(180deg,#FFF_0%,rgba(214,179,116,0.00)14.85%)] opacity-30 shadow-[0px_-5px_50px_0px_rgba(54,42,5,0.15)] xsm:top-[3.38rem] xsm:h-[53rem] xsm:w-[50rem]'></div>
       <ImageV2
-        src='/imgs/EB5/projects-transparency/Sydney4.webp'
+        src={linkImage}
         alt='banner'
         width={2000}
         height={2000}
@@ -40,7 +50,7 @@ const ProjectTransparency: FC<IProjectTransparencyProps> = ({data}) => {
 
       <h3
         dangerouslySetInnerHTML={{__html: data?.footer_title_left || ''}}
-        className='absolute bottom-[5.12rem] left-[5rem] z-20 font-optima text-[4rem] font-medium tracking-[-0.2rem] text-white xsm:bottom-[20.25rem] xsm:left-[1rem] xsm:-translate-x-0 xsm:text-[2rem] [&_strong]:text-[7.5rem] [&_strong]:font-medium [&_strong]:leading-[1.2] [&_strong]:tracking-[-0.15rem] xsm:[&_strong]:text-[3.625rem]'
+        className={`absolute bottom-[5.12rem] left-[5rem] z-20 font-optima ${fontSize} font-medium tracking-[-0.2rem] text-white xsm:bottom-[20.25rem] xsm:left-[1rem] xsm:-translate-x-0 xsm:text-[2rem] [&_strong]:font-medium [&_strong]:leading-[1.2] [&_strong]:tracking-[-0.15rem] xsm:[&_strong]:text-[3.625rem]`}
       ></h3>
       <ImageV2
         src='/imgs/EB5/projects-transparency/dau_phay.webp'
