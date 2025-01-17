@@ -115,19 +115,15 @@ const ProjectLocation = ({
         </div>
       </div>
       <div className='sticky top-8 h-[49.25rem] w-[47.825rem] py-20 xsm:static xsm:aspect-square xsm:h-auto xsm:w-full xsm:py-0'>
-        <ImageV2
-          src={google_map.url}
-          alt={google_map.alt}
-          width={800}
-          height={700}
-          className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl hidden'
-        />
         <iframe
-          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5358.6204155786445!2d106.69577621180586!3d10.776953189327571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fd88bf552d1%3A0x285b4b38a9fba6b4!2siCanfield%20Vietnam!5e1!3m2!1svi!2s!4v1737021186383!5m2!1svi!2s'
+          src={google_map}
           width='600'
           height='450'
+          style={{border: 0}}
+          allowFullScreen
           loading='lazy'
-           className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl'
+          referrerPolicy='no-referrer-when-downgrade'
+          className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl'
         ></iframe>
       </div>
     </section>

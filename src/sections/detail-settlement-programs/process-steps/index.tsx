@@ -148,7 +148,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
   progress,
   setStep,
 }) => {
-  console.log(specific_time)
+  // console.log(specific_time)
   const textContentRef = useRef<HTMLParagraphElement | null>(null)
   const textContainerRef = useRef<HTMLDivElement | null>(null)
 
@@ -176,7 +176,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
         <span
           onClick={setStep}
           className={cn(
-            'mr-[1.5rem] min-w-[6.125rem] text-center cursor-pointer rounded-[6.96094rem] border border-greyscaletext-700/60 p-[0.4375rem_0.75rem] font-semibold uppercase !leading-none text-greyscaletext-700/60 body16',
+            'mr-[1.5rem] min-w-[6.125rem] cursor-pointer rounded-[6.96094rem] border border-greyscaletext-700/60 p-[0.4375rem_0.75rem] text-center font-semibold uppercase !leading-none text-greyscaletext-700/60 body16',
             {'border-brown bg-brown text-[#F3F3F3]': isActive},
           )}
         >

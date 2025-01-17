@@ -1,0 +1,24 @@
+@media (max-width: 767px) {
+  .swiper-releated-eb5 .swiper-pagination-bullets {
+    height: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .swiper-releated-eb5 .swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #ccc;
+    display: block;
+    border-radius: 99rem;
+    margin: 0 0.2rem;
+  }
+  .swiper-releated-eb5
+    .swiper-pagination-bullets
+    .swiper-pagination-bullet-active {
+    width: 1.5rem;
+    background-color: #5c321e;
+  }
+}

@@ -102,7 +102,7 @@ const ProjectInvestorDeveloper = ({
                         {achievement.value}
                       </h4>
                       <div className='h-[1px] w-full bg-white/20' />
-                      <p className='font-normal text-white body16-m xsm:body-14'>
+                      <p className='font-normal text-white text-[1rem] leading-[1.5] xsm:body-14'>
                         {achievement.name}
                       </p>
                     </div>

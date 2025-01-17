@@ -10,8 +10,14 @@ import {Breadcrumb} from '@/components/breadcrumb'
 import CapitalStructure from '@/components/chart/CapitalStructure'
 import {ProcessSteps} from '@/sections/detail-settlement-programs/process-steps'
 import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
-
-const DetailEB5 = ({data}: {data: IDataAcfDetailEB5}) => {
+import ReleatedEb5, {Project} from '@/sections/detail-eb5/realeated-eb5'
+const DetailEB5 = ({
+  data,
+  dataReleatedPost,
+}: {
+  data: IDataAcfDetailEB5
+  dataReleatedPost: Project[]
+}) => {
   if (!data || !data.acf) {
     return <div>Error: Data or ACF is undefined</div>
   }
@@ -44,6 +50,7 @@ const DetailEB5 = ({data}: {data: IDataAcfDetailEB5}) => {
       <ProcessSteps {...acf?.eb5_projects_detail_progress} />
       <ProjectLocation {...acf?.eb5_projects_detail_location} />
       <ProjectInvestorDeveloper {...acf?.eb5_projects_detail_quality} />
+      <ReleatedEb5 data={dataReleatedPost} />
     </div>
   )
 }

@@ -62,7 +62,7 @@ export interface IDataAcfDetailEB5 {
       description: string
       subtitle: string
       description_subtitle: string
-      google_map: Media
+      google_map: string
       prime_location: {
         thumbnail: Media
         title: string
