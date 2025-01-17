@@ -11,12 +11,17 @@ import CapitalStructure from '@/components/chart/CapitalStructure'
 import {ProcessSteps} from '@/sections/detail-settlement-programs/process-steps'
 import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
 import ReleatedEb5, {Project} from '@/sections/detail-eb5/realeated-eb5'
+import {Term} from '@/sections/homepage/banner/bannerHp.interface'
+import ContactV2 from '@/components/ContactV2/ContactV2'
+import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
 const DetailEB5 = ({
   data,
   dataReleatedPost,
+  dataNationSettlement,
 }: {
   data: IDataAcfDetailEB5
   dataReleatedPost: Project[]
+  dataNationSettlement: Term[]
 }) => {
   if (!data || !data.acf) {
     return <div>Error: Data or ACF is undefined</div>
@@ -51,6 +56,9 @@ const DetailEB5 = ({
       <ProjectLocation {...acf?.eb5_projects_detail_location} />
       <ProjectInvestorDeveloper {...acf?.eb5_projects_detail_quality} />
       <ReleatedEb5 data={dataReleatedPost} />
+      <ContactV2>
+        <FormInternationalJourney dataNationSettlement={dataNationSettlement} />
+      </ContactV2>
     </div>
   )
 }

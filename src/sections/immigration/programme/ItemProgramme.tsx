@@ -43,7 +43,7 @@ export default function ItemProgramme({
                 {dataPostProgramme?.acf?.information?.investment_level?.title ||
                   'Mức đầu tư'}
               </p>
-              <p className='text-white body16-s'>
+              <p className='text-white body16-s xsm:font-semibold'>
                 {dataPostProgramme?.acf?.information?.investment_level?.value ||
                   'Chưa có thông tin'}
               </p>
@@ -53,7 +53,7 @@ export default function ItemProgramme({
                 {dataPostProgramme?.acf?.information?.review_time?.title ||
                   'Thời gian xét duyệt'}
               </p>
-              <p className='text-white body16-s'>
+              <p className='text-white body16-s xsm:font-semibold'>
                 {dataPostProgramme?.acf?.information?.review_time?.from}-
                 {dataPostProgramme?.acf?.information?.review_time?.to} tháng
               </p>
@@ -134,7 +134,7 @@ export default function ItemProgramme({
         </Link>
         <Link
           href={'/' + slug + '/' + dataPostProgramme?.slug}
-          className='flex cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:flex-1'
+          className='flex cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:flex-1 xsm:justify-center'
         >
           <p className='tracking-[-0.0175rem] text-white body-14-m'>
             Xem chi tiết

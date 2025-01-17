@@ -141,7 +141,7 @@ export const SuccessStoryShareItem: FC<ISuccessStoryShareItemProps> = ({
         />
       </div>
       <div className='flex-1 sm:space-y-[1.5rem] sm:pr-[0.71rem] xsm:mt-[1.25rem]'>
-        <h3 className='pc-sub-3 font-bold text-brown'>{name}</h3>
+        <h3 className='pc-sub-3 font-bold text-brown xsm:text-[1.25rem] xsm:leading-[1.33] xsm:font-bold'>{name}</h3>
         <p className='font-medium italic text-[rgba(18,18,18,0.72)] body-14 xsm:m-[0.5rem_0_1rem] xsm:tracking-[-0.0175rem]'>
           {review}
         </p>

@@ -22,9 +22,8 @@ export interface Project {
   contact: string // Liên hệ
 }
 const ReleatedEb5 = ({data}: {data: Project[]}) => {
-  console.log(data)
   return (
-    <section className='pb-[4rem] pt-[5rem] section-container'>
+    <section className=' pt-[5rem] section-container'>
       <div className='mb-[2rem] flex items-center justify-between xsm:mb-[1.5rem]'>
         <h3 className='font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown xsm:text-[1.5rem]'>
           Các dự án EB-5 khác

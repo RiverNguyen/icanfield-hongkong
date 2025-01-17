@@ -7,7 +7,13 @@ export default async function page({
 }: {
   params: {detailslug: string}
 }) {
-  const [data, dataReleatedPost] = await Promise.all([
+  const requestTaxonomies = {
+    api: '/taxonomies-settlement',
+    option: {
+      revalidate: 10,
+    },
+  }
+  const [data, dataReleatedPost, dataTaxonomies] = await Promise.all([
     fetchDataACF({
       api: `/eb-5-project?slug=${detailslug}&acf_format=standard`,
       option: {
@@ -20,7 +26,14 @@ export default async function page({
         revalidate: 600,
       },
     }),
+    fetchData(requestTaxonomies),
   ])
   if (data?.length <= 0) return notFound()
-  return <DetailEB5 data={data?.[0]} dataReleatedPost ={dataReleatedPost?.data}/>
+  return (
+    <DetailEB5
+      data={data?.[0]}
+      dataReleatedPost={dataReleatedPost?.data}
+      dataNationSettlement={dataTaxonomies?.nation}
+    />
+  )
 }

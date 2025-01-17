@@ -1,21 +1,22 @@
 import ContactV2 from '@/components/ContactV2/ContactV2'
 import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
-import { AdvantagesBenefits } from '@/components/advantages-benefits'
-import { Breadcrumb } from '@/components/breadcrumb'
+import {AdvantagesBenefits} from '@/components/advantages-benefits'
+import {Breadcrumb} from '@/components/breadcrumb'
 import ProjectTransparency from '@/components/project-transparency'
-import { WhyChooseUs } from '@/components/why-choose-us'
+import {WhyChooseUs} from '@/components/why-choose-us'
 import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
 import Benefits from '@/sections/australian-real-estate/Benefits'
-import { benefitsProps } from '@/sections/australian-real-estate/constants'
-import { Banner } from '@/sections/detail-settlement-programs/banner'
-import { Term } from '@/sections/homepage/banner/bannerHp.interface'
-import { Suspense } from 'react'
+import {benefitsProps} from '@/sections/australian-real-estate/constants'
+import {Banner} from '@/sections/detail-settlement-programs/banner'
+import {Term} from '@/sections/homepage/banner/bannerHp.interface'
+import {Suspense} from 'react'
 
 const advantages_benefits = {
   subtitle: 'CÁC ĐIỀU KIỆN ĐẦU TƯ',
   title: 'Điều kiện đầu tư bất động sản tại Úc cho người Việt Nam',
   slogan: 'Bất động sản Úc – Đầu tư vững chắc cho tương lai.',
-  description: 'Bất động sản Úc mang đến cơ hội tận hưởng cuộc sống chất lượng, môi trường lý tưởng và tiềm năng phát triển bền vững. Khám phá những lợi thế vượt trội để xây dựng tương lai vững chắc cho bạn và gia đình.',
+  description:
+    'Bất động sản Úc mang đến cơ hội tận hưởng cuộc sống chất lượng, môi trường lý tưởng và tiềm năng phát triển bền vững. Khám phá những lợi thế vượt trội để xây dựng tương lai vững chắc cho bạn và gia đình.',
   background_pc: {
     ID: 88,
     id: 88,
@@ -69,7 +70,8 @@ const advantages_benefits = {
   items: [
     {
       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-      content: 'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+      content:
+        'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
       image: {
         ID: 88,
         id: 88,
@@ -94,11 +96,12 @@ const advantages_benefits = {
         icon: 'string',
         width: 1622,
         height: 800,
-      }
+      },
     },
     {
       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-      content: 'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+      content:
+        'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
       image: {
         ID: 88,
         id: 88,
@@ -123,11 +126,12 @@ const advantages_benefits = {
         icon: 'string',
         width: 1622,
         height: 800,
-      }
+      },
     },
     {
       title: 'Xin phép từ Ủy ban Kiểm soát Đầu tư Nước ngoài (FIRB)',
-      content: 'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
+      content:
+        'Người nước ngoài muốn mua bất động sản tại Úc phải được sự chấp thuận từ FIRB. Việc này đảm bảo tuân thủ các quy định pháp lý của Úc. Nhà đầu tư cần nộp đơn và đóng phí theo quy định, mức phí thay đổi tùy theo giá trị bất động sản.',
       image: {
         ID: 88,
         id: 88,
@@ -152,9 +156,9 @@ const advantages_benefits = {
         icon: 'string',
         width: 1622,
         height: 800,
-      }
-    }
-  ]
+      },
+    },
+  ],
 }
 
 const data = {
@@ -173,8 +177,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -204,10 +208,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -217,8 +221,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -248,10 +252,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -261,8 +265,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -292,10 +296,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -305,8 +309,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -336,10 +340,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -349,8 +353,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -380,10 +384,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -393,8 +397,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -424,10 +428,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -437,8 +441,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -468,10 +472,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -481,8 +485,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -512,10 +516,10 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
+        contact: 'string',
       },
       {
         id: 1,
@@ -525,8 +529,8 @@ const data = {
             name: 'canada',
             slug: 'Canada',
             taxonomy: 'canada',
-            primary: true
-          }
+            primary: true,
+          },
         ],
         slug: 'string',
         title: 'string',
@@ -556,60 +560,68 @@ const data = {
           height: 800,
         },
         type: 'string',
-        project_scale: 1,
+        project_scale: 'string',
         eb5_capital_ratio: 1,
         jobs_created: 1,
-        contact: 'string'
-      }
-    ]
+        contact: 'string',
+      },
+    ],
   },
   categories: [
     {
       id: 1,
       name: 'Canada',
       slug: 'canada',
-      taxonomy: ''
+      taxonomy: '',
     },
     {
       id: 1,
       name: 'Canada',
       slug: 'canada',
-      taxonomy: ''
-    }
+      taxonomy: '',
+    },
   ],
   safety_standards: {
     title: 'Quy trình đầu tư <br/> Bất động sản tại Úc',
     items: [
       {
         title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
-        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+        description:
+          'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.',
       },
       {
         title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
-        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+        description:
+          'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.',
       },
       {
         title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
-        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+        description:
+          'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.',
       },
       {
         title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
-        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
+        description:
+          'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.',
       },
       {
         title: 'Chủ đầu tư và Tình trạng Xây dựng của Dự án',
-        description: 'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.'
-      }
+        description:
+          'Nghiên cứu kỹ lưỡng về khu vực, loại hình bất động sản và tiềm năng tăng trưởng.',
+      },
     ],
-    footer_title_left: '<p>Đầu tư hôm nay</p><p><strong>Bất động sản</strong></p>',
+    footer_title_left:
+      '<p>Đầu tư hôm nay</p><p><strong>Bất động sản</strong></p>',
     footer_link_slug: '/',
-    footer_content: 'Đầu tư vào bất động sản Úc không chỉ là một quyết định tài chính, mà còn là bước đi vững chắc để bạn và gia đình tận hưởng một cuộc sống ổn định, an toàn và tràn đầy cơ hội phát triển.'
-  }
+    footer_content:
+      'Đầu tư vào bất động sản Úc không chỉ là một quyết định tài chính, mà còn là bước đi vững chắc để bạn và gia đình tận hưởng một cuộc sống ổn định, an toàn và tràn đầy cơ hội phát triển.',
+  },
 }
 
 const why_choose_us = {
   title: 'Vì sao lựa chọn chúng tôi',
-  description: 'Icanfield mở ra cánh cửa đến cuộc sống chất lượng, cơ hội phát triển toàn diện và môi trường lý tưởng cho cả gia đình bạn. Cùng khám phá những lợi thế vượt trội từ các chương trình định cư hàng đầu.',
+  description:
+    'Icanfield mở ra cánh cửa đến cuộc sống chất lượng, cơ hội phát triển toàn diện và môi trường lý tưởng cho cả gia đình bạn. Cùng khám phá những lợi thế vượt trội từ các chương trình định cư hàng đầu.',
   logo: {
     ID: 88,
     id: 88,
@@ -639,20 +651,27 @@ const why_choose_us = {
   items: [
     {
       title: 'Dịch vụ uy tín',
-      description: 'Với nhiều năm kinh nghiệm trong lĩnh vực di trú và định cư, iCanfield cam kết mang đến giải pháp tối ưu và đáng tin cậy cho bạn.',
+      description:
+        'Với nhiều năm kinh nghiệm trong lĩnh vực di trú và định cư, iCanfield cam kết mang đến giải pháp tối ưu và đáng tin cậy cho bạn.',
     },
     {
       title: 'Hỗ trợ toàn diện',
-      description: 'Chúng tôi hỗ trợ từ tư vấn ban đầu, xử lý hồ sơ, đến hoàn thiện thủ tục, đảm bảo bạn luôn được chăm sóc chu đáo nhất.',
+      description:
+        'Chúng tôi hỗ trợ từ tư vấn ban đầu, xử lý hồ sơ, đến hoàn thiện thủ tục, đảm bảo bạn luôn được chăm sóc chu đáo nhất.',
     },
     {
       title: 'Đa dạng lựa chọn',
-      description: 'Từ chương trình định cư, du học đến cơ hội đầu tư, iCanfield cung cấp nhiều giải pháp linh hoạt cho từng cá nhân và gia đình.',
-    }
-  ]
+      description:
+        'Từ chương trình định cư, du học đến cơ hội đầu tư, iCanfield cung cấp nhiều giải pháp linh hoạt cho từng cá nhân và gia đình.',
+    },
+  ],
 }
 
-export default function AustralianRealEstate({dataNationSettlement}: {dataNationSettlement: Term[]}) {
+export default function AustralianRealEstate({
+  dataNationSettlement,
+}: {
+  dataNationSettlement: Term[]
+}) {
   return (
     <main className='bg-background'>
       <Banner
@@ -666,7 +685,7 @@ export default function AustralianRealEstate({dataNationSettlement}: {dataNation
           id: 1,
           title: 'string',
           filename: 'string',
-          filesize: 59961081,  
+          filesize: 59961081,
           url: '/imgs/australianRealEstate/d-bg.webp',
           link: 'string',
           alt: 'string',
@@ -698,8 +717,10 @@ export default function AustralianRealEstate({dataNationSettlement}: {dataNation
       <AdvantagesBenefits
         {...advantages_benefits}
         className={{
-          headding: 'xsm:flex-col [&>p]:sm:w-[29.375rem] [&>p]:text-start flex-row section-container sm:max-w-[90rem] justify-between',
-          advantagesHeading: 'xsm:w-full xsm:px-0 flex flex-col items-start [&>div]:text-start w-[38.625rem]'
+          headding:
+            'flex-row justify-between section-container sm:max-w-[90rem] xsm:flex-col [&>p]:text-start [&>p]:sm:w-[29.375rem]',
+          advantagesHeading:
+            'flex w-[38.625rem] flex-col items-start xsm:w-full xsm:px-0 [&>div]:text-start',
         }}
       />
       <Suspense fallback={<p>Loading...</p>}>

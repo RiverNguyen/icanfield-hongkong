@@ -137,12 +137,12 @@ const PopupCountry = ({
       <Link
         href={'/'}
         target='_blank'
-        className='group mt-[1rem] flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] border border-solid border-[rgba(18,18,18,0.16)] transition-all duration-200 lg:hover:border-none lg:hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'
+        className='group mt-[1rem] flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] border border-solid border-[rgba(18,18,18,0.16)] transition-all duration-200 xsm:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] lg:hover:border-none lg:hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'
       >
-        <span className='text-[0.875rem] font-medium leading-normal tracking-[-0.0175rem] text-greyscaletext-body transition-all duration-200 lg:group-hover:text-white'>
+        <span className='text-[0.875rem] font-medium leading-normal tracking-[-0.0175rem] text-greyscaletext-body transition-all duration-200 lg:group-hover:text-white xsm:text-white'>
           Xem trên bản đồ
         </span>
-        <ICArrow className='ml-[0.5rem] size-[1.5rem] flex-shrink-0 rotate-180 transition-all duration-200 lg:group-hover:[&_path]:stroke-white' />
+        <ICArrow className='ml-[0.5rem] size-[1.5rem] flex-shrink-0 rotate-180 transition-all duration-200 lg:group-hover:[&_path]:stroke-white xsm:[&_path]:stroke-white' />
       </Link>
     </div>
   )

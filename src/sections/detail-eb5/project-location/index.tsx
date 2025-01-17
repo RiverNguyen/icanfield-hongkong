@@ -45,8 +45,8 @@ const LocationItemMobile = ({
       <ImageV2
         src={thumbnail.url}
         alt={thumbnail.alt}
-        width={200}
-        height={200}
+        width={800}
+        height={800}
         className='h-[12.5rem] w-full rounded-[0.5rem] object-cover'
       />
       <div className='flex flex-1 flex-col space-y-4 p-2'>
@@ -81,7 +81,7 @@ const ProjectLocation = ({
 }: IDataAcfDetailEB5['acf']['eb5_projects_detail_location']) => {
   const isMobile = useIsMobile()
   return (
-    <section className='flex space-x-[6.5rem] pl-20 sm:pb-[5rem] xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4'>
+    <section className='flex space-x-[6.5rem] pl-20 sm:pb-[5rem] xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4 xsm:mt-[9rem]'>
       <div className='flex-1 pt-20 xsm:pt-4'>
         <h1 className='font-optima font-semibold text-Phase-1-Brown heading1'>
           {title_section}

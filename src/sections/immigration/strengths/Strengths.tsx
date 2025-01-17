@@ -20,7 +20,7 @@ export default function Strengths({
     <section className="relative z-10 h-[100vh] xsm:h-auto w-full xsm:py-[1.5rem]">
       {isMobile ? (
         <div className="w-full overflow-hidden overflow-x-auto sm:hidden">
-          <div className="flex p-[1rem] w-max items-center space-x-[1rem]">
+          <div className="flex p-[1rem] w-max items-center space-x-[1rem] scrollbar-hidden">
             {dataStrength && dataStrength?.map((e: dataStrength, index: number) => (
               <div
                 key={index}

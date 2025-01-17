@@ -65,7 +65,7 @@ export const Banner: FC<IBannerProps> = ({
             {titleBottom}
           </h2>
         </div>
-        <p className='text-[0.75rem] font-semibold uppercase leading-[1.5] text-white/85 sm:max-w-[20.2rem] sm:text-[1rem] xsm:order-3'>
+        <p className='text-[0.75rem] font-semibold uppercase leading-[1.5] text-white/85 sm:max-w-[20.2rem] sm:text-[1rem] xsm:order-3 xsm:mt-[1rem]'>
           {description}
         </p>
       </div>

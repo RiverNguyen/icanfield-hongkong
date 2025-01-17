@@ -31,7 +31,9 @@ import {
 import ImmigrationFAQ from '@/sections/immigration/faq/ImmigrationFAQ'
 import {immigration} from '@/types/dataAcfImmigration.interface'
 import {FC} from 'react'
-
+import ContactV2 from '@/components/ContactV2/ContactV2'
+import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
+import {Term} from '@/sections/homepage/banner/bannerHp.interface'
 interface IDetailSettlementProgramsProps {
   post_title: string
   banner: IBannerProps
@@ -43,6 +45,7 @@ interface IDetailSettlementProgramsProps {
   process_steps: IProcessStepsProps
   story_share: ISuccessStoryShareProps
   acfNation: immigration
+  dataTaxonomies: Term[]
 }
 
 const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
@@ -56,6 +59,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   process_steps,
   story_share,
   acfNation,
+  dataTaxonomies,
 }) => {
   const PropProcessSteps = {
     title_section: process_steps?.title || '',
@@ -63,7 +67,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
     timeline: process_steps?.steps || [],
   }
   return (
-    <>
+    <main className='bg-background'>
       <Banner {...banner}>
         <Breadcrumb
           items={[
@@ -87,7 +91,10 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
         dataFAQ={acfNation?.acf?.faq_nation}
         flag={acfNation?.acf?.flag}
       />
-    </>
+      <ContactV2>
+        <FormInternationalJourney dataNationSettlement={dataTaxonomies} />
+      </ContactV2>
+    </main>
   )
 }
 

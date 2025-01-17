@@ -25,7 +25,7 @@ const InfoItem = ({
         <div className='flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-[0.5rem] border border-white/25 bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] bg-origin-border xsm:h-5 xsm:w-5 xsm:border-none xsm:bg-none'>
           <ImageV2
             alt={title}
-            src='/icons/detail-eb5/check.svg'
+            src='/imgs/detail-eb5/check.svg'
             width={24}
             height={24}
             className='h-6 w-6 xsm:h-4 xsm:w-4'
@@ -35,7 +35,7 @@ const InfoItem = ({
           <p className='font-medium tracking-[-0.00875rem] text-greyscaletext-400 sub-14 xsm:font-normal xsm:sub-12'>
             {title}
           </p>
-          <p className='heading3-s font-semibold text-Phase-1-Brown xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'>
+          <p className='heading3-s font-semibold text-Phase-1-Brown xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem] xsm:text-[0.87rem] xsm:line-clamp-1'>
             {subtitle}
           </p>
         </div>

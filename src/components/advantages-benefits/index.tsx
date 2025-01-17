@@ -123,7 +123,7 @@ export const AdvantagesBenefitsItem: FC<IAdvantagesBenefitsItemProps> = ({
         />
       </div>
       <div className='flex-1 sm:p-[1rem] xsm:mt-[0.75rem]'>
-        <h3 className='phase-1-text-gradient font-optima font-medium body16 sm:font-medium sm:heading5'>
+        <h3 className='phase-1-text-gradient font-optima font-medium body16 sm:font-medium sm:heading5 xsm:font-semibold'>
           {title}
         </h3>
         <div
