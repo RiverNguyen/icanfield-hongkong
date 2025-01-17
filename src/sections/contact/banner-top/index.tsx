@@ -4,20 +4,24 @@ import ImageV2 from '@/components/image/ImageV2'
 export type BannerTopProps = {
   title: string
   description: string
+  image: {
+    url: string
+    alt: string
+  }
 }
 
-const BannerTop = ({title, description}: BannerTopProps) => {
+const BannerTop = ({title, description,image}: BannerTopProps) => {
   return (
-    <div className='relative h-[54.5625rem] w-full overflow-hidden xsm:h-[25rem] xsm:rounded-b-[1.25rem]'>
+    <div className='relative h-[100vh] w-full overflow-hidden xsm:h-[25rem] xsm:rounded-b-[1.25rem]'>
       <ImageV2
         width={3000}
         height={2000}
-        src='/imgs/contact/city.webp'
-        alt=''
+        src={image?.url}
+        alt={image?.alt}
         className='absolute inset-0 h-full w-full object-center'
       />
       <div className='absolute inset-0 h-full w-full bg-[linear-gradient(180deg,rgba(0,0,0,0.50)_24.02%,rgba(0,0,0,0.00)_86.12%)] xsm:bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]' />
-      <div className='relative z-10'>
+      <div className='relative z-10 mt-[6.4375rem]'>
         <div className='px-20 pt-6 xsm:hidden'>
           <Breadcrumb
             items={[
