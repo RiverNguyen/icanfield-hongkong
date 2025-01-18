@@ -1,8 +1,15 @@
 import Programs from '@/sections/compare-programs/Programs'
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import {Breadcrumb} from '@/components/breadcrumb'
+import ContactV2 from '@/components/ContactV2/ContactV2'
+import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
+import {Term} from '@/sections/homepage/banner/bannerHp.interface'
 
-const IndexComparePrograms = () => {
+const IndexComparePrograms = ({
+  dataNationSettlement,
+}: {
+  dataNationSettlement: Term[]
+}) => {
   return (
     <main className='bg-[#F6F6F4]'>
       <Banner
@@ -77,6 +84,11 @@ const IndexComparePrograms = () => {
           Chọn chương trình và so sánh giữa các chương trình
         </span>
         <Programs />
+        <ContactV2>
+          <FormInternationalJourney
+            dataNationSettlement={dataNationSettlement}
+          />
+        </ContactV2>
       </section>
     </main>
   )
