@@ -2,15 +2,11 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import {FilterOption} from '@/types/bannerFilter.interface'
-import {convertToIframe} from '@/utils/convertToIframe'
 import React, {useEffect, useRef, useState} from 'react'
-import {FilterData} from './bannerHp.interface'
-import ReactPlayer from 'react-player'
+import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
+import {filterOptions} from '@/sections/homepage/banner/constants'
+import {useSearchParams} from 'next/navigation'
 import 'swiper/css'
-import {Autoplay, EffectFade} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {filterOptions} from './constants'
-
 export interface IDataMedia {
   type: 'upload' | 'youtube' | 'tiktok' | 'slide'
   [key: string]: any
@@ -20,24 +16,28 @@ export interface IBannerHomepageProps {
   data: IDataMedia
 }
 
-const BannerHomepage = ({
-  data,
-  dataFilter,
-}: {
-  data: IDataMedia
-  dataFilter: FilterData
-}) => {
-  const [isClient, setIsClient] = useState(false)
+const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
+  const searchParams = useSearchParams()
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
   const isSelecting = useRef(false)
   const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
   const [keyFilter, setKeyFilter] = React.useState('')
-  const [selectedItems, setSelectedItems] = useState<{
-    [key: number]: {label: string; slug: string; key: string}
-  }>([])
+  const [selectedItems, setSelectedItems] = useState({
+    nation: '',
+    investmentPurpose: '',
+    expectedBudget: '',
+  })
   useEffect(() => {
-    setIsClient(true)
-  }, [])
+    const nation = searchParams?.get('nation') || ''
+    const investmentPurpose = searchParams?.get('investment-purpose') || ''
+    const expectedBudget = searchParams?.get('expected-budget') || ''
+
+    setSelectedItems({
+      nation,
+      investmentPurpose,
+      expectedBudget,
+    })
+  }, [searchParams])
   //handle update FilterOption when dataFilter
   const [filterOptionsLastest, setFilterOptionsLastest] =
     useState(filterOptions)
@@ -51,18 +51,16 @@ const BannerHomepage = ({
           children: dataKey.map((item) => ({
             label: item.name,
             slug: item.slug,
-            key: option.key,
           })),
         }
       }
       return option
     })
+
     setFilterOptionsLastest(updatedFilterOptions)
   }, [])
   //handle click dropdown filter
-  useEffect(() => {
-    console.log('filterOptionsLastest', filterOptionsLastest)
-  }, [filterOptionsLastest])
+
   const [openFilters, setOpenFilters] = React.useState(
     new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
   )
@@ -79,22 +77,17 @@ const BannerHomepage = ({
   ) => {
     // Đánh dấu trạng thái đang chọn
     isSelecting.current = true
-
-    // Cập nhật item đã chọn
     setSelectedItems((prev) => ({
       ...prev,
-      [filterIndex]: selectedValue,
-    }))
-
+      [selectedValue.key]: selectedValue.slug,
+    })) // Cập nhật giá trị đã chọn
     // Đóng dropdown của filter hiện tại
     setOpenFilters((prev) =>
       prev.map((isOpen, i) => (i === filterIndex ? false : isOpen)),
     )
-
-    // Reset trạng thái sau khi tất cả cập nhật hoàn thành
     setTimeout(() => {
       isSelecting.current = false
-    }, 200) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
+    }, 200)
   }
   //handle click outside filter
   const handleClickOutside = (e: MouseEvent) => {
@@ -121,100 +114,27 @@ const BannerHomepage = ({
   }
   const currentFilter = filterOptions.find((filter) => filter.key === keyFilter)
   //handle Search
-  const toCamelCase = (str:string) => {
-    return str.replace(/-([a-z])/g, (match, p1) => p1.toUpperCase())
-  }
-
   const searchFilter = () => {
     console.log('search', selectedItems)
-
-    const queryString = Object.values(selectedItems)
-      .map((item) => {
-        const camelCaseKey = toCamelCase(item.key)
-        return `${camelCaseKey}=${item.slug}`
-      })
-      .join('&')
-
-    // Tạo URL đầy đủ
-    const redirectUrl = `/search-result?${queryString}`
-    console.log('Redirecting to:', redirectUrl)
-
-    // Chuyển hướng
-    window.location.href = redirectUrl
+  }
+  //get Label
+  
+  const getLabel = (key: string, value: string) => {
+    console.log('key', key, 'value', value)
+    return (
+      filterOptionsLastest
+        .find((option) => option.key === key)
+        ?.children.find((child) => child.slug === value)?.label ||
+      'Click để chọn'
+    )
   }
   return (
-    <section className='relative mt-[6.44rem] h-[42.8125rem] w-full xsm:mt-[2.25rem] xsm:h-[33.06rem] xsm:bg-background'>
-      {data.type != 'slide' ? (
-        <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
-          {isClient && data.type === 'upload' ? (
-            <ReactPlayer
-              url={data[data.type].url || ''}
-              playing
-              loop
-              muted
-              width='100%'
-              height='100%'
-              className='!h-full !w-full object-cover [&__video]:object-cover'
-            />
-          ) : (
-            isClient && (
-              <ReactPlayer
-                url={convertToIframe(data) || ''}
-                playing
-                loop
-                muted
-                width='100%'
-                height='100%'
-                className='!h-full !w-full object-cover [&_div_iframe]:object-cover'
-              />
-            )
-          )}
-        </div>
-      ) : (
-        <div className='absolute left-0 top-0 z-[0] h-full w-full xsm:relative xsm:h-[14.625rem]'>
-          <Swiper
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-            }}
-            effect='fade'
-            loop={true}
-            speed={800}
-            modules={[Autoplay, EffectFade]}
-            className='mySwiper !h-full'
-          >
-            {data[data.type].map(
-              (
-                item: {url: string; alt: string; width: number; height: number},
-                index: number,
-              ) => (
-                <SwiperSlide
-                  key={index}
-                  className='!h-full'
-                >
-                  <ImageV2
-                    src={item.url || ''}
-                    alt={item.alt}
-                    width={item.width * 2}
-                    height={item.height * 2}
-                    className='h-full w-full object-cover'
-                  />
-                </SwiperSlide>
-              ),
-            )}
-          </Swiper>
-        </div>
-      )}
-      <div className='overlay pointer-events-none absolute z-[1] h-full w-full bg-[linear-gradient(180deg,rgba(150,146,142,0.00)_55.02%,#96928E_95.27%)] opacity-[0.24] xsm:hidden'></div>
-      {data?.logo && (
-        <ImageV2
-          src={data.logo.url || ''}
-          alt={data.logo.alt}
-          width={data.logo.width * 2}
-          height={data.logo.height * 2}
-          className='pointer-events-none absolute left-1/2 top-[17.31rem] z-[2] h-[6.76769rem] w-[22.02719rem] -translate-x-1/2 object-contain xsm:hidden'
-        />
-      )}
+    <section className='relative mt-[6.44rem] h-[18.8125rem] w-full bg-background xsm:mt-[2.25rem] xsm:h-[33.06rem]'>
+      <div className='flex items-center justify-center pt-[5rem] xsm:px-[1.5rem] xsm:pb-[3rem] xsm:pt-[4rem]'>
+        <span className='text-center text-[1.75rem] text-Phase-1-Brown xsm:text-[1.25rem]'>
+          Có <b>5,000</b> kết quả tìm kiếm phù hợp với lựa chọn của bạn
+        </span>
+      </div>
       <div className='banner-filter absolute bottom-[3.81rem] left-1/2 z-[2] flex h-[4.19rem] w-[71.5rem] -translate-x-1/2 rounded-[0.75rem] bg-[#fff] xsm:hidden'>
         <div className='h-full w-[0.75rem] rounded-bl-[0.75rem] rounded-tl-[0.75rem] bg-[linear-gradient(180deg,#95502F_20.03%,#F5C178_100%)]'></div>
         <div className='flex w-full items-end justify-between p-[0.5rem]'>
@@ -250,7 +170,12 @@ const BannerHomepage = ({
                         <span
                           className={`text-Phase-1-Brown1 line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] transition-all duration-500 ${openFilters[filterIndex] ? '-translate-y-[5rem] translate-x-full opacity-0' : 'translate-x-0 translate-y-0 opacity-100'}`}
                         >
-                          {selectedItems[filterIndex]?.label || 'Click để chọn'}
+                          {getLabel(
+                            item.key,
+                            selectedItems[
+                              item.key as keyof typeof selectedItems
+                            ],
+                          )}
                         </span>
                         <ImageV2
                           src='/icons/homepage/banner/arrow-down.svg'
@@ -344,7 +269,8 @@ const BannerHomepage = ({
                   </span>
                   <div className='flex cursor-pointer items-center justify-between'>
                     <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
-                      {selectedItems[index]?.label || 'Click để chọn'}
+                      {selectedItems[item.key as keyof typeof selectedItems] ||
+                        'Click để chọn'}
                     </span>
                     <ImageV2
                       src='/icons/homepage/banner/arrow-down.svg'
@@ -442,4 +368,4 @@ const BannerHomepage = ({
   )
 }
 
-export default BannerHomepage
+export default SearchResult
