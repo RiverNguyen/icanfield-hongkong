@@ -11,5 +11,5 @@ export default async function page() {
 
   const [dataTaxonomies] = await Promise.all([fetchData(requestTaxonomies)])
 
-  return <IndexComparePrograms dataNationSettlement={dataTaxonomies} />
+  return <IndexComparePrograms dataNationSettlement={dataTaxonomies?.nation} />
 }
