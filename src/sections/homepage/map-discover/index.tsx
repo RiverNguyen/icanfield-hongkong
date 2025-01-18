@@ -319,9 +319,9 @@ const MapDiscover = ({
               alt='Icanfield'
               width={500}
               height={500}
-              className='z-1 absolute top-0 h-full w-full rounded-[0.63rem] object-cover xsm:w-[5.4375rem]'
+              className='z-1 absolute top-0 h-full w-full rounded-[0.63rem] object-cover xsm:w-[90%]'
             />
-            <div className='relative z-10 flex flex-col space-y-[0.12rem] pl-[10.0625rem]'>
+            <div className='relative z-10 flex flex-col space-y-[0.12rem] pl-[10.0625rem] xsm:pl-[6.5rem]'>
               <span className='text-[0.875rem] font-semibold uppercase leading-[1.5] tracking-[-0.0175rem] text-white xsm:text-[0.875rem]'>
                 Khám phá thêm
               </span>
@@ -329,7 +329,7 @@ const MapDiscover = ({
                 chương trình liên quan
               </span>
             </div>
-            <div className='absolute right-[0.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)] xsm:right-[1.25rem] xsm:h-[3.5rem] xsm:w-[3rem]'>
+            <div className='absolute right-[0.25rem] top-1/2 z-10 flex size-[4.375rem] -translate-y-1/2 items-center justify-center overflow-hidden rounded-[0.375rem] bg-[rgba(255,255,255,0.22)] xsm:right-[2.25rem] xsm:h-[3.5rem] xsm:w-[3.5rem]'>
               <ImageV2
                 src={'/icons/homepage/map-discover/arrow.svg'}
                 alt='Icanfield'
