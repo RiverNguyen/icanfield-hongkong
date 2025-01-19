@@ -49,6 +49,9 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   const [isMobile, setIsMobile] = useState(false)
   const mapRef = useRef<L.Map | null>(null)
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
+  const [selectedRegionCountries, setSelectedRegionCountries] = useState<
+    string[]
+  >([])
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
@@ -94,10 +97,12 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       const countryName = feature.properties.name
 
       // Ưu tiên kiểm tra quốc gia được chọn
-      if (selectedCountry === countryName) {
+      if (selectedCountry === countryName || changeCountry === countryName) {
         return '#BC9247' // Màu nổi bật cho quốc gia được chọn
       }
-
+      if (selectedRegionCountries.includes(countryName)) {
+        return '#BC9247' // Màu nổi bật cho các quốc gia trong khu vực được chọn
+      }
       // Kiểm tra quốc gia EU
       if (euCountries.has(countryName) && countryName !== 'Vietnam') {
         return '#D0C1BA' // Màu cho các quốc gia EU
@@ -109,7 +114,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       }
       return specialColors[countryName] || '#F3F3F3'
     },
-    [selectedCountry],
+    [selectedCountry, changeCountry, selectedRegionCountries], // Thêm changeCountry
   )
 
   const geoJsonStyle = useCallback(
@@ -127,11 +132,10 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   )
   // Zoom to country when click
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
+  console.log('countries', countries)
   const handleCountryClick = (countryName: string) => {
     const position = getPosition(countryName)
-    // console.log('position', countryName)
     if (mapRef.current && isZoomClick) {
-      
       if (zoomedCountry === countryName) {
         // Nếu quốc gia đã được zoom, bỏ zoom
         mapRef.current.flyTo([40, 0], isMobile ? zoomMobile : 1.5)
@@ -142,10 +146,20 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
         setZoomedCountry(countryName)
       }
     }
+    // Cập nhật danh sách quốc gia được chọn theo khu vực
+    const selectedRegion = countries.find((region) =>
+      region.some((country) => country.name === countryName),
+    )
+    if (selectedRegion) {
+      const regionCountries = selectedRegion.map((country) => country.name)
+      setSelectedRegionCountries(regionCountries)
+    }
   }
   const findCountry = (label: string) => {
     for (let i = 0; i < countries.length; i++) {
-      const country = countries[i].find((country) => country.label === label || country.name === label)
+      const country = countries[i].find(
+        (country) => country.label === label || country.name === label,
+      )
       if (country) {
         return country.name // Return the name of the country if found
       }
@@ -291,7 +305,6 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
             iconSize: [30, 30],
           })
         }
-
       ></Marker>
     </MapContainer>
   )

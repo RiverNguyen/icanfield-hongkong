@@ -2,11 +2,17 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import {FilterOption} from '@/types/bannerFilter.interface'
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState, useMemo} from 'react'
 import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
+import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
+import {Pagination} from '@/components/pagination/Pagination'
 import {filterOptions} from '@/sections/homepage/banner/constants'
-import {useSearchParams} from 'next/navigation'
+import {useSearchParams, useRouter} from 'next/navigation'
+import {fetcher} from '@/lib/swr'
+import useSWR from 'swr'
 import 'swiper/css'
+import ItemProgramme from '@/sections/immigration/programme/ItemProgramme'
+import {dataProgramsAcf} from '@/types/dataAcfImmigration.interface'
 export interface IDataMedia {
   type: 'upload' | 'youtube' | 'tiktok' | 'slide'
   [key: string]: any
@@ -17,32 +23,33 @@ export interface IBannerHomepageProps {
 }
 
 const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
   const isSelecting = useRef(false)
   const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
   const [keyFilter, setKeyFilter] = React.useState('')
-  const [selectedItems, setSelectedItems] = useState({
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [totalPage, setTotalPage] = useState<number>(1)
+  const [selectedItems, setSelectedItems] = useState<Record<string, string>>({
     nation: '',
     investmentPurpose: '',
     expectedBudget: '',
   })
-  useEffect(() => {
-    const nation = searchParams?.get('nation') || ''
-    const investmentPurpose = searchParams?.get('investment-purpose') || ''
-    const expectedBudget = searchParams?.get('expected-budget') || ''
-
-    setSelectedItems({
-      nation,
-      investmentPurpose,
-      expectedBudget,
-    })
-  }, [searchParams])
+  const sectionRef = useRef<HTMLDivElement>(null)
   //handle update FilterOption when dataFilter
   const [filterOptionsLastest, setFilterOptionsLastest] =
     useState(filterOptions)
 
   useEffect(() => {
+    const nation = searchParams?.get('nation') || ''
+    const investmentPurpose = searchParams?.get('investmentPurpose') || ''
+    const expectedBudget = searchParams?.get('expectedBudget') || ''
+    setSelectedItems({
+      nation,
+      investmentPurpose,
+      expectedBudget,
+    })
     const updatedFilterOptions = filterOptions.map((option) => {
       const dataKey = dataFilter[option.key as keyof FilterData]
       if (dataKey) {
@@ -64,7 +71,20 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
   const [openFilters, setOpenFilters] = React.useState(
     new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
   )
-
+  const query = useMemo(() => {
+    if (!searchParams?.size) return null
+    return `/settlement-programs-v1/?nation=${selectedItems.nation}&investment-purpose=${selectedItems.investmentPurpose}&expected-budget=${selectedItems.expectedBudget}&page=${currentPage}`
+  }, [searchParams, currentPage, selectedItems])
+  const {data: posts, isLoading} = useSWR(query, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnReconnect: false,
+  })
+  useEffect(() => {
+    if (posts && searchParams?.size) {
+      console.log(posts)
+      setTotalPage(posts.pagination.total_pages)
+    }
+  }, [posts])
   const toggleDropdown = (index: number) => {
     setOpenFilters(
       (prev) => prev.map((isOpen, i) => (i === index ? !isOpen : isOpen)), // Đảo trạng thái của filter được click
@@ -75,12 +95,18 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
     filterIndex: number,
     selectedValue: {label: string; slug: string; key: string},
   ) => {
-    // Đánh dấu trạng thái đang chọn
-    isSelecting.current = true
+    console.log('selectedValue', selectedValue)
     setSelectedItems((prev) => ({
       ...prev,
-      [selectedValue.key]: selectedValue.slug,
-    })) // Cập nhật giá trị đã chọn
+      [kebabToCamel(selectedValue.key)]: selectedValue.slug,
+    }))
+    const query = new URLSearchParams({
+      ...selectedItems,
+      [kebabToCamel(selectedValue.key)]: selectedValue.slug,
+    }).toString()
+    router.push(`/search-result?${query}`)
+    // Đánh dấu trạng thái đang chọn
+    isSelecting.current = true
     // Đóng dropdown của filter hiện tại
     setOpenFilters((prev) =>
       prev.map((isOpen, i) => (i === filterIndex ? false : isOpen)),
@@ -115,120 +141,193 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
   const currentFilter = filterOptions.find((filter) => filter.key === keyFilter)
   //handle Search
   const searchFilter = () => {
-    console.log('search', selectedItems)
+    const query = {
+      nation: selectedItems.nation,
+      'investment-purpose': selectedItems.investmentPurpose,
+      'expected-budget': selectedItems.expectedBudget,
+    }
+
+    // Đẩy query vào URL
+    const queryString = new URLSearchParams(query).toString()
+    router.push(`/search-result?${queryString}`) // Truyền đối tượng query vào URL
   }
+  const dataLatest = useMemo(() => {
+    return Array.isArray(posts?.data) && posts?.data
+  }, [searchParams, posts])
   //get Label
-  
-  const getLabel = (key: string, value: string) => {
-    console.log('key', key, 'value', value)
-    return (
-      filterOptionsLastest
-        .find((option) => option.key === key)
-        ?.children.find((child) => child.slug === value)?.label ||
-      'Click để chọn'
-    )
+  function kebabToCamel(str: string) {
+    return str.replace(/-([a-z])/g, (match, char) => char.toUpperCase())
+  }
+  const getLabelFromFilterOptions = (key: string, value: string) => {
+    const filter = filterOptionsLastest.find((option) => option.key === key)
+    if (filter) {
+      const child = filter.children.find((child) => child.slug === value)
+      return child ? child.label : 'Click để chọn'
+    }
+    return 'Click để chọn'
   }
   return (
-    <section className='relative mt-[6.44rem] h-[18.8125rem] w-full bg-background xsm:mt-[2.25rem] xsm:h-[33.06rem]'>
-      <div className='flex items-center justify-center pt-[5rem] xsm:px-[1.5rem] xsm:pb-[3rem] xsm:pt-[4rem]'>
-        <span className='text-center text-[1.75rem] text-Phase-1-Brown xsm:text-[1.25rem]'>
-          Có <b>5,000</b> kết quả tìm kiếm phù hợp với lựa chọn của bạn
-        </span>
-      </div>
-      <div className='banner-filter absolute bottom-[3.81rem] left-1/2 z-[2] flex h-[4.19rem] w-[71.5rem] -translate-x-1/2 rounded-[0.75rem] bg-[#fff] xsm:hidden'>
-        <div className='h-full w-[0.75rem] rounded-bl-[0.75rem] rounded-tl-[0.75rem] bg-[linear-gradient(180deg,#95502F_20.03%,#F5C178_100%)]'></div>
-        <div className='flex w-full items-end justify-between p-[0.5rem]'>
-          <div className='flex flex-1 items-center justify-between'>
-            {filterOptionsLastest.map((item, filterIndex) => (
-              <React.Fragment key={filterIndex}>
-                <div
-                  className={`flex h-full w-full cursor-pointer flex-wrap items-center self-end rounded-[0.5rem] bg-white px-3 py-2 transition-all duration-300 ${!openFilters[filterIndex] ? 'hover:bg-[rgba(60,8,8,0.08)]' : ''}`}
-                  onClick={() => toggleDropdown(filterIndex)}
-                >
+    <div className='pb-[2rem]'>
+      <div className='relative mt-[6.44rem] h-[18.8125rem] w-full bg-background xsm:mt-[2.25rem] xsm:h-[33.06rem]'>
+        <div className='flex items-center justify-center pt-[5rem] xsm:px-[1.5rem] xsm:pb-[3rem] xsm:pt-[4rem]'>
+          <span className='text-center text-[1.75rem] text-Phase-1-Brown xsm:text-[1.25rem]'>
+            Có <b>{posts?.pagination?.total_posts}</b> kết quả tìm kiếm phù hợp
+            với lựa chọn của bạn
+          </span>
+        </div>
+        <div className='banner-filter absolute bottom-[3.81rem] left-1/2 z-[2] flex h-[4.19rem] w-[71.5rem] -translate-x-1/2 rounded-[0.75rem] bg-[#fff] xsm:hidden'>
+          <div className='h-full w-[0.75rem] rounded-bl-[0.75rem] rounded-tl-[0.75rem] bg-[linear-gradient(180deg,#95502F_20.03%,#F5C178_100%)]'></div>
+          <div className='flex w-full items-end justify-between p-[0.5rem]'>
+            <div className='flex flex-1 items-center justify-between'>
+              {filterOptionsLastest.map((item, filterIndex) => (
+                <React.Fragment key={filterIndex}>
                   <div
-                    className={`flex ${!openFilters[filterIndex] ? '' : 'mb-2 border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-2'} w-full`}
-                    ref={(el) => {
-                      dropdownRefs.current[filterIndex] = el
-                    }}
+                    className={`flex h-full w-full cursor-pointer flex-wrap items-center self-end rounded-[0.5rem] bg-white px-3 py-2 transition-all duration-300 ${!openFilters[filterIndex] ? 'hover:bg-[rgba(60,8,8,0.08)]' : ''}`}
+                    onClick={() => toggleDropdown(filterIndex)}
                   >
-                    <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
-                      <ImageV2
-                        src={item?.icon || ''}
-                        alt='icon'
-                        width={40}
-                        height={40}
-                        className='size-[1.25rem] object-contain'
-                      />
-                    </div>
-                    <div className='flex flex-1 flex-col justify-between'>
-                      <span
-                        className={`text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100 transition-all duration-500 ${openFilters[filterIndex] ? 'translate-y-[0.8rem] text-[0.75rem]' : ''}`}
-                      >
-                        {item?.label}
-                      </span>
-                      <div className='flex cursor-pointer items-center justify-between'>
-                        <span
-                          className={`text-Phase-1-Brown1 line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] transition-all duration-500 ${openFilters[filterIndex] ? '-translate-y-[5rem] translate-x-full opacity-0' : 'translate-x-0 translate-y-0 opacity-100'}`}
-                        >
-                          {getLabel(
-                            item.key,
-                            selectedItems[
-                              item.key as keyof typeof selectedItems
-                            ],
-                          )}
-                        </span>
+                    <div
+                      className={`flex ${!openFilters[filterIndex] ? '' : 'mb-2 border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-2'} w-full`}
+                      ref={(el) => {
+                        dropdownRefs.current[filterIndex] = el
+                      }}
+                    >
+                      <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
                         <ImageV2
-                          src='/icons/homepage/banner/arrow-down.svg'
-                          alt='arrow'
+                          src={item?.icon || ''}
+                          alt='icon'
                           width={40}
                           height={40}
-                          className={`size-[1.125rem] object-contain transition-transform duration-300 ${
-                            openFilters[filterIndex]
-                              ? '-translate-y-[0.5rem] -rotate-180'
-                              : 'rotate-0'
-                          }`}
+                          className='size-[1.25rem] object-contain'
                         />
                       </div>
+                      <div className='flex flex-1 flex-col justify-between'>
+                        <span
+                          className={`text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100 transition-all duration-500 ${openFilters[filterIndex] ? 'translate-y-[0.8rem] text-[0.75rem]' : ''}`}
+                        >
+                          {item?.label}
+                        </span>
+                        <div className='flex cursor-pointer items-center justify-between'>
+                          <span
+                            className={`text-Phase-1-Brown1 line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] transition-all duration-500 ${openFilters[filterIndex] ? '-translate-y-[5rem] translate-x-full opacity-0' : 'translate-x-0 translate-y-0 opacity-100'}`}
+                          >
+                            {getLabelFromFilterOptions(
+                              item.key,
+                              selectedItems[kebabToCamel(item.key)],
+                            )}
+                          </span>
+                          <ImageV2
+                            src='/icons/homepage/banner/arrow-down.svg'
+                            alt='arrow'
+                            width={40}
+                            height={40}
+                            className={`size-[1.125rem] object-contain transition-transform duration-300 ${
+                              openFilters[filterIndex]
+                                ? '-translate-y-[0.5rem] -rotate-180'
+                                : 'rotate-0'
+                            }`}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={
+                        'dropdown-filter flex w-full flex-col overflow-hidden transition-[height] duration-500'
+                      }
+                      style={{
+                        height: openFilters[filterIndex]
+                          ? `${item?.children.length * 40}px`
+                          : '0',
+                      }}
+                    >
+                      {item?.children.map((child, childIndex) => (
+                        <p
+                          key={childIndex}
+                          className='line-clamp-1 cursor-pointer rounded-[0.5rem] px-3 py-2 text-[0.875rem] font-medium leading-[1.5] tracking-[-0.00875rem] text-Phase-1-Brown hover:bg-[rgba(60,8,8,0.08)]'
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleSelect(filterIndex, {
+                              label: child.label,
+                              slug: child.slug,
+                              key: item.key,
+                            })
+                          }}
+                        >
+                          {child?.label}
+                        </p>
+                      ))}
                     </div>
                   </div>
-                  <div
-                    className={
-                      'dropdown-filter flex w-full flex-col overflow-hidden transition-[height] duration-500'
-                    }
-                    style={{
-                      height: openFilters[filterIndex]
-                        ? `${item?.children.length * 40}px`
-                        : '0',
-                    }}
-                  >
-                    {item?.children.map((child, childIndex) => (
-                      <p
-                        key={childIndex}
-                        className='line-clamp-1 cursor-pointer rounded-[0.5rem] px-3 py-2 text-[0.875rem] font-medium leading-[1.5] tracking-[-0.00875rem] text-Phase-1-Brown hover:bg-[rgba(60,8,8,0.08)]'
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleSelect(filterIndex, {
-                            label: child.label,
-                            slug: child.slug,
-                            key: item.key,
-                          })
-                        }}
-                      >
-                        {child?.label}
-                      </p>
-                    ))}
+                  {filterIndex < filterOptions.length - 1 && (
+                    <div className='line mx-[0.5rem] h-[2.75rem] w-[0.0625rem] rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+            <button
+              className='ml-2 hidden h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] px-[2rem]'
+              onClick={searchFilter}
+            >
+              <ImageV2
+                src='/icons/homepage/banner/search.svg'
+                alt='filter'
+                width={40}
+                height={40}
+                className='mr-[0.62rem] size-[1.5rem] object-contain'
+              />
+              <span className='text-[1rem] font-semibold leading-[1.5] text-white'>
+                Tìm kiếm
+              </span>
+            </button>
+          </div>
+        </div>
+        <div className='banner-filter-mb mx-auto flex w-[21.4375rem] -translate-y-[1.5rem] flex-col rounded-[0.75rem] bg-white p-4 shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)] sm:hidden'>
+          <div className='flex h-full flex-1 flex-col items-center justify-between'>
+            {filterOptions.map((item: FilterOption, index: number) => (
+              <React.Fragment key={index}>
+                <div
+                  className='flex h-full w-full cursor-pointer rounded-[0.5rem] transition-all duration-300'
+                  onClick={() => handleClickPopupFilter(item?.key)}
+                >
+                  <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
+                    <ImageV2
+                      src={item?.icon || ''}
+                      alt='icon'
+                      width={40}
+                      height={40}
+                      className='size-[1.25rem] object-contain'
+                    />
+                  </div>
+                  <div className='flex flex-1 flex-col justify-between'>
+                    <span
+                      className={
+                        'text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'
+                      }
+                    >
+                      {item?.label}
+                    </span>
+                    <div className='flex cursor-pointer items-center justify-between'>
+                      <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
+                        {selectedItems[
+                          kebabToCamel(item.key) as keyof typeof selectedItems
+                        ] || 'Click để chọn'}
+                      </span>
+                      <ImageV2
+                        src='/icons/homepage/banner/arrow-down.svg'
+                        alt='arrow'
+                        width={40}
+                        height={40}
+                        className='size-[1.125rem] object-contain'
+                      />
+                    </div>
                   </div>
                 </div>
-                {filterIndex < filterOptions.length - 1 && (
-                  <div className='line mx-[0.5rem] h-[2.75rem] w-[0.0625rem] rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
+                {index < filterOptions.length - 1 && (
+                  <div className='line my-4 h-[0.0625rem] w-full rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
                 )}
               </React.Fragment>
             ))}
           </div>
-          <button
-            className='ml-2 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] px-[2rem]'
-            onClick={searchFilter}
-          >
+          <button className='mt-4 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] py-3'>
             <ImageV2
               src='/icons/homepage/banner/search.svg'
               alt='filter'
@@ -236,135 +335,116 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
               height={40}
               className='mr-[0.62rem] size-[1.5rem] object-contain'
             />
-            <span className='text-[1rem] font-semibold leading-[1.5] text-white'>
+            <span className='text-[0.875rem] font-semibold leading-[1.5] text-white'>
               Tìm kiếm
             </span>
           </button>
         </div>
-      </div>
-      <div className='banner-filter-mb mx-auto flex w-[21.4375rem] -translate-y-[1.5rem] flex-col rounded-[0.75rem] bg-white p-4 shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)] sm:hidden'>
-        <div className='flex h-full flex-1 flex-col items-center justify-between'>
-          {filterOptions.map((item: FilterOption, index: number) => (
-            <React.Fragment key={index}>
-              <div
-                className='flex h-full w-full cursor-pointer rounded-[0.5rem] transition-all duration-300'
-                onClick={() => handleClickPopupFilter(item?.key)}
-              >
-                <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
+        <div
+          className={`popup-filter fixed left-0 top-0 z-[51] h-full w-full bg-transparent sm:hidden ${openPopupFilter ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        >
+          <div
+            className='overlay-popup-filter absolute left-0 top-0 z-[1] h-full w-full bg-[rgba(0,0,0,0.16)]'
+            onClick={() => {
+              setOpenPopupFilter(false)
+            }}
+          ></div>
+          <div
+            className={`absolute bottom-0 left-0 z-10 flex h-[19.6rem] w-full flex-col rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[2.5rem] transition-all duration-300 ${
+              openPopupFilter ? 'translate-y-0' : 'translate-y-full'
+            }`}
+          >
+            <div className='flex w-full items-center justify-between space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] pb-4'>
+              <div className='flex items-center'>
+                <div className='mr-2 flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.5rem]'>
                   <ImageV2
-                    src={item?.icon || ''}
-                    alt='icon'
+                    src={
+                      currentFilter?.icon ||
+                      '/icons/homepage/banner/filter-nation.svg'
+                    }
                     width={40}
                     height={40}
-                    className='size-[1.25rem] object-contain'
+                    alt='icon'
+                    onClick={() => setOpenPopupFilter(false)}
+                    className='size-[1rem] object-contain'
                   />
                 </div>
-                <div className='flex flex-1 flex-col justify-between'>
-                  <span
-                    className={
-                      'text-[0.625rem] font-medium leading-[150%] text-greyscaletext-100'
-                    }
-                  >
-                    {item?.label}
-                  </span>
-                  <div className='flex cursor-pointer items-center justify-between'>
-                    <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
-                      {selectedItems[item.key as keyof typeof selectedItems] ||
-                        'Click để chọn'}
-                    </span>
-                    <ImageV2
-                      src='/icons/homepage/banner/arrow-down.svg'
-                      alt='arrow'
-                      width={40}
-                      height={40}
-                      className='size-[1.125rem] object-contain'
-                    />
-                  </div>
-                </div>
+                <span className='text-[0.875rem] font-medium leading-[1.4] tracking-[-0.0175rem]'>
+                  {currentFilter?.label}
+                </span>
               </div>
-              {index < filterOptions.length - 1 && (
-                <div className='line my-4 h-[0.0625rem] w-full rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
-              )}
-            </React.Fragment>
-          ))}
+              <ImageV2
+                src={'/icons/homepage/header/close-popup.svg'}
+                width={40}
+                height={40}
+                alt='close-popup'
+                onClick={() => setOpenPopupFilter(false)}
+                className='size-[1.5rem] cursor-pointer object-contain'
+              />
+            </div>
+            <div className='h-[15rem] overflow-y-auto'>
+              {currentFilter?.children.map((child) => (
+                <div
+                  key={child.slug}
+                  className='tracking-[-0.00875rem text-brown] cursor-pointer border-b-[1px] border-[#EBEBEB] px-3 py-4 text-[0.875rem] leading-[1.5]'
+                  onClick={() => {
+                    handleSelect(
+                      filterOptions.findIndex(
+                        (filter) => filter.key === keyFilter,
+                      ),
+                      {...child, key: child.key || ''},
+                    )
+                    setOpenPopupFilter(false)
+                  }}
+                >
+                  {child.label}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <button className='mt-4 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] py-3'>
-          <ImageV2
-            src='/icons/homepage/banner/search.svg'
-            alt='filter'
-            width={40}
-            height={40}
-            className='mr-[0.62rem] size-[1.5rem] object-contain'
-          />
-          <span className='text-[0.875rem] font-semibold leading-[1.5] text-white'>
-            Tìm kiếm
-          </span>
-        </button>
       </div>
       <div
-        className={`popup-filter fixed left-0 top-0 z-[51] h-full w-full bg-transparent sm:hidden ${openPopupFilter ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        className='mt-[5rem] grid w-full grid-cols-3 gap-y-[4.5rem] section-container sm:gap-x-[1.88rem] xsm:grid-cols-1 xsm:gap-y-[1.5rem]'
+        ref={sectionRef}
       >
-        <div
-          className='overlay-popup-filter absolute left-0 top-0 z-[1] h-full w-full bg-[rgba(0,0,0,0.16)]'
-          onClick={() => {
-            setOpenPopupFilter(false)
-          }}
-        ></div>
-        <div
-          className={`absolute bottom-0 left-0 z-10 flex h-[19.6rem] w-full flex-col rounded-tl-[1rem] rounded-tr-[1rem] bg-white p-4 pb-[2.5rem] transition-all duration-300 ${
-            openPopupFilter ? 'translate-y-0' : 'translate-y-full'
-          }`}
-        >
-          <div className='flex w-full items-center justify-between space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] pb-4'>
-            <div className='flex items-center'>
-              <div className='mr-2 flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.5rem]'>
-                <ImageV2
-                  src={
-                    currentFilter?.icon ||
-                    '/icons/homepage/banner/filter-nation.svg'
-                  }
-                  width={40}
-                  height={40}
-                  alt='icon'
-                  onClick={() => setOpenPopupFilter(false)}
-                  className='size-[1rem] object-contain'
+        {isLoading ? (
+          <>
+            {Array(dataLatest?.length || 9)
+              .fill(0)
+              .map((item, index) => (
+                <SkeletonItemBlog key={index} />
+              ))}
+          </>
+        ) : (
+          <>
+            {Array.isArray(dataLatest) && dataLatest?.length > 0 ? (
+              dataLatest.map((item: dataProgramsAcf, index: number) => (
+                <ItemProgramme
+                  key={index}
+                  className=''
+                  dataPostProgramme={item}
+                  slug={'/'}
                 />
+              ))
+            ) : (
+              <div className='col-start-2 row-start-2 w-full text-center text-brown'>
+                Chưa có bài viết
               </div>
-              <span className='text-[0.875rem] font-medium leading-[1.4] tracking-[-0.0175rem]'>
-                {currentFilter?.label}
-              </span>
-            </div>
-            <ImageV2
-              src={'/icons/homepage/header/close-popup.svg'}
-              width={40}
-              height={40}
-              alt='close-popup'
-              onClick={() => setOpenPopupFilter(false)}
-              className='size-[1.5rem] cursor-pointer object-contain'
-            />
-          </div>
-          <div className='h-[15rem] overflow-y-auto'>
-            {currentFilter?.children.map((child) => (
-              <div
-                key={child.slug}
-                className='tracking-[-0.00875rem text-brown] cursor-pointer border-b-[1px] border-[#EBEBEB] px-3 py-4 text-[0.875rem] leading-[1.5]'
-                onClick={() => {
-                  handleSelect(
-                    filterOptions.findIndex(
-                      (filter) => filter.key === keyFilter,
-                    ),
-                    {...child, key: child.key || ''},
-                  )
-                  setOpenPopupFilter(false)
-                }}
-              >
-                {child.label}
-              </div>
-            ))}
-          </div>
-        </div>
+            )}
+          </>
+        )}
       </div>
-    </section>
+      {totalPage > 1 && (
+        <Pagination
+          pageCurrent={currentPage}
+          setCurrentPage={setCurrentPage}
+          pageCount={totalPage}
+          ref={sectionRef}
+          className='mt-[1.38rem] xsm:mt-[1.75rem]'
+        />
+      )}
+    </div>
   )
 }
 

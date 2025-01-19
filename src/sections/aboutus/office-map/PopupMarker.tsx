@@ -11,15 +11,16 @@ import {useRef} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Swiper as SwiperType} from 'swiper/types'
 import ImageV2 from '@/components/image/ImageV2'
-import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
+// import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
 import { ImageHeader } from '@/types/dataHeader.interface'
+import { ItemMap } from '@/pages/about-us/IndexAboutUs'
 
 type PopupMarkerProps = {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   countrySelected: string | null
   flagSelected: string | null
-  dataOfficeSelected: ItemOfficeData
+  dataOfficeSelected: ItemMap
 }
 
 const PopupMarker = ({
@@ -81,7 +82,7 @@ const PopupMarker = ({
           }}
           className='!h-[14.625rem] w-full rounded-[0.75rem]'
         >
-          {dataOfficeSelected?.gallery_image?.map((item: ImageHeader, index: number) => (
+          {dataOfficeSelected?.gallery?.map((item: ImageHeader, index: number) => (
               <SwiperSlide key={index}>
                 <Image
                   className='size-full rounded-[0.75rem] object-cover'
@@ -121,11 +122,11 @@ const PopupMarker = ({
       <div className='mb-[1rem] mt-[0.62rem] flex items-center'>
         <ICWatch className='mr-[0.5rem] size-[1.5rem] flex-shrink-0' />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
-          {dataOfficeSelected?.business_hours}
+          {dataOfficeSelected?.office_time}
         </span>
       </div>
       <Link
-        href={dataOfficeSelected?.link_google_map || ''}
+        href={dataOfficeSelected?.link || ''}
         target='_blank'
         className='group flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] border border-solid border-[rgba(18,18,18,0.16)] transition-all duration-200 lg:hover:border-none lg:hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'
       >

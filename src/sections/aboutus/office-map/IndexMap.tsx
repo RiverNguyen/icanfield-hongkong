@@ -4,12 +4,14 @@ import './style.css'
 
 // GEO JSON
 import ImageV2 from '@/components/image/ImageV2'
-import {ICountry, LeafletMap} from '@/components/LeafletMap'
+import {ICountry} from '@/components/LeafletMap'
 import ChevronRight from '@/components/svg/ChevronRight'
 import {cn} from '@/lib/utils'
+import {ItemMap} from '@/pages/about-us/IndexAboutUs'
+import {LeafletMapV2} from '@/sections/aboutus/office-map-v2'
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import PopupMarker from '@/sections/aboutus/office-map/PopupMarker'
-import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
+// import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
 import {FeatureCollection} from 'geojson'
 import {useEffect, useState} from 'react'
 
@@ -17,24 +19,13 @@ import {useEffect, useState} from 'react'
 //   countries: ICountry[][]
 // }
 
-const IndexMap = ({
-  countries,
-  dataOffice,
-}: {
-  countries: ICountry[][]
-  dataOffice: ItemOfficeData[]
-}) => {
+const IndexMap = ({dataOffice}: {dataOffice: ItemMap[]}) => {
   const [open, setOpen] = useState(false)
   const [countrySelected, setCountrySelected] = useState<string | null>(null)
   const [flagSelected, setFlagSelected] = useState<string | null>(null)
-  const [dataOfficeSelected, setDataOfficeSelected] =
-    useState<ItemOfficeData | null>(null)
-  useEffect(() => {
-    const office = dataOffice.find((item) => item.slug === countrySelected)
-    if (office) {
-      setDataOfficeSelected(office)
-    }
-  }, [countrySelected])
+  const [dataOfficeSelected, setDataOfficeSelected] = useState<ItemMap | null>(
+    null,
+  )
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (open) {
@@ -44,10 +35,11 @@ const IndexMap = ({
       }
     }
   }, [open])
-  const handleClickMarker = (country: ICountry) => {
-    setCountrySelected(country.label ? country.label : country.name)
+  const handleClickMarker = (country: ItemMap) => {
+    setCountrySelected(country.name ? country.name : country.name)
     setFlagSelected(country.flag || null)
     setOpen(true)
+    setDataOfficeSelected(country)
   }
   return (
     <div className=''>
@@ -55,11 +47,13 @@ const IndexMap = ({
         id='map_container'
         className='relative z-10 flex w-fit items-center xsm:w-full'
       >
-        <LeafletMap
+        <LeafletMapV2
           className='!h-[32.68438rem] !w-[49.6875rem] xsm:!h-[18.75rem] xsm:!w-full'
-          countries={countries}
+          countries={dataOffice}
           mapJson={customGeoJson as FeatureCollection}
           onClick={handleClickMarker}
+          zoomDesktop={4}
+          isControlZoom={false}
         />
       </div>
       <div
@@ -74,30 +68,30 @@ const IndexMap = ({
         setOpen={setOpen}
         countrySelected={countrySelected}
         flagSelected={flagSelected}
-        dataOfficeSelected={dataOfficeSelected as ItemOfficeData}
+        dataOfficeSelected={dataOfficeSelected as ItemMap}
       />
       <div className='mt-4 grid grid-cols-2 gap-[0.5rem] sm:hidden'>
-        {countries.map((country, index) => {
+        {dataOffice.map((country, index) => {
           let countryObj: ICountry = {
-            name: country[0].name,
-            label: country[0].label,
-            flag: country[0].flag,
+            name: country.name,
+            label: country.name,
+            flag: country.flag,
           }
-          if (countries.length > 1) {
-            const newPosition = country.find((item) => {
-              if (item.label) return item
+          if (dataOffice.length > 1) {
+            const newPosition = dataOffice.find((item) => {
+              if (item.name) return item
             })
             if (newPosition) {
               countryObj = {
                 name: newPosition.name,
-                label: newPosition.label,
+                label: newPosition.name,
                 flag: newPosition.flag,
               }
             }
           }
           return (
             <MarkerButton
-              onClick={() => handleClickMarker(countryObj)}
+              onClick={() => handleClickMarker(country)}
               key={index}
               {...countryObj}
             />

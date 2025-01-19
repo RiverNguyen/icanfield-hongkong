@@ -17,6 +17,7 @@ export default function ItemProgramme({
   slug: string
   }) {
   const isMobile = useIsMobile()
+  // console.log(dataPostProgramme)
   return (
     <div
       className={cn(
@@ -100,13 +101,13 @@ export default function ItemProgramme({
               ) &&
                 dataPostProgramme?.acf?.interest?.title_interest
                   .slice(0, 2)
-                  .map((item: {title: string}, index: number) => (
+                  .map((item: string, index: number) => (
                     <li
                       key={index}
                       className='text-[#5C5C5C] body16 sm:tracking-[-0.02rem] xsm:body-14'
                     >
                       <p className='line-clamp-1 text-[#5C5C5C] body16 sm:tracking-[-0.02rem] xsm:body-14'>
-                        {item?.title}
+                        {item}
                       </p>
                     </li>
                   ))}
