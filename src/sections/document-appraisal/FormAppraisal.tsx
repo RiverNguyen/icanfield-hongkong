@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select"
 import CF7Request from "@/fetch/cf7Request"
 import postData from "@/fetch/postData"
+import { isLockScroll } from "@/hooks/useBodyScrollLock"
 import useIsMobile from "@/hooks/useIsMobile"
 import { cn } from "@/lib/utils"
 import { ICLoading } from "@/sections/blogs/connect-us/FormConnectUs"
@@ -153,7 +154,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                 }
                 const request = new CF7Request(valueContactForm)
                 const response = await request.send(endpoints.contactFormSettlementDocuments)
-                if (response?.invalid_fields.length === 0) {
+                if (response?.invalid_fields?.length === 0) {
                     setValueContactForm({
                         username: valueContactForm?.username,
                         email: valueContactForm?.email,
@@ -173,7 +174,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                 setDataPostFilter(dataPost)
                 toast.success('Có ' + dataPost?.pagination?.total + ' chương trình phù hợp với bạn')
                 if (sectionRef?.current) {
-                    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+                    sectionRef?.current.scrollIntoView({ behavior: 'smooth' });
                 }
             } else {
                 toast.error('Hiện tại chưa có chương trình phù hợp liên hệ với chúng tôi để được tư vẫn thêm')
@@ -183,7 +184,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
     }
     return (
         <>
-            <section className="w-[54.125rem] xsm:w-full xsm:px-[1rem] sm:mx-auto mt-[-14.31rem] xsm:mt-[-4.31rem] relative z-30">
+            <section className="w-[54.125rem] xsm:w-full xsm:px-[1rem] sm:mx-auto mt-[-14.31rem] xsm:mt-[-4.31rem] relative">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[2.5rem] xsm:space-y-[1.5rem]">
                         <div className="space-y-[2rem] xsm:space-y-[1.5rem] p-[2.5rem] xsm:p-[2.375rem_1.125rem_1.125rem_1.125rem] rounded-[1.25rem] bg-white shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)]">
@@ -285,7 +286,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                 render={({ field }) => (
                                     <FormItem className="mb-[1.75rem] xsm:mb-[1.5rem] xsm:relative">
                                         <Select disabled={isMobile} onValueChange={field.onChange} defaultValue={field.value}>
-                                            <FormControl className="xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5] h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
+                                            <FormControl className="[&>div]:[&[data-placeholder]]:block xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5] h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
                                                 <SelectTrigger>
                                                     {isMobile ? !field.value &&
                                                         <p className="hidden body16-m text-greyscaletext-800 text-start">Quốc gia bạn quan tâm<span className="text-errtext">*</span></p>
@@ -293,7 +294,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         <p className="hidden body16-m text-greyscaletext-800 text-start">Quốc gia bạn quan tâm<span className="text-errtext">*</span></p>
                                                     }
                                                     {isMobile && field.value &&  
-                                                        <div className="body16-m text-greyscaletext-800 text-start">{textNationMb}</div>
+                                                        <div className="hidden body16-m text-greyscaletext-800 text-start">{textNationMb}</div>
                                                     }
                                                     <SelectValue placeholder="" />
                                                 </SelectTrigger>
@@ -317,12 +318,13 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         ...dataPopupMb,
                                                         nation: true,
                                                     })
+                                                    isLockScroll(true)
                                                 }
                                             }}
                                             className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                         >
                                         </div>
-                                        <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
+                                        <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[52] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
                                             dataPopupMb?.nation && 'translate-y-0 shadow-inner'
                                         )}>
                                             {dataTaxonomies?.nation?.map((e: Term, index: number) => (
@@ -345,7 +347,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                             ))}
                                         </div>
                                         <div
-                                            className={cn("fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[48]",
+                                            className={cn("!mt-0 fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[51]",
                                                 dataPopupMb?.nation && 'block'
                                             )}
                                             onClick={() => {
@@ -355,6 +357,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                     languageproficiency: false,
                                                     managementexperience: false,
                                                 })
+                                                isLockScroll(false)
                                             }}
                                         >
                                         </div>
@@ -397,7 +400,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                     render={({ field }) => (
                                         <FormItem className="mb-[1.75rem] xsm:mb-[1.5rem] xsm:relative xsm:w-full flex-1">
                                             <Select disabled={isMobile} onValueChange={field.onChange} defaultValue={field.value}>
-                                                <FormControl className="xsm:!opacity-100 xsm:p-[0.5rem_0.5rem_0.5rem_0.75rem] xsm:rounded-[0.5rem] xsm:h-[2.5rem] [&>span]:body16-m [&>p]:[&[data-placeholder]]:block [&>span]:[&[data-placeholder]]:hidden [&>p]:[&[data-placeholder]]:opacity-[0.5] [&>p]:flex-1 [&>span]:flex-1 [&>span]:text-start whitespace-normal justify-start h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
+                                                <FormControl className="xsm:!opacity-100 xsm:p-[0.5rem_0.5rem_0.5rem_0.75rem] xsm:rounded-[0.5rem] xsm:h-[2.5rem] [&>span]:body16-m [&>div]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:block [&>span]:[&[data-placeholder]]:hidden [&>p]:[&[data-placeholder]]:opacity-[0.5] [&>p]:flex-1 [&>span]:flex-1 [&>span]:text-start whitespace-normal justify-start h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
                                                     <SelectTrigger>
                                                         {isMobile ? !field.value &&
                                                             <p className="hidden body16-m text-greyscaletext-800 text-start">Trình độ học vấn<span className="text-errtext">*</span></p>
@@ -405,7 +408,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                             <p className="hidden body16-m text-greyscaletext-800 text-start">Trình độ học vấn<span className="text-errtext">*</span></p>
                                                         }
                                                         {isMobile && field.value &&  
-                                                            <div className="flex-1 body16-m text-greyscaletext-800 text-start">{textEducationlevel}</div>
+                                                            <div className="hidden flex-1 body16-m text-greyscaletext-800 text-start">{textEducationlevel}</div>
                                                         }
                                                         <SelectValue placeholder="" />
                                                     </SelectTrigger>
@@ -429,12 +432,13 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                             ...dataPopupMb,
                                                             educationlevel: true,
                                                         })
+                                                        isLockScroll(true)
                                                     }
                                                 }}
                                                 className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                             >
                                             </div>
-                                            <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
+                                            <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[52] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
                                                 dataPopupMb?.educationlevel && 'translate-y-0 shadow-inner'
                                             )}>
                                                 {dataTaxonomies?.educationLevel?.map((e: Term, index: number) => (
@@ -457,7 +461,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                 ))}
                                             </div>
                                             <div
-                                                className={cn("fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[48]",
+                                                className={cn("!mt-0 fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[51]",
                                                     dataPopupMb?.educationlevel && 'block'
                                                 )}
                                                 onClick={() => {
@@ -467,6 +471,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         languageproficiency: false,
                                                         managementexperience: false,
                                                     })
+                                                    isLockScroll(false)
                                                 }}
                                             >
                                             </div>
@@ -480,7 +485,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                     render={({ field }) => (
                                         <FormItem className="mb-[1.75rem] xsm:relative xsm:w-full flex-1">
                                             <Select disabled={isMobile} onValueChange={field.onChange} defaultValue={field.value}>
-                                                <FormControl className="xsm:!opacity-100 xsm:p-[0.5rem_0.5rem_0.5rem_0.75rem] xsm:rounded-[0.5rem] xsm:h-[2.5rem] [&>span]:body16-m [&>p]:[&[data-placeholder]]:block [&>span]:[&[data-placeholder]]:hidden [&>p]:[&[data-placeholder]]:opacity-[0.5] [&>p]:flex-1 [&>span]:flex-1 [&>span]:text-start whitespace-normal justify-start h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
+                                                <FormControl className="[&>div]:[&[data-placeholder]]:block xsm:!opacity-100 xsm:p-[0.5rem_0.5rem_0.5rem_0.75rem] xsm:rounded-[0.5rem] xsm:h-[2.5rem] [&>span]:body16-m [&>p]:[&[data-placeholder]]:block [&>span]:[&[data-placeholder]]:hidden [&>p]:[&[data-placeholder]]:opacity-[0.5] [&>p]:flex-1 [&>span]:flex-1 [&>span]:text-start whitespace-normal justify-start h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
                                                     <SelectTrigger>
                                                         {isMobile ? !field.value &&
                                                             <p className="hidden body16-m text-greyscaletext-800 text-start">Trình độ ngoại ngữ<span className="text-errtext">*</span></p>
@@ -488,7 +493,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                             <p className="hidden body16-m text-greyscaletext-800 text-start">Trình độ ngoại ngữ<span className="text-errtext">*</span></p>
                                                         }
                                                         {isMobile && field.value &&  
-                                                            <div className="flex-1 body16-m text-greyscaletext-800 text-start">{textLanguageproficiency}</div>
+                                                            <div className="hidden flex-1 body16-m text-greyscaletext-800 text-start">{textLanguageproficiency}</div>
                                                         }
                                                         <SelectValue placeholder="" />
                                                     </SelectTrigger>
@@ -512,12 +517,13 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                             ...dataPopupMb,
                                                             languageproficiency: true,
                                                         })
+                                                        isLockScroll(true)
                                                     }
                                                 }}
                                                 className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                             >
                                             </div>
-                                            <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
+                                            <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[52] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
                                                 dataPopupMb?.languageproficiency && 'translate-y-0 shadow-inner'
                                             )}>
                                                 {dataTaxonomies?.foreignLanguageProficiency?.map((e: Term, index: number) => (
@@ -540,7 +546,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                 ))}
                                             </div>
                                             <div
-                                                className={cn("fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[48]",
+                                                className={cn("!mt-0 fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[51]",
                                                     dataPopupMb?.languageproficiency && 'block'
                                                 )}
                                                 onClick={() => {
@@ -550,6 +556,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         languageproficiency: false,
                                                         managementexperience: false,
                                                     })
+                                                    isLockScroll(false)
                                                 }}
                                             >
                                             </div>
@@ -563,7 +570,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                     render={({ field }) => (
                                         <FormItem className="mb-[1.75rem] xsm:w-full xsm:relative flex-1">
                                             <Select disabled={isMobile} onValueChange={field.onChange} defaultValue={field.value}>
-                                                <FormControl className="xsm:!opacity-100 xsm:p-[0.5rem_0.5rem_0.5rem_0.75rem] xsm:rounded-[0.5rem] xsm:h-[2.5rem] [&>span]:body16-m [&>p]:[&[data-placeholder]]:block [&>span]:[&[data-placeholder]]:hidden [&>p]:[&[data-placeholder]]:opacity-[0.5] [&>p]:flex-1 [&>span]:flex-1 [&>span]:text-start whitespace-normal justify-start h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
+                                                <FormControl className="[&>div]:[&[data-placeholder]]:block xsm:!opacity-100 xsm:p-[0.5rem_0.5rem_0.5rem_0.75rem] xsm:rounded-[0.5rem] xsm:h-[2.5rem] [&>span]:body16-m [&>p]:[&[data-placeholder]]:block [&>span]:[&[data-placeholder]]:hidden [&>p]:[&[data-placeholder]]:opacity-[0.5] [&>p]:flex-1 [&>span]:flex-1 [&>span]:text-start whitespace-normal justify-start h-[3rem] p-[0.75rem_0.5rem_0.75rem_1rem] rounded-[0.75rem] bg-[#F6F6F6]">
                                                     <SelectTrigger>
                                                         {isMobile ? !field.value &&
                                                             <p className="hidden body16-m text-greyscaletext-800 text-start">Kinh nghiệm quản lí<span className="text-errtext">*</span></p>
@@ -571,7 +578,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                             <p className="hidden body16-m text-greyscaletext-800 text-start">Kinh nghiệm quản lí<span className="text-errtext">*</span></p>
                                                         }
                                                         {isMobile && field.value &&  
-                                                            <div className="flex-1 body16-m text-greyscaletext-800 text-start">{textManagementexperience}</div>
+                                                            <div className="hidden flex-1 body16-m text-greyscaletext-800 text-start">{textManagementexperience}</div>
                                                         }
                                                         <SelectValue placeholder="" />
                                                     </SelectTrigger>
@@ -595,12 +602,13 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                             ...dataPopupMb,
                                                             managementexperience: true,
                                                         })
+                                                        isLockScroll(true)
                                                     }
                                                 }}
                                                 className="bg-transparent sm:hidden absolute top-0 left-0 size-full z-40"
                                             >
                                             </div>
-                                            <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
+                                            <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[52] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
                                                 dataPopupMb?.managementexperience && 'translate-y-0 shadow-inner'
                                             )}>
                                                 {dataTaxonomies?.managementExperience?.map((e: Term, index: number) => (
@@ -623,7 +631,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                 ))}
                                             </div>
                                             <div
-                                                className={cn("fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[48]",
+                                                className={cn("!mt-0 fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[51]",
                                                     dataPopupMb?.managementexperience && 'block'
                                                 )}
                                                 onClick={() => {
@@ -633,6 +641,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                                                         languageproficiency: false,
                                                         managementexperience: false,
                                                     })
+                                                    isLockScroll(false)
                                                 }}
                                             >
                                             </div>
@@ -645,6 +654,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                             <Button
                                 className="w-full gap-0 flex items-center justify-center space-x-[0.5rem] h-[3rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]"
                                 type="submit"
+                                disabled={isPending}
                             >
                                 <p className="text-white body-14-m">Xem kết quả chương trình</p>
                                 {!isPending ? 

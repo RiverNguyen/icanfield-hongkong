@@ -1,3 +1,4 @@
+import { dataProgramsAcf } from "@/types/dataAcfImmigration.interface"
 import { Media } from "@/types/image.interface"
 
 export interface filterAppraisal {
@@ -12,6 +13,7 @@ export interface filterAppraisal {
 
 export interface bannerEvaluation {
     images: Media
+    images_mb: Media
     title_line_1: string
     title_line_2: string
     description: string
@@ -76,6 +78,6 @@ export interface dataPostFilter_pagination {
 
 export interface dataPostFilter {
     status: boolean
-    posts: []
+    posts: dataProgramsAcf[]
     pagination: dataPostFilter_pagination
 }

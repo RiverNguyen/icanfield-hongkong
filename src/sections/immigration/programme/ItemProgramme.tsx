@@ -2,9 +2,9 @@
 import IConArrow from '@/components/icon/IConArrow'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import IConMessager from '@/sections/immigration/programme/IConMessager'
-import {dataProgramsAcf} from '@/types/dataAcfImmigration.interface'
+import { dataProgramsAcf } from '@/types/dataAcfImmigration.interface'
 import Link from 'next/link'
 
 export default function ItemProgramme({
@@ -15,7 +15,7 @@ export default function ItemProgramme({
   className?: string
   dataPostProgramme: dataProgramsAcf
   slug: string
-}) {
+  }) {
   const isMobile = useIsMobile()
   return (
     <div
@@ -24,7 +24,7 @@ export default function ItemProgramme({
         className,
       )}
     >
-      <div className='relative h-[18.5625rem] w-full rounded-[1.25rem] xsm:h-[14.25rem]'>
+      <Link href={'/' + slug + '/' + dataPostProgramme?.slug} className='relative block h-[18.5625rem] w-full rounded-[1.25rem] xsm:h-[14.25rem]'>
         <ImageV2
           className='size-full rounded-[1.25rem] object-cover'
           width={464}
@@ -60,7 +60,7 @@ export default function ItemProgramme({
             </div>
           </div>
         )}
-      </div>
+      </Link>
       {!isMobile && (
         <div className='flex w-full items-center justify-between p-[1.25rem_1.5rem] xsm:hidden'>
           <div>
@@ -85,7 +85,7 @@ export default function ItemProgramme({
           </div>
         </div>
       )}
-      {Array.isArray(dataPostProgramme?.acf?.interest?.title_interest) ? (
+      {dataPostProgramme?.acf?.interest?.title_interest ? (
         <div className='px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]'>
           <div className='space-y-[0.625rem] rounded-[0.75rem] bg-background p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem]'>
             <div className='flex w-full items-center justify-between'>
@@ -96,17 +96,17 @@ export default function ItemProgramme({
             </div>
             <ul className='list-disc pl-[1.5rem]'>
               {Array.isArray(
-                dataPostProgramme?.acf?.interest?.title_interest,
+                dataPostProgramme?.acf?.interest?.title_interest
               ) &&
                 dataPostProgramme?.acf?.interest?.title_interest
                   .slice(0, 2)
-                  .map((item: string, index: number) => (
+                  .map((item: {title: string}, index: number) => (
                     <li
                       key={index}
                       className='text-[#5C5C5C] body16 sm:tracking-[-0.02rem] xsm:body-14'
                     >
                       <p className='line-clamp-1 text-[#5C5C5C] body16 sm:tracking-[-0.02rem] xsm:body-14'>
-                        {item}
+                        {item?.title}
                       </p>
                     </li>
                   ))}

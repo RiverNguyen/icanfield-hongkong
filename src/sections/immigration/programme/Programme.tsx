@@ -1,7 +1,11 @@
 'use client'
 import IConSeeMore from '@/components/icon/IConSeeMore'
 import ImageV2 from '@/components/image/ImageV2'
-import {fetcher} from '@/lib/swr'
+import useIsMobile from '@/hooks/useIsMobile'
+import { fetcher } from '@/lib/swr'
+import { cn } from '@/lib/utils'
+import { ICLoading } from '@/sections/blogs/connect-us/FormConnectUs'
+import ICNext from '@/sections/document-appraisal/ICNext'
 import FilterProgramme from '@/sections/immigration/programme/FilterPrograme'
 import ItemProgramme from '@/sections/immigration/programme/ItemProgramme'
 import {
@@ -10,8 +14,9 @@ import {
   dataProgramsAcf,
 } from '@/types/dataAcfImmigration.interface'
 import endpoints from '@/utils/endpoints'
-import {useRouter, useSearchParams} from 'next/navigation'
-import {useEffect, useMemo, useRef, useState} from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
+import ReactPaginate from 'react-paginate'
 import useSWR from 'swr'
 import './style.css'
 
@@ -29,15 +34,16 @@ export default function Programme({
 }: {
   dataPrograms: dataPrograms
   slug: string
-}) {
+  }) {
+  const isMobile = useIsMobile()
   const searchParams = useSearchParams()
-  const router = useRouter()
   const sectionRef = useRef<HTMLElement>(null)
-  const paramNew = new URLSearchParams(searchParams?.toString() || '')
   const slugPage = searchParams ? Number(searchParams.get('page')) : 1
   const slugOrder = searchParams ? searchParams.get('order') : ''
   const [listPrograms, setListPrograms] = useState<dataPrograms>()
   const [search, setSearch] = useState<string>('')
+  const [page, setPage] = useState<number>(1)
+  const [isPending, setTransition] = useTransition()
   useEffect(() => {
     setListPrograms(dataPrograms)
   }, [])
@@ -79,6 +85,37 @@ export default function Programme({
       setSelectedSortOption(sortOption ?? sortOptions[0])
     }
   }, [])
+  useEffect(() => { 
+    if (page > 1) {
+      setTransition(async () => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${endpoints.settlementPrograms}?page=${page}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}`);
+            const data = await response.json();
+            if (data?.success) {
+              const value = {
+                success: data?.success,
+                pagination: {
+                  current_page: data?.pagination?.current_page,
+                  per_page: data?.pagination?.per_page,
+                  total_posts: data?.pagination?.total_posts,
+                  total_pages: data?.pagination?.total_pages,
+                },
+                data: [
+                  ...(listPrograms?.data || []),
+                  ...(data?.data || []),
+                ],
+              }
+              setListPrograms(value)
+            }
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+        fetchData();
+      })
+    }
+  }, [page])
   return (
     <section
       ref={sectionRef}
@@ -108,10 +145,12 @@ export default function Programme({
             setSearch={setSearch}
             selectedSortOption={selectedSortOption}
             setSelectedSortOption={setSelectedSortOption}
+            setPage={setPage}
+            page={page}
           />
         </div>
         <div className='flex flex-1 flex-col items-center pb-[9.5rem] xsm:mt-[1rem] xsm:w-full xsm:px-[1rem] xsm:pb-[2.5rem]'>
-          <div className='grid w-full grid-cols-2 gap-[1.5rem] pb-[12.59rem] xsm:grid-cols-1 xsm:pb-[2rem]'>
+          <div className='grid w-full grid-cols-2 gap-[1.5rem] pb-[12.59rem] xsm:grid-cols-1 xsm:pb-[0rem]'>
             {listPrograms?.data?.map((e: dataProgramsAcf, index: number) => (
               <ItemProgramme
                 key={index}
@@ -121,24 +160,42 @@ export default function Programme({
               />
             ))}
           </div>
-          {listPrograms?.pagination?.current_page !==
+          {!isMobile && listPrograms?.pagination?.current_page !==
             listPrograms?.pagination?.total_pages && (
             <div
               onClick={() => {
-                paramNew.set(
-                  'page',
-                  String(Number(listPrograms?.pagination?.current_page) + 1),
-                )
-                router.push(`?${paramNew.toString()}`, {
-                  scroll: false,
-                })
+                setPage(page + 1)
               }}
-              className='flex cursor-pointer items-center space-x-[1.12rem]'
+              className={cn('flex cursor-pointer items-center space-x-[1.12rem]',
+                isPending && 'pointer-events-none'
+              )}
             >
-              <IConSeeMore className='up-down size-[1.375rem] object-contain' />
-              <p className='text-brown body-14'>XEM THÊM</p>
+              {isPending ? (
+                <ICLoading className='text-brown' />
+            ) : (
+                <>
+                  <IConSeeMore className='up-down size-[1.375rem] object-contain' />
+                  <p className='text-brown body-14'>XEM THÊM</p>
+                </>
+              )}
             </div>
           )}
+          {isMobile &&
+            listPrograms?.pagination?.current_page !==
+              listPrograms?.pagination?.total_pages && (
+              <ReactPaginate
+                previousLabel={<ICNext className='' />}
+                nextLabel={<ICNext className='rotate-[180deg]' />}
+                pageCount={listPrograms?.pagination?.total_pages || 1}
+                onPageChange={() => {setPage(page + 1)}}
+                containerClassName={
+                  'flex mt-[1.5rem] w-full space-x-[1rem] items-center justify-center [&_.previous_a]:border-0 [&_.next_a]:border-0 [&_li_a]:flex-center [&_li_a]:size-[2rem] [&_li_a]:rounded-[0.75rem] [&_li_a]:border-[0.64px] [&_li_a]:border-solid [&_li_a]:border-[#EBEBEB] [&_li_a]:bg-white [&_li_a]:text-[0.7rem] [&_li_a]:text-[#3F2214] [&_li_a]:font-bold'
+                }
+                activeClassName={
+                  '[&_a]:!bg-[#3F2214] [&_a]:!border-[0.8px] [&_a]:!border-solid [&_a]:!border-[#CFCECE] [&_a]:text-[0.7rem] [&_a]:!text-white [&_a]:font-bold'
+                }
+              />
+            )}
         </div>
       </div>
     </section>

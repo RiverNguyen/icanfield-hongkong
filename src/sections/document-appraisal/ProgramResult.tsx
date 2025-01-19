@@ -5,9 +5,9 @@ import postData from '@/fetch/postData'
 import useIsMobile from '@/hooks/useIsMobile'
 import ICNext from '@/sections/document-appraisal/ICNext'
 import ItemProgramme from '@/sections/immigration/programme/ItemProgramme'
-import {dataProgramsAcf} from '@/types/dataAcfImmigration.interface'
-import {dataPostFilter, valueFilterPost} from '@/types/dataAppraisal.interface'
-import {useRef, useState} from 'react'
+import { dataProgramsAcf } from '@/types/dataAcfImmigration.interface'
+import { dataPostFilter, valueFilterPost } from '@/types/dataAppraisal.interface'
+import { useRef, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 
 export default function ProgramResult({
@@ -49,7 +49,7 @@ export default function ProgramResult({
   return (
     <div
       ref={elemtRef}
-      className='mt-[3rem] section-container'
+      className='mt-[3rem] section-container xsm:mb-[1rem]'
     >
       <h3 className='mb-[2.12rem] w-full text-center text-brown heading2'>
         Kết quả chương trình của bạn
@@ -58,7 +58,7 @@ export default function ProgramResult({
         {dataPostFilter?.posts?.map((e: dataProgramsAcf, index: number) => (
           <ItemProgramme
             key={index}
-            slug={e?.title}
+            slug={e?.nation?.[0]}
             dataPostProgramme={e}
           />
         ))}

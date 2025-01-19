@@ -96,13 +96,16 @@ export interface information {
 }
 export interface interest {
   amount_of_benefits: string
-  title_interest: string[]
+  title_interest: {
+    title: string
+  }[]
 }
 export interface dataProgramsAcf {
   id: number
   title: string
   slug: string
   featured_image: string
+  nation: string[]
   acf: {
     information: information
     interest: interest

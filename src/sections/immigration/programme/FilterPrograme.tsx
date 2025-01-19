@@ -16,7 +16,9 @@ export default function FilterProgramme({
   backgroundInput = 'bg-[#EEE]',
   search,
   placeholder = 'Tìm kiếm trong chương trình',
-  sectionRef
+  sectionRef,
+  setPage,
+  page
 }: {
   sortOptions: SortOptionProgramme[]
   className?: string
@@ -27,6 +29,8 @@ export default function FilterProgramme({
   search: string
   placeholder?: string
   sectionRef: RefObject<HTMLElement>
+  setPage?: React.Dispatch<React.SetStateAction<number>>
+  page?: number
 }) {
   const router = useRouter()
   const pathName = usePathname()
@@ -76,6 +80,9 @@ export default function FilterProgramme({
     // handle search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     debounced(e.target.value)
+    if (page && setPage && page > 1) {
+      setPage(1)
+    }
   }
   return (
     <div
@@ -128,6 +135,9 @@ export default function FilterProgramme({
                   onClick={() => {
                     handleSelectSortOption(sortOption)
                     setIsOpenSelectCategory(false)
+                    if (setPage) {
+                      setPage(1)
+                    }
                   }}
                 >
                   {sortOption?.name}
