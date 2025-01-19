@@ -79,7 +79,7 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
           </span>
         </div>
         <div className='relative space-y-[1rem] bg-transparent sm:space-y-[2rem] sm:pr-[5rem] sm:pt-[2rem] xsm:px-[1rem] xsm:pb-[2.5rem]'>
-          {items &&
+          {Array.isArray(items) &&
             items.map((item, index) => (
               <AdvantagesBenefitsItem
                 {...item}

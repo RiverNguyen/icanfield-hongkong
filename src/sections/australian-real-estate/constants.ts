@@ -1,4 +1,4 @@
-import { BenefitsProps } from "@/sections/australian-real-estate/Benefits";
+import {BenefitsProps} from '@/sections/australian-real-estate/Benefits'
 
 export const benefitsProps: BenefitsProps = {
   title: 'NHỮNG QUYỀN LỢI KHI SỞ HỮU BẤT ĐỘNG SẢN Ở ÚC',
