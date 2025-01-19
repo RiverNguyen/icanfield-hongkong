@@ -75,7 +75,7 @@ export default function Benefits({title, description, items}: BenefitsProps) {
           navigation
           className='w-full'
         >
-          {items.map((item, index) => (
+          {Array.isArray(items) && items?.map((item, index) => (
             <SwiperSlide
               key={index}
               className='!w-[18.875rem]'
@@ -89,7 +89,7 @@ export default function Benefits({title, description, items}: BenefitsProps) {
         </Swiper>
       </div>
       <div className='relative z-10 mt-24 flex flex-wrap gap-6 xsm:hidden xsm:px-4'>
-        {items.map((item, index) => (
+        {Array.isArray(items) && items.map((item, index) => (
           <BenefitItem
             key={index}
             {...item}

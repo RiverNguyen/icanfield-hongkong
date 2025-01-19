@@ -74,7 +74,7 @@ const ProjectTransparency: FC<IProjectTransparencyProps> = ({
         </Link>
       </div>
       <div className='scrollbar-hidden absolute left-1/2 top-[22.5rem] z-[9] grid w-[90rem] -translate-x-1/2 grid-cols-5 xsm:left-0 xsm:top-[11rem] xsm:flex xsm:w-full xsm:-translate-x-0 xsm:overflow-x-auto xsm:pl-4'>
-        {Criteria.map((item, index) => (
+        {Array.isArray(Criteria) && Criteria?.map((item, index) => (
           <div
             key={index}
             className='group relative h-[38.75rem] cursor-pointer rounded-[1rem] border-[0.8px] border-[rgba(255,255,255,0.25)] transition-all duration-300 hover:bg-white sm:bg-[linear-gradient(306deg,rgba(78,53,7,0.15)_17.79%,rgba(230,245,121,0.15)_82.21%)] sm:hover:translate-y-[-3rem] xsm:mr-4 xsm:h-[20rem] xsm:w-[18rem] xsm:bg-white'

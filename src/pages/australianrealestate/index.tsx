@@ -586,16 +586,16 @@ export default function AustralianRealEstate({
   return (
     <main className='bg-background'>
       <Banner
-        title_line_1={dataAcf.banner_australia.clone_banner.title_line_1}
-        title_line_2={dataAcf.banner_australia.clone_banner.title_line_2}
-        description={dataAcf.banner_australia.clone_banner.description}
+        title_line_1={dataAcf?.banner_australia.clone_banner.title_line_1}
+        title_line_2={dataAcf?.banner_australia.clone_banner.title_line_2}
+        description={dataAcf?.banner_australia.clone_banner.description}
         backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_30%,rgba(240,240,240,0)_64%,rgba(246,246,244,1)_100%)]'
         className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
         background_pc={
-          dataAcf.banner_australia.clone_banner.background_pc as Media
+          dataAcf?.banner_australia.clone_banner.background_pc as Media
         }
         background_mb={
-          dataAcf.banner_australia.clone_banner.background_mb as Media
+          dataAcf?.banner_australia.clone_banner.background_mb as Media
         }
       >
         <Breadcrumb
@@ -607,7 +607,7 @@ export default function AustralianRealEstate({
       </Banner>
       <Benefits {...dataAcf?.benefits} />
       <AdvantagesBenefits
-        {...dataAcf.clone_advantages_benefits}
+        {...dataAcf?.clone_advantages_benefits}
         className={{
           headding:
             'flex-row justify-between section-container sm:max-w-[90rem] xsm:flex-col [&>p]:text-start [&>p]:sm:w-[29.375rem]',
@@ -615,7 +615,7 @@ export default function AustralianRealEstate({
             'flex w-[38.625rem] flex-col items-start xsm:w-full xsm:px-0 [&>div]:text-start',
         }}
       />
-      <PioneeringValuesAustralia data={dataAcf.section_map} />
+      <PioneeringValuesAustralia data={dataAcf?.section_map} />
       <Suspense fallback={<p>Loading...</p>}>
         <OutstandingAustralia
           listItems={dataListPost}
@@ -623,7 +623,7 @@ export default function AustralianRealEstate({
         />
       </Suspense>
       <ProjectTransparency
-        data={dataInvestment.data}
+        data={dataInvestment?.data}
         fontSize='text-[2rem] [&_strong]:text-[5.625rem]'
         linkImage='/imgs/EB5/projects-transparency/sydney2-w.webp'
         className='h-[92rem]'
