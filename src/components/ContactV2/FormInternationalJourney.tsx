@@ -3,19 +3,19 @@ import ImageV2 from '@/components/image/ImageV2'
 import { SuccessPopup } from '@/components/success-popup'
 import { Button } from '@/components/ui/button'
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from '@/components/ui/textarea'
 import CF7Request from '@/fetch/cf7Request'
@@ -203,7 +203,7 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
                 control={form.control}
                 name="nationSettlement"
                 render={({ field }) => (
-                    <FormItem>
+                    <FormItem className='xsm:relative'>
                         <Select disabled={isMobile} onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl className="xsm:mt-[0.75rem] mt-[1.5rem] xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5] h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)]">
                                 <SelectTrigger>
