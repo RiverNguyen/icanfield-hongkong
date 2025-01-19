@@ -26,7 +26,7 @@ export const Banner: FC<IBannerProps> = ({
 }) => {
   return (
     <section
-      className={`relative min-h-[33.5rem] overflow-hidden pt-[3.75rem] sm:min-h-[55.9375rem] sm:pt-[6.44rem] xsm:rounded-[0_0_1rem_1rem] ${className}`}
+      className={`relative min-h-[33.5rem] overflow-hidden pt-[3.75rem] sm:min-h-[49.9375rem] sm:pt-[6.44rem] xsm:rounded-[0_0_1rem_1rem] ${className}`}
     >
       <ImageV2
         src={backgroundPc ? backgroundPc.url : '/fallbackImage.gif'}

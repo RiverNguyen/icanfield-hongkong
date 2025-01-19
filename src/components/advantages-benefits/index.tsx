@@ -59,7 +59,7 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
         </p>
       </div>
       <div className='relative mt-[0.69rem] flex sm:mt-[4rem] xsm:flex-col'>
-        <div className='sticky left-0 top-0 h-dvh w-full sm:top-[6.44rem] sm:h-[46.25rem] xsm:rounded-[0rem_4rem_0rem_0rem]'>
+        <div className='sticky left-0 top-0 h-dvh w-full sm:top-[6.44rem] sm:h-[46.25rem] xsm:rounded-[0rem_4rem_0rem_0rem] pb-[2rem]'>
           <ImageV2
             src={backgroundPc ? backgroundPc.url : ''}
             alt={backgroundPc ? backgroundPc.alt : ''}
@@ -74,11 +74,11 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
             height={backgroundMb?.height || 1000}
             className='h-full w-full sm:hidden'
           />
-          <span className='heading-hero-title-2 absolute left-[5rem] top-[8rem] max-w-[29.6875rem] font-optima font-medium text-white xsm:hidden'>
+          <span className='heading-hero-title-2 absolute left-[5rem] top-[8rem] max-w-[29.6875rem] font-optima font-medium text-white xsm:text-center xsm:text-[1.9375rem] xms:top-[8rem] xsm:max-w-full xsm:w-[82%] xsm:left-1/2 xsm:-translate-x-1/2'>
             {slogan}
           </span>
         </div>
-        <div className='relative space-y-[1rem] bg-transparent sm:space-y-[2rem] sm:pr-[5rem] sm:pt-[2rem] xsm:px-[1rem] xsm:pb-[2.5rem]'>
+        <div className='relative space-y-[1rem] bg-transparent sm:space-y-[2rem] sm:pr-[5rem] sm:pt-[2rem] xsm:px-[1rem] xsm:pb-[2.5rem] pb-[2rem] sm:-translate-y-4 sm:mb-4'>
           {Array.isArray(items) &&
             items.map((item, index) => (
               <AdvantagesBenefitsItem
@@ -109,7 +109,7 @@ export const AdvantagesBenefitsItem: FC<IAdvantagesBenefitsItemProps> = ({
   return (
     <div
       className={cn(
-        'group flex overflow-hidden rounded-[1rem] p-[1rem] sm:h-[19.1875rem] sm:w-[36.625rem] sm:space-x-[1rem] sm:bg-[linear-gradient(55deg,#FFF_88.85%,#F5C178_96.63%)] sm:ring-[6px] sm:ring-[rgba(245,193,120,0.08)] xsm:flex-col xsm:bg-white',
+        'group flex overflow-hidden rounded-[1rem] mb-[1rem] p-[1rem] sm:h-[19.1875rem] sm:w-[36.625rem] sm:space-x-[1rem] sm:bg-[linear-gradient(55deg,#FFF_88.85%,#F5C178_96.63%)] sm:ring-[6px] sm:ring-[rgba(245,193,120,0.08)] xsm:flex-col xsm:bg-white',
         className,
       )}
     >

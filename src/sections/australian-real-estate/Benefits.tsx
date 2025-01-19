@@ -34,15 +34,15 @@ const BenefitItem = ({
         <div className='flex items-start'>
           <ImageV2
             src={icon}
-            width={100}
-            height={100}
+            width={200}
+            height={200}
             alt=''
             className='h-[3.75rem] w-[3.75rem] object-cover group-hover:hidden'
           />
           <ImageV2
             src={iconHover || icon}
-            width={100}
-            height={100}
+            width={200}
+            height={200}
             alt=''
             className='hidden h-[3.75rem] w-[3.75rem] object-cover group-hover:block'
           />
@@ -63,7 +63,7 @@ export type BenefitsProps = {
 
 export default function Benefits({title, description, items}: BenefitsProps) {
   return (
-    <section className='section-container relative z-30 -mt-[20.25rem] rounded-[2rem_2rem_0rem_0rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-[4rem] xsm:mt-20 xsm:p-0'>
+    <section className='section-container relative z-30 -mt-[20.25rem] rounded-[2rem_2rem_0rem_0rem] sm:bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-[4rem] xsm:mt-20 xsm:p-0 xsm:bg-background'>
       <div className='w-[47.6875rem] space-y-6 xsm:w-full xsm:space-y-5 xsm:px-4'>
         <h2 className='heading1 font-optima text-brown'>{title}</h2>
         <p className='body16-r55 text-greyscaletext-body'>{description}</p>
@@ -73,7 +73,7 @@ export default function Benefits({title, description, items}: BenefitsProps) {
           slidesPerView='auto'
           spaceBetween={16}
           navigation
-          className='w-full'
+          className='w-full !px-4'
         >
           {Array.isArray(items) && items?.map((item, index) => (
             <SwiperSlide

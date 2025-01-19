@@ -1,7 +1,7 @@
 export const info_banner = [
   {
     name: 'Diện tích',
-    icon: '/imgs/detail-property/area.webp',
+    icon: '/icons/detail-property/icon.svg',
   },
   {
     name: 'Giá bán',

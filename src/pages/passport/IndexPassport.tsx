@@ -37,8 +37,8 @@ const IndexPassport = ({
           ]}
         />
       </Banner>
-      <div className='mt-[10rem] flex w-full items-center rounded-[2.5rem_2.5rem_0_0] bg-[#F6F6F4] sm:h-screen xsm:mt-[5rem] xsm:h-fit'>
-        <div className='relative flex w-full section-container sm:h-[38.9rem] sm:space-x-[1.5rem] xsm:h-fit xsm:flex-col'>
+      <div className=' flex w-full items-center rounded-[2.5rem_2.5rem_0_0] sm:pt-[5rem] bg-[#F6F6F4] sm:h-fit xsm:mt-0  xsm:h-fit z-[21] relative'>
+        <div className='relative flex w-full section-container sm:h-[38.9rem] sm:space-x-[1.5rem] xsm:h-fit xsm:flex-col xsm:-translate-y-[2rem]'>
           <Suspense>
             {' '}
             <WrapperAside />

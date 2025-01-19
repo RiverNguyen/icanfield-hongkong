@@ -206,7 +206,7 @@ const ResultPassport = ({codePostal}: IProps) => {
       <button
         onClick={() => setShowCountry(!showCountry)}
         className={cn(
-          'mt-[1rem] flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] px-[1.5rem] text-white body-14-m xsm:h-[4.125rem] xsm:justify-between xsm:pl-[1rem] xsm:pr-[0.75rem]',
+          'mt-[1rem] flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] px-[1rem] text-white body-14-m xsm:h-[4.125rem] xsm:justify-between xsm:pl-[1rem] xsm:pr-[0.75rem]',
           !data?.visa_free_access && 'pointer-events-none opacity-50',
         )}
       >

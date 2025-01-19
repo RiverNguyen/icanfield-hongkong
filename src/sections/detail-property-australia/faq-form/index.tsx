@@ -79,7 +79,7 @@ const FAQForm = () => {
         className='absolute left-0 right-0 top-0 h-auto w-full'
       />
       <div className='relative z-10'>
-        <h3 className='heading4 max-w-[14.625rem] font-optima font-semibold text-Phase-1-Brown'>
+        <h3 className='heading4 max-w-[14.625rem] font-optima font-semibold text-Phase-1-Brown xsm:text-[1.125rem]'>
           Để lại thông tin, chúng tôi sẽ hỗ trợ bạn
         </h3>
         <Form {...form}>
@@ -309,7 +309,7 @@ export const FAQFormMobile = ({className}: {className?: string}) => {
           height={50}
           className={cn(
             'absolute left-1/2 top-3 h-[0.5625rem] w-[0.875rem] -translate-x-1/2 transform object-cover transition-all duration-300',
-            open ? 'rotate-180' : 'rotate-0',
+            !open ? 'rotate-180' : 'rotate-0',
           )}
         />
         <p className='relative z-10 text-xs font-semibold uppercase leading-[1.2rem] tracking-[-0.0225rem] text-white'>
