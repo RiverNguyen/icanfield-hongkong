@@ -9,6 +9,8 @@ const endpoints = {
     list: '/categories',
   },
   homepage: '/pages/96',
+  compareProgramsPage: '/pages/1621',
+  comparePrograms: '/comparep-rograms',
   homeFeatured: '/home-featured',
   contactForm: {
     id: '317',

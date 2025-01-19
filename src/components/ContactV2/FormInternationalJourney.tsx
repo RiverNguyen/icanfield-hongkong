@@ -1,7 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {SuccessPopup} from '@/components/success-popup'
-import {Button} from '@/components/ui/button'
+import { SuccessPopup } from '@/components/success-popup'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -9,7 +9,7 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form'
-import {Input} from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
@@ -17,17 +17,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import {Textarea} from '@/components/ui/textarea'
+import { Textarea } from '@/components/ui/textarea'
 import CF7Request from '@/fetch/cf7Request'
-import {isLockScroll} from '@/hooks/useBodyScrollLock'
+import { isLockScroll } from '@/hooks/useBodyScrollLock'
 import useIsMobile from '@/hooks/useIsMobile'
-import {cn} from '@/lib/utils'
-import {Term} from '@/sections/homepage/banner/bannerHp.interface'
+import { cn } from '@/lib/utils'
+import { Term } from '@/sections/homepage/banner/bannerHp.interface'
 import endpoints from '@/utils/endpoints'
-import {zodResolver} from '@hookform/resolvers/zod'
-import {useEffect, useRef, useState} from 'react'
-import {useForm} from 'react-hook-form'
-import {z} from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const formSchema = z.object({
   username: z
@@ -207,7 +207,7 @@ const FormInternationalJourney = ({
               control={form.control}
               name='nationSettlement'
               render={({field}) => (
-                <FormItem>
+                <FormItem className='xsm:relative'>
                   <Select
                     disabled={isMobile}
                     onValueChange={field.onChange}
