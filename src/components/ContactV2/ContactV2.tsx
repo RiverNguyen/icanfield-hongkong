@@ -12,7 +12,7 @@ export default function ContactV2({
   return (
     <section
       ref={elementRef}
-      className='relative flex h-[100vh] bg-[linear-gradient(180deg,#F6F6F4_0%,#FAF8F1_100%)] xsm:h-max'
+      className='relative flex h-[100vh] bg-[linear-gradient(180deg,#F6F6F4_0%,#FAF8F1_100%)] xsm:h-max z-[22]'
     >
       <div className='relative h-full w-[57rem] xsm:hidden'>
         <ImageV2

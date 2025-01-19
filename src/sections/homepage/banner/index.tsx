@@ -119,7 +119,7 @@ const BannerHomepage = ({
     setKeyFilter(key)
     setOpenPopupFilter(true)
   }
-  const currentFilter = filterOptions.find((filter) => filter.key === keyFilter)
+  const currentFilter = filterOptionsLastest.find((filter) => filter.key === keyFilter)
   //handle Search
   const toCamelCase = (str:string) => {
     return str.replace(/-([a-z])/g, (match, p1) => p1.toUpperCase())
@@ -362,7 +362,7 @@ const BannerHomepage = ({
             </React.Fragment>
           ))}
         </div>
-        <button className='mt-4 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] py-3'>
+        <button className='mt-4 flex h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] py-3' onClick={searchFilter}>
           <ImageV2
             src='/icons/homepage/banner/search.svg'
             alt='filter'

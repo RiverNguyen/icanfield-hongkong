@@ -258,9 +258,9 @@ const Header = ({
     }
   }
 
-  useEffect(() => {
-    console.log('isCurrentLanguage', isCurrentLanguage)
-  }, [isCurrentLanguage])
+  // useEffect(() => {
+  //   console.log('isCurrentLanguage', isCurrentLanguage)
+  // }, [isCurrentLanguage])
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
       <div
