@@ -8,7 +8,6 @@ import {Breadcrumb} from '@/components/breadcrumb'
 import ProjectTransparency, {
   IItemInvestmentOpportunities,
 } from '@/components/project-transparency'
-import {IItemAustralia} from '@/components/itemAustralia/itemAustralia.interface'
 import {WhyChooseUs} from '@/components/why-choose-us'
 import Benefits from '@/sections/australian-real-estate/Benefits'
 // import {benefitsProps} from '@/sections/australian-real-estate/constants'
@@ -19,6 +18,8 @@ import {Suspense} from 'react'
 import {BenefitsProps} from '@/sections/australian-real-estate/Benefits'
 import dynamic from 'next/dynamic'
 import {ICountry} from '@/components/LeafletMap'
+import OutstandingAustralia from '@/sections/australian-real-estate/OutstandingAustralia'
+import { IItemAustralia } from '@/components/itemAustralia/itemAustralia.interface'
 const PioneeringValuesAustralia = dynamic(
   () => import('@/sections/australian-real-estate/section-map'),
   {
@@ -555,19 +556,29 @@ interface dataAcf {
       footer_content: string
     }
   }
-  section_map:{
-        title: string
-        description: string
-        data_state_usa: ICountry[]
+  section_map: {
+    title: string
+    description: string
+    data_state_usa: ICountry[]
   }
 }
 
 export default function AustralianRealEstate({
   dataNationSettlement,
   dataAcf,
+  dataListPost
 }: {
   dataNationSettlement: Term[]
   dataAcf: dataAcf
+  dataListPost: {
+    success: boolean
+    total: number
+    totalPages: number
+    page: number
+    limit: number
+    data: IItemAustralia[]
+  }
+
 }) {
   const dataInvestment = {
     data: {...dataAcf?.investment_process_australia?.safety_standards},
@@ -606,16 +617,15 @@ export default function AustralianRealEstate({
       />
       <PioneeringValuesAustralia data={dataAcf.section_map} />
       <Suspense fallback={<p>Loading...</p>}>
-        <OutstandingProjectEB5
-          listItems={data?.listItems}
-          title='Dự án bất động sản Úc'
-          className='flex items-center justify-between mb-[1rem] xsm:flex-col xsm:items-start xsm:mb-0'
+        <OutstandingAustralia
+          listItems={dataListPost}
+          categories={data?.categories}
         />
       </Suspense>
       <ProjectTransparency
         data={dataInvestment.data}
         fontSize='text-[2rem] [&_strong]:text-[5.625rem]'
-        linkImage = '/imgs/EB5/projects-transparency/sydney2-w.webp'
+        linkImage='/imgs/EB5/projects-transparency/sydney2-w.webp'
         className='h-[92rem]'
       />
       <WhyChooseUs {...why_choose_us} />

@@ -24,21 +24,17 @@ export interface IOutstandingProjectEB5Props {
     limit: number
     data: IProject[]
   }
-  categories?: {
+  categories: {
     id: number
     name: string
     slug: string
     taxonomy: string
   }[]
-  title?: string
-  className?: string
 }
 
 const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
   listItems,
   categories,
-  title = 'Dự án EB-5 tiêu biểu',
-  className = '',
 }) => {
   const sortOptions = [
     {name: 'Tất cả', value: 'all', orderBy: 'all'},
@@ -61,7 +57,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
     sortOptions[0],
   )
   function handleGetTaxonomy(categorySlug: string) {
-    return categories?.find(
+    return categories.find(
       (category: Category) => category.slug === categorySlug,
     )?.taxonomy
   }
@@ -100,7 +96,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
         <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown xsm:text-[1.5rem]'>
           Dự án EB-5 tiêu biểu
         </h2>
-        <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:mb-[2.19rem] xsm:flex-col xsm:sticky xsm:top-[3.75rem] xsm:bg-background xsm:pb-1'>
+        <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:sticky xsm:top-[3.75rem] xsm:mb-[2.19rem] xsm:flex-col xsm:bg-background xsm:pb-1'>
           <IndexTabs
             categories={[
               {id: 0, name: 'Tất cả', slug: 'all', taxonomy: ''},
@@ -115,7 +111,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
             selectedSortOption={selectedSortOption}
             setSearch={setSearch}
             setSelectedSortOption={setSelectedSortOption}
-            className='sm:flex sm:flex-row-reverse gap-x-3 xsm:flex'
+            className='gap-x-3 sm:flex sm:flex-row-reverse xsm:flex'
             backgroundInput='bg-[#EEE]'
           />
         </div>

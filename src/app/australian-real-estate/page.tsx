@@ -14,7 +14,7 @@ export default async function page() {
       revalidate: 10,
     },
   }
-  const [dataTaxonomies, dataAcf,dataListPost] = await Promise.all([
+  const [dataTaxonomies, dataAcf, dataListPost] = await Promise.all([
     fetchData(requestTaxonomies),
     fetchDataACF({
       api: '/pages/938?acf_format=standard',
