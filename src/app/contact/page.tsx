@@ -24,7 +24,7 @@ const page = async () => {
     fetchDataACF(requestPage)
   ])
   return (
-    <main className=''>
+    <main className='bg-background'>
       <BannerTop {...dataPage?.acf?.banner_contact} />
       <WrapperConnectUsV2>
         <FormConnectUsV2 dataTaxonomies={dataTaxonomies?.nation} />

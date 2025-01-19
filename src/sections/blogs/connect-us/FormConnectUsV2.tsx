@@ -96,7 +96,7 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
   }
   return (
     <div className='relative h-fit w-full'>
-      <h2 className='mb-[2rem] font-optima font-medium text-Phase-1-Brown heading3 xsm:mb-[1.88rem] xsm:text-[1.5rem]'>
+      <h2 className='mb-[2rem] font-optima font-semibold text-Phase-1-Brown heading2 xsm:mb-[1.88rem] xsm:text-[1.5rem]'>
         Hãy kết nối với chúng tôi
       </h2>
       <Form {...form}>
