@@ -8,8 +8,8 @@ import {Pagination} from '@/components/pagination/Pagination'
 import {fetcher} from '@/lib/swr'
 // import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
-import IndexTabs from '@/sections/blogs/list-blogs/tab'
-import {Category, SortOption} from '@/types/blogs.interface'
+// import IndexTabs from '@/sections/blogs/list-blogs/tab'
+import {SortOption} from '@/types/blogs.interface'
 // import endpoints from '@/utils/endpoints'
 import {useSearchParams} from 'next/navigation'
 import {FC, Fragment, useEffect, useMemo, useRef, useState} from 'react'
@@ -32,10 +32,7 @@ export interface IOutstandingProjectEB5Props {
   }[]
 }
 
-const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({
-  listItems,
-  categories,
-}) => {
+const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({listItems}) => {
   const sortOptions = [
     {name: 'Tất cả', value: 'all', orderBy: 'all'},
     {name: 'Mới nhất', value: 'DESC', orderBy: 'date'},
@@ -47,21 +44,15 @@ const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({
   const searchParams = useSearchParams()
   const [search, setSearch] = useState<string>('')
   const [totalPage, setTotalPage] = useState<number>(listItems.totalPages || 1)
-  const [selectedCategory, setSelectedCategory] = useState<Category>({
-    id: 0,
-    name: 'Tất cả',
-    slug: 'all',
-    taxonomy: '',
-  })
 
   const [selectedSortOption, setSelectedSortOption] = useState<SortOption>(
     sortOptions[0],
   )
-//   function handleGetTaxonomy(categorySlug: string) {
-//     return categories.find(
-//       (category: Category) => category.slug === categorySlug,
-//     )?.taxonomy
-//   }
+  //   function handleGetTaxonomy(categorySlug: string) {
+  //     return categories.find(
+  //       (category: Category) => category.slug === categorySlug,
+  //     )?.taxonomy
+  //   }
 
   const [currentPage, setCurrentPage] = useState<number>(1)
   const query = useMemo(() => {
@@ -100,27 +91,21 @@ const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({
       ref={sectionRef}
     >
       <div className='section-container'>
-        <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown'>
-          Dự án EB-5 tiêu biểu
-        </h2>
-        <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:sticky xsm:top-[3.75rem] xsm:mb-[2.19rem] xsm:flex-col xsm:bg-background xsm:pb-1'>
-          <IndexTabs
-            categories={[
-              {id: 0, name: 'Tất cả', slug: 'all', taxonomy: ''},
-              ...categories,
-            ]}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-          <IndexSortAndSearchPosts
-            sortOptions={sortOptions}
-            search={search}
-            selectedSortOption={selectedSortOption}
-            setSearch={setSearch}
-            setSelectedSortOption={setSelectedSortOption}
-            className='gap-x-3 sm:flex sm:flex-row-reverse xsm:flex'
-            backgroundInput='bg-[#EEE]'
-          />
+        <div className='mb-[2.5rem] flex items-center justify-between xsm:mb-[1.5rem] xsm:flex-col xsm:items-start xsm:justify-start'>
+          <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown xsm:text-[1.5rem]'>
+            Dự án EB-5 tiêu biểu
+          </h2>
+          <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:sticky xsm:top-[3.75rem] xsm:mb-[2.19rem] xsm:flex-col xsm:bg-background xsm:pb-1'>
+            <IndexSortAndSearchPosts
+              sortOptions={sortOptions}
+              search={search}
+              selectedSortOption={selectedSortOption}
+              setSearch={setSearch}
+              setSelectedSortOption={setSelectedSortOption}
+              className='gap-x-3 sm:flex sm:flex-row-reverse xsm:flex'
+              backgroundInput='bg-[#EEE]'
+            />
+          </div>
         </div>
         <div className='grid w-full grid-cols-3 gap-y-[4.5rem] sm:gap-x-[1.88rem] xsm:grid-cols-1 xsm:gap-y-[1.5rem]'>
           {isLoading ? (
@@ -142,13 +127,15 @@ const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({
             </>
           )}
         </div>
-        <Pagination
-          pageCurrent={currentPage}
-          setCurrentPage={setCurrentPage}
-          pageCount={totalPage}
-          ref={sectionRef}
-          className='mt-[1.38rem] xsm:mt-[1.75rem]'
-        />
+        {posts && posts.totalPages > 1 && (
+          <Pagination
+            pageCurrent={currentPage}
+            setCurrentPage={setCurrentPage}
+            pageCount={totalPage}
+            ref={sectionRef}
+            className='mt-[1.38rem] xsm:mt-[1.75rem]'
+          />
+        )}
       </div>
     </section>
   )

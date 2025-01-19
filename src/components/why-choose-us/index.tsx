@@ -33,7 +33,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         className='absolute bottom-0 left-0 h-auto w-full object-contain sm:hidden'
       />
       <div className='absolute bottom-0 right-0 h-full w-full sm:bg-[linear-gradient(90deg,#FFF_31.02%,rgba(153,153,153,0.00)_70.54%)] xsm:hidden'></div>
-      <div className='relative z-10 mx-auto flex justify-between sm:max-w-[90rem] xsm:px-[1rem]'>
+      <div className='relative z-10 mx-auto flex justify-between sm:max-w-[90rem] xsm:px-[1rem] xsm:mt-[2.5rem]'>
         <div className='max-w-[39.75rem]'>
           <h2 className='font-optima font-semibold text-brown heading1'>
             {title}

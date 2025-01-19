@@ -30,7 +30,7 @@ const ProjectTransparency: FC<IProjectTransparencyProps> = ({
 
   return (
     <section
-      className={`relative mt-[5rem] w-full overflow-hidden xsm:h-[62.81rem] ${className}`}
+      className={`relative mt-[5rem] w-full overflow-hidden xsm:h-[62.81rem] xsm:mt-[1rem] ${className}`}
     >
       <div className='pointer-events-none absolute z-0 h-[59rem] w-full bg-[linear-gradient(180deg,#F6F6F4_0%,#ECE6E2_15.4%,#7D3613_84.9%)] xsm:h-[49.56rem]'></div>
       <div className='pointer-events-none absolute left-1/2 top-[2.81rem] z-10 h-[153.9375rem] w-[186.25rem] -translate-x-1/2 rounded-[50%] bg-[linear-gradient(180deg,#EABB67_0%,#FFF_100%)] opacity-20 shadow-[0px_-5px_50px_0px_rgba(54,42,5,0.15)] xsm:top-[2.81rem] xsm:h-[59.125rem] xsm:w-[61.625rem]'></div>

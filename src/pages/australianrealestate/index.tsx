@@ -624,7 +624,7 @@ export default function AustralianRealEstate({
       </Suspense>
       <ProjectTransparency
         data={dataInvestment?.data}
-        fontSize='text-[2rem] [&_strong]:text-[5.625rem]'
+        fontSize='text-[2rem] [&_strong]:text-[5.625rem] xsm:text-[1.5rem] xsm:[&_strong]:text-[2.75rem] xsm:translate-y-[3rem]'
         linkImage='/imgs/EB5/projects-transparency/sydney2-w.webp'
         className='h-[92rem]'
       />

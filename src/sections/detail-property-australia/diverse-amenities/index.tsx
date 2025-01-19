@@ -88,7 +88,7 @@ const DiverseAmenities = ({
                 className='flex items-center space-x-2'
               >
                 <ImageV2
-                  src='/icons/detail-property/check.svg'
+                  src='/icons/detail-property/check2.svg'
                   alt=''
                   width={50}
                   height={50}

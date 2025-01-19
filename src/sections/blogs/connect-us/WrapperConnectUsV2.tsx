@@ -27,7 +27,7 @@ const WrapperConnectUsV2 = ({
   return (
     <section
       ref={sectionFef}
-      className='relative h-[93.26625rem] w-full bg-white xsm:h-[73.4rem] xsm:bg-background'
+      className='relative h-[93.26625rem] w-full bg-white xsm:h-[76.4rem] xsm:bg-background'
     >
       <div
         style={{

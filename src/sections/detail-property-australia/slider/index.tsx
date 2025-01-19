@@ -108,7 +108,7 @@ export const SliderMobile = ({
         </Swiper>
       </div>
       <div className='relative z-10 p-4 pt-16'>
-        <h3 className='flex items-center space-x-2 font-medium text-white body-14'>
+        <h3 className='flex items-center space-x-2 font-medium text-white body-14 xsm:mb-[1rem]'>
           <ImageV2
             width={50}
             height={50}

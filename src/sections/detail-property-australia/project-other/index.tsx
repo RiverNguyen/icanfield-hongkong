@@ -39,7 +39,7 @@ console.log(dataOther)
           />
         </button>
       </div>
-      <div className='mt-8 h-[33.625rem] xsm:h-[27.375rem]'>
+      <div className='mt-8 h-[33.625rem] xsm:h-fit'>
         <Swiper
           breakpoints={{
             640: {
