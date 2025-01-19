@@ -51,7 +51,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         />
       </div>
       <div className='scrollbar-hidden relative mx-auto mt-[2rem] flex max-w-[90rem] space-x-[1rem] overflow-scroll sm:mt-[2.69rem] sm:space-x-[1.25rem] xsm:pl-[1rem]'>
-        {items &&
+        {Array.isArray(items) &&
           items.map((item, index) => (
             <WhyChooseUsItem
               key={index}
