@@ -62,15 +62,6 @@ const LocationItemMobile = ({
   )
 }
 
-export type ProjectLocationProps = {
-  title: string
-  subTitle: string
-  description: string
-  subDescription: string
-  locationImage: string
-  locationItems: LocationItem[]
-}
-
 const ProjectLocation = ({
   description,
   title_section,
@@ -81,8 +72,8 @@ const ProjectLocation = ({
 }: IDataAcfDetailEB5['acf']['eb5_projects_detail_location']) => {
   const isMobile = useIsMobile()
   return (
-    <section className='flex space-x-[6.5rem] pl-20 sm:pb-[5rem] xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4 xsm:mt-[9rem]'>
-      <div className='flex-1 pt-20 xsm:pt-4'>
+    <section className='flex space-x-[6.5rem] pl-20 sm:pb-[5rem] xsm:mt-[9rem] xsm:flex-col-reverse xsm:space-x-0 xsm:space-y-6 xsm:px-4'>
+      <div className='flex-1 pt-20 xsm:pt-[2.5rem] '>
         <h1 className='font-optima font-semibold text-Phase-1-Brown heading1'>
           {title_section}
         </h1>
@@ -123,7 +114,7 @@ const ProjectLocation = ({
           allowFullScreen
           loading='lazy'
           referrerPolicy='no-referrer-when-downgrade'
-          className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl'
+          className='h-full w-full rounded-l-2xl object-cover xsm:rounded-2xl xsm:mb-[2.5rem]'
         ></iframe>
       </div>
     </section>

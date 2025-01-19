@@ -8,8 +8,8 @@ import {Breadcrumb} from '@/components/breadcrumb'
 import ProjectTransparency, {
   IItemInvestmentOpportunities,
 } from '@/components/project-transparency'
+import {IItemAustralia} from '@/components/itemAustralia/itemAustralia.interface'
 import {WhyChooseUs} from '@/components/why-choose-us'
-import OutstandingProjectEB5 from '@/sections/EB5/outstanding-projects'
 import Benefits from '@/sections/australian-real-estate/Benefits'
 // import {benefitsProps} from '@/sections/australian-real-estate/constants'
 import {Banner} from '@/sections/detail-settlement-programs/banner'

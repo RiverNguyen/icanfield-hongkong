@@ -81,7 +81,6 @@ export interface dataAcf {
 export interface immigration {
   name: string
   acf: dataAcf
-  slug: string
 }
 
 export interface information {

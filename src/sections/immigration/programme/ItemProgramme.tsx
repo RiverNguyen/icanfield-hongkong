@@ -33,7 +33,7 @@ export default function ItemProgramme({
           src={dataPostProgramme?.featured_image}
         />
         <div className='absolute inset-0 z-10 size-full rounded-[1.25rem] bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]'></div>
-        <h3 className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] line-clamp-1 font-medium text-white heading3 xsm:bottom-[4.81rem] xsm:left-[1rem] xsm:heading2' title={dataPostProgramme?.title}>
+        <h3 className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] line-clamp-1 font-medium text-white heading3 xsm:bottom-[4.81rem] xsm:left-[1rem] xsm:heading2'>
           {dataPostProgramme?.title}
         </h3>
         {isMobile && (
@@ -43,7 +43,7 @@ export default function ItemProgramme({
                 {dataPostProgramme?.acf?.information?.investment_level?.title ||
                   'Mức đầu tư'}
               </p>
-              <p className='text-white body16-s xsm:font-semibold'>
+              <p className='text-white body16-s'>
                 {dataPostProgramme?.acf?.information?.investment_level?.value ||
                   'Chưa có thông tin'}
               </p>
@@ -53,7 +53,7 @@ export default function ItemProgramme({
                 {dataPostProgramme?.acf?.information?.review_time?.title ||
                   'Thời gian xét duyệt'}
               </p>
-              <p className='text-white body16-s xsm:font-semibold'>
+              <p className='text-white body16-s'>
                 {dataPostProgramme?.acf?.information?.review_time?.from}-
                 {dataPostProgramme?.acf?.information?.review_time?.to} tháng
               </p>
@@ -85,17 +85,13 @@ export default function ItemProgramme({
           </div>
         </div>
       )}
-      {Array.isArray(dataPostProgramme?.acf?.interest?.title_interest) && dataPostProgramme?.acf?.interest?.title_interest.length > 0  ? (
+      {Array.isArray(dataPostProgramme?.acf?.interest?.title_interest) ? (
         <div className='px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]'>
           <div className='space-y-[0.625rem] rounded-[0.75rem] bg-background p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem]'>
             <div className='flex w-full items-center justify-between'>
               <p className='text-brown body16-m xsm:body-14-m'>Quyền lợi</p>
               <p className='flex items-center rounded-[1.5625rem] bg-[rgba(0,0,0,0.10)] p-[0.125rem_0.625rem] text-brown body-14-s xsm:text-[0.625rem] xsm:font-bold xsm:uppercase xsm:leading-[1.2] xsm:tracking-[-0.00625rem]'>
-                {Number(dataPostProgramme?.acf?.interest?.amount_of_benefits) >
-                  2 &&
-                  Number(dataPostProgramme?.acf?.interest?.amount_of_benefits) -
-                    2 +
-                    ' +'}
+                {dataPostProgramme?.acf?.interest?.amount_of_benefits}+
               </p>
             </div>
             <ul className='list-disc pl-[1.5rem]'>
@@ -103,7 +99,7 @@ export default function ItemProgramme({
                 dataPostProgramme?.acf?.interest?.title_interest,
               ) &&
                 dataPostProgramme?.acf?.interest?.title_interest
-                  ?.slice(0, 2)
+                  .slice(0, 2)
                   .map((item: string, index: number) => (
                     <li
                       key={index}
@@ -134,7 +130,7 @@ export default function ItemProgramme({
         </Link>
         <Link
           href={'/' + slug + '/' + dataPostProgramme?.slug}
-          className='flex cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:flex-1 xsm:justify-center'
+          className='flex cursor-pointer items-center space-x-[0.5rem] xsm:justify-center rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:flex-1'
         >
           <p className='tracking-[-0.0175rem] text-white body-14-m'>
             Xem chi tiết

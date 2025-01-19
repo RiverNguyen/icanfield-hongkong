@@ -4,6 +4,7 @@ import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
 import {isLockScroll} from '@/hooks/useBodyScrollLock'
 import {dataFooter} from '@/types/dataFooter.interface'
+import {useEffect, useState} from 'react'
 import {
   dataHeader,
   OutstandingPost,
@@ -121,6 +122,7 @@ const Header = ({
   //close the mobile header
   const handleBeforeNavigate = () => {
     setIsCloseMenu(false)
+    isLockScroll(false)
     setIsOpenedChild(false)
   }
   //hanlde disable hover
@@ -137,8 +139,134 @@ const Header = ({
       }, 1000)
     }
   }
+
+  // handle gg translate
+  const [currentLanguage, setCurrentLanguage] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('language') || 'vi'
+    }
+    return 'vi'
+  })
+
+  useEffect(() => {
+    // Lưu ngôn ngữ hiện tại vào localStorage khi `currentLanguage` thay đổi
+    if (typeof window !== 'undefined' && currentLanguage) {
+      localStorage.setItem('language', currentLanguage)
+    }
+  }, [currentLanguage])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const savedLanguage = localStorage.getItem('language') || 'vi'
+    setCurrentLanguage(savedLanguage)
+
+    const isCurrentLang =
+      data?.language?.languages.find(
+        (item: Language) =>
+          item.label.toLowerCase() === savedLanguage.toLowerCase(),
+      ) || data?.language?.languages[0]
+
+    setIsCurrentLanguage(isCurrentLang)
+
+    const languagesString = data?.language.languages
+      .map((item: Language) => item.label.toLowerCase())
+      .join(',')
+
+    const googleTranslateScript = document.createElement('script')
+    googleTranslateScript.type = 'text/javascript'
+    googleTranslateScript.src =
+      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+
+    if (!document.getElementById('google-translate-script')) {
+      googleTranslateScript.id = 'google-translate-script'
+      ;(
+        window as typeof window & {
+          googleTranslateElementInit?: () => void
+          google?: {
+            translate?: {
+              TranslateElement: new (
+                options: object,
+                containerId: string,
+              ) => void
+            }
+          }
+        }
+      ).googleTranslateElementInit = function () {
+        const google = (
+          window as typeof window & {
+            google?: {
+              translate?: {
+                TranslateElement: new (
+                  options: object,
+                  containerId: string,
+                ) => void
+              }
+            }
+          }
+        ).google
+
+        if (google?.translate?.TranslateElement) {
+          new google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              includedLanguages: languagesString,
+              autoDisplay: false,
+              multilanguagePage: true,
+            },
+            'google_translate_element',
+          )
+        }
+      }
+
+      document.body.appendChild(googleTranslateScript)
+    }
+
+    // Cleanup khi unmount
+    return () => {
+      const script = document.getElementById('google-translate-script')
+      if (script) {
+        document.body.removeChild(script)
+      }
+    }
+  }, [data?.language.languages])
+
+  const clearCookies = () => {
+    const cookies = document.cookie.split(';')
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i]
+      const eqPos = cookie.indexOf('=')
+      const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim()
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`
+    }
+  }
+
+  const handleLanguageChange = (language: string) => {
+    if (typeof window === 'undefined') return
+
+    if (language === 'vi') {
+      setCurrentLanguage('vi')
+      clearCookies()
+      window.location.reload()
+    } else {
+      const selectBox = document.querySelector('.goog-te-combo:last-child')
+      if (selectBox) {
+        ;(selectBox as HTMLSelectElement).value = language
+        selectBox.dispatchEvent(new Event('change'))
+        setCurrentLanguage(language)
+      }
+    }
+  }
+
+  useEffect(() => {
+    console.log('isCurrentLanguage', isCurrentLanguage)
+  }, [isCurrentLanguage])
   return (
     <header className='fixed left-0 top-0 z-[50] w-full'>
+      <div
+        id='google_translate_element'
+        className='hidden'
+      ></div>
       <div className='header-top bg-[linear-gradient(118deg,#2E1506_69.75%,#95502F_142.7%,#F5C178_182.76%)] xsm:hidden'>
         <div className='flex items-center justify-between section-container'>
           <div className='flex items-center space-x-[0.94rem]'>
@@ -275,7 +403,10 @@ const Header = ({
                     <div
                       key={index}
                       className='grid grid-cols-2 items-center space-x-[0.5rem] hover:scale-105'
-                      onClick={() => handleChangeLanguage(item)}
+                      onClick={() => {
+                        handleChangeLanguage(item)
+                        handleLanguageChange(item.label.toLowerCase())
+                      }}
                     >
                       <span
                         className={`text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
@@ -832,6 +963,7 @@ const Header = ({
               onClick={() => {
                 handleChangeLanguage(item)
                 handleOpenLanguageMb()
+                handleLanguageChange(item.label.toLowerCase())
               }}
             >
               <ImageV2

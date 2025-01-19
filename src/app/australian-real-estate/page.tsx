@@ -8,7 +8,13 @@ export default async function page() {
       revalidate: 10,
     },
   }
-  const [dataTaxonomies, dataAcf] = await Promise.all([
+  const requestPosts = {
+    api: '/get-post-australia?page=1&limit=9',
+    option: {
+      revalidate: 10,
+    },
+  }
+  const [dataTaxonomies, dataAcf,dataListPost] = await Promise.all([
     fetchData(requestTaxonomies),
     fetchDataACF({
       api: '/pages/938?acf_format=standard',
@@ -16,11 +22,13 @@ export default async function page() {
         revalidate: 10,
       },
     }),
+    fetchData(requestPosts),
   ])
   return (
     <AustralianRealEstate
       dataNationSettlement={dataTaxonomies?.nation}
       dataAcf={dataAcf?.acf}
+      dataListPost={dataListPost}
     />
   )
 }

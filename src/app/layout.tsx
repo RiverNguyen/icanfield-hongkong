@@ -5,9 +5,10 @@ import '@/app/globals.css'
 import {Toaster} from 'sonner'
 import Header from '@/layout/header'
 import Footer from '@/layout/footer'
-import { Inter } from 'next/font/google'
+import {Inter} from 'next/font/google'
 import fetchData from '@/fetch/fetchData'
-const inter = Inter({ subsets: ['latin'] })
+import Providers from '@/components/proccessBar'
+const inter = Inter({subsets: ['latin']})
 const optima = localFont({
   src: [
     {
@@ -50,15 +51,19 @@ export default async function RootLayout({
       revalidate: 60,
     },
   }
-  const [dataFooter,dataHeader] = await Promise.all([
+  const [dataFooter, dataHeader] = await Promise.all([
     fetchData(requestFooter),
     fetchData(requestHeader),
   ])
   return (
     <html lang='en'>
       <body className={` ${optima.variable} ${inter.className} antialiased`}>
-        <Header data ={dataHeader?.data} dataFooter={dataFooter.data}/>
-        {children}
+        <Header
+          data={dataHeader?.data}
+          dataFooter={dataFooter.data}
+        />
+
+        <Providers>{children}</Providers>
         <Toaster
           theme='light'
           richColors

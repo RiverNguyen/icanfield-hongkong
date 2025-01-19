@@ -6,6 +6,8 @@ type Store = {
   setAccessToken: (accessTokenNew: string) => void
   showCountry: boolean
   setShowCountry: (showCountry: boolean) => void
+  viewPort: string
+  setViewPort: (newViewPort: string) => void
 }
 
 const useStore = create<Store>()((set) => ({
@@ -13,6 +15,8 @@ const useStore = create<Store>()((set) => ({
   setAccessToken: (accessTokenNew) => set({accessToken: accessTokenNew}),
   showCountry: false,
   setShowCountry: (showCountry) => set({showCountry}),
+  viewPort: 'desktop',
+  setViewPort: (newViewPort) => set({viewPort: newViewPort}),
 }))
 
 export default useStore

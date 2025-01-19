@@ -1,6 +1,4 @@
-import {ProjectLocationProps} from '@/sections/detail-property-australia/project-location'
-
-export const projectLocationProps: ProjectLocationProps = {
+export const projectLocationProps = {
   title: 'Vị trí dự án',
   description:
     'Tọa lạc trên góc phố Spencer và Lonsdale nhộn nhịp, West Side Place ôm trọn tiện nghi hiện đại của thành phố đáng sống nhất thế giới. Chỉ vài bước chân, cư dân West Side Place đã có thể tiếp cận khu phức hợp sôi động, khu mua sắm sầm uất, vui chơi - giải trí đa dạng, y tế, giáo dục chất lượng cao.',

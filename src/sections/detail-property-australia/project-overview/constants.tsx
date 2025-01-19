@@ -1,5 +1,3 @@
-import {ProjectOverviewProps} from '@/sections/detail-property-australia/project-overview'
-
 const info = [
   {
     name: 'Diện tích',
@@ -23,7 +21,7 @@ const info = [
   },
 ]
 
-export const projectOverviewProps: ProjectOverviewProps = {
+export const projectOverviewProps = {
   name: 'West Side Place',
   location: '250 Spencer Street, Melbourne, Victoria, Australia',
   product: '1PN - 3PN',

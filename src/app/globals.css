@@ -46,6 +46,11 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+html > body[data-scroll-locked] {
+  overflow: auto !important;
+  --removed-body-scroll-bar-size: 0px;
+  margin-right: 0 !important;
+}
 @layer components {
   .content-p {
     @apply my-[0.5rem] text-greyscaletext-body inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
@@ -233,4 +238,35 @@ html {
     -webkit-appearance: none;
     display: none;
   }
+}
+#google_translate_element .goog-te-combo:first-child{
+  display: none !important;
+}
+#google_translate_element span {
+  display: none !important;
+}
+#google_translate_element .goog-te-gadget:last-child {
+  display: none !important;
+}
+#google_translate_element .VIpgJd-ZVi9od-l4eHX-hSRGPd{
+  display: none !important;
+}
+.fatherLang {
+  position: relative;
+}
+
+.childLang {
+  position: absolute;
+  visibility: hidden;
+}
+
+.fatherLang:hover .childLang,
+.fatherLang:focus-within .childLang {
+  visibility: visible;
+}
+.skiptranslate {
+  display: none !important;
+}
+body {
+  top:0 !important;
 }

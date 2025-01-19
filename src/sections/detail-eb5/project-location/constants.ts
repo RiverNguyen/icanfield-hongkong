@@ -1,6 +1,4 @@
-import {ProjectLocationProps} from '@/sections/detail-eb5/project-location'
-
-export const projectLocationProps: ProjectLocationProps = {
+export const projectLocationProps = {
   title: 'Vị trí dự án',
   subTitle: 'Một vị trí đắc địa',
   description:
