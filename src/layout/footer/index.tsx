@@ -73,7 +73,7 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
     }
   }
   return (
-    <footer className='relative bg-orangetext-900 pt-[6rem] xsm:pt-[2.5rem]'>
+    <footer className='relative bg-orangetext-900 pt-[6rem] xsm:pt-[2.5rem] z-30'>
       <div className='mx-auto mb-[3.25rem] flex flex-col items-center space-y-[1.5rem] xsm:mb-[2.5rem] xsm:space-y-[1rem]'>
         <h3
           dangerouslySetInnerHTML={{

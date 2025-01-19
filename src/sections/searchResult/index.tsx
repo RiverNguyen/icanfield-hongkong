@@ -171,7 +171,8 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
       <div className='relative mt-[6.44rem] h-[18.8125rem] w-full bg-background xsm:mt-[2.25rem] xsm:h-[33.06rem]'>
         <div className='flex items-center justify-center pt-[5rem] xsm:px-[1.5rem] xsm:pb-[3rem] xsm:pt-[4rem]'>
           <span className='text-center text-[1.75rem] text-Phase-1-Brown xsm:text-[1.25rem]'>
-            Có <b>{posts?.pagination?.total_posts}</b> kết quả tìm kiếm phù hợp với lựa chọn của bạn
+            Có <b>{posts?.pagination?.total_posts}</b> kết quả tìm kiếm phù hợp
+            với lựa chọn của bạn
           </span>
         </div>
         <div className='banner-filter absolute bottom-[3.81rem] left-1/2 z-[2] flex h-[4.19rem] w-[71.5rem] -translate-x-1/2 rounded-[0.75rem] bg-[#fff] xsm:hidden'>
@@ -263,7 +264,7 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
               ))}
             </div>
             <button
-              className='ml-2 h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] px-[2rem] hidden'
+              className='ml-2 hidden h-full flex-shrink-0 items-center justify-center rounded-[0.5rem] bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] px-[2rem]'
               onClick={searchFilter}
             >
               <ImageV2
@@ -434,13 +435,15 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
           </>
         )}
       </div>
-      <Pagination
-        pageCurrent={currentPage}
-        setCurrentPage={setCurrentPage}
-        pageCount={totalPage}
-        ref={sectionRef}
-        className='mt-[1.38rem] xsm:mt-[1.75rem]'
-      />
+      {totalPage > 1 && (
+        <Pagination
+          pageCurrent={currentPage}
+          setCurrentPage={setCurrentPage}
+          pageCount={totalPage}
+          ref={sectionRef}
+          className='mt-[1.38rem] xsm:mt-[1.75rem]'
+        />
+      )}
     </div>
   )
 }

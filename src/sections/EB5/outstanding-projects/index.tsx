@@ -136,13 +136,15 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
             </>
           )}
         </div>
-        <Pagination
-          pageCurrent={currentPage}
-          setCurrentPage={setCurrentPage}
-          pageCount={totalPage}
-          ref={sectionRef}
-          className='mt-[1.38rem] xsm:mt-[1.75rem]'
-        />
+        {totalPage > 1 && (
+          <Pagination
+            pageCurrent={currentPage}
+            setCurrentPage={setCurrentPage}
+            pageCount={totalPage}
+            ref={sectionRef}
+            className='mt-[1.38rem] xsm:mt-[1.75rem]'
+          />
+        )}
       </div>
     </section>
   )
