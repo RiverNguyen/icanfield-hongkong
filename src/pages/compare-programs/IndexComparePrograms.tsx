@@ -3,8 +3,8 @@ import FormInternationalJourney from '@/components/ContactV2/FormInternationalJo
 import { Breadcrumb } from '@/components/breadcrumb'
 import Programs from '@/sections/compare-programs/Programs'
 import { Banner } from '@/sections/detail-settlement-programs/banner'
-import { Term } from '@/sections/homepage/banner/bannerHp.interface'
 import { DataItem, acfPage } from '@/types/comparePrograms.interface'
+import { Term } from '@/types/dataAppraisal.interface'
 
 const IndexComparePrograms = ({
   dataNationSettlement,
