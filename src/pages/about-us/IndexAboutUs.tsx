@@ -47,7 +47,7 @@ const IndexAboutUs = ({
     subtitle: dataAcf?.icanfield_office?.subtitle,
     title: dataAcf?.icanfield_office?.title,
     info: dataAcf?.icanfield_office?.info,
-    countries: dataAcf.icanfield_office_map,
+    countries: dataAcf?.icanfield_office_map,
   }
   return (
     <>
