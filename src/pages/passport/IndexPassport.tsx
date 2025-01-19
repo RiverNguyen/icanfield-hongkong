@@ -22,7 +22,7 @@ const IndexPassport = ({
   }
   dataNationSettlement: Term[]
 }) => {
-  console.log(dataAcf)
+  // console.log(dataAcf)
   return (
     <main className='bg-background'>
       <Banner

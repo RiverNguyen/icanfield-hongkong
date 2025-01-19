@@ -28,7 +28,7 @@ const PioneeringValues = ({
   const handleTogglePopup = () => {
     setIsOpenPopup(!isOpenPopup)
   }
-  console.log(data)
+  // console.log(data)
   const convertedData = data?.data_state_usa.map((item: ICountry) => [item])
   return (
     <section className='bg-background pt-[3rem] sm:-translate-y-[3rem]'>
