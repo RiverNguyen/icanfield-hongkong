@@ -4,22 +4,22 @@ import {
   AdvantagesBenefits,
   IAdvantagesBenefitsProps,
 } from '@/components/advantages-benefits'
-import {Breadcrumb} from '@/components/breadcrumb'
+import { Breadcrumb } from '@/components/breadcrumb'
 import ProjectTransparency, {
   IItemInvestmentOpportunities,
 } from '@/components/project-transparency'
-import {WhyChooseUs} from '@/components/why-choose-us'
+import { WhyChooseUs } from '@/components/why-choose-us'
 import Benefits from '@/sections/australian-real-estate/Benefits'
 // import {benefitsProps} from '@/sections/australian-real-estate/constants'
-import {Banner} from '@/sections/detail-settlement-programs/banner'
-import {Term} from '@/sections/homepage/banner/bannerHp.interface'
-import {Media} from '@/types/image.interface'
-import {Suspense} from 'react'
-import {BenefitsProps} from '@/sections/australian-real-estate/Benefits'
-import dynamic from 'next/dynamic'
-import {ICountry} from '@/components/LeafletMap'
-import OutstandingAustralia from '@/sections/australian-real-estate/OutstandingAustralia'
+import { ICountry } from '@/components/LeafletMap'
 import { IItemAustralia } from '@/components/itemAustralia/itemAustralia.interface'
+import { BenefitsProps } from '@/sections/australian-real-estate/Benefits'
+import OutstandingAustralia from '@/sections/australian-real-estate/OutstandingAustralia'
+import { Banner } from '@/sections/detail-settlement-programs/banner'
+import { Term } from '@/types/dataAppraisal.interface'
+import { Media } from '@/types/image.interface'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 const PioneeringValuesAustralia = dynamic(
   () => import('@/sections/australian-real-estate/section-map'),
   {

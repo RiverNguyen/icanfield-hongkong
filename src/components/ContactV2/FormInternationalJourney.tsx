@@ -1,7 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {SuccessPopup} from '@/components/success-popup'
-import {Button} from '@/components/ui/button'
+import { SuccessPopup } from '@/components/success-popup'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -9,7 +9,7 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form'
-import {Input} from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
@@ -17,17 +17,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import {Textarea} from '@/components/ui/textarea'
+import { Textarea } from '@/components/ui/textarea'
 import CF7Request from '@/fetch/cf7Request'
-import {isLockScroll} from '@/hooks/useBodyScrollLock'
+import { isLockScroll } from '@/hooks/useBodyScrollLock'
 import useIsMobile from '@/hooks/useIsMobile'
-import {cn} from '@/lib/utils'
-import {Term} from '@/sections/homepage/banner/bannerHp.interface'
+import { cn } from '@/lib/utils'
+import { Term } from '@/types/dataAppraisal.interface'
 import endpoints from '@/utils/endpoints'
-import {zodResolver} from '@hookform/resolvers/zod'
-import {useEffect, useRef, useState} from 'react'
-import {useForm} from 'react-hook-form'
-import {z} from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const formSchema = z.object({
   username: z
@@ -207,7 +207,7 @@ const FormInternationalJourney = ({
               control={form.control}
               name='nationSettlement'
               render={({field}) => (
-                <FormItem>
+                <FormItem className='xsm:relative'>
                   <Select
                     disabled={isMobile}
                     onValueChange={field.onChange}
@@ -253,6 +253,7 @@ const FormInternationalJourney = ({
                     onClick={() => {
                       if (isMobile) {
                         setDataPopupMb(true)
+                        isLockScroll(true)
                       }
                     }}
                     className='absolute left-0 top-0 z-40 size-full bg-transparent sm:hidden'
@@ -291,6 +292,7 @@ const FormInternationalJourney = ({
                     )}
                     onClick={() => {
                       setDataPopupMb(false)
+                      isLockScroll(false)
                     }}
                   ></div>
                   <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16 xsm:body-14' />
@@ -320,6 +322,7 @@ const FormInternationalJourney = ({
             />
             <Button
               type='submit'
+              disabled={isSubmitting?.isSubmitting}
               className='mt-[1.5rem] h-[3rem] w-max gap-0 space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:w-full'
             >
               <p className='tracking-[-0.0175rem] text-white body-14-m'>

@@ -1,18 +1,18 @@
-import WrapperAside from '@/sections/passport/research/WrapperAside'
-import dynamic from 'next/dynamic'
-const MapPassport = dynamic(
-  () => import('@/sections/passport/research/MapPassport'),
-  {ssr: false},
-)
 import ContactV2 from '@/components/ContactV2/ContactV2'
 import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
-import {Suspense} from 'react'
-import {Term} from '@/sections/homepage/banner/bannerHp.interface'
-import {Breadcrumb} from '@/components/breadcrumb'
+import { Breadcrumb } from '@/components/breadcrumb'
 import {
   Banner,
   IBannerProps,
 } from '@/sections/detail-settlement-programs/banner'
+import WrapperAside from '@/sections/passport/research/WrapperAside'
+import { Term } from '@/types/dataAppraisal.interface'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+const MapPassport = dynamic(
+  () => import('@/sections/passport/research/MapPassport'),
+  {ssr: false},
+)
 const IndexPassport = ({
   dataAcf,
   dataNationSettlement,

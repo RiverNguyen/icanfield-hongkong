@@ -1,9 +1,11 @@
+import ContactV2 from '@/components/ContactV2/ContactV2'
+import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
 import {
   AdvantagesBenefits,
   IAdvantagesBenefitsProps,
 } from '@/components/advantages-benefits'
-import {Breadcrumb} from '@/components/breadcrumb'
-import {IWhyChooseUsProps, WhyChooseUs} from '@/components/why-choose-us'
+import { Breadcrumb } from '@/components/breadcrumb'
+import { IWhyChooseUsProps, WhyChooseUs } from '@/components/why-choose-us'
 import {
   Banner,
   IBannerProps,
@@ -29,11 +31,9 @@ import {
   SuccessStoryShare,
 } from '@/sections/detail-settlement-programs/success-story-share'
 import ImmigrationFAQ from '@/sections/immigration/faq/ImmigrationFAQ'
-import {immigration} from '@/types/dataAcfImmigration.interface'
-import {FC} from 'react'
-import ContactV2 from '@/components/ContactV2/ContactV2'
-import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
-import {Term} from '@/sections/homepage/banner/bannerHp.interface'
+import { immigration } from '@/types/dataAcfImmigration.interface'
+import { Term } from '@/types/dataAppraisal.interface'
+import { FC } from 'react'
 interface IDetailSettlementProgramsProps {
   post_title: string
   banner: IBannerProps
