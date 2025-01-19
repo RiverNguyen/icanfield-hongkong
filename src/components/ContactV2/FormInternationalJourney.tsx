@@ -16,7 +16,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import CF7Request from '@/fetch/cf7Request'
 import { isLockScroll } from '@/hooks/useBodyScrollLock'
@@ -50,11 +50,15 @@ const formSchema = z.object({
     ),
   mess: z.string().optional(), // Trường không bắt buộc, không cần message bắt buộc
   nationSettlement: z.string({
-    required_error: "Trường này không được để trống.",
+    required_error: 'Trường này không được để trống.',
   }),
 })
 
-const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement: Term[]}) => {
+const FormInternationalJourney = ({
+  dataNationSettlement,
+}: {
+  dataNationSettlement: Term[]
+}) => {
   const isMobile = useIsMobile()
   const [isSubmitting, setIsSubmitting] = useState({
     isSubmitting: false,
@@ -81,7 +85,7 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
       phone: '',
     },
   })
-  const { setValue } = form;
+  const {setValue} = form
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -122,10 +126,10 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
     <>
       <div className='relative z-20 h-max flex-1 p-[1.5rem_5rem] pl-0 sm:mt-[6.5rem] xsm:p-[1.5rem_1rem_2.5rem_1rem]'>
         <div className='mb-[2rem] space-y-[0.5rem]'>
-          <span className='body16 xsm:sub-12 font-semibold text-greyscaletext-body opacity-[0.7] xsm:font-medium xsm:tracking-[-0.015rem]'>
+          <span className='font-semibold text-greyscaletext-body opacity-[0.7] body16 xsm:font-medium xsm:tracking-[-0.015rem] xsm:sub-12'>
             KẾT NỐI VỚI CHÚNG TÔI
           </span>
-          <p className='heading3 xsm:heading1 font-optima font-semibold text-brown xsm:tracking-[-0.045rem]'>
+          <p className='font-optima font-semibold text-brown heading3 xsm:tracking-[-0.045rem] xsm:heading1'>
             Khám Phá Hành Trình Quốc Tế của Bạn
           </p>
         </div>
@@ -142,20 +146,20 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
                   <FormControl>
                     <Input
                       placeholder=''
-                      className='body16 h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                      className='h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                       {...field}
                     />
                   </FormControl>
                   {!field?.value && (
-                    <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                    <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                       Họ và tên<span>*</span>
                     </p>
                   )}
-                  <FormMessage className='body16 xsm:body-14 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                  <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16 xsm:body-14' />
                 </FormItem>
               )}
             />
-            <div className='mt-[1.5rem] flex xsm:flex-col w-full sm:space-x-[1rem] xsm:mt-[0.75rem] xsm:space-y-[0.5rem]'>
+            <div className='mt-[1.5rem] flex w-full sm:space-x-[1rem] xsm:mt-[0.75rem] xsm:flex-col xsm:space-y-[0.5rem]'>
               <FormField
                 control={form.control}
                 name='email'
@@ -164,16 +168,16 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
                     <FormControl>
                       <Input
                         placeholder=''
-                        className='body16 h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                        className='h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                         {...field}
                       />
                     </FormControl>
                     {!field?.value && (
-                      <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                      <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                         Email<span>*</span>
                       </p>
                     )}
-                    <FormMessage className='body16 xsm:body-14 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                    <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16 xsm:body-14' />
                   </FormItem>
                 )}
               />
@@ -185,91 +189,113 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
                     <FormControl>
                       <Input
                         placeholder=''
-                        className='body16 h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                        className='h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                         {...field}
                       />
                     </FormControl>
                     {!field?.value && (
-                      <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                      <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                         Số điện thoại<span>*</span>
                       </p>
                     )}
-                    <FormMessage className='body16 xsm:body-14 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                    <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16 xsm:body-14' />
                   </FormItem>
                 )}
               />
             </div>
             <FormField
-                control={form.control}
-                name="nationSettlement"
-                render={({ field }) => (
-                    <FormItem className='xsm:relative'>
-                        <Select disabled={isMobile} onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl className="xsm:mt-[0.75rem] mt-[1.5rem] xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5] h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)]">
-                                <SelectTrigger>
-                                    {isMobile ? !field.value &&
-                                        <p className="hidden body16-m text-greyscaletext-800 text-start">Chương trình định cư bạn quan tâm<span className="text-errtext">*</span></p>
-                                        : 
-                                        <p className="hidden body16-m text-greyscaletext-800 text-start">Chương trình định cư bạn quan tâm<span className="text-errtext">*</span></p>
-                                    }
-                                    {isMobile && field.value &&  
-                                        <div className="body16-m text-greyscaletext-800 text-start">{textSelect}</div>
-                                    }
-                                    <SelectValue placeholder="" />
-                                </SelectTrigger>
-                            </FormControl>
-                            <SelectContent className="xsm:!hidden bg-white p-[0.5rem] rounded-[0.5rem] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)]">
-                                {dataNationSettlement?.map((e: Term, index: number) => (
-                                    <SelectItem
-                                        key={index}
-                                        className="cursor-pointer p-[0.75rem_1rem] border-b-[1px] border-solid border-[rgba(0,0,0,0.10)]"
-                                        value={'Chương trình định cư' + e?.slug}
-                                    >
-                                        Chương trình định cư {e?.name || ''}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                        <div
-                            onClick={() => {
-                                if (isMobile) {
-                                    setDataPopupMb(true)
-                                }
-                            }}
-                            className="sm:hidden bg-transparent absolute top-0 left-0 size-full z-40"
-                        >
-                        </div>
-                        <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
-                            dataPopupMb && 'translate-y-0 shadow-inner'
-                        )}>
-                            {dataNationSettlement?.map((e: Term, index: number) => (
-                                <p
-                                    key={index}
-                                    className={cn("p-[1rem] border-b-[1px] border-solid last:border-b-0",
-                                        field?.value === e?.slug && 'bg-background'
-                                    )}
-                                    onClick={() => {
-                                        setValue('nationSettlement', 'Chương trình định cư' + e?.slug, { shouldValidate: true })
-                                        setTextSelect('Chương trình định cư' + e?.name || '')
-                                        setDataPopupMb(false)
-                                    }}
-                                >
-                                   Chương trình định cư {e?.name || ''}
-                                </p>
-                            ))}
-                        </div>
-                        <div
-                            className={cn("fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[48]",
-                                dataPopupMb && 'block'
-                            )}
-                            onClick={() => {
-                                setDataPopupMb(false)
-                            }}
-                        >
-                        </div>
-                        <FormMessage className='body16 xsm:body-14 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
-                    </FormItem>
-                )}
+              control={form.control}
+              name='nationSettlement'
+              render={({field}) => (
+                <FormItem className='xsm:relative'>
+                  <Select
+                    disabled={isMobile}
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl className='mt-[1.5rem] h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] xsm:mt-[0.75rem] xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5]'>
+                      <SelectTrigger>
+                        {isMobile ? (
+                          !field.value && (
+                            <p className='hidden text-start text-greyscaletext-800 body16-m'>
+                              Chương trình định cư bạn quan tâm
+                              <span className='text-errtext'>*</span>
+                            </p>
+                          )
+                        ) : (
+                          <p className='hidden text-start text-greyscaletext-800 body16-m'>
+                            Chương trình định cư bạn quan tâm
+                            <span className='text-errtext'>*</span>
+                          </p>
+                        )}
+                        {isMobile && field.value && (
+                          <div className='text-start text-greyscaletext-800 body16-m'>
+                            {textSelect}
+                          </div>
+                        )}
+                        <SelectValue placeholder='' />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className='rounded-[0.5rem] bg-white p-[0.5rem] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)] xsm:!hidden'>
+                      {Array.isArray(dataNationSettlement) &&
+                        dataNationSettlement?.map((e: Term, index: number) => (
+                          <SelectItem
+                            key={index}
+                            className='cursor-pointer border-b-[1px] border-solid border-[rgba(0,0,0,0.10)] p-[0.75rem_1rem]'
+                            value={'Chương trình định cư' + e?.slug}
+                          >
+                            Chương trình định cư {e?.name || ''}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                  <div
+                    onClick={() => {
+                      if (isMobile) {
+                        setDataPopupMb(true)
+                      }
+                    }}
+                    className='absolute left-0 top-0 z-40 size-full bg-transparent sm:hidden'
+                  ></div>
+                  <div
+                    className={cn(
+                      'fixed bottom-0 left-0 z-[49] !mt-0 max-h-[60vh] w-full translate-y-[calc(100%+2rem)] overflow-hidden overflow-y-auto rounded-[0.5rem_0.5rem_0_0] bg-white p-[1rem] transition-all sm:hidden',
+                      dataPopupMb && 'translate-y-0 shadow-inner',
+                    )}
+                  >
+                    {Array.isArray(dataNationSettlement) && dataNationSettlement?.map((e: Term, index: number) => (
+                      <p
+                        key={index}
+                        className={cn(
+                          'border-b-[1px] border-solid p-[1rem] last:border-b-0',
+                          field?.value === e?.slug && 'bg-background',
+                        )}
+                        onClick={() => {
+                          setValue(
+                            'nationSettlement',
+                            'Chương trình định cư' + e?.slug,
+                            {shouldValidate: true},
+                          )
+                          setTextSelect('Chương trình định cư' + e?.name || '')
+                          setDataPopupMb(false)
+                        }}
+                      >
+                        Chương trình định cư {e?.name || ''}
+                      </p>
+                    ))}
+                  </div>
+                  <div
+                    className={cn(
+                      'fixed left-0 top-0 z-[48] hidden h-[100vh] w-full bg-black opacity-[0.5]',
+                      dataPopupMb && 'block',
+                    )}
+                    onClick={() => {
+                      setDataPopupMb(false)
+                    }}
+                  ></div>
+                  <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16 xsm:body-14' />
+                </FormItem>
+              )}
             />
             <FormField
               control={form.control}
@@ -279,16 +305,16 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
                   <FormControl>
                     <Textarea
                       placeholder=''
-                      className='body16 h-[6.25rem] resize-none rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                      className='h-[6.25rem] resize-none rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                       {...field}
                     />
                   </FormControl>
                   {!field?.value && (
-                    <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                    <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                       Lời nhắn của bạn
                     </p>
                   )}
-                  <FormMessage className='body16 xsm:body-14 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                  <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16 xsm:body-14' />
                 </FormItem>
               )}
             />
@@ -296,7 +322,7 @@ const FormInternationalJourney = ({dataNationSettlement}: {dataNationSettlement:
               type='submit'
               className='mt-[1.5rem] h-[3rem] w-max gap-0 space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:w-full'
             >
-              <p className='body-14-m tracking-[-0.0175rem] text-white'>
+              <p className='tracking-[-0.0175rem] text-white body-14-m'>
                 Gửi thông tin
               </p>
               <ImageV2

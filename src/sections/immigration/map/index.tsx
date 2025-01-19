@@ -65,7 +65,7 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
         setDataGeoJson(customGeoJson as FeatureCollection)
         setCenter([56.1304, -106.3468]) // Canada
         setZoom(3)
-        setZoomMobile(1.5)
+        setZoomMobile(2.5)
         break
       case 'america':
         setDataGeoJson(customGeoJsonAmerica as FeatureCollection)

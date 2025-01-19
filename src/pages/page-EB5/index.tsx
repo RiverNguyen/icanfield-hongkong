@@ -1,4 +1,4 @@
-import { Breadcrumb } from '@/components/breadcrumb'
+import {Breadcrumb} from '@/components/breadcrumb'
 import ProjectTransparency, {
   IProjectTransparencyProps,
 } from '@/components/project-transparency'
@@ -13,9 +13,9 @@ import TeaEB5Section, {
 import OutstandingProjectEB5, {
   IOutstandingProjectEB5Props,
 } from '@/sections/EB5/outstanding-projects'
-import { FC, Suspense } from 'react'
+import {FC, Suspense} from 'react'
 // import PioneeringValues from '@/sections/EB5/pioneering-values'
-import { ICountry } from '@/components/LeafletMap'
+import {ICountry} from '@/components/LeafletMap'
 import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
 import dynamic from 'next/dynamic'
 const PioneeringValues = dynamic(
@@ -42,7 +42,6 @@ interface IPageEB5Props {
 }
 
 const PageEB5: FC<IPageEB5Props> = ({data}) => {
- 
   return (
     <main className='bg-background'>
       <Banner

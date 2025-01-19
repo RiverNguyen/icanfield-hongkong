@@ -47,7 +47,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
 
   return (
     <section
-      className={`global-immigration relative sm:h-[75.75rem] ${isActive ? 'active' : ''}`}
+      className={`global-immigration relative sm:h-[75.75rem] xsm:overflow-hidden ${isActive ? 'active' : ''}`}
       ref={refSection}
     >
       <div className='xsm:hidden'>
