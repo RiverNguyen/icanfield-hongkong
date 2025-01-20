@@ -22,7 +22,7 @@ export default function Programs({ programs }: { programs: DataItem[] }) {
   return (
     <div
       id='table__programs'
-      className='hidden-scrollbar relative h-fit w-full px-[1rem] xsm:overflow-x-auto'
+      className='section-container hidden-scrollbar relative h-fit w-full px-[1rem] xsm:overflow-x-auto'
     >
       <div className='h-fit w-fit border border-solid'>
         <div

@@ -12,7 +12,7 @@ const BannerBottom = () => {
         className='absolute left-0 right-0 top-16 h-[44.3125rem] w-full object-cover xsm:top-10 xsm:h-[10.48413rem]'
       />
       <ImageV2
-        src='/imgs/contact/sydney2.webp'
+        src='/imgs/contact/sydney2v2.jpg'
         alt=''
         width={3000}
         height={2000}
@@ -26,7 +26,7 @@ const BannerBottom = () => {
         className='absolute -top-12 left-1/2 h-[26.17594rem] w-[95.54056rem] -translate-x-1/2 transform object-cover xsm:top-4 xsm:h-[6.19306rem] xsm:w-[22.60444rem]'
       />
       <ImageV2
-        src='/imgs/contact/sydney.webp'
+        src='/imgs/contact/sydneyv2.png'
         alt=''
         width={3000}
         height={2000}

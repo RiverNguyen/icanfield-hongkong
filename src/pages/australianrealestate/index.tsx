@@ -590,7 +590,7 @@ export default function AustralianRealEstate({
         title_line_2={dataAcf?.banner_australia.clone_banner.title_line_2}
         description={dataAcf?.banner_australia.clone_banner.description}
         backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_30%,rgba(240,240,240,0)_64%,rgba(246,246,244,1)_100%)]'
-        className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
+        className='[&_.overlay2]:xsm:bg-[linear-gradient(180deg,rgba(0,0,0,0.50)_24.02%,rgba(0,0,0,0.00)_86.12%)] z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
         background_pc={
           dataAcf?.banner_australia.clone_banner.background_pc as Media
         }
@@ -624,7 +624,7 @@ export default function AustralianRealEstate({
       </Suspense>
       <ProjectTransparency
         data={dataInvestment?.data}
-        fontSize='text-[2rem] [&_strong]:text-[5.625rem] xsm:text-[1.5rem] xsm:[&_strong]:text-[2.75rem] xsm:translate-y-[3rem]'
+        fontSize='text-[2rem] [&_p]:text-[2rem] [&_p]:font-semibold [&_p]:leading-[1.2] [&_p]:tracking-[-0.06rem] [&_strong]:text-[5.625rem] [&_strong]:tracking-[-0.1125rem] xsm:text-[1.5rem] xsm:[&_strong]:text-[2.75rem] xsm:translate-y-[3rem]'
         linkImage='/imgs/EB5/projects-transparency/sydney2-w.webp'
         className='h-[92rem]'
       />

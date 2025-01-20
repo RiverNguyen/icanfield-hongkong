@@ -114,6 +114,7 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
         languageproficiency: false,
         managementexperience: false,
     })
+    const [errorField, setErrorField] = useState<boolean>(false)
     const [textNationMb, setTextNationMb] = useState<string>('')
     const [textEducationlevel, setTextEducationlevel] = useState<string>('')
     const [textLanguageproficiency, setTextLanguageproficiency] = useState<string>('')
@@ -176,9 +177,11 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                 if (sectionRef?.current) {
                     sectionRef?.current.scrollIntoView({ behavior: 'smooth' });
                 }
+                setErrorField(false)
             } else {
-                toast.error('Hiện tại chưa có chương trình phù hợp liên hệ với chúng tôi để được tư vẫn thêm')
+                toast.error('Hiện tại chưa có chương trình phù hợp. Liên hệ với chúng tôi để được tư vẫn thêm')
                 setDataPostFilter(dataPost)
+                setErrorField(true)
             }
         })
     }
@@ -676,6 +679,9 @@ export default function FormAppraisal({ otherInformation, dataTaxonomies }: { ot
                     />
                 </section>
             }
+            {errorField && (
+                <div className="my-[2rem] text-brown body-14-m">Hiện tại chưa có chương trình phù hợp.</div>
+            )}
         </>
     )
 }

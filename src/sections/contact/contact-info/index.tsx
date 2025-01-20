@@ -34,18 +34,18 @@ export type ContactInfoProps = {
 
 const ContactInfo = ({addres, email, phone, urlIFame}: ContactInfoProps) => {
   return (
-    <section className='section-container  xsm:mt-8 relative z-10'>
+    <section className='section-container xsm:mt-[0rem] xsm:bg-background relative z-10'>
       <div className='flex justify-between xsm:flex-col xsm:space-y-6'>
         <div
           className='flex h-[8.6875rem] items-start space-x-4 xsm:h-auto'
         >
-          <div className='rounded-xl bg-[#A19790]/15 p-5'>
+          <div className='rounded-xl bg-[#A19790]/15 p-5 xsm:p-[0.83331rem]'>
             <ImageV2
               src={addres?.icon}
               alt=''
               width={64}
               height={64}
-              className='h-8 w-8 object-cover'
+              className='h-8 w-8 xsm:size-[1.33331rem] object-cover'
             />
           </div>
           <div className='min-w-[15rem] max-w-[30rem] xsm:flex-1'>
@@ -64,13 +64,13 @@ const ContactInfo = ({addres, email, phone, urlIFame}: ContactInfoProps) => {
         <div
           className='flex h-[8.6875rem] items-start space-x-4 xsm:h-auto'
         >
-          <div className='rounded-xl bg-[#A19790]/15 p-5'>
+          <div className='rounded-xl bg-[#A19790]/15 p-5 xsm:p-[0.83331rem]'>
             <ImageV2
               src={email?.icon}
               alt=''
               width={64}
               height={64}
-              className='h-8 w-8 object-cover'
+              className='h-8 w-8 xsm:size-[1.33331rem] object-cover'
             />
           </div>
           <div className='min-w-[15rem] max-w-[30rem] xsm:flex-1'>
@@ -89,13 +89,13 @@ const ContactInfo = ({addres, email, phone, urlIFame}: ContactInfoProps) => {
         <div
           className='flex h-[8.6875rem] items-start space-x-4 xsm:h-auto'
         >
-          <div className='rounded-xl bg-[#A19790]/15 p-5'>
+          <div className='rounded-xl bg-[#A19790]/15 p-5 xsm:p-[0.83331rem]'>
             <ImageV2
               src={phone?.icon}
               alt=''
               width={64}
               height={64}
-              className='h-8 w-8 object-cover'
+              className='h-8 w-8 xsm:size-[1.33331rem] object-cover'
             />
           </div>
           <div className='min-w-[15rem] max-w-[30rem] xsm:flex-1'>

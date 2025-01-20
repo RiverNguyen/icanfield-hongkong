@@ -2,17 +2,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import ItemAustralia from '@/components/itemAustralia'
-import {IItemAustralia} from '@/components/itemAustralia/itemAustralia.interface'
+import { IItemAustralia } from '@/components/itemAustralia/itemAustralia.interface'
 import SkeletonItemBlog from '@/components/itemBlog/SkeletonItemBlog'
-import {Pagination} from '@/components/pagination/Pagination'
-import {fetcher} from '@/lib/swr'
+import { Pagination } from '@/components/pagination/Pagination'
+import { fetcher } from '@/lib/swr'
 // import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import IndexSortAndSearchPosts from '@/sections/blogs/list-blogs/sort-and-search'
 // import IndexTabs from '@/sections/blogs/list-blogs/tab'
-import {SortOption} from '@/types/blogs.interface'
+import { SortOption } from '@/types/blogs.interface'
 // import endpoints from '@/utils/endpoints'
-import {useSearchParams} from 'next/navigation'
-import {FC, Fragment, useEffect, useMemo, useRef, useState} from 'react'
+import { useSearchParams } from 'next/navigation'
+import { FC, Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import useSWR from 'swr'
 
 export interface IOutstandingProjectEB5Props {
@@ -93,7 +93,7 @@ const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({listItems}) => {
       <div className='section-container'>
         <div className='mb-[2.5rem] flex items-center justify-between xsm:mb-[1.5rem] xsm:flex-col xsm:items-start xsm:justify-start'>
           <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown xsm:text-[1.5rem]'>
-            Dự án EB-5 tiêu biểu
+            Dự án bất động sản Úc
           </h2>
           <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:sticky xsm:top-[3.75rem] xsm:mb-[2.19rem] xsm:flex-col xsm:bg-background xsm:pb-1'>
             <IndexSortAndSearchPosts

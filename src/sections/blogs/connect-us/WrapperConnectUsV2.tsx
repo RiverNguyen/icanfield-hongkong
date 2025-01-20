@@ -27,7 +27,7 @@ const WrapperConnectUsV2 = ({
   return (
     <section
       ref={sectionFef}
-      className='relative h-[93.26625rem] w-full bg-white xsm:h-[76.4rem] xsm:bg-background'
+      className='relative h-[93.26625rem] w-full bg-white xsm:h-[57.6875rem] xsm:bg-background'
     >
       <div
         style={{
@@ -69,12 +69,12 @@ const WrapperConnectUsV2 = ({
         alt='background connect us'
         quality={95}
       />
-      <div className='pointer-events-none absolute bottom-0 left-0 z-[3rem] h-[69.4rem] w-full sm:hidden'>
+      <div className='pointer-events-none absolute bottom-0 left-0 z-[3rem] h-[69.4rem] xsm:h-[57.6875rem] w-full sm:hidden'>
         <ImageV2
           className='size-full object-fill sm:hidden'
           fill
           sizes='100vw'
-          src={'/imgs/blogs/background-connect-us-mb.webp'}
+          src={'/imgs/contact/contacstectionv2.jpg'}
           alt='background connect us'
           quality={95}
         />

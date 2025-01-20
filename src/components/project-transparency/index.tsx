@@ -1,7 +1,7 @@
 import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
 import Link from 'next/link'
-import {FC} from 'react'
+import { FC } from 'react'
 export interface IItemInvestmentOpportunities {
   title: string
   description: string
@@ -84,7 +84,7 @@ const ProjectTransparency: FC<IProjectTransparencyProps> = ({
               0{index + 1}
             </span>
             <div className='mx-auto mb-4 mt-3 h-[0.0625rem] w-[16.5rem] bg-[linear-gradient(90deg,rgba(255,255,255,0.25)_0%,rgba(255,255,255,0.00)100%)] group-hover:bg-[linear-gradient(90deg,rgba(0,0,0,0.10)0%,rgba(0,0,0,0.00)100%)] xsm:mb-4 xsm:ml-4 xsm:mt-0 xsm:bg-[linear-gradient(90deg,rgba(0,0,0,0.10)0%,rgba(0,0,0,0.00)100%)]'></div>
-            <h3 className='line-clamp-2 px-4 text-[1.25rem] font-semibold leading-[1.33] tracking-[-0.025rem] text-white group-hover:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] group-hover:bg-clip-text group-hover:text-transparent xsm:mb-2 xsm:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] xsm:bg-clip-text xsm:text-[1rem] xsm:font-bold xsm:text-transparent'>
+            <h3 className='line-clamp-2 px-4 text-[1.25rem] font-bold leading-[1.33] tracking-[-0.025rem] text-white group-hover:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] group-hover:bg-clip-text group-hover:text-transparent xsm:mb-2 xsm:bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)] xsm:bg-clip-text xsm:text-[1rem] xsm:font-bold xsm:text-transparent'>
               {item.title}
             </h3>
             <div

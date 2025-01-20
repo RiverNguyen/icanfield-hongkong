@@ -1,11 +1,11 @@
 import ICChat from '@/components/icon/ICChat'
 import ICTwoline from '@/components/icon/ICTwoline'
 import ImageV2 from '@/components/image/ImageV2'
-import {IItemAustralia} from '@/components/itemAustralia/itemAustralia.interface'
-import {info_banner} from '@/sections/detail-property-australia/slider/contants'
+import { IItemAustralia } from '@/components/itemAustralia/itemAustralia.interface'
+import { info_banner } from '@/sections/detail-property-australia/slider/contants'
 import Link from 'next/link'
 const ItemAustralia = (data: IItemAustralia) => {
-  const {location, slug, title, image, info} = data
+  const { location, slug, title, image, info, project_information } = data
   return (
     <Link
       href={'/australian-real-estate/' + slug}
@@ -47,6 +47,33 @@ const ItemAustralia = (data: IItemAustralia) => {
                 <p title={info?.[index]}>{info?.[index]}</p>
               </div>
             ))}
+        </div>
+      </div>
+      <div className='xsm:hidden px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]'>
+        <div className='space-y-[0.625rem] rounded-[0.75rem] bg-background p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem]'>
+          <div className='flex w-full items-center justify-between'>
+            <p className='text-brown body16-m xsm:body-14-m'>Thông tin dự án</p>
+            <p className='flex items-center rounded-[1.5625rem] bg-[rgba(0,0,0,0.10)] p-[0.125rem_0.625rem] text-brown body-14-s xsm:text-[0.625rem] xsm:font-bold xsm:uppercase xsm:leading-[1.2] xsm:tracking-[-0.00625rem]'>
+              {project_information && project_information?.length }+
+            </p>
+          </div>
+          <ul className='list-disc pl-[1.5rem]'>
+            {Array.isArray(
+              project_information
+            ) &&
+              project_information
+                .slice(0, 2)
+                .map((item: {item: string}, index: number) => (
+                  <li
+                    key={index}
+                    className='text-[#5C5C5C] body16 sm:tracking-[-0.02rem] xsm:body-14'
+                  >
+                    <p className='line-clamp-1 text-[#5C5C5C] body16 sm:tracking-[-0.02rem] xsm:body-14'>
+                      {item?.item}
+                    </p>
+                  </li>
+                ))}
+          </ul>
         </div>
       </div>
       <div className='flex items-center justify-between border-t-[1px] border-[rgba(0,0,0,0.08)] px-[1.5rem] py-[1.25rem] pb-[1.5rem] xsm:justify-start xsm:space-x-2 xsm:p-4'>

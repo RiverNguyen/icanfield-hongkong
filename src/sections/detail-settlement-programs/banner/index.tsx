@@ -1,7 +1,7 @@
 import ImageV2 from '@/components/image/ImageV2'
-import {cn} from '@/lib/utils'
-import {Media} from '@/types/image.interface'
-import {FC} from 'react'
+import { cn } from '@/lib/utils'
+import { Media } from '@/types/image.interface'
+import { FC } from 'react'
 
 export interface IBannerProps {
   title_line_1?: string
@@ -46,7 +46,7 @@ export const Banner: FC<IBannerProps> = ({
       <div
         className={`absolute inset-0 hidden h-full w-full ${backgroundOverlay} sm:block`}
       ></div>
-      <div className='absolute left-0 top-0 h-[40.25rem] w-full bg-[linear-gradient(180deg,rgba(246,246,244,0.00)_76.15%,#F6F6F4_98.8%),linear-gradient(180deg,rgba(0,0,0,0.45)_12%,rgba(0,0,0,0.00)_100%)] sm:hidden'></div>
+      <div className='overlay2 absolute left-0 top-0 h-[40.25rem] w-full bg-[linear-gradient(180deg,rgba(246,246,244,0.00)_76.15%,#F6F6F4_98.8%),linear-gradient(180deg,rgba(0,0,0,0.45)_12%,rgba(0,0,0,0.00)_100%)] sm:hidden'></div>
       {children}
       <div
         className={cn(

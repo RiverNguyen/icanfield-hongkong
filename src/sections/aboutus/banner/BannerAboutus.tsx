@@ -1,40 +1,22 @@
 'use client'
 import { Breadcrumb } from '@/components/breadcrumb'
-import ImageV2 from '@/components/image/ImageV2'
-import useIsMobile from '@/hooks/useIsMobile'
+import useInterView from '@/hooks/useInterView'
 import { cn } from '@/lib/utils'
 import { dataAcfBanner } from '@/types/dataAcfAboutus.interface'
-import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import './style.css'
 
 export default function BannerAboutus({
   dataAcfBanner,
 }: {
   dataAcfBanner: dataAcfBanner
-}) {
-  const [activeInterFace, setActiveInterFace] = useState<boolean>(false)
-  const ref = useRef<HTMLSelectElement>(null)
-  const isMobile = useIsMobile()
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (ref.current) {
-            setActiveInterFace(true)
-            observer.disconnect()
-          }
-        }
-      },
-      {
-        threshold: 0.1,
-      },
-    )
-    if (ref.current) observer.observe(ref.current)
-  }, [])
+  }) {
+  const {isVisible, elementRef} = useInterView({threshold: 0.1})
+  
   return (
     <section
-      ref={ref}
-      className='relative z-10 w-full overflow-hidden'
+      ref={elementRef}
+      className='relative z-10 w-full sm:overflow-hidden'
     >
       <Breadcrumb
         className='absolute left-[5rem] top-[6.4375rem]'
@@ -43,26 +25,23 @@ export default function BannerAboutus({
           {label: 'Về chúng tôi', href: ''},
         ]}
       />
-      {isMobile ? (
-        <ImageV2
-          className='h-full w-full'
-          alt={dataAcfBanner?.images_background_mb?.alt}
-          width={1600}
-          height={700}
-          src={dataAcfBanner?.images_background_mb?.url || ''}
-        />
-      ) : (
-        <ImageV2
-          className='h-full w-full'
-          alt={dataAcfBanner?.images_background_pc?.alt}
-          width={1600}
-          height={700}
-          src={dataAcfBanner?.images_background_pc?.url || ''}
-        />
-      )}
-      <ImageV2
+      <Image
+        className='h-full w-full sm:hidden'
+        alt={dataAcfBanner?.images_background_mb?.alt}
+        width={1600}
+        height={700}
+        src={dataAcfBanner?.images_background_mb?.url || ''}
+      />
+      <Image
+        className='h-full w-full xsm:hidden'
+        alt={dataAcfBanner?.images_background_pc?.alt}
+        width={1600}
+        height={700}
+        src={dataAcfBanner?.images_background_pc?.url || ''}
+      />
+      <Image
         className={cn(
-          activeInterFace && 'active__plane',
+          isVisible && 'active__plane',
           'absolute left-[11.83rem] top-[14.87rem] h-[16.69144rem] w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:h-[6.31106rem] xsm:w-[10.14275rem] xsm:rotate-[-5.462deg]',
         )}
         alt=''
@@ -72,14 +51,14 @@ export default function BannerAboutus({
       />
       <div
         className={cn(
-          activeInterFace && 'active__about',
+          isVisible && 'active__about',
           'absolute top-[13.87rem] z-10 space-y-[1.5rem] transition-all sm:right-[11.94rem] sm:translate-y-[100%] sm:opacity-0 xsm:left-[50%] xsm:top-[8.19rem] xsm:w-[18.25rem] xsm:translate-x-[-50%] xsm:space-y-[1rem]',
         )}
       >
         <p className='font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-white xsm:text-[1.75rem] xsm:font-semibold xsm:tracking-[-0.035rem]'>
           {dataAcfBanner?.we_are?.title}
         </p>
-        <ImageV2
+        <Image
           className='h-[10.35025rem] w-[33.6875rem] object-contain xsm:h-[5.60719rem] xsm:w-[18.25rem]'
           alt={dataAcfBanner?.we_are?.image_about_us?.alt}
           width={539}
@@ -90,7 +69,7 @@ export default function BannerAboutus({
       </div>
       <div
         className={cn(
-          activeInterFace && 'active__content',
+          isVisible && 'active__content',
           'absolute bottom-[3rem] left-[5rem] w-[41.625rem] space-y-[1.19rem] transition-all sm:translate-y-[100%] sm:opacity-0 xsm:bottom-0 xsm:left-[50%] xsm:w-full xsm:translate-x-[-50%] xsm:space-y-[1rem] xsm:p-[2.5rem_1rem]',
         )}
       >
