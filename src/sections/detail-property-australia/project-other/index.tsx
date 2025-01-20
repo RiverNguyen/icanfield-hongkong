@@ -1,10 +1,10 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import ItemAustralia from '@/components/itemAustralia'
-import {fetcher} from '@/lib/swr'
-import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
-import {Pagination} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import { fetcher } from '@/lib/swr'
+import { IDataAcfDetailAustralia } from '@/types/dataAcfDetailAustralia.interface'
+import { Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import useSWR from 'swr'
 
 const fetcherWithCustomBase = (url: string) =>
@@ -79,6 +79,7 @@ console.log(dataOther)
                   )}
                   image={item.featured_media}
                   slug={item.slug}
+                  project_information={item?.acf?.diverse_amenities?.utilities}
                 />
               </SwiperSlide>
             ))}

@@ -1,4 +1,4 @@
-import {Media} from '@/types/image.interface'
+import { Media } from '@/types/image.interface'
 
 export interface IItemAustralia {
   location: string
@@ -6,4 +6,7 @@ export interface IItemAustralia {
   title: string
   image: Media | null
   info: string[]
+  project_information: {
+    item: string
+  }[]
 }

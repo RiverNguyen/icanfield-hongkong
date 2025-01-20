@@ -5,14 +5,14 @@ export const info_banner = [
   },
   {
     name: 'Giá bán',
-    icon: '/imgs/detail-property/price.webp',
+    icon: '/icons/detail-property/price.svg',
   },
   {
     name: 'Chủ đầu tư',
-    icon: '/imgs/detail-property/investor.webp',
+    icon: '/icons/detail-property/investor.svg',
   },
   {
     name: 'Pháp lý',
-    icon: '/imgs/detail-property/legal.webp',
+    icon: '/icons/detail-property/legal.svg',
   },
 ]

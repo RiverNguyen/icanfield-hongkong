@@ -74,11 +74,12 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
             height={backgroundMb?.height || 1000}
             className='h-full w-full sm:hidden'
           />
-          <span className='heading-hero-title-2 absolute left-[5rem] top-[8rem] max-w-[29.6875rem] font-optima font-medium text-white xsm:text-center xsm:text-[1.9375rem] xms:top-[8rem] xsm:max-w-full xsm:w-[82%] xsm:left-1/2 xsm:-translate-x-1/2'>
-            {slogan}
-          </span>
+          {slogan && 
+            <div dangerouslySetInnerHTML={{__html: slogan}} className='heading-hero-title-2 absolute left-[5rem] top-[8rem] max-w-[29.6875rem] font-optima font-medium text-white xsm:text-center xsm:text-[1.9375rem] xms:top-[8rem] xsm:max-w-full xsm:w-[82%] xsm:left-1/2 xsm:-translate-x-1/2'>
+            </div>
+          }
         </div>
-        <div className='relative space-y-[1rem] bg-transparent sm:space-y-[2rem] sm:pr-[5rem] sm:pt-[2rem] xsm:px-[1rem] xsm:pb-[2.5rem] pb-[2rem] sm:-translate-y-4 sm:mb-4'>
+        <div className='relative space-y-[1rem] bg-transparent sm:space-y-[2rem] sm:pr-[5rem] sm:pt-[2rem] xsm:px-[1rem] xsm:pb-[6.81rem] pb-[2rem] sm:-translate-y-4 sm:mb-4'>
           {Array.isArray(items) &&
             items.map((item, index) => (
               <AdvantagesBenefitsItem

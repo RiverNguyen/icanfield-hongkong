@@ -213,20 +213,20 @@ const FormInternationalJourney = ({
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    <FormControl className='mt-[1.5rem] h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] xsm:mt-[0.75rem] xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5]'>
+                    <FormControl className='mt-[1.5rem] h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] xsm:mt-[0.75rem] xsm:!opacity-100 [&>.text-placeholder]:[&[data-placeholder]]:flex [&>.text-placeholder>p]:[&[data-placeholder]]:opacity-[0.5]'>
                       <SelectTrigger>
                         {isMobile ? (
                           !field.value && (
-                            <p className='hidden text-start text-greyscaletext-800 body16-m'>
-                              Chương trình định cư bạn quan tâm
+                            <div className='hidden text-placeholder items-center'>
+                              <p className='text-start text-greyscaletext-800 body16-m'>Chương trình định cư bạn quan tâm</p>
                               <span className='text-errtext'>*</span>
-                            </p>
+                            </div>
                           )
                         ) : (
-                          <p className='hidden text-start text-greyscaletext-800 body16-m'>
-                            Chương trình định cư bạn quan tâm
+                          <div className='hidden text-placeholder items-center'>
+                            <p className='text-start text-greyscaletext-800 body16-m'>Chương trình định cư bạn quan tâm</p>
                             <span className='text-errtext'>*</span>
-                          </p>
+                          </div>
                         )}
                         {isMobile && field.value && (
                           <div className='text-start text-greyscaletext-800 body16-m'>

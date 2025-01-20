@@ -1,9 +1,9 @@
 'use client'
-import {Feature, FeatureCollection, GeoJsonObject} from 'geojson'
-import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
+import { Feature, FeatureCollection, GeoJsonObject } from 'geojson'
+import L, { GeoJSONOptions, LatLngTuple } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import {FC, useCallback, useEffect, useRef, useState} from 'react'
-import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { GeoJSON, MapContainer, Marker } from 'react-leaflet'
 import './styles.css'
 export interface ICountry {
   name: string
@@ -229,12 +229,12 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
                     <div class="flex items-center relative">
                         <div class='size-[0.75rem] bg-[#DAF2AF] rounded-full mr-1 xsm:size-[0.375rem]'></div>
                         <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">EB-5</span>
-                        <div class='flex items-center justify-around absolute bg-white w-[8.63rem] py-2 rounded-[0.63rem] bottom-0 left-1/2 -translate-x-1/2 shadow-lg  transition-all duration-300 opacity-0 info-tag '>
+                        <div class='flex items-center justify-around absolute bg-white w-[8.63rem] sm:w-max sm:space-x-[0.5rem] p-2 rounded-[0.63rem] bottom-0 left-1/2 -translate-x-1/2 shadow-lg  transition-all duration-300 opacity-0 info-tag '>
                               <div class='flex items-center justify-center p-4 rounded-[0.5rem] bg-primary-brown'>
                                 <img src='/icons/EB5/pioneering-values/project.svg' class='size-[1.01563rem] object-cover' />
                               </div>
                               <div class='flex flex-col '>
-                                    <span class='text-greentext font-normal leading-[1.25] text-[2rem]'>${countryObj?.number_of_projects || 1}</span>
+                                    <span class='text-greentext font-normal leading-[1.25] text-[1.25rem]'>${countryObj?.name || 1}</span>
                                     <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>Dự án EB-5</span>
                               </div>
                         </div>
