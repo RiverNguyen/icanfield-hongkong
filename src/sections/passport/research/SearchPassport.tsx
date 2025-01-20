@@ -78,7 +78,7 @@ const SearchPassport = ({setCodePostal}: IProps) => {
   }
   return (
     <div className='rounded-[1.25rem] bg-white p-[1.5rem] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)] xsm:p-[1rem]'>
-      <h2 className='font-medium text-Phase-1-Brown heading3 xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.025rem]'>
+      <h2 className='font-medium text-Phase-1-Brown heading3 xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.025rem] font-optima'>
         Tra cứu thông tin hộ chiếu
       </h2>
       <Form {...form}>
