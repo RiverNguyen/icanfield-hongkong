@@ -109,9 +109,9 @@ export default function FilterProgramme({
         >
           <span className='flex items-center whitespace-nowrap text-[1rem] font-normal leading-[1.5] tracking-[-0.02rem] text-greyscaletext-body xsm:line-clamp-1 xsm:text-[0.75rem] xsm:text-[#3F2214]'>
             <b className='whitespace-nowrap font-medium sm:font-bold'>
-              Lọc theo:{' '}
+              Lọc theo:{''}
             </b>
-            {selectedSortOption?.name}
+             {selectedSortOption?.name}
           </span>
           <ImageV2
             className='size-[1.5rem]'

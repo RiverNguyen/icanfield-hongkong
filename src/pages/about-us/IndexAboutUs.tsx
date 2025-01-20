@@ -14,6 +14,7 @@ import {
   dataAcfPioneeringMission,
   dataMission,
 } from '@/types/dataAcfAboutus.interface'
+import {ImageHeader} from '@/types/dataHeader.interface'
 interface dataAcf {
   banner_about_us: dataAcfBanner
   icanfields_mission: dataMission
@@ -21,20 +22,32 @@ interface dataAcf {
   elite_team_of_experts_creating_a_successful_journey: IExpertTeamProps
   awards_certifications: IAwardsCertificationsProps
   icanfield_office: IOfficeMapProps
+  icanfield_office_map: ItemMap[]
 }
+export interface ItemMap {
+  flag: string
+  name: string
+  label_x: string
+  label_y: string
+  gallery: ImageHeader[]
+  description: string
+  location: string
+  office_time: string
+  link: string
+}
+
 const IndexAboutUs = ({
   dataAcf,
-  dataMap,
 }: {
   dataAcf: dataAcf
   dataMap: DataMapHomepage
 }) => {
-  const officeMap:IOfficeMapProps = {
-      description: dataAcf?.icanfield_office?.description,
-      subtitle: dataAcf?.icanfield_office?.subtitle,
-      title: dataAcf?.icanfield_office?.title,
-      info: dataAcf?.icanfield_office?.info,
-      countries: dataMap,
+  const officeMap: IOfficeMapProps = {
+    description: dataAcf?.icanfield_office?.description,
+    subtitle: dataAcf?.icanfield_office?.subtitle,
+    title: dataAcf?.icanfield_office?.title,
+    info: dataAcf?.icanfield_office?.info,
+    countries: dataAcf?.icanfield_office_map,
   }
   return (
     <>

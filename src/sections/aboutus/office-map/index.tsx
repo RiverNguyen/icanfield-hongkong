@@ -1,5 +1,5 @@
 import ImageV2 from '@/components/image/ImageV2'
-import { DataMapHomepage } from '@/sections/homepage/map-discover/dataMap.interface'
+import {ItemMap} from '@/pages/about-us/IndexAboutUs'
 import dynamic from 'next/dynamic'
 import {FC} from 'react'
 const IndexMap = dynamic(
@@ -13,7 +13,7 @@ export interface IOfficeMapProps {
   description: string
   title: string
   info: IInfoProps[]
-  countries: DataMapHomepage
+  countries: ItemMap[]
 }
 
 export const OfficeMap: FC<IOfficeMapProps> = ({
@@ -27,12 +27,13 @@ export const OfficeMap: FC<IOfficeMapProps> = ({
     <section className='relative rounded-[1.5rem] bg-white p-[2rem_1rem_1rem] shadow-[0px_2px_50px_0px_rgba(0,0,0,0.05)] before:absolute before:left-0 before:top-0 before:z-[-1] before:h-full before:w-full before:bg-[#F6F6F4] before:content-[""] sm:rounded-[4rem] sm:p-[5rem_0_7.94rem] sm:shadow-[0px_3px_50px_0px_rgba(0,0,0,0.03)] xsm:mb-[0rem]'>
       <div className='mx-auto flex max-w-[90rem] flex-col justify-between sm:flex-row'>
         <div className='flex max-w-[35.4375rem] flex-col'>
-          <p className='sub-12 font-medium text-greyscaletext-body/70 sm:line-clamp-5 sm:text-[1rem] sm:font-semibold sm:leading-[150%]'>
+          <p className='font-medium text-greyscaletext-body/70 sub-12 sm:line-clamp-5 sm:text-[1rem] sm:font-semibold sm:leading-[150%]'>
             {subtitle}
           </p>
-          <h2 className='heading1 mb-[1.5rem] mt-[0.5rem] font-optima font-bold leading-[1.2] tracking-[-0.06rem] text-brown' dangerouslySetInnerHTML={{__html: title}}>
-
-          </h2>
+          <h2
+            className='mb-[1.5rem] mt-[0.5rem] font-optima font-bold leading-[1.2] tracking-[-0.06rem] text-brown heading1'
+            dangerouslySetInnerHTML={{__html: title || ''}}
+          ></h2>
           <p className='mb-[1.5rem] text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-bodytext sm:mb-[3rem] sm:text-[1rem] sm:tracking-[-0.02rem]'>
             {description}
           </p>
@@ -43,7 +44,7 @@ export const OfficeMap: FC<IOfficeMapProps> = ({
             />
           ))}
         </div>
-        <IndexMap countries={countries?.countries_data} dataOffice={countries?.offices_data} />
+        <IndexMap dataOffice={countries} />
       </div>
     </section>
   )
@@ -64,14 +65,14 @@ function Info({data, label, icon}: IInfoProps) {
           alt={label}
           width={24 * 2}
           height={24 * 2}
-          className='h-full w-full object-contain mr-2'
+          className='mr-2 h-full w-full object-contain'
         />
       </div>
       <div>
         <p className='text-[1rem] font-bold leading-[1.5] text-brown sm:text-[1.5rem]'>
           {data}
         </p>
-        <h3 className='heading6 mt-[0.25rem] font-semibold text-greyscaletext-300 xsm:text-[0.875rem] xsm:font-normal xsm:leading-[1.5]'>
+        <h3 className='mt-[0.25rem] font-semibold text-greyscaletext-300 heading6 xsm:text-[0.875rem] xsm:font-normal xsm:leading-[1.5]'>
           {label}
         </h3>
       </div>

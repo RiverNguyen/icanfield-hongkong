@@ -96,9 +96,7 @@ export interface information {
 }
 export interface interest {
   amount_of_benefits: string
-  title_interest: {
-    title: string
-  }[]
+  title_interest: string[]
 }
 export interface dataProgramsAcf {
   id: number

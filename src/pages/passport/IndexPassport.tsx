@@ -22,6 +22,7 @@ const IndexPassport = ({
   }
   dataNationSettlement: Term[]
 }) => {
+  // console.log(dataAcf)
   return (
     <main className='bg-background'>
       <Banner
@@ -42,7 +43,7 @@ const IndexPassport = ({
             {' '}
             <WrapperAside />
           </Suspense>
-          <div className='flex-1 overflow-hidden sm:rounded-[1.5rem] sm:shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)] xsm:absolute xsm:left-0 xsm:top-[14.1875rem] xsm:h-[16.125rem] xsm:min-h-[16.125rem] xsm:w-full xsm:px-[1rem]'>
+          <div className='flex-1 overflow-hidden sm:rounded-[1.5rem] sm:shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)] xsm:absolute xsm:left-0 xsm:top-[14.1875rem] xsm:h-[16.125rem] xsm:-z-10 xsm:min-h-[16.125rem] xsm:w-full xsm:px-[1rem]'>
             <MapPassport />
           </div>
         </div>
