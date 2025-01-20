@@ -77,7 +77,7 @@ const IndexComparePrograms = ({
         <Breadcrumb
           items={[
             {label: 'Trang chủ', href: '/'},
-            {label: 'So sánh chương trình', href: '#'},
+            {label: 'So sánh chương trình', href: ''},
           ]}
         />
       </Banner>
