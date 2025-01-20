@@ -33,11 +33,11 @@ const IndexPassport = ({
         <Breadcrumb
           items={[
             {label: 'Home', href: '/'},
-            {label: 'Dự án EB-5', href: '/EB5'},
+            {label: 'Thông tin hộ chiếu', href: '/EB5'},
           ]}
         />
       </Banner>
-      <div className=' flex w-full items-center rounded-[2.5rem_2.5rem_0_0] sm:pt-[5rem] bg-[#F6F6F4] sm:h-fit xsm:mt-0  xsm:h-fit z-[21] relative'>
+      <div className=' flex w-full items-center rounded-[2.5rem_2.5rem_0_0] sm:pt-[5rem] bg-[#F6F6F4] sm:h-fit xsm:mt-0  xsm:h-fit z-[21] relative sm:-translate-y-9'>
         <div className='relative flex w-full section-container sm:h-[38.9rem] sm:space-x-[1.5rem] xsm:h-fit xsm:flex-col xsm:-translate-y-[2rem]'>
           <Suspense>
             {' '}
