@@ -9,6 +9,7 @@ export interface ICountry {
   name: string
   label?: string
   flag?: string
+  number_of_projects?: number
 }
 
 interface ILeafletMapProps {

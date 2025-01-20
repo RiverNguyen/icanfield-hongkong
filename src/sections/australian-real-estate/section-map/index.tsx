@@ -3,7 +3,6 @@ import ImageV2 from '@/components/image/ImageV2'
 import React from 'react'
 import {LeafletMapCountries} from '@/components/LeafletMapCountries'
 import customGeoJson from '@/sections/immigration/map/australian.geo.json'
-import {states} from '@/sections/EB5/pioneering-values/constants'
 import {FeatureCollection} from 'geojson'
 import 'leaflet/dist/leaflet.css'
 import {ICountry} from '@/components/LeafletMap'
@@ -29,6 +28,7 @@ const PioneeringValuesAustralia = ({
     setIsOpenPopup(!isOpenPopup)
   }
   const convertedData = data?.data_state_usa.map((item: ICountry) => [item])
+  console.log(convertedData)
   return (
     <section className='bg-background pt-[3rem] sm:-translate-y-[3rem]'>
       <div className='relative flex items-end justify-between overflow-hidden pb-[2.75rem] section-container xsm:flex-col xsm:items-start xsm:pb-[1.72rem]'>
@@ -53,7 +53,7 @@ const PioneeringValuesAustralia = ({
       >
         <div className='flex w-full items-center justify-between rounded-[0.5rem] bg-[#EEE] px-4 py-3'>
           <span className='text-[0.875rem] font-medium leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body'>
-            Các khu vực dự án EB-5
+            Các khu vực  bất động sản Úc
           </span>
           <ImageV2
             src={'/icons/EB5/pioneering-values/arrow.svg'}
@@ -71,12 +71,13 @@ const PioneeringValuesAustralia = ({
           className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
           borderCountries='#B6B3A7'
           zoomDesktop={4.35}
-          zoomMobile={2.4}
+          zoomMobile={3}
           isZoomClick={false}
           isControlZoom={true}
           isZoomInClick={isZoomInClick}
           isZoomOutClick={isZoomOutClick}
           center={[-26, 130]}
+          centerMobile={[-26, 130]}
         />
         <div className='absolute bottom-[2.69rem] left-[2.38rem] z-[11] flex flex-col space-y-[0.88rem] xsm:hidden'>
           <button
@@ -121,22 +122,22 @@ const PioneeringValuesAustralia = ({
           >
             <div className='mx-auto h-[0.25rem] w-[3rem] rounded-full bg-[rgba(0,0,0,0.10)]'></div>
           </div>
-          <div className='grid h-full grid-cols-2 gap-3 overflow-y-auto pb-8'>
-            {states.map((stateGroup, index) => {
+          <div className='grid h-fit max-h-full grid-cols-2 gap-3 overflow-y-auto pb-8'>
+            {convertedData.map((stateGroup, index) => {
               const state = stateGroup[0] // Lấy đối tượng trạng thái đầu tiên từ mảng con
               return (
                 <div
                   key={index}
                   className='flex flex-col items-start justify-start rounded-[0.5rem] bg-background p-3'
                 >
-                  <span className='mb-2 block w-full border-b-[1px] border-[rgba(0,0,0,0.10)] pb-2'>
+                  <span className='mb-2 block w-fit border-b-[1px] border-[rgba(0,0,0,0.10)] pb-2 w-full'>
                     {state?.label || 'Name States'}
                   </span>
                   <div className='flex items-center justify-center'>
                     <div className='flex items-center justify-center rounded-[0.5rem] bg-primary-brown p-3'>
                       <ImageV2
                         src='/icons/EB5/pioneering-values/project.svg'
-                        className='size-[1.01563rem] object-cover'
+                        className='size-[1.01563rem] object-cover flex-shrink-0'
                         width={50}
                         height={50}
                         alt='Project-icon'
@@ -144,10 +145,10 @@ const PioneeringValuesAustralia = ({
                     </div>
                     <div className='ml-4 flex flex-col'>
                       <span className='text-[1.5rem] font-normal leading-[1.25] text-greentext'>
-                        {state?.projectNumber || 1}
+                        {state?.number_of_projects || 1}
                       </span>
                       <span className='text-[0.875rem] leading-[1.41] tracking-[-0.00875rem] text-tagtext'>
-                        Dự án EB-5
+                        Dự án BĐS
                       </span>
                     </div>
                   </div>
