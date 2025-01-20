@@ -78,6 +78,7 @@ const PioneeringValuesAustralia = ({
           isZoomOutClick={isZoomOutClick}
           center={[-26, 130]}
           centerMobile={[-26, 130]}
+          isAustralia={true}
         />
         <div className='absolute bottom-[2.69rem] left-[2.38rem] z-[11] flex flex-col space-y-[0.88rem] xsm:hidden'>
           <button
