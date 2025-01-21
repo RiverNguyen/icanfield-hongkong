@@ -10,15 +10,65 @@ import {
 import { cn } from '@/lib/utils'
 import CardPrograms from '@/sections/compare-programs/CardPrograms'
 import { DataItem } from '@/types/comparePrograms.interface'
-import { useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
+
+interface nameKey {
+  [key: string]: string | undefined;
+}
+const nameKey: nameKey = {
+  program_purpose: 'Mục đích chương trình',
+  investment_type: 'Loại hình đầu tư',
+  lowest_investment_level: 'Mức đầu tư thấp nhất',
+  time_to_reach_target: 'Thời gian đạt mục tiêu',
+  minimum_time_to_maintain_investment: 'Thời gian tối thiểu để duy trì đầu tư',
+  minimum_residence_period: 'Thời gian cư trú tối thiểu',
+  member_with_profile: 'Thành viên có hồ sơ',
+  number_of_times_you_need: 'Số lần cần sang quốc gia để hoàn tất hồ sơ',
+  working_benefits: 'Quyền lợi làm việc',
+  countries_are_free_to_travel: 'Các quốc gia tự do đi lại',
+  outstanding_benefits: 'Quyền lợi nổi bật',
+  right_to_work: 'Quyền làm việc',
+  education: 'Giáo dục',
+  medical: 'Y tế',
+  tax_benefits: 'Quyền lợi về thuế',
+  the_country_is_a_member_of_the_organizationtreaty: 'Quốc gia là thành viên Tổ chức / Hiệp ước',
+  request_the_applicant: 'Yêu cầu đương đơn',
+  year_old: 'Tuổi',
+  management_qualificationsexperience: 'Trình độ / Kinh nghiệm quản lý',
+  proof_of_assets: 'Chứng minh tài sản',
+  requirements_for_businesses_in_vietnam: 'Yêu cầu doanh nghiệp ở VN',
+  foreign_language_required: 'Yêu cầu ngoại ngữ',
+  security_background: 'Lý lịch an ninh',
+  health: 'Sức khỏe',
+  investment_form_requirements: 'Yêu cầu về hình thức đầu tư',
+  specific_investment_plan: 'Phương án đầu tư cụ thể',
+  prove_the_source_of_investment_funds: 'Chứng minh nguồn tiền đầu tư',
+  visa_granted: 'Visa được cấp',
+  visa_duration_is_first_issued: 'Thời hạn Visa được cấp đầu tiên',
+  visa_extension_time: 'Thời điểm gia hạn Visa',
+  conditions_for_extension: 'Điều kiện gia hạn',
+  time_to_apply_for_citizenship_after_obtaining_a_visa: 'Thời gian xin lên quốc tịch (sau khi đã có visa)',
+  additional_benefits_after_gaining_citizenship: 'Quyền lợi thêm sau khi lên quốc tịch',
+  nationality: 'Quốc tịch',
+  conditions_for_applying_for_citizenship: 'Điều kiện xin lên quốc tịch',
+  conditions_for_maintaining_nationality: 'Điều kiện duy trì quốc tịch',
+  allows_multiple_nationalities: 'Cho phép đa quốc tịch'
+}
 
 export default function Programs({ programs }: { programs: DataItem[] }) {
-  const [indexProgramsActive, setIndexProgramsActive] = useState<number[]>([0, 1, 2, 3])
+  const [indexProgramsActive, setIndexProgramsActive] = useState<number[]>([-1, -1, -1, -1])
+  const [keys, setKeys] = useState<string[]>([])
+  const [check, setCheck] = useState<boolean>(false)
   const updateIndexValue = (index: number, newValue: number) => {
     setIndexProgramsActive((prev) => 
       prev.map((value, i) => (i === index ? newValue : value))
     );
   };
+  useEffect(() => {
+    if (Array.isArray(programs)) {
+      setKeys(Object.keys(programs?.[0]?.compare))
+    }
+  }, [programs])
   return (
     <div
       id='table__programs'
@@ -41,11 +91,14 @@ export default function Programs({ programs }: { programs: DataItem[] }) {
                 <Select
                   onValueChange={(value) => {
                     updateIndexValue(index, Number(value))
+                    if (!check) {
+                      setCheck(true)
+                    }
                   }}
                 >
                   <SelectTrigger className='bg-white [&_p]:[&[data-placeholder]]:hidden h-[3rem] w-full rounded-[0.75rem] border-none shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)] outline-none ring-0 focus:ring-0'>
                     <SelectValue
-                      placeholder={`${programs?.[index].title}`}
+                      placeholder={`${programs?.[indexProgramsActive[index]]?.title || 'Chọn chương trình'}`}
                       className='body16-m xsm:sub-12-m'
                     />
                     <p className='w-full line-clamp-1 text-start'>{programs?.[item]?.title}</p>
@@ -77,112 +130,30 @@ export default function Programs({ programs }: { programs: DataItem[] }) {
         </div>
         <div className='relative grid h-fit w-full grid-cols-[1fr_19.375rem_19.375rem_19.375rem_19.375rem] xsm:grid-cols-[6.25rem_13.125rem_13.125rem_13.125rem_13.125rem]'>
           <div></div>
-          {indexProgramsActive?.map((item: number) => (
+          {indexProgramsActive?.map((item: number, idx: number) => (
             <div
-              key={programs?.[item]?.id}
+              key={idx}
               className='border-l border-solid p-[0_1rem_1rem] xsm:p-[0_0.75rem_0.75rem]'
             >
-              <CardPrograms data={programs?.[item]} />
+              {programs?.[item] && 
+                <CardPrograms data={programs?.[item]} />
+              }
             </div>
           ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Mục đích chương trình
-          </div>
-          {indexProgramsActive.map((id: number) => (
-            <div
-              key={id}
-              dangerouslySetInnerHTML={{__html: programs?.[id]?.compare?.program_purpose}}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Loại hình đầu tư
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.investment_type}}
-              key={item}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Mức đầu tư thấp nhất
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              key={item}
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.lowest_investment_level}}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Thời gian đạt mục tiêu
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.time_to_reach_target}}
-              key={item}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Thời gian tối thiểu duy trì khoản đầu tư
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.minimum_time_to_maintain_investment}}
-              key={item}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Thời gian cư trú tối thiểu
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.minimum_residence_period}}
-              key={item}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Thành viên kèm hồ sơ
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.member_with_profile}}
-              key={item}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Số lần cần sang quốc gia để hoàn tất hồ sơ
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.number_of_times_you_need}}
-              key={item}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
-          ))}
-          <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-            Quyền lợi làm việc
-          </div>
-          {indexProgramsActive?.map((item: number) => (
-            <div
-              dangerouslySetInnerHTML={{__html: programs?.[item]?.compare?.working_benefits}}
-              key={item}
-              className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-            >
-            </div>
+          {Array.isArray(keys) && (check ? keys : keys.slice(0, 10))?.map((item: string) => (
+            <Fragment key={item}>
+              <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
+                {nameKey?.[item]}
+              </div>
+              {indexProgramsActive.map((id: number, index: number) => (
+                <div
+                  key={item + index}
+                  dangerouslySetInnerHTML={{__html: programs?.[id]?.compare?.[item] || ''}}
+                  className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
+                >
+                </div>
+              ))}
+            </Fragment>
           ))}
         </div>
       </div>

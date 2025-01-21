@@ -2,6 +2,7 @@
 export interface dataHeader {
   logo: ImageHeader
   logo_mb: ImageHeader
+  consulting_phone_number: string
   news_business: {
     label: string
     link: string
