@@ -2,16 +2,16 @@ import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import DetailSettlementPrograms from '@/pages/detail-settlement-programs'
 import endpoints from '@/utils/endpoints'
-// export async function generateStaticParams() {
-//   // Gọi API để lấy tất cả các slug của các tour
-//   const tours = await fetchData({
-//     api: '/slugs?post_type=settlement-program',
-//   })
-//   // Trả về các tham số tĩnh
-//   return tours?.map((tour: string[]) => ({
-//     slug: tour,
-//   }))
-// }
+export async function generateStaticParams() {
+  // Gọi API để lấy tất cả các slug của các tour
+  const tours = await fetchData({
+    api: '/slugs?post_type=settlement-program',
+  })
+  // Trả về các tham số tĩnh
+  return tours?.map((tour: string[]) => ({
+    slug: tour,
+  }))
+}
 export default async function page({
   params,
 }: {
