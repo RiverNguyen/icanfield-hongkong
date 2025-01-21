@@ -4,17 +4,15 @@ import AwardsCertifications, {
 import BannerAboutus from '@/sections/aboutus/banner/BannerAboutus'
 import Mission from '@/sections/aboutus/banner/Mission'
 import ExpertTeam from '@/sections/aboutus/expert-team'
-import {OfficeMap} from '@/sections/aboutus/office-map'
+import { IOfficeMapProps, OfficeMap } from '@/sections/aboutus/office-map'
 import PioneeringMission from '@/sections/aboutus/pioneering-mission/PioneeringMission'
-import {DataMapHomepage} from '@/sections/homepage/map-discover/dataMap.interface'
-import {IOfficeMapProps} from '@/sections/aboutus/office-map'
 import {
   IExpertTeamProps,
   dataAcfBanner,
   dataAcfPioneeringMission,
   dataMission,
 } from '@/types/dataAcfAboutus.interface'
-import {ImageHeader} from '@/types/dataHeader.interface'
+import { ImageHeader } from '@/types/dataHeader.interface'
 interface dataAcf {
   banner_about_us: dataAcfBanner
   icanfields_mission: dataMission
@@ -40,7 +38,6 @@ const IndexAboutUs = ({
   dataAcf,
 }: {
   dataAcf: dataAcf
-  dataMap: DataMapHomepage
 }) => {
   const officeMap: IOfficeMapProps = {
     description: dataAcf?.icanfield_office?.description,

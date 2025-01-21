@@ -1,9 +1,9 @@
 'use client'
 import { Breadcrumb } from '@/components/breadcrumb'
+import ImageV2 from '@/components/image/ImageV2'
 import useInterView from '@/hooks/useInterView'
 import { cn } from '@/lib/utils'
 import { dataAcfBanner } from '@/types/dataAcfAboutus.interface'
-import Image from 'next/image'
 import './style.css'
 
 export default function BannerAboutus({
@@ -25,24 +25,24 @@ export default function BannerAboutus({
           {label: 'Về chúng tôi', href: ''},
         ]}
       />
-      <Image
+      <ImageV2
         className='h-full w-full sm:hidden'
         alt={dataAcfBanner?.images_background_mb?.alt}
-        width={1600}
-        height={700}
+        width={368}
+        height={650}
         src={dataAcfBanner?.images_background_mb?.url || ''}
       />
-      <Image
+      <ImageV2
         className='h-full w-full xsm:hidden'
         alt={dataAcfBanner?.images_background_pc?.alt}
-        width={1600}
-        height={700}
+        width={1200}
+        height={650}
         src={dataAcfBanner?.images_background_pc?.url || ''}
       />
-      <Image
+      <ImageV2
         className={cn(
           isVisible && 'active__plane',
-          'absolute left-[11.83rem] top-[14.87rem] h-[16.69144rem] w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:h-[6.31106rem] xsm:w-[10.14275rem] xsm:rotate-[-5.462deg]',
+          'absolute left-[11.83rem] top-[14.87rem] !h-[16.69144rem] !w-[24.98719rem] object-cover transition-all xsm:left-[-0.29rem] xsm:top-[21.31rem] xsm:!h-[6.31106rem] xsm:!w-[10.14275rem] xsm:rotate-[-5.462deg]',
         )}
         alt=''
         width={399}
@@ -58,8 +58,8 @@ export default function BannerAboutus({
         <p className='font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-white xsm:text-[1.75rem] xsm:font-semibold xsm:tracking-[-0.035rem]'>
           {dataAcfBanner?.we_are?.title}
         </p>
-        <Image
-          className='h-[10.35025rem] w-[33.6875rem] object-contain xsm:h-[5.60719rem] xsm:w-[18.25rem]'
+        <ImageV2
+          className='!h-[10.35025rem] !w-[33.6875rem] object-contain xsm:!h-[5.60719rem] xsm:!w-[18.25rem]'
           alt={dataAcfBanner?.we_are?.image_about_us?.alt}
           width={539}
           height={165}

@@ -1,7 +1,7 @@
+import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
 import endpoints from '@/utils/endpoints'
-import fetchData from '@/fetch/fetchData'
 const page = async () => {
   const HomepageMap = {
     api: endpoints.homepageMap,
@@ -21,7 +21,6 @@ const page = async () => {
   return (
     <IndexAboutUs
       dataAcf={dataAcf?.acf}
-      dataMap={dataMap?.data}
     />
   )
 }
