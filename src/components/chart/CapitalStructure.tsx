@@ -1,10 +1,10 @@
 'use client'
 
-import {ComponentChart} from '@/components/chart/ComponentChart'
-import {initChart} from '@/components/chart/constant'
+import { ComponentChart } from '@/components/chart/ComponentChart'
+import { initChart } from '@/components/chart/constant'
 import useInterView from '@/hooks/useInterView'
-import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
-import {Fragment} from 'react'
+import { IDataAcfDetailEB5 } from '@/types/dataAcfDetailEB5.interface'
+import { Fragment } from 'react'
 
 export default function CapitalStructure({
   dataCapitalStructure,
@@ -18,7 +18,6 @@ export default function CapitalStructure({
     dataCapitalStructure.capital_from_senior_loans,
     dataCapitalStructure['eb-5_loan_capital'],
   ]
-
   return (
     <section className='section-container sm:py-[3.62rem] xsm:mt-[4rem] xsm:mb-[3.5rem]'>
       <h2 className='text-brown heading1 sm:mb-[2.5rem] xsm:mb-[1rem] font-optima xsm:font-semibold'>

@@ -1,25 +1,25 @@
 'use client'
 
+import useStore from '@/app/(store)/store'
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
-import {isLockScroll} from '@/hooks/useBodyScrollLock'
-import {dataFooter} from '@/types/dataFooter.interface'
-import {useEffect, useState} from 'react'
+import { isLockScroll } from '@/hooks/useBodyScrollLock'
+import { social } from '@/layout/footer'
+import { dataFooter } from '@/types/dataFooter.interface'
 import {
-  dataHeader,
-  OutstandingPost,
-  Language,
-  Program,
   ChildProgram,
+  Language,
+  OutstandingPost,
+  Program,
+  dataHeader,
 } from '@/types/dataHeader.interface'
-import {social} from '@/layout/footer'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {useRef} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import 'swiper/css'
-import {Autoplay} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {languageOptions} from './constants'
+import { Autoplay } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { languageOptions } from './constants'
 import './styles.css'
 
 const Header = ({
@@ -51,6 +51,13 @@ const Header = ({
   >(null)
   const refDisableHover = React.useRef<HTMLDivElement>(null)
   const [isOpenedChild, setIsOpenedChild] = React.useState(false)
+  const {setConsultingPhoneNumber} = useStore((state) => state)
+
+  useEffect(() => {
+    if (data) {
+      setConsultingPhoneNumber(data?.consulting_phone_number)
+    }
+  }, [data])
   //function handle language dropdown
   const handleOpenLanguage = () => {
     setIsActivedLanguage(!isActivedLanguage)

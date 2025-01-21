@@ -1,16 +1,16 @@
 'use client'
-import {LabelList, Pie, PieChart, Sector} from 'recharts'
-import {PieSectorDataItem} from 'recharts/types/polar/Pie'
-import {Card, CardContent} from '@/components/ui/card'
+import { initChart } from '@/components/chart/constant'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
-import {useEffect, useState} from 'react'
 import useIsMobile from '@/hooks/useIsMobile'
-import {initChart} from '@/components/chart/constant'
+import { useEffect, useState } from 'react'
+import { LabelList, Pie, PieChart, Sector } from 'recharts'
+import { PieSectorDataItem } from 'recharts/types/polar/Pie'
 
 interface chartData {
   browser: string
@@ -65,6 +65,9 @@ export function ComponentChart({
     }, {} as ChartConfig)
     setChartConfig(newChartConfig)
   }, [dataCapitalSource])
+  if (!isInterView) {
+    return (<div>loading...</div>)
+  }
   const mainOuterRadius = isMobile ? 30 : 40
   const secondaryOuterRadius = isMobile ? 15 : 20
   return (
