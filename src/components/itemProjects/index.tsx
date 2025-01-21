@@ -1,7 +1,8 @@
+import useStore from '@/app/(store)/store'
 import ICChat from '@/components/icon/ICChat'
 import ICTwoline from '@/components/icon/ICTwoline'
 import ImageV2 from '@/components/image/ImageV2'
-import {IProject} from '@/components/itemProjects/itemProjects.interface'
+import { IProject } from '@/components/itemProjects/itemProjects.interface'
 import Link from 'next/link'
 const ItemProjectsOutstanding = (data: IProject) => {
   const {
@@ -16,6 +17,7 @@ const ItemProjectsOutstanding = (data: IProject) => {
     contact,
   } = data
   // console.log('location', location)
+  const {consultingPhoneNumber} = useStore((state) => state)
   return (
     <Link
       href={'/EB5/' + slug || ''}
@@ -88,7 +90,7 @@ const ItemProjectsOutstanding = (data: IProject) => {
             <ICTwoline className='absolute left-1/2 top-1/2 h-[0.33856rem] w-[0.57813rem] -translate-x-1/2 -translate-y-3/4 group-hover:[&_path]:fill-[#5C321E]' />
           </div>
           <Link
-            href={'tel:' + contact}
+            href={'tel:' + contact || consultingPhoneNumber}
             className='text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] text-Phase-1-Brown xsm:hidden'
           >
             Liên hệ tư vấn

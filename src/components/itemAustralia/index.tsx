@@ -1,3 +1,5 @@
+"use client"
+import useStore from '@/app/(store)/store'
 import ICChat from '@/components/icon/ICChat'
 import ICTwoline from '@/components/icon/ICTwoline'
 import ImageV2 from '@/components/image/ImageV2'
@@ -6,6 +8,7 @@ import { info_banner } from '@/sections/detail-property-australia/slider/contant
 import Link from 'next/link'
 const ItemAustralia = (data: IItemAustralia) => {
   const { location, slug, title, image, info, project_information } = data
+  const { consultingPhoneNumber } = useStore((state) => state)
   return (
     <Link
       href={'/australian-real-estate/' + slug}
@@ -83,7 +86,7 @@ const ItemAustralia = (data: IItemAustralia) => {
             <ICTwoline className='absolute left-1/2 top-1/2 h-[0.33856rem] w-[0.57813rem] -translate-x-1/2 -translate-y-3/4 group-hover:[&_path]:fill-[#5C321E]' />
           </div>
           <Link
-            href={'tel:'}
+            href={'tel:' + consultingPhoneNumber }
             className='text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] text-Phase-1-Brown xsm:hidden'
           >
             Liên hệ tư vấn

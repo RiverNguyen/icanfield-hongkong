@@ -15,7 +15,9 @@ import { ICountry } from '@/components/LeafletMap'
 import { IItemAustralia } from '@/components/itemAustralia/itemAustralia.interface'
 import { BenefitsProps } from '@/sections/australian-real-estate/Benefits'
 import OutstandingAustralia from '@/sections/australian-real-estate/OutstandingAustralia'
+import RelatedArticles from '@/sections/blogs/detail/RelatedArticles'
 import { Banner } from '@/sections/detail-settlement-programs/banner'
+import { DataItem } from '@/types/blogs.interface'
 import { Term } from '@/types/dataAppraisal.interface'
 import { Media } from '@/types/image.interface'
 import dynamic from 'next/dynamic'
@@ -566,7 +568,8 @@ interface dataAcf {
 export default function AustralianRealEstate({
   dataNationSettlement,
   dataAcf,
-  dataListPost
+  dataListPost,
+  postRelate
 }: {
   dataNationSettlement: Term[]
   dataAcf: dataAcf
@@ -577,7 +580,8 @@ export default function AustralianRealEstate({
     page: number
     limit: number
     data: IItemAustralia[]
-  }
+    }
+  postRelate: DataItem[]
 
 }) {
   const dataInvestment = {
@@ -629,6 +633,12 @@ export default function AustralianRealEstate({
         className='h-[92rem]'
       />
       <WhyChooseUs {...why_choose_us} />
+      {postRelate?.length && 
+        <RelatedArticles
+          className='relative z-10 rounded-[0rem] xsm:pt-[1.5rem] bg-background pb-[6.5rem] pt-[5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] xsm:rounded-[1.5rem_1rem_2rem_1rem]'
+          dataRelatedPosts={postRelate}
+        />
+      }
       <ContactV2>
         <FormInternationalJourney dataNationSettlement={dataNationSettlement} />
       </ContactV2>

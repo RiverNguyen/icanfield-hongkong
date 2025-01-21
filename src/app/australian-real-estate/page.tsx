@@ -1,6 +1,6 @@
 import fetchData from '@/fetch/fetchData'
-import AustralianRealEstate from '@/pages/australianrealestate'
 import fetchDataACF from '@/fetch/fetchDataACF'
+import AustralianRealEstate from '@/pages/australianrealestate'
 export default async function page() {
   const requestTaxonomies = {
     api: '/taxonomies-settlement',
@@ -14,7 +14,7 @@ export default async function page() {
       revalidate: 10,
     },
   }
-  const [dataTaxonomies, dataAcf, dataListPost] = await Promise.all([
+  const [dataTaxonomies, dataAcf, dataListPost, postRelate] = await Promise.all([
     fetchData(requestTaxonomies),
     fetchDataACF({
       api: '/pages/938?acf_format=standard',
@@ -23,12 +23,19 @@ export default async function page() {
       },
     }),
     fetchData(requestPosts),
+    fetchData({
+      api: '/posts-by-taxonomy?slug=australia',
+      option: {
+        revalidate: 10,
+      },
+    }),
   ])
   return (
     <AustralianRealEstate
       dataNationSettlement={dataTaxonomies?.nation}
       dataAcf={dataAcf?.acf}
       dataListPost={dataListPost}
+      postRelate={postRelate}
     />
   )
 }
