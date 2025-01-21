@@ -2,7 +2,23 @@ import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import Immigration from '@/pages/immigration'
 import endpoints from '@/utils/endpoints'
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const res = await getMetadata(`/settlement-program?slug=${params.slug}`)
+  return metadataValues(Array.isArray(res) ? res[0] : res)
+}
+export async function generateStaticParams() {
+  // Gọi API để lấy tất cả các slug của các tour
+  const tours = await fetchDataACF({
+    api: '/settlement-program?_fields=slug',
+  })
 
+  // Trả về các tham số tĩnh
+  return tours?.map((tour: {slug:string}) => ({
+    slug: tour.slug,
+  }))
+}
 export default async function page({params}: {params: {slug: string}}) {
   const [dataAcf, dataPrograms, postRelate, dataMap] = await Promise.all([
     fetchDataACF({

@@ -3,6 +3,12 @@ import fetchDataACF from '@/fetch/fetchDataACF'
 import PageBlogs from '@/pages/page-blogs'
 import { LIMIT_POSTS } from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
+export async function generateMetadata() {
+  const res = await getMetadata('/pages/68')
+  return metadataValues(res)
+}
 const page = async () => {
   const requestPosts = {
     api: endpoints.blog.list + `?page=1&limit=${LIMIT_POSTS}`,
