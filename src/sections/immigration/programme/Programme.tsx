@@ -26,6 +26,8 @@ const sortOptions = [
   {name: 'Từ A-Z', value: 'asc'},
   {name: 'Thời gian xét duyệt nhanh nhất', value: 'fastest'},
   {name: 'Thời gian xét duyệt chậm nhất', value: 'slowest'},
+  {name: 'Theo mức đầu tư cao nhất', value: 'high-investment'},
+  {name: 'Theo mức đầu tư thấp nhất', value: 'low-investment'},
 ]
 
 export default function Programme({

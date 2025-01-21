@@ -123,7 +123,7 @@ export default function FilterProgramme({
         </button>
         <div
           className={cn(
-            'pointer-events-none absolute left-0 top-[110%] mt-[0.5rem] flex h-fit w-full flex-col space-y-[0.5rem] rounded-[0.5rem] bg-white p-[0.5rem] opacity-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)] xsm:order-1 xsm:space-y-[0.15rem]',
+            'pointer-events-none max-h-[22rem] overflow-hidden overflow-y-auto absolute left-0 top-[110%] mt-[0.5rem] flex w-full flex-col space-y-[0.5rem] rounded-[0.5rem] bg-white p-[0.5rem] opacity-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)] xsm:order-1 xsm:space-y-[0.15rem]',
             isOpenSelectCategory && 'pointer-events-auto opacity-100',
           )}
         >
