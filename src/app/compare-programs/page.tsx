@@ -2,7 +2,12 @@ import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import IndexComparePrograms from '@/pages/compare-programs/IndexComparePrograms'
 import endpoints from '@/utils/endpoints'
-
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
+export async function generateMetadata() {
+  const res = await getMetadata('/pages/1621')
+  return metadataValues(res)
+}
 export default async function page() {
   const requestTaxonomies = {
     api: '/taxonomies-settlement',

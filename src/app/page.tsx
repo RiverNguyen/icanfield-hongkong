@@ -2,7 +2,12 @@ import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import HomePage from '@/pages/homepage'
 import endpoints from '@/utils/endpoints'
-
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
+export async function generateMetadata() {
+  const res = await getMetadata('/pages/96')
+  return metadataValues(res)
+}
 export default async function Home() {
   const homeRequest = {
     api: endpoints.homepage + '?_fields=acf&acf_format=standard',
@@ -29,12 +34,13 @@ export default async function Home() {
     },
   }
   try {
-    const [homeResponse, newsResponse, dataFilter,homepageMap] = await Promise.all([
-      fetchDataACF(homeRequest),
-      fetchData(newsRequest),
-      fetchData(FilterBanner),
-      fetchData(HomepageMap),
-    ])
+    const [homeResponse, newsResponse, dataFilter, homepageMap] =
+      await Promise.all([
+        fetchDataACF(homeRequest),
+        fetchData(newsRequest),
+        fetchData(FilterBanner),
+        fetchData(HomepageMap),
+      ])
     return (
       <HomePage
         homeData={homeResponse}

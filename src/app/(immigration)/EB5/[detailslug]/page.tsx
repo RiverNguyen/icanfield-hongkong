@@ -2,6 +2,16 @@ import fetchDataACF from '@/fetch/fetchDataACF'
 import DetailEB5 from '@/pages/detail-EB5'
 import {notFound} from 'next/navigation'
 import fetchData from '@/fetch/fetchData'
+export async function generateStaticParams() {
+  // Gọi API để lấy tất cả các slug của các tour
+  const tours = await fetchData({
+    api: '/slugs?post_type=eb-5-project',
+  })
+  // Trả về các tham số tĩnh
+  return tours?.map((tour: string[]) => ({
+    slug: tour,
+  }))
+}
 export default async function page({
   params: {detailslug},
 }: {

@@ -3,7 +3,12 @@ import fetchDataACF from '@/fetch/fetchDataACF'
 import PageEB5 from '@/pages/page-EB5'
 import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
-
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
+export async function generateMetadata() {
+  const res = await getMetadata('/pages/521')
+  return metadataValues(res)
+}
 export default async function page() {
   try {
     const req = [

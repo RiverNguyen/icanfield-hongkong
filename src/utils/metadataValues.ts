@@ -3,12 +3,12 @@ export default function metadataValues(res: any) {
   if (!res || !res?.yoast_head_json) {
     return {
       metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN!),
-      title: 'NEXTJS14-OKHUB',
-      description: 'NEXTJS14-OKHUB',
+      title: res?.title || 'iCanfield',
+      description: res?.description || 'iCanfield',
       alternates: {
         canonical: './',
       },
-      author: 'DEV OKHUB',
+      author: 'iCanfield',
     }
   }
   const result = res?.yoast_head_json
@@ -20,7 +20,7 @@ export default function metadataValues(res: any) {
     alternates: {
       canonical: './',
     },
-    author: 'DEV OKHUB',
+    author: 'iCanfield',
     openGraph: {
       title: result?.og_site_name,
       description: result?.og_description,

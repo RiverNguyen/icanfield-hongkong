@@ -1,7 +1,7 @@
 export default async function getMetadata(request: string) {
   try {
     const res = await fetch(
-      `${process.env.ACF}${request}?_fields=yoast_head_json&acf_format=standard`,
+      `${process.env.NEXT_PUBLIC_API_ACF}${request}?_fields=yoast_head_json&acf_format=standard`,
       {
         method: 'GET',
         headers: {
