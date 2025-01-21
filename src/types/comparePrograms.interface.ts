@@ -38,15 +38,7 @@ export interface Category {
 }
 
 export interface Compare {
-  program_purpose: string
-  investment_type: string
-  lowest_investment_level: string
-  time_to_reach_target: string
-  minimum_time_to_maintain_investment: string
-  minimum_residence_period: string
-  member_with_profile: string
-  number_of_times_you_need: string
-  working_benefits: string
+  [key: string]: string | undefined;
 }
 
 export interface DataItem {

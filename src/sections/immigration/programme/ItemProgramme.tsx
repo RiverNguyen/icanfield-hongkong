@@ -1,4 +1,5 @@
 'use client'
+import useStore from '@/app/(store)/store'
 import IConArrow from '@/components/icon/IConArrow'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
@@ -17,7 +18,7 @@ export default function ItemProgramme({
   slug: string
   }) {
   const isMobile = useIsMobile()
-  // console.log(dataPostProgramme)
+  const { consultingPhoneNumber } = useStore((state) => state)
   return (
     <div
       className={cn(
@@ -119,7 +120,8 @@ export default function ItemProgramme({
       )}
       <div className='flex items-center justify-between p-[1.25rem] xsm:space-x-[0.5rem] xsm:p-[1rem]'>
         <Link
-          href={'#'}
+          target='__blank'
+          href={'tel:' + consultingPhoneNumber}
           className='group flex cursor-pointer items-center space-x-[0.75rem]'
         >
           <div className='rounded-[1.875rem] bg-[#F4EEEA] p-[0.875rem] transition-all group-hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] xsm:p-[0.75rem]'>

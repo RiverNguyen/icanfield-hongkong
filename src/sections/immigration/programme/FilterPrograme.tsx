@@ -53,7 +53,7 @@ export default function FilterProgramme({
     } else {
       paramNew.set('order', sortOption.value)
     }
-    router.push(pathName + '?' + paramNew.toString(), {
+    router.push(pathName + paramNew.toString() && '?' + paramNew.toString(), {
       scroll: false,
     })
     if (sectionRef.current instanceof HTMLElement) {
