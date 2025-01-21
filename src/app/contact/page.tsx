@@ -5,7 +5,12 @@ import WrapperConnectUsV2 from '@/sections/blogs/connect-us/WrapperConnectUsV2'
 import BannerBottom from '@/sections/contact/banner-bottom'
 import BannerTop from '@/sections/contact/banner-top'
 import ContactInfo from '@/sections/contact/contact-info'
-
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
+export async function generateMetadata() {
+  const res = await getMetadata('/pages/940')
+  return metadataValues(res)
+}
 const page = async () => {
   const requestTaxonomies = {
     api: '/taxonomies-settlement',

@@ -144,6 +144,7 @@ const BannerHomepage = ({
   }
   return (
     <section className='relative mt-[6.44rem] h-[42.8125rem] w-full xsm:mt-[2.25rem] xsm:h-[33.06rem] xsm:bg-background'>
+      <h1 className='hidden'>iCcanfield</h1>
       {data.type != 'slide' ? (
         <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
           {isClient && data.type === 'upload' ? (

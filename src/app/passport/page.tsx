@@ -1,6 +1,12 @@
 import IndexPassport from '@/pages/passport/IndexPassport'
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
+export async function generateMetadata() {
+  const res = await getMetadata('/pages/1632')
+  return metadataValues(res)
+}
 const Page = async () => {
   const requestTaxonomies = {
     api: '/taxonomies-settlement',
