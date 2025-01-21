@@ -62,6 +62,7 @@ const ProjectSlider = ({images}: ProjectSliderProps) => {
           prevEl: '.image-pre',
           nextEl: '.image-next',
         }}
+        className='!pr-[1.5rem]'
       >
         {images.map((image: Media, index: number) => (
           <SwiperSlide
