@@ -925,7 +925,7 @@ const Header = ({
             ))}
           </div>
 
-          <div className='mb-[3.5rem] mt-[2.5rem] flex items-center justify-center space-x-[0.75rem]'>
+          <div className='mb-[7.5rem] mt-[2.5rem] flex items-center justify-center space-x-[0.75rem]'>
             {dataFooter?.social.map((item: social, index: number) => (
               <Link
                 href={item.link || '/'}

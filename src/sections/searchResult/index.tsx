@@ -307,9 +307,10 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
                     </span>
                     <div className='flex cursor-pointer items-center justify-between'>
                       <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
-                        {selectedItems[
-                          kebabToCamel(item.key) as keyof typeof selectedItems
-                        ] || 'Click để chọn'}
+                        {getLabelFromFilterOptions(
+                          item.key,
+                          selectedItems[kebabToCamel(item.key)],
+                        )}
                       </span>
                       <ImageV2
                         src='/icons/homepage/banner/arrow-down.svg'
