@@ -250,7 +250,8 @@ const MapDiscover = ({
             {Array.isArray(dataPost) && dataPost.length > 0 ? (
               Array.isArray(dataPost) &&
               dataPost.map((item, index: number) => (
-                <div
+                <Link
+                href={`/blogs/${item.slug}`}
                   key={index}
                   className='rounded-[0.63rem] bg-[#F7F6F1] p-3 pb-6 xsm:flex xsm:w-auto xsm:flex-col xsm:rounded-[0.75rem] xsm:p-[0.75rem]'
                 >
@@ -302,7 +303,7 @@ const MapDiscover = ({
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <p className='line-clamp-2 text-[0.875rem] font-bold leading-[1.5] tracking-[-0.0175rem] text-brown sm:uppercase xsm:line-clamp-2 xsm:body-14-b'>
