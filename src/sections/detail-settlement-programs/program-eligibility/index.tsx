@@ -36,7 +36,7 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
         </p>
       </div>
       <div className='bottom-0 left-0 right-0 h-[31.1875rem] bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)] sm:absolute xsm:hidden'></div>
-      <div className='relative flex sm:absolute sm:bottom-[6.25rem] sm:left-[-6.12rem] z-[0] sm:w-[90rem]  sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:flex-col xsm:space-y-[0.88rem] xsm:px-[1rem]'>
+      <div className='relative flex sm:absolute sm:bottom-[6.25rem] sm:left-[4.5rem] z-[0] sm:w-[68rem]  sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:flex-col xsm:space-y-[0.88rem] xsm:px-[1rem]'>
         <Swiper
           navigation
           breakpoints={{
@@ -45,14 +45,15 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
               spaceBetween: 10,
             },
             768: {
-              slidesPerView: 'auto',
+              slidesPerView: 4,
               spaceBetween: 20,
             },
           }}
+          className='xsm:!w-full'
         >
           {items &&
             items.map((item, index) => (
-              <SwiperSlide key={index} className='!flex !items-end sm:max-w-[15.75rem]'>
+              <SwiperSlide key={index} className='!flex !items-end'>
                 <ProgramEligibilityItem {...item} />
               </SwiperSlide>
             ))}

@@ -135,7 +135,7 @@ const PopupCountry = ({
         </span>
       </div>
       <Link
-        href={'/'}
+        href={dataProvince?.details?.link || ''}
         target='_blank'
         className='group mt-[1rem] flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] border border-solid border-[rgba(18,18,18,0.16)] transition-all duration-200 xsm:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] lg:hover:border-none lg:hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'
       >
