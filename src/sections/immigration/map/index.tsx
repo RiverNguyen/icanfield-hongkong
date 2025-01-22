@@ -36,6 +36,7 @@ export interface DetailItem {
   metropolis: string
   population: string
   acreage: string
+  link: string
 }
 const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
   // State lưu trữ GeoJSON data
