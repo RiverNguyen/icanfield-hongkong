@@ -100,7 +100,7 @@ export default function Programs({ programs, dataTitleCompare}: { programs: Data
             </div>
           ))}
           {Array.isArray(keys) && (check ? keys : keys.slice(0, 10))?.map((item: string, idx: number) => (
-            <Fragment key={item}>
+            <Fragment key={idx}>
               <div className={cn('border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]',
                 programs?.[0]?.compare?.[item] === null && 'bg-[#f8f9fa]'
               )}>
