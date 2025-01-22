@@ -32,8 +32,8 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
       <ImageV2
         className='h-[82rem] w-full translate-y-[-16rem] object-contain opacity-[0.8] xsm:h-[62.5rem] xsm:object-cover'
         alt=''
-        width={1300}
-        height={1300}
+        width={1200}
+        height={800}
         src={'/imgs/homepage/banner/BG-sky.png'}
       />
       <div

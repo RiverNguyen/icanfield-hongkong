@@ -215,6 +215,11 @@ html > body[data-scroll-locked] {
   transition-duration: 2000ms;
   animation-duration: 2000ms;
 }
+input:-webkit-autofill {
+  background-color: #F6F6F6 !important; 
+  -webkit-text-fill-color: #333 !important; 
+  transition: background-color 500ms ease-in-out; /* Hiệu ứng chuyển đổi */
+}
 @media (max-width: 639px) {
   html {
     font-size: 4.26666vw;
