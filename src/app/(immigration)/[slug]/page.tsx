@@ -4,19 +4,19 @@ import Immigration from '@/pages/immigration'
 import endpoints from '@/utils/endpoints'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({params}: {params: {slug: string}}) {
   const res = await getMetadata(`/settlement-program?slug=${params.slug}`)
   return metadataValues(Array.isArray(res) ? res[0] : res)
 }
 export async function generateStaticParams() {
   // Gọi API để lấy tất cả các slug của các tour
-  const tours = await fetchDataACF({
-    api: '/settlement-program?_fields=slug',
+  const tours = await fetchData({
+    api: '/slugs?post_type=settlement-program',
   })
 
   // Trả về các tham số tĩnh
-  return tours?.map((tour: {slug:string}) => ({
-    slug: tour.slug,
+  return tours?.map((tour: string[]) => ({
+    slug: tour,
   }))
 }
 export default async function page({params}: {params: {slug: string}}) {
