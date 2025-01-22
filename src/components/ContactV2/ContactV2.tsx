@@ -1,7 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import useInterView from '@/hooks/useInterView'
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 export default function ContactV2({
   children,
@@ -12,7 +12,7 @@ export default function ContactV2({
   return (
     <section
       ref={elementRef}
-      className='relative flex h-[100vh] bg-[linear-gradient(180deg,#F6F6F4_0%,#FAF8F1_100%)] xsm:h-max z-[22]'
+      className='relative flex h-[100vh] bg-[linear-gradient(180deg,#F6F6F4_0%,#FAF8F1_100%)] xsm:h-max z-[22] xsm:z-[26]'
     >
       <div className='relative h-full w-[57rem] xsm:hidden'>
         <ImageV2

@@ -12,50 +12,49 @@ import CardPrograms from '@/sections/compare-programs/CardPrograms'
 import { DataItem } from '@/types/comparePrograms.interface'
 import { Fragment, useEffect, useState } from 'react'
 
-interface nameKey {
-  [key: string]: string | undefined;
-}
-const nameKey: nameKey = {
-  program_purpose: 'Mục đích chương trình',
-  investment_type: 'Loại hình đầu tư',
-  lowest_investment_level: 'Mức đầu tư thấp nhất',
-  time_to_reach_target: 'Thời gian đạt mục tiêu',
-  minimum_time_to_maintain_investment: 'Thời gian tối thiểu để duy trì đầu tư',
-  minimum_residence_period: 'Thời gian cư trú tối thiểu',
-  member_with_profile: 'Thành viên có hồ sơ',
-  number_of_times_you_need: 'Số lần cần sang quốc gia để hoàn tất hồ sơ',
-  working_benefits: 'Quyền lợi làm việc',
-  countries_are_free_to_travel: 'Các quốc gia tự do đi lại',
-  outstanding_benefits: 'Quyền lợi nổi bật',
-  right_to_work: 'Quyền làm việc',
-  education: 'Giáo dục',
-  medical: 'Y tế',
-  tax_benefits: 'Quyền lợi về thuế',
-  the_country_is_a_member_of_the_organizationtreaty: 'Quốc gia là thành viên Tổ chức / Hiệp ước',
-  request_the_applicant: 'Yêu cầu đương đơn',
-  year_old: 'Tuổi',
-  management_qualificationsexperience: 'Trình độ / Kinh nghiệm quản lý',
-  proof_of_assets: 'Chứng minh tài sản',
-  requirements_for_businesses_in_vietnam: 'Yêu cầu doanh nghiệp ở VN',
-  foreign_language_required: 'Yêu cầu ngoại ngữ',
-  security_background: 'Lý lịch an ninh',
-  health: 'Sức khỏe',
-  investment_form_requirements: 'Yêu cầu về hình thức đầu tư',
-  specific_investment_plan: 'Phương án đầu tư cụ thể',
-  prove_the_source_of_investment_funds: 'Chứng minh nguồn tiền đầu tư',
-  visa_granted: 'Visa được cấp',
-  visa_duration_is_first_issued: 'Thời hạn Visa được cấp đầu tiên',
-  visa_extension_time: 'Thời điểm gia hạn Visa',
-  conditions_for_extension: 'Điều kiện gia hạn',
-  time_to_apply_for_citizenship_after_obtaining_a_visa: 'Thời gian xin lên quốc tịch (sau khi đã có visa)',
-  additional_benefits_after_gaining_citizenship: 'Quyền lợi thêm sau khi lên quốc tịch',
-  nationality: 'Quốc tịch',
-  conditions_for_applying_for_citizenship: 'Điều kiện xin lên quốc tịch',
-  conditions_for_maintaining_nationality: 'Điều kiện duy trì quốc tịch',
-  allows_multiple_nationalities: 'Cho phép đa quốc tịch'
-}
+const nameKey: string[] = [
+  'Tiêu chí chung',
+  'Mục đích chương trình',
+  'Loại hình đầu tư',
+  'Mức đầu tư thấp nhất',
+  'Thời gian đạt mục tiêu',
+  'Thời gian tối thiểu để duy trì đầu tư',
+  'Thời gian cư trú tối thiểu',
+  'Thành viên có hồ sơ',
+  'Số lần cần sang quốc gia để hoàn tất hồ sơ',
+  'Quyền lợi làm việc',
+  'Các quốc gia tự do đi lại',
+  'Quyền lợi nổi bật',
+  'Quyền làm việc',
+  'Giáo dục',
+  'Y tế',
+  'Quyền lợi về thuế',
+  'Quốc gia là thành viên Tổ chức / Hiệp ước',
+  'Yêu cầu đương đơn',
+  'Tuổi',
+  'Trình độ / Kinh nghiệm quản lý',
+  'Chứng minh tài sản',
+  'Yêu cầu doanh nghiệp ở VN',
+  'Yêu cầu ngoại ngữ',
+  'Lý lịch an ninh',
+  'Sức khỏe',
+  'Yêu cầu về hình thức đầu tư',
+  'Phương án đầu tư cụ thể',
+  'Chứng minh nguồn tiền đầu tư',
+  'Visa được cấp',
+  'Thời hạn Visa được cấp đầu tiên',
+  'Thời điểm gia hạn Visa',
+  'Điều kiện gia hạn',
+  'Thời gian xin lên quốc tịch (sau khi đã có visa)',
+  'Quyền lợi thêm sau khi lên quốc tịch',
+  'Quốc tịch',
+  'Điều kiện xin lên quốc tịch',
+  'Điều kiện duy trì quốc tịch',
+  'Cho phép đa quốc tịch'
+]
 
 export default function Programs({ programs }: { programs: DataItem[] }) {
+  console.log(programs);
   const [indexProgramsActive, setIndexProgramsActive] = useState<number[]>([-1, -1, -1, -1])
   const [keys, setKeys] = useState<string[]>([])
   const [check, setCheck] = useState<boolean>(false)
@@ -69,6 +68,7 @@ export default function Programs({ programs }: { programs: DataItem[] }) {
       setKeys(Object.keys(programs?.[0]?.compare))
     }
   }, [programs])
+  console.log(keys);
   return (
     <div
       id='table__programs'
@@ -140,19 +140,28 @@ export default function Programs({ programs }: { programs: DataItem[] }) {
               }
             </div>
           ))}
-          {Array.isArray(keys) && (check ? keys : keys.slice(0, 10))?.map((item: string) => (
+          {Array.isArray(keys) && (check ? keys : keys.slice(0, 10))?.map((item: string, idx: number) => (
             <Fragment key={item}>
-              <div className='border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]'>
-                {nameKey?.[item]}
+              <div className={cn('border-t p-[1.25rem_1rem] text-[1rem] font-semibold leading-normal tracking-[-0.02rem] text-[#121212DE] xsm:p-[0.75rem]',
+                programs?.[0]?.compare?.[item] === null && 'bg-[#f8f9fa]'
+              )}>
+                {nameKey?.[idx]}
               </div>
-              {indexProgramsActive.map((id: number, index: number) => (
-                <div
-                  key={item + index}
-                  dangerouslySetInnerHTML={{__html: programs?.[id]?.compare?.[item] || ''}}
-                  className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
-                >
-                </div>
-              ))}
+              {indexProgramsActive.map((id: number, index: number) =>
+                <Fragment key={item + index}>
+                  {(programs?.[0]?.compare?.[item] === null) ? (
+                    <div className={cn('border-t border-solid bg-[#f8f9fa]',
+                      index === 0 && 'border-l'
+                    )}></div>
+                  ) : (
+                    <div
+                      dangerouslySetInnerHTML={{__html: programs?.[id]?.compare?.[item] || ''}}
+                      className='border-l border-t border-solid p-[1.25rem_1rem] xsm:p-[0.75rem] [&_ul]:list-disc [&_ul]:pl-[1rem]'
+                    >
+                    </div>
+                  )}
+                </Fragment>
+              )}
             </Fragment>
           ))}
         </div>
