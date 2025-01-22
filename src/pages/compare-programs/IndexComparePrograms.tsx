@@ -88,7 +88,7 @@ const IndexComparePrograms = ({
         <span className='section-container mb-[4rem] mt-[1rem] block font-normal text-greyscaletext-body body16-r55 xsm:mb-[2rem] xsm:mt-[0.75rem] xsm:px-[1rem] xsm:body-14'>
           Chọn chương trình và so sánh giữa các chương trình
         </span>
-        <Programs programs={dataPrograms} />
+        <Programs programs={dataPrograms} dataTitleCompare={dataPage?.title_compare}/>
       </section>
       <ContactV2>
         <FormInternationalJourney

@@ -14,6 +14,9 @@ export interface acfPage {
       }
     }
   }
+  title_compare: {
+    [key: string]: string
+  }
 }
 
 export interface Term {
