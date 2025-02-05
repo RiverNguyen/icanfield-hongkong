@@ -425,7 +425,7 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
                   key={index}
                   className=''
                   dataPostProgramme={item}
-                  slug={'/'}
+                  slug={item?.nation?.[0] || ''}
                 />
               ))
             ) : (

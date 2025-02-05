@@ -4,6 +4,7 @@ import Immigration from '@/pages/immigration'
 import endpoints from '@/utils/endpoints'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
+import {redirect} from 'next/navigation'
 export async function generateMetadata({params}: {params: {slug: string}}) {
   const res = await getMetadata(`/settlement-program?slug=${params.slug}`)
   return metadataValues(Array.isArray(res) ? res[0] : res)
@@ -56,6 +57,9 @@ export default async function page({params}: {params: {slug: string}}) {
       },
     }),
   ])
+  if (!dataAcf || !dataAcf.length) {
+    redirect('/')
+  }
   return (
     <Immigration
       slug={params?.slug}
