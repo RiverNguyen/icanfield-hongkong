@@ -2,6 +2,7 @@ import fetchDataACF from '@/fetch/fetchDataACF'
 import DetailEB5 from '@/pages/detail-EB5'
 import {notFound} from 'next/navigation'
 import fetchData from '@/fetch/fetchData'
+import {redirect} from 'next/navigation'
 export async function generateStaticParams() {
   // Gọi API để lấy tất cả các slug của các tour
   const tours = await fetchData({
@@ -38,6 +39,10 @@ export default async function page({
     }),
     fetchData(requestTaxonomies),
   ])
+  console.log(data)
+  if (!data || !data.length) {
+    redirect('/')
+  }
   if (data?.length <= 0) return notFound()
   return (
     <DetailEB5

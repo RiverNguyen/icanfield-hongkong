@@ -289,6 +289,7 @@ const Header = ({
                   width={40}
                   height={40}
                   className='size-[0.875rem] translate-y-[-1px] object-contain'
+                  loading='eager'
                 />
                 <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
                   {data?.news_business.label || ''}

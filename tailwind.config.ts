@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type { Config } from 'tailwindcss'
+import type {Config} from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
@@ -108,6 +108,9 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
         marquee: 'marquee 25s linear infinite',
         marquee2: 'marquee2 25s linear infinite',
+        'spin-slow': 'spin 3s linear infinite',
+        'ping-slow': 'ping 3s linear infinite',
+        'bounce-slow': 'bounce 3s infinite',
       },
     },
   },
@@ -214,8 +217,7 @@ const config: Config = {
             {},
         },
         '.body16-b': {
-          '@apply text-[1rem] font-bold leading-[1.5] tracking-[-0.01rem]':
-            {},
+          '@apply text-[1rem] font-bold leading-[1.5] tracking-[-0.01rem]': {},
         },
         '.body16-r55': {
           '@apply text-[1rem] leading-[1.55]': {},

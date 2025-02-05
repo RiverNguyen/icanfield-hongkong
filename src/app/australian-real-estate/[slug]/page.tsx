@@ -13,7 +13,8 @@ import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
 import {notFound} from 'next/navigation'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+import {redirect} from 'next/navigation'
+export async function generateMetadata({params}: {params: {slug: string}}) {
   const res = await getMetadata(`/australia-real-estat?slug=${params.slug}`)
   return metadataValues(Array.isArray(res) ? res[0] : res)
 }
@@ -37,6 +38,9 @@ const page = async ({params: {slug}}: {params: {slug: string}}) => {
   })
   if (data?.length <= 0) return notFound()
   const {id, title, acf, content} = data?.[0] as IDataAcfDetailAustralia
+  if (!id || !title || !acf || !content) {
+    redirect('/')
+  }
   return (
     <div className='bg-background pb-[6.35rem] xsm:bg-white xsm:pb-12'>
       <Slider

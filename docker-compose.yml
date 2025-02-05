@@ -2,24 +2,29 @@ version: '3.9'
 
 services:
   next-app:
-    container_name: nextjs14-okhub
+    container_name: icanfield
     platform: linux/amd64
-    image: okhubvn/nextjs14-okhub:latest
+    image: okhubvn/icanfield:latest
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        API: ${API}
+        NEXT_PUBLIC_API: ${NEXT_PUBLIC_API}
+        NEXT_PUBLIC_API_ACF: ${NEXT_PUBLIC_API_ACF}
+        NEXT_PUBLIC_API_CF7: ${NEXT_PUBLIC_API_CF7}
+        NEXT_PUBLIC_API_VERSION: ${NEXT_PUBLIC_API_VERSION}
+        NEXT_PUBLIC_PASSPORT: ${NEXT_PUBLIC_PASSPORT}
+        NEXT_PUBLIC_API_PASSPORT: ${NEXT_PUBLIC_API_PASSPORT}
+        NEXT_PUBLIC_DOMAIN: ${NEXT_PUBLIC_DOMAIN}
     restart: always
     ports:
       - 3000:3000
     networks:
-      - nextjs14-okhub
-
+      - icanfield
   # Add more containers below (nginx, postgres, etc.)
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:
-  nextjs14-okhub:
+  icanfield:
     external: true
