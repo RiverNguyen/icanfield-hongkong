@@ -70,7 +70,9 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   return (
     <main className='bg-background'>
       <Banner {...banner}>
-        <Breadcrumb
+      {
+        acfNation && (
+          <Breadcrumb
           items={[
             {label: 'Trang chủ', href: '/'},
             {
@@ -80,6 +82,8 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
             {label: `${post_title}`, href: '/'},
           ]}
         />
+        )
+      }
       </Banner>
       <ProgramOverview {...program_overview} />
       <AdvantagesBenefits {...advantages_benefits} />
