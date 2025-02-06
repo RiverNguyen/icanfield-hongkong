@@ -29,7 +29,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
         })
       },
       {
-        threshold: [0.5], // 20% of the element is visible
+        threshold: [0.2], // 20% of the element is visible
       },
     )
 
@@ -60,7 +60,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
         />
         <ImageV2
           className='house-animation absolute left-[-11rem] top-[-2.16rem] z-[9] h-[48.78456rem] w-[49.179rem] translate-y-[15rem] object-cover opacity-0 transition-all duration-1000 xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/bg-house.webp'}
+          src={'/imgs/homepage/globalImmigration/bg-house2.webp'}
           alt=''
           width={786}
           height={780}
@@ -74,7 +74,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
         />
         <ImageV2
           className='bridge-animation absolute left-[16.11rem] top-[18.15rem] z-[9] h-[45.83781rem] w-[45.83781rem] translate-y-[15rem] object-cover opacity-0 transition-all duration-1000 xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/bridge.webp'}
+          src={'/imgs/homepage/globalImmigration/bridge2.webp'}
           alt=''
           width={733}
           height={733}
@@ -88,7 +88,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
         />
         <ImageV2
           className='absolute left-0 top-0 h-[55.6875rem] w-full object-cover xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/bg-city-min.webp'}
+          src={'/imgs/homepage/globalImmigration/bg-city-min2.webp'}
           alt=''
           width={1600}
           height={700}
