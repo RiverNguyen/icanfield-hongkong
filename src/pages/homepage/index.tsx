@@ -1,6 +1,6 @@
 import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
 import FormHomepage from '@/sections/homepage/form-homepage'
-import GlobalImmigration from '@/sections/homepage/global-immigration'
+
 import {
   IItemInvestmentOpportunities,
   InvestmentOpportunities,
@@ -17,11 +17,13 @@ import {Media} from '@/types/image.interface'
 import dynamic from 'next/dynamic'
 import {DataMapHomepage} from '@/sections/homepage/map-discover/dataMap.interface'
 import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
+const GlobalImmigration = dynamic(
+  () => import('@/sections/homepage/global-immigration'),
+)
 const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
   ssr: false, // Nếu component không cần server-side rendering
   loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
 })
-
 interface HomeData {
   acf: {
     home_banner?: IBannerHomepageProps & {
