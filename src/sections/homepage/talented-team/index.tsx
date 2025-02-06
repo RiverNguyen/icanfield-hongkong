@@ -68,7 +68,7 @@ const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
                   <h3 className='text-[1.25rem] font-semibold uppercase leading-[140%] tracking-[-0.025rem] text-brown'>
                     {item.name}
                   </h3>
-                  <p className='text-[0.875rem] font-medium leading-[1.5] text-greentext opacity-70'>
+                  <p className='text-[0.875rem] font-medium leading-[1.5] text-greentext opacity-70 text-center'>
                     {item.position}
                   </p>
                 </div>
