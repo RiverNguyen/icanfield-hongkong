@@ -53,7 +53,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
       <div className='xsm:hidden'>
         <ImageV2
           className='absolute bottom-[0] left-0 z-30 h-[69.375rem] w-full object-cover xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/bg-aboutus-2.png'}
+          src={'/imgs/homepage/globalImmigration/bg-aboutus-2-min.webp'}
           alt=''
           width={1600}
           height={1110}
@@ -81,14 +81,14 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
         />
         <ImageV2
           className='absolute right-[12.37rem] top-[30.69rem] z-[31] h-[30.9725rem] w-[25.16263rem] object-cover xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/familyV2-x4.png'}
+          src={'/imgs/homepage/globalImmigration/familyV2-x4.webp'}
           alt=''
           width={378}
           height={534}
         />
         <ImageV2
           className='absolute left-0 top-0 h-[55.6875rem] w-full object-cover xsm:hidden'
-          src={'/imgs/homepage/globalImmigration/bg-city.png'}
+          src={'/imgs/homepage/globalImmigration/bg-city-min.webp'}
           alt=''
           width={1600}
           height={700}
@@ -130,7 +130,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
       <div className='mt-[0.875rem] sm:hidden'>
         <ImageV2
           className='h-[27.8125rem] w-full object-cover sm:hidden'
-          src={'/imgs/homepage/globalImmigration/bg-mb.png'}
+          src={'/imgs/homepage/globalImmigration/bg-mb.webp'}
           alt=''
           height={445}
           width={345}
