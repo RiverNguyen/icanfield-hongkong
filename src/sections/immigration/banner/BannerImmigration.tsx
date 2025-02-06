@@ -56,14 +56,14 @@ export default function BannerImmigration({name, dataAcf}: {name: string, dataAc
           <div className='absolute left-0 top-0 z-[11] h-[41.4375rem] w-full bg-[linear-gradient(94deg,#FFF_25.06%,rgba(255,255,255,0.00)_51.89%)] opacity-[0.7]'></div>
           <ImageV2
             className='absolute left-0 top-[-13.5rem] z-[12] h-[41.125rem] w-full'
-            src={'/imgs/immigration/banner/cloud.webp'}
+            src={'/imgs/immigration/banner/cloud3.webp'}
             alt=''
             width={1600}
             height={820}
           />
           <ImageV2
             className='absolute bottom-[-13.5rem] left-0 z-[21] h-[36.0625rem] w-full pointer-events-none object-cover'
-            src={'/imgs/immigration/banner/dai_lua_2.webp'}
+            src={'/imgs/immigration/banner/dai_lua_3.webp'}
             alt=''
             width={2600}
             height={1820}
