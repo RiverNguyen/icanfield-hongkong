@@ -5,10 +5,7 @@ import {
   IItemInvestmentOpportunities,
   InvestmentOpportunities,
 } from '@/sections/homepage/investment-opportunities'
-import NewsFlow, {
-  ItemNews,
-  ItemNewsFeatured,
-} from '@/sections/homepage/news-homepage'
+import {ItemNews, ItemNewsFeatured} from '@/sections/homepage/news-homepage'
 import {IItemProudJourney} from '@/sections/homepage/proud-journey'
 // import TalentedTeam from '@/sections/homepage/talented-team'
 import {Media} from '@/types/image.interface'
@@ -18,6 +15,10 @@ import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
 const GlobalImmigration = dynamic(
   () => import('@/sections/homepage/global-immigration'),
 )
+const NewsFlow = dynamic(() => import('@/sections/homepage/news-homepage'), {
+  ssr: false,
+  loading: () => <p>Loading News Flow...</p>,
+})
 const ProudJourney = dynamic(
   () => import('@/sections/homepage/proud-journey'),
   {
