@@ -9,10 +9,8 @@ import NewsFlow, {
   ItemNews,
   ItemNewsFeatured,
 } from '@/sections/homepage/news-homepage'
-import ProudJourney, {
-  IItemProudJourney,
-} from '@/sections/homepage/proud-journey'
-import TalentedTeam from '@/sections/homepage/talented-team'
+import {IItemProudJourney} from '@/sections/homepage/proud-journey'
+// import TalentedTeam from '@/sections/homepage/talented-team'
 import {Media} from '@/types/image.interface'
 import dynamic from 'next/dynamic'
 import {DataMapHomepage} from '@/sections/homepage/map-discover/dataMap.interface'
@@ -20,10 +18,24 @@ import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
 const GlobalImmigration = dynamic(
   () => import('@/sections/homepage/global-immigration'),
 )
+const ProudJourney = dynamic(
+  () => import('@/sections/homepage/proud-journey'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Proud Journey...</p>,
+  },
+)
 const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
   ssr: false, // Nếu component không cần server-side rendering
   loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
 })
+const TalentedTeam = dynamic(
+  () => import('@/sections/homepage/talented-team'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Talented Team...</p>,
+  },
+)
 interface HomeData {
   acf: {
     home_banner?: IBannerHomepageProps & {
