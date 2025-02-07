@@ -40,7 +40,7 @@ const PioneeringValuesAustralia = ({
           {data?.description}
         </p>
         <ImageV2
-          src={'/imgs/EB5/Pioneering-values/bg-city.webp'}
+          src={'/imgs/EB5/Pioneering-values/bg-city2.webp'}
           alt='Pioneering Values'
           width={800}
           height={533}

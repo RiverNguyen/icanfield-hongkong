@@ -43,7 +43,7 @@ const WrapperConnectUs = ({
           alt='background building'
           fill
           sizes='100vw'
-          src={'/imgs/blogs/background-building.webp'}
+          src={'/imgs/blogs/background-building2.webp'}
           quality={95}
         />
       </div>
@@ -56,7 +56,7 @@ const WrapperConnectUs = ({
           isActive && 'translate-y-0 opacity-100',
         )}
         alt='liberties'
-        src={'/imgs/blogs/liberties.webp'}
+        src={'/imgs/blogs/liberties2.webp'}
         width={1030}
         height={1150}
         quality={95}
@@ -74,7 +74,7 @@ const WrapperConnectUs = ({
           className='size-full object-fill sm:hidden'
           fill
           sizes='100vw'
-          src={'/imgs/blogs/background-connect-us-mb.webp'}
+          src={'/imgs/blogs/background-connect-us-mb2.webp'}
           alt='background connect us'
           quality={95}
         />

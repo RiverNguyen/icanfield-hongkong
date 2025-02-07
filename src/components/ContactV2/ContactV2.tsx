@@ -19,7 +19,7 @@ export default function ContactV2({
           alt=''
           width={912}
           height={825}
-          src={'/imgs/homepage/section-ketnoi/banner-formlh.png'}
+          src={'/imgs/homepage/section-ketnoi/banner-formlh.webp'}
           className={cn(
             'absolute h-[51.5625rem] w-[57rem] object-cover transition-all duration-700 xsm:hidden',
             isVisible ? 'bottom-[-10rem]' : 'bottom-[-21rem]',
@@ -30,7 +30,7 @@ export default function ContactV2({
         alt=''
         width={912}
         height={825}
-        src={'/imgs/homepage/section-ketnoi/bg-sectionform.png'}
+        src={'/imgs/homepage/section-ketnoi/bg-sectionform.webp'}
         className='absolute bottom-0 right-0 h-[44rem] w-[81.5rem] object-cover xsm:hidden'
       />
       {children}

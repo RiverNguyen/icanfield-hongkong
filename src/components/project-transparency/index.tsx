@@ -22,7 +22,7 @@ export interface IProjectTransparencyProps {
 
 const ProjectTransparency: FC<IProjectTransparencyProps> = ({
   data,
-  linkImage = '/imgs/EB5/projects-transparency/Sydney4.webp',
+  linkImage = '/imgs/EB5/projects-transparency/Sydney5.webp',
   fontSize = '[&_strong]:text-[7.5rem] text-[4rem]',
   className = 'h-[100.94rem]',
 }) => {
