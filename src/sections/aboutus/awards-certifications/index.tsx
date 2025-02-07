@@ -43,8 +43,8 @@ const AwardsCertifications: FC<IAwardsCertificationsProps> = ({
       <ImageV2
         alt={logo?.alt}
         src={logo?.url || ''}
-        width={255 * 2}
-        height={80 * 2}
+        width={255 * 2 || 40}
+        height={80 * 2 || 40}
         className='m-auto block h-[3rem] w-[8.50894rem] object-contain sm:h-[5.625rem] sm:w-[15.95425rem]'
       />
       <h2 className='m-auto mb-[4rem] mt-[1.5rem] px-[1rem] text-center font-optima text-[1.125rem] font-semibold leading-[130%] tracking-[-0.09rem] text-brown sm:mb-[7rem] sm:mt-[2rem] sm:max-w-[44.5625rem] sm:px-0 sm:text-[2.25rem] xsm:tracking-[-0.045rem]'>
@@ -114,8 +114,8 @@ function ItemAwardsCertifications({title, image}: IAwardsCertificationsItem) {
       <ImageV2
         alt={image.alt}
         src={image.url}
-        width={330 * 2}
-        height={310 * 2}
+        width={330 * 2 || 40}
+        height={310 * 2 || 40}
         className='mb-[1rem] h-auto w-full object-contain sm:mb-[1.25rem]'
       />
       <h3 className='text-center text-[0.75rem] font-semibold leading-[1.5] text-orangetext-500 sm:text-[1.25rem] sm:leading-[133.3%]'>

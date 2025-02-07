@@ -37,15 +37,15 @@ export const SuccessStoryShare: FC<ISuccessStoryShareProps> = ({
       <ImageV2
         src={'/imgs/detail-settlement-programs/success-story-share-bg-2.webp'}
         alt='Success Story Share'
-        width={1600 * 2}
-        height={1065 * 2}
+        width={1600 * 2 || 40}
+        height={1065 * 2 || 40}
         className='absolute bottom-0 left-0 h-full w-full object-cover xsm:hidden'
       />
       <ImageV2
         src={'/imgs/detail-settlement-programs/success-story-share-bg-mb.webp'}
         alt='Success Story Share'
-        width={375 * 2}
-        height={763 * 2}
+        width={375 * 2 || 40}
+        height={763 * 2 || 40}
         className='absolute bottom-0 left-0 h-full w-full object-cover sm:hidden'
       />
       <div className='relative flex max-w-[85rem] items-center sm:ml-[5rem] xsm:px-[1rem]'>
@@ -98,8 +98,8 @@ export const SuccessStoryShare: FC<ISuccessStoryShareProps> = ({
       <ImageV2
         src={'/imgs/detail-settlement-programs/success-story-share-bg-1.webp'}
         alt='Success Story Share'
-        width={1600 * 2}
-        height={1065 * 2}
+        width={1600 * 2 || 40}
+        height={1065 * 2 || 40}
         className='pointer-events-none absolute bottom-0 left-0 z-10 h-full w-full object-cover xsm:hidden'
       />
     </section>

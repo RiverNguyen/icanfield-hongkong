@@ -96,8 +96,8 @@ function FeaturedNewSlidePC({
             <ImageV2
               src={item.backgroundImage || ''}
               alt={item.title}
-              width={1434 * 2}
-              height={554 * 2}
+              width={1434 * 2 || 40}
+              height={554 * 2 || 40}
               className='absolute left-0 top-0 h-full w-full object-cover'
             />
             <div className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(183deg,rgba(63,34,20,0.00)_10.25%,#000_119.74%)]'></div>
@@ -233,8 +233,8 @@ function FeaturedNewSlideMobile({
               <ImageV2
                 src={item.backgroundImage || ''}
                 alt={item.title}
-                width={1434 * 2}
-                height={554 * 2}
+                width={1434 * 2 || 40}
+                height={554 * 2 || 40}
                 className='absolute left-0 top-0 h-full w-full object-cover'
               />
               <div className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(182deg,rgba(63,34,20,0.00)_28.99%,#000_107.39%)]'></div>

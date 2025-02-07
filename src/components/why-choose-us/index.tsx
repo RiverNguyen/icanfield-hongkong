@@ -21,15 +21,15 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-1.webp'}
         alt={'Why Choose Us Background'}
-        width={1600 * 2}
-        height={788 * 2}
+        width={1600 * 2 || 40}
+        height={788 * 2 || 40}
         className='absolute bottom-0 right-0 h-full w-auto object-contain xsm:hidden'
       />
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-1-mb.webp'}
         alt={'Why Choose Us Background'}
-        width={1600 * 2}
-        height={788 * 2}
+        width={1600 * 2 || 40}
+        height={788 * 2 || 40}
         className='absolute bottom-0 left-0 h-auto w-full object-contain sm:hidden'
       />
       <div className='absolute bottom-0 right-0 h-full w-full sm:bg-[linear-gradient(90deg,#FFF_31.02%,rgba(153,153,153,0.00)_70.54%)] xsm:hidden'></div>
@@ -63,15 +63,15 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-2.webp'}
         alt={'Why Choose Us Background'}
-        width={1219 * 2}
-        height={585 * 2}
+        width={1219 * 2 || 40}
+        height={585 * 2 || 40}
         className='pointer-events-none absolute bottom-0 right-0 h-full w-auto xsm:hidden'
       />
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-2-mb.webp'}
         alt={'Why Choose Us Background'}
-        width={1219 * 2}
-        height={585 * 2}
+        width={1219 * 2 || 40}
+        height={585 * 2 || 40}
         className='pointer-events-none absolute bottom-0 right-0 h-auto w-full object-contain sm:hidden'
       />
     </section>

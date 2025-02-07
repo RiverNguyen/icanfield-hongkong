@@ -200,8 +200,8 @@ function ProudJourneyItem({
             className='size-full rounded-full object-cover'
             src={avatar.url || ''}
             alt={avatar.alt}
-            width={avatar.width * 2}
-            height={avatar.height * 2}
+            width={avatar.width * 2 || 40}
+            height={avatar.height * 2 || 40}
           />
         </div>
         <div className=''>

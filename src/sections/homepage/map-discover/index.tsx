@@ -6,7 +6,7 @@ import {Media} from '@/types/image.interface'
 import {FeatureCollection} from 'geojson'
 import 'leaflet/dist/leaflet.css'
 import Link from 'next/link'
-import React, {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import 'swiper/css'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {
@@ -33,18 +33,17 @@ const MapDiscover = ({
   data: IMapDiscoverProps['data']
   dataMap: DataMapHomepage
 }) => {
-  const [navbarNationalitiesActive, setNavbarNationalitiesActive] =
-    React.useState(dataMap.map_data[0].data_nation[0]?.label || 'Unknown')
-  const [isChangeCountry, setIsChangeCountry] = React.useState(false)
-  const [isMobile, setIsMobile] = React.useState(false)
-  const [urlImageButton, setUrlImageButton] = React.useState(
+  const [navbarNationalitiesActive, setNavbarNationalitiesActive] = useState(
+    dataMap.map_data[0].data_nation[0]?.label || 'Unknown',
+  )
+  const [isChangeCountry, setIsChangeCountry] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [urlImageButton, setUrlImageButton] = useState(
     dataMap.map_data[0]?.image_button || '/imgs/default-flag.png',
   )
-  const [dataPost, setDataPost] = React.useState(dataMap.posts) // data posts
-  const [slugData, setSlugData] = React.useState(
-    dataMap.map_data[0]?.slug || '',
-  )
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [dataPost, setDataPost] = useState(dataMap.posts) // data posts
+  const [slugData, setSlugData] = useState(dataMap.map_data[0]?.slug || '')
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
@@ -82,8 +81,8 @@ const MapDiscover = ({
     fetchDataPost()
   }, [slugData])
   //handle zoom map
-  const [isZoomInClick, setIsZoomInClick] = React.useState(false)
-  const [isZoomOutClick, setIsZoomOutClick] = React.useState(false)
+  const [isZoomInClick, setIsZoomInClick] = useState(false)
+  const [isZoomOutClick, setIsZoomOutClick] = useState(false)
   const handleZoomIn = () => {
     setIsZoomInClick(!isZoomInClick)
   }
@@ -97,8 +96,8 @@ const MapDiscover = ({
           <ImageV2
             src={data.logo.url || ''}
             alt={data.logo.alt}
-            width={data.logo.width * 2}
-            height={data.logo.height * 2}
+            width={data.logo.width * 2 || 40}
+            height={data.logo.height * 2 || 40}
             className='h-[9.63756rem] w-[35.37506rem] object-contain xsm:h-[4.76769rem] xsm:w-[17.5rem]'
           />
           <span className='absolute bottom-0 right-0 font-optima text-[1.375rem] leading-[1.3] tracking-[-0.055rem] text-brown xsm:text-[0.75rem]'>
@@ -251,7 +250,7 @@ const MapDiscover = ({
               Array.isArray(dataPost) &&
               dataPost.map((item, index: number) => (
                 <Link
-                href={`/blogs/${item.slug}`}
+                  href={`/blogs/${item.slug}`}
                   key={index}
                   className='rounded-[0.63rem] bg-[#F7F6F1] p-3 pb-6 xsm:flex xsm:w-auto xsm:flex-col xsm:rounded-[0.75rem] xsm:p-[0.75rem]'
                 >

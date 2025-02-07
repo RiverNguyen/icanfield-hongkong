@@ -163,8 +163,8 @@ function NewsFeatured({
               <ImageV2
                 src={articleLogo ? articleLogo.url : ''}
                 alt={articleLogo ? articleLogo.alt : ''}
-                width={articleLogo ? articleLogo.width : 91 * 2}
-                height={articleLogo ? articleLogo.width : 33 * 2}
+                width={articleLogo ? articleLogo.width : 91 * 2 || 40}
+                height={articleLogo ? articleLogo.width : 33 * 2 || 40}
                 className='absolute left-1/2 top-0 h-auto w-[3.968rem] -translate-x-1/2 object-contain sm:w-[5.6875rem]'
               />
             </p>
@@ -194,8 +194,8 @@ function LatestNews({title, image, date, slug: link}: ItemNews) {
       <ImageV2
         src={image ? image.url : ''}
         alt={image ? image.alt : ''}
-        width={image ? image.width : 342 * 2}
-        height={image ? image.height : 171 * 2}
+        width={image ? image.width : 342 * 2 || 40}
+        height={image ? image.height : 171 * 2 || 40}
         className='h-[10.6875rem] w-full rounded-[1rem] object-cover'
       />
       <Link href={`/blogs/${link}`}>

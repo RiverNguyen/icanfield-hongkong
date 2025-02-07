@@ -17,7 +17,7 @@ const FormHomepage = () => {
         alt=''
         width={912}
         height={825}
-        src={'/imgs/homepage/section-ketnoi/bg-sectionform.webp'}
+        src={'/imgs/homepage/section-ketnoi/bg-sectionform.png'}
         className='xsm:hidden absolute right-0 bottom-0 h-[44rem] w-[81.5rem] object-cover'
       />
       <FormConnect />
