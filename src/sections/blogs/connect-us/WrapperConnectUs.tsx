@@ -65,7 +65,7 @@ const WrapperConnectUs = ({
         className='pointer-events-none z-[3] size-full object-fill xsm:hidden'
         fill
         sizes='100vw'
-        src={'/imgs/blogs/background-connect-us-pc.webp'}
+        src={'/imgs/blogs/background-connect-us-pc2.webp'}
         alt='background connect us'
         quality={95}
       />
