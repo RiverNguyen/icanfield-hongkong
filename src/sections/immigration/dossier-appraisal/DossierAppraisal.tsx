@@ -25,7 +25,7 @@ export default function DossierAppraisal({dataDossierAppraisal}: {dataDossierApp
         alt=""
         width={912}
         height={825}
-        src={'/imgs/homepage/section-ketnoi/bg-sectionform.webp'}
+        src={'/imgs/homepage/section-ketnoi/bg-sectionform.png'}
         className="absolute right-0 top-[-4rem] xsm:top-[10rem] h-[44rem] xsm:h-[29.22088rem] w-[81.5rem] object-cover"
       />
       <ContentDossierAppraisal dataDossierAppraisal={dataDossierAppraisal} />

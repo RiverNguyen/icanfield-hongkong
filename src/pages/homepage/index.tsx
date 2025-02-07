@@ -1,6 +1,5 @@
 import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
-import FormHomepage from '@/sections/homepage/form-homepage'
-
+// import FormHomepage from '@/sections/homepage/form-homepage'
 import {
   IItemInvestmentOpportunities,
   InvestmentOpportunities,
@@ -35,6 +34,13 @@ const TalentedTeam = dynamic(
   {
     ssr: false,
     loading: () => <p>Loading Talented Team...</p>,
+  },
+)
+const FormHomepage = dynamic(
+  () => import('@/sections/homepage/form-homepage'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Form Homepage...</p>,
   },
 )
 interface HomeData {

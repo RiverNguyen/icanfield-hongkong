@@ -10,16 +10,13 @@ import 'swiper/css'
 import {Autoplay, EffectFade} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {filterOptions} from './constants'
-
 export interface IDataMedia {
   type: 'upload' | 'youtube' | 'tiktok' | 'slide'
   [key: string]: any
 }
-
 export interface IBannerHomepageProps {
   data: IDataMedia
 }
-
 const BannerHomepage = ({
   data,
   dataFilter,
@@ -90,7 +87,7 @@ const BannerHomepage = ({
     // Reset trạng thái sau khi tất cả cập nhật hoàn thành
     setTimeout(() => {
       isSelecting.current = false
-    }, 200) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
+    }, 0) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
   }
   //handle click outside filter
   const handleClickOutside = (e: MouseEvent) => {
@@ -157,6 +154,15 @@ const BannerHomepage = ({
               height='100%'
               className='!h-full !w-full object-cover [&__video]:object-cover'
             />
+          ) : data.type === 'tiktok' ? (
+            <iframe
+              src={`${convertToIframe(data) || ''}`}
+              width='100%'
+              height='100%'
+              frameBorder='0'
+              allowFullScreen
+              className='!h-full !w-full object-cover'
+            ></iframe>
           ) : (
             <ReactPlayer
               url={convertToIframe(data) || ''}

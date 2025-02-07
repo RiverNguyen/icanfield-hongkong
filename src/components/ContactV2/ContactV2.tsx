@@ -30,7 +30,7 @@ export default function ContactV2({
         alt=''
         width={912}
         height={825}
-        src={'/imgs/homepage/section-ketnoi/bg-sectionform.webp'}
+        src={'/imgs/homepage/section-ketnoi/bg-sectionform.png'}
         className='absolute bottom-0 right-0 h-[44rem] w-[81.5rem] object-cover xsm:hidden'
       />
       {children}
