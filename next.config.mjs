@@ -1,11 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
-  experimental: {
-    optimizeCss: true,
-    legacyBrowsers: false, // Không hỗ trợ trình duyệt cũ
-    browsersListForSwc: true,
-  },
   images: {
     formats: ['image/webp'],
     minimumCacheTTL: 3600,
