@@ -31,9 +31,11 @@ const sortOptions = [
 ]
 
 export default function Programme({
+  name,
   dataPrograms,
   slug,
 }: {
+  name?: string
   dataPrograms: dataPrograms
   slug: string
   }) {
@@ -137,7 +139,7 @@ export default function Programme({
           <h2 className='font-optima font-semibold text-orangetext-900 heading1 sm:capitalize'>
             Các chương trình định cư{' '}
             <span className='font-optima font-semibold capitalize text-orangetext-900 heading1'>
-              {slug}
+              {name}
             </span>
           </h2>
           <FilterProgramme
