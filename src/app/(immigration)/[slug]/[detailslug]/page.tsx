@@ -22,7 +22,7 @@ export default async function page({
       api:
         endpoints.settlementPrograms + `/${params.slug}/${params.detailslug}`,
       option: {
-        revalidate: 600,
+        revalidate: 10,
       },
     })
     const fetchAcfNation = fetchDataACF({
