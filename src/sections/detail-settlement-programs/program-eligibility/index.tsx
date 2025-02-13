@@ -53,7 +53,7 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
         >
           {items &&
             items.map((item, index) => (
-              <SwiperSlide key={index} className='!flex !items-end !w-full'>
+              <SwiperSlide key={index} className='!flex !items-end'>
                 <ProgramEligibilityItem {...item} />
               </SwiperSlide>
             ))}
