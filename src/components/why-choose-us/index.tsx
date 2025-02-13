@@ -1,8 +1,10 @@
+'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import {cn} from '@/lib/utils'
 import {Media} from '@/types/image.interface'
 import {FC} from 'react'
-
+import {Swiper, SwiperSlide} from 'swiper/react'
+import 'swiper/css'
 export interface IWhyChooseUsProps {
   title?: string
   description?: string
@@ -33,7 +35,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         className='absolute bottom-0 left-0 h-auto w-full object-contain sm:hidden'
       />
       <div className='absolute bottom-0 right-0 h-full w-full sm:bg-[linear-gradient(90deg,#FFF_31.02%,rgba(153,153,153,0.00)_70.54%)] xsm:hidden'></div>
-      <div className='relative z-10 mx-auto flex justify-between sm:max-w-[90rem] xsm:px-[1rem] xsm:mt-[2.5rem]'>
+      <div className='relative z-10 mx-auto flex justify-between sm:max-w-[90rem] xsm:mt-[2.5rem] xsm:px-[1rem]'>
         <div className='max-w-[39.75rem]'>
           <h2 className='font-optima font-semibold text-brown heading1'>
             {title}
@@ -50,15 +52,35 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
           className='mr-[5.41rem] h-[8.65525rem] w-auto select-none xsm:hidden'
         />
       </div>
-      <div className='scrollbar-hidden relative mx-auto mt-[2rem] flex max-w-[90rem] space-x-[1rem] overflow-scroll sm:mt-[2.69rem] sm:space-x-[1.25rem] xsm:pl-[1rem]'>
-        {Array.isArray(items) &&
-          items.map((item, index) => (
-            <WhyChooseUsItem
-              key={index}
-              {...item}
-              number={index + 1}
-            />
-          ))}
+      <div className='scrollbar-hidden xsm:w-ful relative ml-[4rem] mt-[2rem] flex max-w-[90rem] sm:mt-[2.69rem] sm:space-x-[1.25rem] xsm:ml-0 xsm:pl-[0]'>
+        <Swiper
+          navigation
+          slidesPerView={3}
+          breakpoints={{
+            0: {
+              slidesPerView: 1.3,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+          }}
+          className='!ml-0 !w-[60rem] xsm:!w-full xsm:!pl-4'
+        >
+          {Array.isArray(items) &&
+            items.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                className=''
+              >
+                <WhyChooseUsItem
+                  {...item}
+                  number={index + 1}
+                />
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-2.webp'}
@@ -97,7 +119,7 @@ export const WhyChooseUsItem: FC<IWhyChooseUsItemProps> = ({
   return (
     <div
       className={cn(
-        'relative min-h-[18.125rem] overflow-hidden rounded-[1rem] bg-[linear-gradient(154deg,rgba(255,255,255,0.90)_83.01%,rgba(255,255,255,0.00)_109.3%)] p-[1.5rem] shadow-sm sm:min-h-[19.5625rem] sm:max-w-[19.75rem] sm:p-[1.75rem] xsm:w-[18.125rem] xsm:flex-none xsm:last:!mr-[1rem]',
+        'relative min-h-[18.125rem] overflow-hidden rounded-[1rem] bg-[linear-gradient(154deg,rgba(255,255,255,0.90)_83.01%,rgba(255,255,255,0.00)_109.3%)] p-[1.5rem] shadow-sm sm:min-h-[19.5625rem] sm:max-w-[19.75rem] sm:p-[1.75rem] xsm:w-full xsm:flex-none xsm:last:!mr-[1rem]',
         className,
       )}
     >
