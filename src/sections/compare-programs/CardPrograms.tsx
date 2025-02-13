@@ -2,7 +2,7 @@
 import ImageV2 from '@/components/image/ImageV2'
 import ICArrowRinght from '@/layout/footer/ICArrowRinght'
 import { DataItem } from '@/types/comparePrograms.interface'
-import Image from 'next/image'
+
 import Link from 'next/link'
 
 const CardPrograms = ({ data }: { data: DataItem }) => {
