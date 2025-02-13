@@ -101,7 +101,7 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       ref={itemRef}
-      className='group self-end rounded-[1.25rem] p-[1.5rem] text-white transition-all duration-500 sm:min-h-[16rem] sm:w-[15.75rem] sm:bg-[linear-gradient(180deg,#3F2214_31.22%,#A55934_100%)] sm:p-[2.25rem_1rem_2.25rem_1.63rem] sm:hover:bg-white sm:hover:bg-[radial-gradient(55.47%_55.27%_at_15.35%_3.04%,#F5C178_34.24%,rgba(255,255,255,0.00)_100%)] xsm:bg-white xsm:bg-[radial-gradient(67.03%_57.2%_at_7%_6.15%,rgba(245,193,120,0.20)_34.24%,rgba(255,255,255,0.00)_100%)] xsm:shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)]'
+      className='group self-end rounded-[1.25rem] p-[1.5rem] text-white transition-all duration-500 sm:min-h-[16rem] sm:w-full sm:bg-[linear-gradient(180deg,#3F2214_31.22%,#A55934_100%)] sm:p-[2.25rem_1rem_2.25rem_1.63rem] sm:hover:bg-white sm:hover:bg-[radial-gradient(55.47%_55.27%_at_15.35%_3.04%,#F5C178_34.24%,rgba(255,255,255,0.00)_100%)] xsm:bg-white xsm:bg-[radial-gradient(67.03%_57.2%_at_7%_6.15%,rgba(245,193,120,0.20)_34.24%,rgba(255,255,255,0.00)_100%)] xsm:shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)]'
     >
       <ImageV2
         src={icon?.url || ''}
