@@ -52,8 +52,8 @@ export default function Programme({
     setListPrograms(dataPrograms)
   }, [])
   const query = useMemo(() => {
-    if (!searchParams?.size) return null
-    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}`
+    if (!searchParams?.size) return endpoints.settlementPrograms + '?page=1&per_page=8&' + endpoints.taxonomiesSettlement + '=' + slug
+    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}&${endpoints.taxonomiesSettlement}=${slug}`
   }, [searchParams, slugPage, slugOrder, search])
   const {data: posts} = useSWR(query, fetcher, {
     revalidateIfStale: false,
@@ -120,6 +120,7 @@ export default function Programme({
       })
     }
   }, [page])
+  console.log(posts);
   return (
     <section
       ref={sectionRef}

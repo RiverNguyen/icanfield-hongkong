@@ -52,6 +52,7 @@ export default function FilterProgramme({
       paramNew.delete('page')
     } else {
       paramNew.set('order', sortOption.value)
+      paramNew.delete('page')
     }
     router.push(pathName + paramNew.toString() && '?' + paramNew.toString(), {
       scroll: false,
