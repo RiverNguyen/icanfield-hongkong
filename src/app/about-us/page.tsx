@@ -11,7 +11,7 @@ const page = async () => {
     fetchDataACF({
       api: '/pages/101?acf_format=standard',
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }),
   ])

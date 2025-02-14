@@ -15,18 +15,18 @@ const page = async () => {
   const requestTaxonomies = {
     api: '/taxonomies-settlement',
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const requestPage = {
     api: '/pages/940?acf_format=standard',
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const [dataTaxonomies, dataPage] = await Promise.all([
     fetchData(requestTaxonomies),
-    fetchDataACF(requestPage)
+    fetchDataACF(requestPage),
   ])
   return (
     <main className='bg-background'>

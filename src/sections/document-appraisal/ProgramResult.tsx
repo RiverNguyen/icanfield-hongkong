@@ -5,9 +5,9 @@ import postData from '@/fetch/postData'
 import useIsMobile from '@/hooks/useIsMobile'
 import ICNext from '@/sections/document-appraisal/ICNext'
 import ItemProgramme from '@/sections/immigration/programme/ItemProgramme'
-import { dataProgramsAcf } from '@/types/dataAcfImmigration.interface'
-import { dataPostFilter, valueFilterPost } from '@/types/dataAppraisal.interface'
-import { useRef, useState } from 'react'
+import {dataProgramsAcf} from '@/types/dataAcfImmigration.interface'
+import {dataPostFilter, valueFilterPost} from '@/types/dataAppraisal.interface'
+import {useRef, useState} from 'react'
 import ReactPaginate from 'react-paginate'
 
 export default function ProgramResult({
@@ -35,7 +35,7 @@ export default function ProgramResult({
     const dataPost = await postData({
       api: '/settlementdocument',
       option: {
-        revalidate: 10,
+        next: {revalidate: 10},
       },
       values: dataFilter,
     })
@@ -75,7 +75,7 @@ export default function ProgramResult({
               const dataPost = await postData({
                 api: '/settlementdocument',
                 option: {
-                  revalidate: 10,
+                  next: {revalidate: 10},
                 },
                 values: dataFilter,
               })

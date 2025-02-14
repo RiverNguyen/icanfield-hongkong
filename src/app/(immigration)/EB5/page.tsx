@@ -15,19 +15,19 @@ export default async function page() {
       fetchDataACF({
         api: endpoints.eb5Project.page,
         option: {
-          revalidate: 10,
+          next: {revalidate: 10},
         },
       }),
       fetchDataACF({
         api: endpoints.eb5Project.categories,
         option: {
-          revalidate: 10,
+          next: {revalidate: 10},
         },
       }),
       fetchData({
         api: endpoints.eb5Project.list + `?page=1&limit=${LIMIT_POSTS}`,
         option: {
-          revalidate: 10,
+          next: {revalidate: 10},
         },
       }),
     ]

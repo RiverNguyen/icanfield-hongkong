@@ -33,7 +33,7 @@ const page = async ({params: {slug}}: {params: {slug: string}}) => {
   const data = await fetchDataACF({
     api: `/australia-real-estat?slug=${slug}&acf_format=standard`,
     option: {
-      revalidate: 10,
+      next : { revalidate: 10 },
     },
   })
   if (data?.length <= 0) return notFound()

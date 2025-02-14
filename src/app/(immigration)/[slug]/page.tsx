@@ -30,7 +30,7 @@ export default async function page({params}: {params: {slug: string}}) {
         params?.slug +
         '&acf_format=standard',
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }),
     fetchData({
@@ -41,19 +41,19 @@ export default async function page({params}: {params: {slug: string}}) {
         '=' +
         params?.slug,
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }),
     fetchData({
       api: '/posts-by-taxonomy?slug=' + params?.slug,
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }),
     fetchData({
       api: `/data-map-with-slug/?slug=${params.slug}`,
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }),
   ])

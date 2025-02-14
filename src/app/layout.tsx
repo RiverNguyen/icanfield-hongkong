@@ -42,13 +42,13 @@ export default async function RootLayout({
   const requestFooter = {
     api: '/footer-options?acf_format=standard',
     option: {
-      revalidate: 60,
+      next  : { revalidate: 60 },
     },
   }
   const requestHeader = {
     api: '/header-options?acf_format=standard',
     option: {
-      revalidate: 60,
+      next  : { revalidate: 60 },
     },
   }
   const [dataFooter, dataHeader] = await Promise.all([

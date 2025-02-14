@@ -1,7 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import PageBlogs from '@/pages/page-blogs'
-import { LIMIT_POSTS } from '@/sections/blogs/constant'
+import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
@@ -13,19 +13,19 @@ const page = async () => {
   const requestPosts = {
     api: endpoints.blog.list + `?page=1&limit=${LIMIT_POSTS}`,
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const requestCategories = {
     api: endpoints.categories.list + '?_fields=id,name,slug,taxonomy',
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const requestPage = {
     api: '/pages/68?acf_format=standard',
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const [dataPosts, dataCategories, dataPage] = await Promise.all([

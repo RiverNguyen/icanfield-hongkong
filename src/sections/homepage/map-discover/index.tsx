@@ -66,7 +66,7 @@ const MapDiscover = ({
     const dataPost = {
       api: `/latest-posts/${slugData}`,
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }
     const fetchDataPost = async () => {

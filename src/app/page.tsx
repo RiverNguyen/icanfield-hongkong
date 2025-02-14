@@ -12,25 +12,25 @@ export default async function Home() {
   const homeRequest = {
     api: endpoints.homepage + '?_fields=acf&acf_format=standard',
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const newsRequest = {
     api: endpoints.homeFeatured,
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const FilterBanner = {
     api: endpoints.filter,
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const HomepageMap = {
     api: endpoints.homepageMap,
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   try {

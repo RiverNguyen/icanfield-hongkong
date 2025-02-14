@@ -4,12 +4,15 @@ import {cn} from '@/lib/utils'
 import {Media} from '@/types/image.interface'
 import {FC} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
+import {Autoplay} from 'swiper/modules'
 import 'swiper/css'
 export interface IWhyChooseUsProps {
   title?: string
   description?: string
   logo?: Media
   items?: IWhyChooseUsItem[]
+  background_pc?: Media
+  background_mb?: Media
 }
 
 export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
@@ -17,6 +20,8 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
   description,
   logo,
   items,
+  background_pc,
+  background_mb,
 }) => {
   return (
     <section className='relative min-h-[40.5625rem] bg-[#F6F6F4] pb-[12.5rem] lg:min-h-lvh sm:pb-[9.56rem] sm:pt-[7.5rem]'>
@@ -56,6 +61,8 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         <Swiper
           navigation
           slidesPerView={3}
+          autoplay={{delay: 3000}}
+          speed={1000}
           breakpoints={{
             0: {
               slidesPerView: 1.3,
@@ -66,6 +73,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
               spaceBetween: 40,
             },
           }}
+          modules={[Autoplay]}
           className='!ml-0 !w-[60rem] xsm:!w-full xsm:!pl-4'
         >
           {Array.isArray(items) &&
@@ -83,14 +91,20 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         </Swiper>
       </div>
       <ImageV2
-        src={'/imgs/detail-settlement-programs/why-choose-us-bg-2.webp'}
+        src={
+          background_pc?.url ||
+          '/imgs/detail-settlement-programs/why-choose-us-bg-2.webp'
+        }
         alt={'Why Choose Us Background'}
         width={1219 * 2 || 40}
         height={585 * 2 || 40}
         className='pointer-events-none absolute bottom-0 right-0 h-full w-auto xsm:hidden'
       />
       <ImageV2
-        src={'/imgs/detail-settlement-programs/why-choose-us-bg-2-mb.webp'}
+        src={
+          background_mb?.url ||
+          '/imgs/detail-settlement-programs/why-choose-us-bg-2-mb.webp'
+        }
         alt={'Why Choose Us Background'}
         width={1219 * 2 || 40}
         height={585 * 2 || 40}

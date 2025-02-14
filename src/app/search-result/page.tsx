@@ -6,7 +6,7 @@ export default async function page() {
   const FilterBanner = {
     api: endpoints.filter,
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
 

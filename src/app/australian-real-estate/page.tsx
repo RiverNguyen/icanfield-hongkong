@@ -11,31 +11,33 @@ export default async function page() {
   const requestTaxonomies = {
     api: '/taxonomies-settlement',
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
   const requestPosts = {
     api: '/get-post-australia?page=1&limit=9',
     option: {
-      revalidate: 10,
+      next: {revalidate: 10},
     },
   }
-  const [dataTaxonomies, dataAcf, dataListPost, postRelate] = await Promise.all([
-    fetchData(requestTaxonomies),
-    fetchDataACF({
-      api: '/pages/938?acf_format=standard',
-      option: {
-        revalidate: 10,
-      },
-    }),
-    fetchData(requestPosts),
-    fetchData({
-      api: '/posts-by-taxonomy?slug=australia',
-      option: {
-        revalidate: 10,
-      },
-    }),
-  ])
+  const [dataTaxonomies, dataAcf, dataListPost, postRelate] = await Promise.all(
+    [
+      fetchData(requestTaxonomies),
+      fetchDataACF({
+        api: '/pages/938?acf_format=standard',
+        option: {
+          next: {revalidate: 10},
+        },
+      }),
+      fetchData(requestPosts),
+      fetchData({
+        api: '/posts-by-taxonomy?slug=australia',
+        option: {
+          next: {revalidate: 10},
+        },
+      }),
+    ],
+  )
   return (
     <AustralianRealEstate
       dataNationSettlement={dataTaxonomies?.nation}

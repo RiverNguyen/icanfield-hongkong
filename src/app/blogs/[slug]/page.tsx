@@ -22,7 +22,7 @@ export default async function page({params}: {params: {slug: string}}) {
     fetchData({
       api: '/blogs/' + params.slug,
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     })
   ])
