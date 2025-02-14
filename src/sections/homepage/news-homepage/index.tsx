@@ -1,12 +1,12 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
-import { cn } from '@/lib/utils'
-import { Media } from '@/types/image.interface'
+import {cn} from '@/lib/utils'
+import {Media} from '@/types/image.interface'
 import Link from 'next/link'
-import { FC, useState } from 'react'
-import { Navigation } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import {FC, useState} from 'react'
+import {Navigation} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
 import './style.css'
 
 export interface INewsFlowProps {
@@ -31,7 +31,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
         {title || 'Tin tức mới nhất'}
       </h2>
       <div className='mx-auto flex flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:px-0'>
-        {itemsNewsFeatured.map((item, index) => (
+        {itemsNewsFeatured?.map((item, index) => (
           <NewsFeatured
             key={index}
             {...item}
@@ -40,7 +40,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
       </div>
       <div className='relative flex max-w-[95rem] flex-wrap justify-between pb-[4rem] sm:ml-auto'>
         <div className='scrollbar-hidden mb-[1.5rem] ml-[1rem] mr-auto flex max-w-[90rem] basis-full overflow-auto border-b border-b-[#E6E6E6]'>
-          {itemsNews.map((item, index) => (
+          {itemsNews?.map((item, index) => (
             <button
               onClick={() => setLatestNewsItemIndex(index)}
               key={index}
@@ -58,14 +58,16 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
         </div>
         <div className='px-[1rem] sm:max-w-[21.38rem] sm:pr-[0.38rem]'>
           <h3 className='text-[1.25rem] font-bold leading-[1.66625rem] tracking-[-0.025rem] text-black/80'>
-            {itemsNews[latestNewsItemIndex].title}
+            {Array.isArray(itemsNews) &&
+              itemsNews.length > 0 &&
+              itemsNews[latestNewsItemIndex]?.title}
           </h3>
           <p className='mb-[2.2rem] mt-[0.5rem] text-black/60 body-14'>
-            {itemsNews[latestNewsItemIndex].description}
+            {Array.isArray(itemsNews) && itemsNews.length > 0 && itemsNews[latestNewsItemIndex].description}
           </p>
           <div className='mt-[1.5rem] flex items-center justify-center px-[1rem] sm:justify-between sm:px-0 xsm:absolute xsm:bottom-0 xsm:left-0 xsm:right-0'>
             <Link
-              href={itemsNews[latestNewsItemIndex].link}
+              href={Array.isArray(itemsNews) && itemsNews.length > 0 && itemsNews[latestNewsItemIndex].link || ''}
               className='flex items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem]'
             >
               <span className='text-white body-14-m'>Xem tất cả</span>
@@ -96,7 +98,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
               prevEl: '.latest-news__prev',
             }}
           >
-            {itemsNews[latestNewsItemIndex].news.map((item, index) => (
+            {Array.isArray(itemsNews) && itemsNews.length > 0 && itemsNews[latestNewsItemIndex].news.map((item, index) => (
               <SwiperSlide
                 key={index}
                 className='!w-[14.375rem] sm:!w-[21.375rem]'
@@ -163,8 +165,8 @@ function NewsFeatured({
               <ImageV2
                 src={articleLogo ? articleLogo.url : ''}
                 alt={articleLogo ? articleLogo.alt : ''}
-                width={articleLogo ? articleLogo.width : 91 * 2}
-                height={articleLogo ? articleLogo.width : 33 * 2}
+                width={articleLogo ? articleLogo.width : 91 * 2 || 40}
+                height={articleLogo ? articleLogo.width : 33 * 2 || 40}
                 className='absolute left-1/2 top-0 h-auto w-[3.968rem] -translate-x-1/2 object-contain sm:w-[5.6875rem]'
               />
             </p>
@@ -194,8 +196,8 @@ function LatestNews({title, image, date, slug: link}: ItemNews) {
       <ImageV2
         src={image ? image.url : ''}
         alt={image ? image.alt : ''}
-        width={image ? image.width : 342 * 2}
-        height={image ? image.height : 171 * 2}
+        width={image ? image.width : 342 * 2 || 40}
+        height={image ? image.height : 171 * 2 || 40}
         className='h-[10.6875rem] w-full rounded-[1rem] object-cover'
       />
       <Link href={`/blogs/${link}`}>

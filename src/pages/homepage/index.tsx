@@ -1,14 +1,10 @@
 import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
-import FormHomepage from '@/sections/homepage/form-homepage'
-
+// import FormHomepage from '@/sections/homepage/form-homepage'
 import {
   IItemInvestmentOpportunities,
   InvestmentOpportunities,
 } from '@/sections/homepage/investment-opportunities'
-import NewsFlow, {
-  ItemNews,
-  ItemNewsFeatured,
-} from '@/sections/homepage/news-homepage'
+import {ItemNews, ItemNewsFeatured} from '@/sections/homepage/news-homepage'
 import {IItemProudJourney} from '@/sections/homepage/proud-journey'
 // import TalentedTeam from '@/sections/homepage/talented-team'
 import {Media} from '@/types/image.interface'
@@ -18,6 +14,10 @@ import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
 const GlobalImmigration = dynamic(
   () => import('@/sections/homepage/global-immigration'),
 )
+const NewsFlow = dynamic(() => import('@/sections/homepage/news-homepage'), {
+  ssr: false,
+  loading: () => <p>Loading News Flow...</p>,
+})
 const ProudJourney = dynamic(
   () => import('@/sections/homepage/proud-journey'),
   {
@@ -34,6 +34,13 @@ const TalentedTeam = dynamic(
   {
     ssr: false,
     loading: () => <p>Loading Talented Team...</p>,
+  },
+)
+const FormHomepage = dynamic(
+  () => import('@/sections/homepage/form-homepage'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Form Homepage...</p>,
   },
 )
 interface HomeData {
@@ -105,6 +112,7 @@ const HomePage = ({
     home_talented_team,
     home_proud_journey,
   } = homeData?.acf || {}
+  console.log(home_banner)
   return (
     <main className='bg-background'>
       {home_banner && (

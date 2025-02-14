@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import ImageV2 from '@/components/image/ImageV2'
 import ICArrowRinght from '@/layout/footer/ICArrowRinght'
 import { DataItem } from '@/types/comparePrograms.interface'
-import Image from 'next/image'
+
 import Link from 'next/link'
 
 const CardPrograms = ({ data }: { data: DataItem }) => {
   return (
     <div className='relative h-[13.75rem] w-full overflow-hidden rounded-[0.75rem] xsm:h-[10rem]'>
       <div className='relative size-full'>
-        <Image
+        <ImageV2
           src={data?.image}
           alt={data?.title}
           fill
@@ -20,7 +21,7 @@ const CardPrograms = ({ data }: { data: DataItem }) => {
       <div className='absolute inset-0 flex flex-col justify-between p-[1rem] xsm:p-[0.62rem]'>
         <div className='flex items-center space-x-[0.62rem] xsm:space-x-[0.38rem]'>
           <div className='relative size-[2.75rem] flex-shrink-0 overflow-hidden rounded-full xsm:size-[2rem]'>
-            <Image
+            <ImageV2
               className='size-full object-cover'
               src={data?.category?.[0]?.flag?.url || data?.image}
               alt=''

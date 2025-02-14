@@ -10,16 +10,13 @@ import 'swiper/css'
 import {Autoplay, EffectFade} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {filterOptions} from './constants'
-
 export interface IDataMedia {
   type: 'upload' | 'youtube' | 'tiktok' | 'slide'
   [key: string]: any
 }
-
 export interface IBannerHomepageProps {
   data: IDataMedia
 }
-
 const BannerHomepage = ({
   data,
   dataFilter,
@@ -27,7 +24,6 @@ const BannerHomepage = ({
   data: IDataMedia
   dataFilter: FilterData
 }) => {
-  const [isClient, setIsClient] = useState(false)
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
   const isSelecting = useRef(false)
   const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
@@ -35,9 +31,6 @@ const BannerHomepage = ({
   const [selectedItems, setSelectedItems] = useState<{
     [key: number]: {label: string; slug: string; key: string}
   }>([])
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
   //handle update FilterOption when dataFilter
   const [filterOptionsLastest, setFilterOptionsLastest] =
     useState(filterOptions)
@@ -94,7 +87,7 @@ const BannerHomepage = ({
     // Reset trạng thái sau khi tất cả cập nhật hoàn thành
     setTimeout(() => {
       isSelecting.current = false
-    }, 200) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
+    }, 0) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
   }
   //handle click outside filter
   const handleClickOutside = (e: MouseEvent) => {
@@ -149,7 +142,7 @@ const BannerHomepage = ({
       <h1 className='hidden'>iCcanfield</h1>
       {data.type != 'slide' ? (
         <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
-          {isClient && data.type === 'upload' ? (
+          {data.type === 'upload' ? (
             <ReactPlayer
               url={data[data.type].url || ''}
               playing
@@ -161,20 +154,27 @@ const BannerHomepage = ({
               height='100%'
               className='!h-full !w-full object-cover [&__video]:object-cover'
             />
+          ) : data.type === 'tiktok' ? (
+            <iframe
+              src={`${convertToIframe(data) || ''}`}
+              width='100%'
+              height='100%'
+              frameBorder='0'
+              allowFullScreen
+              className='!h-full !w-full object-cover'
+            ></iframe>
           ) : (
-            isClient && (
-              <ReactPlayer
-                url={convertToIframe(data) || ''}
-                playing
-                loop
-                playsinline
-                muted
-                preload='none'
-                width='100%'
-                height='100%'
-                className='!h-full !w-full object-cover [&_div_iframe]:object-cover'
-              />
-            )
+            <ReactPlayer
+              url={convertToIframe(data) || ''}
+              playing
+              loop
+              playsinline
+              muted
+              preload='none'
+              width='100%'
+              height='100%'
+              className='!h-full !w-full object-cover [&_div_iframe]:object-cover'
+            />
           )}
         </div>
       ) : (
@@ -202,8 +202,8 @@ const BannerHomepage = ({
                   <ImageV2
                     src={item.url || ''}
                     alt={item.alt}
-                    width={item.width * 2}
-                    height={item.height * 2}
+                    width={item.width * 2 || 40}
+                    height={item.height * 2 || 40}
                     className='h-full w-full object-cover'
                   />
                 </SwiperSlide>
@@ -217,8 +217,8 @@ const BannerHomepage = ({
         <ImageV2
           src={data.logo.url || ''}
           alt={data.logo.alt}
-          width={data.logo.width * 2}
-          height={data.logo.height * 2}
+          width={data.logo.width * 2 || 40}
+          height={data.logo.height * 2 || 40}
           className='pointer-events-none absolute left-1/2 top-[17.31rem] z-[2] h-[6.76769rem] w-[22.02719rem] -translate-x-1/2 object-contain xsm:hidden'
         />
       )}

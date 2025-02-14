@@ -45,8 +45,8 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
         <ImageV2
           src={'/imgs/detail-settlement-programs/mask_group.webp'}
           alt='mask_group'
-          width={1312 * 2}
-          height={738 * 2}
+          width={1312 * 2 || 40}
+          height={738 * 2 || 40}
           className='absolute right-[-31.42rem] top-[-18.25rem] h-[49.5865rem] w-[111.79638rem] object-contain xsm:hidden'
         />
         <h2 className='relative font-optima font-semibold text-brown heading1'>
@@ -88,8 +88,8 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
           <ImageV2
             src={thumbnail ? thumbnail.url : ''}
             alt={thumbnail ? thumbnail.alt : ''}
-            width={thumbnail && thumbnail.width ? thumbnail.width : 1312 * 2}
-            height={thumbnail && thumbnail.height ? thumbnail.height : 738 * 2}
+            width={thumbnail && thumbnail.width ? thumbnail.width : 1312 * 2 || 40}
+            height={thumbnail && thumbnail.height ? thumbnail.height : 738 * 2 || 40}
             className={cn(
               'absolute left-0 top-0 h-full w-full object-cover transition-all',
               {

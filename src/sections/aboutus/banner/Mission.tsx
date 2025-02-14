@@ -34,7 +34,7 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
         alt=''
         width={1200}
         height={800}
-        src={'/imgs/homepage/banner/BG-sky.png'}
+        src={'/imgs/homepage/banner/BG-sky.webp'}
       />
       <div
         className='absolute bottom-0 z-20 h-[64.9375rem] w-full xsm:h-[21.4375rem]'
@@ -44,7 +44,7 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
           alt=''
           width={1300}
           height={1300}
-          src={'/imgs/homepage/banner/bg-house.png'}
+          src={'/imgs/homepage/banner/bg-house2.webp'}
         />
         <ImageV2
           className='size-full object-cover sm:hidden'
@@ -59,7 +59,7 @@ export default function Mission({dataMission}: {dataMission: dataMission}) {
         alt=''
         width={1300}
         height={1300}
-        src={'/imgs/homepage/banner/silk-strip.png'}
+        src={'/imgs/homepage/banner/silk-strip.webp'}
       />
       <div
         ref={ref}

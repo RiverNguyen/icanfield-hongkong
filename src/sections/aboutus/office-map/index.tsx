@@ -63,8 +63,8 @@ function Info({data, label, icon}: IInfoProps) {
         <ImageV2
           src={icon || ''}
           alt={label}
-          width={24 * 2}
-          height={24 * 2}
+          width={24 * 2 || 40}
+          height={24 * 2 || 40}
           className='mr-2 h-full w-full object-contain'
         />
       </div>

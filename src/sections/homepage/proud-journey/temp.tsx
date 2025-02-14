@@ -144,8 +144,8 @@ function ProudJourneyItem({avatar, image, name, job}: IItemProudJourney) {
             className='size-full rounded-full object-cover'
             src={avatar.src || ''}
             alt={avatar.alt}
-            width={56 * 2}
-            height={56 * 2}
+            width={56 * 2 || 40}
+            height={56 * 2 || 40}
           />
         </div>
         <div className='flex-1'>

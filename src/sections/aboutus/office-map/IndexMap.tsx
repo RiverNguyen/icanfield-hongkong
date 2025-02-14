@@ -41,6 +41,7 @@ const IndexMap = ({dataOffice}: {dataOffice: ItemMap[]}) => {
     setOpen(true)
     setDataOfficeSelected(country)
   }
+  console.log(dataOffice)
   return (
     <div className=''>
       <div
@@ -78,9 +79,9 @@ const IndexMap = ({dataOffice}: {dataOffice: ItemMap[]}) => {
             flag: country.flag,
           }
           if (dataOffice.length > 1) {
-            const newPosition = dataOffice.find((item) => {
-              if (item.name) return item
-            })
+            const newPosition = dataOffice.find(
+              (item) => item.name === country.name,
+            )
             if (newPosition) {
               countryObj = {
                 name: newPosition.name,
@@ -129,7 +130,7 @@ function MarkerButton({onClick, name, label, flag}: IMarkerButtonProps) {
         <span className='text-[0.5rem] font-medium leading-[1.5] tracking-[-0.005rem] text-tagtext'>
           Văn phòng
         </span>
-        <span className='text-brown body-14-s'>{label}</span>
+        <span className='text-brown text-[0.75rem] font-semibold'>{label}</span>
       </div>
       <ChevronRight className='size-[1.5rem] text-tagtext' />
     </button>

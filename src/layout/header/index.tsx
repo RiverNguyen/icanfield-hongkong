@@ -3,9 +3,9 @@
 import useStore from '@/app/(store)/store'
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
-import { isLockScroll } from '@/hooks/useBodyScrollLock'
-import { social } from '@/layout/footer'
-import { dataFooter } from '@/types/dataFooter.interface'
+import {isLockScroll} from '@/hooks/useBodyScrollLock'
+import {social} from '@/layout/footer'
+import {dataFooter} from '@/types/dataFooter.interface'
 import {
   ChildProgram,
   Language,
@@ -15,11 +15,23 @@ import {
 } from '@/types/dataHeader.interface'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+
+// Declare googleTranslateElementInit and google on the Window interface
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void
+    google: {
+      translate: {
+        TranslateElement: new (options: object, container: string) => void
+      }
+    }
+  }
+}
 import 'swiper/css'
-import { Autoplay } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { languageOptions } from './constants'
+import {Autoplay} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {languageOptions} from './constants'
 import './styles.css'
 
 const Header = ({
@@ -165,56 +177,38 @@ const Header = ({
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const savedLanguage = localStorage.getItem('language') || 'vi'
-    setCurrentLanguage(savedLanguage)
+    let timeoutId: NodeJS.Timeout
+    let isMounted = true
 
-    const isCurrentLang =
-      data?.language?.languages.find(
-        (item: Language) =>
-          item.label.toLowerCase() === savedLanguage.toLowerCase(),
-      ) || data?.language?.languages[0]
+    const initTranslate = () => {
+      // Các logic khởi tạo ngôn ngữ
+      const savedLanguage = localStorage.getItem('language') || 'vi'
+      setCurrentLanguage(savedLanguage)
 
-    setIsCurrentLanguage(isCurrentLang)
+      const isCurrentLang =
+        data?.language?.languages.find(
+          (item: Language) =>
+            item.label.toLowerCase() === savedLanguage.toLowerCase(),
+        ) || data?.language?.languages[0]
 
-    const languagesString = data?.language.languages
-      .map((item: Language) => item.label.toLowerCase())
-      .join(',')
+      setIsCurrentLanguage(isCurrentLang)
 
-    const googleTranslateScript = document.createElement('script')
-    googleTranslateScript.type = 'text/javascript'
-    googleTranslateScript.src =
-      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+      // Tải script Google Translate sau khi các tác vụ chính hoàn thành
+      if (!document.getElementById('google-translate-script')) {
+        const googleTranslateScript = document.createElement('script')
+        googleTranslateScript.id = 'google-translate-script'
+        googleTranslateScript.src =
+          '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
 
-    if (!document.getElementById('google-translate-script')) {
-      googleTranslateScript.id = 'google-translate-script'
-      ;(
-        window as typeof window & {
-          googleTranslateElementInit?: () => void
-          google?: {
-            translate?: {
-              TranslateElement: new (
-                options: object,
-                containerId: string,
-              ) => void
-            }
-          }
-        }
-      ).googleTranslateElementInit = function () {
-        const google = (
-          window as typeof window & {
-            google?: {
-              translate?: {
-                TranslateElement: new (
-                  options: object,
-                  containerId: string,
-                ) => void
-              }
-            }
-          }
-        ).google
+        // Thêm callback initialization
+        window.googleTranslateElementInit = () => {
+          if (!isMounted) return
 
-        if (google?.translate?.TranslateElement) {
-          new google.translate.TranslateElement(
+          const languagesString = data?.language.languages
+            .map((item: Language) => item.label.toLowerCase())
+            .join(',')
+
+          new window.google.translate.TranslateElement(
             {
               pageLanguage: 'en',
               includedLanguages: languagesString,
@@ -224,17 +218,27 @@ const Header = ({
             'google_translate_element',
           )
         }
-      }
 
-      document.body.appendChild(googleTranslateScript)
+        document.body.appendChild(googleTranslateScript)
+      }
     }
 
-    // Cleanup khi unmount
+    // Delay bằng requestIdleCallback hoặc setTimeout
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initTranslate)
+    } else {
+      timeoutId = setTimeout(initTranslate, 1500) // Delay 1.5s
+    }
+
     return () => {
+      isMounted = false
+      clearTimeout(timeoutId)
+
       const script = document.getElementById('google-translate-script')
       if (script) {
         document.body.removeChild(script)
       }
+      window.googleTranslateElementInit = () => {}
     }
   }, [data?.language.languages])
 

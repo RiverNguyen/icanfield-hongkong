@@ -19,7 +19,7 @@ export function convertToIframe(dataVideo: IDataMedia) {
       )
 
       if (tiktokMatch && tiktokMatch[1]) {
-        return `https://www.tiktok.com/embed/${tiktokMatch[1]}`
+        return `https://www.tiktok.com/embed/${tiktokMatch[1]}?autoplay=1&loop=1&playsinline=1&muted=1`
       }
     },
   }

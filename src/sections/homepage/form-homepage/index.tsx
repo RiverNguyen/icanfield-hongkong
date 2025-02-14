@@ -9,7 +9,7 @@ const FormHomepage = () => {
           alt=''
           width={912}
           height={825}
-          src={'/imgs/homepage/section-ketnoi/banner-formlh.png'}
+          src={'/imgs/homepage/section-ketnoi/banner-formlh.webp'}
           className='xsm:hidden absolute bottom-[-10rem] w-[57rem] h-[51.5625rem] object-cover'
         />
       </div>

@@ -109,7 +109,7 @@ const MapPassport = () => {
     })
   }
   return (
-    <div className='relative size-full bg-white xsm:min-h-[16.125rem] xsm:bg-transparent xsm:-z-[1]'>
+    <div className='relative size-full bg-white xsm:min-h-[16.125rem] xsm:bg-transparent xsm:z-[51]'>
       <MapContainer
         key={isMobile ? 'mobile-map' : 'desktop-map'}
         style={{

@@ -10,7 +10,7 @@ export default function DossierAppraisal({dataDossierAppraisal}: {dataDossierApp
           alt=""
           width={912}
           height={825}
-          src={'/imgs/homepage/section-ketnoi/banner-formlh.png'}
+          src={'/imgs/homepage/section-ketnoi/banner-formlh.webp'}
           className="xsm:hidden absolute sm:bottom-[-12.75rem] xsm:bottom-[-5rem] w-[57rem] h-[51.5625rem] xsm:w-full xsm:h-[25.13513rem] object-contain"
         />
         <ImageV2

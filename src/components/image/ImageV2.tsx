@@ -7,7 +7,7 @@ export interface IImageProps extends ImageProps {
   fallbackImage?: string
 }
 
-const fallbackImg = '/fallbackImage.gif'
+const fallbackImg = '/imgs/fallback.webp'
 
 const ImageV2 = ({
   src,

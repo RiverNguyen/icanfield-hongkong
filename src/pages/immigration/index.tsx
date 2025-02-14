@@ -39,6 +39,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
       <Strengths dataStrength={dataImmigration?.acf?.characteristic} />
       <Suspense fallback={<div>Loading...</div>}>
         <Programme
+        name={dataImmigration?.name}
           slug={slug}
           dataPrograms={dataPrograms}
         />

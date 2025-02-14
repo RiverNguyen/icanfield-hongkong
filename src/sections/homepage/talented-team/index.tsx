@@ -54,8 +54,8 @@ const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
                 <ImageV2
                   src={item.image.url || ''}
                   alt={item.image.alt}
-                  width={item.image.width * 2}
-                  height={item.image.height * 2}
+                  width={item.image.width * 2 || 40}
+                  height={item.image.height * 2 || 40}
                   className='h-[22.04544rem] w-full scale-95 object-contain transition-transform duration-300 hover:scale-100'
                 />
                 <div

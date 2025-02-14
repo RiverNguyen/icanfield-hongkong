@@ -36,12 +36,12 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
         </p>
       </div>
       <div className='bottom-0 left-0 right-0 h-[31.1875rem] bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)] sm:absolute xsm:hidden'></div>
-      <div className='relative flex sm:absolute sm:bottom-[6.25rem] sm:left-[4.5rem] z-[0] sm:w-[68rem]  sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:flex-col xsm:space-y-[0.88rem] xsm:px-[1rem]'>
+      <div className='relative flex sm:absolute xsm:w-full sm:bottom-[6.25rem] sm:left-[4.5rem] z-[0] sm:w-[68rem]  sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:flex-col xsm:space-y-[0.88rem] xsm:px-[1rem]'>
         <Swiper
           navigation
           breakpoints={{
             640: {
-              slidesPerView: 1,
+              slidesPerView: 1.3,
               spaceBetween: 10,
             },
             768: {
@@ -49,7 +49,7 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
               spaceBetween: 20,
             },
           }}
-          className='xsm:!w-full'
+          className='xsm:!w-full !w-full'
         >
           {items &&
             items.map((item, index) => (
@@ -101,7 +101,7 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       ref={itemRef}
-      className='group self-end rounded-[1.25rem] p-[1.5rem] text-white transition-all duration-500 sm:min-h-[16rem] sm:w-[15.75rem] sm:bg-[linear-gradient(180deg,#3F2214_31.22%,#A55934_100%)] sm:p-[2.25rem_1rem_2.25rem_1.63rem] sm:hover:bg-white sm:hover:bg-[radial-gradient(55.47%_55.27%_at_15.35%_3.04%,#F5C178_34.24%,rgba(255,255,255,0.00)_100%)] xsm:bg-white xsm:bg-[radial-gradient(67.03%_57.2%_at_7%_6.15%,rgba(245,193,120,0.20)_34.24%,rgba(255,255,255,0.00)_100%)] xsm:shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)]'
+      className='group self-end rounded-[1.25rem] p-[1.5rem] text-white transition-all duration-500 sm:min-h-[16rem] sm:w-full sm:bg-[linear-gradient(180deg,#3F2214_31.22%,#A55934_100%)] sm:p-[2.25rem_1rem_2.25rem_1.63rem] sm:hover:bg-white sm:hover:bg-[radial-gradient(55.47%_55.27%_at_15.35%_3.04%,#F5C178_34.24%,rgba(255,255,255,0.00)_100%)] xsm:bg-white xsm:bg-[radial-gradient(67.03%_57.2%_at_7%_6.15%,rgba(245,193,120,0.20)_34.24%,rgba(255,255,255,0.00)_100%)] xsm:shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)]'
     >
       <ImageV2
         src={icon?.url || ''}
