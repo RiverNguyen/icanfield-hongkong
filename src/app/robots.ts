@@ -4,6 +4,6 @@ export default function robots() {
       userAgent: '*',
       disallow: '/', // Không cho phép lập chỉ mục bất kỳ trang nào
     },
-    sitemap: `${process.env.NEXT_PUBLIC_DOMAIN}/sitemap.xml`,
+    // sitemap: `${process.env.NEXT_PUBLIC_DOMAIN}/sitemap.xml`,
   }
 }
