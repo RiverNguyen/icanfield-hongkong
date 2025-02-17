@@ -58,11 +58,13 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
+    if (Array.isArray(countries)) {
       countries.forEach((country) => {
         country.forEach((item) => {
           euCountries.add(item.name)
         })
       })
+    }
     }
   }, [])
 
@@ -203,7 +205,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
         data={mapJson as GeoJsonObject}
         style={geoJsonStyle as GeoJSONOptions}
       />
-      {countries.map((country, index) => {
+      {Array.isArray(countries) && countries.map((country, index) => {
         let countryObj: ICountry = {
           name: country[0].name,
           label: country[0].label,
