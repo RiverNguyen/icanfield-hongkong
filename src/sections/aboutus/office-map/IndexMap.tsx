@@ -41,7 +41,7 @@ const IndexMap = ({dataOffice}: {dataOffice: ItemMap[]}) => {
     setOpen(true)
     setDataOfficeSelected(country)
   }
-  console.log(dataOffice)
+  // console.log(dataOffice)
   return (
     <div className=''>
       <div

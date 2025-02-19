@@ -22,7 +22,7 @@ export default function ItemProgramme({
   return (
     <div
       className={cn(
-        'w-full rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)] sm:h-[36.75rem] xsm:z-[9]',
+        'w-full rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)] sm:h-fit xsm:z-[9]',
         className,
       )}
     >
@@ -35,7 +35,7 @@ export default function ItemProgramme({
           src={dataPostProgramme?.featured_image}
         />
         <div className='absolute inset-0 z-10 size-full rounded-[1.25rem] bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]'></div>
-        <h3 className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] line-clamp-1 font-medium text-white heading3 xsm:bottom-[4.81rem] xsm:left-[1rem] xsm:heading2'>
+        <h3 className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] font-optima sm:text-[2rem] line-clamp-2 font-medium text-white heading3 xsm:bottom-[4.81rem] xsm:left-[1rem] xsm:heading2'>
           {dataPostProgramme?.title}
         </h3>
         {isMobile && (
@@ -87,7 +87,7 @@ export default function ItemProgramme({
           </div>
         </div>
       )}
-      {dataPostProgramme?.acf?.interest?.title_interest ? (
+      {/* {dataPostProgramme?.acf?.interest?.title_interest ? (
         <div className='px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]'>
           <div className='space-y-[0.625rem] rounded-[0.75rem] bg-background p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem]'>
             <div className='flex w-full items-center justify-between'>
@@ -117,7 +117,7 @@ export default function ItemProgramme({
         </div>
       ) : (
         <div className='flex h-[8rem] w-full'></div>
-      )}
+      )} */}
       <div className='flex items-center justify-between p-[1.25rem] xsm:space-x-[0.5rem] xsm:p-[1rem]'>
         <Link
           target='__blank'

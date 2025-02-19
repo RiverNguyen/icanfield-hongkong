@@ -14,7 +14,7 @@ import Benefits from '@/sections/australian-real-estate/Benefits'
 import { ICountry } from '@/components/LeafletMap'
 import { IItemAustralia } from '@/components/itemAustralia/itemAustralia.interface'
 import { BenefitsProps } from '@/sections/australian-real-estate/Benefits'
-import OutstandingAustralia from '@/sections/australian-real-estate/OutstandingAustralia'
+// import OutstandingAustralia from '@/sections/australian-real-estate/OutstandingAustralia'
 import RelatedArticles from '@/sections/blogs/detail/RelatedArticles'
 import { Banner } from '@/sections/detail-settlement-programs/banner'
 import { DataItem } from '@/types/blogs.interface'
@@ -22,6 +22,7 @@ import { Term } from '@/types/dataAppraisal.interface'
 import { Media } from '@/types/image.interface'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import OutstandingAustraliaClone from '@/sections/australian-real-estate/OutstandingAustralia/indexClone'
 const PioneeringValuesAustralia = dynamic(
   () => import('@/sections/australian-real-estate/section-map'),
   {
@@ -565,7 +566,7 @@ interface dataAcf {
   }
 }
 
-export default function AustralianRealEstate({
+export default function AustralianRealEstateClone({
   dataNationSettlement,
   dataAcf,
   dataListPost,
@@ -627,7 +628,7 @@ export default function AustralianRealEstate({
       />
       <PioneeringValuesAustralia data={dataAcf?.section_map} dataMap={dataMap}/>
       <Suspense fallback={<p>Loading...</p>}>
-        <OutstandingAustralia
+        <OutstandingAustraliaClone
           listItems={dataListPost}
           categories={data?.categories}
         />

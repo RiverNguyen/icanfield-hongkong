@@ -89,8 +89,8 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
       <AdvantagesBenefits {...advantages_benefits} />
       <ProgramBenefits {...program_benefits} />
       <ProgramEligibility {...program_eligibility} />
-      <WhyChooseUs {...why_choose_us} />
       <ProcessSteps {...PropProcessSteps} />
+      <WhyChooseUs {...why_choose_us} />
       <SuccessStoryShare {...story_share} />
       <ImmigrationFAQ
         dataFAQ={acfNation?.acf?.faq_nation}

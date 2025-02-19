@@ -8,12 +8,18 @@ import 'leaflet/dist/leaflet.css'
 import {ICountry} from '@/components/LeafletMap'
 const PioneeringValuesAustralia = ({
   data,
+  dataMap,
 }: {
   data: {
     title: string
     description: string
     data_state_usa: ICountry[]
-  }
+    },
+    dataMap: {
+      slug: string
+      location_name: string
+      count: number
+    }[]
 }) => {
   const [isZoomInClick, setIsZoomInClick] = React.useState(false)
   const [isZoomOutClick, setIsZoomOutClick] = React.useState(false)
@@ -67,6 +73,7 @@ const PioneeringValuesAustralia = ({
       <div className='relative h-[41.5rem] w-full overflow-hidden rounded-[1.25rem] bg-white section-container xsm:h-[20.4rem] xsm:w-full xsm:rounded-none'>
         <LeafletMapCountries
           countries={convertedData}
+          dataCountry={dataMap}
           mapJson={customGeoJson as FeatureCollection}
           className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
           borderCountries='#B6B3A7'

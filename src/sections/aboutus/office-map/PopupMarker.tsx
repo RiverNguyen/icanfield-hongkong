@@ -30,7 +30,7 @@ const PopupMarker = ({
   flagSelected,
   dataOfficeSelected,
 }: PopupMarkerProps) => {
-  console.log('dataOfficeSelected', dataOfficeSelected)
+  // console.log('dataOfficeSelected', dataOfficeSelected)
   const swiperRef = useRef<SwiperType | null>(null)
   const handleNextSlide = () => {
     swiperRef.current?.slideNext()

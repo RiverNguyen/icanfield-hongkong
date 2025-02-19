@@ -93,7 +93,7 @@ const ProjectInvestorDeveloper = ({
                   />
                 </div>
                 <div className='mt-4 grid grid-cols-3 gap-4'>
-                  {investor.achievements.map((achievement, index) => (
+                  {Array.isArray(investor.achievements) && investor.achievements.map((achievement, index) => (
                     <div
                       key={index}
                       className='flex flex-col justify-center space-y-[0.375rem] rounded-xl bg-white/15 px-4 py-3 xsm:p-3'

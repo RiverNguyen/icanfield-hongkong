@@ -87,7 +87,7 @@ const ProjectLocation = ({
           {description_subtitle}
         </p>
         <div className='mt-6 flex flex-col space-y-8 xsm:mt-4 xsm:space-y-4'>
-          {prime_location.map((item, index) => {
+          {Array.isArray(prime_location) && prime_location.map((item, index) => {
             if (isMobile) {
               return (
                 <LocationItemMobile

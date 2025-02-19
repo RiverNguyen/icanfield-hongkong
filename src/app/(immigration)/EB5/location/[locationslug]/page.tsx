@@ -1,16 +1,16 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
-// import PageEB5 from '@/pages/page-EB5'
 import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
-import PageEB5 from '@/pages/page-EB5'
+import PageEB5Clone from '@/pages/page-EB5/indexClone'
 export async function generateMetadata() {
   const res = await getMetadata('/pages/521')
   return metadataValues(res)
 }
-export default async function page() {
+export default async function page(slug: any) { //eslint-disable-line
+    console.log(slug)
   try {
     const req = [
       fetchDataACF({
@@ -26,7 +26,7 @@ export default async function page() {
         },
       }),
       fetchData({
-        api: endpoints.eb5Project.list + `?page=1&limit=${LIMIT_POSTS}`,
+        api: endpoints.eb5Project.list + `?tax=eb5-location&eb5-location=${slug?.params?.locationslug}&page=1&limit=${LIMIT_POSTS}`,
         option: {
           next: {revalidate: 10},
         },
@@ -44,7 +44,7 @@ export default async function page() {
       return <div>{String('error')}</div>
     }
     return (
-      <PageEB5
+      <PageEB5Clone
         data={{
           ...page?.acf,
           listItems: list,

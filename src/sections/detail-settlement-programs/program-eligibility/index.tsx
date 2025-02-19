@@ -125,9 +125,8 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
             transitionTimingFunction: 'cubic-bezier(0.69, -0.02, 0, 0.99)',
           }}
           ref={pRef}
-          className='text-greyscaletext-body transition-all duration-500 body-14 sm:translate-y-[11.3rem] sm:pb-[4.63rem] sm:group-hover:translate-y-0'
+          className='text-greyscaletext-body transition-all duration-500 body-14 sm:translate-y-[11.3rem] sm:pb-[4.63rem] sm:group-hover:translate-y-0' dangerouslySetInnerHTML={{__html: description || ''}}
         >
-          {description}
         </p>
       </div>
     </div>

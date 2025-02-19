@@ -108,7 +108,7 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
           <button
             onClick={handlePlay}
             className={cn(
-              'absolute left-1/2 top-1/2 size-[2rem] -translate-x-1/2 -translate-y-1/2 transition-all sm:size-[4.5rem]',
+              'absolute left-1/2 top-1/2 size-[2rem] -translate-x-1/2 -translate-y-1/2 transition-all sm:size-[4.5rem] hidden',
               {
                 'invisible opacity-0': playerProps.playing,
               },

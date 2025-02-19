@@ -464,21 +464,21 @@ const Header = ({
                       height={40}
                       className='size-[1rem] object-contain'
                     />
-                    <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+                    <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-[75%] opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
                       <ImageV2
                         src='/icons/homepage/header/triangle.svg'
                         alt='triangle'
                         width={40}
                         height={40}
-                        className='h-[2rem] w-[3rem] translate-x-[13.25rem] object-contain'
+                        className='h-[2rem] w-[3rem] translate-x-[8.25rem] object-contain'
                       />
-                      <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                      <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                         <div className='flex h-full items-start justify-between'>
                           <div>
-                            <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                            <p className='mb-[1.5rem] mt-[2rem] pl-5 font-optima text-[2rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
                               {item.label}
                             </p>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col pl-5'>
                               {item.childrens.map(
                                 (child: ChildProgram, childIndex) => (
                                   <div
@@ -492,16 +492,16 @@ const Header = ({
                                   >
                                     <Link
                                       href={child.link}
-                                      className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                      className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
                                       onClick={handleDisableHover}
                                     >
-                                      <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                      <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                         {child.label}
                                       </p>
                                       {item.childrens &&
                                         childIndex <
                                           item.childrens.length - 1 && (
-                                          <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                          <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
                                         )}
                                     </Link>
                                   </div>
@@ -516,7 +516,7 @@ const Header = ({
                             alt='preview'
                             width={500}
                             height={500}
-                            className='h-full w-[38.125rem] rounded-[1rem] object-cover'
+                            className='h-[20.72281rem] w-[26.5rem] rounded-[1rem] object-cover'
                           />
                         </div>
                       </div>
@@ -563,15 +563,15 @@ const Header = ({
                   alt='logo'
                   width={40}
                   height={40}
-                  className='h-[2rem] w-[3rem] translate-x-[60rem] object-contain'
+                  className='h-[2rem] w-[3rem] translate-x-[40rem] object-contain'
                 />
-                <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                   <div className='flex h-full items-start justify-between'>
                     <div className=''>
-                      <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                      <p className='mb-[1.5rem] mt-[2rem] font-optima text-[2rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body pl-5'>
                         {data?.other_programs?.label}
                       </p>
-                      <div className='flex flex-col'>
+                      <div className='flex flex-col pl-5'>
                         {data?.other_programs?.program_list.map(
                           (child: ChildProgram, index) => (
                             <div
@@ -583,17 +583,17 @@ const Header = ({
                             >
                               <Link
                                 href={child.link}
-                                className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
                                 onClick={handleDisableHover}
                               >
-                                <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                   {child.label}
                                 </p>
                                 {data?.other_programs?.program_list &&
                                   index <
                                     data?.other_programs?.program_list.length -
                                       1 && (
-                                    <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                    <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
                                   )}
                               </Link>
                             </div>
@@ -611,7 +611,7 @@ const Header = ({
                       alt='logo'
                       width={500}
                       height={500}
-                      className='h-[full] w-[38.125rem] rounded-[1rem] object-cover'
+                      className='h-[20.72281rem] w-[26.5rem] rounded-[1rem] object-cover'
                     />
                   </div>
                 </div>
@@ -645,21 +645,21 @@ const Header = ({
                 height={40}
                 className='size-[1rem] object-contain'
               />
-              <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] !ml-0 -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+              <div className='children-menu invisible absolute left-1/2 top-[100%]  z-[52] !ml-0 -translate-x-[22%] opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
                 <ImageV2
                   src='/icons/homepage/header/triangle.svg'
                   alt='logo'
                   width={40}
                   height={40}
-                  className='h-[2rem] w-[3rem] translate-x-[84rem] object-contain'
+                  className='h-[2rem] w-[3rem] translate-x-[48rem] object-contain'
                 />
-                <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                   <div className='flex h-full items-start justify-between'>
                     <div className=''>
-                      <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                      <p className='mb-[2.5rem] font-optima text-[2rem] mt-2 font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body pl-5'>
                         {data?.support_customer?.label}
                       </p>
-                      <div className='flex flex-col'>
+                      <div className='flex flex-col pl-5'>
                         {data?.support_customer?.list_support.map(
                           (child: ChildProgram, index) => (
                             <div
@@ -673,16 +673,16 @@ const Header = ({
                             >
                               <Link
                                 href={child.link}
-                                className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
                                 onClick={handleDisableHover}
                               >
-                                <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                   {child.label}
                                 </p>
                                 {index <
                                   data?.support_customer?.list_support.length -
                                     1 && (
-                                  <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                  <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
                                 )}
                               </Link>
                             </div>
@@ -700,7 +700,7 @@ const Header = ({
                       alt='logo'
                       width={500}
                       height={500}
-                      className='h-full w-[38.125rem] rounded-[1rem] object-cover'
+                      className='h-full w-[26.5rem] rounded-[1rem] object-cover'
                     />
                   </div>
                 </div>

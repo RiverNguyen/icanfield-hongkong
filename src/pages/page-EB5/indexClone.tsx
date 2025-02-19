@@ -10,14 +10,13 @@ import {
 import TeaEB5Section, {
   ITeaEB5SectionItemProps,
 } from '@/sections/EB5/eb5-tea-sections'
-import OutstandingProjectEB5, {
-  IOutstandingProjectEB5Props,
-} from '@/sections/EB5/outstanding-projects'
+import {IOutstandingProjectEB5Props} from '@/sections/EB5/outstanding-projects'
 import {FC, Suspense} from 'react'
 // import PioneeringValues from '@/sections/EB5/pioneering-values'
 import {ICountry} from '@/components/LeafletMap'
 import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
 import dynamic from 'next/dynamic'
+import OutstandingProjectEB5Clone from '@/sections/EB5/outstanding-projects/indexClone'
 const PioneeringValues = dynamic(
   () => import('@/sections/EB5/pioneering-values'),
   {
@@ -33,7 +32,7 @@ interface IPageEB5Props {
     safety_standards: IProjectTransparencyProps['data']
     listItems: IOutstandingProjectEB5Props['listItems']
     categories: IOutstandingProjectEB5Props['categories']
-    dataMap:IOutstandingProjectEB5Props['dataMap']
+    dataMap: IOutstandingProjectEB5Props['dataMap']
     section_map: {
       title: string
       description: string
@@ -42,8 +41,7 @@ interface IPageEB5Props {
   }
 }
 
-const PageEB5: FC<IPageEB5Props> = ({ data }) => {
-  console.log(data)
+const PageEB5Clone: FC<IPageEB5Props> = ({data}) => {
   return (
     <main className='bg-background'>
       <Banner
@@ -59,9 +57,12 @@ const PageEB5: FC<IPageEB5Props> = ({ data }) => {
         />
       </Banner>
       <TeaEB5Section data={data?.eb_5_projects_field_incentive_zones} />
-      <PioneeringValues data={data?.section_map} dataMap={data?.dataMap || []} />
+      <PioneeringValues
+        data={data?.section_map}
+        dataMap={data?.dataMap || []}
+      />
       <Suspense fallback={<p>Loading...</p>}>
-        <OutstandingProjectEB5
+        <OutstandingProjectEB5Clone
           listItems={data?.listItems}
           categories={data?.categories}
         />
@@ -74,4 +75,4 @@ const PageEB5: FC<IPageEB5Props> = ({ data }) => {
   )
 }
 
-export default PageEB5
+export default PageEB5Clone

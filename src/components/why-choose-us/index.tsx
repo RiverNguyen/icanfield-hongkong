@@ -30,7 +30,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         alt={'Why Choose Us Background'}
         width={1600 * 2 || 40}
         height={788 * 2 || 40}
-        className='absolute bottom-0 right-0 h-full w-auto object-contain xsm:hidden'
+        className='absolute bottom-0 right-0 h-full w-futl object-cover xsm:hidden'
       />
       <ImageV2
         src={'/imgs/detail-settlement-programs/why-choose-us-bg-1-mb.webp'}
@@ -98,7 +98,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         alt={'Why Choose Us Background'}
         width={1219 * 2 || 40}
         height={585 * 2 || 40}
-        className='pointer-events-none absolute bottom-0 right-0 h-full w-auto xsm:hidden'
+        className='pointer-events-none absolute top-[20rem] right-0 h-[50rem] w-full object-cover xsm:hidden'
       />
       <ImageV2
         src={

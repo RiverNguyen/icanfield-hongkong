@@ -64,7 +64,7 @@ const ProjectSlider = ({images}: ProjectSliderProps) => {
         }}
         className='!pr-[1.5rem]'
       >
-        {images.map((image: Media, index: number) => (
+        {Array.isArray(images) && images.map((image: Media, index: number) => (
           <SwiperSlide
             key={index}
             className='!h-[34.58331rem] !w-[51.875rem] xsm:!h-[12.5rem] xsm:!w-[18.75rem]'
@@ -111,7 +111,7 @@ const ProjectOverview = ({
     <section>
       <div className='relative z-[21] overflow-hidden -mt-[20.25rem] flex flex-col space-y-16 rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 section-container xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
         <div className='grid w-full grid-cols-3 gap-6 xsm:grid-cols-2 xsm:gap-2 xsm:rounded-[1.25rem] xsm:bg-white/75 xsm:p-2 xsm:backdrop-blur-[25px]'>
-          {outstanding.map(
+          {Array.isArray(outstanding) && outstanding?.map(
             (
               item: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding'][0],
               index: number,

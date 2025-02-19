@@ -1,14 +1,14 @@
-"use client"
+'use client'
 import useStore from '@/app/(store)/store'
 import ICChat from '@/components/icon/ICChat'
 import ICTwoline from '@/components/icon/ICTwoline'
 import ImageV2 from '@/components/image/ImageV2'
-import { IItemAustralia } from '@/components/itemAustralia/itemAustralia.interface'
-import { info_banner } from '@/sections/detail-property-australia/slider/contants'
+import {IItemAustralia} from '@/components/itemAustralia/itemAustralia.interface'
+import {info_banner} from '@/sections/detail-property-australia/slider/contants'
 import Link from 'next/link'
 const ItemAustralia = (data: IItemAustralia) => {
-  const { location, slug, title, image, info, project_information } = data
-  const { consultingPhoneNumber } = useStore((state) => state)
+  const {location, slug, title, image, info, project_information} = data //eslint-disable-line
+  const {consultingPhoneNumber} = useStore((state) => state)
   return (
     <Link
       href={'/australian-real-estate/' + slug}
@@ -52,7 +52,7 @@ const ItemAustralia = (data: IItemAustralia) => {
             ))}
         </div>
       </div>
-      <div className='xsm:hidden px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]'>
+      {/* <div className='xsm:hidden px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]'>
         <div className='space-y-[0.625rem] rounded-[0.75rem] bg-background p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem]'>
           <div className='flex w-full items-center justify-between'>
             <p className='text-brown body16-m xsm:body-14-m'>Thông tin dự án</p>
@@ -78,7 +78,7 @@ const ItemAustralia = (data: IItemAustralia) => {
                 ))}
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className='flex items-center justify-between border-t-[1px] border-[rgba(0,0,0,0.08)] px-[1.5rem] py-[1.25rem] pb-[1.5rem] xsm:justify-start xsm:space-x-2 xsm:p-4'>
         <div className='group flex items-center space-x-3'>
           <div className='relative rounded-full bg-orangetext-50 p-[0.875rem] transition-all duration-300 group-hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'>
@@ -86,7 +86,7 @@ const ItemAustralia = (data: IItemAustralia) => {
             <ICTwoline className='absolute left-1/2 top-1/2 h-[0.33856rem] w-[0.57813rem] -translate-x-1/2 -translate-y-3/4 group-hover:[&_path]:fill-[#5C321E]' />
           </div>
           <Link
-            href={'tel:' + consultingPhoneNumber }
+            href={'tel:' + consultingPhoneNumber}
             className='text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] text-Phase-1-Brown xsm:hidden'
           >
             Liên hệ tư vấn

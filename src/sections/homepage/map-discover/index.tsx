@@ -250,13 +250,13 @@ const MapDiscover = ({
               Array.isArray(dataPost) &&
               dataPost.map((item, index: number) => (
                 <Link
-                  href={`/blogs/${item.slug}`}
+                  href={`/${slugData}/${item.slug}`}
                   key={index}
                   className='rounded-[0.63rem] bg-[#F7F6F1] p-3 pb-6 xsm:flex xsm:w-auto xsm:flex-col xsm:rounded-[0.75rem] xsm:p-[0.75rem]'
                 >
                   <div className='line-clamp-3 flex items-center space-x-[1rem] border-b-[0.0625rem] border-[rgba(0,0,0,0.10)] pb-[1.12rem] xsm:w-[18.75rem] xsm:pb-[0.75rem]'>
                     <ImageV2
-                      src={'/imgs/homepage/map-discover/thumb.webp'}
+                      src={item?.thumbnail || ''}
                       alt='Map'
                       width={300}
                       height={200}

@@ -12,6 +12,7 @@ import IndexTabs from '@/sections/blogs/list-blogs/tab'
 import {Category, SortOption} from '@/types/blogs.interface'
 import endpoints from '@/utils/endpoints'
 import {useSearchParams} from 'next/navigation'
+import {usePathname} from 'next/navigation'
 import {FC, useEffect, useMemo, useRef, useState} from 'react'
 import useSWR from 'swr'
 
@@ -37,7 +38,7 @@ export interface IOutstandingProjectEB5Props {
   }[]
 }
 
-const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
+const OutstandingProjectEB5Clone: FC<IOutstandingProjectEB5Props> = ({
   listItems,
   categories,
 }) => {
@@ -49,6 +50,9 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
   const sectionRef = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
   const [search, setSearch] = useState<string>('')
+  const path = usePathname() // Lấy đường dẫn hiện tại (vd: "/tour-nuoc-ngoai")
+  const segment = path?.split('/').filter(Boolean).pop() // Lấy phần cuối cùng sau "/"
+  const currentPath = `${segment}` // Lấy đường dẫn hiện tại không bao gồm phần query string
   const [totalPage, setTotalPage] = useState<number>(listItems.totalPages || 1)
 
   const [selectedCategory, setSelectedCategory] = useState<Category>({
@@ -70,7 +74,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
   const [currentPage, setCurrentPage] = useState<number>(1)
   const query = useMemo(() => {
     if (!searchParams?.size) return null
-    return `${endpoints.eb5Project.list}?page=${currentPage}&limit=${LIMIT_POSTS}${selectedCategory.slug !== 'all' ? `&tax=${handleGetTaxonomy(selectedCategory.slug)}&${handleGetTaxonomy(selectedCategory.slug)}=${selectedCategory.slug}` : ''}${search ? `&s=${search}` : ''}${selectedSortOption.value !== sortOptions[0].value ? `&order=${selectedSortOption.value}` : ''}${selectedSortOption.orderBy !== sortOptions[0].orderBy ? `&orderby=${selectedSortOption.orderBy}` : ''}`
+    return `${endpoints.eb5Project.list}?eb5-location=${currentPath}&page=${currentPage}&limit=${LIMIT_POSTS}${selectedCategory.slug !== 'all' ? `&tax=${handleGetTaxonomy(selectedCategory.slug)},eb5-location&&${handleGetTaxonomy(selectedCategory.slug)}=${selectedCategory.slug}` : ''}${search ? `&s=${search}` : ''}${selectedSortOption.value !== sortOptions[0].value ? `&order=${selectedSortOption.value}` : ''}${selectedSortOption.orderBy !== sortOptions[0].orderBy ? `&orderby=${selectedSortOption.orderBy}` : ''}`
   }, [
     searchParams,
     currentPage,
@@ -99,7 +103,7 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
     >
       <div className='section-container'>
         <h2 className='mb-4 font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown xsm:text-[1.5rem]'>
-          Dự án EB-5 tiêu biểu
+          {`Dự án EB-5 tiêu biểu`}
         </h2>
         <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:sticky xsm:top-[3.75rem] xsm:mb-[2.19rem] xsm:flex-col xsm:bg-background xsm:pb-1'>
           <IndexTabs
@@ -131,13 +135,16 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
             </>
           ) : (
             <>
-              {Array.isArray(dataLatest) &&
+              {Array.isArray(dataLatest) && dataLatest.length > 0 ? (
                 dataLatest.map((item: IProject, index: number) => (
                   <ItemProjectsOutstanding
                     key={index}
                     {...item}
                   />
-                ))}
+                ))
+              ) : (
+                <p className=' font-optima text-[1rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-Phase-1-Brown xsm:text-[1.5rem]'>Hiện tại chưa có dự án phù hợp !</p>
+              )}
             </>
           )}
         </div>
@@ -155,4 +162,4 @@ const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({
   )
 }
 
-export default OutstandingProjectEB5
+export default OutstandingProjectEB5Clone

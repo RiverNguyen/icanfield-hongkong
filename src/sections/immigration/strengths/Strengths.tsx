@@ -55,7 +55,8 @@ export default function Strengths({
         </div>
       ) : (
         <>
-          <div className="size-full relative xsm:hidden">
+            <div className="size-full xsm:hidden relative">
+              <div className='absolute top-0 left-0 w-full h-[15rem] bg-[linear-gradient(180deg,rgba(246,246,244,1)_30%,rgba(255,255,255,0)_100%)] z-10 pointer-events-none'></div>
             {dataStrength && dataStrength?.map((e: dataStrength, index: number) => (
               <ImageV2
                 key={index}

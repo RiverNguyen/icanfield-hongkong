@@ -45,7 +45,7 @@ export default function Programs({
     }
   }, [programs])
 
-  console.log(keys)
+  // console.log(keys)
   return (
     <div
       id='table__programs'

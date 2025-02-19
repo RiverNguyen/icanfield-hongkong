@@ -39,7 +39,7 @@ export default async function page({
     }),
     fetchData(requestTaxonomies),
   ])
-  console.log(data)
+  // console.log(data)
   if (!data || !data.length) {
     redirect('/')
   }
