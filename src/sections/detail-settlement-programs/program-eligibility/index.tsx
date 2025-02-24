@@ -3,8 +3,9 @@ import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
 import {Media} from '@/types/image.interface'
 import {FC, useRef} from 'react'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
+import { Autoplay } from 'swiper/modules'
 export interface IProgramEligibilityProps {
   title?: string
   description?: string
@@ -49,6 +50,13 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
               spaceBetween: 20,
             },
           }}
+          loop
+          autoplay={{
+            delay: 3000,
+            pauseOnMouseEnter: true,
+          }}
+          speed={1000}
+          modules={[Autoplay]}
           className='xsm:!w-full !w-full'
         >
           {items &&

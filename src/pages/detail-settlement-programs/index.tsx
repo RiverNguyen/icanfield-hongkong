@@ -46,6 +46,7 @@ interface IDetailSettlementProgramsProps {
   story_share: ISuccessStoryShareProps
   acfNation: immigration
   dataTaxonomies: Term[]
+  faq: any //eslint-disable-line
 }
 
 const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
@@ -60,7 +61,9 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   story_share,
   acfNation,
   dataTaxonomies,
+  faq,
 }) => {
+
   const PropProcessSteps = {
     title_section: process_steps?.title || '',
     description: process_steps?.description || '',
@@ -95,6 +98,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
       <ImmigrationFAQ
         dataFAQ={acfNation?.acf?.faq_nation}
         flag={acfNation?.acf?.flag}
+        listFAQ={faq}
       />
       <ContactV2>
         <FormInternationalJourney dataNationSettlement={dataTaxonomies} />

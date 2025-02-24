@@ -2,14 +2,16 @@
 import ItemAccordion from '@/components/accordion/ItemAccordion'
 import ButtonBrown from '@/components/button/ButtonBrown'
 import ImageV2 from '@/components/image/ImageV2'
-import {dataFAQ} from '@/types/dataAcfImmigration.interface'
+import {dataFAQ, dataListFAQ} from '@/types/dataAcfImmigration.interface'
 
 export default function ImmigrationFAQ({
   dataFAQ,
   flag,
+  listFAQ
 }: {
-  dataFAQ: dataFAQ
-  flag: {url: string; alt: string}
+    dataFAQ: dataFAQ
+    flag: { url: string; alt: string }
+    listFAQ :dataListFAQ[]
 }) {
   return (
     <section className='flex pb-[6rem] pt-[11.25rem] section-container sm:items-center sm:space-x-[5rem] xsm:flex-col xsm:space-y-[1.5rem] xsm:p-[2.5rem_1rem]'>
@@ -80,7 +82,7 @@ export default function ImmigrationFAQ({
         <h2 className='mb-[2.5rem] font-optima text-brown heading1 xsm:mb-[1.5rem]'>
           {dataFAQ?.faq?.title}
         </h2>
-        <ItemAccordion listFAQ={dataFAQ?.faq?.list_faq} />
+        <ItemAccordion listFAQ={listFAQ ? listFAQ : dataFAQ?.faq?.list_faq} />
       </div>
     </section>
   )
