@@ -59,6 +59,7 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
     }
     setOpenPopup(true)
   }
+
   // Load GeoJSON data dựa vào slug
   useEffect(() => {
     switch (slug) {
@@ -89,7 +90,7 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
       case 'caribe':
         setDataGeoJson(customGeoJsonCaribe as FeatureCollection)
         setCenter([18.2208, -66.5901]) // Caribbean
-        setZoom(5)
+        setZoom(5.3)
         setZoomMobile(3.5)
         break
       default:

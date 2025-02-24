@@ -11,7 +11,7 @@ export default function ImmigrationFAQ({
 }: {
     dataFAQ: dataFAQ
     flag: { url: string; alt: string }
-    listFAQ :dataListFAQ[]
+    listFAQ?:dataListFAQ[]
 }) {
   return (
     <section className='flex pb-[6rem] pt-[11.25rem] section-container sm:items-center sm:space-x-[5rem] xsm:flex-col xsm:space-y-[1.5rem] xsm:p-[2.5rem_1rem]'>
