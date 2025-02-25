@@ -46,7 +46,7 @@ const PopupCountry = ({
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <span className='ml-[0.5rem] text-[0.875rem] font-semibold leading-normal tracking-[-0.00875rem] text-greyscaletext-body'>
-            Tỉnh bang {countrySelected}
+            {countrySelected}
           </span>
         </div>
         <button
