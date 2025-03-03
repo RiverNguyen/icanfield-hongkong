@@ -85,7 +85,7 @@ const DiverseAmenities = ({
             utilities.map((item, index) => (
               <div
                 key={index}
-                className='flex items-center space-x-2'
+                className='flex items-start space-x-2'
               >
                 <ImageV2
                   src='/icons/detail-property/check2.svg'
