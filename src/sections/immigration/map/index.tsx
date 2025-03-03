@@ -29,6 +29,7 @@ export interface ProvinceInfoItem {
   name: string
   label: string
   details: DetailItem
+  title:string
 }
 export interface DetailItem {
   gallery_image: ImageHeader[]
@@ -37,6 +38,7 @@ export interface DetailItem {
   population: string
   acreage: string
   link: string
+  title?: string
 }
 const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
   // State lưu trữ GeoJSON data

@@ -21,6 +21,7 @@ interface ProviderItem {
   name: string
   label: string
   details: DetailItem
+  title: string
 }
 const PopupCountry = ({
   open,
@@ -35,6 +36,7 @@ const PopupCountry = ({
   const handlePrevSlide = () => {
     swiperRef.current?.slidePrev()
   }
+  console.log(dataProvince)
   return (
     <div
       className={cn(
@@ -43,6 +45,9 @@ const PopupCountry = ({
           'visible opacity-100 sm:left-[1.5rem] sm:translate-x-0 xsm:translate-y-0',
       )}
     >
+      <div className='ml-[0.5rem] block text-[0.875rem] font-semibold leading-normal tracking-[-0.00875rem] text-greyscaletext-body'>
+        {dataProvince?.title}
+      </div>
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <span className='ml-[0.5rem] text-[0.875rem] font-semibold leading-normal tracking-[-0.00875rem] text-greyscaletext-body'>
@@ -104,7 +109,7 @@ const PopupCountry = ({
           alt='map'
           width={50}
           height={50}
-          className='size-[1.25rem] object-contain mr-1'
+          className='mr-1 size-[1.25rem] object-contain'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
           Thủ phủ: {dataProvince?.details?.metropolis}
@@ -116,7 +121,7 @@ const PopupCountry = ({
           alt='map'
           width={50}
           height={50}
-          className='size-[1.25rem] object-contain mr-1'
+          className='mr-1 size-[1.25rem] object-contain'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
           Diện tích: {dataProvince?.details?.acreage}
@@ -128,7 +133,7 @@ const PopupCountry = ({
           alt='map'
           width={50}
           height={50}
-          className='size-[1.25rem] object-contain mr-1'
+          className='mr-1 size-[1.25rem] object-contain'
         />
         <span className='text-[1rem] font-medium leading-normal tracking-[-0.02rem] text-greyscaletext-300'>
           Dân số: {dataProvince?.details?.population}
@@ -137,7 +142,7 @@ const PopupCountry = ({
       <Link
         href={dataProvince?.details?.link || ''}
         target='_blank'
-        className='group mt-[1rem] flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] border border-solid border-[rgba(18,18,18,0.16)] transition-all duration-200 xsm:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] lg:hover:border-none lg:hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'
+        className='group mt-[1rem] flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] border border-solid border-[rgba(18,18,18,0.16)] transition-all duration-200 lg:hover:border-none lg:hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] xsm:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]'
       >
         <span className='text-[0.875rem] font-medium leading-normal tracking-[-0.0175rem] text-greyscaletext-body transition-all duration-200 lg:group-hover:text-white xsm:text-white'>
           Xem trên bản đồ

@@ -20,6 +20,7 @@ interface ILeafletMapProps {
     slug: string
     count: number
     location_name: string
+    metropolis?: string
   }[]
   onClick?: (country: ICountry) => void
   className?: string
@@ -223,12 +224,14 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
               slug: string
               flag: string
               number_of_projects: number
+              metropolis?: string
             } = {
               name: country.location_name,
               label: country.location_name,
               slug: country.slug,
               flag: '', // Bạn có thể thêm cờ nếu cần
               number_of_projects: country.count,
+              metropolis: country.metropolis,
             }
             const position: LatLngTuple = getPosition(country.location_name)
             return (
@@ -240,7 +243,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
                     html: `<div class="custom-marker absolute !left-0 top-0 xsm:!pointer-events-none">
                             <div class="flex items-center relative">
                                 <div class='size-[0.75rem] bg-[#DAF2AF] rounded-full mr-1 xsm:size-[0.375rem] flex-shrink-0'></div>
-                                <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">${countryObj.label}</span>
+                                <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">${countryObj.metropolis || countryObj.name}</span>
                                 <a href="${currentPath}/location/${countryObj.slug}" class='flex items-center justify-around absolute bg-white w-[8.63rem] sm:w-max sm:space-x-[0.5rem] p-2 rounded-[0.63rem] bottom-0 left-1/2 -translate-x-1/2 shadow-lg  transition-all duration-300 opacity-0 info-tag '>
                                       <div class='flex items-center justify-center p-4 rounded-[0.5rem] bg-primary-brown'>
                                         <img src='/icons/EB5/pioneering-values/project.svg' class='size-[1.01563rem] object-cover' />

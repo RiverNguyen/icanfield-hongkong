@@ -19,8 +19,10 @@ const PioneeringValuesAustralia = ({
       slug: string
       location_name: string
       count: number
+      metropolis?: string
     }[]
-}) => {
+  }) => {
+  console.log(dataMap)
   const [isZoomInClick, setIsZoomInClick] = React.useState(false)
   const [isZoomOutClick, setIsZoomOutClick] = React.useState(false)
   const [isOpenPopup, setIsOpenPopup] = React.useState(false)
@@ -34,7 +36,7 @@ const PioneeringValuesAustralia = ({
     setIsOpenPopup(!isOpenPopup)
   }
   const convertedData = data?.data_state_usa.map((item: ICountry) => [item])
-  console.log(convertedData)
+
   return (
     <section className='bg-background pt-[3rem] sm:-translate-y-[3rem]'>
       <div className='relative flex items-end justify-between overflow-hidden pb-[2.75rem] section-container xsm:flex-col xsm:items-start xsm:pb-[1.72rem]'>
