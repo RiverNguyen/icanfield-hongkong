@@ -1,11 +1,11 @@
-import ImageV2 from "@/components/image/ImageV2"
-import { Input } from "@/components/ui/input"
-import useClickOutside from "@/hooks/useClickOutSide"
-import { cn } from "@/lib/utils"
-import { SortOptionProgramme } from "@/types/dataAcfImmigration.interface"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { Fragment, RefObject, useEffect, useState } from "react"
-import { useDebounceCallback } from "usehooks-ts"
+import ImageV2 from '@/components/image/ImageV2'
+import {Input} from '@/components/ui/input'
+import useClickOutside from '@/hooks/useClickOutSide'
+import {cn} from '@/lib/utils'
+import {SortOptionProgramme} from '@/types/dataAcfImmigration.interface'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {Fragment, RefObject, useEffect, useState} from 'react'
+import {useDebounceCallback} from 'usehooks-ts'
 
 export default function FilterProgramme({
   sortOptions,
@@ -18,13 +18,15 @@ export default function FilterProgramme({
   placeholder = 'Tìm kiếm trong chương trình',
   sectionRef,
   setPage,
-  page
+  page,
 }: {
   sortOptions: SortOptionProgramme[]
   className?: string
   selectedSortOption: SortOptionProgramme
   setSearch: React.Dispatch<React.SetStateAction<string>>
-  setSelectedSortOption: React.Dispatch<React.SetStateAction<SortOptionProgramme>>
+  setSelectedSortOption: React.Dispatch<
+    React.SetStateAction<SortOptionProgramme>
+  >
   backgroundInput?: string
   search: string
   placeholder?: string
@@ -36,8 +38,9 @@ export default function FilterProgramme({
   const pathName = usePathname()
   const searchParams = useSearchParams()
   const debounced = useDebounceCallback(setSearch, 700)
-  const { ref, isOutside } = useClickOutside<HTMLDivElement>()
-  const [isOpenSelectCategory, setIsOpenSelectCategory] = useState<boolean>(false)
+  const {ref, isOutside} = useClickOutside<HTMLDivElement>()
+  const [isOpenSelectCategory, setIsOpenSelectCategory] =
+    useState<boolean>(false)
   useEffect(() => {
     if (isOutside) {
       setIsOpenSelectCategory(false)
@@ -58,8 +61,8 @@ export default function FilterProgramme({
       scroll: false,
     })
     if (sectionRef.current instanceof HTMLElement) {
-      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-    } 
+      sectionRef.current.scrollIntoView({behavior: 'smooth'})
+    }
   }
   useEffect(() => {
     const paramNew = new URLSearchParams(searchParams ?? '')
@@ -74,11 +77,11 @@ export default function FilterProgramme({
     })
     if (search) {
       if (sectionRef.current instanceof HTMLElement) {
-        sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        sectionRef.current.scrollIntoView({behavior: 'smooth'})
       }
     }
   }, [search])
-    // handle search
+  // handle search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     debounced(e.target.value)
     if (page && setPage && page > 1) {
@@ -87,9 +90,9 @@ export default function FilterProgramme({
   }
   return (
     <div
-      className={`${className ? className : 'flex sm:flex-col items-center justify-between sm:space-y-[1rem] mb-[2rem]'} `}
+      className={`${className ? className : 'mb-[2rem] flex items-center justify-between sm:flex-col sm:space-y-[1rem]'} `}
     >
-      <div className='relative h-[3rem] sm:w-full xsm:w-[calc((100%-0.5rem)/2)] ]'>
+      <div className='] relative h-[3rem] sm:w-full xsm:w-[calc((100%-0.5rem)/2)]'>
         <ICSearch
           className={`absolute left-[1rem] top-1/2 size-[1.5rem] -translate-y-1/2 xsm:left-[0.5rem] xsm:size-[1.125rem] ${search ? '[&>path]:stroke-black' : ''}`}
         />
@@ -112,7 +115,7 @@ export default function FilterProgramme({
             <b className='whitespace-nowrap font-medium sm:font-bold'>
               Sắp xếp theo:{''}
             </b>
-             {selectedSortOption?.name}
+            {selectedSortOption?.name}
           </span>
           <ImageV2
             className='size-[1.5rem]'
@@ -124,27 +127,29 @@ export default function FilterProgramme({
         </button>
         <div
           className={cn(
-            'pointer-events-none max-h-[22rem] overflow-hidden overflow-y-auto absolute left-0 top-[110%] mt-[0.5rem] flex w-full flex-col space-y-[0.5rem] rounded-[0.5rem] bg-white p-[0.5rem] opacity-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)] xsm:order-1 xsm:space-y-[0.15rem]',
+            'pointer-events-none absolute left-0 top-[110%] mt-[0.5rem] flex max-h-[22rem] w-full flex-col space-y-[0.5rem] overflow-hidden overflow-y-auto rounded-[0.5rem] bg-white p-[0.5rem] opacity-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)] xsm:order-1 xsm:space-y-[0.15rem]',
             isOpenSelectCategory && 'pointer-events-auto opacity-100',
           )}
         >
           {Array.isArray(sortOptions) &&
-            sortOptions.map((sortOption: SortOptionProgramme, index: number) => (
-              <Fragment key={index}>
-                <button
-                  className={`sm:border-b-[1px] sm:border-solid sm:border-[rgba(0,0,0,0.10)] text-start px-[1rem] h-[3rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-orangetext-500 hover:bg-greyscaletext-200/20 hover:rounded-[0.3rem] xsm:h-[2.625rem] xsm:text-[0.875rem] ${sortOption.value === selectedSortOption.value ? 'bg-greyscaletext-200/20 rounded-[0.3rem]' : ''}`}
-                  onClick={() => {
-                    handleSelectSortOption(sortOption)
-                    setIsOpenSelectCategory(false)
-                    if (setPage) {
-                      setPage(1)
-                    }
-                  }}
-                >
-                  {sortOption?.name}
-                </button>
-              </Fragment>
-            ))}
+            sortOptions.map(
+              (sortOption: SortOptionProgramme, index: number) => (
+                <Fragment key={index}>
+                  <button
+                    className={`h-[3rem] px-[1rem] text-start text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-orangetext-500 hover:rounded-[0.3rem] hover:bg-greyscaletext-200/20 sm:border-b-[1px] sm:border-solid sm:border-[rgba(0,0,0,0.10)] xsm:h-[2.625rem] xsm:text-[0.875rem] ${sortOption.value === selectedSortOption.value ? 'rounded-[0.3rem] bg-greyscaletext-200/20' : ''}`}
+                    onClick={() => {
+                      handleSelectSortOption(sortOption)
+                      setIsOpenSelectCategory(false)
+                      if (setPage) {
+                        setPage(1)
+                      }
+                    }}
+                  >
+                    {sortOption?.name}
+                  </button>
+                </Fragment>
+              ),
+            )}
         </div>
       </div>
     </div>
