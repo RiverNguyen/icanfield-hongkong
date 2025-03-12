@@ -14,10 +14,12 @@ export interface INewsFlowProps {
     title: string
     news_flow: ItemNewsFeatured[]
     news: {
-      title: string
+      id: number
+      title_categories: string
+      name: string
+      slug: string
       description: string
-      link: string
-      news: ItemNews[]
+      posts: ItemNewsHP[]
     }[]
   }
 }
@@ -52,7 +54,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
                 },
               )}
             >
-              {item.title}
+              {item.name}
             </button>
           ))}
         </div>
@@ -60,14 +62,21 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
           <h3 className='text-[1.25rem] font-bold leading-[1.66625rem] tracking-[-0.025rem] text-black/80'>
             {Array.isArray(itemsNews) &&
               itemsNews.length > 0 &&
-              itemsNews[latestNewsItemIndex]?.title}
+              itemsNews[latestNewsItemIndex]?.title_categories}
           </h3>
           <p className='mb-[2.2rem] mt-[0.5rem] text-black/60 body-14'>
-            {Array.isArray(itemsNews) && itemsNews.length > 0 && itemsNews[latestNewsItemIndex].description}
+            {Array.isArray(itemsNews) &&
+              itemsNews.length > 0 &&
+              itemsNews[latestNewsItemIndex].description}
           </p>
           <div className='mt-[1.5rem] flex items-center justify-center px-[1rem] sm:justify-between sm:px-0 xsm:absolute xsm:bottom-0 xsm:left-0 xsm:right-0'>
             <Link
-              href={Array.isArray(itemsNews) && itemsNews.length > 0 && itemsNews[latestNewsItemIndex].link || ''}
+              href={
+                (Array.isArray(itemsNews) &&
+                  itemsNews.length > 0 &&
+                  itemsNews[latestNewsItemIndex].slug) ||
+                ''
+              }
               className='flex items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem]'
             >
               <span className='text-white body-14-m'>Xem tất cả</span>
@@ -98,14 +107,16 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
               prevEl: '.latest-news__prev',
             }}
           >
-            {Array.isArray(itemsNews) && itemsNews.length > 0 && itemsNews[latestNewsItemIndex].news.map((item, index) => (
-              <SwiperSlide
-                key={index}
-                className='!w-[14.375rem] sm:!w-[21.375rem]'
-              >
-                <LatestNews {...item} />
-              </SwiperSlide>
-            ))}
+            {Array.isArray(itemsNews) &&
+              itemsNews.length > 0 &&
+              data.news[latestNewsItemIndex].posts.map((item, index) => (
+                <SwiperSlide
+                  key={index}
+                  className='!w-[14.375rem] sm:!w-[21.375rem]'
+                >
+                  <LatestNews {...item} />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>
@@ -114,7 +125,12 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
 }
 
 export default NewsFlow
-
+export interface ItemNewsHP {
+  thumb: string
+  name: string
+  date: string
+  slug: string
+}
 export interface ItemNews {
   id: number
   title: string
@@ -190,19 +206,19 @@ function NewsFeatured({
   )
 }
 
-function LatestNews({title, image, date, slug: link}: ItemNews) {
+function LatestNews({name, thumb, date, slug: link}: ItemNewsHP) {
   return (
     <div>
       <ImageV2
-        src={image ? image.url : ''}
-        alt={image ? image.alt : ''}
-        width={image ? image.width : 342 * 2 || 40}
-        height={image ? image.height : 171 * 2 || 40}
+        src={thumb}
+        alt={name}
+        width={342 * 2}
+        height={342 * 2}
         className='h-[10.6875rem] w-full rounded-[1rem] object-cover'
       />
       <Link href={`/blogs/${link}`}>
         <h3 className='mb-[0.5rem] mt-[0.75rem] line-clamp-2 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-          {title}
+          {name}
         </h3>
       </Link>
       <p className='font-medium text-greyscaletext-200 sub-14'>{date}</p>

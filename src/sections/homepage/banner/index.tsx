@@ -54,7 +54,7 @@ const BannerHomepage = ({
   }, [])
   //handle click dropdown filter
   useEffect(() => {
-    console.log('filterOptionsLastest', filterOptionsLastest)
+    // console.log('filterOptionsLastest', filterOptionsLastest)
   }, [filterOptionsLastest])
   const [openFilters, setOpenFilters] = React.useState(
     new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
@@ -121,7 +121,7 @@ const BannerHomepage = ({
   }
 
   const searchFilter = () => {
-    console.log('search', selectedItems)
+    // console.log('search', selectedItems)
 
     const queryString = Object.values(selectedItems)
       .map((item) => {
@@ -132,7 +132,7 @@ const BannerHomepage = ({
 
     // Tạo URL đầy đủ
     const redirectUrl = `/search-result?${queryString}`
-    console.log('Redirecting to:', redirectUrl)
+    // console.log('Redirecting to:', redirectUrl)
 
     // Chuyển hướng
     window.location.href = redirectUrl

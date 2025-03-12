@@ -62,7 +62,7 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
               (media.type === 'upload' ? (
                 <ReactPlayer
                   ref={playerRef}
-                  url={media[media.type].url}
+                  url={media[media.type].url || ''}
                   width='100%'
                   height='100%'
                   className='!h-full !w-full object-cover [&__video]:object-cover'
@@ -97,18 +97,18 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
               },
             )}
           />
-          <div
+          {/* <div
             className={cn(
               'absolute left-0 top-0 block h-full w-full bg-[linear-gradient(0deg,rgba(0,0,0,0.20)_0%,rgba(0,0,0,0.20)_100%)] transition-all',
               {
                 'invisible opacity-0': playerProps.playing,
               },
             )}
-          ></div>
+          ></div> */}
           <button
             onClick={handlePlay}
             className={cn(
-              'absolute left-1/2 top-1/2 size-[2rem] -translate-x-1/2 -translate-y-1/2 transition-all sm:size-[4.5rem] hidden',
+              'absolute left-1/2 top-1/2 size-[2rem] -translate-x-1/2 -translate-y-1/2 transition-all sm:size-[4.5rem]',
               {
                 'invisible opacity-0': playerProps.playing,
               },

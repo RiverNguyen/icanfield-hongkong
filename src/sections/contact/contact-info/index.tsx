@@ -103,7 +103,7 @@ const ContactInfo = ({addres, email, phone, urlIFame}: ContactInfoProps) => {
               {phone?.title}
             </h3>
             <Link
-              href={'tel:' + phone?.description?.url || '#'}
+              href={phone?.description?.url || '#'}
               target={phone?.description?.target}
               className='mt-1 text-xl font-bold leading-normal text-Phase-1-Brown xsm:text-[1.125rem]'
             >

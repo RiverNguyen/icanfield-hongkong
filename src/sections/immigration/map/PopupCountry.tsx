@@ -36,7 +36,7 @@ const PopupCountry = ({
   const handlePrevSlide = () => {
     swiperRef.current?.slidePrev()
   }
-  console.log(dataProvince)
+  // console.log(dataProvince)
   return (
     <div
       className={cn(

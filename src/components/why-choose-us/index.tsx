@@ -145,7 +145,7 @@ export const WhyChooseUsItem: FC<IWhyChooseUsItemProps> = ({
         <h3 className='mb-[0.5rem] mt-[1.5rem] text-[1.5rem] font-bold leading-[1.3] text-brown sm:mt-[2.5rem] xsm:text-[1rem]'>
           {title}
         </h3>
-        <p className='text-[rgba(18,18,18,0.87)] body-14'>{description}</p>
+        <div className='text-[rgba(18,18,18,0.87)] body-14' dangerouslySetInnerHTML={{__html:description || ''}}></div>
       </div>
     </div>
   )

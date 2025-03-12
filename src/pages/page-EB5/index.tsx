@@ -43,7 +43,7 @@ interface IPageEB5Props {
 }
 
 const PageEB5: FC<IPageEB5Props> = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   return (
     <main className='bg-background'>
       <Banner

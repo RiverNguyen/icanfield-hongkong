@@ -69,7 +69,7 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
     description: process_steps?.description || '',
     timeline: process_steps?.steps || [],
   }
-  console.log(acfNation)
+  // console.log(acfNation)
   return (
     <main className='bg-background'>
       <Banner {...banner}>

@@ -65,32 +65,32 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
   // Load GeoJSON data dựa vào slug
   useEffect(() => {
     switch (slug) {
-      case 'canada':
+      case 'dinh-cu-canada':
         setDataGeoJson(customGeoJson as FeatureCollection)
         setCenter([73.1304, -90.3468]) // Canada
         setZoom(2.7)
         setZoomMobile(2.5)
         break
-      case 'america':
+      case 'dinh-cu-my':
         setDataGeoJson(customGeoJsonAmerica as FeatureCollection)
         setCenter([37.0902, -95.7129]) // America
         setZoom(3.5)
         setZoomMobile(3)
         break
-      case 'australia':
+      case 'dinh-cu-uc':
         setDataGeoJson(customGeoJsonAstralia as FeatureCollection)
         setCenter([-25.2744, 133.7751]) // Australia
         setZoom(3.5)
         setZoomMobile(3)
         break
-      case 'europe':
+      case 'dinh-cu-chau-au':
         setDataGeoJson(customGeoJsonEurope as FeatureCollection)
         setCenter([54.526, 15.2551]) // Europe
         setZoom(4)
         setZoomMobile(3)
         break
-      case 'caribe':
-        setDataGeoJson(customGeoJsonCaribe as FeatureCollection)
+      case 'dinh-cu-caribe':
+         setDataGeoJson(customGeoJsonCaribe as FeatureCollection)
         setCenter([18.2208, -66.5901]) // Caribbean
         setZoom(5.3)
         setZoomMobile(3.5)
