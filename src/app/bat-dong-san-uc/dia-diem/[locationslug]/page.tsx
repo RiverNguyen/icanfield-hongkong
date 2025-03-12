@@ -8,7 +8,7 @@ export async function generateMetadata() {
   return metadataValues(res)
 }
 export default async function page(slug: any) { // eslint-disable-line
-  console.log(slug)
+  // console.log(slug)
   const requestTaxonomies = {
     api: '/taxonomies-settlement',
     option: {

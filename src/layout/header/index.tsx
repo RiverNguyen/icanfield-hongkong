@@ -325,7 +325,7 @@ const Header = ({
                       className='!flex !h-full !w-fit !items-center'
                     >
                       <Link
-                        href={`/blogs/${item?.post_name}` || '/'}
+                        href={`/tin-tuc/${item?.post_name}` || '/'}
                         className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
                       >
                         {item?.post_title}

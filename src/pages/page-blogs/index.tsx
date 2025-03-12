@@ -42,7 +42,7 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage}) =
         <Breadcrumb
           items={[
             {label: 'Trang chủ', href: '/'},
-            {label: 'Tin Tức', href: '/blogs'},
+            {label: 'Tin Tức', href: '/tin-tuc'},
           ]}
         />
       </BannerStatic>

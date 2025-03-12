@@ -29,7 +29,7 @@ export default function IndexDetailBlog({
           <Breadcrumb
             items={[
               {label: 'Trang chủ', href: '/'},
-              {label: 'Tin Tức', href: '/blogs'},
+              {label: 'Tin Tức', href: '/tin-tuc'},
               {label: dataDetailBlog?.data?.title, href: ''},
             ]}
           />

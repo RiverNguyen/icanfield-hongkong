@@ -147,7 +147,7 @@ export const SuccessStoryShareItem: FC<ISuccessStoryShareItemProps> = ({
         </p>
         <Link
           className='mt-auto inline-flex h-[3rem] items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:w-full'
-          href={'/blogs/' + link}
+          href={'/tin-tuc  /' + link}
         >
           <span className='body14 font-medium -tracking-[0.0175rem] text-white'>
             Xem câu chuyện

@@ -115,7 +115,7 @@ function FeaturedNewSlidePC({
                 {item.title}
               </h3>
               <Link
-                href={'/blogs/' + item?.slug}
+                href={'/tin-tuc/' + item?.slug}
                 className='inline-flex items-center rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] transition hover:bg-white hover:text-brown'
               >
                 <span>Chi tiết bài viết</span>
@@ -252,7 +252,7 @@ function FeaturedNewSlideMobile({
                   {item.title}
                 </h3>
                 <Link
-                  href={'/blogs/' + item?.slug}
+                  href={'/tin-tuc/' + item?.slug}
                   className='inline-flex items-center py-[0.2rem]'
                 >
                   <span className='text-[0.75rem] font-medium leading-[1.5] tracking-[-0.015re]'>

@@ -72,10 +72,9 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
           <div className='mt-[1.5rem] flex items-center justify-center px-[1rem] sm:justify-between sm:px-0 xsm:absolute xsm:bottom-0 xsm:left-0 xsm:right-0'>
             <Link
               href={
-                (Array.isArray(itemsNews) &&
+                Array.isArray(itemsNews) &&
                   itemsNews.length > 0 &&
-                  itemsNews[latestNewsItemIndex].slug) ||
-                ''
+                  itemsNews[latestNewsItemIndex].id === null ?  itemsNews[latestNewsItemIndex].slug : `/tin-tuc?category=${itemsNews[latestNewsItemIndex].slug}`
               }
               className='flex items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem]'
             >
@@ -189,7 +188,7 @@ function NewsFeatured({
           )}
         </div>
         <Link
-          href={`/blogs/${link}`}
+          href={`/tin-tuc/${link}`}
           className='group/btn relative z-10 mt-auto inline-flex cursor-pointer items-center self-start rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] hover:bg-white xsm:hidden'
         >
           <span className='text-white body-14-m group-hover/btn:text-greentext'>
@@ -199,7 +198,7 @@ function NewsFeatured({
         </Link>
         <Link
           className='absolute bottom-0 left-0 right-0 top-0 group-hover:text-greentext'
-          href={`/blogs/${link}`}
+          href={`/tin-tuc/${link}`}
         ></Link>
       </div>
     </div>
@@ -216,7 +215,7 @@ function LatestNews({name, thumb, date, slug: link}: ItemNewsHP) {
         height={342 * 2}
         className='h-[10.6875rem] w-full rounded-[1rem] object-cover'
       />
-      <Link href={`/blogs/${link}`}>
+      <Link href={`/tin-tuc/${link}`}>
         <h3 className='mb-[0.5rem] mt-[0.75rem] line-clamp-2 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
           {name}
         </h3>
