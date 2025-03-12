@@ -22,7 +22,7 @@ const PioneeringValuesAustralia = ({
       metropolis?: string
     }[]
   }) => {
-  console.log(dataMap)
+  // console.log(dataMap)
   const [isZoomInClick, setIsZoomInClick] = React.useState(false)
   const [isZoomOutClick, setIsZoomOutClick] = React.useState(false)
   const [isOpenPopup, setIsOpenPopup] = React.useState(false)

@@ -12,7 +12,6 @@ export default function metadataValues(res: any) {
     }
   }
   const result = res?.yoast_head_json
-
   const meta = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN!),
     title: result?.title,
@@ -29,8 +28,8 @@ export default function metadataValues(res: any) {
       images: Array.isArray(result?.og_image)
         ? [...result?.og_image]
         : result?.og_image
-        ? result?.og_image
-        : [],
+          ? result?.og_image
+          : [],
       locale: result?.og_locale,
       type: result?.og_type,
     },
@@ -42,8 +41,8 @@ export default function metadataValues(res: any) {
       images: Array.isArray(result?.og_image)
         ? [...result?.og_image]
         : result?.og_image
-        ? result?.og_image
-        : [],
+          ? result?.og_image
+          : [],
       misc: result?.twitter_misc,
     },
   }
