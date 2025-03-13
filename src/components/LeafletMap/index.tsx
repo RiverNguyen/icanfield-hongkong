@@ -12,7 +12,7 @@ export interface ICountry {
   number_of_projects?: number
 }
 
-interface ILeafletMapProps {
+export interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
   // eslint-disable-next-line no-unused-vars

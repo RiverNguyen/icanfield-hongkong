@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
+import Image from 'next/image'
 import {FilterOption} from '@/types/bannerFilter.interface'
 import {convertToIframe} from '@/utils/convertToIframe'
 import React, {useEffect, useRef, useState} from 'react'
@@ -10,6 +11,8 @@ import 'swiper/css'
 import {Autoplay, EffectFade} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {filterOptions} from './constants'
+const LazyReactPlayer = React.lazy(() => import('react-player'))
+import {Suspense} from 'react'
 export interface IDataMedia {
   type: 'upload' | 'youtube' | 'tiktok' | 'slide'
   [key: string]: any
@@ -52,12 +55,9 @@ const BannerHomepage = ({
     })
     setFilterOptionsLastest(updatedFilterOptions)
   }, [])
-  //handle click dropdown filter
-  useEffect(() => {
-    // console.log('filterOptionsLastest', filterOptionsLastest)
-  }, [filterOptionsLastest])
+  useEffect(() => {}, [filterOptionsLastest])
   const [openFilters, setOpenFilters] = React.useState(
-    new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
+    new Array(filterOptions.length).fill(false),
   )
 
   const toggleDropdown = (index: number) => {
@@ -143,17 +143,19 @@ const BannerHomepage = ({
       {data.type != 'slide' ? (
         <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
           {data.type === 'upload' ? (
-            <ReactPlayer
-              url={data[data.type].url || ''}
-              playing
-              loop
-              muted
-              preload='none'
-              playsinline
-              width='100%'
-              height='100%'
-              className='!h-full !w-full object-cover [&__video]:object-cover'
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyReactPlayer
+                url={data[data.type].url || ''}
+                playing
+                loop
+                muted
+                preload='none'
+                playsinline
+                width='100%'
+                height='100%'
+                className='!h-full !w-full object-cover [&__video]:object-cover'
+              />
+            </Suspense>
           ) : data.type === 'tiktok' ? (
             <iframe
               src={`${convertToIframe(data) || ''}`}
@@ -239,11 +241,12 @@ const BannerHomepage = ({
                     }}
                   >
                     <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
-                      <ImageV2
+                      <Image
                         src={item?.icon || ''}
                         alt='icon'
                         width={40}
                         height={40}
+                        loading='lazy'
                         className='size-[1.25rem] object-contain'
                       />
                     </div>

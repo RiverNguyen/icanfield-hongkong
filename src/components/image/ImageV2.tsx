@@ -37,6 +37,7 @@ const ImageV2 = ({
       placeholder='blur'
       blurDataURL={fallbackImg}
       onError={handleError}
+      loading='lazy'
       style={{
         ...style,
         objectFit: isError || !imgSrc ? 'cover' : style.objectFit,

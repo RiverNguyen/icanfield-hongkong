@@ -4,10 +4,7 @@ import {
   IItemInvestmentOpportunities,
   InvestmentOpportunities,
 } from '@/sections/homepage/investment-opportunities'
-import {
-  ItemNewsFeatured,
-  ItemNewsHP,
-} from '@/sections/homepage/news-homepage'
+import {ItemNewsFeatured, ItemNewsHP} from '@/sections/homepage/news-homepage'
 import {IItemProudJourney} from '@/sections/homepage/proud-journey'
 // import TalentedTeam from '@/sections/homepage/talented-team'
 import {Media} from '@/types/image.interface'

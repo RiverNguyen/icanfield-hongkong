@@ -1,12 +1,13 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import {ICountry, LeafletMap} from '@/components/LeafletMap'
+
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import {Media} from '@/types/image.interface'
 import {FeatureCollection} from 'geojson'
 import 'leaflet/dist/leaflet.css'
 import Link from 'next/link'
-import {useEffect, useState} from 'react'
+import {Suspense, useEffect, useState} from 'react'
 import 'swiper/css'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {
@@ -66,7 +67,7 @@ const MapDiscover = ({
     const dataPost = {
       api: `/latest-posts/${slugData}`,
       option: {
-        next: { revalidate: 10}
+        next: {revalidate: 10},
       },
     }
     const fetchDataPost = async () => {
@@ -219,25 +220,27 @@ const MapDiscover = ({
           <div className='absolute left-0 top-0 z-[1] h-full w-full overflow-hidden xsm:!pointer-events-none xsm:relative xsm:h-[15rem] xsm:w-full xsm:px-4'>
             <div className='map-content absolute bottom-0 left-0 h-full w-full overflow-hidden xsm:relative xsm:w-full'>
               <div className='overlay-right absolute right-0 z-10 h-full w-[9.5rem] bg-[linear-gradient(-90deg,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
-              <LeafletMap
-                countries={dataMap?.countries_data as ICountry[][]}
-                mapJson={customGeoJson as FeatureCollection}
-                className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
-                borderCountries='#7F7C6E'
-                zoomDesktop={1.8}
-                isZoomClick={true}
-                setActiveCountry={setNavbarNationalitiesActive}
-                changeCountry={
-                  isMobile
-                    ? navbarNationalitiesActive
-                    : isChangeCountry
+              <Suspense fallback={<Loading isLoading={true} />}>
+                <LeafletMap
+                  countries={dataMap?.countries_data as ICountry[][]}
+                  mapJson={customGeoJson as FeatureCollection}
+                  className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
+                  borderCountries='#7F7C6E'
+                  zoomDesktop={1.8}
+                  isZoomClick={true}
+                  setActiveCountry={setNavbarNationalitiesActive}
+                  changeCountry={
+                    isMobile
                       ? navbarNationalitiesActive
-                      : ''
-                }
-                isZoomInClick={isZoomInClick}
-                isZoomOutClick={isZoomOutClick}
-                isControlZoom={true}
-              />
+                      : isChangeCountry
+                        ? navbarNationalitiesActive
+                        : ''
+                  }
+                  isZoomInClick={isZoomInClick}
+                  isZoomOutClick={isZoomOutClick}
+                  isControlZoom={true}
+                />
+              </Suspense>
             </div>
           </div>
         </div>

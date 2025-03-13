@@ -8,7 +8,16 @@ import {FC, useEffect, useRef, useState} from 'react'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import {Autoplay} from 'swiper/modules'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import dynamic from 'next/dynamic'
+const SwiperSlide = dynamic(
+  () => import('swiper/react').then((mod) => mod.SwiperSlide),
+  {ssr: false},
+)
+const Swiper = dynamic(() => import('swiper/react').then((mod) => mod.Swiper), {
+  ssr: false,
+})
+SwiperSlide.displayName = 'SwiperSlide'
+Swiper.displayName = 'Swiper'
 import {Swiper as SwiperType} from 'swiper/types'
 import './style.css'
 
@@ -62,7 +71,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
       <div className='ml-auto max-w-[95rem]'>
         <div className='-mb-[3.875rem] mr-auto flex items-end justify-between px-[1rem] sm:mb-[2.5rem] sm:max-w-[90rem]'>
           <div
-            className='[&_h2]:heading1 max-w-[29.75rem] font-optima font-semibold text-brown'
+            className='max-w-[29.75rem] font-optima font-semibold text-brown [&_h2]:heading1'
             dangerouslySetInnerHTML={{__html: title}}
           ></div>
           <div className='relative hidden space-x-[0.75rem] sm:flex'>
@@ -95,7 +104,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
                 className='trip__text__swiper relative z-10 h-[12.5rem] w-[19.1rem]'
               >
                 {items.map((item, index) => (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide key={index} lazy={true}>
                     <ProudJourneyQuote content={item.content} />
                   </SwiperSlide>
                 ))}
@@ -183,7 +192,7 @@ function ProudJourneyItem({
       <div className='box__image relative h-[11.25rem] select-none transition-all duration-100 sm:size-full'>
         <ImageV2
           className='rounded-[0.5rem] object-cover transition-all duration-100 sm:size-full sm:rounded-[1rem]'
-          src={image.url ||''}
+          src={image.url || ''}
           alt={image.alt}
           fill
           sizes='25vw'
