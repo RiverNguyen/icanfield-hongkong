@@ -32,7 +32,7 @@ export interface ILeafletMapProps {
 // INIT COUNTRY OF EU
 const euCountries = new Set()
 
-export const LeafletMap: FC<ILeafletMapProps> = ({
+ const LeafletMap: FC<ILeafletMapProps> = ({
   mapJson,
   countries,
   onClick,
@@ -133,7 +133,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   )
   // Zoom to country when click
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
-  console.log('countries', countries)
+  // console.log('countries', countries)
   const handleCountryClick = (countryName: string) => {
     const position = getPosition(countryName)
     if (mapRef.current && isZoomClick) {
@@ -310,3 +310,4 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
     </MapContainer>
   )
 }
+export default LeafletMap

@@ -1,11 +1,13 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {ICountry, LeafletMap} from '@/components/LeafletMap'
-
+import {ICountry} from '@/components/LeafletMap'
+import dynamic from 'next/dynamic'
+const LeafletMap = dynamic(() => import('@/components/LeafletMap'), {
+  ssr: false,
+})
 import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import {Media} from '@/types/image.interface'
 import {FeatureCollection} from 'geojson'
-import 'leaflet/dist/leaflet.css'
 import Link from 'next/link'
 import {Suspense, useEffect, useState} from 'react'
 import 'swiper/css'

@@ -1,12 +1,10 @@
 import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
-// import FormHomepage from '@/sections/homepage/form-homepage'
 import {
   IItemInvestmentOpportunities,
   InvestmentOpportunities,
 } from '@/sections/homepage/investment-opportunities'
 import {ItemNewsFeatured, ItemNewsHP} from '@/sections/homepage/news-homepage'
 import {IItemProudJourney} from '@/sections/homepage/proud-journey'
-// import TalentedTeam from '@/sections/homepage/talented-team'
 import {Media} from '@/types/image.interface'
 import dynamic from 'next/dynamic'
 import {DataMapHomepage} from '@/sections/homepage/map-discover/dataMap.interface'
@@ -114,7 +112,7 @@ const HomePage = ({
     home_talented_team,
     home_proud_journey,
   } = homeData?.acf || {}
-  console.log(home_banner)
+  // console.log(home_banner)
   return (
     <main className='bg-background'>
       {home_banner && (
