@@ -131,7 +131,7 @@ const ProjectOverview = ({
           </h1>
           <div className='text-greyscaletext-body body16 xsm:body-14'>
             {overview.description ? (
-              <span dangerouslySetInnerHTML={{__html: overview.description}} />
+              <span dangerouslySetInnerHTML={{__html: overview.description || ''}} />
             ) : (
               <p>No description available</p>
             )}

@@ -115,7 +115,7 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
                   />
                   <div
                     className='font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown sub-12 xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'
-                    dangerouslySetInnerHTML={{__html: item.label}}
+                    dangerouslySetInnerHTML={{__html: item.label || ''}}
                   ></div>
                 </div>
                 <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>

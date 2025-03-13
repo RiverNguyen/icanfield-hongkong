@@ -43,7 +43,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({items, title}) => {
         <div className='mb-[2.5rem] mr-auto flex max-w-[90rem] items-end justify-between'>
           <div
             className='[&_h2]:heading1 max-w-[29.75rem] font-optima font-semibold text-brown'
-            dangerouslySetInnerHTML={{__html: title}}
+            dangerouslySetInnerHTML={{__html: title || ''}}
           ></div>
           <div className='relative flex space-x-[0.75rem]'>
             <button

@@ -72,7 +72,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
         <div className='-mb-[3.875rem] mr-auto flex items-end justify-between px-[1rem] sm:mb-[2.5rem] sm:max-w-[90rem]'>
           <div
             className='max-w-[29.75rem] font-optima font-semibold text-brown [&_h2]:heading1'
-            dangerouslySetInnerHTML={{__html: title}}
+            dangerouslySetInnerHTML={{__html: title || ''}}
           ></div>
           <div className='relative hidden space-x-[0.75rem] sm:flex'>
             <button
@@ -171,7 +171,7 @@ function ProudJourneyQuote({
 }) {
   return (
     <div
-      dangerouslySetInnerHTML={{__html: content}}
+      dangerouslySetInnerHTML={{__html: content || ''}}
       className={cn(
         'z-[1] mb-auto mt-[1.5rem] text-[1.25rem] font-medium leading-[133.3%] text-greyscaletext-300 [&_*]:text-[1.25rem] [&_*]:font-medium [&_*]:leading-[133.3%] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900',
         className,
@@ -200,7 +200,7 @@ function ProudJourneyItem({
         <div className='bottom-0 left-0 right-0 top-0 size-full rounded-[1rem] bg-[linear-gradient(180deg,rgba(0,0,0,0.00)_0%,_rgba(0,0,0,0.55))] sm:absolute'></div>
       </div>
       <div
-        dangerouslySetInnerHTML={{__html: content}}
+        dangerouslySetInnerHTML={{__html: content || ''}}
         className='mb-auto mt-[1.5rem] text-[1rem] font-medium leading-[1.333rem] text-greyscaletext-300 sm:mt-0 sm:hidden [&_*]:text-[1rem] [&_*]:font-medium [&_*]:leading-[1.333rem] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900'
       ></div>
       <div className='box__user z-10 mt-[1.25rem] flex items-center space-x-[0.75rem] transition-all duration-1000 sm:absolute sm:bottom-[1.5rem] sm:left-[1.5rem] sm:mt-0 sm:w-[calc(21.375rem-3rem)] sm:items-end sm:space-x-[1rem]'>

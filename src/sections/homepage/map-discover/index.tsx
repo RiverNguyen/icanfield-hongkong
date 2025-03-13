@@ -111,7 +111,7 @@ const MapDiscover = ({
           </h2>
           <div
             className='[&_p]:mb-[1rem] [&_p]:text-[0.875rem] [&_p]:leading-[1.5] [&_p]:text-greyscaletext-800 xsm:[&_p]:mb-[0.75rem] xsm:[&_p]:text-[0.875rem]'
-            dangerouslySetInnerHTML={{__html: data.description}}
+            dangerouslySetInnerHTML={{__html: data.description || ''}}
           ></div>
         </div>
         <ImageV2

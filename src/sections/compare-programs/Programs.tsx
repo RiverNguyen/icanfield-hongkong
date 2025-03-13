@@ -97,7 +97,7 @@ export default function Programs({
                           }}
                           className='pointer-events-auto !flex h-[3rem] w-full cursor-pointer items-center rounded-[0.3rem] border-b border-solid border-[rgba(0,0,0,0.10)] px-[1rem] transition-all duration-300 lg:hover:bg-greyscaletext-100/50 [&_p]:line-clamp-2'
                         >
-                          <p dangerouslySetInnerHTML={{__html: p?.title}}></p>
+                          <p dangerouslySetInnerHTML={{__html: p?.title || ''}}></p>
                         </SelectItem>
                       )
                     })}

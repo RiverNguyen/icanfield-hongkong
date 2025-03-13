@@ -42,7 +42,7 @@ const PioneeringValuesAustralia = ({
       <div className='relative flex items-end justify-between overflow-hidden pb-[2.75rem] section-container xsm:flex-col xsm:items-start xsm:pb-[1.72rem]'>
         <h2
           className='flex-1 [&_p]:font-optima [&_p]:text-[3rem] [&_p]:font-semibold [&_p]:leading-[1.2] [&_p]:tracking-[-0.06rem] [&_p]:text-Phase-1-Brown xsm:[&_p]:text-[1.25rem]'
-          dangerouslySetInnerHTML={{__html: data?.title}}
+          dangerouslySetInnerHTML={{__html: data?.title || ''}}
         ></h2>
         <p className='z-10 w-[34.3125rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-greyscaletext-400 xsm:mt-4 xsm:w-full xsm:text-[0.875rem] xsm:leading-[1.5] xsm:tracking-[-0.00875rem]'>
           {data?.description}

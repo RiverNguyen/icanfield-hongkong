@@ -46,7 +46,7 @@ const ProjectInvestorDeveloper = ({
       <div className='absolute left-20 top-[4.02rem] z-10 w-[38.8125rem] px-4 py-8 xsm:static xsm:w-full'>
         <h2
           className='font-optima font-semibold text-greyscaletext-50 heading1'
-          dangerouslySetInnerHTML={{__html: title_section}}
+          dangerouslySetInnerHTML={{__html: title_section || ''}}
         ></h2>
         <p className='mt-[0.625rem] text-white body16 xsm:body-14'>
           {description}
@@ -160,7 +160,7 @@ const ProjectInvestorDeveloper = ({
                   </h2>
                   <div
                     className='flex flex-col space-y-2 text-greyscaletext-300 body-14'
-                    dangerouslySetInnerHTML={{__html: investor.description}}
+                    dangerouslySetInnerHTML={{__html: investor.description || ''}}
                   ></div>
                 </div>
                 <ImageV2
@@ -183,7 +183,7 @@ const ProjectInvestorDeveloper = ({
                   </h2>
                   <div
                     className='flex flex-col space-y-2 text-greyscaletext-300 body-14'
-                    dangerouslySetInnerHTML={{__html: investor.description}}
+                    dangerouslySetInnerHTML={{__html: investor.description || ''}}
                   ></div>
                 </div>
                 <ImageV2
