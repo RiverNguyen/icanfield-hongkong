@@ -104,7 +104,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
                 className='trip__text__swiper relative z-10 h-[12.5rem] w-[19.1rem]'
               >
                 {items.map((item, index) => (
-                  <SwiperSlide key={index} lazy={true}>
+                  <SwiperSlide key={index}>
                     <ProudJourneyQuote content={item.content} />
                   </SwiperSlide>
                 ))}
