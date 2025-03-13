@@ -6,7 +6,6 @@ import {FilterOption} from '@/types/bannerFilter.interface'
 import {convertToIframe} from '@/utils/convertToIframe'
 import React, {useEffect, useRef, useState} from 'react'
 import {FilterData} from './bannerHp.interface'
-import ReactPlayer from 'react-player'
 import {Autoplay, EffectFade} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {filterOptions} from './constants'
@@ -165,7 +164,7 @@ const BannerHomepage = ({
               className='!h-full !w-full object-cover'
             ></iframe>
           ) : (
-            <ReactPlayer
+            <LazyReactPlayer
               url={convertToIframe(data) || ''}
               playing
               loop
