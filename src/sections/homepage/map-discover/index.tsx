@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 const LeafletMap = dynamic(() => import('@/components/LeafletMap'), {
   ssr: false,
 })
-import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import {Media} from '@/types/image.interface'
 import {FeatureCollection} from 'geojson'
 import Link from 'next/link'
@@ -39,6 +38,12 @@ const MapDiscover = ({
   const [navbarNationalitiesActive, setNavbarNationalitiesActive] = useState(
     dataMap.map_data[0].data_nation[0]?.label || 'Unknown',
   )
+  const [geoData, setGeoData] = useState(null)
+  useEffect(() => {
+    fetch('/geojson/custom.geo.json')
+      .then((response) => response.json())
+      .then((data) => setGeoData(data))
+  }, [])
   const [isChangeCountry, setIsChangeCountry] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [urlImageButton, setUrlImageButton] = useState(
@@ -225,7 +230,7 @@ const MapDiscover = ({
               <Suspense fallback={<Loading isLoading={true} />}>
                 <LeafletMap
                   countries={dataMap?.countries_data as ICountry[][]}
-                  mapJson={customGeoJson as FeatureCollection}
+                  mapJson={(geoData ?? {}) as FeatureCollection}
                   className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
                   borderCountries='#7F7C6E'
                   zoomDesktop={1.8}
