@@ -1,15 +1,46 @@
-import RelatedArticles from '@/sections/blogs/detail/RelatedArticles'
+
 import BannerImmigration from '@/sections/immigration/banner/BannerImmigration'
-import DossierAppraisal from '@/sections/immigration/dossier-appraisal/DossierAppraisal'
-import ImmigrationFAQ from '@/sections/immigration/faq/ImmigrationFAQ'
-import Programme from '@/sections/immigration/programme/Programme'
-import Strengths from '@/sections/immigration/strengths/Strengths'
 import {dataPrograms, immigration} from '@/types/dataAcfImmigration.interface'
 import dynamic from 'next/dynamic'
 const CanadaMap = dynamic(() => import('@/sections/immigration/map'), {
   ssr: false, // Nếu component không cần server-side rendering
   loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
 })
+const Strengths = dynamic(
+  () => import('@/sections/immigration/strengths/Strengths'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Strengths...</p>,
+  },
+)
+const Programme = dynamic(
+  () => import('@/sections/immigration/programme/Programme'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Programme...</p>,
+  },
+)
+const ImmigrationFAQ = dynamic(
+  () => import('@/sections/immigration/faq/ImmigrationFAQ'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Strengths...</p>,
+  },
+)
+const DossierAppraisal = dynamic(
+  () => import('@/sections/immigration/dossier-appraisal/DossierAppraisal'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Dossier Appraisal...</p>,
+  },
+)
+const RelatedArticles = dynamic(
+  () => import('@/sections/blogs/detail/RelatedArticles'),
+  {
+    ssr: false,
+    loading: () => <p>Loading Related Articles...</p>,
+  },
+)
 import {Suspense} from 'react'
 import {DataItem} from '@/types/blogs.interface'
 import {Data} from '@/sections/immigration/map'

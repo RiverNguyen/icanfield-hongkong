@@ -228,25 +228,27 @@ const MapDiscover = ({
             <div className='map-content absolute bottom-0 left-0 h-full w-full overflow-hidden xsm:relative xsm:w-full'>
               <div className='overlay-right absolute right-0 z-10 h-full w-[9.5rem] bg-[linear-gradient(-90deg,#FFF_56.16%,rgba(255,255,255,0.00)100%)] xsm:hidden'></div>
               <Suspense fallback={<Loading isLoading={true} />}>
-                <LeafletMap
-                  countries={dataMap?.countries_data as ICountry[][]}
-                  mapJson={(geoData ?? {}) as FeatureCollection}
-                  className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
-                  borderCountries='#7F7C6E'
-                  zoomDesktop={1.8}
-                  isZoomClick={true}
-                  setActiveCountry={setNavbarNationalitiesActive}
-                  changeCountry={
-                    isMobile
-                      ? navbarNationalitiesActive
-                      : isChangeCountry
+                {geoData && (
+                  <LeafletMap
+                    countries={dataMap?.countries_data as ICountry[][]}
+                    mapJson={(geoData ?? {}) as FeatureCollection}
+                    className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
+                    borderCountries='#7F7C6E'
+                    zoomDesktop={1.8}
+                    isZoomClick={true}
+                    setActiveCountry={setNavbarNationalitiesActive}
+                    changeCountry={
+                      isMobile
                         ? navbarNationalitiesActive
-                        : ''
-                  }
-                  isZoomInClick={isZoomInClick}
-                  isZoomOutClick={isZoomOutClick}
-                  isControlZoom={true}
-                />
+                        : isChangeCountry
+                          ? navbarNationalitiesActive
+                          : ''
+                    }
+                    isZoomInClick={isZoomInClick}
+                    isZoomOutClick={isZoomOutClick}
+                    isControlZoom={true}
+                  />
+                )}
               </Suspense>
             </div>
           </div>
