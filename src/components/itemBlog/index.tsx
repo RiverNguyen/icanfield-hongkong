@@ -14,7 +14,7 @@ const ItemBlog = ({data}: IProps) => {
   return (
     <Link
       prefetch={false}
-      href={data?.slug ? `/blogs/${data?.slug}` : '/blogs'}
+      href={data?.slug ? `/tin-tuc/${data?.slug}` : '/blogs'}
       className='rounded-[1.04663rem group relative block h-[32.5rem] w-full overflow-hidden rounded-[1.25rem] p-[2rem] xsm:h-[25rem] xsm:p-[1.5rem]'
     >
       <ImageV2

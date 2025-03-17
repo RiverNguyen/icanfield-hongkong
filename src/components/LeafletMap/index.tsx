@@ -1,9 +1,10 @@
 'use client'
 import {Feature, FeatureCollection, GeoJsonObject} from 'geojson'
-import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
-import 'leaflet/dist/leaflet.css'
-import {FC, useCallback, useEffect, useRef, useState} from 'react'
+import type {GeoJSONOptions, LatLngTuple} from 'leaflet'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import {DivIcon} from 'leaflet'
+import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import './styles.css'
 export interface ICountry {
   name: string
@@ -32,7 +33,7 @@ export interface ILeafletMapProps {
 // INIT COUNTRY OF EU
 const euCountries = new Set()
 
- const LeafletMap: FC<ILeafletMapProps> = ({
+const LeafletMap: FC<ILeafletMapProps> = ({
   mapJson,
   countries,
   onClick,
@@ -254,7 +255,7 @@ const euCountries = new Set()
             key={index}
             position={position} // Tọa độ Canada
             icon={
-              new L.DivIcon({
+              new DivIcon({
                 html: `<div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0 xsm:!pointer-events-none">
                   <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound xsm:!w-[2rem] xsm:!h-auto"/>
                   <img src="${
@@ -292,7 +293,7 @@ const euCountries = new Set()
         key='vietnam'
         position={getPosition('Vietnam')}
         icon={
-          new L.DivIcon({
+          new DivIcon({
             html: `
         <div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
           <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound"/>
