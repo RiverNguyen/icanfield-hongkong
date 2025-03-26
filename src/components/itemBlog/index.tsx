@@ -18,7 +18,7 @@ const ItemBlog = ({data}: IProps) => {
       className='rounded-[1.04663rem group relative block h-[32.5rem] w-full overflow-hidden rounded-[1.25rem] p-[2rem] xsm:h-[25rem] xsm:p-[1.5rem]'
     >
       <ImageV2
-        src={data?.image?.url}
+        src={data?.image?.url || data?.image}
         alt='item blog'
         className='z-[1] size-full origin-center object-cover transition-all duration-700 lg:group-hover:scale-[1.15]'
         fill

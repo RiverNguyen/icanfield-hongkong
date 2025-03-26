@@ -4,18 +4,22 @@ import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
 import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
 import { FeaturedNews } from '@/sections/blogs/featured-news'
 import ListBlogs from '@/sections/blogs/list-blogs'
-import { ApiAcfPage, ApiResponse, Category } from '@/types/blogs.interface'
+import { ApiAcfPage, ApiResponse, Category, IFeaturedNewsItem } from '@/types/blogs.interface'
 import { FC, Suspense } from 'react'
 interface IPageBlogsProps {
   dataPosts: ApiResponse
   dataCategories: Category[]
   dataPage: ApiAcfPage
+  outstandingData: {
+    title: string
+    items: IFeaturedNewsItem[]
+  }
 }
 
 // INIT DATA
 const categoryItemAll = {id: 0, name: 'Tất cả', slug: 'all', taxonomy: 'all'}
 
-const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage}) => {
+const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage,outstandingData}) => {
   let dataCategoriesWithAll
   if (
     dataCategories &&
@@ -32,10 +36,11 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage}) =
     description: dataPage?.banner_blogs_page?.description,
     backgroundImage: dataPage?.banner_blogs_page?.background,
   }
-  const datafeatured = {
-    title: dataPage?.featured_news?.title,
-    items: dataPage?.featured_news_blogs_page
-  }
+  // const datafeatured = {
+  //   title: dataPage?.featured_news?.title,
+  //   items: dataPage?.featured_news?.featured_news_blogs_page
+  // }
+
   return (
     <>
       <BannerStatic {...dataBanner}>
@@ -46,7 +51,7 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage}) =
           ]}
         />
       </BannerStatic>
-      <FeaturedNews {...datafeatured} />
+      <FeaturedNews {...outstandingData} />
       <Suspense fallback={<div>Loading...</div>}>
         <ListBlogs
           dataPosts={dataPosts}

@@ -32,9 +32,8 @@ const ProjectInvestorDeveloper = ({
   development,
 }: IDataAcfDetailEB5['acf']['eb5_projects_detail_quality']) => {
   const [tab, setTab] = useState<'investor' | 'developer'>('investor')
-
   return (
-    <div className='relative flex h-[50rem] w-full items-end p-20 xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0 xsm:mt-[2.5rem]'>
+    <div className='relative flex h-fit w-full items-start p-20 xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0 xsm:mt-[2.5rem] flex-col'>
       <ImageV2
         src='/imgs/detail-eb5/bg-project-investor-developer.webp'
         alt='Investor'
@@ -43,7 +42,7 @@ const ProjectInvestorDeveloper = ({
         height={1080}
       />
       <div className='absolute inset-0 rounded-t-[2rem] bg-black/30' />
-      <div className='absolute left-20 top-[4.02rem] z-10 w-[38.8125rem] px-4 py-8 xsm:static xsm:w-full'>
+      <div className='block left-20 top-[4.02rem] z-10 w-[38.8125rem] px-4 py-8 xsm:static xsm:w-full'>
         <h2
           className='font-optima font-semibold text-greyscaletext-50 heading1'
           dangerouslySetInnerHTML={{__html: title_section || ''}}
@@ -183,7 +182,7 @@ const ProjectInvestorDeveloper = ({
                   </h2>
                   <div
                     className='flex flex-col space-y-2 text-greyscaletext-300 body-14'
-                    dangerouslySetInnerHTML={{__html: investor.description || ''}}
+                    dangerouslySetInnerHTML={{__html: development.description || ''}}
                   ></div>
                 </div>
                 <ImageV2

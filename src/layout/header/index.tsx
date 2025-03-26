@@ -43,7 +43,6 @@ const Header = ({
 }) => {
   const listMenuMobileLast = [
     data?.icanfield_handbook,
-    data?.support_customer,
     data?.contact,
   ]
   const [isActivedLanguage, setIsActivedLanguage] = React.useState(false) //handle language dropdown
@@ -396,7 +395,7 @@ const Header = ({
                   className='absolute left-1/2 top-1/2 z-0 size-[1rem] -translate-x-1/2 -translate-y-1/2 scale-[1.05] rounded-[50%]'
                 />
               </div>
-              <span className='text-[0.75rem] font-medium leading-[1.5] text-white'>
+              <span className='text-[0.75rem] font-medium leading-[1.5] text-white notranslate'>
                 {isCurrentLanguage.label}
               </span>
               <ImageV2
@@ -421,7 +420,7 @@ const Header = ({
                       }}
                     >
                       <span
-                        className={`text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
+                        className={`text-[0.75rem] notranslate leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
                       >
                         {item.label}
                       </span>

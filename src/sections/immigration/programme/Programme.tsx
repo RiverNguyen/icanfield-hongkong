@@ -140,11 +140,9 @@ export default function Programme({
           width={1600}
           height={788}
           alt=''
-          src={ imgBg || '/imgs/immigration/programme/d-bg-programmeV2.webp'}
+          src={imgBg || '/imgs/immigration/programme/d-bg-programmeV2.webp'}
         />
-        <div className='bg-[linear-gradient(176deg,rgba(246,246,244,1)49%,rgba(255,255,255,0.227328431372549)_100%)] absolute left-0 h-[30vh] w-full sm:top-[-100vh] xsm:top-0 xsm:hidden'>
-
-        </div>
+        <div className='absolute left-0 top-0 h-[30vh] w-full bg-[linear-gradient(176deg,rgba(246,246,244,1)_49%,_rgba(255,255,255,0)_73%)] sm:top-[-100vh] xsm:top-0 xsm:hidden'></div>
       </div>
       <div className='relative z-10 flex section-container sm:items-start sm:space-x-[6.19rem] xsm:w-full xsm:flex-col xsm:px-0'>
         <div className='sticky w-[23.9375rem] space-y-[2.5rem] sm:top-[7.75rem] sm:pb-[6.5rem] xsm:top-[1rem] xsm:z-10 xsm:w-full xsm:space-y-[1rem] xsm:bg-background xsm:px-[1rem] xsm:pb-[1rem]'>

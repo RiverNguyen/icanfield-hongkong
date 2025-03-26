@@ -129,7 +129,7 @@ const BannerHomepage = ({
       .join('&')
 
     // Tạo URL đầy đủ
-    const redirectUrl = `/search-result?${queryString}`
+    const redirectUrl = `/ket-qua-tim-kiem?${queryString}`
     // console.log('Redirecting to:', redirectUrl)
 
     // Chuyển hướng

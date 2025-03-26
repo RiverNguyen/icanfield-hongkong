@@ -27,8 +27,8 @@ export interface IFeaturedNewsProps {
   title: string
   items: IFeaturedNewsItem[]
 }
-
 export const FeaturedNews: FC<IFeaturedNewsProps> = ({ title, items }) => {
+  console.log('FeaturedNews', items)
   return (
     <section className='mx-auto mt-[3rem] max-w-[90rem] px-[1rem] sm:mt-[5rem] sm:px-0'>
       <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>
@@ -163,7 +163,7 @@ function FeaturedNewSlidePC({
             key={idx}
           >
             <span>{idx < 10 ? '0' + (idx + 1) : idx + 1}</span>
-            <p className='line-clamp-3'>{item.excerpt}</p>
+            <p className='line-clamp-3' dangerouslySetInnerHTML={{__html:item.excerpt}}></p>
           </SwiperSlide>
         ))}
         <div className='pointer-events-none sm:items-center absolute bottom-0 right-[-0.5rem] top-0 z-20 flex flex-col justify-between'>

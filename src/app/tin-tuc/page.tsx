@@ -16,6 +16,12 @@ const page = async () => {
       next: {revalidate: 10},
     },
   }
+  const outstandingPosts = {
+    api: '/outstanding-post',
+    option: {
+      next: {revalidate: 10},
+    },
+  }
   const requestCategories = {
     api: endpoints.categories.list + '?_fields=id,name,slug,taxonomy',
     option: {
@@ -28,16 +34,19 @@ const page = async () => {
       next: {revalidate: 10},
     },
   }
-  const [dataPosts, dataCategories, dataPage] = await Promise.all([
+  const [dataPosts, dataCategories, dataPage,outstandingData] = await Promise.all([
     fetchData(requestPosts),
     fetchDataACF(requestCategories),
     fetchDataACF(requestPage),
-  ])
+    fetchData(outstandingPosts),
+  ]) 
+
   return (
     <PageBlogs
       dataPage={dataPage?.acf}
       dataPosts={dataPosts}
       dataCategories={dataCategories}
+      outstandingData={outstandingData?.featured_news}
     />
   )
 }

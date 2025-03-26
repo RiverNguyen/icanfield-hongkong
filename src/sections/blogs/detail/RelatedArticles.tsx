@@ -12,7 +12,8 @@ export default function RelatedArticles({
 }: {
   dataRelatedPosts: DataItem[]
   className?: string
-}) {
+  }) {
+  console.log(dataRelatedPosts)
   return (
     <section className={cn('pb-[11.31rem] pt-[1.5rem] xsm:pb-[2rem]', className)}>
       <div className='flex items-center justify-between section-container xsm:mb-[1.5rem]'>
