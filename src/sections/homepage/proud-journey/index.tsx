@@ -42,7 +42,13 @@ const ProudJourney: FC<IProudJourneyProps> = ({
   const swiperRef = useRef<SwiperType | null>(null)
   const swiperRef2 = useRef<SwiperType | null>(null)
   const [spaceBetween, setSpaceBetween] = useState(1.5)
-
+  const minSlides = 6
+  const paddedItems = [
+    ...items,
+    ...Array(Math.max(0, minSlides - items.length))
+      .fill(items)
+      .flat(),
+  ].slice(0, minSlides)
   useEffect(() => {
     setSpaceBetween((prev) => {
       if (typeof window === 'undefined') return prev
@@ -103,7 +109,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
                 speed={800}
                 className='trip__text__swiper relative z-10 h-[12.5rem] w-[19.1rem]'
               >
-                {items.map((item, index) => (
+                {paddedItems.map((item, index) => (
                   <SwiperSlide key={index}>
                     <ProudJourneyQuote content={item.content} />
                   </SwiperSlide>
@@ -132,7 +138,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
             allowTouchMove={false}
             className='trip__swiper relative z-10 !ml-[8.3rem] !mr-0 h-[24.2rem] w-full flex-1 !overflow-visible'
           >
-            {items.map((item, index) => (
+            {paddedItems.map((item, index) => (
               <SwiperSlide key={index}>
                 <ProudJourneyItem {...item} />
               </SwiperSlide>
@@ -145,7 +151,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
             spaceBetween={spaceBetween}
             className='min-h-[25.125rem] !p-[5.375rem_0_2.5rem] !pl-[1rem]'
           >
-            {items.map((item, index) => (
+            {paddedItems.map((item, index) => (
               <SwiperSlide
                 className='!w-[18.75rem] rounded-[1rem] bg-white p-[1rem] shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)]'
                 key={index}
@@ -173,7 +179,7 @@ function ProudJourneyQuote({
     <div
       dangerouslySetInnerHTML={{__html: content || ''}}
       className={cn(
-        'z-[1] mb-auto mt-[1.5rem] text-[1.25rem] font-medium leading-[133.3%] text-greyscaletext-300 [&_*]:text-[1.25rem] [&_*]:font-medium [&_*]:leading-[133.3%] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900',
+        'z-[1] mb-auto mt-[1.5rem] text-[1.25rem] line-clamp-6 font-medium leading-[133.3%] text-greyscaletext-300 [&_*]:text-[1.25rem] [&_*]:font-medium [&_*]:leading-[133.3%] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900',
         className,
       )}
     ></div>
@@ -217,7 +223,7 @@ function ProudJourneyItem({
           <h3 className='text-[1rem] font-semibold leading-[1.3] text-[var(--GREYSCALE-grey-900)] sm:mb-[0.38rem] sm:text-white'>
             {name}
           </h3>
-          <span className='text-[0.75rem] font-medium leading-[0.975rem] tracking-[0.00875rem] text-[#B3B3B3;] sm:leading-[1.3rem] sm:text-white'>
+          <span className='text-[0.75rem] font-medium leading-[0.975rem] tracking-[0.00875rem] text-[#B3B3B3;] sm:leading-[1.3rem] sm:text-white line-clamp-6'>
             {position}
           </span>
         </div>

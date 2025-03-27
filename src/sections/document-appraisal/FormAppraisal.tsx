@@ -215,6 +215,11 @@ export default function FormAppraisal({
       }
     })
   }
+  function decodeHTMLEntities(text:string) {
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(text, 'text/html')
+    return doc.body.textContent
+  }
   return (
     <>
       <section className='relative mt-[-14.31rem] w-[54.125rem] sm:mx-auto xsm:mt-[-4.31rem] xsm:w-full xsm:px-[1rem]'>
@@ -605,7 +610,7 @@ export default function FormAppraisal({
                                 className='cursor-pointer border-b-[1px] border-solid border-[rgba(0,0,0,0.10)] p-[0.75rem_1rem]'
                                 value={e?.slug}
                               >
-                                {e?.name}
+                                {decodeHTMLEntities(e?.name)}
                               </SelectItem>
                             ),
                           )}

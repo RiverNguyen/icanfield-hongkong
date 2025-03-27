@@ -11,7 +11,7 @@ export interface IProcessStepsProps {
   steps?: IProcessStepItem[]
 }
 
-const progressDuration = 20000 // Total duration for all steps
+const progressDuration = 50000 // Total duration for all steps
 
 export const ProcessSteps: FC<
   IDataAcfDetailEB5['acf']['eb5_projects_detail_progress']
