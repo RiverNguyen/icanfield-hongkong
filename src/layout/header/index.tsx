@@ -382,7 +382,7 @@ const Header = ({
               </span>
             </Link>
             <div
-              className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem]'
+              className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem] hidden'
               onClick={handleOpenLanguage}
             >
               <div className='relative flex size-[1.2rem] rounded-[50%] bg-[rgba(255,255,255,0.25)] backdrop-blur-[10px]'>

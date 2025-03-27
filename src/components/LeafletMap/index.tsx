@@ -291,7 +291,7 @@ const LeafletMap: FC<ILeafletMapProps> = ({
       })}
       <Marker
         key='vietnam'
-        position={getPosition('Vietnam')}
+        position={[21.0285, 105.8542]} // Tọa độ Việt Nam
         icon={
           new DivIcon({
             html: `
@@ -308,6 +308,45 @@ const LeafletMap: FC<ILeafletMapProps> = ({
           })
         }
       ></Marker>
+      <Marker
+        key='hoangsa'
+        position={[16.5, 112]} // Tọa độ Hoàng Sa
+        icon={
+          new DivIcon({
+            html: `
+      <div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
+        <img src="/imgs/map/bg-marker.png" alt="HOÀNG SA" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound"/>
+        <img src="/imgs/about-us/office-map/vietnam.png" alt="HOÀNG SA" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full"/>
+        <div class="text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]">
+          HOÀNG SA
+        </div>
+      </div>`,
+            className:
+              'my-div-icon !w-[5rem] !h-[3.26rem] relative !-mt-[3.26rem] !pointer-events-none',
+            iconSize: [30, 30],
+          })
+        }
+      />
+
+      <Marker
+        key='truongsa'
+        position={[9, 114]} // Tọa độ Trường Sa
+        icon={
+          new DivIcon({
+            html: `
+      <div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
+        <img src="/imgs/map/bg-marker.png" alt="TRƯỜNG SA" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound"/>
+        <img src="/imgs/about-us/office-map/vietnam.png" alt="TRƯỜNG SA" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full"/>
+        <div class="text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]">
+          TRƯỜNG SA
+        </div>
+      </div>`,
+            className:
+              'my-div-icon !w-[5rem] !h-[3.26rem] relative !-mt-[3.26rem] !pointer-events-none',
+            iconSize: [30, 30],
+          })
+        }
+      />
     </MapContainer>
   )
 }

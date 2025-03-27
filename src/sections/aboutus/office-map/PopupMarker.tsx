@@ -41,7 +41,7 @@ const PopupMarker = ({
   return (
     <div
       className={cn(
-        'invisible fixed bottom-0 left-0 right-0 z-[55] rounded-[1rem_1rem_0rem_0rem] bg-white p-[1rem_1rem_2.5rem_1rem] opacity-50 transition-all duration-500 ease-in-out sm:bottom-[1.5rem] sm:left-[-1rem] sm:h-[34.25rem] sm:w-[25rem] sm:-translate-x-full sm:rounded-[1rem] sm:p-[1.15rem] xsm:right-0 xsm:translate-y-full',
+        'invisible fixed bottom-0 left-0 right-0 z-[55] rounded-[1rem_1rem_0rem_0rem] bg-white p-[1rem_1rem_2.5rem_1rem] opacity-50 transition-all duration-500 ease-in-out sm:bottom-[1.5rem] sm:left-[-1rem] sm:h-fit sm:w-[25rem] sm:-translate-x-full sm:rounded-[1rem] sm:p-[1.15rem] xsm:right-0 xsm:translate-y-full',
         open &&
           'visible opacity-100 sm:left-[1.5rem] sm:translate-x-0 xsm:translate-y-0',
       )}
