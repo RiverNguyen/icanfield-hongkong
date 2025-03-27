@@ -9,12 +9,18 @@ import 'leaflet/dist/leaflet.css'
 import {ICountry} from '@/components/LeafletMap'
 const PioneeringValues = ({
   data,
+  dataMap,
 }: {
   data: {
     title: string
     description: string
     data_state_usa: ICountry[]
   }
+  dataMap: {
+    slug: string
+    location_name: string
+    count: number
+  }[]
 }) => {
   const [isZoomInClick, setIsZoomInClick] = React.useState(false)
   const [isZoomOutClick, setIsZoomOutClick] = React.useState(false)
@@ -35,13 +41,13 @@ const PioneeringValues = ({
       <div className='relative flex items-end justify-between overflow-hidden pb-[2.75rem] section-container xsm:flex-col xsm:items-start xsm:pb-[1.72rem]'>
         <h2
           className='flex-1 [&_p]:font-optima [&_p]:text-[3rem] [&_p]:font-semibold [&_p]:leading-[1.2] [&_p]:tracking-[-0.06rem] [&_p]:text-Phase-1-Brown xsm:[&_p]:text-[1.25rem]'
-          dangerouslySetInnerHTML={{__html: data?.title}}
+          dangerouslySetInnerHTML={{__html: data?.title || ''}}
         ></h2>
         <p className='z-10 w-[34.3125rem] text-[1rem] font-medium leading-[1.5] tracking-[-0.02rem] text-greyscaletext-400 xsm:mt-4 xsm:w-full xsm:text-[0.875rem] xsm:leading-[1.5] xsm:tracking-[-0.00875rem]'>
           {data?.description}
         </p>
         <ImageV2
-          src={'/imgs/EB5/Pioneering-values/bg-city.webp'}
+          src={'/imgs/EB5/Pioneering-values/bg-city2.webp'}
           alt='Pioneering Values'
           width={800}
           height={533}
@@ -68,6 +74,7 @@ const PioneeringValues = ({
       <div className='relative h-[41.5rem] w-full overflow-hidden rounded-[1.25rem] bg-white section-container xsm:h-[20.4rem] xsm:w-full xsm:rounded-none'>
         <LeafletMapCountries
           countries={convertedData}
+          dataCountry={dataMap}
           mapJson={customGeoJson as FeatureCollection}
           className='!absolute !z-[1] !h-full !w-full !overflow-hidden !bg-transparent'
           borderCountries='#B6B3A7'

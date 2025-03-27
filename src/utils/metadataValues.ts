@@ -11,8 +11,8 @@ export default function metadataValues(res: any) {
       author: 'iCanfield',
     }
   }
-  const result = res?.yoast_head_json
 
+  const result = res?.yoast_head_json
   const meta = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN!),
     title: result?.title,
@@ -27,10 +27,10 @@ export default function metadataValues(res: any) {
       url: './',
       siteName: result?.og_site_name,
       images: Array.isArray(result?.og_image)
-        ? [...result?.og_image]
-        : result?.og_image
-        ? result?.og_image
-        : [],
+        ? result?.og_image.map((img: { url: string }) => img.url)
+        : result?.og_image?.url
+          ? [result?.og_image?.url]
+          : [],
       locale: result?.og_locale,
       type: result?.og_type,
     },
@@ -40,22 +40,30 @@ export default function metadataValues(res: any) {
       description: result?.description,
       creator: 'jenho',
       images: Array.isArray(result?.og_image)
-        ? [...result?.og_image]
-        : result?.og_image
-        ? result?.og_image
-        : [],
+        ? result?.og_image.map((img: { url: string }) => img.url)
+        : result?.og_image?.url
+          ? [result?.og_image?.url]
+          : [],
       misc: result?.twitter_misc,
     },
   }
-  if (!result?.og_image || result?.og_image?.length <= 0) {
-    meta.openGraph.images.push({
-      url: '/images/home/stories/background-left-story-mb.jpg',
-      width: 1200,
-      height: 630,
-    })
-    meta.twitter.images.push({
-      url: '/images/home/stories/background-left-story-mb.jpg',
-    })
+
+  if (!meta.openGraph.images.length) {
+    meta.openGraph.images = [
+      {
+        url: '/images/home/stories/background-left-story-mb.jpg',
+        width: 1200,
+        height: 630,
+      },
+    ]
+  }
+
+  if (!meta.twitter.images.length) {
+    meta.twitter.images = [
+      {
+        url: '/images/home/stories/background-left-story-mb.jpg',
+      },
+    ]
   }
 
   return meta

@@ -27,8 +27,8 @@ export interface IFeaturedNewsProps {
   title: string
   items: IFeaturedNewsItem[]
 }
-
 export const FeaturedNews: FC<IFeaturedNewsProps> = ({ title, items }) => {
+  console.log('FeaturedNews', items)
   return (
     <section className='mx-auto mt-[3rem] max-w-[90rem] px-[1rem] sm:mt-[5rem] sm:px-0'>
       <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>
@@ -96,8 +96,8 @@ function FeaturedNewSlidePC({
             <ImageV2
               src={item.backgroundImage || ''}
               alt={item.title}
-              width={1434 * 2}
-              height={554 * 2}
+              width={1434 * 2 || 40}
+              height={554 * 2 || 40}
               className='absolute left-0 top-0 h-full w-full object-cover'
             />
             <div className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(183deg,rgba(63,34,20,0.00)_10.25%,#000_119.74%)]'></div>
@@ -115,7 +115,7 @@ function FeaturedNewSlidePC({
                 {item.title}
               </h3>
               <Link
-                href={'/blogs/' + item?.slug}
+                href={'/tin-tuc/' + item?.slug}
                 className='inline-flex items-center rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] transition hover:bg-white hover:text-brown'
               >
                 <span>Chi tiết bài viết</span>
@@ -163,7 +163,7 @@ function FeaturedNewSlidePC({
             key={idx}
           >
             <span>{idx < 10 ? '0' + (idx + 1) : idx + 1}</span>
-            <p className='line-clamp-3'>{item.excerpt}</p>
+            <p className='line-clamp-3' dangerouslySetInnerHTML={{__html:item.excerpt}}></p>
           </SwiperSlide>
         ))}
         <div className='pointer-events-none sm:items-center absolute bottom-0 right-[-0.5rem] top-0 z-20 flex flex-col justify-between'>
@@ -233,8 +233,8 @@ function FeaturedNewSlideMobile({
               <ImageV2
                 src={item.backgroundImage || ''}
                 alt={item.title}
-                width={1434 * 2}
-                height={554 * 2}
+                width={1434 * 2 || 40}
+                height={554 * 2 || 40}
                 className='absolute left-0 top-0 h-full w-full object-cover'
               />
               <div className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(182deg,rgba(63,34,20,0.00)_28.99%,#000_107.39%)]'></div>
@@ -252,7 +252,7 @@ function FeaturedNewSlideMobile({
                   {item.title}
                 </h3>
                 <Link
-                  href={'/blogs/' + item?.slug}
+                  href={'/tin-tuc/' + item?.slug}
                   className='inline-flex items-center py-[0.2rem]'
                 >
                   <span className='text-[0.75rem] font-medium leading-[1.5] tracking-[-0.015re]'>

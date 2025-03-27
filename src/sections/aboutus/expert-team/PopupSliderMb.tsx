@@ -54,7 +54,7 @@ export default function PopupSliderMb({
             srcImage={data?.image?.url}
           />
           <div
-            dangerouslySetInnerHTML={{__html: data?.describe}}
+            dangerouslySetInnerHTML={{__html: data?.describe || ''}}
             className='mt-[1.5rem] [&_p]:text-bodytext [&_p]:body-14'
           ></div>
         </div>

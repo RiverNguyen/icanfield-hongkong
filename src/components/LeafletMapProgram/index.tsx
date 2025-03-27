@@ -133,11 +133,11 @@ export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
     if (mapRef.current && isZoomClick) {
       if (zoomedCountry === countryName) {
         // Nếu quốc gia đã được zoom, bỏ zoom
-        mapRef.current.flyTo([40, 0], isMobile ? zoomMobile : 1.5)
+        mapRef.current.flyTo([40, 0])
         setZoomedCountry(null)
       } else {
         // Nếu quốc gia chưa được zoom, zoom vào quốc gia đó
-        mapRef.current.flyTo(position, isMobile ? 1.75 : 3)
+        mapRef.current.flyTo(position)
         setZoomedCountry(countryName)
       }
     }
@@ -265,16 +265,23 @@ export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
             position={position} // Tọa độ Canada
             icon={
               new L.DivIcon({
-                html: `<div class="custom-marker absolute !-left-0 top-0 xsm:!pointer-events-none">
+                html: `<div class="custom-marker absolute z-30 !-left-0 top-0 xsm:!pointer-events-none hover:!text-red-800">
                       <div class='bg-[linear-gradient(90deg,#5C4E47_0%,#5C4235_100%)] text-transparent bg-clip-text text-[0.625rem] font-semibold leading-[1.2] tracking-[-0.00625rem] uppercase absolute bottom-[-0.1rem]  '>
                         ${countryObj.label ? countryObj.label : countryObj.name}
                       </div>
               </div>`,
                 className:
-                  'my-div-icon !w-[5rem] !h-[3.26rem] relative marker-custom__nation  xsm:!pointer-events-none group !pointer-events-none',
+                  'my-div-icon !w-[5rem] !h-[3.26rem] relative marker-custom__nation  xsm:!pointer-events-none group ',
                 iconSize: [30, 30],
               })
             }
+            eventHandlers={{
+              click: () => {
+                if (onClick) {
+                  onClick(countryObj)
+                }
+              }
+            }}
           ></Marker>
         )
       })}

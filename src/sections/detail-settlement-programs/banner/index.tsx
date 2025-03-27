@@ -31,15 +31,15 @@ export const Banner: FC<IBannerProps> = ({
       <ImageV2
         src={backgroundPc ? backgroundPc.url : '/fallbackImage.gif'}
         alt={backgroundPc ? backgroundPc.alt : '/fallbackImage.gif'}
-        width={1600 * 2}
-        height={478 * 2}
+        width={1600 * 2 || 40}
+        height={478 * 2 || 40}
         className='absolute inset-0 h-full w-full object-cover xsm:hidden'
       />
       <ImageV2
         src={backgroundMb ? backgroundMb.url : '/fallbackImage.gif'}
         alt={backgroundMb ? backgroundMb.alt : '/fallbackImage.gif'}
-        width={1600 * 2}
-        height={478 * 2}
+        width={1600 * 2 || 40}
+        height={478 * 2 || 40}
         className='absolute inset-0 h-full w-full object-cover sm:hidden'
       />
 

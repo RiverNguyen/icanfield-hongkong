@@ -42,8 +42,8 @@ const ProudJourney: FC<IProudJourneyProps> = ({items, title}) => {
       <div className='ml-auto max-w-[95rem]'>
         <div className='mb-[2.5rem] mr-auto flex max-w-[90rem] items-end justify-between'>
           <div
-            className='[&_h2]:heading1 max-w-[29.75rem] font-optima font-semibold text-brown'
-            dangerouslySetInnerHTML={{__html: title}}
+            className='max-w-[29.75rem] font-optima font-semibold text-brown [&_h2]:heading1'
+            dangerouslySetInnerHTML={{__html: title || ''}}
           ></div>
           <div className='relative flex space-x-[0.75rem]'>
             <button
@@ -93,7 +93,12 @@ const ProudJourney: FC<IProudJourneyProps> = ({items, title}) => {
             // allowTouchMove={false}
             className='trip__swiper relative z-10 h-[24.2rem] w-full'
           >
-            {items.map((item, index) => (
+            {[
+              ...items,
+              ...Array(Math.max(0, 4 - items.length))
+                .fill(items)
+                .flat(),
+            ].map((item, index) => (
               <SwiperSlide key={index}>
                 <ProudJourneyItem {...item} />
               </SwiperSlide>
@@ -144,8 +149,8 @@ function ProudJourneyItem({avatar, image, name, job}: IItemProudJourney) {
             className='size-full rounded-full object-cover'
             src={avatar.src || ''}
             alt={avatar.alt}
-            width={56 * 2}
-            height={56 * 2}
+            width={56 * 2 || 40}
+            height={56 * 2 || 40}
           />
         </div>
         <div className='flex-1'>

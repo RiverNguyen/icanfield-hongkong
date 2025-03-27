@@ -15,7 +15,7 @@ export default function PioneeringMission({
           width={1600}
           height={788}
           alt=''
-          src={'/imgs/about-us/pioneering-mission/bg-pioneering-mission.webp'}
+          src={'/imgs/about-us/pioneering-mission/bg-pioneering-mission2.webp'}
         />
         <ImageV2
           className='sm:hidden absolute left-0 top-0 h-[25rem] w-full'

@@ -25,8 +25,8 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
       <ImageV2
         src={backgroundImage?.url || ''}
         alt={backgroundImage?.alt}
-        width={1600 * 2}
-        height={478 * 2}
+        width={1600 * 2 || 40}
+        height={478 * 2 || 40}
         className='absolute inset-0 h-full w-full object-cover'
       />
       <div className='absolute inset-0 h-full w-full bg-black/30'></div>

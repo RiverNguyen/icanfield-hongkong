@@ -569,7 +569,8 @@ export default function AustralianRealEstate({
   dataNationSettlement,
   dataAcf,
   dataListPost,
-  postRelate
+  postRelate,
+  dataMap
 }: {
   dataNationSettlement: Term[]
   dataAcf: dataAcf
@@ -581,7 +582,12 @@ export default function AustralianRealEstate({
     limit: number
     data: IItemAustralia[]
     }
-  postRelate: DataItem[]
+    postRelate: DataItem[]
+    dataMap: {
+      slug: string
+      location_name: string
+      count: number
+    }[]
 
 }) {
   const dataInvestment = {
@@ -619,7 +625,7 @@ export default function AustralianRealEstate({
             'flex w-[38.625rem] flex-col items-start xsm:w-full xsm:px-0 [&>div]:text-start',
         }}
       />
-      <PioneeringValuesAustralia data={dataAcf?.section_map} />
+      <PioneeringValuesAustralia data={dataAcf?.section_map} dataMap={dataMap}/>
       <Suspense fallback={<p>Loading...</p>}>
         <OutstandingAustralia
           listItems={dataListPost}
@@ -633,7 +639,7 @@ export default function AustralianRealEstate({
         className='h-[92rem]'
       />
       <WhyChooseUs {...why_choose_us} />
-      {postRelate?.length && 
+      {postRelate?.length &&
         <RelatedArticles
           className='relative z-10 rounded-[0rem] xsm:pt-[1.5rem] bg-background pb-[6.5rem] pt-[5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] xsm:rounded-[1.5rem_1rem_2rem_1rem]'
           dataRelatedPosts={postRelate}

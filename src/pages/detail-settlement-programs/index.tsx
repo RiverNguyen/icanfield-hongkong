@@ -46,6 +46,7 @@ interface IDetailSettlementProgramsProps {
   story_share: ISuccessStoryShareProps
   acfNation: immigration
   dataTaxonomies: Term[]
+  faq: any //eslint-disable-line
 }
 
 const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
@@ -60,13 +61,15 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
   story_share,
   acfNation,
   dataTaxonomies,
+  faq,
 }) => {
+
   const PropProcessSteps = {
     title_section: process_steps?.title || '',
     description: process_steps?.description || '',
     timeline: process_steps?.steps || [],
   }
-  console.log(acfNation)
+  // console.log(acfNation)
   return (
     <main className='bg-background'>
       <Banner {...banner}>
@@ -89,12 +92,13 @@ const DetailSettlementPrograms: FC<IDetailSettlementProgramsProps> = ({
       <AdvantagesBenefits {...advantages_benefits} />
       <ProgramBenefits {...program_benefits} />
       <ProgramEligibility {...program_eligibility} />
-      <WhyChooseUs {...why_choose_us} />
       <ProcessSteps {...PropProcessSteps} />
+      <WhyChooseUs {...why_choose_us} />
       <SuccessStoryShare {...story_share} />
       <ImmigrationFAQ
         dataFAQ={acfNation?.acf?.faq_nation}
         flag={acfNation?.acf?.flag}
+        listFAQ={faq}
       />
       <ContactV2>
         <FormInternationalJourney dataNationSettlement={dataTaxonomies} />

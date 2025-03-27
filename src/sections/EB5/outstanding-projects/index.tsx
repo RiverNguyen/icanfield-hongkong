@@ -30,6 +30,11 @@ export interface IOutstandingProjectEB5Props {
     slug: string
     taxonomy: string
   }[]
+  dataMap?: {
+    slug: string
+    location_name: string
+    count: number
+  }[]
 }
 
 const OutstandingProjectEB5: FC<IOutstandingProjectEB5Props> = ({

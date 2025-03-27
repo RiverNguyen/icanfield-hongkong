@@ -23,7 +23,7 @@ const ProjectLocation = ({
       </div>
       <div
         className='h-[27.875rem] w-full overflow-hidden rounded-2xl xsm:h-[28.125rem] xsm:rounded-xl xsm:border xsm:border-[#BCBCBC] [&>iframe]:h-full [&>iframe]:w-full'
-        dangerouslySetInnerHTML={{__html: iframe_google_map}}
+        dangerouslySetInnerHTML={{__html: iframe_google_map || ''}}
       ></div>
       <div className='rounded-2xl bg-[#FAFAFA] px-7 py-8 xsm:px-5 xsm:py-4'>
         <Accordion

@@ -2,9 +2,9 @@
 import IConSeeMore from '@/components/icon/IConSeeMore'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
-import { fetcher } from '@/lib/swr'
-import { cn } from '@/lib/utils'
-import { ICLoading } from '@/sections/blogs/connect-us/FormConnectUs'
+import {fetcher} from '@/lib/swr'
+import {cn} from '@/lib/utils'
+import {ICLoading} from '@/sections/blogs/connect-us/FormConnectUs'
 import ICNext from '@/sections/document-appraisal/ICNext'
 import FilterProgramme from '@/sections/immigration/programme/FilterPrograme'
 import ItemProgramme from '@/sections/immigration/programme/ItemProgramme'
@@ -14,8 +14,8 @@ import {
   dataProgramsAcf,
 } from '@/types/dataAcfImmigration.interface'
 import endpoints from '@/utils/endpoints'
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
+import {useSearchParams} from 'next/navigation'
+import {useEffect, useMemo, useRef, useState, useTransition} from 'react'
 import ReactPaginate from 'react-paginate'
 import useSWR from 'swr'
 import './style.css'
@@ -26,17 +26,21 @@ const sortOptions = [
   {name: 'Từ A-Z', value: 'asc'},
   {name: 'Thời gian xét duyệt nhanh nhất', value: 'fastest'},
   {name: 'Thời gian xét duyệt chậm nhất', value: 'slowest'},
-  {name: 'Theo mức đầu tư cao nhất', value: 'high-investment'},
-  {name: 'Theo mức đầu tư thấp nhất', value: 'low-investment'},
+  {name: 'Mức ngân sách cao nhất', value: 'high-investment'},
+  {name: 'Mức ngân sách thấp nhất', value: 'low-investment'},
 ]
 
 export default function Programme({
+  name,
   dataPrograms,
   slug,
+  imgBg,
 }: {
+  name?: string
   dataPrograms: dataPrograms
   slug: string
-  }) {
+  imgBg?: string
+}) {
   const isMobile = useIsMobile()
   const searchParams = useSearchParams()
   const sectionRef = useRef<HTMLElement>(null)
@@ -48,11 +52,18 @@ export default function Programme({
   const [isPending, setTransition] = useTransition()
   useEffect(() => {
     setListPrograms(dataPrograms)
-  }, [])
+  }, []) //eslint-disable-line
   const query = useMemo(() => {
-    if (!searchParams?.size) return null
-    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}`
-  }, [searchParams, slugPage, slugOrder, search])
+    if (!searchParams?.size)
+      return (
+        endpoints.settlementPrograms +
+        '?page=1&per_page=8&' +
+        endpoints.taxonomiesSettlement +
+        '=' +
+        slug
+      )
+    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}&${endpoints.taxonomiesSettlement}=${slug}`
+  }, [searchParams, slugPage, slugOrder, search]) //eslint-disable-line
   const {data: posts} = useSWR(query, fetcher, {
     revalidateIfStale: false,
     revalidateOnReconnect: false,
@@ -78,7 +89,7 @@ export default function Programme({
     } else if (posts) {
       setListPrograms(posts)
     }
-  }, [posts])
+  }, [posts]) //eslint-disable-line
   useEffect(() => {
     if (slugOrder) {
       const sortOption = sortOptions.find(
@@ -86,14 +97,16 @@ export default function Programme({
       )
       setSelectedSortOption(sortOption ?? sortOptions[0])
     }
-  }, [])
-  useEffect(() => { 
+  }, []) //eslint-disable-line
+  useEffect(() => {
     if (page > 1) {
       setTransition(async () => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${endpoints.settlementPrograms}?page=${page}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}`);
-            const data = await response.json();
+            const response = await fetch(
+              `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${endpoints.settlementPrograms}?page=${page}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}`,
+            )
+            const data = await response.json()
             if (data?.success) {
               const value = {
                 success: data?.success,
@@ -103,21 +116,19 @@ export default function Programme({
                   total_posts: data?.pagination?.total_posts,
                   total_pages: data?.pagination?.total_pages,
                 },
-                data: [
-                  ...(listPrograms?.data || []),
-                  ...(data?.data || []),
-                ],
+                data: [...(listPrograms?.data || []), ...(data?.data || [])],
               }
               setListPrograms(value)
             }
           } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data:', error)
           }
-        };
-        fetchData();
+        }
+        fetchData()
       })
     }
-  }, [page])
+  }, [page]) //eslint-disable-line
+  // console.log(posts);
   return (
     <section
       ref={sectionRef}
@@ -129,15 +140,16 @@ export default function Programme({
           width={1600}
           height={788}
           alt=''
-          src={'/imgs/immigration/programme/d-bg-programmeV2.webp'}
+          src={imgBg || '/imgs/immigration/programme/d-bg-programmeV2.webp'}
         />
+        <div className='absolute left-0 top-0 h-[30vh] w-full bg-[linear-gradient(176deg,rgba(246,246,244,1)_49%,_rgba(255,255,255,0)_73%)] sm:top-[-100vh] xsm:top-0 xsm:hidden'></div>
       </div>
       <div className='relative z-10 flex section-container sm:items-start sm:space-x-[6.19rem] xsm:w-full xsm:flex-col xsm:px-0'>
         <div className='sticky w-[23.9375rem] space-y-[2.5rem] sm:top-[7.75rem] sm:pb-[6.5rem] xsm:top-[1rem] xsm:z-10 xsm:w-full xsm:space-y-[1rem] xsm:bg-background xsm:px-[1rem] xsm:pb-[1rem]'>
           <h2 className='font-optima font-semibold text-orangetext-900 heading1 sm:capitalize'>
             Các chương trình định cư{' '}
             <span className='font-optima font-semibold capitalize text-orangetext-900 heading1'>
-              {slug}
+              {name}
             </span>
           </h2>
           <FilterProgramme
@@ -162,26 +174,28 @@ export default function Programme({
               />
             ))}
           </div>
-          {!isMobile && listPrograms?.pagination?.current_page !==
-            listPrograms?.pagination?.total_pages && (
-            <div
-              onClick={() => {
-                setPage(page + 1)
-              }}
-              className={cn('flex cursor-pointer items-center space-x-[1.12rem]',
-                isPending && 'pointer-events-none'
-              )}
-            >
-              {isPending ? (
-                <ICLoading className='text-brown' />
-            ) : (
-                <>
-                  <IConSeeMore className='up-down size-[1.375rem] object-contain' />
-                  <p className='text-brown body-14'>XEM THÊM</p>
-                </>
-              )}
-            </div>
-          )}
+          {!isMobile &&
+            listPrograms?.pagination?.current_page !==
+              listPrograms?.pagination?.total_pages && (
+              <div
+                onClick={() => {
+                  setPage(page + 1)
+                }}
+                className={cn(
+                  'flex cursor-pointer items-center space-x-[1.12rem]',
+                  isPending && 'pointer-events-none',
+                )}
+              >
+                {isPending ? (
+                  <ICLoading className='text-brown' />
+                ) : (
+                  <>
+                    <IConSeeMore className='up-down size-[1.375rem] object-contain' />
+                    <p className='text-brown body-14'>XEM THÊM</p>
+                  </>
+                )}
+              </div>
+            )}
           {isMobile &&
             listPrograms?.pagination?.current_page !==
               listPrograms?.pagination?.total_pages && (
@@ -189,7 +203,9 @@ export default function Programme({
                 previousLabel={<ICNext className='' />}
                 nextLabel={<ICNext className='rotate-[180deg]' />}
                 pageCount={listPrograms?.pagination?.total_pages || 1}
-                onPageChange={() => {setPage(page + 1)}}
+                onPageChange={() => {
+                  setPage(page + 1)
+                }}
                 containerClassName={
                   'flex mt-[1.5rem] w-full space-x-[1rem] items-center justify-center [&_.previous_a]:border-0 [&_.next_a]:border-0 [&_li_a]:flex-center [&_li_a]:size-[2rem] [&_li_a]:rounded-[0.75rem] [&_li_a]:border-[0.64px] [&_li_a]:border-solid [&_li_a]:border-[#EBEBEB] [&_li_a]:bg-white [&_li_a]:text-[0.7rem] [&_li_a]:text-[#3F2214] [&_li_a]:font-bold'
                 }

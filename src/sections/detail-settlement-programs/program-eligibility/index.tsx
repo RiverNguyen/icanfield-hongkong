@@ -5,6 +5,7 @@ import {Media} from '@/types/image.interface'
 import {FC, useRef} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css'
+import {Autoplay} from 'swiper/modules'
 export interface IProgramEligibilityProps {
   title?: string
   description?: string
@@ -36,29 +37,52 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
         </p>
       </div>
       <div className='bottom-0 left-0 right-0 h-[31.1875rem] bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)] sm:absolute xsm:hidden'></div>
-      <div className='relative flex sm:absolute sm:bottom-[6.25rem] sm:left-[4.5rem] z-[0] sm:w-[68rem]  sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:flex-col xsm:space-y-[0.88rem] xsm:px-[1rem]'>
-        <Swiper
-          navigation
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-          }}
-          className='xsm:!w-full'
-        >
-          {items &&
-            items.map((item, index) => (
-              <SwiperSlide key={index} className='!flex !items-end'>
+      <div className='relative z-[10] flex sm:absolute sm:bottom-[6.25rem] sm:left-[4.5rem] sm:w-[68rem] sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:w-full xsm:flex-col xsm:space-y-[0.88rem] xsm:pr-[0]'>
+        {Array.isArray(items) && items?.length >= 4 ? (
+          <Swiper
+            navigation
+            breakpoints={{
+              0: {
+                slidesPerView: 1.6,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+            }}
+            loop
+            autoplay={{
+              delay: 3000,
+              pauseOnMouseEnter: true,
+            }}
+            speed={1000}
+            modules={[Autoplay]}
+            className='!w-full xsm:!w-full xsm:!pr-4'
+          >
+            {items.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                className='!flex !items-end'
+              >
                 <ProgramEligibilityItem {...item} />
               </SwiperSlide>
             ))}
-        </Swiper>
+          </Swiper>
+        ) : (
+          <div className='flex flex-nowrap space-x-4'>
+            {items?.map((item, index) => (
+              <div
+                key={index}
+                className='flex items-end'
+              >
+                <ProgramEligibilityItem {...item} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
+
       <Marquee />
     </section>
   )
@@ -101,7 +125,7 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       ref={itemRef}
-      className='group self-end rounded-[1.25rem] p-[1.5rem] text-white transition-all duration-500 sm:min-h-[16rem] sm:w-[15.75rem] sm:bg-[linear-gradient(180deg,#3F2214_31.22%,#A55934_100%)] sm:p-[2.25rem_1rem_2.25rem_1.63rem] sm:hover:bg-white sm:hover:bg-[radial-gradient(55.47%_55.27%_at_15.35%_3.04%,#F5C178_34.24%,rgba(255,255,255,0.00)_100%)] xsm:bg-white xsm:bg-[radial-gradient(67.03%_57.2%_at_7%_6.15%,rgba(245,193,120,0.20)_34.24%,rgba(255,255,255,0.00)_100%)] xsm:shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)]'
+      className='group max-w-[15rem] self-end rounded-[1.25rem] p-[1.5rem] text-white transition-all duration-500 sm:min-h-[16rem] sm:w-full sm:bg-[linear-gradient(180deg,#3F2214_31.22%,#A55934_100%)] sm:p-[2.25rem_1rem_2.25rem_1.63rem] sm:hover:bg-white sm:hover:bg-[radial-gradient(55.47%_55.27%_at_15.35%_3.04%,#F5C178_34.24%,rgba(255,255,255,0.00)_100%)] xsm:bg-white xsm:bg-[radial-gradient(67.03%_57.2%_at_7%_6.15%,rgba(245,193,120,0.20)_34.24%,rgba(255,255,255,0.00)_100%)] xsm:shadow-[0px_1.203px_4.812px_0px_rgba(0,0,0,0.10)]'
     >
       <ImageV2
         src={icon?.url || ''}
@@ -126,9 +150,8 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
           }}
           ref={pRef}
           className='text-greyscaletext-body transition-all duration-500 body-14 sm:translate-y-[11.3rem] sm:pb-[4.63rem] sm:group-hover:translate-y-0'
-        >
-          {description}
-        </p>
+          dangerouslySetInnerHTML={{__html: description || ''}}
+        ></p>
       </div>
     </div>
   )
@@ -137,7 +160,7 @@ const ProgramEligibilityItem: FC<IProgramEligibilityItemProps> = ({
 const Marquee = ({speed = '20s'}: {speed?: string}) => {
   const ITEM_COUNT = 6
   return (
-    <div className='program-eligibility-text absolute bottom-0 left-0 right-0 flex h-[10.4375rem] w-full items-center whitespace-nowrap bg-[#3F2214] text-[6rem] font-extrabold xsm:hidden'>
+    <div className='program-eligibility-text absolute bottom-0 left-0 right-0 flex h-[10.4375rem] w-full items-center whitespace-nowrap bg-[#3F2214] text-[6rem] font-extrabold xsm:hidden z-[11]'>
       <div
         className='slider'
         style={

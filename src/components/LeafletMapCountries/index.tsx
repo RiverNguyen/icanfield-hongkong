@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
 import './styles.css'
+import {usePathname} from 'next/navigation'
 export interface ICountry {
   name: string
   label?: string
@@ -15,6 +16,12 @@ export interface ICountry {
 interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
+  dataCountry?: {
+    slug: string
+    count: number
+    location_name: string
+    metropolis?: string
+  }[]
   onClick?: (country: ICountry) => void
   className?: string
   borderCountries?: string
@@ -37,6 +44,7 @@ const euCountries = new Set()
 export const LeafletMapCountries: FC<ILeafletMapProps> = ({
   mapJson,
   countries,
+  dataCountry,
   onClick,
   className,
   borderCountries,
@@ -55,14 +63,19 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
   const [isMobile, setIsMobile] = useState(false)
   const mapRef = useRef<L.Map | null>(null)
 
+  const path = usePathname() // Lấy đường dẫn hiện tại (vd: "/tour-nuoc-ngoai")
+  const segment = path?.split('/').filter(Boolean)[0] // Lấy phần đầu tiên sau "/"
+  const currentPath = `/${segment}` // Lấy đường dẫn hiện tại không bao gồm phần query string
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMobile(window.innerWidth < 640)
-      countries.forEach((country) => {
-        country.forEach((item) => {
-          euCountries.add(item.name)
+      if (Array.isArray(countries)) {
+        countries.forEach((country) => {
+          country.forEach((item) => {
+            euCountries.add(item.name)
+          })
         })
-      })
+      }
     }
   }, [])
 
@@ -203,37 +216,96 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
         data={mapJson as GeoJsonObject}
         style={geoJsonStyle as GeoJSONOptions}
       />
-      {countries.map((country, index) => {
-        let countryObj: ICountry = {
-          name: country[0].name,
-          label: country[0].label,
-          flag: country[0].flag,
-          number_of_projects: country[0].number_of_projects,
-        }
-        let position: LatLngTuple = getPosition(country[0].name)
-        if (countries.length > 1) {
-          const newPosition = country.find((item) => {
-            if (item.label) return item
-          })
-          if (newPosition) {
-            position = getPosition(newPosition.name)
-            countryObj = {
-              name: newPosition.name,
-              label: newPosition.label,
-              flag: newPosition.flag,
-              number_of_projects: newPosition.number_of_projects,
+      {Array.isArray(dataCountry)
+        ? dataCountry.map((country, index) => {
+            const countryObj: {
+              name: string
+              label: string
+              slug: string
+              flag: string
+              number_of_projects: number
+              metropolis?: string
+            } = {
+              name: country.location_name,
+              label: country.location_name,
+              slug: country.slug,
+              flag: '', // Bạn có thể thêm cờ nếu cần
+              number_of_projects: country.count,
+              metropolis: country.metropolis,
             }
-          }
-        }
-        return (
-          <Marker
-            key={index}
-            position={position} // Tọa độ Canada
-            icon={
-              new L.DivIcon({
-                html: `<div class="custom-marker absolute !left-0 top-0 xsm:!pointer-events-none">
+            const position: LatLngTuple = getPosition(country.location_name)
+            return (
+              <Marker
+                key={index}
+                position={position}
+                icon={
+                  new L.DivIcon({
+                    html: `<div class="custom-marker absolute !left-0 top-0 xsm:!pointer-events-none">
+                            <div class="flex items-center relative">
+                                <div class='size-[0.75rem] bg-[#DAF2AF] rounded-full mr-1 xsm:size-[0.375rem] flex-shrink-0'></div>
+                                <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">${countryObj.metropolis || countryObj.name}</span>
+                                <a href="${currentPath}/dia-diem/${countryObj.slug}" class='flex items-center justify-around absolute bg-white w-[8.63rem] sm:w-max sm:space-x-[0.5rem] p-2 rounded-[0.63rem] bottom-0 left-1/2 -translate-x-1/2 shadow-lg  transition-all duration-300 opacity-0 info-tag '>
+                                      <div class='flex items-center justify-center p-4 rounded-[0.5rem] bg-primary-brown'>
+                                        <img src='/icons/EB5/pioneering-values/project.svg' class='size-[1.01563rem] object-cover' />
+                                      </div>
+                                      <div class='flex flex-col '>
+                                            <span class='text-greentext font-normal leading-[1.25] text-[1.25rem]'>${countryObj?.number_of_projects}</span>
+                                            <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>${isAustralia ? countryObj.label : 'Dự án EB-5'}</span>
+                                      </div>
+                                </a>
+                            </div>
+                              <div class='text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.625rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem] xsm:text-[0.5rem] xsm:px-1 xsm:py-[0.12rem] xsm:bg-[#F7F6F1] shadow-[0px_1.371px_5.482px_0px_rgba(0,0,0,0.10)] xsm:h-auto xsm:pt-1'>
+                                ${countryObj.label}
+                              </div>
+                      </div>`,
+                    className:
+                      'my-div-icon !w-[5rem] !h-[3.26rem] relative marker-custom__nation  xsm:!pointer-events-none group',
+                    iconSize: [30, 30],
+                  })
+                }
+                eventHandlers={{
+                  click: () => {
+                    if (onClick) {
+                      onClick(countryObj)
+                    }
+                    handleCountryClick(countryObj.name)
+                  },
+                }}
+              ></Marker>
+            )
+          })
+        : Array.isArray(countries) &&
+          countries.map((country, index) => {
+            let countryObj: ICountry = {
+              name: country[0].name,
+              label: country[0].label,
+              flag: country[0].flag,
+              number_of_projects: country[0].number_of_projects,
+            }
+            let position: LatLngTuple = getPosition(country[0].name)
+            if (countries.length > 1) {
+              const newPosition = country.find((item) => {
+                if (item.label) return item
+              })
+              if (newPosition) {
+                position = getPosition(newPosition.name)
+                countryObj = {
+                  name: newPosition.name,
+                  label: newPosition.label,
+                  flag: newPosition.flag,
+                  number_of_projects: newPosition.number_of_projects,
+                }
+              }
+            }
+            return (
+              <Marker
+                key={index}
+                position={position}
+                icon={
+                  new L.DivIcon({
+                    html: `<div class="custom-marker absolute !left-0 top-0 xsm:!pointer-events-none">
                     <div class="flex items-center relative">
-                        <div class='size-[0.75rem] bg-[#DAF2AF] rounded-full mr-1 xsm:size-[0.375rem]'></div>
+                        <div class='size-[0.75rem] bg-[#DAF2AF] rounded-full mr-1 xsm:size-[0.375rem] '></div>
                         <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">${countryObj.label ? countryObj.label : countryObj.name}</span>
                         <div class='flex items-center justify-around absolute bg-white w-[8.63rem] sm:w-max sm:space-x-[0.5rem] p-2 rounded-[0.63rem] bottom-0 left-1/2 -translate-x-1/2 shadow-lg  transition-all duration-300 opacity-0 info-tag '>
                               <div class='flex items-center justify-center p-4 rounded-[0.5rem] bg-primary-brown'>
@@ -241,7 +313,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
                               </div>
                               <div class='flex flex-col '>
                                     <span class='text-greentext font-normal leading-[1.25] text-[1.25rem]'>${countryObj?.number_of_projects || 1}</span>
-                                    <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>${isAustralia?countryObj.label ? countryObj.label : countryObj.name:'Dự án EB-5'}</span>
+                                    <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>${isAustralia ? (countryObj.label ? countryObj.label : countryObj.name) : 'Dự án EB-5'}</span>
                               </div>
                         </div>
                     </div>
@@ -249,22 +321,22 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
                         ${countryObj.label ? countryObj.label : countryObj.name}
                       </div>
               </div>`,
-                className:
-                  'my-div-icon !w-[5rem] !h-[3.26rem] relative marker-custom__nation  xsm:!pointer-events-none group',
-                iconSize: [30, 30],
-              })
-            }
-            eventHandlers={{
-              click: () => {
-                if (onClick) {
-                  onClick(countryObj)
+                    className:
+                      'my-div-icon !w-[5rem] !h-[3.26rem] relative marker-custom__nation  xsm:!pointer-events-none group',
+                    iconSize: [30, 30],
+                  })
                 }
-                handleCountryClick(countryObj.name)
-              },
-            }}
-          ></Marker>
-        )
-      })}
+                eventHandlers={{
+                  click: () => {
+                    if (onClick) {
+                      onClick(countryObj)
+                    }
+                    handleCountryClick(countryObj.name)
+                  },
+                }}
+              ></Marker>
+            )
+          })}
     </MapContainer>
   )
 }

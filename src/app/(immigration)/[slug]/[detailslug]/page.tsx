@@ -22,7 +22,7 @@ export default async function page({
       api:
         endpoints.settlementPrograms + `/${params.slug}/${params.detailslug}`,
       option: {
-        revalidate: 600,
+        next: { revalidate: 10 }
       },
     })
     const fetchAcfNation = fetchDataACF({
@@ -33,13 +33,13 @@ export default async function page({
         params?.slug +
         '&acf_format=standard',
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     })
     const requestTaxonomies = {
       api: '/taxonomies-settlement',
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }
     const [programResponse, dataAcfNation,dataTaxonomies] = await Promise.all([

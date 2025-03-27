@@ -34,7 +34,7 @@ export type ContactInfoProps = {
 
 const ContactInfo = ({addres, email, phone, urlIFame}: ContactInfoProps) => {
   return (
-    <section className='section-container xsm:mt-[0rem] xsm:bg-background relative z-10'>
+    <section className='section-container xsm:mt-[0rem] xsm:bg-background relative z-[11]'>
       <div className='flex justify-between xsm:flex-col xsm:space-y-6'>
         <div
           className='flex h-[8.6875rem] items-start space-x-4 xsm:h-auto'
@@ -103,7 +103,7 @@ const ContactInfo = ({addres, email, phone, urlIFame}: ContactInfoProps) => {
               {phone?.title}
             </h3>
             <Link
-              href={'tel:' + phone?.description?.url || '#'}
+              href={phone?.description?.url || '#'}
               target={phone?.description?.target}
               className='mt-1 text-xl font-bold leading-normal text-Phase-1-Brown xsm:text-[1.125rem]'
             >
@@ -112,7 +112,7 @@ const ContactInfo = ({addres, email, phone, urlIFame}: ContactInfoProps) => {
           </div>
         </div>
       </div>
-      <div className='mt-6 h-[28.125rem] overflow-hidden rounded-xl border border-[#BCBCBC] xsm:mt-8'>
+      <div className='mt-6 h-[28.125rem] overflow-hidden rounded-xl border border-[#BCBCBC] xsm:mt-8 z-[11] relative'>
         <iframe
           width='100%'
           height='100%'

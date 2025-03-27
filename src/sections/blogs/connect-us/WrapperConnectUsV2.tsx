@@ -65,7 +65,7 @@ const WrapperConnectUsV2 = ({
         className='absolute top-0 left-0 pointer-events-none z-[3] w-full !h-auto object-fill xsm:hidden'
         fill
         sizes='100vw'
-        src={'/imgs/contact/about-usv3.png'}
+        src={'/imgs/contact/about-usv3.webp'}
         alt='background connect us'
         quality={95}
       />

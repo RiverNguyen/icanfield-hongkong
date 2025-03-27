@@ -45,16 +45,15 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
         <ImageV2
           src={'/imgs/detail-settlement-programs/mask_group.webp'}
           alt='mask_group'
-          width={1312 * 2}
-          height={738 * 2}
+          width={1312 * 2 || 40}
+          height={738 * 2 || 40}
           className='absolute right-[-31.42rem] top-[-18.25rem] h-[49.5865rem] w-[111.79638rem] object-contain xsm:hidden'
         />
         <h2 className='relative font-optima font-semibold text-brown heading1'>
           {title}
         </h2>
-        <p className='relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body body16-r55 sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]'>
-          {description}
-        </p>
+        <div className='relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body body16-r55 sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]' dangerouslySetInnerHTML={{__html: description || ''}}>
+        </div>
         <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem]'>
           <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative'>
             {isClient &&
@@ -62,7 +61,7 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
               (media.type === 'upload' ? (
                 <ReactPlayer
                   ref={playerRef}
-                  url={media[media.type].url}
+                  url={media[media.type].url || ''}
                   width='100%'
                   height='100%'
                   className='!h-full !w-full object-cover [&__video]:object-cover'
@@ -88,8 +87,8 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
           <ImageV2
             src={thumbnail ? thumbnail.url : ''}
             alt={thumbnail ? thumbnail.alt : ''}
-            width={thumbnail && thumbnail.width ? thumbnail.width : 1312 * 2}
-            height={thumbnail && thumbnail.height ? thumbnail.height : 738 * 2}
+            width={thumbnail && thumbnail.width ? thumbnail.width : 1312 * 2 || 40}
+            height={thumbnail && thumbnail.height ? thumbnail.height : 738 * 2 || 40}
             className={cn(
               'absolute left-0 top-0 h-full w-full object-cover transition-all',
               {
@@ -97,14 +96,14 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
               },
             )}
           />
-          <div
+          {/* <div
             className={cn(
               'absolute left-0 top-0 block h-full w-full bg-[linear-gradient(0deg,rgba(0,0,0,0.20)_0%,rgba(0,0,0,0.20)_100%)] transition-all',
               {
                 'invisible opacity-0': playerProps.playing,
               },
             )}
-          ></div>
+          ></div> */}
           <button
             onClick={handlePlay}
             className={cn(

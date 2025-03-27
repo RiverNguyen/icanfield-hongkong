@@ -74,11 +74,11 @@ export default function BannerAboutus({
         )}
       >
         <span
-          dangerouslySetInnerHTML={{__html: dataAcfBanner?.label_group}}
+          dangerouslySetInnerHTML={{__html: dataAcfBanner?.label_group || ''}}
           className='font-optima text-[2.25rem] font-semibold leading-[1.3] tracking-[-0.09rem] text-brown xsm:text-[1.25rem] xsm:leading-[1.2] xsm:tracking-[-0.025rem]'
         ></span>
         <div
-          dangerouslySetInnerHTML={{__html: dataAcfBanner?.decscripts}}
+          dangerouslySetInnerHTML={{__html: dataAcfBanner?.decscripts || ''}}
           className='tracking-[-0.00875rem] text-greyscaletext-800 body-14'
         ></div>
       </div>

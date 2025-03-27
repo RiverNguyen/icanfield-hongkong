@@ -8,8 +8,7 @@ import 'leaflet/dist/leaflet.css'
 import './style.css'
 import {useCallback, useEffect, useRef, useState} from 'react'
 import {GeoJSON, MapContainer} from 'react-leaflet'
-
-import mapJson from '@/sections/aboutus/office-map/custom.geo.json'
+// import mapJson from '@/sections/aboutus/office-map/custom.geo.json'
 import useSWR from 'swr'
 import {fetcher} from '@/lib/swr'
 import {useSearchParams} from 'next/navigation'
@@ -25,7 +24,15 @@ const MapPassport = () => {
   const searchParams = useSearchParams()
   const postal = searchParams?.get('postal')
   const [isMobile, setIsMobile] = useState(false)
-
+  const [geoData, setGeoData] = useState(null)
+  useEffect(() => {
+    fetch('/geojson/custom.geo.json')
+      .then((response) => response.json())
+      .then((data) => setGeoData(data))
+  }, [])
+  useEffect(() => {
+    console.log(geoData)
+  }, [geoData])
   const {data} = useSWR(
     postal ? `/v3/visa-single/${postal}` : null,
     fetcherWithCustomBase,
@@ -109,7 +116,7 @@ const MapPassport = () => {
     })
   }
   return (
-    <div className='relative size-full bg-white xsm:min-h-[16.125rem] xsm:bg-transparent xsm:-z-[1]'>
+    <div className='relative size-full bg-white xsm:z-[51] xsm:min-h-[16.125rem] xsm:bg-transparent'>
       <MapContainer
         key={isMobile ? 'mobile-map' : 'desktop-map'}
         style={{
@@ -130,12 +137,14 @@ const MapPassport = () => {
         ref={mapRef}
         scrollWheelZoom={false}
       >
-        <GeoJSON
-          ref={geoJsonRef}
-          data={mapJson as GeoJsonObject}
-          style={geoJsonStyle as GeoJSONOptions}
-          onEachFeature={onEachFeature}
-        />
+        {geoData && (
+          <GeoJSON
+            ref={geoJsonRef}
+            data={geoData as GeoJsonObject}
+            style={geoJsonStyle as GeoJSONOptions}
+            onEachFeature={onEachFeature}
+          />
+        )}
       </MapContainer>
 
       {data?.visa_free_access && <ListCountry data={data} />}

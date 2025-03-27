@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import {Button} from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -8,7 +8,7 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import {Input} from '@/components/ui/input'
 import {
   Select,
   SelectContent,
@@ -18,10 +18,10 @@ import {
 } from '@/components/ui/select'
 import CF7Request from '@/fetch/cf7Request'
 import postData from '@/fetch/postData'
-import { isLockScroll } from '@/hooks/useBodyScrollLock'
+import {isLockScroll} from '@/hooks/useBodyScrollLock'
 import useIsMobile from '@/hooks/useIsMobile'
-import { cn } from '@/lib/utils'
-import { ICLoading } from '@/sections/blogs/connect-us/FormConnectUs'
+import {cn} from '@/lib/utils'
+import {ICLoading} from '@/sections/blogs/connect-us/FormConnectUs'
 import IConArrowdown from '@/sections/document-appraisal/IConArrowdown'
 import ItemSlider from '@/sections/document-appraisal/ItemSlider'
 import ProgramResult from '@/sections/document-appraisal/ProgramResult'
@@ -33,11 +33,11 @@ import {
   valueFilterPost,
 } from '@/types/dataAppraisal.interface'
 import endpoints from '@/utils/endpoints'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useRef, useState, useTransition } from 'react'
-import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
-import { z } from 'zod'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {useRef, useState, useTransition} from 'react'
+import {useForm} from 'react-hook-form'
+import {toast} from 'sonner'
+import {z} from 'zod'
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -193,7 +193,7 @@ export default function FormAppraisal({
       }
       const dataPost = await postData({
         api: '/settlementdocument',
-        option: {revalidate: 10},
+        option: {next: {revalidate: 10}},
         values: dataFilter,
       })
       if (dataPost?.status) {
@@ -214,6 +214,14 @@ export default function FormAppraisal({
         setErrorField(true)
       }
     })
+  }
+  function decodeHTMLEntities(text: string) {
+    if (typeof window !== 'undefined') {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(text, 'text/html')
+      return doc.body.textContent || ''
+    }
+    return text // Trả về chuỗi gốc nếu không chạy trên trình duyệt
   }
   return (
     <>
@@ -605,7 +613,7 @@ export default function FormAppraisal({
                                 className='cursor-pointer border-b-[1px] border-solid border-[rgba(0,0,0,0.10)] p-[0.75rem_1rem]'
                                 value={e?.slug}
                               >
-                                {e?.name}
+                                {decodeHTMLEntities(e?.name)}
                               </SelectItem>
                             ),
                           )}

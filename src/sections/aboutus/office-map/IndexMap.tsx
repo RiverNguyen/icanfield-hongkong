@@ -9,7 +9,6 @@ import ChevronRight from '@/components/svg/ChevronRight'
 import {cn} from '@/lib/utils'
 import {ItemMap} from '@/pages/about-us/IndexAboutUs'
 import {LeafletMapV2} from '@/sections/aboutus/office-map-v2'
-import customGeoJson from '@/sections/aboutus/office-map/custom.geo.json'
 import PopupMarker from '@/sections/aboutus/office-map/PopupMarker'
 // import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
 import {FeatureCollection} from 'geojson'
@@ -26,6 +25,12 @@ const IndexMap = ({dataOffice}: {dataOffice: ItemMap[]}) => {
   const [dataOfficeSelected, setDataOfficeSelected] = useState<ItemMap | null>(
     null,
   )
+  const [geoData, setGeoData] = useState<FeatureCollection | null>(null)
+  useEffect(() => {
+    fetch('/geojson/custom.geo.json')
+      .then((response) => response.json())
+      .then((data) => setGeoData(data))
+  }, [])
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (open) {
@@ -41,20 +46,23 @@ const IndexMap = ({dataOffice}: {dataOffice: ItemMap[]}) => {
     setOpen(true)
     setDataOfficeSelected(country)
   }
+  // console.log(dataOffice)
   return (
     <div className=''>
       <div
         id='map_container'
         className='relative z-10 flex w-fit items-center xsm:w-full'
       >
-        <LeafletMapV2
-          className='!h-[32.68438rem] !w-[49.6875rem] xsm:!h-[18.75rem] xsm:!w-full'
-          countries={dataOffice}
-          mapJson={customGeoJson as FeatureCollection}
-          onClick={handleClickMarker}
-          zoomDesktop={4}
-          isControlZoom={false}
-        />
+        {geoData && (
+          <LeafletMapV2
+            className='!h-[32.68438rem] !w-[49.6875rem] xsm:!h-[18.75rem] xsm:!w-full'
+            countries={dataOffice}
+            mapJson={geoData ?? ({} as FeatureCollection)}
+            onClick={handleClickMarker}
+            zoomDesktop={4}
+            isControlZoom={false}
+          />
+        )}
       </div>
       <div
         onClick={() => setOpen(false)}
@@ -78,9 +86,9 @@ const IndexMap = ({dataOffice}: {dataOffice: ItemMap[]}) => {
             flag: country.flag,
           }
           if (dataOffice.length > 1) {
-            const newPosition = dataOffice.find((item) => {
-              if (item.name) return item
-            })
+            const newPosition = dataOffice.find(
+              (item) => item.name === country.name,
+            )
             if (newPosition) {
               countryObj = {
                 name: newPosition.name,
@@ -129,7 +137,7 @@ function MarkerButton({onClick, name, label, flag}: IMarkerButtonProps) {
         <span className='text-[0.5rem] font-medium leading-[1.5] tracking-[-0.005rem] text-tagtext'>
           Văn phòng
         </span>
-        <span className='text-brown body-14-s'>{label}</span>
+        <span className='text-[0.75rem] font-semibold text-brown'>{label}</span>
       </div>
       <ChevronRight className='size-[1.5rem] text-tagtext' />
     </button>

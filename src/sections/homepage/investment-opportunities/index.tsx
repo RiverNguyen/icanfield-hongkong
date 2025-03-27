@@ -117,23 +117,23 @@ function ItemInvestmentOpportunities({
         className='absolute bottom-0 left-0 right-0 top-0 size-full object-cover xsm:hidden'
         src={background_pc.url || ''}
         alt={background_pc.alt}
-        width={background_pc.width * 2}
-        height={background_pc.height * 2}
+        width={background_pc.width * 2 || 40}
+        height={background_pc.height * 2 || 40}
       />
       <ImageV2
         className='absolute bottom-0 left-0 right-0 h-[38.56rem] w-full object-cover sm:hidden'
         src={background_mb.url || ''}
         alt={background_mb.alt}
-        width={background_mb.width * 2}
-        height={background_mb.height * 2}
+        width={background_mb.width * 2 || 40}
+        height={background_mb.height * 2 || 40}
       />
       <div className='relative mx-auto flex flex-col items-center sm:max-w-[82rem] sm:flex-row sm:items-stretch'>
         <ImageV2
           className='h-[12.5rem] w-[17.24138rem] object-cover sm:h-[18.125rem] sm:w-[25rem]'
           src={image.url || ''}
           alt={image.alt}
-          width={image.width * 2}
-          height={image.height * 2}
+          width={image.width * 2 || 40}
+          height={image.height * 2 || 40}
         />
         <div className='p-[2.5rem_1rem_1.25rem] sm:ml-[10rem] sm:space-y-[1.75rem] sm:p-0'>
           <h3
@@ -151,8 +151,8 @@ function ItemInvestmentOpportunities({
               )}
               alt='chevron-up'
               src={'/icons/chevron-up.svg'}
-              width={24 * 2}
-              height={24 * 2}
+              width={24 * 2 || 40}
+              height={24 * 2 || 40}
             />
           </h3>
           <p className='my-[0.75rem] h-[0.0625rem] w-full bg-[rgba(112,115,124,0.22)] sm:bg-[linear-gradient(90deg,rgba(112,115,124,0.22)_24.3%,rgba(112,115,124,0.00)_82.57%)]'></p>

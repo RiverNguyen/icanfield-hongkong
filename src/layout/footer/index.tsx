@@ -1,9 +1,9 @@
 'use client'
 import ButtonBorder from '@/components/button/ButtonBorder'
 import ImageV2 from '@/components/image/ImageV2'
-import { SuccessPopup } from '@/components/success-popup'
+import {SuccessPopup} from '@/components/success-popup'
 import CF7Request from '@/fetch/cf7Request'
-import { isLockScroll } from '@/hooks/useBodyScrollLock'
+import {isLockScroll} from '@/hooks/useBodyScrollLock'
 import ICArrowRinght from '@/layout/footer/ICArrowRinght'
 import {
   contactInformatio,
@@ -12,7 +12,7 @@ import {
 } from '@/types/dataFooter.interface'
 import endpoints from '@/utils/endpoints'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 export interface social {
   icon: {
@@ -73,11 +73,11 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
     }
   }
   return (
-    <footer className='relative bg-orangetext-900 pt-[6rem] xsm:pt-[2.5rem] z-[25]'>
+    <footer className='relative z-[25] bg-orangetext-900 pt-[6rem] xsm:pt-[2.5rem]'>
       <div className='mx-auto mb-[3.25rem] flex flex-col items-center space-y-[1.5rem] xsm:mb-[2.5rem] xsm:space-y-[1rem]'>
         <h3
           dangerouslySetInnerHTML={{
-            __html: dataFooter?.title,
+            __html: dataFooter?.title || '',
           }}
           className='w-[45.29138rem] text-center font-optima font-semibold tracking-[-0.05rem] text-textwhitetest heading2 xsm:w-full'
         ></h3>

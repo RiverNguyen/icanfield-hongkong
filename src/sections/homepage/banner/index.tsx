@@ -1,25 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
+import Image from 'next/image'
 import {FilterOption} from '@/types/bannerFilter.interface'
 import {convertToIframe} from '@/utils/convertToIframe'
 import React, {useEffect, useRef, useState} from 'react'
 import {FilterData} from './bannerHp.interface'
-import ReactPlayer from 'react-player'
-import 'swiper/css'
 import {Autoplay, EffectFade} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {filterOptions} from './constants'
-
+const LazyReactPlayer = React.lazy(() => import('react-player'))
+import {Suspense} from 'react'
 export interface IDataMedia {
   type: 'upload' | 'youtube' | 'tiktok' | 'slide'
   [key: string]: any
 }
-
 export interface IBannerHomepageProps {
   data: IDataMedia
 }
-
 const BannerHomepage = ({
   data,
   dataFilter,
@@ -27,7 +25,6 @@ const BannerHomepage = ({
   data: IDataMedia
   dataFilter: FilterData
 }) => {
-  const [isClient, setIsClient] = useState(false)
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
   const isSelecting = useRef(false)
   const [openPopupFilter, setOpenPopupFilter] = React.useState(false)
@@ -35,9 +32,6 @@ const BannerHomepage = ({
   const [selectedItems, setSelectedItems] = useState<{
     [key: number]: {label: string; slug: string; key: string}
   }>([])
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
   //handle update FilterOption when dataFilter
   const [filterOptionsLastest, setFilterOptionsLastest] =
     useState(filterOptions)
@@ -59,12 +53,9 @@ const BannerHomepage = ({
     })
     setFilterOptionsLastest(updatedFilterOptions)
   }, [])
-  //handle click dropdown filter
-  useEffect(() => {
-    console.log('filterOptionsLastest', filterOptionsLastest)
-  }, [filterOptionsLastest])
+  useEffect(() => {}, [filterOptionsLastest])
   const [openFilters, setOpenFilters] = React.useState(
-    new Array(filterOptions.length).fill(false), // Khởi tạo trạng thái đóng cho tất cả filters
+    new Array(filterOptions.length).fill(false),
   )
 
   const toggleDropdown = (index: number) => {
@@ -94,7 +85,7 @@ const BannerHomepage = ({
     // Reset trạng thái sau khi tất cả cập nhật hoàn thành
     setTimeout(() => {
       isSelecting.current = false
-    }, 200) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
+    }, 0) // Tăng thời gian lên 200ms để chắc chắn tất cả trạng thái được ổn định
   }
   //handle click outside filter
   const handleClickOutside = (e: MouseEvent) => {
@@ -128,7 +119,7 @@ const BannerHomepage = ({
   }
 
   const searchFilter = () => {
-    console.log('search', selectedItems)
+    // console.log('search', selectedItems)
 
     const queryString = Object.values(selectedItems)
       .map((item) => {
@@ -138,8 +129,8 @@ const BannerHomepage = ({
       .join('&')
 
     // Tạo URL đầy đủ
-    const redirectUrl = `/search-result?${queryString}`
-    console.log('Redirecting to:', redirectUrl)
+    const redirectUrl = `/ket-qua-tim-kiem?${queryString}`
+    // console.log('Redirecting to:', redirectUrl)
 
     // Chuyển hướng
     window.location.href = redirectUrl
@@ -149,32 +140,41 @@ const BannerHomepage = ({
       <h1 className='hidden'>iCcanfield</h1>
       {data.type != 'slide' ? (
         <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative xsm:h-[14.625rem]'>
-          {isClient && data.type === 'upload' ? (
-            <ReactPlayer
-              url={data[data.type].url || ''}
-              playing
-              loop
-              muted
-              preload='none'
-              playsinline
-              width='100%'
-              height='100%'
-              className='!h-full !w-full object-cover [&__video]:object-cover'
-            />
-          ) : (
-            isClient && (
-              <ReactPlayer
-                url={convertToIframe(data) || ''}
+          {data.type === 'upload' ? (
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyReactPlayer
+                url={data[data.type].url || ''}
                 playing
                 loop
-                playsinline
                 muted
                 preload='none'
+                playsinline
                 width='100%'
                 height='100%'
-                className='!h-full !w-full object-cover [&_div_iframe]:object-cover'
+                className='!h-full !w-full object-cover [&__video]:object-cover'
               />
-            )
+            </Suspense>
+          ) : data.type === 'tiktok' ? (
+            <iframe
+              src={`${convertToIframe(data) || ''}`}
+              width='100%'
+              height='100%'
+              frameBorder='0'
+              allowFullScreen
+              className='!h-full !w-full object-cover'
+            ></iframe>
+          ) : (
+            <LazyReactPlayer
+              url={convertToIframe(data) || ''}
+              playing
+              loop
+              playsinline
+              muted
+              preload='none'
+              width='100%'
+              height='100%'
+              className='!h-full !w-full object-cover [&_div_iframe]:object-cover'
+            />
           )}
         </div>
       ) : (
@@ -202,8 +202,8 @@ const BannerHomepage = ({
                   <ImageV2
                     src={item.url || ''}
                     alt={item.alt}
-                    width={item.width * 2}
-                    height={item.height * 2}
+                    width={item.width * 2 || 40}
+                    height={item.height * 2 || 40}
                     className='h-full w-full object-cover'
                   />
                 </SwiperSlide>
@@ -217,8 +217,8 @@ const BannerHomepage = ({
         <ImageV2
           src={data.logo.url || ''}
           alt={data.logo.alt}
-          width={data.logo.width * 2}
-          height={data.logo.height * 2}
+          width={data.logo.width * 2 || 40}
+          height={data.logo.height * 2 || 40}
           className='pointer-events-none absolute left-1/2 top-[17.31rem] z-[2] h-[6.76769rem] w-[22.02719rem] -translate-x-1/2 object-contain xsm:hidden'
         />
       )}
@@ -239,11 +239,12 @@ const BannerHomepage = ({
                     }}
                   >
                     <div className='mr-[0.75rem] flex items-center justify-center rounded-[0.5rem] bg-[rgba(18,18,18,0.08)] p-[0.62rem]'>
-                      <ImageV2
+                      <Image
                         src={item?.icon || ''}
                         alt='icon'
                         width={40}
                         height={40}
+                        loading='lazy'
                         className='size-[1.25rem] object-contain'
                       />
                     </div>

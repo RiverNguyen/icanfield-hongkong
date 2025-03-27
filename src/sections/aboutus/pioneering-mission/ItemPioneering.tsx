@@ -27,7 +27,7 @@ export default function ItemPioneering({
       />
       <div className='relative z-10 flex h-full w-[29.4375rem] flex-col justify-between p-[3rem_1rem_2rem_3rem] xsm:w-[16.25rem] xsm:p-[1.25rem_0rem_1rem_1.25rem]'>
         <div
-          dangerouslySetInnerHTML={{__html: data?.decscripts}}
+          dangerouslySetInnerHTML={{__html: data?.decscripts || ''}}
           className='[&_p]:sub-24S [&_strong]:sub-24S [&_p]:text-greyscaletext-200 [&_p]:transition-all [&_p]:delay-300 group-hover:[&_p]:text-white xsm:[&_p]:text-[0.8125rem] xsm:[&_p]:font-medium xsm:[&_p]:leading-[1.5] xsm:[&_p]:tracking-[0.00813rem] xsm:[&_p]:text-white [&_strong]:text-greyscaletext-900 [&_strong]:transition-all [&_strong]:delay-300 group-hover:[&_strong]:font-normal group-hover:[&_strong]:text-white xsm:[&_strong]:text-[0.8125rem] xsm:[&_strong]:font-medium xsm:[&_strong]:text-white'
         ></div>
         <p className='xsm:heading2 font-optima text-[2.5rem] font-semibold tracking-[-0.05rem] text-brown transition-all delay-300 duration-700 group-hover:font-semibold group-hover:text-white xsm:font-semibold xsm:text-white'>

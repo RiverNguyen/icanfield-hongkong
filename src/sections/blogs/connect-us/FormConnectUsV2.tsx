@@ -1,9 +1,9 @@
 'use client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {useForm} from 'react-hook-form'
+import {z} from 'zod'
 
-import { SuccessPopup } from '@/components/success-popup'
+import {SuccessPopup} from '@/components/success-popup'
 import {
   Form,
   FormControl,
@@ -12,21 +12,21 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import {Input} from '@/components/ui/input'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from '@/components/ui/select'
 import CF7Request from '@/fetch/cf7Request'
-import { isLockScroll } from '@/hooks/useBodyScrollLock'
+import {isLockScroll} from '@/hooks/useBodyScrollLock'
 import useIsMobile from '@/hooks/useIsMobile'
-import { cn } from '@/lib/utils'
-import { Term } from '@/sections/homepage/banner/bannerHp.interface'
+import {cn} from '@/lib/utils'
+import {Term} from '@/sections/homepage/banner/bannerHp.interface'
 import endpoints from '@/utils/endpoints'
-import { useRef, useState, useTransition } from 'react'
+import {useRef, useState, useTransition} from 'react'
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -42,7 +42,7 @@ const formSchema = z.object({
     ),
   mess: z.string(),
   nationSettlement: z.string({
-    required_error: "Trường này không được để trống.",
+    required_error: 'Trường này không được để trống.',
   }),
 })
 
@@ -60,7 +60,7 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const [textSelect, setTextSelect] = useState<string>('')
   const [isPending, setTransition] = useTransition()
-  const [dataPopupMb, setDataPopupMb] = useState<boolean>(false)  
+  const [dataPopupMb, setDataPopupMb] = useState<boolean>(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -71,13 +71,13 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
       nationSettlement: '',
     },
   })
-  const { setValue } = form;
+  const {setValue} = form
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    // console.log(values)
     setTransition(async () => {
       const request = new CF7Request(values)
       const response = await request.send(endpoints.contactForm)
-      console.log(response);
+      console.log(response)
       setIsSubmitting({isSubmitting: false, isSuccess: true})
       isLockScroll(true)
       timeoutRef.current = setTimeout(closePopup, 5000)
@@ -211,77 +211,98 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
             />
           </div>
           <FormField
-              control={form.control}
-              name="nationSettlement"
-              render={({ field }) => (
-                  <FormItem className='relative'>
-                      <Select disabled={isMobile} onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl className="xsm:mt-[0.75rem] mt-[1.5rem] xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5] h-[3rem] rounded-[0.75rem] border border-solid border-[#0000001A] bg-[#F3F3F3] p-[1rem_0.75rem]">
-                              <SelectTrigger>
-                                  {isMobile ? !field.value &&
-                                      <p className="hidden body16-m text-greyscaletext-800 text-start">Chương trình định cư bạn quan tâm<span className="text-errtext">*</span></p>
-                                      : 
-                                      <p className="hidden body16-m text-greyscaletext-800 text-start">Chương trình định cư bạn quan tâm<span className="text-errtext">*</span></p>
-                                  }
-                                  {isMobile && field.value &&  
-                                      <div className="body16-m text-greyscaletext-800 text-start">{textSelect}</div>
-                                  }
-                                  <SelectValue placeholder="" />
-                              </SelectTrigger>
-                          </FormControl>
-                          <SelectContent className="xsm:!hidden bg-white p-[0.5rem] rounded-[0.5rem] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)]">
-                              {dataTaxonomies?.map((e: Term, index: number) => (
-                                  <SelectItem
-                                      key={index}
-                                      className="cursor-pointer p-[0.75rem_1rem] border-b-[1px] border-solid border-[rgba(0,0,0,0.10)]"
-                                      value={'Chương trình định cư' + e?.slug}
-                                  >
-                                      Chương trình định cư {e?.name}
-                                  </SelectItem>
-                              ))}
-                          </SelectContent>
-                      </Select>
-                      <div
-                        onClick={() => {
-                            if (isMobile) {
-                              setDataPopupMb(true)
-                            }
-                        }}
-                        className="sm:hidden bg-transparent absolute top-0 left-0 size-full z-40"
+            control={form.control}
+            name='nationSettlement'
+            render={({field}) => (
+              <FormItem className='relative'>
+                <Select
+                  disabled={isMobile}
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl className='mt-[1.5rem] h-[3rem] rounded-[0.75rem] border border-solid border-[#0000001A] bg-[#F3F3F3] p-[1rem_0.75rem] xsm:mt-[0.75rem] xsm:!opacity-100 [&>p]:[&[data-placeholder]]:block [&>p]:[&[data-placeholder]]:opacity-[0.5]'>
+                    <SelectTrigger>
+                      {isMobile ? (
+                        !field.value && (
+                          <p className='hidden text-start text-greyscaletext-800 body16-m'>
+                            Chương trình định cư bạn quan tâm
+                            <span className='text-errtext'>*</span>
+                          </p>
+                        )
+                      ) : (
+                        <p className='hidden text-start text-greyscaletext-800 body16-m'>
+                          Chương trình định cư bạn quan tâm
+                          <span className='text-errtext'>*</span>
+                        </p>
+                      )}
+                      {isMobile && field.value && (
+                        <div className='text-start text-greyscaletext-800 body16-m'>
+                          {textSelect}
+                        </div>
+                      )}
+                      <SelectValue placeholder='' />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent className='rounded-[0.5rem] bg-white p-[0.5rem] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.20)] xsm:!hidden'>
+                    {dataTaxonomies?.map((e: Term, index: number) => (
+                      <SelectItem
+                        key={index}
+                        className='cursor-pointer border-b-[1px] border-solid border-[rgba(0,0,0,0.10)] p-[0.75rem_1rem]'
+                        value={'Chương trình định cư' + e?.slug}
                       >
-                      </div>
-                      <div className={cn("p-[1rem] !mt-0 transition-all translate-y-[calc(100%+2rem)] z-[49] rounded-[0.5rem_0.5rem_0_0] overflow-hidden overflow-y-auto sm:hidden max-h-[60vh] fixed bottom-0 left-0 w-full bg-white",
-                          dataPopupMb && 'translate-y-0 shadow-inner'
-                      )}>
-                          {dataTaxonomies?.map((e: Term, index: number) => (
-                              <p
-                                  key={index}
-                                  className={cn("p-[1rem] border-b-[1px] border-solid last:border-b-0",
-                                      field?.value === e?.slug && 'bg-background'
-                                  )}
-                                  onClick={() => {
-                                      setValue('nationSettlement', 'Chương trình định cư' + e?.slug, { shouldValidate: true })
-                                      setTextSelect('Chương trình định cư' + e?.name)
-                                      setDataPopupMb(false)
-                                  }}
-                              >
-                                  Chương trình định cư {e?.name}
-                              </p>
-                          ))}
-                      </div>
-                      <div
-                          className={cn("fixed hidden top-0 left-0 w-full h-[100vh] bg-black opacity-[0.5] z-[48]",
-                              dataPopupMb && 'block'
-                          )}
-                          onClick={() => {
-                              setDataPopupMb(false)
-                          }}
-                      >
-                      </div>
-                      <FormMessage className='absolute bottom-[-0.2rem] left-0 translate-y-full text-errtext xsm:-bottom-[0.1rem]' />
-                  </FormItem>
-              )}
-            />
+                        Chương trình định cư {e?.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <div
+                  onClick={() => {
+                    if (isMobile) {
+                      setDataPopupMb(true)
+                    }
+                  }}
+                  className='absolute left-0 top-0 z-40 size-full bg-transparent sm:hidden'
+                ></div>
+                <div
+                  className={cn(
+                    'fixed bottom-0 left-0 z-[49] !mt-0 max-h-[60vh] w-full translate-y-[calc(100%+2rem)] overflow-hidden overflow-y-auto rounded-[0.5rem_0.5rem_0_0] bg-white p-[1rem] transition-all sm:hidden',
+                    dataPopupMb && 'translate-y-0 shadow-inner',
+                  )}
+                >
+                  {dataTaxonomies?.map((e: Term, index: number) => (
+                    <p
+                      key={index}
+                      className={cn(
+                        'border-b-[1px] border-solid p-[1rem] last:border-b-0',
+                        field?.value === e?.slug && 'bg-background',
+                      )}
+                      onClick={() => {
+                        setValue(
+                          'nationSettlement',
+                          'Chương trình định cư' + e?.slug,
+                          {shouldValidate: true},
+                        )
+                        setTextSelect('Chương trình định cư' + e?.name)
+                        setDataPopupMb(false)
+                      }}
+                    >
+                      Chương trình định cư {e?.name}
+                    </p>
+                  ))}
+                </div>
+                <div
+                  className={cn(
+                    'fixed left-0 top-0 z-[48] hidden h-[100vh] w-full bg-black opacity-[0.5]',
+                    dataPopupMb && 'block',
+                  )}
+                  onClick={() => {
+                    setDataPopupMb(false)
+                  }}
+                ></div>
+                <FormMessage className='absolute bottom-[-0.2rem] left-0 translate-y-full text-errtext xsm:-bottom-[0.1rem]' />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name='mess'

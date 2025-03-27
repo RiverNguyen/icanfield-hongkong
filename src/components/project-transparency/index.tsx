@@ -22,7 +22,7 @@ export interface IProjectTransparencyProps {
 
 const ProjectTransparency: FC<IProjectTransparencyProps> = ({
   data,
-  linkImage = '/imgs/EB5/projects-transparency/Sydney4.webp',
+  linkImage = '/imgs/EB5/projects-transparency/Sydney5.webp',
   fontSize = '[&_strong]:text-[7.5rem] text-[4rem]',
   className = 'h-[100.94rem]',
 }) => {
@@ -89,7 +89,7 @@ const ProjectTransparency: FC<IProjectTransparencyProps> = ({
             </h3>
             <div
               className='xsm:text-[&_p]:text-[rgba(18,18,18,0.87)] px-4 [&_p]:mt-[1rem] [&_p]:text-[1rem] [&_p]:font-normal [&_p]:leading-[150%] text-white group-hover:text-[#121212DE] [&_p]:tracking-[-0.02rem] [&_p]:text-white [&_p]:group-hover:text-[#121212DE] xsm:[&_p]:mt-2 xsm:[&_p]:text-[0.875rem] xsm:[&_p]:tracking-[-0.03rem] xsm:[&_p]:text-[rgba(18,18,18,0.87)]'
-              dangerouslySetInnerHTML={{__html: item.description}}
+              dangerouslySetInnerHTML={{__html: item.description || ''}}
             ></div>
           </div>
         ))}

@@ -1,9 +1,10 @@
 'use client'
 import {Feature, FeatureCollection, GeoJsonObject} from 'geojson'
-import L, {GeoJSONOptions, LatLngTuple} from 'leaflet'
-import 'leaflet/dist/leaflet.css'
-import {FC, useCallback, useEffect, useRef, useState} from 'react'
+import type {GeoJSONOptions, LatLngTuple} from 'leaflet'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import {DivIcon} from 'leaflet'
+import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import './styles.css'
 export interface ICountry {
   name: string
@@ -12,7 +13,7 @@ export interface ICountry {
   number_of_projects?: number
 }
 
-interface ILeafletMapProps {
+export interface ILeafletMapProps {
   mapJson: FeatureCollection
   countries: ICountry[][]
   // eslint-disable-next-line no-unused-vars
@@ -32,7 +33,7 @@ interface ILeafletMapProps {
 // INIT COUNTRY OF EU
 const euCountries = new Set()
 
-export const LeafletMap: FC<ILeafletMapProps> = ({
+const LeafletMap: FC<ILeafletMapProps> = ({
   mapJson,
   countries,
   onClick,
@@ -133,7 +134,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
   )
   // Zoom to country when click
   const [zoomedCountry, setZoomedCountry] = useState<string | null>(null)
-  console.log('countries', countries)
+  // console.log('countries', countries)
   const handleCountryClick = (countryName: string) => {
     const position = getPosition(countryName)
     if (mapRef.current && isZoomClick) {
@@ -254,7 +255,7 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
             key={index}
             position={position} // Tọa độ Canada
             icon={
-              new L.DivIcon({
+              new DivIcon({
                 html: `<div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0 xsm:!pointer-events-none">
                   <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound xsm:!w-[2rem] xsm:!h-auto"/>
                   <img src="${
@@ -290,9 +291,9 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
       })}
       <Marker
         key='vietnam'
-        position={getPosition('Vietnam')}
+        position={[21.0285, 105.8542]} // Tọa độ Việt Nam
         icon={
-          new L.DivIcon({
+          new DivIcon({
             html: `
         <div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
           <img src="/imgs/map/bg-marker.png" alt="VIỆT NAM" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound"/>
@@ -307,6 +308,46 @@ export const LeafletMap: FC<ILeafletMapProps> = ({
           })
         }
       ></Marker>
+      <Marker
+        key='hoangsa'
+        position={[16.5, 112]} // Tọa độ Hoàng Sa
+        icon={
+          new DivIcon({
+            html: `
+      <div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
+        <img src="/imgs/map/bg-marker.png" alt="HOÀNG SA" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound"/>
+        <img src="/imgs/about-us/office-map/vietnam.png" alt="HOÀNG SA" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full"/>
+        <div class="text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]">
+          HOÀNG SA
+        </div>
+      </div>`,
+            className:
+              'my-div-icon !w-[5rem] !h-[3.26rem] relative !-mt-[3.26rem] !pointer-events-none',
+            iconSize: [30, 30],
+          })
+        }
+      />
+
+      <Marker
+        key='truongsa'
+        position={[9, 114]} // Tọa độ Trường Sa
+        icon={
+          new DivIcon({
+            html: `
+      <div class="custom-marker pointer-events-none !w-[5rem] !h-[3.26rem] absolute !left-[-1.5rem] top-0">
+        <img src="/imgs/map/bg-marker.png" alt="TRƯỜNG SA" class="absolute w-full h-full top-0 !left-1/2 !-translate-x-1/2 object-cover marker-bound"/>
+        <img src="/imgs/about-us/office-map/vietnam.png" alt="TRƯỜNG SA" class="absolute !size-[1.5rem] top-[1rem] !left-1/2 !-translate-x-1/2 object-cover marker-bound rounded-full"/>
+        <div class="text-brown absolute bottom-[-0.1rem] left-1/2 flex h-[1.375rem] w-fit -translate-x-1/2 translate-y-full items-center whitespace-nowrap rounded-[6.25rem] bg-[#E1DDC5] px-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.2] tracking-[-0.0075rem]">
+          TRƯỜNG SA
+        </div>
+      </div>`,
+            className:
+              'my-div-icon !w-[5rem] !h-[3.26rem] relative !-mt-[3.26rem] !pointer-events-none',
+            iconSize: [30, 30],
+          })
+        }
+      />
     </MapContainer>
   )
 }
+export default LeafletMap

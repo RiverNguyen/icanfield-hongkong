@@ -3,9 +3,9 @@
 import useStore from '@/app/(store)/store'
 import ImageV2 from '@/components/image/ImageV2'
 import UnderLineHeader from '@/components/svg/UnderLine'
-import { isLockScroll } from '@/hooks/useBodyScrollLock'
-import { social } from '@/layout/footer'
-import { dataFooter } from '@/types/dataFooter.interface'
+import {isLockScroll} from '@/hooks/useBodyScrollLock'
+import {social} from '@/layout/footer'
+import {dataFooter} from '@/types/dataFooter.interface'
 import {
   ChildProgram,
   Language,
@@ -15,11 +15,23 @@ import {
 } from '@/types/dataHeader.interface'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+
+// Declare googleTranslateElementInit and google on the Window interface
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void
+    google: {
+      translate: {
+        TranslateElement: new (options: object, container: string) => void
+      }
+    }
+  }
+}
 import 'swiper/css'
-import { Autoplay } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { languageOptions } from './constants'
+import {Autoplay} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {languageOptions} from './constants'
 import './styles.css'
 
 const Header = ({
@@ -31,7 +43,6 @@ const Header = ({
 }) => {
   const listMenuMobileLast = [
     data?.icanfield_handbook,
-    data?.support_customer,
     data?.contact,
   ]
   const [isActivedLanguage, setIsActivedLanguage] = React.useState(false) //handle language dropdown
@@ -165,56 +176,38 @@ const Header = ({
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const savedLanguage = localStorage.getItem('language') || 'vi'
-    setCurrentLanguage(savedLanguage)
+    let timeoutId: NodeJS.Timeout
+    let isMounted = true
 
-    const isCurrentLang =
-      data?.language?.languages.find(
-        (item: Language) =>
-          item.label.toLowerCase() === savedLanguage.toLowerCase(),
-      ) || data?.language?.languages[0]
+    const initTranslate = () => {
+      // Các logic khởi tạo ngôn ngữ
+      const savedLanguage = localStorage.getItem('language') || 'vi'
+      setCurrentLanguage(savedLanguage)
 
-    setIsCurrentLanguage(isCurrentLang)
+      const isCurrentLang =
+        data?.language?.languages.find(
+          (item: Language) =>
+            item.label.toLowerCase() === savedLanguage.toLowerCase(),
+        ) || data?.language?.languages[0]
 
-    const languagesString = data?.language.languages
-      .map((item: Language) => item.label.toLowerCase())
-      .join(',')
+      setIsCurrentLanguage(isCurrentLang)
 
-    const googleTranslateScript = document.createElement('script')
-    googleTranslateScript.type = 'text/javascript'
-    googleTranslateScript.src =
-      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+      // Tải script Google Translate sau khi các tác vụ chính hoàn thành
+      if (!document.getElementById('google-translate-script')) {
+        const googleTranslateScript = document.createElement('script')
+        googleTranslateScript.id = 'google-translate-script'
+        googleTranslateScript.src =
+          '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
 
-    if (!document.getElementById('google-translate-script')) {
-      googleTranslateScript.id = 'google-translate-script'
-      ;(
-        window as typeof window & {
-          googleTranslateElementInit?: () => void
-          google?: {
-            translate?: {
-              TranslateElement: new (
-                options: object,
-                containerId: string,
-              ) => void
-            }
-          }
-        }
-      ).googleTranslateElementInit = function () {
-        const google = (
-          window as typeof window & {
-            google?: {
-              translate?: {
-                TranslateElement: new (
-                  options: object,
-                  containerId: string,
-                ) => void
-              }
-            }
-          }
-        ).google
+        // Thêm callback initialization
+        window.googleTranslateElementInit = () => {
+          if (!isMounted) return
 
-        if (google?.translate?.TranslateElement) {
-          new google.translate.TranslateElement(
+          const languagesString = data?.language.languages
+            .map((item: Language) => item.label.toLowerCase())
+            .join(',')
+
+          new window.google.translate.TranslateElement(
             {
               pageLanguage: 'en',
               includedLanguages: languagesString,
@@ -224,17 +217,27 @@ const Header = ({
             'google_translate_element',
           )
         }
-      }
 
-      document.body.appendChild(googleTranslateScript)
+        document.body.appendChild(googleTranslateScript)
+      }
     }
 
-    // Cleanup khi unmount
+    // Delay bằng requestIdleCallback hoặc setTimeout
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initTranslate)
+    } else {
+      timeoutId = setTimeout(initTranslate, 1500) // Delay 1.5s
+    }
+
     return () => {
+      isMounted = false
+      clearTimeout(timeoutId)
+
       const script = document.getElementById('google-translate-script')
       if (script) {
         document.body.removeChild(script)
       }
+      window.googleTranslateElementInit = () => {}
     }
   }, [data?.language.languages])
 
@@ -321,7 +324,7 @@ const Header = ({
                       className='!flex !h-full !w-fit !items-center'
                     >
                       <Link
-                        href={`/blogs/${item?.post_name}` || '/'}
+                        href={`/tin-tuc/${item?.post_name}` || '/'}
                         className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
                       >
                         {item?.post_title}
@@ -379,7 +382,7 @@ const Header = ({
               </span>
             </Link>
             <div
-              className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem]'
+              className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem] hidden'
               onClick={handleOpenLanguage}
             >
               <div className='relative flex size-[1.2rem] rounded-[50%] bg-[rgba(255,255,255,0.25)] backdrop-blur-[10px]'>
@@ -392,7 +395,7 @@ const Header = ({
                   className='absolute left-1/2 top-1/2 z-0 size-[1rem] -translate-x-1/2 -translate-y-1/2 scale-[1.05] rounded-[50%]'
                 />
               </div>
-              <span className='text-[0.75rem] font-medium leading-[1.5] text-white'>
+              <span className='text-[0.75rem] font-medium leading-[1.5] text-white notranslate'>
                 {isCurrentLanguage.label}
               </span>
               <ImageV2
@@ -417,7 +420,7 @@ const Header = ({
                       }}
                     >
                       <span
-                        className={`text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
+                        className={`text-[0.75rem] notranslate leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
                       >
                         {item.label}
                       </span>
@@ -460,21 +463,21 @@ const Header = ({
                       height={40}
                       className='size-[1rem] object-contain'
                     />
-                    <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+                    <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] -translate-x-[75%] opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
                       <ImageV2
                         src='/icons/homepage/header/triangle.svg'
                         alt='triangle'
                         width={40}
                         height={40}
-                        className='h-[2rem] w-[3rem] translate-x-[13.25rem] object-contain'
+                        className='h-[2rem] w-[3rem] translate-x-[8.25rem] object-contain'
                       />
-                      <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                      <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                         <div className='flex h-full items-start justify-between'>
                           <div>
-                            <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                            <p className='mb-[1.5rem] mt-[2rem] pl-5 font-optima text-[2rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
                               {item.label}
                             </p>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col pl-5'>
                               {item.childrens.map(
                                 (child: ChildProgram, childIndex) => (
                                   <div
@@ -488,16 +491,16 @@ const Header = ({
                                   >
                                     <Link
                                       href={child.link}
-                                      className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                      className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
                                       onClick={handleDisableHover}
                                     >
-                                      <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                      <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                         {child.label}
                                       </p>
                                       {item.childrens &&
                                         childIndex <
                                           item.childrens.length - 1 && (
-                                          <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                          <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
                                         )}
                                     </Link>
                                   </div>
@@ -512,7 +515,7 @@ const Header = ({
                             alt='preview'
                             width={500}
                             height={500}
-                            className='h-full w-[38.125rem] rounded-[1rem] object-cover'
+                            className='h-[20.72281rem] w-[26.5rem] rounded-[1rem] object-cover'
                           />
                         </div>
                       </div>
@@ -559,15 +562,15 @@ const Header = ({
                   alt='logo'
                   width={40}
                   height={40}
-                  className='h-[2rem] w-[3rem] translate-x-[60rem] object-contain'
+                  className='h-[2rem] w-[3rem] translate-x-[40rem] object-contain'
                 />
-                <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                   <div className='flex h-full items-start justify-between'>
                     <div className=''>
-                      <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                      <p className='mb-[1.5rem] mt-[2rem] font-optima text-[2rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body pl-5'>
                         {data?.other_programs?.label}
                       </p>
-                      <div className='flex flex-col'>
+                      <div className='flex flex-col pl-5'>
                         {data?.other_programs?.program_list.map(
                           (child: ChildProgram, index) => (
                             <div
@@ -579,17 +582,17 @@ const Header = ({
                             >
                               <Link
                                 href={child.link}
-                                className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
                                 onClick={handleDisableHover}
                               >
-                                <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                   {child.label}
                                 </p>
                                 {data?.other_programs?.program_list &&
                                   index <
                                     data?.other_programs?.program_list.length -
                                       1 && (
-                                    <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                    <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
                                   )}
                               </Link>
                             </div>
@@ -607,7 +610,7 @@ const Header = ({
                       alt='logo'
                       width={500}
                       height={500}
-                      className='h-[full] w-[38.125rem] rounded-[1rem] object-cover'
+                      className='h-[20.72281rem] w-[26.5rem] rounded-[1rem] object-cover'
                     />
                   </div>
                 </div>
@@ -641,21 +644,21 @@ const Header = ({
                 height={40}
                 className='size-[1rem] object-contain'
               />
-              <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] !ml-0 -translate-x-1/2 opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+              <div className='children-menu invisible absolute left-1/2 top-[100%]  z-[52] !ml-0 -translate-x-[22%] opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
                 <ImageV2
                   src='/icons/homepage/header/triangle.svg'
                   alt='logo'
                   width={40}
                   height={40}
-                  className='h-[2rem] w-[3rem] translate-x-[84rem] object-contain'
+                  className='h-[2rem] w-[3rem] translate-x-[48rem] object-contain'
                 />
-                <div className='h-[37.5rem] w-[95rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-[4rem_5rem]'>
+                <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                   <div className='flex h-full items-start justify-between'>
                     <div className=''>
-                      <p className='mb-[2.5rem] font-optima text-[3.25rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
+                      <p className='mb-[2.5rem] font-optima text-[2rem] mt-2 font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body pl-5'>
                         {data?.support_customer?.label}
                       </p>
-                      <div className='flex flex-col'>
+                      <div className='flex flex-col pl-5'>
                         {data?.support_customer?.list_support.map(
                           (child: ChildProgram, index) => (
                             <div
@@ -669,16 +672,16 @@ const Header = ({
                             >
                               <Link
                                 href={child.link}
-                                className='relative rounded-[0.75rem] p-[1.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
                                 onClick={handleDisableHover}
                               >
-                                <p className='font-optima text-[1.75rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
                                   {child.label}
                                 </p>
                                 {index <
                                   data?.support_customer?.list_support.length -
                                     1 && (
-                                  <UnderLineHeader className='absolute bottom-0 left-[1.5rem] h-[2px] w-[22.8rem] object-contain' />
+                                  <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
                                 )}
                               </Link>
                             </div>
@@ -696,7 +699,7 @@ const Header = ({
                       alt='logo'
                       width={500}
                       height={500}
-                      className='h-full w-[38.125rem] rounded-[1rem] object-cover'
+                      className='h-full w-[26.5rem] rounded-[1rem] object-cover'
                     />
                   </div>
                 </div>

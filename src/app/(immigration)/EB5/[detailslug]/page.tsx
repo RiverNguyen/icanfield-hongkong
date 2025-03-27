@@ -28,18 +28,18 @@ export default async function page({
     fetchDataACF({
       api: `/eb-5-project?slug=${detailslug}&acf_format=standard`,
       option: {
-        revalidate: 10,
+        next: { revalidate: 10}
       },
     }),
     fetchData({
       api: `/related-posts/?slug=${detailslug}`,
       option: {
-        revalidate: 600,
+        next: { revalidate: 10},
       },
     }),
     fetchData(requestTaxonomies),
   ])
-  console.log(data)
+  // console.log(data)
   if (!data || !data.length) {
     redirect('/')
   }

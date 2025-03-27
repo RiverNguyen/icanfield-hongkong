@@ -104,7 +104,7 @@ const IndexSortAndSearchPosts = ({
         >
           <span className='flex items-center whitespace-nowrap text-[1rem] font-normal leading-[1.5] tracking-[-0.02rem] text-greyscaletext-body xsm:line-clamp-1 xsm:text-[0.75rem] xsm:text-[#3F2214]'>
             <b className='whitespace-nowrap font-medium sm:font-bold'>
-              Lọc theo:{' '}
+              Sắp xếp theo:{' '}
             </b>
             {selectedSortOption?.name}
           </span>

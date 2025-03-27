@@ -22,6 +22,10 @@ export interface dataBanner {
     alt: string
     url: string
   }
+  image_list_program?: {
+    alt: string
+    url: string
+  }
 }
 
 export interface dataListFAQ {

@@ -12,16 +12,16 @@ const Slider = ({
 }) => {
   const isMobile = useIsMobile()
   return (
-    <div className='relative h-[13.5rem] w-full xsm:h-[8.78994rem]'>
+    <div className='relative h-[17.5rem] w-full xsm:h-[8.78994rem]'>
       <Swiper
         modules={[Navigation]}
         spaceBetween={18}
-        slidesPerView={isMobile ? 'auto' : 3}
+        slidesPerView={isMobile ? 'auto' : 2.4}
         navigation={{
           prevEl: '.image-pre',
           nextEl: '.image-next',
         }}
-        className='w-full'
+        className='!w-full !h-full'
       >
         {Array.isArray(items) &&
           items.map((item, index) => (
@@ -85,7 +85,7 @@ const DiverseAmenities = ({
             utilities.map((item, index) => (
               <div
                 key={index}
-                className='flex items-center space-x-2'
+                className='flex items-start space-x-2'
               >
                 <ImageV2
                   src='/icons/detail-property/check2.svg'

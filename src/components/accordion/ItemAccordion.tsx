@@ -34,7 +34,7 @@ export default function ItemAccordion({listFAQ}: {listFAQ: dataListFAQ[]}) {
                     <AccordionContent className="body-14 tracking-[-0.00875rem] mt-[0.75rem] pb-0">
                         <div className="w-full h-[0.0625rem] bg-[#B9B9B9] mb-[0.75rem]"></div>
                         <div
-                            dangerouslySetInnerHTML={{__html: e?.reply}}
+                            dangerouslySetInnerHTML={{__html: e?.reply || ''}}
                             className="[&_p]:body-14 [&_p]:text-[rgba(18,18,18,0.87)]"
                         >
                         </div>

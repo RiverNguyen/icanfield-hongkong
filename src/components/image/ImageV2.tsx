@@ -7,7 +7,7 @@ export interface IImageProps extends ImageProps {
   fallbackImage?: string
 }
 
-const fallbackImg = '/fallbackImage.gif'
+const fallbackImg = '/imgs/fallback2.webp'
 
 const ImageV2 = ({
   src,
@@ -37,6 +37,8 @@ const ImageV2 = ({
       placeholder='blur'
       blurDataURL={fallbackImg}
       onError={handleError}
+      loading='lazy'
+      
       style={{
         ...style,
         objectFit: isError || !imgSrc ? 'cover' : style.objectFit,

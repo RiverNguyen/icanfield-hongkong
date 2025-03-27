@@ -75,7 +75,7 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
             className='h-full w-full sm:hidden'
           />
           {slogan && 
-            <div dangerouslySetInnerHTML={{__html: slogan}} className='heading-hero-title-2 absolute left-[5rem] top-[8rem] max-w-[29.6875rem] font-optima font-medium text-white xsm:text-center xsm:text-[1.9375rem] xms:top-[8rem] xsm:max-w-full xsm:w-[82%] xsm:left-1/2 xsm:-translate-x-1/2'>
+            <div dangerouslySetInnerHTML={{__html: slogan || ''}} className='heading-hero-title-2 absolute left-[5rem] top-[8rem] max-w-[29.6875rem] font-optima font-medium text-white xsm:text-center xsm:text-[1.9375rem] xms:top-[8rem] xsm:max-w-full xsm:w-[82%] xsm:left-1/2 xsm:-translate-x-1/2'>
             </div>
           }
         </div>
