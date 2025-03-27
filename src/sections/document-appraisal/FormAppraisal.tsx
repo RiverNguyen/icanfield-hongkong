@@ -215,10 +215,13 @@ export default function FormAppraisal({
       }
     })
   }
-  function decodeHTMLEntities(text:string) {
-    const parser = new DOMParser()
-    const doc = parser.parseFromString(text, 'text/html')
-    return doc.body.textContent
+  function decodeHTMLEntities(text: string) {
+    if (typeof window !== 'undefined') {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(text, 'text/html')
+      return doc.body.textContent || ''
+    }
+    return text // Trả về chuỗi gốc nếu không chạy trên trình duyệt
   }
   return (
     <>
