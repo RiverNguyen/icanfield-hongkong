@@ -54,7 +54,7 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
         </h2>
         <div className='relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body body16-r55 sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]' dangerouslySetInnerHTML={{__html: description || ''}}>
         </div>
-        <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem]'>
+        <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem] xsm:w-full xsm:pt-[0.5rem]'>                               
           <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative'>
             {isClient &&
               media &&
