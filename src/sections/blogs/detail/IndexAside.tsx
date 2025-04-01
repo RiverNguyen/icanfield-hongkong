@@ -47,7 +47,7 @@ export default function IndexAside({htmlString}: {htmlString: string}) {
         <li
           key={index}
           className={cn(
-            'transition-all cursor-pointer text-[1rem] font-medium tracking-[-0.01rem] xsm:text-[0.75rem]',
+            'transition-all cursor-pointer !text-[1rem] [&_span]:!text-[1rem] xsm:[&_span]:!text-[0.75rem] font-medium tracking-[-0.01rem] xsm:!text-[0.75rem]',
             activeSection === content.id
               ? 'text-orangetext-800'
               : 'text-[rgba(0,18,36,0.54)] xsm:text-orangetext-800',
@@ -60,7 +60,7 @@ export default function IndexAside({htmlString}: {htmlString: string}) {
               handleScroll(content.id) // Cuộn đến phần tử với ID tương ứng
             }}
             className={cn(
-              'transition-all text-[1rem] font-medium tracking-[-0.01rem] xsm:text-orangetext-800 xsm:text-[0.75rem] xsm:font-medium xsm:tracking-[-0.0075rem]',
+              'transition-all !text-[1rem] font-medium tracking-[-0.01rem] [&_span]:!text-[1rem] xsm:[&_span]:!text-[0.75rem] xsm:text-orangetext-800 xsm:!text-[0.75rem] xsm:font-medium xsm:tracking-[-0.0075rem]',
               activeSection === content.id
                 ? 'text-orangetext-800'
                 : 'text-[rgba(0,18,36,0.54)]',

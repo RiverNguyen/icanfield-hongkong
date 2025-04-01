@@ -223,7 +223,7 @@ const config: Config = {
           '@apply text-[1rem] leading-[1.55]': {},
         },
         '.inter18': {
-          '@apply text-[1.125rem] leading-[1.5] tracking-[-0.01125rem]': {},
+          '@apply !text-[1.125rem] leading-[1.5] tracking-[-0.01125rem]': {},
         },
         '.inter22-m': {
           '@apply text-[1.375rem] font-medium leading-[1.4] tracking-[-0.0875rem]':

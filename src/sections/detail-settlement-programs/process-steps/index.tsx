@@ -166,7 +166,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
   return (
     <div
       className={cn(
-        'flex h-[29.2rem] w-[12.25rem] flex-col transition-all duration-800',
+        'flex h-auto w-[12.25rem] flex-col transition-all duration-800',
         {
           'w-[43.625rem]': isActive,
         },
@@ -215,7 +215,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
       >
         <p
           ref={textContentRef}
-          className='line-clamp-3'
+          className=''
         >
           {content}
         </p>

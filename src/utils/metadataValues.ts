@@ -22,8 +22,8 @@ export default function metadataValues(res: any) {
     },
     author: 'iCanfield',
     openGraph: {
-      title: result?.og_site_name,
-      description: result?.og_description,
+      title: result?.title,
+      description: result?.description,
       url: './',
       siteName: result?.og_site_name,
       images: Array.isArray(result?.og_image)

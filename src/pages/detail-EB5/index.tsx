@@ -26,7 +26,8 @@ const DetailEB5 = ({
   if (!data || !data.acf) {
     return <div>Error: Data or ACF is undefined</div>
   }
-  const {acf, title} = data
+  const { acf, title } = data
+  console.log(acf)
   return (
     <div className='mx-auto max-w-[100rem] bg-background'>
       <Banner

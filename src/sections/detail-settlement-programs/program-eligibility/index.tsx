@@ -37,7 +37,7 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
         </p>
       </div>
       <div className='bottom-0 left-0 right-0 h-[31.1875rem] bg-[linear-gradient(180deg,rgba(100,54,32,0.00)_0%,rgba(100,54,32,0.06)_14.15%,rgba(100,54,32,0.16)_27.89%,rgba(100,54,32,0.32)_42.08%,#643620_74.88%)] sm:absolute xsm:hidden'></div>
-      <div className='relative z-[10] flex sm:absolute sm:bottom-[6.25rem] sm:left-[4.5rem] sm:w-[68rem] sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:w-full xsm:flex-col xsm:space-y-[0.88rem] xsm:pr-[0]'>
+      <div className='relative z-[10] xsm:!hidden flex sm:absolute sm:bottom-[6.25rem] sm:left-[4.5rem] sm:w-[68rem] sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:w-full xsm:flex-col xsm:space-y-[0.88rem] xsm:pr-[0]'>
         {Array.isArray(items) && items?.length >= 4 ? (
           <Swiper
             navigation
@@ -82,7 +82,33 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
           </div>
         )}
       </div>
-
+      <div className='relative z-[10] sm:!hidden flex sm:absolute sm:bottom-[6.25rem] sm:left-[4.5rem] sm:w-[68rem] sm:space-x-[1.25rem] xsm:mt-[1.62rem] xsm:w-full xsm:flex-col xsm:space-y-[0.88rem] xsm:pr-[0]'>
+        {Array.isArray(items) && items?.length >= 4 ? (
+          <div
+            className='!w-full xsm:!w-full xsm:!pr-4 flex flex-nowrap space-x-4 overflow-x-auto hidden-scrollbar xsm:!pl-4'
+          >
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className='w-[15rem] flex-shrink-0'
+              >
+                <ProgramEligibilityItem {...item} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className='flex flex-nowrap space-x-4'>
+            {items?.map((item, index) => (
+              <div
+                key={index}
+                className='flex items-end'
+              >
+                <ProgramEligibilityItem {...item} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       <Marquee />
     </section>
   )

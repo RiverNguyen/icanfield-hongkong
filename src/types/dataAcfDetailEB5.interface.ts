@@ -86,6 +86,10 @@ export interface IDataAcfDetailEB5 {
         description: string
         logos: Media[]
         thumbnail: Media
+        achievements_copy: {
+          name: string
+          value: string
+        }[]
       }
     }
   }

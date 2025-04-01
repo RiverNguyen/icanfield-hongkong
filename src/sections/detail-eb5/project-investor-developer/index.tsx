@@ -33,7 +33,7 @@ const ProjectInvestorDeveloper = ({
 }: IDataAcfDetailEB5['acf']['eb5_projects_detail_quality']) => {
   const [tab, setTab] = useState<'investor' | 'developer'>('investor')
   return (
-    <div className='relative flex h-fit w-full items-start p-20 xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0 xsm:mt-[2.5rem] flex-col'>
+    <div className='relative flex h-fit w-full flex-col items-start p-20 xsm:mt-[2.5rem] xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0'>
       <ImageV2
         src='/imgs/detail-eb5/bg-project-investor-developer.webp'
         alt='Investor'
@@ -42,7 +42,7 @@ const ProjectInvestorDeveloper = ({
         height={1080}
       />
       <div className='absolute inset-0 rounded-t-[2rem] bg-black/30' />
-      <div className='block left-20 top-[4.02rem] z-10 w-[38.8125rem] px-4 py-8 xsm:static xsm:w-full'>
+      <div className='left-20 top-[4.02rem] z-10 block w-[38.8125rem] px-4 py-8 xsm:static xsm:w-full'>
         <h2
           className='font-optima font-semibold text-greyscaletext-50 heading1'
           dangerouslySetInnerHTML={{__html: title_section || ''}}
@@ -82,49 +82,69 @@ const ProjectInvestorDeveloper = ({
           <div className='mt-6 xsm:mt-4'>
             {tab === 'investor' ? (
               <>
-                <div className='h-[6.625rem] w-full rounded-2xl bg-white/15 p-6 flex-center'>
+                <div className='h-[6.625rem] w-full rounded-2xl bg-white/15 p-4 flex-center'>
                   <ImageV2
                     src={investor.logo.url}
                     alt={investor.logo.alt}
                     width={400}
                     height={300}
-                    className='h-10 w-auto xsm:h-[1.7rem]'
+                    className='h-full w-auto object-contain xsm:h-[1.7rem]'
                   />
                 </div>
                 <div className='mt-4 grid grid-cols-3 gap-4'>
-                  {Array.isArray(investor.achievements) && investor.achievements.map((achievement, index) => (
-                    <div
-                      key={index}
-                      className='flex flex-col justify-center space-y-[0.375rem] rounded-xl bg-white/15 px-4 py-3 xsm:p-3'
-                    >
-                      <h4 className='text-white hero-title xsm:heading1'>
-                        {achievement.value}
-                      </h4>
-                      <div className='h-[1px] w-full bg-white/20' />
-                      <p className='font-normal text-white text-[1rem] leading-[1.5] xsm:body-14 xsm:font-normal'>
-                        {achievement.name}
-                      </p>
-                    </div>
-                  ))}
+                  {Array.isArray(investor.achievements) &&
+                    investor.achievements.map((achievement, index) => (
+                      <div
+                        key={index}
+                        className='flex flex-col justify-center space-y-[0.375rem] rounded-xl bg-white/15 px-4 py-3 xsm:p-3'
+                      >
+                        <h4 className='text-white hero-title xsm:heading1'>
+                          {achievement.value}
+                        </h4>
+                        <div className='h-[1px] w-full bg-white/20' />
+                        <p className='text-[1rem] font-normal leading-[1.5] text-white xsm:font-normal xsm:body-14'>
+                          {achievement.name}
+                        </p>
+                      </div>
+                    ))}
                 </div>
               </>
             ) : (
-              <div className='grid grid-cols-2 gap-4'>
-                {development.logos.map((logo, index) => (
-                  <div
-                    key={index}
-                    className='h-[7.125rem] w-full rounded-xl bg-white/15 p-[1.3125rem] flex-center xsm:h-[5.75rem]'
-                  >
-                    <ImageV2
-                      src={logo.url}
-                      alt={logo.alt}
-                      width={400}
-                      height={300}
-                      className='h-full w-auto'
-                    />
-                  </div>
-                ))}
-              </div>
+              <>
+                <div className='grid grid-cols-2 gap-4'>
+                  {development.logos.map((logo, index) => (
+                    <div
+                      key={index}
+                      className='h-[7.125rem] w-full rounded-xl bg-white/15 p-[1.3125rem] flex-center xsm:h-[5.75rem]'
+                    >
+                      <ImageV2
+                        src={logo.url}
+                        alt={logo.alt}
+                        width={400}
+                        height={300}
+                        className='h-full w-auto'
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className='mt-4 grid grid-cols-3 gap-4'>
+                  {Array.isArray(development?.achievements_copy) &&
+                    development.achievements_copy.map((achievement, index) => (
+                      <div
+                        key={index}
+                        className='flex flex-col justify-center space-y-[0.375rem] rounded-xl bg-white/15 px-4 py-3 xsm:p-3'
+                      >
+                        <h4 className='text-white hero-title xsm:heading1'>
+                          {achievement.value}
+                        </h4>
+                        <div className='h-[1px] w-full bg-white/20' />
+                        <p className='text-[1rem] font-normal leading-[1.5] text-white xsm:font-normal xsm:body-14'>
+                          {achievement.name}
+                        </p>
+                      </div>
+                    ))}
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -154,12 +174,14 @@ const ProjectInvestorDeveloper = ({
             >
               <div className='flex h-[28rem] items-start space-x-6 rounded-2xl rounded-b-3xl bg-white p-6 shadow-[0px_-1px_6.3px_0px_rgba(0,0,0,0.04)] xsm:h-auto xsm:flex-col xsm:space-x-0 xsm:space-y-4 xsm:rounded-b-none xsm:p-4'>
                 <div className='flex flex-col space-y-4'>
-                  <h2 className='font-optima font-medium uppercase text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
+                  {/* <h2 className='font-optima font-medium uppercase text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
                     Chủ đầu tư {investor.name}
-                  </h2>
+                  </h2> */}
                   <div
                     className='flex flex-col space-y-2 text-greyscaletext-300 body-14'
-                    dangerouslySetInnerHTML={{__html: investor.description || ''}}
+                    dangerouslySetInnerHTML={{
+                      __html: investor.description || '',
+                    }}
                   ></div>
                 </div>
                 <ImageV2
@@ -177,12 +199,14 @@ const ProjectInvestorDeveloper = ({
             >
               <div className='flex h-[28rem] items-start space-x-6 rounded-2xl rounded-b-3xl bg-white p-6 shadow-[0px_-1px_6.3px_0px_rgba(0,0,0,0.04)] xsm:h-auto xsm:flex-col xsm:space-x-0 xsm:space-y-4 xsm:rounded-b-none xsm:p-4'>
                 <div className='flex flex-col space-y-4'>
-                  <h2 className='font-optima font-medium uppercase text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
+                  {/* <h2 className='font-optima font-medium uppercase text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:leading-[1.2] xsm:tracking-[-0.0225rem]'>
                     CÁC ĐƠN VỊ PHÁT TRIỂN UY TÍN
-                  </h2>
+                  </h2> */}
                   <div
                     className='flex flex-col space-y-2 text-greyscaletext-300 body-14'
-                    dangerouslySetInnerHTML={{__html: development.description || ''}}
+                    dangerouslySetInnerHTML={{
+                      __html: development.description || '',
+                    }}
                   ></div>
                 </div>
                 <ImageV2
