@@ -45,8 +45,8 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
           <h2 className='font-optima font-semibold text-brown heading1'>
             {title}
           </h2>
-          <p className='mt-[0.75rem] text-greyscaletext-body body16-r55 sm:mt-[1rem] xsm:body-14'>
-            {description}
+          <p className='mt-[0.75rem] text-greyscaletext-body body16-r55 sm:mt-[1rem] xsm:body-14' dangerouslySetInnerHTML={{__html:description || ''}}>
+          
           </p>
         </div>
         <ImageV2
