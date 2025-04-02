@@ -33,7 +33,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         className='absolute bottom-0 right-0 h-full w-futl object-cover xsm:hidden'
       />
       <ImageV2
-        src={'/imgs/detail-settlement-programs/why-choose-us-bg-1-mb.webp'}
+        src={'/imgs/bg.webp'}
         alt={'Why Choose Us Background'}
         width={1600 * 2 || 40}
         height={788 * 2 || 40}

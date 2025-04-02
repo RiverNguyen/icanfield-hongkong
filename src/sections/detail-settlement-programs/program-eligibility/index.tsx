@@ -97,11 +97,11 @@ export const ProgramEligibility: FC<IProgramEligibilityProps> = ({
             ))}
           </div>
         ) : (
-          <div className='flex flex-nowrap space-x-4'>
+          <div className='flex flex-nowrap space-x-4 overflow-x-auto hidden-scrollbar xsm:!pl-4'>
             {items?.map((item, index) => (
               <div
                 key={index}
-                className='flex items-end'
+                className='w-[15rem] flex-shrink-0'
               >
                 <ProgramEligibilityItem {...item} />
               </div>
