@@ -103,7 +103,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
       <ImageV2
         src={
           background_mb?.url ||
-          '/imgs/detail-settlement-programs/why-choose-us-bg-2-mb.webp'
+          '/imgs/bg.webp'
         }
         alt={'Why Choose Us Background'}
         width={1219 * 2 || 40}
