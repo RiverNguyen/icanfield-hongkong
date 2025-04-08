@@ -40,8 +40,7 @@ interface IPageEB5Props {
     }
   }
 }
-
-const PageEB5Clone: FC<IPageEB5Props> = ({data}) => {
+const PageEB5Clone: FC<IPageEB5Props> = ({ data }) => {
   return (
     <main className='bg-background'>
       <Banner

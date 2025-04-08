@@ -64,8 +64,8 @@ const AccordionContent = React.forwardRef<
     className='overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down'
     {...props}
   >
-    <div className={cn('border-t border-[#B9B9B9] pb-4 pt-3', className)}>
-      {children}
+    <div className={cn('border-t border-[#B9B9B9] pb-4 pt-3', className)} dangerouslySetInnerHTML={{__html: children as string || ''}}>
+   
     </div>
   </AccordionPrimitive.Content>
 ))

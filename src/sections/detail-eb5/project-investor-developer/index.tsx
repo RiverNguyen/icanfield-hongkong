@@ -111,7 +111,7 @@ const ProjectInvestorDeveloper = ({
               </>
             ) : (
               <>
-                <div className='grid grid-cols-2 gap-4'>
+                <div className='grid grid-cols-1'>
                   {development.logos.map((logo, index) => (
                     <div
                       key={index}
@@ -156,13 +156,13 @@ const ProjectInvestorDeveloper = ({
           >
             <TabsList className='grid h-auto w-full grid-cols-2 p-3 xsm:p-2'>
               <TabsTrigger
-                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
+                className='heading3-s uppercase data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='investor'
               >
                 Chủ đầu tư dự án
               </TabsTrigger>
               <TabsTrigger
-                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
+                className='heading3-s uppercase data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='developer'
               >
                 Đơn vị phát triển dự án

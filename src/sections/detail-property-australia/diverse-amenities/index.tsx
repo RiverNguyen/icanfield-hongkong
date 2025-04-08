@@ -94,9 +94,8 @@ const DiverseAmenities = ({
                   height={50}
                   className='h-5 w-5 object-cover'
                 />
-                <p className='tracking-[-0.0175rem] body-14-m xsm:sub-12-m'>
-                  {item.item}
-                </p>
+                <div className='tracking-[-0.0175rem] body-14-m xsm:sub-12-m' dangerouslySetInnerHTML={{__html: item.item || ''}}></div>
+
               </div>
             ))}
         </div>

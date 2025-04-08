@@ -82,9 +82,10 @@ export const ProcessSteps: FC<
         <h2 className='font-optima font-semibold text-brown heading1'>
           {title_section || 'Process Steps'}
         </h2>
-        <p className='text-bodytext sm:max-w-[37.9375rem] sm:text-greyscaletext-700 sm:body16 xsm:mt-[1rem] xsm:body-14'>
-          {description || 'Follow these steps to get your settlement program'}
-        </p>
+        <div
+          className='text-bodytext sm:max-w-[37.9375rem] sm:text-greyscaletext-700 sm:body16 xsm:mt-[1rem] xsm:body-14'
+          dangerouslySetInnerHTML={{__html: description || ''}}
+        ></div>
       </div>
       <div className='mx-auto mt-[4rem] flex max-w-[90rem] space-x-[3.21rem] transition-all duration-800 xsm:hidden'>
         {timeline &&
@@ -215,7 +216,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
       >
         <p
           ref={textContentRef}
-          className=''
+          className='sm:pb-4'
         >
           {content}
         </p>
@@ -225,7 +226,7 @@ export const ProcessStepItem: FC<IProcessStepItemProps> = ({
         alt={thumbnail?.alt || ''}
         width={thumbnail?.width || 1000}
         height={thumbnail?.height || 1000}
-        className='mt-auto block h-[16.875rem] w-full rounded-[1.125rem] object-cover transition-all duration-800'
+        className='mt-auto block h-[16.875rem] w-full rounded-[1.125rem] object-cover transition-all duration-800 '
       />
     </div>
   )

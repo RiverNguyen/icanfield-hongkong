@@ -29,7 +29,7 @@ const LocationItem = ({
           {title}
         </h2>
         <div className='h-[1px] w-full bg-[linear-gradient(90deg,rgba(112,115,124,0.22)_24.3%,rgba(112,115,124,0.00)_82.57%)]' />
-        <p className='text-greyscaletext-body body-14'>{description}</p>
+        <div className='text-greyscaletext-body body-14' dangerouslySetInnerHTML={{__html:description || ''}}></div>
       </div>
     </div>
   )
@@ -54,9 +54,9 @@ const LocationItemMobile = ({
           {title}
         </h2>
         <div className='h-[1px] w-full bg-[linear-gradient(90deg,rgba(112,115,124,0.22)_24.3%,rgba(112,115,124,0.00)_82.57%)]' />
-        <p className='font-normal text-greyscaletext-body body-14'>
-          {description}
-        </p>
+        <div className='font-normal text-greyscaletext-body body-14' dangerouslySetInnerHTML={{__html:description || ''}}>
+       
+        </div>
       </div>
     </div>
   )

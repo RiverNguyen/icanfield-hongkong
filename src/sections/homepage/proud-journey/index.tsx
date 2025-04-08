@@ -48,7 +48,6 @@ const ProudJourney: FC<IProudJourneyProps> = ({
       .fill(items)
       .flat(),
   ].slice(0, minSlides)
-  console.log(paddedItems)
   useEffect(() => {
     setSpaceBetween((prev) => {
       if (typeof window === 'undefined') return prev
