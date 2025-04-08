@@ -112,7 +112,6 @@ const HomePage = ({
     home_talented_team,
     home_proud_journey,
   } = homeData?.acf || {}
-  // console.log(home_banner)
   return (
     <main className='bg-background'>
       {home_banner && (

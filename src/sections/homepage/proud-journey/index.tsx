@@ -48,6 +48,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
       .fill(items)
       .flat(),
   ].slice(0, minSlides)
+  console.log(paddedItems)
   useEffect(() => {
     setSpaceBetween((prev) => {
       if (typeof window === 'undefined') return prev
@@ -137,7 +138,7 @@ const ProudJourney: FC<IProudJourneyProps> = ({
             allowTouchMove={false}
             className='trip__swiper relative z-10 !ml-[8.3rem] !mr-0 h-[24.2rem] w-full flex-1 !overflow-visible !pointer-events-none'
           >
-            {paddedItems.map((item, index) => (
+            {paddedItems.slice(1).map((item, index) => (
               <SwiperSlide key={index}>
                 <ProudJourneyItem {...item} />
               </SwiperSlide>
@@ -192,6 +193,7 @@ function ProudJourneyItem({
   position,
   content,
 }: IItemProudJourney) {
+  console.log(name)
   return (
     <div className='relative flex size-full flex-col sm:block'>
       <div className='box__image relative h-[11.25rem] select-none transition-all duration-100 sm:size-full'>
