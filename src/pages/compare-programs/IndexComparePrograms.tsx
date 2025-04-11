@@ -1,17 +1,17 @@
-import ContactV2 from '@/components/ContactV2/ContactV2'
-import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
+// import ContactV2 from '@/components/ContactV2/ContactV2'
+// import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
 import { Breadcrumb } from '@/components/breadcrumb'
 import Programs from '@/sections/compare-programs/Programs'
 import { Banner } from '@/sections/detail-settlement-programs/banner'
 import { DataItem, acfPage } from '@/types/comparePrograms.interface'
-import { Term } from '@/types/dataAppraisal.interface'
+// import { Term } from '@/types/dataAppraisal.interface'
 
 const IndexComparePrograms = ({
-  dataNationSettlement,
+  // dataNationSettlement,
   dataPage,
   dataPrograms
 }: {
-  dataNationSettlement: Term[]
+  // dataNationSettlement: Term[]
   dataPage: acfPage
   dataPrograms: DataItem[]
 }) => {
@@ -90,11 +90,11 @@ const IndexComparePrograms = ({
         </span>
         <Programs programs={dataPrograms} dataTitleCompare={dataPage?.title_compare}/>
       </section>
-      <ContactV2>
+      {/* <ContactV2>
         <FormInternationalJourney
           dataNationSettlement={dataNationSettlement}
         />
-      </ContactV2>
+      </ContactV2> */}
     </main>
   )
 }
