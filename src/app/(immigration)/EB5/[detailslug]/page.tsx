@@ -3,6 +3,8 @@ import DetailEB5 from '@/pages/detail-EB5'
 import {notFound} from 'next/navigation'
 import fetchData from '@/fetch/fetchData'
 import {redirect} from 'next/navigation'
+import getMetadata from '@/fetch/getMetadata'
+import metadataValues from '@/utils/metadataValues'
 export async function generateStaticParams() {
   // Gọi API để lấy tất cả các slug của các tour
   const tours = await fetchData({
@@ -12,6 +14,37 @@ export async function generateStaticParams() {
   return tours?.map((tour: string[]) => ({
     slug: tour,
   }))
+}
+export async function generateMetadata({
+  params,
+}: {
+  params: {slug: string; detailslug: string}
+}) {
+  try {
+    // Kiểm tra params.detailslug có tồn tại và hợp lệ
+    if (!params?.detailslug) {
+      console.error('Missing or invalid detailslug')
+      return {}
+    }
+
+    // Gọi API để lấy metadata
+    const res = await getMetadata(
+      `/eb-5-project?slug=${encodeURIComponent(params.detailslug)}`,
+    )
+
+    // Kiểm tra dữ liệu trả về
+    if (!res || !Array.isArray(res) || res.length === 0 || !res[0]) {
+      console.error('No valid metadata found for slug:', params.detailslug)
+      return {}
+    }
+    console.log('res', res[0])
+    // Trả về metadata được xử lý
+    return metadataValues(res[0])
+  } catch (error) {
+    // Xử lý lỗi bất ngờ
+    console.error('Error generating metadata:', error)
+    return {}
+  }
 }
 export default async function page({
   params: {detailslug},

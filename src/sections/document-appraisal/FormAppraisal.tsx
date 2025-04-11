@@ -169,7 +169,7 @@ export default function FormAppraisal({
           values[key as keyof valueContactForm]
         )
       })
-      if (!hasFormChanged) {
+      if (!hasFormChanged || hasFormChanged ) {
         const valueContactForm = {
           ...dataFilter,
           username: values?.username,

@@ -1,5 +1,4 @@
 import fetchData from '@/fetch/fetchData'
-
 export default async function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   const locales = ['', '/en', '/es']
@@ -16,7 +15,7 @@ export default async function sitemap() {
   const fixedPages = locales.flatMap((locale) =>
     [
       '',
-      '/ti-tuc',
+      '/tin-tuc',
       '/dinh-cu-canada',
       '/dinh-cu-uc',
       '/dinh-cu-my',
@@ -50,8 +49,8 @@ export default async function sitemap() {
 
   if (slugSettlement.length > 0) {
     dynamicPages.push(
-      ...slugSettlement.map((settlement: string) => ({
-        url: `${baseUrl}/chuong-trinh-dinh-cu/${settlement}`,
+      ...slugSettlement.map((settlement: { slug: string; nation?: string[] }) => ({
+        url: `${baseUrl}/${settlement.nation?.[0] || 'chuong-trinh-dinh-cu'}/${settlement.slug}`,
         lastModified,
         priority: 0.8,
       })),

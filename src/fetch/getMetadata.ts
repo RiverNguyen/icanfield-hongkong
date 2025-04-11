@@ -17,7 +17,7 @@ export default async function getMetadata(request: string) {
     if (!res.ok) {
       return null
     }
-
+    console.log(`${process.env.NEXT_PUBLIC_API_ACF}${request}&fields=yoast_head_json&acf_format=standard`)
     // Parse and return the JSON response
     return await res.json()
   } catch (error: unknown) {

@@ -1,4 +1,5 @@
-import BannerHomepage, {IBannerHomepageProps} from '@/sections/homepage/banner'
+'use client'
+import BannerHomepage, { IBannerHomepageProps } from '@/sections/homepage/banner'
 import {
   IItemInvestmentOpportunities,
   InvestmentOpportunities,
@@ -11,6 +12,7 @@ import {DataMapHomepage} from '@/sections/homepage/map-discover/dataMap.interfac
 import {FilterData} from '@/sections/homepage/banner/bannerHp.interface'
 const GlobalImmigration = dynamic(
   () => import('@/sections/homepage/global-immigration'),
+  { ssr: false },
 )
 const NewsFlow = dynamic(() => import('@/sections/homepage/news-homepage'), {
   ssr: false,
