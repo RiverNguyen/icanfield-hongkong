@@ -198,7 +198,7 @@ const Header = ({
         googleTranslateScript.id = 'google-translate-script'
         googleTranslateScript.src =
           '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-
+          if (typeof window === 'undefined') return
         // Thêm callback initialization
         window.googleTranslateElementInit = () => {
           if (!isMounted) return

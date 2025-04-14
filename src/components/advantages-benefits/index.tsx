@@ -3,11 +3,10 @@ import ImageV2 from '@/components/image/ImageV2'
 import {cn} from '@/lib/utils'
 import {Media} from '@/types/image.interface'
 import {FC, useEffect} from 'react'
-
-const calculateScrollbarWidth = () => {
+const calculateScrollbarWidth = (): number => {
+  if (typeof window === 'undefined') return 0
   return window.innerWidth - document.documentElement.clientWidth
 }
-
 export interface IAdvantagesBenefitsProps {
   subtitle?: string
   title?: string
@@ -61,14 +60,14 @@ export const AdvantagesBenefits: FC<IAdvantagesBenefitsProps> = ({
           {description}
         </p>
       </div>
-      <div className='relative mt-[0.69rem] flex sm:mt-[4rem] xsm:flex-col '>
+      <div className='relative mt-[0.69rem] flex sm:mt-[4rem] xsm:flex-col'>
         <div className='sticky left-0 top-0 h-dvh w-full pb-[2rem] sm:top-[6.44rem] sm:h-[46.25rem] xsm:rounded-[0rem_4rem_0rem_0rem]'>
           <ImageV2
             src={backgroundPc ? backgroundPc.url : ''}
             alt={backgroundPc ? backgroundPc.alt : ''}
             width={backgroundPc ? backgroundPc.width * 3 : 1000}
             height={backgroundPc ? backgroundPc.height * 3 : 1000}
-            className='absolute left-0 top-0 h-[46rem] w-[200px] object-cover xsm:hidden min-w-[calc(100vw-1*var(--scrollbar-width))]'
+            className='absolute left-0 top-0 h-[46rem] w-[200px] min-w-[calc(100vw-1*var(--scrollbar-width))] object-cover xsm:hidden'
           />
           <ImageV2
             src={backgroundMb?.url || ''}

@@ -3,27 +3,27 @@ import BannerImmigration from '@/sections/immigration/banner/BannerImmigration'
 import {dataPrograms, immigration} from '@/types/dataAcfImmigration.interface'
 import dynamic from 'next/dynamic'
 const CanadaMap = dynamic(() => import('@/sections/immigration/map'), {
-  ssr: true, // Nếu component không cần server-side rendering
+  ssr: false, // Nếu component không cần server-side rendering
   loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
 })
 const Strengths = dynamic(
   () => import('@/sections/immigration/strengths/Strengths'),
   {
-    ssr: true,
+    ssr: false,
     loading: () => <p>Loading Strengths...</p>,
   },
 )
 const Programme = dynamic(
   () => import('@/sections/immigration/programme/Programme'),
   {
-    ssr: true,
+    ssr: false,
     loading: () => <p>Loading Programme...</p>,
   },
 )
 const ImmigrationFAQ = dynamic(
   () => import('@/sections/immigration/faq/ImmigrationFAQ'),
   {
-    ssr: true,
+    ssr: false,
     loading: () => <p>Loading Strengths...</p>,
   },
 )

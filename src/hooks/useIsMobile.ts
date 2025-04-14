@@ -6,7 +6,9 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 639)
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth <= 639)
+      }
     }
 
     const debounce = (func: () => void, delay: number) => {
@@ -18,7 +20,7 @@ const useIsMobile = () => {
     }
 
     const debouncedCheckMobile = debounce(checkMobile, 150)
-
+    if (typeof window === 'undefined') return
     checkMobile()
     window.addEventListener('resize', debouncedCheckMobile)
 

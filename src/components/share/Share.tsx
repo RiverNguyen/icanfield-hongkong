@@ -9,8 +9,10 @@ export default function Share({className}: {className?: string}) {
   const [currentUrl, setCurrentUrl] = useState('')
   const pathname = usePathname()
   useEffect(() => {
-    const fullUrl = `${window.location.origin}${pathname}${window.location.search}`
-    setCurrentUrl(fullUrl)
+    if (typeof window !== 'undefined') {
+      const fullUrl = `${window.location.origin}${pathname}${window.location.search}`
+      setCurrentUrl(fullUrl)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handleCopuUrl = () => {

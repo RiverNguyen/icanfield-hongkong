@@ -2,7 +2,7 @@ import {Breadcrumb} from '@/components/breadcrumb'
 import ProjectTransparency, {
   IProjectTransparencyProps,
 } from '@/components/project-transparency'
-import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
+// import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
 import {
   Banner,
   IBannerProps,
@@ -14,7 +14,7 @@ import {IOutstandingProjectEB5Props} from '@/sections/EB5/outstanding-projects'
 import {FC, Suspense} from 'react'
 // import PioneeringValues from '@/sections/EB5/pioneering-values'
 import {ICountry} from '@/components/LeafletMap'
-import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
+// import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
 import dynamic from 'next/dynamic'
 import OutstandingProjectEB5Clone from '@/sections/EB5/outstanding-projects/indexClone'
 const PioneeringValues = dynamic(
@@ -67,9 +67,9 @@ const PageEB5Clone: FC<IPageEB5Props> = ({ data }) => {
         />
       </Suspense>
       <ProjectTransparency data={data?.safety_standards} />
-      <WrapperConnectUs>
+      {/* <WrapperConnectUs>
         <FormConnectUs />
-      </WrapperConnectUs>
+      </WrapperConnectUs> */}
     </main>
   )
 }
