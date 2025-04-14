@@ -192,7 +192,7 @@ function ProudJourneyItem({
   position,
   content,
 }: IItemProudJourney) {
-  console.log(name)
+  // console.log(name)
   return (
     <div className='relative flex size-full flex-col sm:block'>
       <div className='box__image relative h-[11.25rem] select-none transition-all duration-100 sm:size-full'>

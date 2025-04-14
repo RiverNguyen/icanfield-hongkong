@@ -42,6 +42,8 @@ ARG NEXT_PUBLIC_API_PASSPORT
 ENV NEXT_PUBLIC_API_PASSPORT=${NEXT_PUBLIC_API_PASSPORT}
 ARG NEXT_PUBLIC_DOMAIN
 ENV NEXT_PUBLIC_DOMAIN=${NEXT_PUBLIC_DOMAIN}
+ARG NEXT_PUBLIC_BASE_URL
+ENV NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
 
 
 # Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry

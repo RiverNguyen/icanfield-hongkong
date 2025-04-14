@@ -74,9 +74,9 @@ const DiverseAmenities = ({
       <h2 className='font-optima font-medium text-Phase-1-Brown heading3 xsm:text-xl xsm:font-semibold xsm:leading-[1.3] xsm:tracking-[-0.025rem]'>
         Tiện ích đa dạng
       </h2>
-      <p className='text-greyscaletext-400 body16-r55 xsm:body-14'>
-        {description}
-      </p>
+      <div className='text-greyscaletext-400 body16-r55 xsm:body-14' dangerouslySetInnerHTML={{__html: description}}>
+
+      </div>
       <div className='space-y-3 rounded-2xl bg-[#FAFAFA] p-4'>
         <h3 className='text-textgreybody body16-s'>Tiện ích</h3>
         <div className='h-[1px] w-full bg-[#EDEDED]' />

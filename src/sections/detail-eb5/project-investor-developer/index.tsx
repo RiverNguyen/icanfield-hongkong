@@ -18,6 +18,7 @@ export type ProjectInvestorDeveloperProps = {
     }[]
   }
   developer: {
+    name: string
     title: string
     description: string[]
     image: string
@@ -74,8 +75,7 @@ const ProjectInvestorDeveloper = ({
               </div>
             ) : (
               <h3 className='font-semibold uppercase text-white sub-24S xsm:body16-s'>
-                Các đơn vị <br />
-                phát triển dự án
+                {development.name}
               </h3>
             )}
           </div>

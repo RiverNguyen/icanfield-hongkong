@@ -36,7 +36,7 @@ export async function generateMetadata({
       console.error('No valid metadata found for slug:', params.detailslug)
       return {}
     }
-    console.log('res', res[0])
+    // console.log('res', res[0])
     // Trả về metadata được xử lý
     return metadataValues(res[0])
   } catch (error) {

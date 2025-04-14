@@ -7,7 +7,7 @@ export async function generateMetadata() {
   try {
     // Gọi API để lấy metadata
     const res = await getMetadataPage('/pages/938')
-    console.log(res)
+    // console.log(res)
     // Trả về metadata được xử lý
     return metadataValues(res)
   } catch (error) {

@@ -28,7 +28,7 @@ export interface IFeaturedNewsProps {
   items: IFeaturedNewsItem[]
 }
 export const FeaturedNews: FC<IFeaturedNewsProps> = ({ title, items }) => {
-  console.log('FeaturedNews', items)
+  // console.log('FeaturedNews', items)
   return (
     <section className='mx-auto mt-[3rem] max-w-[90rem] px-[1rem] sm:mt-[5rem] sm:px-0'>
       <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>

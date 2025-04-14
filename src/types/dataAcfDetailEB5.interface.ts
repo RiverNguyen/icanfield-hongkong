@@ -83,6 +83,7 @@ export interface IDataAcfDetailEB5 {
         }[]
       }
       development: {
+        name: string
         description: string
         logos: Media[]
         thumbnail: Media
