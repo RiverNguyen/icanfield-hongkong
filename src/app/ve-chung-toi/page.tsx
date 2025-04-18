@@ -4,6 +4,7 @@ import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
 export async function generateMetadata() {
   const res = await getMetadata('/pages/101')
+  console.log(res)
   return metadataValues(res)
 }
 const page = async () => {

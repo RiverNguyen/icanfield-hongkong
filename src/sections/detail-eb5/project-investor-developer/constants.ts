@@ -19,6 +19,7 @@ export const projectInvestorDeveloperProps: ProjectInvestorDeveloperProps = {
     logo: '/imgs/detail-eb5/d-logo-homefed.webp',
   },
   developer: {
+    name: 'Palm Springs Hotel',
     title: 'CÁC ĐƠN VỊ PHÁT TRIỂN UY TÍN',
     description: [
       'Dự án EB-5 tại Palm Springs Hotel được phát triển bởi một nhóm chuyên gia hàng đầu trong lĩnh vực bất động sản, nổi bật với những thành tựu ấn tượng trong việc thu hút đầu tư nước ngoài. Với hơn 15 năm kinh nghiệm, nhóm này đã thực hiện nhiều dự án thành công, tạo ra cơ hội việc làm và thúc đẩy sự phát triển kinh tế địa phương.',
