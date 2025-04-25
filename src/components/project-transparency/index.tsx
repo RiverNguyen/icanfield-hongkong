@@ -14,7 +14,7 @@ export interface IProjectTransparencyProps {
     footer_title_left: string
     footer_link_slug: string
     footer_content: string
-    image_background: string
+    image_background?: string
   }
   linkImage?: string
   fontSize?: string
