@@ -148,7 +148,7 @@ const ProjectInvestorDeveloper = ({
             )}
           </div>
         </div>
-        <div className='h-[33.3125rem] flex-1 rounded-3xl bg-orangetext-50 xsm:rounded-b-none xsm:w-fit'>
+        <div className='h-[33.3125rem] flex-1 rounded-3xl bg-orangetext-50 xsm:rounded-b-none xsm:h-fit'>
           <Tabs
             onValueChange={(value) => setTab(value as 'investor' | 'developer')}
             value={tab}
