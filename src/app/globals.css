@@ -56,7 +56,7 @@ html > body[data-scroll-locked] {
     @apply my-[0.5rem] text-greyscaletext-body inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
   }
   .content-strong {
-    @apply inter18 xsm:text-[1rem] font-bold xsm:font-bold xsm:tracking-[-0.04375rem] xsm:text-greyscaletext-body;
+    @apply xsm:text-[1rem] font-bold xsm:font-bold xsm:tracking-[-0.04375rem] xsm:text-greyscaletext-body;
   }
   .content-ul {
     @apply my-[0.5rem] list-disc pl-[1.5rem];
