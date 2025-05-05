@@ -69,7 +69,7 @@ html > body[data-scroll-locked] {
     @apply text-greyscaletext-body inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
   }
   .content-span {
-    @apply my-[0.5rem] text-greyscaletext-body inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
+    @apply my-[0.5rem] inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
   }
   .content-img {
     @apply mb-[1.12rem] mt-[2.5rem] !h-auto max-h-[100vh] !w-full object-cover xsm:mb-[0.75rem] xsm:mt-[1.5rem];
