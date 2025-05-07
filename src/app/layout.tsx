@@ -8,7 +8,8 @@ import Footer from '@/layout/footer'
 import {Inter} from 'next/font/google'
 import fetchData from '@/fetch/fetchData'
 import Providers from '@/components/proccessBar'
-import Image from 'next/image'
+import Script from 'next/script'
+
 const inter = Inter({subsets: ['latin']})
 const optima = localFont({
   src: [
@@ -43,13 +44,13 @@ export default async function RootLayout({
   const requestFooter = {
     api: '/footer-options?acf_format=standard',
     option: {
-      next  : { revalidate: 60 },
+      next: {revalidate: 60},
     },
   }
   const requestHeader = {
     api: '/header-options?acf_format=standard',
     option: {
-      next  : { revalidate: 60 },
+      next: {revalidate: 60},
     },
   }
   const [dataFooter, dataHeader] = await Promise.all([
@@ -60,8 +61,9 @@ export default async function RootLayout({
     <html lang='en'>
       <head>
         {/* Gắn Facebook Pixel bằng thẻ script thuần */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -72,8 +74,25 @@ export default async function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1247066973474967');
             fbq('track', 'PageView');
-          `
-        }} />
+          `,
+          }}
+        />
+
+        <Script
+          src='https://www.googletagmanager.com/gtag/js?id=G-B54QV5PM5T'
+          strategy='afterInteractive'
+        />
+        <Script
+          id='google-analytics'
+          strategy='afterInteractive'
+        >
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-B54QV5PM5T');
+        `}
+        </Script>
       </head>
       <body className={` ${optima.variable} ${inter.className} antialiased`}>
         <Header
