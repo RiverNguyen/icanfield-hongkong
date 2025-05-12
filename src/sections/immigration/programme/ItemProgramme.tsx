@@ -3,9 +3,9 @@ import useStore from '@/app/(store)/store'
 import IConArrow from '@/components/icon/IConArrow'
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
-import { cn } from '@/lib/utils'
+import {cn} from '@/lib/utils'
 import IConMessager from '@/sections/immigration/programme/IConMessager'
-import { dataProgramsAcf } from '@/types/dataAcfImmigration.interface'
+import {dataProgramsAcf} from '@/types/dataAcfImmigration.interface'
 import Link from 'next/link'
 
 export default function ItemProgramme({
@@ -16,9 +16,9 @@ export default function ItemProgramme({
   className?: string
   dataPostProgramme: dataProgramsAcf
   slug: string
-  }) {
+}) {
   const isMobile = useIsMobile()
-  const { consultingPhoneNumber } = useStore((state) => state)
+  const {consultingPhoneNumber} = useStore((state) => state)
   return (
     <div
       className={cn(
@@ -26,7 +26,10 @@ export default function ItemProgramme({
         className,
       )}
     >
-      <Link href={'/' + slug + '/' + dataPostProgramme?.slug} className='relative block h-[18.5625rem] w-full rounded-[1.25rem] xsm:h-[14.25rem]'>
+      <Link
+        href={'/' + slug + '/' + dataPostProgramme?.slug}
+        className='relative block h-[18.5625rem] w-full rounded-[1.25rem] xsm:h-[14.25rem]'
+      >
         <ImageV2
           className='size-full rounded-[1.25rem] object-cover'
           width={464}
@@ -35,9 +38,10 @@ export default function ItemProgramme({
           src={dataPostProgramme?.featured_image}
         />
         <div className='absolute inset-0 z-10 size-full rounded-[1.25rem] bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]'></div>
-        <h3 className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] font-optima sm:text-[2rem] line-clamp-2 font-medium text-white heading3 xsm:bottom-[4.81rem] xsm:left-[1rem] xsm:heading2'>
-          {dataPostProgramme?.title}
-        </h3>
+        <h3
+          className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] line-clamp-2 font-optima font-medium text-white heading3 sm:text-[2rem] xsm:bottom-[4.81rem] xsm:left-[1rem] xsm:heading2'
+          dangerouslySetInnerHTML={{__html: dataPostProgramme?.title || ''}}
+        ></h3>
         {isMobile && (
           <div className='absolute bottom-[0.5rem] z-[11] flex w-full items-center space-x-[0.5rem] px-[0.5rem] sm:hidden'>
             <div className='flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)] p-[0.5rem_0.75rem]'>
@@ -133,7 +137,7 @@ export default function ItemProgramme({
         </Link>
         <Link
           href={'/' + slug + '/' + dataPostProgramme?.slug}
-          className='flex cursor-pointer items-center space-x-[0.5rem] xsm:justify-center rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:flex-1'
+          className='flex cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:flex-1 xsm:justify-center'
         >
           <p className='tracking-[-0.0175rem] text-white body-14-m'>
             Xem chi tiết
