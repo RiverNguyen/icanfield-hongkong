@@ -41,7 +41,13 @@ export default function AsideDetail({
           {title}
         </h1>
       )}
-      <div className='sm:sticky sm:top-[8.4375rem] sm:pb-[1rem]'>
+      <div
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#ad6903 transparent',
+        }}
+        className='h-[33rem] overflow-y-scroll sm:sticky sm:top-[8.4375rem] sm:pb-[1rem]'
+      >
         <div className='mb-[1.5rem] rounded-[0.75rem] border-[2px] border-solid border-[#eee] bg-[#F6F5F3] p-[1.5rem] xsm:rounded-[0.625rem] xsm:border-[0.4px] xsm:border-[rgba(0,0,0,0.10)] xsm:p-[0.94rem_1rem]'>
           <div className='mb-[1.62rem] w-full xsm:mb-[0.75rem] xsm:flex xsm:items-center xsm:justify-between'>
             <p className='text-[1.25rem] font-semibold tracking-[-0.0125rem] text-orangetext-900 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem]'>
