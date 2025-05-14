@@ -55,11 +55,11 @@ export default function IndexAside({ htmlString }: { htmlString: string }) {
         <li
           key={index}
           className={cn(
-            'transition-all cursor-pointer !text-[1rem] [&_span]:!text-[1rem] xsm:[&_span]:!text-[0.75rem] font-medium tracking-[-0.01rem] xsm:!text-[0.75rem]',
-            content.level === 'h3' && 'pl-4 list-none text-[#ad6903]', // Indent h3 and remove list style
+            'transition-all cursor-pointer !text-[1rem] [&_span]:!text-[1rem] xsm:[&_span]:!text-[0.75rem] !font-medium tracking-[-0.01rem] xsm:!text-[0.75rem]',
+            content.level === 'h3' && 'pl-4 list-none !text-[#ad6903]', // Indent h3 and remove list style
             activeSection === content.id
-              ? 'text-orangetext-800'
-              : 'text-[rgba(0,18,36,0.54)] xsm:text-orangetext-800'
+              ? '!text-[#ad6903] !font-medium [&_*]:!text-[#ad6903]'
+              : '!text-[#ad6903] xsm:!text-[#ad6903] [&_*]:!text-[#ad6903]'
           )}
         >
           <Link
@@ -69,10 +69,10 @@ export default function IndexAside({ htmlString }: { htmlString: string }) {
               handleScroll(content.id)
             }}
             className={cn(
-              'transition-all !text-[1rem] font-medium tracking-[-0.01rem] [&_span]:!text-[1rem] xsm:[&_span]:!text-[0.75rem] xsm:text-orangetext-800 xsm:!text-[0.75rem] xsm:font-medium xsm:tracking-[-0.0075rem]',
+              'transition-all !text-[1rem] font-medium [&_strong]:font-medium tracking-[-0.01rem] [&_span]:!text-[1rem] xsm:[&_span]:!text-[0.75rem] xsm:text-orangetext-800  xsm:!text-[0.75rem] xsm:font-medium xsm:tracking-[-0.0075rem]',
               activeSection === content.id
-                ? 'text-orangetext-800'
-                : 'text-[rgba(0,18,36,0.54)]'
+                ? '!text-[#ad6903] [&_*]:!text-[#ad6903]'
+                : '!text-[#ad6903] [&_*]:!text-[#ad6903]'
             )}
             dangerouslySetInnerHTML={{ __html: content?.text || '' }}
           />
