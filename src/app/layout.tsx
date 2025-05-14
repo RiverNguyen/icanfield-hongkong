@@ -9,6 +9,7 @@ import {Inter} from 'next/font/google'
 import fetchData from '@/fetch/fetchData'
 import Providers from '@/components/proccessBar'
 import Script from 'next/script'
+import ContactButtons from '@/components/contact-buttons'
 
 const inter = Inter({subsets: ['latin']})
 const optima = localFont({
@@ -57,6 +58,7 @@ export default async function RootLayout({
     fetchData(requestFooter),
     fetchData(requestHeader),
   ])
+
   return (
     <html lang='en'>
       <head>
@@ -109,6 +111,7 @@ export default async function RootLayout({
           duration={4000}
           expand
         />
+        <ContactButtons data={dataFooter?.data?.contact_button} />
         <Footer dataFooter={dataFooter?.data} />
       </body>
     </html>
