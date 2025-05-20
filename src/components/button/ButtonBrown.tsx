@@ -11,12 +11,14 @@ export default function ButtonBrown({
   title: string
   link: string
   className?: string
-  target?: string
+    target?: string
+  
 }) {
+  console.log(link)
   return (
     <Link
         target={target}
-        href={link || '#'}
+        href={link || 'tham-dinh-ho-so'}
         className={cn('xsm:flex-1 cursor-pointer flex items-center xsm:justify-center space-x-[0.5rem] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:py-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)]',
             className
         )}
