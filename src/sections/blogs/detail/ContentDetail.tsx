@@ -34,7 +34,7 @@ export default function ContentDetail({
         </h1>
       )}
       <div
-        className='[&_h2]:content-h2 [&_img]:content-img [&_.wp-caption]:text-gray-500 [&_.wp-caption]:italic [&_.wp-caption]:text-center  [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li flex-1 [&_a]:text-blue-600 [&_strong]:font-bold'
+        className='[&_h2]:content-h2 [&_img]:content-img  [&_.wp-caption]:italic [&_.wp-caption]:text-center  [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li flex-1 [&_a]:text-blue-600 [&_strong]:font-bold'
         dangerouslySetInnerHTML={{ __html: cleanedHtml || '' }}
       ></div>
       <div className='my-[1.5rem] h-[0.0625rem] w-full bg-[rgba(0,0,0,0.04)]'></div>
