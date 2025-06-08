@@ -125,3 +125,9 @@ export interface Program {
   background_mobile: ImageHeader
   count :string
 }
+export interface SettingItem {
+  name_page: string;
+  slug: string;
+  show_popup: boolean;
+  time_show: string;
+}

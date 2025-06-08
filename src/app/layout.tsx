@@ -54,9 +54,17 @@ export default async function RootLayout({
       next: {revalidate: 60},
     },
   }
-  const [dataFooter, dataHeader] = await Promise.all([
+  const requestPopup = {
+    api: '/form-all-page',
+
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const [dataFooter, dataHeader, dataPopup] = await Promise.all([
     fetchData(requestFooter),
     fetchData(requestHeader),
+    fetchData(requestPopup),
   ])
 
   return (
@@ -100,6 +108,7 @@ export default async function RootLayout({
         <Header
           data={dataHeader?.data}
           dataFooter={dataFooter.data}
+          dataPopup={dataPopup?.data}
         />
 
         <Providers>{children}</Providers>
