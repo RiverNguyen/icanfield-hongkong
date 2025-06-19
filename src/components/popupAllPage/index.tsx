@@ -15,6 +15,7 @@ interface FormData {
 const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  console.log(dataPopup)
   useEffect(() => {
     if (!dataPopup || !dataPopup.setting) return
 
@@ -63,6 +64,8 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
   const [showStatusPopup, setShowStatusPopup] = useState<
     'success' | 'error' | null
   >(null)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     phone: '',
@@ -88,28 +91,47 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
     setFormData((prev) => ({...prev, [name]: value}))
   }
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {value, checked} = e.target
-    setFormData((prev) => {
-      let selectedPrograms = prev.programs.length
-        ? prev.programs.split(',')
-        : []
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
 
-      if (checked) {
-        selectedPrograms.push(value)
-      } else {
-        selectedPrograms = selectedPrograms.filter((p) => p !== value)
-      }
+    // Validate fullName
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Vui lòng nhập họ tên'
+    } else if (formData.fullName.trim().length < 2) {
+      newErrors.fullName = 'Họ tên phải có ít nhất 2 ký tự'
+    }
 
-      return {
-        ...prev,
-        programs: selectedPrograms.join(','),
-      }
-    })
+    // Validate phone
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Vui lòng nhập số điện thoại'
+    } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Số điện thoại không hợp lệ'
+    }
+
+    // Validate email
+    if (!formData.email.trim()) {
+      newErrors.email = 'Vui lòng nhập email'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = 'Email không hợp lệ'
+    }
+
+    // Validate programs
+    if (!formData.programs.trim()) {
+      newErrors.programs = 'Vui lòng chọn chương trình quan tâm'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Validate form trước khi submit
+    if (!validateForm()) {
+      return
+    }
+
     setIsLoading(true)
 
     try {
@@ -135,6 +157,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
           programs: '',
           message: '',
         })
+        setErrors({}) // Clear errors khi thành công
       } else {
         setShowStatusPopup('error')
       }
@@ -226,51 +249,113 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder='Họ tên'
-                  className='w-full rounded-xl border border-gray-300 px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200'
+                  className={`w-full rounded-xl border px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 ${
+                    errors.fullName
+                      ? 'border-red-500 focus:border-red-500'
+                      : 'border-gray-300 focus:border-blue-500'
+                  }`}
                   required
                 />
+                {errors.fullName && (
+                  <p className='text-sm text-'>{errors.fullName}</p>
+                )}
+
                 <input
                   type='tel'
                   name='phone'
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder='Số điện thoại'
-                  className='w-full rounded-xl border border-gray-300 px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200'
+                  className={`w-full rounded-xl border px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 ${
+                    errors.phone
+                      ? 'border-red-500 focus:border-red-500'
+                      : 'border-gray-300 focus:border-blue-500'
+                  }`}
                   required
                 />
+                {errors.phone && (
+                  <p className='text-sm text-red-500'>{errors.phone}</p>
+                )}
+
                 <input
                   type='email'
                   name='email'
                   value={formData.email}
                   onChange={handleChange}
                   placeholder='Email'
-                  className='w-full rounded-xl border border-gray-300 px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200'
+                  className={`w-full rounded-xl border px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 ${
+                    errors.email
+                      ? 'border-red-500 focus:border-red-500'
+                      : 'border-gray-300 focus:border-blue-500'
+                  }`}
                   required
                 />
+                {errors.email && (
+                  <p className='text-sm text-red-500'>{errors.email}</p>
+                )}
 
                 <div className='space-y-3'>
                   <p className='text-sm font-medium text-brown'>
                     Chương trình quan tâm:
                   </p>
-                  <div className='flex flex-wrap gap-2'>
-                    {programsList.map((program, index) => (
-                      <label
-                        key={index}
-                        className='cursor-pointer'
+                  <div className='relative'>
+                    <div
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      className={`flex w-full cursor-pointer items-center justify-between rounded-xl border px-4 py-2 text-sm text-brown focus:outline-none focus:ring-2 focus:ring-blue-200 ${
+                        errors.programs
+                          ? 'border-red-500 focus:border-red-500'
+                          : 'border-gray-300 focus:border-blue-500'
+                      }`}
+                    >
+                      <span
+                        className={
+                          formData.programs ? 'text-brown' : 'text-gray-400'
+                        }
                       >
-                        <input
-                          type='checkbox'
-                          value={program}
-                          checked={formData.programs.includes(program)}
-                          onChange={handleCheckboxChange}
-                          className='peer hidden'
+                        {formData.programs || 'Chọn chương trình quan tâm'}
+                      </span>
+                      <svg
+                        className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M19 9l-7 7-7-7'
                         />
-                        <span className='inline-block rounded-full border border-gray-300 px-3 py-1 text-sm text-brown transition-all hover:bg-gray-100 peer-checked:border-[#2E1506] peer-checked:bg-[#2E1506] peer-checked:text-white'>
-                          {program}
-                        </span>
-                      </label>
-                    ))}
+                      </svg>
+                    </div>
+
+                    {isDropdownOpen && (
+                      <div className='absolute left-0 right-0 top-full z-50 mt-1 max-h-48 overflow-y-auto rounded-xl border border-gray-300 bg-white shadow-lg'>
+                        {programsList.map((program, index) => (
+                          <div
+                            key={index}
+                            onClick={() => {
+                              setFormData((prev) => ({
+                                ...prev,
+                                programs: program,
+                              }))
+                              setIsDropdownOpen(false)
+                              // Clear error khi chọn
+                              if (errors.programs) {
+                                setErrors((prev) => ({...prev, programs: ''}))
+                              }
+                            }}
+                            className='cursor-pointer px-4 py-2 text-sm text-brown first:rounded-t-xl last:rounded-b-xl hover:bg-gray-100'
+                          >
+                            {program}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
+                  {errors.programs && (
+                    <p className='text-sm text-red-500'>{errors.programs}</p>
+                  )}
                 </div>
 
                 <textarea

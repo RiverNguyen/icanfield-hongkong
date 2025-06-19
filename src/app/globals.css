@@ -14,6 +14,11 @@ body.no-scroll {
 html {
   font-size: 1vw;
 }
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  display: none !important;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -51,12 +56,13 @@ html > body[data-scroll-locked] {
   --removed-body-scroll-bar-size: 0px;
   margin-right: 0 !important;
 }
+
 @layer components {
   .content-p {
     @apply my-[0.5rem] inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
   }
   .content-strong {
-    @apply xsm:text-[1rem] font-bold xsm:font-bold xsm:tracking-[-0.04375rem];
+    @apply font-bold xsm:text-[1rem] xsm:font-bold xsm:tracking-[-0.04375rem];
   }
   .content-ul {
     @apply my-[0.5rem] list-disc pl-[1.5rem];
@@ -66,7 +72,7 @@ html > body[data-scroll-locked] {
   }
   .content-ol--li,
   .content-ul--li {
-    @apply  inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
+    @apply inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
   }
   .content-span {
     @apply my-[0.5rem] inter18 xsm:text-[0.875rem] xsm:tracking-[-0.00875rem];
@@ -75,7 +81,7 @@ html > body[data-scroll-locked] {
     @apply mb-[1.12rem] mt-[2.5rem] !h-auto max-h-[100vh] !w-full object-cover xsm:mb-[0.75rem] xsm:mt-[1.5rem];
   }
   .content-h2 {
-    @apply my-[1.5rem] text-[1.375rem] font-semibold leading-[1.4] tracking-[-0.0875rem]  xsm:mb-[1rem] xsm:text-[1rem] xsm:font-semibold xsm:leading-[1.4] xsm:tracking-[-0.04375rem];
+    @apply my-[1.5rem] text-[1.375rem] font-semibold leading-[1.4] tracking-[-0.0875rem] xsm:mb-[1rem] xsm:text-[1rem] xsm:font-semibold xsm:leading-[1.4] xsm:tracking-[-0.04375rem];
   }
   .pagination {
     @apply sm:hidden xsm:mt-[1.5rem] xsm:flex xsm:h-[0.75rem] xsm:items-center xsm:justify-center xsm:space-x-[0.5rem];
@@ -216,8 +222,8 @@ html > body[data-scroll-locked] {
   animation-duration: 2000ms;
 }
 input:-webkit-autofill {
-  background-color: #F6F6F6 !important; 
-  -webkit-text-fill-color: #333 !important; 
+  background-color: #f6f6f6 !important;
+  -webkit-text-fill-color: #333 !important;
   transition: background-color 500ms ease-in-out; /* Hiệu ứng chuyển đổi */
 }
 @media (max-width: 639px) {
@@ -244,7 +250,7 @@ input:-webkit-autofill {
     display: none;
   }
 }
-#google_translate_element .goog-te-combo:first-child{
+#google_translate_element .goog-te-combo:first-child {
   display: none !important;
 }
 #google_translate_element span {
@@ -253,7 +259,7 @@ input:-webkit-autofill {
 #google_translate_element .goog-te-gadget:last-child {
   display: none !important;
 }
-#google_translate_element .VIpgJd-ZVi9od-l4eHX-hSRGPd{
+#google_translate_element .VIpgJd-ZVi9od-l4eHX-hSRGPd {
   display: none !important;
 }
 .fatherLang {
@@ -273,5 +279,5 @@ input:-webkit-autofill {
   display: none !important;
 }
 body {
-  top:0 !important;
+  top: 0 !important;
 }

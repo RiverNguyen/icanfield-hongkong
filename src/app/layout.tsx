@@ -87,7 +87,10 @@ export default async function RootLayout({
           `,
           }}
         />
-
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy='afterInteractive'
+        />
         <Script
           src='https://www.googletagmanager.com/gtag/js?id=G-B54QV5PM5T'
           strategy='afterInteractive'
