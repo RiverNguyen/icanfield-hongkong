@@ -16,6 +16,7 @@ export default function Strengths({
   const handleMouseEnter = (index: number) => {
     setIndexActive(index)
   }
+  console.log(dataStrength)
   return (
     <section className="relative z-10 h-[100vh] xsm:h-auto w-full xsm:py-[1.5rem]">
       {isMobile ? (
@@ -46,7 +47,7 @@ export default function Strengths({
                     {e?.title}
                   </p>
                   <p className="body-14 font-normal text-[rgba(255,255,255,0.85)] line-clamp-5">
-                    {e?.describe}
+                    {e?.describe || e?.label}
                   </p>
                 </div>
               </div>
@@ -86,7 +87,7 @@ export default function Strengths({
                     <h2 className="text-[2.625rem] font-medium leading-[1.2] tracking-[-0.0525rem] uppercase font-optima background_clip--text bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)]">
                       {e?.title}
                     </h2>
-                    <p className="text-[rgba(18,18,18,0.87)] font-optima text-[1.875rem] font-medium leading-[1.2] tracking-[-0.0375rem]">
+                    <p className="text-[rgba(18,18,18,0.87)] font-optima text-[1rem] font-medium leading-[1.2] tracking-[-0.0375rem]">
                       {e?.label}
                     </p>
                   </div>

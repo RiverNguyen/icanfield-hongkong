@@ -231,11 +231,11 @@ const LeafletMap: FC<ILeafletMapProps> = ({
       />
       {countries.map((country, index) => {
         let countryObj: ICountry = {
-          name: country[0].name,
-          label: country[0].label,
-          flag: country[0].flag,
+          name: country?.[0]?.name || "",
+          label: country?.[0]?.label || "",
+          flag: country?.[0]?.flag || "",
         }
-        let position: LatLngTuple = getPosition(country[0].name)
+        let position: LatLngTuple = getPosition(country?.[0]?.name || "")
 
         if (countries.length > 1) {
           const newPosition = country.find((item) => {

@@ -13,6 +13,13 @@ export default async function getMetadata(request: string) {
       },
     )
 
+    // Check if response is JSON
+    const contentType = res.headers.get('content-type')
+    if (!contentType || !contentType.includes('application/json')) {
+      console.error(`Expected JSON response but got ${contentType}`)
+      return null
+    }
+
     // Check if the response is not okay
     if (!res.ok) {
       return null

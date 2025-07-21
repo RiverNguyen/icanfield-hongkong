@@ -23,10 +23,19 @@ export default async function fetchData(request: RequestPostGuest) {
       },
     )
 
+    // Check if response is JSON
+    const contentType = res.headers.get('content-type')
+    if (!contentType || !contentType.includes('application/json')) {
+      throw new Error(`Expected JSON response but got ${contentType}`)
+    }
+
     if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      // throw new Error('Failed to fetch data')
-      return res.json()
+      // Return error response as JSON if possible
+      try {
+        return res.json()
+      } catch {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+      }
     }
 
     return res.json()
