@@ -57,6 +57,9 @@ export default async function page({params}: {params: {slug: string}}) {
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchDataACF error:', err)
+      return null
     }),
     fetchData({
       api:
@@ -68,18 +71,27 @@ export default async function page({params}: {params: {slug: string}}) {
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchData dataPrograms error:', err)
+      return []
     }),
     fetchData({
       api: '/posts-by-taxonomy?slug=' + params?.slug,
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchData postRelate error:', err)
+      return []
     }),
     fetchData({
       api: `/data-map-with-slug/?slug=${params.slug}`,
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchData dataMap error:', err)
+      return null
     }),
   ])
   if (!dataAcf || !dataAcf.length) {

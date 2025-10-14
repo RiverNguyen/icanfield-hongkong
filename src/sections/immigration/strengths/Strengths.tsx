@@ -35,7 +35,7 @@ export default function Strengths({
                   height={152}
                   src={e?.bacground?.url}
                 />
-                <div className="relative z-10 min-h-[14.625rem] p-[1.25rem] rounded-[1rem] bg-[linear-gradient(0deg,#5C321E_0%,#95502F_100%)]">
+                <div className="relative z-10 min-h-[14.625rem] p-[1.25rem] rounded-[1rem] bg-[linear-gradient(0deg,#5C321E_0%,#95502F_100%)] overflow-hidden">
                   <ImageV2
                     className="size-[2.5rem] object-contain"
                     alt={e?.icon?.alt}
@@ -46,9 +46,15 @@ export default function Strengths({
                   <p className="body-14-b text-white mt-[1.25rem] mb-[0.5rem]">
                     {e?.title}
                   </p>
-                  <p className="body-14 font-normal text-[rgba(255,255,255,0.85)] line-clamp-5">
+                  <p style={{
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: '#ad6903 transparent',
+                  }} className="body-14 font-normal text-[rgba(255,255,255,0.85)] xsm:block xsm:!h-[7rem] xsm:overflow-y-auto pb-[2rem]">
                     {e?.describe || e?.label}
                   </p>
+                  <div className='absolute bottom-0 left-0 w-full h-[5rem] pointer-events-none z-[1] bg-[linear-gradient(0deg,rgba(92,50,30,1)_0%,rgba(92,50,30,0)100%)]'>
+
+                  </div>
                 </div>
               </div>
             ))}
@@ -56,8 +62,8 @@ export default function Strengths({
         </div>
       ) : (
         <>
-            <div className="size-full xsm:hidden relative">
-              <div className='absolute top-0 left-0 w-full h-[15rem] bg-[linear-gradient(180deg,rgba(246,246,244,1)_30%,rgba(255,255,255,0)_100%)] z-10 pointer-events-none'></div>
+          <div className="size-full xsm:hidden relative">
+            <div className='absolute top-0 left-0 w-full h-[15rem] bg-[linear-gradient(180deg,rgba(246,246,244,1)_30%,rgba(255,255,255,0)_100%)] z-10 pointer-events-none'></div>
             {dataStrength && dataStrength?.map((e: dataStrength, index: number) => (
               <ImageV2
                 key={index}
@@ -87,7 +93,7 @@ export default function Strengths({
                     <h2 className="text-[2.625rem] font-medium leading-[1.2] tracking-[-0.0525rem] uppercase font-optima background_clip--text bg-[linear-gradient(98deg,#95502F_41.26%,#F5C178_97.06%)]">
                       {e?.title}
                     </h2>
-                    <p className="text-[rgba(18,18,18,0.87)] font-optima text-[1rem] font-medium leading-[1.2] tracking-[-0.0375rem]">
+                    <p className="text-[rgba(18,18,18,0.87)] text-[1.25rem] font-normal leading-[1.2] tracking-[-0.0375rem]">
                       {e?.label}
                     </p>
                   </div>
