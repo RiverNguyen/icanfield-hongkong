@@ -1,16 +1,13 @@
 'use client'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {Pagination, Navigation} from 'swiper/modules'
+import {Pagination, Navigation, FreeMode} from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import './style.css'
 import Image from 'next/image'
 import ImageV2 from '@/components/image/ImageV2'
-
-const remToPx = (rem: number) => {
-  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
-}
+import {remToPx} from '@/utils/remToPx'
 
 const reviews = [
   {
@@ -67,7 +64,7 @@ export default function Reviews() {
         <div className='flex items-center space-x-3 xsm:hidden'>
           <button
             type='button'
-            className='swiper-btn-prev w-10 rounded-3xl bg-[rgba(245,193,120,0.20)] p-2 flex-center'
+            className='swiper-btn-reviews-prev w-10 rounded-3xl bg-[rgba(245,193,120,0.20)] p-2 flex-center'
           >
             <Image
               src='/icons/arrow-right-brown.svg'
@@ -79,7 +76,7 @@ export default function Reviews() {
           </button>
           <button
             type='button'
-            className='swiper-btn-next w-10 rounded-3xl bg-[rgba(245,193,120,0.20)] p-2 flex-center'
+            className='swiper-btn-reviews-next w-10 rounded-3xl bg-[rgba(245,193,120,0.20)] p-2 flex-center'
           >
             <Image
               src='/icons/arrow-right-brown.svg'
@@ -96,9 +93,8 @@ export default function Reviews() {
         spaceBetween={remToPx(0.75)}
         freeMode={true}
         navigation={{
-          nextEl: '.swiper-btn-next',
-          prevEl: '.swiper-btn-prev',
-          disabledClass: 'disabled',
+          nextEl: '.swiper-btn-reviews-next',
+          prevEl: '.swiper-btn-reviews-prev',
         }}
         breakpoints={{
           640: {
@@ -115,7 +111,7 @@ export default function Reviews() {
             },
           },
         }}
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation, FreeMode]}
         className='swiper-reviews !py-10 !section-container xsm:!px-4 xsm:!pb-10 xsm:!pt-5'
       >
         {reviews.map((review, i) => (

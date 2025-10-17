@@ -3,12 +3,14 @@
 import ImageV2 from '@/components/image/ImageV2'
 import {ICArrow} from '@/components/itemBlog'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {Pagination, Navigation} from 'swiper/modules'
+import {Pagination, Navigation, FreeMode} from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import './style.css'
 import Link from 'next/link'
+import {remToPx} from '@/utils/remToPx'
+import {Fragment} from 'react'
 
 // Success Card Component
 interface SuccessCardProps {
@@ -26,7 +28,7 @@ interface SuccessCardProps {
 const SuccessCard = ({item}: SuccessCardProps) => (
   <Link
     href={item.href}
-    className='group relative flex h-[36.25rem] flex-shrink-0 cursor-pointer flex-col items-start overflow-hidden rounded-[1.25rem] xsm:h-[25rem] xsm:w-[18.75rem] xsm:rounded-[1rem]'
+    className='group relative flex h-[36.25rem] w-full flex-shrink-0 cursor-pointer flex-col items-start overflow-hidden rounded-[1.25rem] xsm:h-[25rem] xsm:rounded-[1rem]'
   >
     <ImageV2
       src={item.imageSrc}
@@ -49,11 +51,8 @@ const SuccessCard = ({item}: SuccessCardProps) => (
       <div className='flex w-full flex-col items-start gap-[0.625rem] xsm:gap-[0.5rem] xsm:self-stretch'>
         <div className='flex items-center justify-between self-stretch border-b-[0.4px] border-b-white pb-[0.75rem] xsm:border-b-[0.299px] xsm:pb-[0.56088rem]'>
           {item.stats.map((stat, index) => (
-            <>
-              <div
-                key={index}
-                className='flex flex-col items-start'
-              >
+            <Fragment key={index}>
+              <div className='flex flex-col items-start'>
                 <p className='text-[0.875rem] font-medium not-italic leading-[150%] tracking-[-0.0175rem] text-[#EBEBEB] xsm:text-[0.625rem] xsm:tracking-[-0.0125rem]'>
                   {stat.label}
                 </p>
@@ -64,7 +63,7 @@ const SuccessCard = ({item}: SuccessCardProps) => (
               {index !== item.stats.length - 1 && (
                 <div className='h-[2.4375rem] w-[0.03125rem] bg-[#C0C0C0] xsm:h-[1.82281rem] xsm:w-[0.02338rem]'></div>
               )}
-            </>
+            </Fragment>
           ))}
         </div>
         <div className='flex flex-col gap-[0.3125rem] self-stretch'>
@@ -220,45 +219,42 @@ export default function Success() {
           </button>
         </div>
       </div>
-      <div className='flex items-center gap-[2rem] self-stretch xsm:hidden xsm:items-start xsm:gap-[0.875rem]'>
-        <Swiper
-          slidesPerView={slidesPerView}
-          slidesPerGroup={slidesPerGroup}
-          spaceBetween={32}
-          navigation={{
-            nextEl: '.swiper-btn-success-next',
-            prevEl: '.swiper-btn-success-prev',
-            disabledClass: 'disabled',
-          }}
-          pagination={{
-            el: '.swiper-pagination-custom',
-            type: 'bullets',
-            clickable: true,
-            renderBullet(index, className) {
-              return `<span class='${className} !w-[6.25rem] !h-full !rounded-[6.25rem] !opacity-100 inline-block !ml-0 !mr-1 !last:mr-0 !transition-all !duration-300'></span>`
-            },
-          }}
-          modules={[Pagination, Navigation]}
-          className='w-full xsm:hidden'
-        >
-          {SUCCESS_DATA?.map((item) => (
-            <SwiperSlide key={item.id}>
-              <SuccessCard item={item} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* mobile */}
-      <div className='hidden items-center gap-[2rem] self-stretch overflow-x-auto xsm:flex xsm:w-full xsm:items-start xsm:gap-[0.875rem] xsm:px-[1rem]'>
-        {SUCCESS_DATA?.map((item) => (
-          <SuccessCard
-            key={item.id}
-            item={item}
-          />
+      <Swiper
+        slidesPerView={'auto'}
+        spaceBetween={remToPx(0.875)}
+        freeMode
+        navigation={{
+          nextEl: '.swiper-btn-success-next',
+          prevEl: '.swiper-btn-success-prev',
+        }}
+        pagination={{
+          el: '.swiper-pagination-custom',
+          type: 'bullets',
+          clickable: true,
+          renderBullet(index, className) {
+            return `<span class='${className} !w-[6.25rem] !h-full !rounded-[6.25rem] !opacity-100 inline-block !ml-0 !mr-1 !last:mr-0 !transition-all !duration-300'></span>`
+          },
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView,
+            slidesPerGroup,
+            freeMode: false,
+            spaceBetween: remToPx(2),
+          },
+        }}
+        modules={[Pagination, Navigation, FreeMode]}
+        className='w-full xsm:!px-4'
+      >
+        {SUCCESS_DATA?.map((item, i) => (
+          <SwiperSlide
+            key={i}
+            className='xsm:!w-[18.75rem]'
+          >
+            <SuccessCard item={item} />
+          </SwiperSlide>
         ))}
-      </div>
-
+      </Swiper>
       <div className='swiper-pagination-custom !relative !bottom-auto h-1 w-full flex-center xsm:hidden'></div>
     </section>
   )
