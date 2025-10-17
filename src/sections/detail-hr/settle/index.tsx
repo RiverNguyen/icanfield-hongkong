@@ -102,7 +102,7 @@ export default function Settle() {
         alt='Deco'
         width={1932}
         height={963}
-        className='absolute left-0 top-[10.63625rem] w-[calc(70.5rem-10.125rem)] object-cover'
+        className='absolute left-0 top-[10.63625rem] w-[calc(70.5rem-10.125rem)] object-cover xsm:hidden'
       />
       <div className='relative mb-16 flex items-start justify-between xsm:mb-6 xsm:flex-col'>
         <h2 className='w-[38.4375rem] font-optima text-Phase-1-Brown heading1 xsm:mb-3 xsm:w-full'>
@@ -156,20 +156,20 @@ export default function Settle() {
         {programs.map((program, i) => (
           <div
             key={i}
-            className='w-full rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)] sm:h-fit xsm:z-[9]'
+            className='w-full overflow-hidden rounded-[1.25rem] border-[0.8px] border-solid border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)] sm:h-fit xsm:z-[9] xsm:rounded-[0.924rem]'
           >
             <Link
               href={'/' + program?.slug}
-              className='relative block h-[18.5625rem] w-full rounded-[1.25rem] xsm:h-[14.25rem]'
+              className='relative block h-[18.5625rem] w-full xsm:h-[14.25rem]'
             >
               <ImageV2
-                className='size-full rounded-[1.25rem] object-cover'
+                className='size-full object-cover'
                 width={464}
                 height={297}
                 alt={program?.slug}
                 src={program?.image.src}
               />
-              <div className='absolute inset-0 z-10 size-full rounded-[1.25rem] bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]'></div>
+              <div className='absolute inset-0 z-10 size-full bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]'></div>
               <h3
                 className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] line-clamp-2 font-optima font-medium text-white heading3 sm:text-[2rem] xsm:bottom-[0.75rem] xsm:left-[0.75rem] xsm:heading2'
                 dangerouslySetInnerHTML={{
@@ -197,7 +197,7 @@ export default function Settle() {
               </div>
             </div>
 
-            <div className='px-[1.5rem] xsm:p-[1rem_1rem_0rem_1rem]'>
+            <div className='px-[1.5rem] xsm:px-3 xsm:pt-0'>
               <div className='space-y-[0.625rem] rounded-[0.75rem] bg-background p-[0.75rem_0.75rem_1rem_0.75rem] xsm:p-[0.75rem]'>
                 <div className='flex w-full items-center justify-between'>
                   <p className='text-brown body16-m xsm:body-14-m'>Quyền lợi</p>
@@ -223,14 +223,14 @@ export default function Settle() {
               </div>
             </div>
 
-            <div className='flex items-center justify-between p-[1.25rem] xsm:space-x-[0.5rem] xsm:p-[1rem]'>
+            <div className='flex items-center justify-between p-[1.25rem] xsm:space-x-[0.5rem] xsm:p-[1rem] xsm:px-3 xsm:py-3.5'>
               <Link
                 target='__blank'
                 href={'tel:' + program.tel}
                 className='group flex cursor-pointer items-center space-x-[0.75rem]'
               >
-                <div className='rounded-[1.875rem] bg-[#F4EEEA] p-[0.875rem] transition-all group-hover:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] xsm:p-[0.75rem]'>
-                  <IConMessager className='size-[1.25rem] object-contain' />
+                <div className='before:-z-1 relative rounded-[1.875rem] bg-[#F4EEEA] p-[0.875rem] before:absolute before:left-0 before:top-0 before:h-full before:w-full before:rounded-full before:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] before:opacity-0 before:transition-all before:content-[""] before:group-hover:opacity-100 xsm:p-[0.75rem]'>
+                  <IConMessager className='relative size-[1.25rem] object-contain' />
                 </div>
                 <p className='tracking-[-0.0175rem] text-brown transition-all body-14-m group-hover:text-brown xsm:hidden'>
                   Liên hệ tư vấn
