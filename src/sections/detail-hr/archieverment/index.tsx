@@ -159,8 +159,7 @@ export default function Achievements() {
               <div className='flex items-center gap-[2rem] self-stretch xsm:flex-col xsm:items-start xsm:gap-[1.75rem] xsm:self-stretch'>
                 {group.map((item, itemIndex) => (
                   <Fragment key={`item-${slideIndex}-${itemIndex}`}>
-                    {/* p-[1.5rem] */}
-                    <div className='flex min-h-[13.4375rem] shrink-0 flex-grow basis-0 flex-col items-center gap-[1.25rem] rounded-[1rem] py-[1.5rem] xsm:min-h-full xsm:justify-center xsm:self-stretch xsm:p-0'>
+                    <div className='flex h-[13.4375rem] shrink-0 flex-grow basis-0 flex-col items-center gap-[1.25rem] rounded-[1rem] py-[1.5rem] xsm:h-full xsm:justify-center xsm:self-stretch xsm:p-0'>
                       <div className='flex flex-col items-center gap-[1.25rem] xsm:gap-[0.75rem] xsm:self-stretch'>
                         <Image
                           src={item.imgSrc}
