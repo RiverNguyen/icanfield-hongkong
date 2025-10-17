@@ -1,0 +1,7 @@
+.swiper-reviews-pagination .swiper-pagination-bullet {
+  --swiper-pagination-bullet-inactive-color: #d9d9d9;
+}
+
+.swiper-reviews-pagination .swiper-pagination-bullet-active {
+  --swiper-pagination-color: #5c321e;
+}
