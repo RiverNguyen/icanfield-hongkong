@@ -226,7 +226,7 @@ export default function Success() {
         <Swiper
           slidesPerView={'auto'}
           spaceBetween={remToPx(0.875)}
-          freeMode
+          grabCursor
           navigation={{
             nextEl: '.swiper-btn-success-next',
             prevEl: '.swiper-btn-success-prev',

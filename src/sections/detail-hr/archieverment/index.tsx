@@ -139,6 +139,7 @@ export default function Achievements() {
         <Swiper
           slidesPerView={1}
           spaceBetween={remToPx(2)}
+          grabCursor
           navigation={{
             prevEl: '.swiper-btn-archieverment-prev',
             nextEl: '.swiper-btn-archieverment-next',
