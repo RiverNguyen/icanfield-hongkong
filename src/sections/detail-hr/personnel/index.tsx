@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Personnel() {
   return (
     <section className='relative flex items-center justify-center self-stretch bg-[#F6F6F4] px-[5rem] pb-[5.75rem] xsm:px-[0.75rem] xsm:pb-[1rem]'>
-      <div className='relative mt-[-21.13rem] h-[42.25rem] w-[90rem] overflow-hidden rounded-[2rem] bg-white xsm:mt-[-8.125rem] xsm:h-full xsm:w-[21.9375rem] xsm:flex-col xsm:gap-[1.5rem] xsm:rounded-[1.25rem] xsm:bg-white xsm:px-[0.875rem] xsm:pb-[3.75rem] xsm:pt-[1.5rem]'>
+      <div className='relative mt-[-21.13rem] min-h-[42.25rem] w-[90rem] overflow-hidden rounded-[2rem] bg-white pb-[5.5rem] xsm:mt-[-8.125rem] xsm:min-h-full xsm:w-[21.9375rem] xsm:flex-col xsm:gap-[1.5rem] xsm:rounded-[1.25rem] xsm:bg-white xsm:px-[0.875rem] xsm:pb-[3.75rem] xsm:pt-[1.5rem]'>
         <div className='relative z-10 mx-auto flex w-[77.3125rem] items-center justify-between xsm:w-full xsm:flex-col-reverse xsm:gap-[1.5rem]'>
           <div className='flex w-[40.1875rem] shrink-0 flex-col items-start gap-[2rem] pt-[3.75rem] xsm:w-full xsm:gap-[0.875rem] xsm:self-stretch xsm:pt-0'>
             <div className='flex flex-col items-start gap-[1.125rem] self-stretch pr-[1rem] xsm:gap-[0.625rem]'>

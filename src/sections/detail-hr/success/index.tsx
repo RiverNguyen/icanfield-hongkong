@@ -11,6 +11,7 @@ import './style.css'
 import Link from 'next/link'
 import {remToPx} from '@/utils/remToPx'
 import {Fragment} from 'react'
+import useIsMobile from '@/hooks/useIsMobile'
 
 // Success Card Component
 interface SuccessCardProps {
@@ -67,10 +68,10 @@ const SuccessCard = ({item}: SuccessCardProps) => (
           ))}
         </div>
         <div className='flex flex-col gap-[0.3125rem] self-stretch'>
-          <p className='self-stretch font-optima text-[1.25rem] font-medium not-italic leading-[150%] tracking-[-0.025rem] text-white xsm:text-[0.875rem] xsm:tracking-[-0.0175rem]'>
+          <p className='line-clamp-2 self-stretch break-all font-optima text-[1.25rem] font-medium not-italic leading-[150%] tracking-[-0.025rem] text-white xsm:text-[0.875rem] xsm:tracking-[-0.0175rem]'>
             {item.title}
           </p>
-          <p className='xsm:tracking-0 line-clamp-2 text-ellipsis text-[1rem] font-normal not-italic leading-[150%] tracking-[-0.02rem] text-[#A1A1A1] xsm:text-[0.75rem]'>
+          <p className='xsm:tracking-0 line-clamp-2 text-ellipsis break-all text-[1rem] font-normal not-italic leading-[150%] tracking-[-0.02rem] text-[#A1A1A1] xsm:text-[0.75rem]'>
             {item.description}
           </p>
         </div>
@@ -167,6 +168,8 @@ const SUCCESS_DATA = [
 ]
 
 export default function Success() {
+  const isMobile = useIsMobile()
+
   const slidesPerView = 3
   const slidesPerGroup = 1
 
@@ -219,42 +222,56 @@ export default function Success() {
           </button>
         </div>
       </div>
-      <Swiper
-        slidesPerView={'auto'}
-        spaceBetween={remToPx(0.875)}
-        freeMode
-        navigation={{
-          nextEl: '.swiper-btn-success-next',
-          prevEl: '.swiper-btn-success-prev',
-        }}
-        pagination={{
-          el: '.swiper-pagination-custom',
-          type: 'bullets',
-          clickable: true,
-          renderBullet(index, className) {
-            return `<span class='${className} !w-[6.25rem] !h-full !rounded-[6.25rem] !opacity-100 inline-block !ml-0 !mr-1 !last:mr-0 !transition-all !duration-300'></span>`
-          },
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView,
-            slidesPerGroup,
-            freeMode: false,
-            spaceBetween: remToPx(2),
-          },
-        }}
-        modules={[Pagination, Navigation, FreeMode]}
-        className='w-full xsm:!px-4'
-      >
-        {SUCCESS_DATA?.map((item, i) => (
-          <SwiperSlide
-            key={i}
-            className='xsm:!w-[18.75rem]'
-          >
-            <SuccessCard item={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {!isMobile && (
+        <Swiper
+          slidesPerView={'auto'}
+          spaceBetween={remToPx(0.875)}
+          freeMode
+          navigation={{
+            nextEl: '.swiper-btn-success-next',
+            prevEl: '.swiper-btn-success-prev',
+          }}
+          pagination={{
+            el: '.swiper-pagination-custom',
+            type: 'bullets',
+            clickable: true,
+            renderBullet(index, className) {
+              return `<span class='${className} !w-[6.25rem] !h-full !rounded-[6.25rem] !opacity-100 inline-block !ml-0 !mr-1 !last:mr-0 !transition-all !duration-300'></span>`
+            },
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView,
+              slidesPerGroup,
+              freeMode: false,
+              spaceBetween: remToPx(2),
+            },
+          }}
+          modules={[Pagination, Navigation, FreeMode]}
+          className='w-full xsm:!px-4'
+        >
+          {SUCCESS_DATA?.map((item, i) => (
+            <SwiperSlide
+              key={i}
+              className='xsm:!w-[18.75rem]'
+            >
+              <SuccessCard item={item} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
+
+      {isMobile && (
+        <div className='hidden-scrollbar hidden items-center gap-[2rem] self-stretch overflow-x-auto xsm:flex xsm:w-full xsm:items-start xsm:gap-[0.875rem] xsm:px-[1rem]'>
+          {SUCCESS_DATA?.map((item) => (
+            <SuccessCard
+              key={item.id}
+              item={item}
+            />
+          ))}
+        </div>
+      )}
+
       <div className='swiper-pagination-custom !relative !bottom-auto h-1 w-full flex-center xsm:hidden'></div>
     </section>
   )
