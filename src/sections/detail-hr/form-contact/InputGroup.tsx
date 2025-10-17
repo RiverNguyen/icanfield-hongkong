@@ -51,7 +51,7 @@ export default forwardRef(function InputGroup(
           )}
         </label>
       </div>
-      {error && <p className='mt-1 text-base text-[#EA3434]'>{error}</p>}
+      {error && <p className='mt-1 text-sm text-[#EA3434]'>{error}</p>}
     </div>
   )
 })

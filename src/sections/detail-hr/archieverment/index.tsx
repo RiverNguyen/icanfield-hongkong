@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import {Fragment, useMemo, useRef, useState} from 'react'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {Navigation, Pagination, A11y} from 'swiper/modules'
+import {Navigation, Pagination} from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -144,7 +144,7 @@ export default function Achievements() {
       </div>
       <div className='z-1 relative flex flex-col items-center gap-[3rem] self-stretch xsm:gap-0'>
         <Swiper
-          modules={[A11y]}
+          modules={[Pagination, Navigation]}
           slidesPerView={1}
           spaceBetween={32}
           onBeforeInit={(swiper) => {
@@ -197,7 +197,7 @@ export default function Achievements() {
         </div>
       </div>
       {/* pagination and navigation for mobile */}
-      <div className='z-1 relative flex hidden w-full items-center justify-between xsm:flex'>
+      <div className='z-1 relative hidden w-full items-center justify-between xsm:flex'>
         <div className='flex items-center justify-center gap-[0.25rem]'>
           {groups?.map((_, i) => (
             <div

@@ -10,7 +10,7 @@ import React from 'react'
 
 export default function HRDetail() {
   return (
-    <main className='relative bg-background'>
+    <main className='relative mt-[6.44rem] bg-background xsm:mt-[3.75rem]'>
       <Banner />
       <Personnel />
       <Achievements />

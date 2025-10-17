@@ -36,6 +36,17 @@ const reviews = [
   },
   {
     image: {
+      src: '/imgs/detail-hr/review-1.png',
+      alt: 'review-1',
+      width: 4096,
+      height: 2731,
+    },
+    content: `“Làm việc cùng với Jimmy, chúng tôi luôn cảm nhận rõ sự tận tâm và chuyên nghiệp. Mọi hồ sơ đều được chuẩn bị kỹ lưỡng, tối ưu hóa khả năng thành công. Đây là đối tác đáng tin cậy hàng đầu của chúng tôi tại khu vực châu Á."`,
+
+    author: 'Luật sư di trú Canada',
+  },
+  {
+    image: {
       src: '/imgs/detail-hr/review-2.jpg',
       alt: 'review-2',
       width: 2048,
@@ -84,7 +95,6 @@ export default function Reviews() {
         slidesPerView='auto'
         spaceBetween={remToPx(0.75)}
         freeMode={true}
-        grabCursor={true}
         navigation={{
           nextEl: '.swiper-btn-next',
           prevEl: '.swiper-btn-prev',
@@ -99,7 +109,7 @@ export default function Reviews() {
               el: '.swiper-reviews-pagination',
               type: 'bullets',
               renderBullet(index, className) {
-                return `<span class="${className} !w-[6.25rem] !h-full !rounded-[6.25rem] !opacity-100 inline-block !ml-0 !mr-1 !last:mr-0"></span>`
+                return `<span class="${className} !w-[6.25rem] !h-full !rounded-[6.25rem] !opacity-100 inline-block !ml-0 !mr-1 !last:mr-0 !transition-all !duration-300"></span>`
               },
               clickable: true,
             },

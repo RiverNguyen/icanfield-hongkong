@@ -3,11 +3,11 @@
 import ImageV2 from '@/components/image/ImageV2'
 import {ICArrow} from '@/components/itemBlog'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {Swiper as SwiperType} from 'swiper'
-import {useRef, useState, useMemo} from 'react'
+import {Pagination, Navigation} from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import './style.css'
 import Link from 'next/link'
 
 // Success Card Component
@@ -168,38 +168,8 @@ const SUCCESS_DATA = [
 ]
 
 export default function Success() {
-  const swiperRef = useRef<SwiperType | null>(null)
-  const [activeIndex, setActiveIndex] = useState(0)
-
   const slidesPerView = 3
   const slidesPerGroup = 1
-
-  // Tính toán số lượng pagination dots
-  const totalPages = useMemo(() => {
-    return Math.ceil((SUCCESS_DATA.length - slidesPerView) / slidesPerGroup) + 1
-  }, [])
-
-  const handleSlideChange = (swiper: SwiperType) => {
-    setActiveIndex(swiper.activeIndex)
-  }
-
-  const handleDotClick = (index: number) => {
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(index)
-    }
-  }
-
-  const handlePrevClick = () => {
-    if (swiperRef.current && activeIndex > 0) {
-      swiperRef.current.slidePrev()
-    }
-  }
-
-  const handleNextClick = () => {
-    if (swiperRef.current && activeIndex < totalPages - 1) {
-      swiperRef.current.slideNext()
-    }
-  }
 
   return (
     <section className='flex flex-col items-center justify-center gap-[2.5rem] self-stretch bg-[#F6F6F4] px-[5rem] pb-[6.25rem] xsm:items-start xsm:gap-[1.25rem] xsm:px-0 xsm:pb-[2rem]'>
@@ -209,8 +179,7 @@ export default function Success() {
         </h2>
         <div className='flex items-center gap-[0.75rem] xsm:hidden xsm:gap-[0.5rem]'>
           <button
-            onClick={handlePrevClick}
-            className={`flex w-[2.5rem] cursor-pointer items-center justify-end gap-[0.625rem] rounded-[1.5rem] bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:w-[2rem] xsm:gap-[0.5rem] xsm:rounded-[1.2rem] xsm:p-[0.4rem] ${activeIndex === 0 ? 'swiper-button-disabled' : ''}`}
+            className={`swiper-btn-success-prev flex w-[2.5rem] cursor-pointer items-center justify-end gap-[0.625rem] rounded-[1.5rem] bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:w-[2rem] xsm:gap-[0.5rem] xsm:rounded-[1.2rem] xsm:p-[0.4rem]`}
           >
             <svg
               className='size-[1.5rem] shrink-0 xsm:size-[1.2rem]'
@@ -230,8 +199,7 @@ export default function Success() {
             </svg>
           </button>
           <button
-            onClick={handleNextClick}
-            className={`flex w-[2.5rem] cursor-pointer items-center justify-end gap-[0.625rem] rounded-[1.5rem] bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:w-[2rem] xsm:gap-[0.5rem] xsm:rounded-[1.2rem] xsm:p-[0.4rem] ${activeIndex === totalPages - 1 ? 'swiper-button-disabled' : ''}`}
+            className={`swiper-btn-success-next flex w-[2.5rem] cursor-pointer items-center justify-end gap-[0.625rem] rounded-[1.5rem] bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:w-[2rem] xsm:gap-[0.5rem] xsm:rounded-[1.2rem] xsm:p-[0.4rem]`}
           >
             <svg
               className='size-[1.5rem] shrink-0 xsm:size-[1.2rem]'
@@ -257,10 +225,20 @@ export default function Success() {
           slidesPerView={slidesPerView}
           slidesPerGroup={slidesPerGroup}
           spaceBetween={32}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper
+          navigation={{
+            nextEl: '.swiper-btn-success-next',
+            prevEl: '.swiper-btn-success-prev',
+            disabledClass: 'disabled',
           }}
-          onSlideChange={handleSlideChange}
+          pagination={{
+            el: '.swiper-pagination-custom',
+            type: 'bullets',
+            clickable: true,
+            renderBullet(index, className) {
+              return `<span class='${className} !w-[6.25rem] !h-full !rounded-[6.25rem] !opacity-100 inline-block !ml-0 !mr-1 !last:mr-0 !transition-all !duration-300'></span>`
+            },
+          }}
+          modules={[Pagination, Navigation]}
           className='w-full xsm:hidden'
         >
           {SUCCESS_DATA?.map((item) => (
@@ -281,18 +259,7 @@ export default function Success() {
         ))}
       </div>
 
-      <div className='flex items-center gap-[0.25rem] xsm:hidden'>
-        {Array.from({length: totalPages}, (_, index) => (
-          <button
-            key={index}
-            onClick={() => handleDotClick(index)}
-            className={`h-[0.25rem] w-[6.25rem] rounded-[6.25rem] transition-colors duration-300 ${
-              activeIndex === index ? 'bg-[#5C321E]' : 'bg-[#D9D9D9]'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+      <div className='swiper-pagination-custom !relative !bottom-auto h-1 w-full flex-center xsm:hidden'></div>
     </section>
   )
 }

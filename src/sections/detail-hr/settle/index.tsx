@@ -115,11 +115,11 @@ export default function Settle() {
             cùng hàng trăm gia đình hiện thực hóa giấc mơ xây dựng cuộc sống bền
             vững ở nước ngoài.
           </p>
-          <ul>
+          <ul className='space-y-3 xsm:space-y-2'>
             {items.map((item, i) => (
               <li
                 key={i}
-                className='flex items-center space-x-2.5 space-y-3 xsm:space-x-2 xsm:space-y-2'
+                className='flex items-center space-x-2.5 xsm:space-x-2'
               >
                 <Image
                   src={'/icons/detail-hr/check.svg'}

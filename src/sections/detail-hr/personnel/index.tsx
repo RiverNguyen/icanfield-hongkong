@@ -52,15 +52,15 @@ export default function Personnel() {
         <Image
           src='/imgs/detail-hr/banner/bg-personnel.webp'
           alt='Background Image Personnel'
-          width={1990}
-          height={882.651}
+          width={1440}
+          height={676}
           className='absolute bottom-0 left-0 h-auto w-full xsm:hidden'
         />
         <Image
           src='/imgs/detail-hr/banner/bg-personnel-mb.webp'
           alt='Background Image Personnel'
-          width={1637.56}
-          height={726.329}
+          width={351}
+          height={550}
           className='absolute bottom-0 left-0 hidden h-auto w-full xsm:block'
         />
       </div>

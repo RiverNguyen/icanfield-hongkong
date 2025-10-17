@@ -5,7 +5,7 @@ import {Breadcrumb} from '@/components/breadcrumb'
 
 export default function Banner() {
   return (
-    <section className='relative mt-[6.44rem] h-[29.875rem] self-stretch xsm:h-[14.625rem]'>
+    <section className='relative h-[29.875rem] self-stretch xsm:h-[14.625rem]'>
       <Image
         src='/imgs/detail-hr/banner/banner-image.webp'
         alt='Banner Image'
