@@ -1,8 +1,13 @@
+import {IDataAcfDetailHR} from '@/types/dataAcfDetailHR.interface'
 import Image from 'next/image'
 
-export default function Said() {
+export default function OurPeopleOurVoice({
+  our_people_our_voice,
+}: {
+  our_people_our_voice: IDataAcfDetailHR['acf']['our_people_our_voice']
+}) {
   return (
-    <section className='w-full flex-col items-center justify-center gap-[3.75rem] bg-[#F6F6F4] px-[5rem] py-[6.25rem] xsm:px-[1rem] xsm:pb-[2.5rem] xsm:pt-[2rem]'>
+    <section className='w-full flex-col items-center justify-center gap-[3.75rem] px-[5rem] py-[6.25rem] xsm:px-[1rem] xsm:pb-[2.5rem] xsm:pt-[2rem]'>
       <div className='flex items-start gap-[4.5rem] self-stretch rounded-[1.5rem] py-[1.25rem] pl-[1.25rem] pr-[2.5rem] xsm:flex-col xsm:gap-[1.5rem] xsm:p-0'>
         <div className='flex shrink-0 flex-grow basis-0 flex-col items-start justify-center gap-[3rem] rounded-[2rem] xsm:gap-[1.5rem] xsm:self-stretch'>
           <svg
@@ -20,37 +25,29 @@ export default function Said() {
           </svg>
           <div className='flex flex-col items-start gap-[0.625rem] self-stretch xsm:gap-[0.5rem]'>
             <h2 className='self-stretch font-optima text-[3rem] font-semibold not-italic leading-[120%] tracking-[-0.06rem] text-[#5C321E] xsm:text-[1.5rem] xsm:leading-[130%] xsm:tracking-[-0.045rem]'>
-              Mr. Jimmy Vu
+              {our_people_our_voice?.name}
             </h2>
             <p className='xsm:tracking-0 self-stretch text-[0.875rem] font-normal not-italic leading-[150%] tracking-[-0.00875rem] text-[#95502F] xsm:text-[0.75rem]'>
-              Giám Đốc Điều Hành iCanfield Vietnam
+              {our_people_our_voice?.position}
             </p>
           </div>
           <div className='flex flex-col items-end justify-center gap-[1.5rem] self-stretch xsm:gap-[1rem]'>
-            <div className='flex flex-col items-start gap-[0.625rem] self-stretch text-[1.375rem] font-normal not-italic leading-[150%] tracking-[-0.0275rem] text-[#5C5C5C] xsm:text-[1rem] xsm:tracking-[-0.02rem] [&>p>strong]:font-semibold [&>p>strong]:text-[#151515]'>
-              <p>
-                “ Dưới sự dẫn dắt của tôi, iCanfield Vietnam đã mang đến các
-                giải pháp di trú và dự án đầu tư bất động sản tiềm năng. Chiến
-                lược của chúng tôi là{' '}
-                <strong>
-                  kết hợp chuyên môn trong phát triển kinh doanh và bất động sản
-                  cao cấp, định vị iCanfield Vietnam trở thành lựa chọn hàng đầu
-                </strong>{' '}
-                cho các nhà đầu tư toàn cầu.”
-              </p>
-            </div>
+            <div
+              dangerouslySetInnerHTML={{__html: our_people_our_voice?.quote}}
+              className='flex flex-col items-start gap-[0.625rem] self-stretch text-[1.375rem] font-normal not-italic leading-[150%] tracking-[-0.0275rem] text-[#5C5C5C] xsm:text-[1rem] xsm:tracking-[-0.02rem] [&>p>strong]:font-semibold [&>p>strong]:text-[#151515]'
+            ></div>
             <p className='self-stretch text-right font-optima text-[1.5rem] font-medium not-italic leading-[140%] tracking-[-0.03rem] text-[#5C321E] xsm:text-[1rem] xsm:tracking-[-0.02rem]'>
-              -- Jimmy Vu --
+              {our_people_our_voice?.signature}
             </p>
           </div>
         </div>
 
         <Image
-          src='/imgs/detail-hr/said/jimmy-vu.webp'
-          alt='Jimmy Vu'
-          width={654}
-          height={543}
-          className='aspect-[654.00/542.82] h-[33.92625rem] flex-shrink-0 flex-grow basis-0 rounded-[1rem] xsm:aspect-[343.00/284.69] xsm:h-[17.79313rem]'
+          src={our_people_our_voice?.image?.url}
+          alt={our_people_our_voice?.image?.alt}
+          width={our_people_our_voice?.image?.width}
+          height={our_people_our_voice?.image?.height}
+          className='h-[33.92625rem] flex-shrink-0 flex-grow basis-0 rounded-[1rem] object-cover xsm:h-[17.79313rem]'
         />
       </div>
     </section>

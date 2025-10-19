@@ -10,7 +10,7 @@ const nextConfig = {
   reactStrictMode: false,
   output: 'standalone',
   compiler: {
-    // removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   async headers() {
     return [

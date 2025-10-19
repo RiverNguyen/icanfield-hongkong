@@ -5,6 +5,7 @@ import InputGroup from './InputGroup'
 import Image from 'next/image'
 import {zodResolver} from '@hookform/resolvers/zod'
 import './style.css'
+import {toast} from 'sonner'
 
 const vietnamPhoneRegex =
   /^(?:\+84|0)(?:3[2-9]|5[6|8|9]|7[0|6-9]|8[1-5]|9[0-4|6-9])[0-9]{7}$/
@@ -20,53 +21,58 @@ const contactSchema = z.object({
 
 type Contact = z.infer<typeof contactSchema>
 
-export default function FormContact() {
+export default function FormContact({title}: {title: string}) {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    reset,
+    formState: {errors, isSubmitSuccessful},
   } = useForm<Contact>({
     resolver: zodResolver(contactSchema),
   })
 
   const onSubmit: SubmitHandler<Contact> = (data) => {
     console.log(data)
+    toast.success('Đã gửi liên hệ')
+    reset()
   }
 
   return (
-    <div className='absolute bottom-[-11.36rem] left-1/2 z-30 -translate-x-1/2 xsm:bottom-[-10.99rem]'>
+    <div className='absolute left-1/2 top-[calc(100%-15.28rem)] z-30 -translate-x-1/2 xsm:top-[calc(100%-19.69rem)]'>
       <div className='w-[90rem] rounded-[1.25rem] bg-[#F6F6F4] px-20 py-10 xsm:w-[21.4375rem] xsm:px-4 xsm:py-5'>
-        <div className='mb-8 xsm:mb-5'>
-          <h3 className='mb-2 text-base font-semibold uppercase leading-[150%] text-greyscaletext-body opacity-70 xsm:text-sm xsm:leading-[140%] xsm:tracking-[-0.0175rem]'>
-            KẾT NỐI VỚI CHÚNG TÔI
-          </h3>
-          <h2 className='font-optima font-semibold text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:tracking-[-0.0225rem]'>
-            Khám Phá Hành Trình Quốc Tế của Bạn
-          </h2>
-        </div>
+        <div
+          dangerouslySetInnerHTML={{__html: title}}
+          className='footer-title mb-8 xsm:mb-5'
+        ></div>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className='grid grid-cols-3 gap-x-4 gap-y-6 xsm:grid-cols-1 xsm:gap-4'
         >
           <InputGroup
-            label='Họ và tên'
+            placeholder='Họ và tên'
             id='fullName'
             {...register('fullName')}
             error={errors.fullName?.message}
+            isSubmitSuccessful={isSubmitSuccessful}
+            autoComplete='off'
             required
           />
           <InputGroup
-            label='Email'
+            placeholder='Email'
             id='email'
             {...register('email')}
             error={errors.email?.message}
+            isSubmitSuccessful={isSubmitSuccessful}
+            autoComplete='off'
             required
           />
           <InputGroup
-            label='Số điện thoại'
+            placeholder='Số điện thoại'
             id='phone'
             {...register('phone')}
             error={errors.phone?.message}
+            isSubmitSuccessful={isSubmitSuccessful}
+            autoComplete='off'
             required
           />
           <textarea

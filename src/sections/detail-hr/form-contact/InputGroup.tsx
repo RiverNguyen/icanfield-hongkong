@@ -1,15 +1,28 @@
 'use client'
 import {cn} from '@/lib/utils'
-import React, {ChangeEvent, ForwardedRef, forwardRef, useState} from 'react'
+import React, {
+  ChangeEvent,
+  ForwardedRef,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react'
 
 interface InputGroupProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string
   error?: string
   wrapperClassName?: string
+  isSubmitSuccessful: boolean
 }
 
 export default forwardRef(function InputGroup(
-  {wrapperClassName, label, error, required, ...props}: InputGroupProps,
+  {
+    wrapperClassName,
+    placeholder,
+    error,
+    required,
+    isSubmitSuccessful,
+    ...props
+  }: InputGroupProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   const [value, setValue] = useState('')
@@ -20,6 +33,10 @@ export default forwardRef(function InputGroup(
       props.onChange(e)
     }
   }
+
+  useEffect(() => {
+    if (isSubmitSuccessful) setValue('')
+  }, [isSubmitSuccessful])
 
   return (
     <div className={cn(wrapperClassName)}>
@@ -42,7 +59,7 @@ export default forwardRef(function InputGroup(
           )}
         >
           <span className='text-base leading-[150%] tracking-[-0.02rem] text-[#A1A1A1]'>
-            {label}
+            {placeholder}
           </span>
           {required && (
             <span className='text-base leading-[150%] tracking-[-0.02rem] text-[#EA3434]'>
