@@ -1,9 +1,10 @@
 'use client'
+import React from 'react'
 import {IDataAcfDetailHR} from '@/types/dataAcfDetailHR.interface'
 import Image from 'next/image'
 import Link from 'next/link'
+import 'swiper/css'
 import './style.css'
-import React from 'react'
 import useIsMobile from '@/hooks/useIsMobile'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import ServiceItem from './service-item'
@@ -20,7 +21,7 @@ export default function Service({
     <section className='relative rounded-t-[4rem] bg-white px-20 pb-[22.5rem] pt-[6.25rem] xsm:rounded-t-[1.5rem] xsm:px-4 xsm:pb-[23.125rem] xsm:pt-8'>
       {!isMobile && (
         <Image
-          src={'/imgs/detail-hr/settle-bg-deco.webp'}
+          src={'/imgs/detail-hr/service/service-bg-deco.webp'}
           alt='Deco'
           width={1932}
           height={963}

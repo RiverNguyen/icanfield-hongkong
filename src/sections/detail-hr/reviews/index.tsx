@@ -89,7 +89,7 @@ export default function Reviews({
                   <div className='relative flex h-full flex-col justify-between xsm:space-y-6'>
                     <div className='max-h-[9.94231rem] w-full space-y-6 xsm:space-y-0'>
                       <Image
-                        src='/icons/detail-hr/quote.svg'
+                        src='/icons/detail-hr/reviews/quote.svg'
                         alt='Quote'
                         width={40}
                         height={36}
