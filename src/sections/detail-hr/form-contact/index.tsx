@@ -21,7 +21,7 @@ const contactSchema = z.object({
 
 type Contact = z.infer<typeof contactSchema>
 
-export default function FormContact({title}: {title: string}) {
+export default function FormContact({title = ''}: {title?: string}) {
   const {
     register,
     handleSubmit,

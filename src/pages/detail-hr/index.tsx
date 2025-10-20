@@ -11,7 +11,8 @@ import OurPeopleOurVoice from '@/sections/detail-hr/our-people-our-voice'
 import Service from '@/sections/detail-hr/service'
 
 export default function HRDetail({data}: {data: IDataAcfDetailHR}) {
-  const {title, acf} = data
+  const title = data?.title
+  const acf = data?.acf
 
   return (
     <main className='relative mt-[6.44rem] bg-background xsm:mt-[3.75rem]'>

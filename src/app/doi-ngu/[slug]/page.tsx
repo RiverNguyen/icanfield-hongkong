@@ -17,7 +17,7 @@ export default async function page({params: {slug}}: {params: {slug: string}}) {
     },
   })
 
-  if (data.code === 'not_found') {
+  if (data.code === 'not_found' || !data) {
     return notFound()
   }
 

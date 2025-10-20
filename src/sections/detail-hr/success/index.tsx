@@ -50,7 +50,7 @@ const SuccessCard = ({post}: {post: IPost}) => (
                     {info?.value}
                   </p>
                 </div>
-                {index !== post.list_infomation.length - 1 && (
+                {index !== post?.list_infomation?.length - 1 && (
                   <div className='h-[2.4375rem] w-[0.03125rem] bg-[#C0C0C0] xsm:h-[1.82281rem] xsm:w-[0.02338rem]'></div>
                 )}
               </Fragment>
@@ -81,7 +81,7 @@ export default function Success({
     <section className='flex flex-col items-center justify-center gap-[2.5rem] self-stretch bg-[#F6F6F4] px-[5rem] pb-[6.25rem] xsm:items-start xsm:gap-[1.25rem] xsm:px-0 xsm:pb-[2rem]'>
       <div className='flex items-center justify-between self-stretch xsm:justify-center'>
         <h2 className='text-center font-optima text-[3rem] font-semibold not-italic leading-[120%] tracking-[-0.06rem] text-[#5C321E] xsm:self-stretch xsm:text-[1.5rem] xsm:leading-[130%] xsm:tracking-[-0.045rem]'>
-          {success_story.title}
+          {success_story?.title}
         </h2>
         <div className='flex items-center space-x-[0.75rem] xsm:hidden xsm:space-x-[0.5rem]'>
           <button className='swiper-btn-success-prev flex w-[2.5rem] cursor-pointer items-center justify-end rounded-[1.5rem] bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:w-[2rem] xsm:rounded-[1.2rem] xsm:p-[0.4rem]'>
