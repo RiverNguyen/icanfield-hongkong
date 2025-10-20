@@ -85,12 +85,12 @@ export default function ServiceItem({service}: {service: IService}) {
         <Link
           target='__blank'
           href={`tel:${consultingPhoneNumber}`}
-          className='group flex cursor-pointer items-center space-x-[0.75rem]'
+          className='group flex cursor-pointer items-center space-x-[0.75rem] xsm:space-x-[0.55rem]'
         >
-          <div className='before:-z-1 relative rounded-[1.875rem] bg-[#F4EEEA] p-[0.875rem] before:absolute before:left-0 before:top-0 before:h-full before:w-full before:rounded-full before:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] before:opacity-0 before:transition-all before:content-[""] before:group-hover:opacity-100 xsm:p-[0.75rem]'>
-            <IConMessager className='relative size-[1.25rem] object-contain' />
+          <div className='before:-z-1 relative rounded-full bg-[#F4EEEA] p-[0.875rem] before:absolute before:left-0 before:top-0 before:h-full before:w-full before:rounded-full before:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] before:opacity-0 before:transition-all before:content-[""] before:group-hover:opacity-100 xsm:p-[0.55rem]'>
+            <IConMessager className='relative size-[1.25rem] object-cover xsm:size-[0.78125rem]' />
           </div>
-          <p className='tracking-[-0.0175rem] text-brown transition-all body-14-m group-hover:text-brown'>
+          <p className='tracking-[-0.0175rem] text-brown transition-all body-14-m group-hover:text-brown xsm:text-[0.75rem] xsm:tracking-[0.015rem]'>
             Liên hệ tư vấn
           </p>
         </Link>
