@@ -81,7 +81,7 @@ export default function ServiceItem({service}: {service: IService}) {
       </div>
     </div>*/}
 
-      <div className='flex items-center justify-between p-[1.25rem] xsm:space-x-[0.5rem] xsm:p-[1rem] xsm:px-3 xsm:py-3.5'>
+      <div className='flex items-center justify-between p-[1.25rem] xsm:p-[1rem] xsm:px-3 xsm:py-3.5'>
         <Link
           target='__blank'
           href={`tel:${consultingPhoneNumber}`}
@@ -90,13 +90,13 @@ export default function ServiceItem({service}: {service: IService}) {
           <div className='before:-z-1 relative rounded-[1.875rem] bg-[#F4EEEA] p-[0.875rem] before:absolute before:left-0 before:top-0 before:h-full before:w-full before:rounded-full before:bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] before:opacity-0 before:transition-all before:content-[""] before:group-hover:opacity-100 xsm:p-[0.75rem]'>
             <IConMessager className='relative size-[1.25rem] object-contain' />
           </div>
-          <p className='tracking-[-0.0175rem] text-brown transition-all body-14-m group-hover:text-brown xsm:hidden'>
+          <p className='tracking-[-0.0175rem] text-brown transition-all body-14-m group-hover:text-brown'>
             Liên hệ tư vấn
           </p>
         </Link>
         <Link
           href={`/${service?.nation[0]}/${service?.slug}`}
-          className='flex cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:justify-center'
+          className='flex h-12 cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:justify-center'
         >
           <p className='tracking-[-0.0175rem] text-white body-14-m'>
             Xem chi tiết

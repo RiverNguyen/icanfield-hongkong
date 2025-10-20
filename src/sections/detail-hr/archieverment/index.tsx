@@ -29,7 +29,13 @@ export default function Achievements({
   const achievements = outstanding_achievements?.list_achievements
 
   const groups = useMemo(
-    () => chunkInto(Array.isArray(achievements) ? achievements : [], 3),
+    () =>
+      chunkInto(
+        Array.isArray(achievements)
+          ? [...achievements, ...achievements, ...achievements]
+          : [],
+        3,
+      ),
     [achievements],
   )
 

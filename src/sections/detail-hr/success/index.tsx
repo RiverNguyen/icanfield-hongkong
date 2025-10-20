@@ -18,7 +18,7 @@ import {IDataAcfDetailHR, IPost} from '@/types/dataAcfDetailHR.interface'
 const SuccessCard = ({post}: {post: IPost}) => (
   <Link
     href={`/tin-tuc/${post?.slug}`}
-    className='group relative flex h-[36.25rem] w-full flex-shrink-0 cursor-pointer flex-col items-start overflow-hidden rounded-[1.25rem] xsm:h-[25rem] xsm:rounded-[1rem]'
+    className='group relative flex h-[36.25rem] w-full flex-shrink-0 cursor-pointer flex-col items-start overflow-hidden rounded-[1.25rem] xsm:h-[25rem] xsm:w-[18.75rem] xsm:rounded-[1rem]'
   >
     <ImageV2
       src={post?.featured_image}
@@ -38,7 +38,7 @@ const SuccessCard = ({post}: {post: IPost}) => (
         </button>
       </div>
       <div className='flex w-full flex-col items-start gap-[0.625rem] xsm:gap-[0.5rem] xsm:self-stretch'>
-        <div className='flex items-center justify-between self-stretch border-b-[0.4px] border-b-white pb-[0.75rem] xsm:border-b-[0.299px] xsm:pb-[0.56088rem]'>
+        <div className='flex w-full items-center justify-between border-b-[0.4px] border-b-[#C0C0C0] pb-[0.75rem] xsm:border-b-[0.299px] xsm:pb-[0.56088rem]'>
           {Array.isArray(post?.list_infomation) &&
             post.list_infomation.map((info, index) => (
               <Fragment key={index}>
@@ -55,14 +55,20 @@ const SuccessCard = ({post}: {post: IPost}) => (
                 )}
               </Fragment>
             ))}
+          {post?.list_infomation?.length < 3 && (
+            <Fragment>
+              <div className='invisible h-[2.4375rem] w-[0.03125rem] bg-[#C0C0C0] opacity-0 xsm:h-[1.82281rem] xsm:w-[0.02338rem]'></div>
+              <div className='h-1 w-[1.875rem]'></div>
+            </Fragment>
+          )}
         </div>
         <div className='flex flex-col gap-[0.3125rem] self-stretch'>
-          <p className='line-clamp-2 self-stretch break-all font-optima text-[1.25rem] font-medium not-italic leading-[150%] tracking-[-0.025rem] text-white xsm:text-[0.875rem] xsm:tracking-[-0.0175rem]'>
+          <p className='line-clamp-2 self-stretch font-optima text-[1.25rem] font-medium not-italic leading-[150%] tracking-[-0.025rem] text-white xsm:text-[0.875rem] xsm:tracking-[-0.0175rem]'>
             {post?.title}
           </p>
           <div
             dangerouslySetInnerHTML={{__html: post?.excerpt}}
-            className='xsm:tracking-0 line-clamp-2 text-ellipsis break-all text-[1rem] font-normal not-italic leading-[150%] tracking-[-0.02rem] text-[#A1A1A1] xsm:text-[0.75rem]'
+            className='xsm:tracking-0 line-clamp-2 text-ellipsis text-[1rem] font-normal not-italic leading-[150%] tracking-[-0.02rem] text-[#A1A1A1] xsm:text-[0.75rem]'
           ></div>
         </div>
       </div>

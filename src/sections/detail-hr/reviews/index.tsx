@@ -23,7 +23,7 @@ export default function Reviews({
       <div className='flex items-center justify-between section-container'>
         <h2
           dangerouslySetInnerHTML={{__html: testimonial?.title}}
-          className='text-Phase-1-Brown heading1'
+          className='text-Phase-1-Brown heading1 xsm:[&>br]:hidden xsm:[&>p]:inline'
         ></h2>
         <div className='flex items-center space-x-3 xsm:hidden'>
           <button
@@ -87,7 +87,7 @@ export default function Reviews({
                     className='h-[13.5rem] w-[16rem] rounded-xl object-cover xsm:h-[10.8125rem] xsm:w-full'
                   />
                   <div className='relative flex h-full flex-col justify-between xsm:space-y-6'>
-                    <div className='max-h-[9.94231rem] w-full space-y-6 xsm:space-y-0'>
+                    <div className='w-full space-y-6 xsm:space-y-0'>
                       <Image
                         src='/icons/detail-hr/reviews/quote.svg'
                         alt='Quote'
@@ -97,7 +97,7 @@ export default function Reviews({
                       />
                       <div
                         dangerouslySetInnerHTML={{__html: feedback?.feedback}}
-                        className='line-clamp-6 break-all text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
+                        className='line-clamp-6 text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
                       ></div>
                     </div>
                     <p className='text-right text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'>
@@ -127,7 +127,7 @@ export default function Reviews({
                     className='h-[13.5rem] w-[16rem] rounded-xl object-cover xsm:h-[10.8125rem] xsm:w-full'
                   />
                   <div className='relative flex h-full flex-col justify-between xsm:space-y-6'>
-                    <div className='max-h-[9.94231rem] w-full space-y-6 xsm:space-y-0'>
+                    <div className='w-full space-y-6 xsm:space-y-0'>
                       <Image
                         src='/icons/detail-hr/reviews/quote.svg'
                         alt='Quote'
@@ -137,7 +137,7 @@ export default function Reviews({
                       />
                       <div
                         dangerouslySetInnerHTML={{__html: feedback?.feedback}}
-                        className='line-clamp-6 break-all text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
+                        className='line-clamp-6 text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
                       ></div>
                     </div>
                     <p className='text-right text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'>
