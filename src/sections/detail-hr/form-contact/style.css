@@ -1,5 +1,5 @@
 footer {
-  @apply !pt-[calc(6rem+11.36rem)] xsm:!pt-[calc(6rem+10.99rem)];
+  @apply !pt-[calc(6rem+11.36rem)] xsm:!pt-[calc(2.5rem+10.99rem)];
 }
 
 .footer-title p:first-child {

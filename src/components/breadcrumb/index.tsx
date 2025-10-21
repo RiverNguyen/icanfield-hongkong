@@ -11,11 +11,15 @@ interface IBreadcrumbProps {
   color?: string
 }
 
-export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className, color= 'bg-white/60'}) => {
+export const Breadcrumb: FC<IBreadcrumbProps> = ({
+  items,
+  className,
+  color = 'bg-white/60',
+}) => {
   return (
     <nav
       className={cn(
-        'relative z-10 mx-auto max-w-[90rem] py-[1.5rem] xsm:hidden',
+        'relative z-10 mx-auto max-w-[90rem] py-[1.5rem] xsm:px-4',
         className,
       )}
     >
@@ -23,8 +27,11 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className, color= 'bg-w
         {items.map((item, idx) => {
           if (idx === items.length - 1) {
             return (
-              <li key={idx}>
-                <span className='last--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem]'>
+              <li
+                key={idx}
+                className='flex items-center'
+              >
+                <span className='last--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] xsm:text-[0.75rem] xsm:leading-[150%]'>
                   {item.label}
                 </span>
               </li>
@@ -32,18 +39,18 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({items, className, color= 'bg-w
           } else {
             return (
               <Fragment key={idx}>
-                <li>
+                <li className='flex items-center'>
                   <Link
                     className={cn(
-                      'item--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem]',
-                      {'text-white/80': idx === 0},
+                      'item--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] xsm:text-[0.75rem] xsm:leading-[150%]',
+                      {'text-white/80': idx !== items.length - 1},
                     )}
                     href={item.href}
                   >
                     {item.label}
                   </Link>
                 </li>
-                <li>
+                <li className='flex items-center'>
                   <span
                     className={`block size-[0.3125rem] rounded-full ${color}`}
                   ></span>

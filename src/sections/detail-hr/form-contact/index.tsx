@@ -21,7 +21,7 @@ const contactSchema = z.object({
 
 type Contact = z.infer<typeof contactSchema>
 
-export default function FormContact({title}: {title: string}) {
+export default function FormContact({title = ''}: {title?: string}) {
   const {
     register,
     handleSubmit,
@@ -38,7 +38,7 @@ export default function FormContact({title}: {title: string}) {
   }
 
   return (
-    <div className='absolute left-1/2 top-[calc(100%-15.28rem)] z-30 -translate-x-1/2 xsm:top-[calc(100%-19.69rem)]'>
+    <div className='absolute -bottom-[11.36rem] left-1/2 z-30 -translate-x-1/2 xsm:-bottom-[10.99rem]'>
       <div className='w-[90rem] rounded-[1.25rem] bg-[#F6F6F4] px-20 py-10 xsm:w-[21.4375rem] xsm:px-4 xsm:py-5'>
         <div
           dangerouslySetInnerHTML={{__html: title}}

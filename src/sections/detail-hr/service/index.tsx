@@ -31,7 +31,7 @@ export default function Service({
       <div className='relative mb-16 flex items-start justify-between xsm:mb-6 xsm:flex-col'>
         <h2
           dangerouslySetInnerHTML={{__html: service?.title || ''}}
-          className='font-optima text-Phase-1-Brown heading1 xsm:mb-3 xsm:w-full'
+          className='font-optima text-Phase-1-Brown heading1 xsm:mb-3 xsm:w-full xsm:[&>p]:inline'
         ></h2>
         <div className='w-[46.375rem] text-base font-normal leading-[155%] text-greyscaletext-body xsm:w-full xsm:text-sm xsm:leading-[150%] xsm:tracking-[-0.00875rem]'>
           <div

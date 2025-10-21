@@ -27,7 +27,17 @@ export default function Achievements({
   outstanding_achievements: IDataAcfDetailHR['acf']['outstanding_achievements']
 }) {
   const achievements = outstanding_achievements?.list_achievements
-  const groups = useMemo(() => chunkInto(achievements, 3), [achievements])
+
+  const groups = useMemo(
+    () =>
+      chunkInto(
+        Array.isArray(achievements)
+          ? [...achievements, ...achievements, ...achievements]
+          : [],
+        3,
+      ),
+    [achievements],
+  )
 
   return (
     <section className='relative flex h-full w-full flex-col items-center justify-center gap-[5rem] bg-[linear-gradient(180deg,#323232_0%,#0B0B0B_100%)] px-20 pb-[8.75rem] pt-[7.5rem] xsm:gap-[2rem] xsm:bg-[linear-gradient(180deg,#323232_-5.43%,#0B0B0B_100%)] xsm:px-0 xsm:py-[2.5rem]'>
