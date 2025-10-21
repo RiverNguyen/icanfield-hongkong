@@ -11,6 +11,11 @@ import OurPeopleOurVoice from '@/sections/detail-hr/our-people-our-voice'
 import Service from '@/sections/detail-hr/service'
 
 export default function HRDetail({data}: {data: IDataAcfDetailHR}) {
+  // Add null check for data
+  if (!data) {
+    return <div>Error: Data is undefined</div>
+  }
+
   const {title, acf} = data
 
   return (
@@ -20,7 +25,7 @@ export default function HRDetail({data}: {data: IDataAcfDetailHR}) {
           items={[
             {label: 'Trang chủ', href: '/'},
             {label: 'Đội ngũ', href: '/doi-ngu'},
-            {label: title, href: '#'},
+            {label: title || '', href: '#'},
           ]}
         />
       </Banner>
@@ -30,7 +35,7 @@ export default function HRDetail({data}: {data: IDataAcfDetailHR}) {
       <Success success_story={acf?.success_story} />
       <Reviews testimonial={acf?.testimonial} />
       <Service service={acf?.service_list} />
-      <FormContact title={acf?.title} />
+      <FormContact title={acf?.title || ''} />
     </main>
   )
 }

@@ -41,7 +41,7 @@ export default function Achievements({
       <div className='z-1 relative flex items-center justify-between self-stretch xsm:px-4'>
         <div className='flex w-[60.375rem] items-center gap-[0.75rem] xsm:w-full xsm:justify-center xsm:gap-0'>
           <p className='font-optima text-[3rem] font-semibold not-italic leading-[120%] tracking-[-0.06rem] text-white xsm:text-[1.5rem] xsm:leading-[130%] xsm:tracking-[-0.045rem]'>
-            {outstanding_achievements?.title}
+            {outstanding_achievements?.title || ''}
           </p>
         </div>
         <div className='flex items-center gap-[0.75rem] xsm:hidden xsm:gap-[0.5rem]'>
@@ -101,7 +101,7 @@ export default function Achievements({
                         />
                         <div
                           className='w-[26rem] text-center text-[1.375rem] font-bold not-italic leading-[150%] text-white xsm:w-[19.3125rem] xsm:text-[1rem]'
-                          dangerouslySetInnerHTML={{__html: item?.description}}
+                          dangerouslySetInnerHTML={{__html: item?.description || ''}}
                         ></div>
                       </div>
                     </div>

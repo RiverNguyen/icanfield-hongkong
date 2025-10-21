@@ -27,7 +27,7 @@ export default function OurPeopleOurVoice({
           </div>
           <div className='flex flex-col items-end justify-center gap-[1.5rem] self-stretch xsm:gap-[1rem]'>
             <div
-              dangerouslySetInnerHTML={{__html: our_people_our_voice?.quote}}
+              dangerouslySetInnerHTML={{__html: our_people_our_voice?.quote ||''}}
               className='flex flex-col items-start gap-[0.625rem] self-stretch text-[1.375rem] font-normal not-italic leading-[150%] tracking-[-0.0275rem] text-[#5C5C5C] xsm:text-[1rem] xsm:tracking-[-0.02rem] [&>p>strong]:font-semibold [&>p>strong]:text-[#151515]'
             ></div>
             <p className='self-stretch text-right font-optima text-[1.5rem] font-medium not-italic leading-[140%] tracking-[-0.03rem] text-[#5C321E] xsm:text-[1rem] xsm:tracking-[-0.02rem]'>

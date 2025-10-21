@@ -30,19 +30,19 @@ export default function Service({
       )}
       <div className='relative mb-16 flex items-start justify-between xsm:mb-6 xsm:flex-col'>
         <h2
-          dangerouslySetInnerHTML={{__html: service?.title}}
+          dangerouslySetInnerHTML={{__html: service?.title || ''}}
           className='font-optima text-Phase-1-Brown heading1 xsm:mb-3 xsm:w-full'
         ></h2>
         <div className='w-[46.375rem] text-base font-normal leading-[155%] text-greyscaletext-body xsm:w-full xsm:text-sm xsm:leading-[150%] xsm:tracking-[-0.00875rem]'>
           <div
-            dangerouslySetInnerHTML={{__html: service?.description}}
+            dangerouslySetInnerHTML={{__html: service?.description || ''}}
             className='service space-y-3.5 xsm:space-y-2.5'
           ></div>
         </div>
       </div>
       <div className='relative mb-10 flex items-center justify-between xsm:mb-5'>
         <h3
-          dangerouslySetInnerHTML={{__html: service?.sub_title}}
+          dangerouslySetInnerHTML={{__html: service?.sub_title || ''}}
           className='text-Phase-1-Brown heading2 xsm:tracking-[-0.025rem]'
         ></h3>
         <Link

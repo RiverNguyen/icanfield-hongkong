@@ -25,7 +25,7 @@ export default function Personnel({
               </p>
             </div>
             <div
-              dangerouslySetInnerHTML={{__html: profile?.description}}
+              dangerouslySetInnerHTML={{__html: profile?.description || ''}}
               className='flex flex-col items-start gap-[0.75rem] self-stretch text-[1rem] font-medium not-italic leading-[155%] text-[#333] xsm:gap-[0.625rem] xsm:text-[0.875rem] xsm:font-normal xsm:leading-[150%] xsm:tracking-[-0.00875rem]'
             ></div>
           </div>

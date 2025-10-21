@@ -22,7 +22,7 @@ export default function Reviews({
     <section className='sm:pb-[6.25rem]'>
       <div className='flex items-center justify-between section-container'>
         <h2
-          dangerouslySetInnerHTML={{__html: testimonial?.title}}
+          dangerouslySetInnerHTML={{__html: testimonial?.title || ''}}
           className='text-Phase-1-Brown heading1'
         ></h2>
         <div className='flex items-center space-x-3 xsm:hidden'>
@@ -96,7 +96,7 @@ export default function Reviews({
                         className='h-[2.19231rem] w-10 object-cover xsm:absolute xsm:bottom-[-0.01925rem] xsm:left-0 xsm:h-[1.64425rem] xsm:w-[1.875rem]'
                       />
                       <div
-                        dangerouslySetInnerHTML={{__html: feedback?.feedback}}
+                        dangerouslySetInnerHTML={{__html: feedback?.feedback ||''}}
                         className='line-clamp-6 break-all text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
                       ></div>
                     </div>
@@ -136,7 +136,7 @@ export default function Reviews({
                         className='h-[2.19231rem] w-10 object-cover xsm:absolute xsm:bottom-[-0.01925rem] xsm:left-0 xsm:h-[1.64425rem] xsm:w-[1.875rem]'
                       />
                       <div
-                        dangerouslySetInnerHTML={{__html: feedback?.feedback}}
+                        dangerouslySetInnerHTML={{__html: feedback?.feedback ||''}}
                         className='line-clamp-6 break-all text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
                       ></div>
                     </div>

@@ -61,7 +61,7 @@ const SuccessCard = ({post}: {post: IPost}) => (
             {post?.title}
           </p>
           <div
-            dangerouslySetInnerHTML={{__html: post?.excerpt}}
+            dangerouslySetInnerHTML={{__html: post?.excerpt ||''}}
             className='xsm:tracking-0 line-clamp-2 text-ellipsis break-all text-[1rem] font-normal not-italic leading-[150%] tracking-[-0.02rem] text-[#A1A1A1] xsm:text-[0.75rem]'
           ></div>
         </div>
@@ -81,7 +81,7 @@ export default function Success({
     <section className='flex flex-col items-center justify-center gap-[2.5rem] self-stretch bg-[#F6F6F4] px-[5rem] pb-[6.25rem] xsm:items-start xsm:gap-[1.25rem] xsm:px-0 xsm:pb-[2rem]'>
       <div className='flex items-center justify-between self-stretch xsm:justify-center'>
         <h2 className='text-center font-optima text-[3rem] font-semibold not-italic leading-[120%] tracking-[-0.06rem] text-[#5C321E] xsm:self-stretch xsm:text-[1.5rem] xsm:leading-[130%] xsm:tracking-[-0.045rem]'>
-          {success_story.title}
+          {success_story?.title}
         </h2>
         <div className='flex items-center space-x-[0.75rem] xsm:hidden xsm:space-x-[0.5rem]'>
           <button className='swiper-btn-success-prev flex w-[2.5rem] cursor-pointer items-center justify-end rounded-[1.5rem] bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:w-[2rem] xsm:rounded-[1.2rem] xsm:p-[0.4rem]'>
