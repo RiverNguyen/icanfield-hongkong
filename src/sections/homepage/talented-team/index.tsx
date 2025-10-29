@@ -6,6 +6,7 @@ import 'swiper/css'
 import {Navigation} from 'swiper/modules'
 // import {Swiper, SwiperSlide} from 'swiper/react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 const SwiperSlide = dynamic(
   () => import('swiper/react').then((mod) => mod.SwiperSlide),
   {ssr: false},
@@ -18,10 +19,12 @@ Swiper.displayName = 'Swiper'
 export interface ITalentedTeamProps {
   data: {
     title: string
+    subtitle: string
     talented_team: {
       image: Media
       name: string
       position: string
+      link: string
     }[]
   }
 }
@@ -60,13 +63,22 @@ const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
           >
             {talented_team.map(
               (
-                item: {image: Media; name: string; position: string},
+                item: {image: Media; name: string; position: string; link: string},
                 index: number,
               ) => (
                 <SwiperSlide
                   key={index}
-                  className='!overflow-visible'
+                  className='!overflow-visible relative'
                 >
+                  {
+                    item.link ? (
+                      <Link href={item.link}>
+                        <div className='absolute left-0 top-0 size-full z-20'></div>
+                      </Link>
+                    ) : (
+                      <div className='absolute left-0 top-0 size-full z-20'></div>
+                    )
+                  }
                   <div className='flex cursor-pointer flex-col items-center justify-center !overflow-visible'>
                     <ImageV2
                       src={item.image.url || ''}

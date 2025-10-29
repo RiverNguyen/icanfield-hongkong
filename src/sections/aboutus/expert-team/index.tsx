@@ -11,8 +11,9 @@ import 'swiper/css'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './style.css'
+import Link from 'next/link'
 
-export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTeamProps}) {
+export default function ExpertTeam({ dataExpertTeam }: { dataExpertTeam: IExpertTeamProps }) {
   const isMobile = useIsMobile()
   const [toggleMB, setToggleMB] = useState<boolean>(false)
   const [idActivePopupMB, setIdActivePopupMB] = useState<number>(0)
@@ -52,9 +53,9 @@ export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTea
                     className={cn(
                       'scrollbar-hidden absolute h-[28rem] w-full overflow-hidden overflow-y-auto p-[0rem_14.75rem_1.56rem_2.5rem] transition-all duration-500',
                       activeIndex < i &&
-                        'top-[7rem] z-[-1] opacity-0 duration-500',
+                      'top-[7rem] z-[-1] opacity-0 duration-500',
                       activeIndex > i &&
-                        'top-[-7rem] z-[-1] opacity-0 duration-1000',
+                      'top-[-7rem] z-[-1] opacity-0 duration-1000',
                       activeIndex === i && 'top-0 z-[1] duration-1000',
                     )}
                   >
@@ -65,11 +66,31 @@ export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTea
                       <p className='body-14 mt-[0.25rem] text-orangetext-500'>
                         {e?.position}
                       </p>
+                      {
+                        e?.link ? (
+                          <Link
+                            href={e?.link}
+                            className='group mt-[0.75rem] inline-flex items-center gap-[0.5rem] text-[0.875rem] font-medium text-orangetext-500 transition-colors duration-200 hover:text-orangetext-600 hover:underline'
+                          >
+                            <span>Xem hồ sơ</span>
+                            <svg
+                              className='size-[0.875rem] rotate-[-90deg] transition-transform duration-200 group-hover:translate-x-[0.125rem]'
+                              viewBox='0 0 16 16'
+                              fill='currentColor'
+                            >
+                              <path d='M8 12L4 8L5.4 6.6L8 9.2L10.6 6.6L12 8L8 12Z' />
+                            </svg>
+                          </Link>
+                        ) : (
+                          <div className='absolute left-0 top-0 size-full z-20 pointer-events-none'></div>
+                        )
+                      }
                     </div>
                     <div
-                      dangerouslySetInnerHTML={{__html: e?.describe || ''}}
+                      dangerouslySetInnerHTML={{ __html: e?.describe || '' }}
                       className='pb-[1rem] [&_p]:text-justify [&_p]:body16 [&_p]:tracking-[-0.02rem] [&_p]:text-bodytext'>
                     </div>
+
                   </div>
                 ))}
               <div className='absolute bottom-0 left-0 z-[1] h-[3rem] w-full bg-[linear-gradient(180deg,rgba(255,255,255,0.00)_0%,#FFF_71.5%)]'></div>
@@ -104,7 +125,7 @@ export default function ExpertTeam({dataExpertTeam}: {dataExpertTeam: IExpertTea
                 nextEl: '.expert-team__next',
                 prevEl: '.expert-team__prev',
               }}
-              onSlideChange={(swiper) =>handleSlideChange(swiper.realIndex, dataExpertTeam?.list_slider?.length)}
+              onSlideChange={(swiper) => handleSlideChange(swiper.realIndex, dataExpertTeam?.list_slider?.length)}
             >
               {Array.isArray(dataExpertTeam?.list_slider) && dataExpertTeam?.list_slider?.map((e: IExpertTeamPropsItem, index: number) => (
                 <SwiperSlide

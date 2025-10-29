@@ -23,7 +23,7 @@ export default function Reviews({
       <div className='flex items-center justify-between section-container'>
         <h2
           dangerouslySetInnerHTML={{__html: testimonial?.title}}
-          className='text-Phase-1-Brown heading1'
+          className='text-Phase-1-Brown heading1 [&_br]:hidden sm:[&_br]:inline'
         ></h2>
         <div className='flex items-center space-x-3 xsm:hidden'>
           <button
@@ -97,7 +97,7 @@ export default function Reviews({
                       />
                       <div
                         dangerouslySetInnerHTML={{__html: feedback?.feedback}}
-                        className='line-clamp-6 break-all text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
+                        className='line-clamp-6 text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
                       ></div>
                     </div>
                     <p className='text-right text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'>
@@ -137,7 +137,7 @@ export default function Reviews({
                       />
                       <div
                         dangerouslySetInnerHTML={{__html: feedback?.feedback}}
-                        className='line-clamp-6 break-all text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
+                        className='line-clamp-6 text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'
                       ></div>
                     </div>
                     <p className='text-right text-sm font-medium italic leading-[133.3%] tracking-[-0.0175rem] text-[rgba(18,18,18,0.72)]'>

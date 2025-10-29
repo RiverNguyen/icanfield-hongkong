@@ -7,8 +7,8 @@ export default function OurPeopleOurVoice({
   our_people_our_voice: IDataAcfDetailHR['acf']['our_people_our_voice']
 }) {
   return (
-    <section className='w-full flex-col items-center justify-center gap-[3.75rem] px-[5rem] py-[6.25rem] xsm:px-[1rem] xsm:pb-[2.5rem] xsm:pt-[2rem]'>
-      <div className='flex items-start gap-[4.5rem] self-stretch rounded-[1.5rem] py-[1.25rem] pl-[1.25rem] pr-[2.5rem] xsm:flex-col xsm:gap-[1.5rem] xsm:p-0'>
+    <section className='w-full flex-col items-center justify-center gap-[3.75rem] px-[5rem] pl-[6rem] py-[6.25rem] xsm:px-[1rem] xsm:pb-[2.5rem] xsm:pt-[2rem]'>
+      <div className='flex items-start gap-[4.5rem] self-stretch rounded-[1.5rem] py-[1.25rem]  xsm:flex-col xsm:gap-[1.5rem] xsm:p-0'>
         <div className='flex flex-1 flex-col items-start justify-center gap-[3rem] rounded-[2rem] xsm:gap-[1.5rem]'>
           <Image
             src={'/icons/detail-hr/our-people-our-voice/quote.svg'}

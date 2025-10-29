@@ -725,7 +725,7 @@ const Header = ({
         </Link>
         <div className='flex items-center space-x-[1.5rem]'>
           <div
-            className='flex items-center'
+            className='flex items-center hidden '
             onClick={handleOpenLanguageMb}
           >
             <div className='relative mr-1 size-[1rem] rounded-[50%]'>

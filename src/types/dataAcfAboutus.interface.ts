@@ -67,6 +67,7 @@ export interface IExpertTeamPropsItem {
   name: string
   position: string
   describe: string
+  link? : string
 }
 
 export interface IExpertTeamProps {

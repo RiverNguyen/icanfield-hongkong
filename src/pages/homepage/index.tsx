@@ -75,6 +75,7 @@ interface HomeData {
         image: Media
         name: string
         position: string
+        link: string
       }[]
     }
     home_proud_journey?: {
