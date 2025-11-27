@@ -21,9 +21,10 @@ export default function ServiceItem({service}: {service: IService}) {
       >
         <ImageV2
           className='size-full object-cover'
-          src={service?.featured_image}
+          src={service?.featured_image || ''}
           alt={service?.slug}
-          fill
+          width={500}
+          height={500}
         />
         <div className='absolute inset-0 z-10 size-full bg-[linear-gradient(180deg,rgba(92,50,30,0.00)_0.15%,rgba(40,14,2,0.90)_95.57%)]'></div>
         <h4 className='absolute bottom-[1.5rem] left-[1.5rem] z-[11] line-clamp-2 font-optima font-medium text-white heading3 sm:text-[2rem] xsm:bottom-[0.75rem] xsm:left-[0.75rem] xsm:heading2'>

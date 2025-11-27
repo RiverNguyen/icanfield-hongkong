@@ -4,6 +4,7 @@ import AwardsCertifications, {
 import BannerAboutus from '@/sections/aboutus/banner/BannerAboutus'
 import Mission from '@/sections/aboutus/banner/Mission'
 import ExpertTeam from '@/sections/aboutus/expert-team'
+import ExpertTeamV2 from '@/sections/aboutus/expert-team/indexV2'
 import { IOfficeMapProps, OfficeMap } from '@/sections/aboutus/office-map'
 import PioneeringMission from '@/sections/aboutus/pioneering-mission/PioneeringMission'
 import {
@@ -17,6 +18,7 @@ interface dataAcf {
   banner_about_us: dataAcfBanner
   icanfields_mission: dataMission
   pioneering_mission: dataAcfPioneeringMission
+  elite_team_of_experts: IExpertTeamProps
   elite_team_of_experts_creating_a_successful_journey: IExpertTeamProps
   awards_certifications: IAwardsCertificationsProps
   icanfield_office: IOfficeMapProps
@@ -54,6 +56,11 @@ const IndexAboutUs = ({
         dataAcfPioneeringMission={dataAcf?.pioneering_mission}
       />
       <OfficeMap {...officeMap} />
+      <ExpertTeamV2
+        dataExpertTeam={
+          dataAcf?.elite_team_of_experts
+        }
+      />
       <ExpertTeam
         dataExpertTeam={
           dataAcf?.elite_team_of_experts_creating_a_successful_journey

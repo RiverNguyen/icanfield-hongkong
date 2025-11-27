@@ -1,6 +1,6 @@
 import {cn} from '@/lib/utils'
 
-export default function ItemExpertTeam({
+export default function ItemExpertTeamV2({
   srcImage,
   index,
   className,
@@ -38,17 +38,17 @@ export default function ItemExpertTeam({
           fillRule='evenodd'
           clipRule='evenodd'
           d='M454.762 41.5371H22.4831V485.376C6.00841 508.613 -0.38438 524.858 6.13542 552.519C24.9391 612.108 144.029 627.646 272.13 587.223C400.23 546.8 488.833 465.725 470.03 406.135C467.163 397.051 461.966 388.991 454.762 381.997V42.5371Z'
-          fill={`url(#pattern0_884_29326${index})`}
+          fill={`url(#pattern1_884_29326${index})`}
         />
         <defs>
           <pattern
-            id={'pattern0_884_29326' + index}
+            id={'pattern1_884_29326' + index}
             patternContentUnits='objectBoundingBox'
             width={1}
             height={1}
           >
             <use
-              xlinkHref={`#image0_884_29326${index}`}
+              xlinkHref={`#image1_884_29326${index}`}
               transform='matrix(0.000767469 0 0 0.000634518 -0.22142 0)'
             />
           </pattern>
@@ -101,7 +101,7 @@ export default function ItemExpertTeam({
             />
           </linearGradient>
           <image
-            id={'image0_884_29326' + index}
+            id={'image1_884_29326' + index}
             width={1880}
             height={1498}
             className='scale-[1.05]'

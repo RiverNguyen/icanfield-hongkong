@@ -82,8 +82,8 @@ export default function Reviews({
                   <ImageV2
                     src={feedback?.image?.url}
                     alt={feedback?.image?.alt}
-                    width={feedback?.image?.width}
-                    height={feedback?.image?.height}
+                    width={feedback?.image?.width || 1000 }
+                    height={feedback?.image?.height || 1000}
                     className='h-[13.5rem] w-[16rem] rounded-xl object-cover xsm:h-[10.8125rem] xsm:w-full'
                   />
                   <div className='relative flex h-full flex-col justify-between xsm:space-y-6'>
@@ -122,8 +122,8 @@ export default function Reviews({
                   <ImageV2
                     src={feedback?.image?.url}
                     alt={feedback?.image?.alt}
-                    width={feedback?.image?.width}
-                    height={feedback?.image?.height}
+                    width={feedback?.image?.width || 1000}
+                    height={feedback?.image?.height || 1000}
                     className='h-[13.5rem] w-[16rem] rounded-xl object-cover xsm:h-[10.8125rem] xsm:w-full'
                   />
                   <div className='relative flex h-full flex-col justify-between xsm:space-y-6'>

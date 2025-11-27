@@ -2,7 +2,6 @@
 import ImageV2 from '@/components/image/ImageV2'
 import useIsMobile from '@/hooks/useIsMobile'
 import { cn } from '@/lib/utils'
-import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
 import ItemSliderMb from '@/sections/aboutus/expert-team/ItemSliderMb'
 import PopupSliderMb from '@/sections/aboutus/expert-team/PopupSliderMb'
 import { IExpertTeamProps, IExpertTeamPropsItem } from '@/types/dataAcfAboutus.interface'
@@ -12,8 +11,9 @@ import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './style.css'
 import Link from 'next/link'
+import ItemExpertTeamV2 from '@/sections/aboutus/expert-team/ItemExpertTeamV2'
 
-export default function ExpertTeam({ dataExpertTeam }: { dataExpertTeam: IExpertTeamProps }) {
+export default function ExpertTeamV2({ dataExpertTeam }: { dataExpertTeam: IExpertTeamProps }) {
   const isMobile = useIsMobile()
   const [toggleMB, setToggleMB] = useState<boolean>(false)
   const [idActivePopupMB, setIdActivePopupMB] = useState<number>(0)
@@ -136,7 +136,7 @@ export default function ExpertTeam({ dataExpertTeam }: { dataExpertTeam: IExpert
                   )}
                   key={index}
                 >
-                  <ItemExpertTeam
+                  <ItemExpertTeamV2
                     index={index}
                     srcImage={e?.image?.url}
                   />

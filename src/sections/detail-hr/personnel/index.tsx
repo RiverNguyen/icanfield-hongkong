@@ -1,3 +1,4 @@
+import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
 import {IDataAcfDetailHR} from '@/types/dataAcfDetailHR.interface'
 import Image from 'next/image'
 
@@ -29,14 +30,19 @@ export default function Personnel({
               className='flex flex-col items-start gap-[0.75rem] self-stretch text-[1rem] font-medium not-italic leading-[155%] text-[#333] xsm:gap-[0.625rem] xsm:text-[0.875rem] xsm:font-normal xsm:leading-[150%] xsm:tracking-[-0.00875rem]'
             ></div>
           </div>
-          <div className='relative w-[28.125rem] shrink-0 xsm:w-[18.75rem]'>
-            <Image
+          <div className='relative w-[28.125rem] shrink-0 xsm:w-[18.75rem] h-[30rem] xsm:h-[24rem]'>
+            <ItemExpertTeam
+              srcImage={profile?.avatar?.url || ''}
+              index={1}
+              className='h-full w-full object-cover'
+            />
+            {/* <Image
               src={profile?.avatar?.url}
               alt={profile?.avatar?.alt}
-              width={profile?.avatar?.width}
-              height={profile?.avatar?.height}
+              width={profile?.avatar?.width || 1000}
+              height={profile?.avatar?.height || 1000}
               className='h-auto w-full object-cover'
-            />
+            /> */}
           </div>
         </div>
         <Image

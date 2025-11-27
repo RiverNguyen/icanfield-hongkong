@@ -32,4 +32,5 @@ export interface dataFooter {
         }
         link: string
     }[]
+    watermark: string
 }

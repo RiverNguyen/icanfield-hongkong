@@ -15,8 +15,8 @@ export default function Banner({
       <ImageV2
         src={banner_background?.url}
         alt={banner_background?.alt}
-        width={banner_background?.width}
-        height={banner_background?.height}
+        width={banner_background?.width || 1920}
+        height={banner_background?.height || 1080}
         className='absolute inset-0 h-full w-full object-cover'
       />
       <div className='absolute inset-0 h-full w-full bg-[rgba(0,0,0,0.30)]'></div>
