@@ -166,9 +166,7 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
     }
     return 'Click để chọn'
   }
-  useEffect(() => {
-    console.log(dataLatest)
-  }, [dataLatest])
+  useEffect(() => {}, [dataLatest])
   return (
     <div className='pb-[2rem]'>
       <div className='relative mt-[6.44rem] h-[18.8125rem] w-full bg-background xsm:mt-[2.25rem] xsm:h-[33.06rem]'>

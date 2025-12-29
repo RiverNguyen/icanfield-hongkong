@@ -14,7 +14,6 @@ interface ContactButtonsProps {
 }
 
 const ContactButtons = ({data}: ContactButtonsProps) => {
-  console.log(data)
   const [isOpen, setIsOpen] = React.useState(false)
   const handleClick = () => {
     setIsOpen(!isOpen)

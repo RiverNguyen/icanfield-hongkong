@@ -32,7 +32,6 @@ export default function FormContact({title = ''}: {title?: string}) {
   })
 
   const onSubmit: SubmitHandler<Contact> = (data) => {
-    console.log(data)
     toast.success('Đã gửi liên hệ')
     reset()
   }

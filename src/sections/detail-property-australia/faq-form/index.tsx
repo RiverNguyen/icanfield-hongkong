@@ -64,7 +64,6 @@ const FAQForm = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setTransition(async () => {
       await new Promise((resolve) => setTimeout(resolve, 2000))
-      console.log('values', values)
       form.reset()
     })
   }
@@ -79,7 +78,7 @@ const FAQForm = () => {
         className='absolute left-0 right-0 top-0 h-auto w-full'
       />
       <div className='relative z-10'>
-        <h3 className='heading4 max-w-[14.625rem] font-optima font-semibold text-Phase-1-Brown xsm:text-[1.125rem]'>
+        <h3 className='max-w-[14.625rem] font-optima font-semibold text-Phase-1-Brown heading4 xsm:text-[1.125rem]'>
           Để lại thông tin, chúng tôi sẽ hỗ trợ bạn
         </h3>
         <Form {...form}>
@@ -94,7 +93,7 @@ const FAQForm = () => {
                 <FormItem className='relative space-x-0 space-y-0'>
                   <FormLabel
                     className={cn(
-                      'body16 absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200',
+                      'absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200 body16',
                       (focus.fullName || field.value) &&
                         'pointer-events-none opacity-0',
                     )}
@@ -104,7 +103,7 @@ const FAQForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] xsm:h-[2.75rem]'
+                      className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 xsm:h-[2.75rem]'
                       type='text'
                       {...field}
                       onFocus={() =>
@@ -126,7 +125,7 @@ const FAQForm = () => {
                 <FormItem className='relative space-x-0 space-y-0'>
                   <FormLabel
                     className={cn(
-                      'body16 absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200',
+                      'absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200 body16',
                       (focus.phone || field.value) &&
                         'pointer-events-none opacity-0',
                     )}
@@ -138,7 +137,7 @@ const FAQForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] xsm:h-[2.75rem]'
+                      className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 xsm:h-[2.75rem]'
                       type='tel'
                       {...field}
                       onChange={(e) => {
@@ -166,7 +165,7 @@ const FAQForm = () => {
                 <FormItem className='relative space-x-0 space-y-0'>
                   <FormLabel
                     className={cn(
-                      'body16 absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200',
+                      'absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200 body16',
                       (focus.email || field.value) &&
                         'pointer-events-none opacity-0',
                     )}
@@ -176,7 +175,7 @@ const FAQForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] xsm:h-[2.75rem]'
+                      className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 xsm:h-[2.75rem]'
                       type='text'
                       {...field}
                       onFocus={() =>
@@ -201,9 +200,9 @@ const FAQForm = () => {
                     defaultValue={field.value}
                   >
                     <FormControl>
-                      <SelectTrigger className='body16 flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] outline-none xsm:h-[2.75rem]'>
+                      <SelectTrigger className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] outline-none body16 xsm:h-[2.75rem]'>
                         {field.value || (
-                          <FormLabel className='body16 flex items-center font-normal -tracking-[0.02rem]'>
+                          <FormLabel className='flex items-center font-normal -tracking-[0.02rem] body16'>
                             <span className='text-greyscaletext-200'>
                               Khu vực sinh sống
                             </span>
@@ -234,7 +233,7 @@ const FAQForm = () => {
                 <FormItem className='space-x-0 space-y-0'>
                   <FormControl>
                     <Textarea
-                      className='body16 flex h-[6.25rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] px-3 py-1 font-medium -tracking-[0.02rem] outline-none placeholder:text-[1rem] placeholder:font-normal placeholder:leading-normal placeholder:-tracking-[0.02rem] placeholder:text-greyscaletext-200'
+                      className='flex h-[6.25rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] px-3 py-1 font-medium -tracking-[0.02rem] outline-none body16 placeholder:text-[1rem] placeholder:font-normal placeholder:leading-normal placeholder:-tracking-[0.02rem] placeholder:text-greyscaletext-200'
                       placeholder='Nhu cầu cụ thể'
                       {...field}
                     />

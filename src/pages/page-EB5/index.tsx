@@ -33,7 +33,7 @@ interface IPageEB5Props {
     safety_standards: IProjectTransparencyProps['data']
     listItems: IOutstandingProjectEB5Props['listItems']
     categories: IOutstandingProjectEB5Props['categories']
-    dataMap:IOutstandingProjectEB5Props['dataMap']
+    dataMap: IOutstandingProjectEB5Props['dataMap']
     section_map: {
       title: string
       description: string
@@ -42,8 +42,7 @@ interface IPageEB5Props {
   }
 }
 
-const PageEB5: FC<IPageEB5Props> = ({ data }) => {
-  console.log(data?.section_map)
+const PageEB5: FC<IPageEB5Props> = ({data}) => {
   return (
     <main className='bg-background'>
       <Banner
@@ -59,7 +58,10 @@ const PageEB5: FC<IPageEB5Props> = ({ data }) => {
         />
       </Banner>
       <TeaEB5Section data={data?.eb_5_projects_field_incentive_zones} />
-      <PioneeringValues data={data?.section_map} dataMap={data?.dataMap || []} />
+      <PioneeringValues
+        data={data?.section_map}
+        dataMap={data?.dataMap || []}
+      />
       <Suspense fallback={<p>Loading...</p>}>
         <OutstandingProjectEB5
           listItems={data?.listItems}

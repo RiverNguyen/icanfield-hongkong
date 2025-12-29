@@ -30,7 +30,7 @@ export interface ProvinceInfoItem {
   name: string
   label: string
   details: DetailItem
-  title:string
+  title: string
 }
 export interface DetailItem {
   gallery_image: ImageHeader[]
@@ -97,7 +97,7 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
         setZoomMobile(3)
         break
       case 'dinh-cu-caribe':
-         setDataGeoJson(customGeoJsonCaribe as FeatureCollection)
+        setDataGeoJson(customGeoJsonCaribe as FeatureCollection)
         setCenter([18.2208, -66.5901]) // Caribbean
         setZoom(5.3)
         setZoomMobile(3.5)
@@ -110,7 +110,6 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
         break
     }
   }, [slug])
-  console.log(data.province_info)
   return (
     <section className='relative bg-background'>
       <div className='flex space-x-[6.69rem] pt-[4rem] section-container xsm:flex-col-reverse xsm:space-x-0'>

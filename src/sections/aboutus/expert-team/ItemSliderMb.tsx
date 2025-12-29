@@ -7,11 +7,13 @@ import {IExpertTeamPropsItem} from '@/types/dataAcfAboutus.interface'
 export default function ItemSliderMb({
   data,
   index,
+  uniqueId,
   setToggleMB,
   setIdActivePopupMB,
 }: {
   data: IExpertTeamPropsItem
   index: number
+  uniqueId?: string
   // eslint-disable-next-line no-unused-vars
   setToggleMB: (value: boolean) => void
   // eslint-disable-next-line no-unused-vars
@@ -29,6 +31,7 @@ export default function ItemSliderMb({
       <ItemExpertTeam
         className='xsm:before:absolute xsm:before:top-[2.9rem] xsm:before:z-10 xsm:before:h-[0.2rem] xsm:before:w-full xsm:before:bg-white'
         index={index}
+        uniqueId={uniqueId}
         srcImage={data?.image?.url}
       />
       <p className='mt-[1.5rem] font-semibold capitalize text-brown heading2'>

@@ -15,7 +15,6 @@ interface FormData {
 const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  console.log(dataPopup)
   useEffect(() => {
     if (!dataPopup || !dataPopup.setting) return
 
@@ -257,7 +256,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                   required
                 />
                 {errors.fullName && (
-                  <p className='text-sm text-'>{errors.fullName}</p>
+                  <p className='text- text-sm'>{errors.fullName}</p>
                 )}
 
                 <input

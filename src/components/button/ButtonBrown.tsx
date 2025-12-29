@@ -14,7 +14,6 @@ export default function ButtonBrown({
     target?: string
   
 }) {
-  console.log(link)
   return (
     <Link
         target={target}
