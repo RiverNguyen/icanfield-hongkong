@@ -32,8 +32,6 @@ export default function ExpertTeam({
     setNextIndex(nextSlideIndex)
   }
 
-  console.log(dataExpertTeam?.list_slider)
-
   return (
     <section className='relative bg-[linear-gradient(180deg,rgba(255,244,228,0.50)_0%,rgba(249,245,240,0.80)_16.83%,#F6F6F4_50.9%)] pb-[10.75rem] pl-[5rem] pt-[5rem] xsm:pb-[4rem] xsm:pl-0 xsm:pt-[4rem]'>
       <h2 className='w-[44.3125rem] font-optima font-semibold text-brown heading1 xsm:mb-[1.5rem] xsm:w-full xsm:px-[1rem]'>

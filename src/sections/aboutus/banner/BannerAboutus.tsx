@@ -1,25 +1,25 @@
 'use client'
-import { Breadcrumb } from '@/components/breadcrumb'
+import {Breadcrumb} from '@/components/breadcrumb'
 import ImageV2 from '@/components/image/ImageV2'
 import useInterView from '@/hooks/useInterView'
-import { cn } from '@/lib/utils'
-import { dataAcfBanner } from '@/types/dataAcfAboutus.interface'
+import {cn} from '@/lib/utils'
+import {dataAcfBanner} from '@/types/dataAcfAboutus.interface'
 import './style.css'
 
 export default function BannerAboutus({
   dataAcfBanner,
 }: {
   dataAcfBanner: dataAcfBanner
-  }) {
+}) {
   const {isVisible, elementRef} = useInterView({threshold: 0.1})
-  
+
   return (
     <section
       ref={elementRef}
       className='relative z-10 w-full sm:overflow-hidden'
     >
       <Breadcrumb
-        className='absolute left-[5rem] top-[6.4375rem]'
+        className='absolute left-[5rem] top-[6.4375rem] xsm:top-[5rem]'
         items={[
           {label: 'Trang Chủ', href: '/'},
           {label: 'Về chúng tôi', href: ''},
