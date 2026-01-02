@@ -7,6 +7,7 @@ import customGeoJsonAmerica from '@/sections/EB5/pioneering-values/usa.geo.json'
 import customGeoJsonAstralia from './australian.geo.json'
 import customGeoJsonEurope from './eu.geo.json'
 import customGeoJsonCaribe from './caribe.geo.json'
+import customGeoJsonNewZealand from './newzeeland.json'
 import {FeatureCollection} from 'geojson'
 import {LeafletMapPrograms} from '@/components/LeafletMapProgram'
 import ImageV2 from '@/components/image/ImageV2'
@@ -29,7 +30,7 @@ export interface ProvinceInfoItem {
   name: string
   label: string
   details: DetailItem
-  title:string
+  title: string
 }
 export interface DetailItem {
   gallery_image: ImageHeader[]
@@ -89,8 +90,14 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
         setZoom(4)
         setZoomMobile(3)
         break
+      case 'dinh-cu-new-zealand':
+        setDataGeoJson(customGeoJsonNewZealand as FeatureCollection)
+        setCenter([-40.9006, 174.764]) // New Zealand
+        setZoom(5)
+        setZoomMobile(3)
+        break
       case 'dinh-cu-caribe':
-         setDataGeoJson(customGeoJsonCaribe as FeatureCollection)
+        setDataGeoJson(customGeoJsonCaribe as FeatureCollection)
         setCenter([18.2208, -66.5901]) // Caribbean
         setZoom(5.3)
         setZoomMobile(3.5)
@@ -103,7 +110,6 @@ const CanadaMap = ({data, slug}: {data: Data; slug: string}) => {
         break
     }
   }, [slug])
-
   return (
     <section className='relative bg-background'>
       <div className='flex space-x-[6.69rem] pt-[4rem] section-container xsm:flex-col-reverse xsm:space-x-0'>

@@ -81,7 +81,7 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
   })
   useEffect(() => {
     if (posts && searchParams?.size) {
-      console.log(posts)
+      // console.log(posts)
       setTotalPage(posts.pagination.total_pages)
     }
   }, [posts])
@@ -95,7 +95,7 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
     filterIndex: number,
     selectedValue: {label: string; slug: string; key: string},
   ) => {
-    console.log('selectedValue', selectedValue)
+    // console.log('selectedValue', selectedValue)
     setSelectedItems((prev) => ({
       ...prev,
       [kebabToCamel(selectedValue.key)]: selectedValue.slug,
@@ -166,6 +166,7 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
     }
     return 'Click để chọn'
   }
+  useEffect(() => {}, [dataLatest])
   return (
     <div className='pb-[2rem]'>
       <div className='relative mt-[6.44rem] h-[18.8125rem] w-full bg-background xsm:mt-[2.25rem] xsm:h-[33.06rem]'>
@@ -425,7 +426,7 @@ const SearchResult = ({dataFilter}: {dataFilter: FilterData}) => {
                   key={index}
                   className=''
                   dataPostProgramme={item}
-                  slug={item?.nation?.[0] || ''}
+                  slug={item?.slugNation?.[0] || ''}
                 />
               ))
             ) : (

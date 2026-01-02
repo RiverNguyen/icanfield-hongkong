@@ -3,12 +3,18 @@ import {cn} from '@/lib/utils'
 export default function ItemExpertTeam({
   srcImage,
   index,
+  uniqueId,
   className,
 }: {
   srcImage: string
   index: number
+  uniqueId?: string
   className?: string
 }) {
+  // Sanitize ID to remove special characters and spaces for SVG compatibility
+  const sanitizeId = (str: string) =>
+    str.replace(/[^a-zA-Z0-9-_]/g, '-').toLowerCase()
+  const id = uniqueId ? sanitizeId(uniqueId) : `expert-${index}`
   return (
     <div
       className={cn(
@@ -33,21 +39,21 @@ export default function ItemExpertTeam({
           strokeWidth={3.55833}
         />
         <path
-          className='path-svg xsm:scale-[1] '
+          className='path-svg xsm:scale-[1]'
           fillRule='evenodd'
           clipRule='evenodd'
           d='M454.762 41.5371H22.4831V485.376C6.00841 508.613 -0.38438 524.858 6.13542 552.519C24.9391 612.108 144.029 627.646 272.13 587.223C400.23 546.8 488.833 465.725 470.03 406.135C467.163 397.051 461.966 388.991 454.762 381.997V42.5371Z'
-          fill={`url(#pattern0_884_29326${index})`}
+          fill={`url(#pattern0_884_29326${id})`}
         />
         <defs>
           <pattern
-            id={'pattern0_884_29326' + index}
+            id={'pattern0_884_29326' + id}
             patternContentUnits='objectBoundingBox'
             width={1}
             height={1}
           >
             <use
-              xlinkHref={`#image0_884_29326${index}`}
+              xlinkHref={`#image0_884_29326${id}`}
               transform='matrix(0.000767469 0 0 0.000634518 -0.22142 0)'
             />
           </pattern>
@@ -100,7 +106,7 @@ export default function ItemExpertTeam({
             />
           </linearGradient>
           <image
-            id={'image0_884_29326' + index}
+            id={'image0_884_29326' + id}
             width={1880}
             height={1498}
             className='scale-[1.05]'

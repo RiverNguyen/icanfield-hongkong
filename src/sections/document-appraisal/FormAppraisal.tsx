@@ -169,7 +169,7 @@ export default function FormAppraisal({
           values[key as keyof valueContactForm]
         )
       })
-      if (!hasFormChanged) {
+      if (!hasFormChanged || hasFormChanged) {
         const valueContactForm = {
           ...dataFilter,
           username: values?.username,
@@ -215,14 +215,18 @@ export default function FormAppraisal({
       }
     })
   }
-  function decodeHTMLEntities(text: string) {
-    if (typeof window !== 'undefined') {
-      const parser = new DOMParser()
-      const doc = parser.parseFromString(text, 'text/html')
-      return doc.body.textContent || ''
+  function decodeHTMLEntities(text: string): string {
+    const entities: {[key: string]: string} = {
+      '&amp;': '&',
+      '&lt;': '<',
+      '&gt;': '>',
+      '&quot;': '"',
+      '&#39;': "'",
     }
-    return text // Trả về chuỗi gốc nếu không chạy trên trình duyệt
+
+    return text.replace(/&[a-zA-Z0-9#]+;/g, (match) => entities[match] || match)
   }
+
   return (
     <>
       <section className='relative mt-[-14.31rem] w-[54.125rem] sm:mx-auto xsm:mt-[-4.31rem] xsm:w-full xsm:px-[1rem]'>

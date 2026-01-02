@@ -63,10 +63,12 @@ export interface IExpertTeamPropsItem {
   image: {
     url: string
     alt: string
+    link: string
   }
   name: string
   position: string
   describe: string
+  link? : string
 }
 
 export interface IExpertTeamProps {

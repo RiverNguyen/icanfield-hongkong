@@ -31,7 +31,7 @@ const MapPassport = () => {
       .then((data) => setGeoData(data))
   }, [])
   useEffect(() => {
-    console.log(geoData)
+    // console.log(geoData)
   }, [geoData])
   const {data} = useSWR(
     postal ? `/v3/visa-single/${postal}` : null,

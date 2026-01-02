@@ -30,14 +30,14 @@ const ImmigrationFAQ = dynamic(
 const DossierAppraisal = dynamic(
   () => import('@/sections/immigration/dossier-appraisal/DossierAppraisal'),
   {
-    ssr: false,
+    ssr: true,
     loading: () => <p>Loading Dossier Appraisal...</p>,
   },
 )
 const RelatedArticles = dynamic(
   () => import('@/sections/blogs/detail/RelatedArticles'),
   {
-    ssr: false,
+    ssr: true,
     loading: () => <p>Loading Related Articles...</p>,
   },
 )

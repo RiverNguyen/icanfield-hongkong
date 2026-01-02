@@ -26,7 +26,7 @@ const BannerTop = ({title, description,image}: BannerTopProps) => {
           <Breadcrumb
             items={[
               {label: 'Trang chủ', href: '/'},
-              {label: 'Liên hệ', href: '/contact'},
+              {label: 'Liên hệ', href: '/lien-he'},
             ]}
           />
         </div>

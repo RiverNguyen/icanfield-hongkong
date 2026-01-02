@@ -8,9 +8,11 @@ import {social} from '@/layout/footer'
 import {dataFooter} from '@/types/dataFooter.interface'
 import {
   ChildProgram,
+  ImageHeader,
   Language,
   OutstandingPost,
   Program,
+  SettingItem,
   dataHeader,
 } from '@/types/dataHeader.interface'
 import Image from 'next/image'
@@ -33,18 +35,21 @@ import {Autoplay} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {languageOptions} from './constants'
 import './styles.css'
-
+import PopupForm from '@/components/popupAllPage'
+export interface IPropsPopup {
+  setting: SettingItem[]
+  image_form_all: ImageHeader
+}
 const Header = ({
   data,
   dataFooter,
+  dataPopup,
 }: {
   data: dataHeader
   dataFooter: dataFooter
+  dataPopup?: IPropsPopup
 }) => {
-  const listMenuMobileLast = [
-    data?.icanfield_handbook,
-    data?.contact,
-  ]
+  const listMenuMobileLast = [data?.icanfield_handbook, data?.contact]
   const [isActivedLanguage, setIsActivedLanguage] = React.useState(false) //handle language dropdown
   const [isCurrentLanguage, setIsCurrentLanguage] = React.useState(
     data?.language?.languages[0] || languageOptions[0],
@@ -198,7 +203,7 @@ const Header = ({
         googleTranslateScript.id = 'google-translate-script'
         googleTranslateScript.src =
           '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-
+        if (typeof window === 'undefined') return
         // Thêm callback initialization
         window.googleTranslateElementInit = () => {
           if (!isMounted) return
@@ -272,7 +277,7 @@ const Header = ({
   //   console.log('isCurrentLanguage', isCurrentLanguage)
   // }, [isCurrentLanguage])
   return (
-    <header className='fixed left-0 top-0 z-[50] w-full'>
+    <header className='fixed left-0 top-0 z-[1000] w-full'>
       <div
         id='google_translate_element'
         className='hidden'
@@ -382,7 +387,7 @@ const Header = ({
               </span>
             </Link>
             <div
-              className='language-dropdown relative flex cursor-pointer select-none items-center space-x-[0.5rem] hidden'
+              className='language-dropdown relative flex hidden cursor-pointer select-none items-center space-x-[0.5rem]'
               onClick={handleOpenLanguage}
             >
               <div className='relative flex size-[1.2rem] rounded-[50%] bg-[rgba(255,255,255,0.25)] backdrop-blur-[10px]'>
@@ -395,7 +400,7 @@ const Header = ({
                   className='absolute left-1/2 top-1/2 z-0 size-[1rem] -translate-x-1/2 -translate-y-1/2 scale-[1.05] rounded-[50%]'
                 />
               </div>
-              <span className='text-[0.75rem] font-medium leading-[1.5] text-white notranslate'>
+              <span className='notranslate text-[0.75rem] font-medium leading-[1.5] text-white'>
                 {isCurrentLanguage.label}
               </span>
               <ImageV2
@@ -420,7 +425,7 @@ const Header = ({
                       }}
                     >
                       <span
-                        className={`text-[0.75rem] notranslate leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
+                        className={`notranslate text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
                       >
                         {item.label}
                       </span>
@@ -567,7 +572,7 @@ const Header = ({
                 <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                   <div className='flex h-full items-start justify-between'>
                     <div className=''>
-                      <p className='mb-[1.5rem] mt-[2rem] font-optima text-[2rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body pl-5'>
+                      <p className='mb-[1.5rem] mt-[2rem] pl-5 font-optima text-[2rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
                         {data?.other_programs?.label}
                       </p>
                       <div className='flex flex-col pl-5'>
@@ -644,7 +649,7 @@ const Header = ({
                 height={40}
                 className='size-[1rem] object-contain'
               />
-              <div className='children-menu invisible absolute left-1/2 top-[100%]  z-[52] !ml-0 -translate-x-[22%] opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
+              <div className='children-menu invisible absolute left-1/2 top-[100%] z-[52] !ml-0 -translate-x-[22%] opacity-0 transition-all delay-300 duration-300 group-hover:visible group-hover:opacity-100 group-hover:delay-0'>
                 <ImageV2
                   src='/icons/homepage/header/triangle.svg'
                   alt='logo'
@@ -655,7 +660,7 @@ const Header = ({
                 <div className='h-[22.5rem] w-[58rem] -translate-y-[1rem] rounded-[1.5rem] bg-white p-4'>
                   <div className='flex h-full items-start justify-between'>
                     <div className=''>
-                      <p className='mb-[2.5rem] font-optima text-[2rem] mt-2 font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body pl-5'>
+                      <p className='mb-[2.5rem] mt-2 pl-5 font-optima text-[2rem] font-medium leading-[1.2] tracking-[-0.065rem] text-greyscaletext-body'>
                         {data?.support_customer?.label}
                       </p>
                       <div className='flex flex-col pl-5'>
@@ -720,7 +725,7 @@ const Header = ({
         </Link>
         <div className='flex items-center space-x-[1.5rem]'>
           <div
-            className='flex items-center'
+            className='flex items-center hidden '
             onClick={handleOpenLanguageMb}
           >
             <div className='relative mr-1 size-[1rem] rounded-[50%]'>
@@ -1052,6 +1057,7 @@ const Header = ({
         className={`overlay-menu pointer-events-none fixed left-0 top-0 z-[50] h-full w-full bg-[rgba(0,0,0,0.16)] xsm:pointer-events-auto ${isActiveOverlay ? 'block' : 'hidden'}`}
         onClick={handleOpenLanguageMb}
       ></div>
+      {dataPopup && <PopupForm dataPopup={dataPopup} />}
     </header>
   )
 }

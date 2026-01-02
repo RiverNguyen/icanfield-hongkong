@@ -1,7 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import { SuccessPopup } from '@/components/success-popup'
-import { Button } from '@/components/ui/button'
+import {SuccessPopup} from '@/components/success-popup'
+import {Button} from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -9,7 +9,7 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import {Input} from '@/components/ui/input'
 import {
   Select,
   SelectContent,
@@ -17,17 +17,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Textarea } from '@/components/ui/textarea'
+import {Textarea} from '@/components/ui/textarea'
 import CF7Request from '@/fetch/cf7Request'
-import { isLockScroll } from '@/hooks/useBodyScrollLock'
+import {isLockScroll} from '@/hooks/useBodyScrollLock'
 import useIsMobile from '@/hooks/useIsMobile'
-import { cn } from '@/lib/utils'
-import { Term } from '@/types/dataAppraisal.interface'
+import {cn} from '@/lib/utils'
+import {Term} from '@/types/dataAppraisal.interface'
 import endpoints from '@/utils/endpoints'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {useEffect, useRef, useState} from 'react'
+import {useForm} from 'react-hook-form'
+import {z} from 'zod'
 
 const formSchema = z.object({
   username: z
@@ -94,7 +94,6 @@ const FormInternationalJourney = ({
       // Gửi yêu cầu
       const request = new CF7Request(values)
       const response = await request.send(endpoints.contactForm)
-      console.log(response)
 
       // Cập nhật trạng thái khi gửi thành công
       setIsSubmitting({isSubmitting: false, isSuccess: true})
@@ -213,18 +212,22 @@ const FormInternationalJourney = ({
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    <FormControl className='mt-[1.5rem] h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] xsm:mt-[0.75rem] xsm:!opacity-100 [&>.text-placeholder]:[&[data-placeholder]]:flex [&>.text-placeholder>p]:[&[data-placeholder]]:opacity-[0.5]'>
+                    <FormControl className='mt-[1.5rem] h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] xsm:mt-[0.75rem] xsm:!opacity-100 [&>.text-placeholder>p]:[&[data-placeholder]]:opacity-[0.5] [&>.text-placeholder]:[&[data-placeholder]]:flex'>
                       <SelectTrigger>
                         {isMobile ? (
                           !field.value && (
-                            <div className='hidden text-placeholder items-center'>
-                              <p className='text-start text-greyscaletext-800 body16-m'>Chương trình định cư bạn quan tâm</p>
+                            <div className='text-placeholder hidden items-center'>
+                              <p className='text-start text-greyscaletext-800 body16-m'>
+                                Chương trình định cư bạn quan tâm
+                              </p>
                               <span className='text-errtext'>*</span>
                             </div>
                           )
                         ) : (
-                          <div className='hidden text-placeholder items-center'>
-                            <p className='text-start text-greyscaletext-800 body16-m'>Chương trình định cư bạn quan tâm</p>
+                          <div className='text-placeholder hidden items-center'>
+                            <p className='text-start text-greyscaletext-800 body16-m'>
+                              Chương trình định cư bạn quan tâm
+                            </p>
                             <span className='text-errtext'>*</span>
                           </div>
                         )}
@@ -264,26 +267,29 @@ const FormInternationalJourney = ({
                       dataPopupMb && 'translate-y-0 shadow-inner',
                     )}
                   >
-                    {Array.isArray(dataNationSettlement) && dataNationSettlement?.map((e: Term, index: number) => (
-                      <p
-                        key={index}
-                        className={cn(
-                          'border-b-[1px] border-solid p-[1rem] last:border-b-0',
-                          field?.value === e?.slug && 'bg-background',
-                        )}
-                        onClick={() => {
-                          setValue(
-                            'nationSettlement',
-                            'Chương trình định cư' + e?.slug,
-                            {shouldValidate: true},
-                          )
-                          setTextSelect('Chương trình định cư' + e?.name || '')
-                          setDataPopupMb(false)
-                        }}
-                      >
-                        Chương trình định cư {e?.name || ''}
-                      </p>
-                    ))}
+                    {Array.isArray(dataNationSettlement) &&
+                      dataNationSettlement?.map((e: Term, index: number) => (
+                        <p
+                          key={index}
+                          className={cn(
+                            'border-b-[1px] border-solid p-[1rem] last:border-b-0',
+                            field?.value === e?.slug && 'bg-background',
+                          )}
+                          onClick={() => {
+                            setValue(
+                              'nationSettlement',
+                              'Chương trình định cư' + e?.slug,
+                              {shouldValidate: true},
+                            )
+                            setTextSelect(
+                              'Chương trình định cư' + e?.name || '',
+                            )
+                            setDataPopupMb(false)
+                          }}
+                        >
+                          Chương trình định cư {e?.name || ''}
+                        </p>
+                      ))}
                   </div>
                   <div
                     className={cn(

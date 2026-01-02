@@ -34,7 +34,6 @@ const PioneeringValues = ({
   const handleTogglePopup = () => {
     setIsOpenPopup(!isOpenPopup)
   }
-  // console.log(data)
   const convertedData = data?.data_state_usa.map((item: ICountry) => [item])
   return (
     <section className='bg-background pt-[3rem] sm:-translate-y-[3rem]'>
@@ -71,6 +70,7 @@ const PioneeringValues = ({
           />
         </div>
       </div>
+
       <div className='relative h-[41.5rem] w-full overflow-hidden rounded-[1.25rem] bg-white section-container xsm:h-[20.4rem] xsm:w-full xsm:rounded-none'>
         <LeafletMapCountries
           countries={convertedData}

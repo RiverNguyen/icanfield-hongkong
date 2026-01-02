@@ -21,7 +21,7 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
   children,
 }) => {
   return (
-    <section className='relative min-h-[28.75rem] overflow-hidden pt-[3.75rem] sm:min-h-[36.45rem] sm:pt-[6.44rem]'>
+    <section className='relative min-h-[28.75rem] xsm:min-h-[10.75rem] xsm:mt-[3.75rem] overflow-hidden pt-[3.75rem] sm:min-h-[36.45rem] sm:pt-[6.44rem]'>
       <ImageV2
         src={backgroundImage?.url || ''}
         alt={backgroundImage?.alt}
@@ -30,7 +30,7 @@ export const BannerStatic: FC<IBannerStaticProps> = ({
         className='absolute inset-0 h-full w-full object-cover'
       />
       <div className='absolute inset-0 h-full w-full bg-black/30'></div>
-      <div className='absolute inset-0 h-full w-full bg-[linear-gradient(26deg,rgba(0,0,0,0.70)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
+      <div className='absolute inset-0 h-full w-full bg-[linear-gradient(26deg,rgba(0,0,0,0.30)_-19.37%,rgba(0,0,0,0.00)_128.25%)]'></div>
       {children}
       <div
         className={cn(

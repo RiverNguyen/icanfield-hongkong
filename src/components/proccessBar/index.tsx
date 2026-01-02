@@ -13,8 +13,10 @@ interface ProvidersProps {
 const Providers = ({children}: ProvidersProps) => {
   const {setViewPort} = useStore((state) => state)
   useEffect(() => {
-    const viewport = window.innerWidth > 639 ? 'desktop' : 'mobile'
-    setViewPort(viewport)
+    if (typeof window !== 'undefined') {
+      const viewport = window.innerWidth > 639 ? 'desktop' : 'mobile'
+      setViewPort(viewport)
+    }
   }, [])
   return (
     <>

@@ -21,7 +21,7 @@ const InfoItem = ({
         height={300}
         className='absolute inset-0 h-full w-full object-cover'
       />
-      <div className='z-10 flex w-full flex-row items-center space-x-4 space-y-0 rounded-[0.5rem] border border-black/10 bg-white/65 p-4 shadow-[0px_-1px_20px_0px_rgba(0,0,0,0.04)] backdrop-blur-[20px] xsm:flex-col xsm:items-start xsm:space-x-0 xsm:space-y-2 xsm:p-2'>
+      <div className='z-10 flex w-full flex-row items-center space-x-4 space-y-0 rounded-[0.5rem] border border-black/10 bg-white/65 p-4 shadow-[0px_-1px_20px_0px_rgba(0,0,0,0.04)] sm:backdrop-blur-[20px] xsm:flex-col xsm:items-start xsm:space-x-0 xsm:space-y-2 xsm:p-2'>
         <div className='flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-[0.5rem] border border-white/25 bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] bg-origin-border xsm:h-5 xsm:w-5 xsm:border-none xsm:bg-none'>
           <ImageV2
             alt={title}

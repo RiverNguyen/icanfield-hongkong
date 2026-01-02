@@ -72,7 +72,7 @@ export default function ImmigrationFAQ({
             {dataFAQ?.label}
           </p>
           <ButtonBrown
-            link={dataFAQ?.contact_consulting?.url}
+            link={'/lien-he'}
             title={dataFAQ?.contact_consulting?.title}
             target={dataFAQ?.contact_consulting?.target}
           />

@@ -114,13 +114,19 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
     if (euCountries.has(countryName) && countryName !== 'Vietnam') {
       return fillColor // Màu cho các quốc gia EU
     }
-
+    if (countryName === 'Ohio') {
+      return fillColor // Màu cho Việt Nam
+    }
+    if (countryName === 'New York') {
+      return fillColor // Màu cho Việt Nam
+    }
     // Xử lý màu cho các quốc gia cụ thể
     const specialColors: {[key: string]: string} = {}
     return specialColors[countryName] || '#F6f6f6' // Mặc định màu nền
   }, [])
 
   const geoJsonStyle = useCallback((feature: Feature) => {
+    // console.log(feature)
     return {
       fillColor: getFillColor(feature), // Define a function to dynamically assign colors
       weight: 0.281, // Border thickness
@@ -243,7 +249,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
                     html: `<div class="custom-marker absolute !left-0 top-0 xsm:!pointer-events-none">
                             <div class="flex items-center relative">
                                 <div class='size-[0.75rem] bg-[#DAF2AF] rounded-full mr-1 xsm:size-[0.375rem] flex-shrink-0'></div>
-                                <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">${countryObj.metropolis || countryObj.name}</span>
+                                <span class="text-Phase-1-Brown text-[0.75rem] tracking-[-0.0075rem] font-medium leading-[1.2] xsm:text-[0.5rem]">${isAustralia ? '' : ''}</span>
                                 <a href="${currentPath}/dia-diem/${countryObj.slug}" class='flex items-center justify-around absolute bg-white w-[8.63rem] sm:w-max sm:space-x-[0.5rem] p-2 rounded-[0.63rem] bottom-0 left-1/2 -translate-x-1/2 shadow-lg  transition-all duration-300 opacity-0 info-tag '>
                                       <div class='flex items-center justify-center p-4 rounded-[0.5rem] bg-primary-brown'>
                                         <img src='/icons/EB5/pioneering-values/project.svg' class='size-[1.01563rem] object-cover' />

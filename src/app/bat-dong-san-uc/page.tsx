@@ -1,11 +1,20 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
-import getMetadata from '@/fetch/getMetadata'
+import getMetadataPage from '@/fetch/getMetadataPage'
 import AustralianRealEstate from '@/pages/australianrealestate'
 import metadataValues from '@/utils/metadataValues'
 export async function generateMetadata() {
-  const res = await getMetadata('/pages/938')
-  return metadataValues(res)
+  try {
+    // Gọi API để lấy metadata
+    const res = await getMetadataPage('/pages/938')
+    // console.log(res)
+    // Trả về metadata được xử lý
+    return metadataValues(res)
+  } catch (error) {
+    // Xử lý lỗi bất ngờ
+    console.error('Error generating metadata:', error)
+    return {}
+  }
 }
 export default async function page() {
   const requestTaxonomies = {

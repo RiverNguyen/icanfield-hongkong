@@ -27,7 +27,7 @@ export default async function page() {
       next: {revalidate: 10},
     },
   }
-  const [dataTaxonomies, dataPage, dataPrograms] = await Promise.all([
+  const [dataTaxonomies, dataPage, dataPrograms] = await Promise.all([ //eslint-disable-line
     fetchData(requestTaxonomies),
     fetchDataACF(requestPage),
     fetchData(requestPrograms),
@@ -37,7 +37,7 @@ export default async function page() {
     <IndexComparePrograms
       dataPrograms={dataPrograms}
       dataPage={dataPage?.acf}
-      dataNationSettlement={dataTaxonomies?.nation}
+      // dataNationSettlement={dataTaxonomies?.nation}
     />
   )
 }

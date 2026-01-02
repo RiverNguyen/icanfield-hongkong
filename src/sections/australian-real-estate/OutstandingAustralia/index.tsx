@@ -43,7 +43,7 @@ const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({listItems}) => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
   const [search, setSearch] = useState<string>('')
-  const [totalPage, setTotalPage] = useState<number>(listItems.totalPages || 1)
+  const [totalPage, setTotalPage] = useState<number>(listItems?.totalPages || 1)
 
   const [selectedSortOption, setSelectedSortOption] = useState<SortOption>(
     sortOptions[0],
@@ -78,7 +78,7 @@ const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({listItems}) => {
     revalidateOnReconnect: false,
   })
   useEffect(() => {
-    if (posts && searchParams?.size) {
+    if (posts && searchParams?.size && posts.totalPages) {
       setTotalPage(posts.totalPages)
     }
   }, [posts])
@@ -127,7 +127,7 @@ const OutstandingAustralia: FC<IOutstandingProjectEB5Props> = ({listItems}) => {
             </>
           )}
         </div>
-        {posts && posts.totalPages > 1 && (
+        {posts && posts.totalPages && posts.totalPages > 1 && (
           <Pagination
             pageCurrent={currentPage}
             setCurrentPage={setCurrentPage}

@@ -104,7 +104,7 @@ export default function Programme({
         const fetchData = async () => {
           try {
             const response = await fetch(
-              `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${endpoints.settlementPrograms}?page=${page}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}`,
+              `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${endpoints.settlementPrograms}?page=${page}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}${slug ? `&${endpoints.taxonomiesSettlement}=${slug}` : ''}`,
             )
             const data = await response.json()
             if (data?.success) {

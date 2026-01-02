@@ -2,10 +2,10 @@ import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import HomePage from '@/pages/homepage'
 import endpoints from '@/utils/endpoints'
-import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
+import getMetadataPage from '@/fetch/getMetadataPage'
 export async function generateMetadata() {
-  const res = await getMetadata('/pages/96')
+  const res = await getMetadataPage('/pages/96')
   return metadataValues(res)
 }
 export default async function Home() {

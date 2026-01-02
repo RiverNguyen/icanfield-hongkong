@@ -33,7 +33,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
         className='absolute bottom-0 right-0 h-full w-futl object-cover xsm:hidden'
       />
       <ImageV2
-        src={'/imgs/detail-settlement-programs/why-choose-us-bg-1-mb.webp'}
+        src={'/imgs/bg.webp'}
         alt={'Why Choose Us Background'}
         width={1600 * 2 || 40}
         height={788 * 2 || 40}
@@ -45,8 +45,8 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
           <h2 className='font-optima font-semibold text-brown heading1'>
             {title}
           </h2>
-          <p className='mt-[0.75rem] text-greyscaletext-body body16-r55 sm:mt-[1rem] xsm:body-14'>
-            {description}
+          <p className='mt-[0.75rem] text-greyscaletext-body body16-r55 sm:mt-[1rem] xsm:body-14' dangerouslySetInnerHTML={{__html:description || ''}}>
+          
           </p>
         </div>
         <ImageV2
@@ -103,7 +103,7 @@ export const WhyChooseUs: FC<IWhyChooseUsProps> = ({
       <ImageV2
         src={
           background_mb?.url ||
-          '/imgs/detail-settlement-programs/why-choose-us-bg-2-mb.webp'
+          '/imgs/bg.webp'
         }
         alt={'Why Choose Us Background'}
         width={1219 * 2 || 40}

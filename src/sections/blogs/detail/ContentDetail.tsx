@@ -3,13 +3,14 @@
 import Share from '@/components/share/Share'
 import useIsMobile from '@/hooks/useIsMobile'
 
-const addIdsToH2Tags = (htmlString: string) => {
+const addIdsToHeadings = (htmlString: string) => {
   let index = 1
   if (!htmlString) return ''
-  return htmlString.replace(/<h2[^>]*>/g, (match) => {
+  return htmlString.replace(/<(h2|h3)[^>]*>/g, (match, tag:any) => { //eslint-disable-line
     return `${match.slice(0, -1)} id="section-${index++}">`
   })
 }
+
 export default function ContentDetail({
   dataContent,
   author,
@@ -20,22 +21,26 @@ export default function ContentDetail({
   title: string
 }) {
   const isMobile = useIsMobile()
-  const htmlWithIds = addIdsToH2Tags(dataContent)
+  const htmlWithIds = addIdsToHeadings(dataContent)
+  const cleanedHtml = htmlWithIds
+    ?.replace(/\[caption.*?\]/g, '<div class="wp-caption">')
+    .replace(/\[\/caption\]/g, '</div>')
+
   return (
     <div className='w-[58.3125rem] xsm:w-full'>
       {!isMobile && (
-        <h1 className='font-optima text-orangetext-900 text-[2rem] font-semibold leading-[1.3] tracking-[-0.02rem] mb-[2.9rem]'>
+        <h1 className='mb-[2.9rem] font-optima text-[2rem] font-semibold leading-[1.3] tracking-[-0.02rem] text-orangetext-900'>
           {title}
         </h1>
       )}
       <div
-        className='flex-1 [&_h2]:content-h2 [&_img]:content-img [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li'
-        dangerouslySetInnerHTML={{__html: htmlWithIds || ''}}
+        className='[&_h2]:content-h2 [&_img]:content-img  [&_.wp-caption]:italic [&_.wp-caption]:text-center  [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li flex-1 [&_a]:text-blue-600 [&_strong]:font-bold'
+        dangerouslySetInnerHTML={{ __html: cleanedHtml || '' }}
       ></div>
-      <div className='h-[0.0625rem] w-full bg-[rgba(0,0,0,0.04)] my-[1.5rem]'></div>
-      <div className='flex items-center justify-between w-full'>
+      <div className='my-[1.5rem] h-[0.0625rem] w-full bg-[rgba(0,0,0,0.04)]'></div>
+      <div className='flex w-full items-center justify-between'>
         <Share className='[&>p]:hidden' />
-        <p className='text-end w-full text-orangetext-900 body16-s xsm:text-[0.875rem] xsm:font-semibold xsm:tracking-[-0.00875rem] xsm:leading-[1.5]'>
+        <p className='w-full text-end text-orangetext-900 body16-s xsm:text-[0.875rem] xsm:font-semibold xsm:leading-[1.5] xsm:tracking-[-0.00875rem]'>
           Đăng bởi {author}
         </p>
       </div>

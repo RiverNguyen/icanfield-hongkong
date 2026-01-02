@@ -1,0 +1,11 @@
+footer {
+  @apply !pt-[calc(6rem+11.36rem)] xsm:!pt-[calc(2.5rem+10.99rem)];
+}
+
+.footer-title p:first-child {
+  @apply mb-2 text-base font-semibold uppercase leading-[150%] text-greyscaletext-body opacity-70 xsm:text-sm xsm:leading-[140%] xsm:tracking-[-0.0175rem];
+}
+
+.footer-title p:last-child {
+  @apply font-optima font-semibold text-Phase-1-Brown heading3 xsm:text-[1.125rem] xsm:tracking-[-0.0225rem];
+}

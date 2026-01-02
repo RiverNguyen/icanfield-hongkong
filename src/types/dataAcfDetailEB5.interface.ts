@@ -83,9 +83,14 @@ export interface IDataAcfDetailEB5 {
         }[]
       }
       development: {
+        name: string
         description: string
         logos: Media[]
         thumbnail: Media
+        achievements_copy: {
+          name: string
+          value: string
+        }[]
       }
     }
   }

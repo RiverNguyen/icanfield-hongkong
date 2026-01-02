@@ -73,11 +73,9 @@ const FormConnectUsV2 = ({dataTaxonomies}: {dataTaxonomies: Term[]}) => {
   })
   const {setValue} = form
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // console.log(values)
     setTransition(async () => {
       const request = new CF7Request(values)
-      const response = await request.send(endpoints.contactForm)
-      console.log(response)
+      await request.send(endpoints.contactForm)
       setIsSubmitting({isSubmitting: false, isSuccess: true})
       isLockScroll(true)
       timeoutRef.current = setTimeout(closePopup, 5000)

@@ -70,7 +70,7 @@ const PopupCountry = ({
           }}
           className='!h-[14.625rem] w-full rounded-[0.75rem]'
         >
-          {dataProvince?.details?.gallery_image.map(
+          {Array.isArray(dataProvince?.details?.gallery_image) && dataProvince?.details?.gallery_image.map(
             (item: ImageHeader, index: number) => (
               <SwiperSlide key={index}>
                 <Image

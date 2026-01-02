@@ -7,7 +7,6 @@ import {Media} from '@/types/image.interface'
 import {FC, useEffect, useRef, useState} from 'react'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
-import {Autoplay} from 'swiper/modules'
 import dynamic from 'next/dynamic'
 const SwiperSlide = dynamic(
   () => import('swiper/react').then((mod) => mod.SwiperSlide),
@@ -96,9 +95,9 @@ const ProudJourney: FC<IProudJourneyProps> = ({
           </div>
         </div>
         <div className='relative h-fit w-full xsm:hidden'>
-          <div className='pointer-events-none absolute left-0 top-0 h-[24.2rem] w-[44.3rem] rounded-[1rem] bg-white shadow-[0px_6px_16px_0px_rgba(83,83,83,0.10)]'>
+          <div className='absolute left-0 top-0 h-[24.2rem] w-[44.3rem] rounded-[1rem] bg-white shadow-[0px_6px_16px_0px_rgba(83,83,83,0.10)]'>
             <ICQuote className='absolute left-[1.5rem] top-[1.5rem] h-auto w-[4.69463rem]' />
-            <div className='absolute left-[2rem] top-[2.5rem] z-10 size-fit'>
+            <div className='absolute left-[2rem] top-[2.5rem] z-[11] size-fit'>
               <Swiper
                 direction='vertical'
                 slidesPerView={1}
@@ -124,11 +123,11 @@ const ProudJourney: FC<IProudJourneyProps> = ({
             spaceBetween={spaceBetween}
             loop={true}
             speed={800}
-            modules={[Autoplay]}
-            autoplay={{
-              delay: 4500,
-              disableOnInteraction: false,
-            }}
+            // modules={[Autoplay]}
+            // autoplay={{
+            //   delay: 4500,
+            //   disableOnInteraction: false,
+            // }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper
             }}
@@ -136,9 +135,9 @@ const ProudJourney: FC<IProudJourneyProps> = ({
               swiperRef2.current?.slideTo(swiper.realIndex)
             }}
             allowTouchMove={false}
-            className='trip__swiper relative z-10 !ml-[8.3rem] !mr-0 h-[24.2rem] w-full flex-1 !overflow-visible'
+            className='trip__swiper relative z-10 !ml-[8.3rem] !mr-0 h-[24.2rem] w-full flex-1 !overflow-visible !pointer-events-none'
           >
-            {paddedItems.map((item, index) => (
+            {paddedItems.slice(1).map((item, index) => (
               <SwiperSlide key={index}>
                 <ProudJourneyItem {...item} />
               </SwiperSlide>
@@ -179,7 +178,7 @@ function ProudJourneyQuote({
     <div
       dangerouslySetInnerHTML={{__html: content || ''}}
       className={cn(
-        'z-[1] mb-auto mt-[1.5rem] text-[1.25rem] line-clamp-6 font-medium leading-[133.3%] text-greyscaletext-300 [&_*]:text-[1.25rem] [&_*]:font-medium [&_*]:leading-[133.3%] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900',
+        'z-[30] mb-auto mt-[1.5rem] text-[1.25rem] h-[11rem] overflow-y-auto font-medium leading-[133.3%] text-greyscaletext-300 [&_*]:text-[1.25rem] [&_*]:font-medium [&_*]:leading-[133.3%] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900',
         className,
       )}
     ></div>
@@ -193,6 +192,7 @@ function ProudJourneyItem({
   position,
   content,
 }: IItemProudJourney) {
+  // console.log(name)
   return (
     <div className='relative flex size-full flex-col sm:block'>
       <div className='box__image relative h-[11.25rem] select-none transition-all duration-100 sm:size-full'>

@@ -1,9 +1,9 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import useBodyScrollLock from '@/hooks/useBodyScrollLock'
-import { cn } from '@/lib/utils'
+import {cn} from '@/lib/utils'
 import ItemExpertTeam from '@/sections/aboutus/expert-team/ItemExpertTeam'
-import { IExpertTeamPropsItem } from '@/types/dataAcfAboutus.interface'
+import {IExpertTeamPropsItem} from '@/types/dataAcfAboutus.interface'
 
 export default function PopupSliderMb({
   toggleMB,
@@ -41,7 +41,7 @@ export default function PopupSliderMb({
       >
         <div className='scrollbar-hidden h-[37.5rem] overflow-hidden overflow-y-auto'>
           <div className='sticky top-0 z-10 bg-white'>
-            <p className='heading2 capitalize font-optima font-semibold text-brown'>
+            <p className='font-optima font-semibold capitalize text-brown heading2'>
               {data?.name}
             </p>
             <p className='mt-[0.38rem] text-[0.75rem] font-medium tracking-[-0.015rem] text-orangetext-500'>
@@ -51,6 +51,7 @@ export default function PopupSliderMb({
           <ItemExpertTeam
             className='xsm:mx-auto xsm:h-[19.59588rem] xsm:w-[16.87925rem] xsm:before:absolute xsm:before:top-[1.3rem] xsm:before:z-10 xsm:before:h-[0.1rem] xsm:before:w-full xsm:before:bg-white [&_svg]:xsm:h-[19.59588rem]'
             index={index}
+            uniqueId={`popup-${data?.name}-${index}`}
             srcImage={data?.image?.url}
           />
           <div

@@ -1,14 +1,12 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
+import getMetadata from '@/fetch/getMetadata'
 import Immigration from '@/pages/immigration'
 import endpoints from '@/utils/endpoints'
-import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
+
 import {redirect} from 'next/navigation'
-export async function generateMetadata({params}: {params: {slug: string}}) {
-  const res = await getMetadata(`/settlement-program?slug=${params.slug}`)
-  return metadataValues(Array.isArray(res) ? res[0] : res)
-}
+
 export async function generateStaticParams() {
   // Gọi API để lấy tất cả các slug của các tour
   const tours = await fetchData({
@@ -16,9 +14,36 @@ export async function generateStaticParams() {
   })
 
   // Trả về các tham số tĩnh
-  return tours?.map((tour: string[]) => ({
-    slug: tour,
+  return tours?.map((tour: {slug: string; nation?: string[]}) => ({
+    slug: tour?.slug,
   }))
+}
+export async function generateMetadata({
+  params,
+}: {
+  params: {slug: string; detailslug: string}
+}) {
+  try {
+
+
+    // Gọi API để lấy metadata
+    const res = await getMetadata(
+      `/nation?slug=${encodeURIComponent(params.slug)}`,
+    )
+
+    // Kiểm tra dữ liệu trả về
+    if (!res || !Array.isArray(res) || res.length === 0 || !res[0]) {
+      console.error('No valid metadata found for slug:', params.detailslug)
+      return {}
+    }
+    // console.log('res', res[0])
+    // Trả về metadata được xử lý
+    return metadataValues(res[0])
+  } catch (error) {
+    // Xử lý lỗi bất ngờ
+    console.error('Error generating metadata:', error)
+    return {}
+  }
 }
 export default async function page({params}: {params: {slug: string}}) {
   const [dataAcf, dataPrograms, postRelate, dataMap] = await Promise.all([
@@ -32,6 +57,9 @@ export default async function page({params}: {params: {slug: string}}) {
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchDataACF error:', err)
+      return null
     }),
     fetchData({
       api:
@@ -43,18 +71,27 @@ export default async function page({params}: {params: {slug: string}}) {
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchData dataPrograms error:', err)
+      return []
     }),
     fetchData({
       api: '/posts-by-taxonomy?slug=' + params?.slug,
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchData postRelate error:', err)
+      return []
     }),
     fetchData({
       api: `/data-map-with-slug/?slug=${params.slug}`,
       option: {
         next: { revalidate: 10}
       },
+    }).catch((err) => {
+      console.error('fetchData dataMap error:', err)
+      return null
     }),
   ])
   if (!dataAcf || !dataAcf.length) {

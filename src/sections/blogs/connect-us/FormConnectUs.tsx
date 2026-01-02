@@ -49,7 +49,6 @@ const FormConnectUs = () => {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
     setTransition(async () => {
       await new Promise((resolve) => setTimeout(resolve, 2000))
       form.reset()

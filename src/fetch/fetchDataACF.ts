@@ -21,10 +21,19 @@ export default async function fetchDataACF(request: RequestPostGuest) {
       },
     )
 
+    // Check if response is JSON
+    const contentType = res.headers.get('content-type')
+    if (!contentType || !contentType.includes('application/json')) {
+      throw new Error(`Expected JSON response but got ${contentType}`)
+    }
+
     if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      // throw new Error('Failed to fetch data')
-      return res.json()
+      // Return error response as JSON if possible
+      try {
+        return res.json()
+      } catch {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+      }
     }
 
     return res.json()
@@ -32,9 +41,7 @@ export default async function fetchDataACF(request: RequestPostGuest) {
     // Convert the error to a string or handle based on its type
     const errorMessage = error instanceof Error ? error.message : String(error)
     throw new Error(
-      `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${
-        request.api
-      }: ${errorMessage}`,
+      `${process.env.NEXT_PUBLIC_API_ACF!}${request.api}: ${errorMessage}`,
     )
   }
 }

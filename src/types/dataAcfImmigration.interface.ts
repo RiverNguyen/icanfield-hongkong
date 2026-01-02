@@ -108,6 +108,7 @@ export interface dataProgramsAcf {
   slug: string
   featured_image: string
   nation: string[]
+  slugNation?: string[]
   acf: {
     information: information
     interest: interest

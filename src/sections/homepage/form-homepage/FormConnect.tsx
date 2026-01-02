@@ -76,7 +76,6 @@ const FormConnect = () => {
       // Gửi yêu cầu
       const request = new CF7Request(values)
       const response = await request.send(endpoints.contactForm)
-      console.log(response)
 
       // Cập nhật trạng thái khi gửi thành công
       setIsSubmitting({isSubmitting: false, isSuccess: true})
@@ -108,10 +107,10 @@ const FormConnect = () => {
     <>
       <div className='relative z-20 h-max flex-1 p-[1.5rem_5rem] pl-0 sm:mt-[6.5rem] xsm:p-[1.5rem_1rem_2.5rem_1rem]'>
         <div className='mb-[2rem] space-y-[0.5rem]'>
-          <span className='body16 xsm:sub-12 font-semibold text-greyscaletext-body opacity-[0.7] xsm:font-medium xsm:tracking-[-0.015rem]'>
+          <span className='font-semibold text-greyscaletext-body opacity-[0.7] body16 xsm:font-medium xsm:tracking-[-0.015rem] xsm:sub-12'>
             KẾT NỐI VỚI CHÚNG TÔI
           </span>
-          <p className='heading3 xsm:heading1 font-optima font-semibold text-brown xsm:tracking-[-0.045rem]'>
+          <p className='font-optima font-semibold text-brown heading3 xsm:tracking-[-0.045rem] xsm:heading1'>
             Khám Phá Hành Trình Quốc Tế của Bạn
           </p>
         </div>
@@ -128,16 +127,16 @@ const FormConnect = () => {
                   <FormControl>
                     <Input
                       placeholder=''
-                      className='body16 h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                      className='h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                       {...field}
                     />
                   </FormControl>
                   {!field?.value && (
-                    <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                    <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                       Họ và tên<span>*</span>
                     </p>
                   )}
-                  <FormMessage className='body16 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                  <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16' />
                 </FormItem>
               )}
             />
@@ -150,16 +149,16 @@ const FormConnect = () => {
                     <FormControl>
                       <Input
                         placeholder=''
-                        className='body16 h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                        className='h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                         {...field}
                       />
                     </FormControl>
                     {!field?.value && (
-                      <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                      <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                         Email<span>*</span>
                       </p>
                     )}
-                    <FormMessage className='body16 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                    <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16' />
                   </FormItem>
                 )}
               />
@@ -171,16 +170,16 @@ const FormConnect = () => {
                     <FormControl>
                       <Input
                         placeholder=''
-                        className='body16 h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                        className='h-[3rem] rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                         {...field}
                       />
                     </FormControl>
                     {!field?.value && (
-                      <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                      <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                         Số điện thoại<span>*</span>
                       </p>
                     )}
-                    <FormMessage className='body16 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                    <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16' />
                   </FormItem>
                 )}
               />
@@ -193,16 +192,16 @@ const FormConnect = () => {
                   <FormControl>
                     <Textarea
                       placeholder=''
-                      className='body16 h-[6.25rem] resize-none rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+                      className='h-[6.25rem] resize-none rounded-[0.75rem] border-none bg-white p-[1rem_0.75rem] tracking-[-0.02rem] text-brown shadow-[0px_2px_10px_0px_rgba(0,0,0,0.05)] body16 placeholder:text-greyscaletext-200 focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
                       {...field}
                     />
                   </FormControl>
                   {!field?.value && (
-                    <p className='body16 pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 [&_span]:text-errtext'>
+                    <p className='pointer-events-none absolute left-[1rem] top-[0.75rem] tracking-[-0.02rem] text-greyscaletext-200 body16 [&_span]:text-errtext'>
                       Lời nhắn của bạn
                     </p>
                   )}
-                  <FormMessage className='body16 !mt-[0.5rem] tracking-[-0.02rem] text-errtext' />
+                  <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16' />
                 </FormItem>
               )}
             />
@@ -210,7 +209,7 @@ const FormConnect = () => {
               type='submit'
               className='mt-[1.5rem] h-[3rem] w-max gap-0 space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:w-full'
             >
-              <p className='body-14-m tracking-[-0.0175rem] text-white'>
+              <p className='tracking-[-0.0175rem] text-white body-14-m'>
                 Gửi thông tin
               </p>
               <ImageV2

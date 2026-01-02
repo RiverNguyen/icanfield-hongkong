@@ -99,9 +99,8 @@ export const LeafletMapPrograms: FC<ILeafletMapProps> = ({
     (feature: Feature) => {
       if (!feature.properties) return '#f6f6f6' // Màu mặc định
       const countryName = feature.properties.name
-
       // Kiểm tra quốc gia được chọn
-      if (selectedCountry === countryName) {
+      if (selectedCountry?.toLocaleLowerCase() === countryName?.toLocaleLowerCase()) {
         return '#BC9247' // Màu nổi bật cho quốc gia được chọn
       }
 

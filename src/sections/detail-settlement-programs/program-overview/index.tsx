@@ -39,8 +39,8 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
     setPlayerProps({...playerProps, playing: false})
   }
   return (
-    <section className='relative min-h-[26rem] bg-background pb-[1.45rem] sm:h-[52.81rem] xsm:mb-[-5.1rem] xsm:px-[1rem]'>
-      <div className='mx-auto flex translate-y-[-18.5rem] flex-col overflow-hidden rounded-[1.25rem_1.25rem_0rem_0rem] p-[1.5rem_1rem_2rem] sm:min-h-[51.3125rem] sm:max-w-[90rem] sm:rounded-[2rem] sm:bg-[linear-gradient(180deg,#FFF_24%,rgba(255,255,255,0.00)_90%)] sm:p-[4rem_4rem_5rem] xsm:translate-y-[-3.625rem] xsm:bg-white/70'>
+    <section className='relative min-h-[26rem] bg-background pb-[1.45rem] sm:h-fit xsm:mb-[-5.1rem] xsm:px-[1rem] overflow-hidden'>
+      <div className='mx-auto flex  flex-col overflow-hidden rounded-[1.25rem_1.25rem_0rem_0rem] p-[1.5rem_1rem_2rem] sm:min-h-fit sm:max-w-[90rem] sm:rounded-[2rem] sm:bg-[linear-gradient(180deg,#FFF_24%,rgba(255,255,255,0.00)_90%)] sm:p-[4rem_4rem_5rem] xsm:translate-y-[-3.625rem] xsm:bg-white/70'>
         <div className='absolute left-0 top-0 h-full w-full blur-[25px] sm:hidden xsm:bg-white/70'></div>
         <ImageV2
           src={'/imgs/detail-settlement-programs/mask_group.webp'}
@@ -54,7 +54,7 @@ export const ProgramOverview: FC<IProgramOverviewProps> = ({
         </h2>
         <div className='relative m-[1rem_0_1.5rem] max-w-[46.5rem] text-greyscaletext-body body16-r55 sm:m-[1.5rem_0_3.31rem] xsm:text-[0.875rem]' dangerouslySetInnerHTML={{__html: description || ''}}>
         </div>
-        <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem]'>
+        <div className='relative h-[10.93363rem] self-center overflow-hidden rounded-[1rem] sm:h-[46.125rem] sm:w-[82rem] xsm:rounded-[0.5rem] xsm:w-full xsm:pt-[0.5rem]'>                               
           <div className='banner-video absolute left-0 top-0 h-full w-full overflow-hidden rounded-bl-[0.5rem] rounded-br-[0.5rem] xsm:relative'>
             {isClient &&
               media &&

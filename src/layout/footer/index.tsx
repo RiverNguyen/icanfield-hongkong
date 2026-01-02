@@ -188,7 +188,7 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
         </div>
         <div className='flex w-full items-center justify-between rounded-[1rem] bg-[rgba(112,115,124,0.08)] p-[1.5rem_1.5rem_1.5rem_2rem] xsm:flex-col-reverse xsm:bg-[rgba(112,115,124,0.16)] xsm:p-[1rem_1.5rem_1.5rem_1.5rem]'>
           <p className='font-bold text-white sub-14'>
-            © 2024 iCanfield. Designed by OKHUB
+            {dataFooter?.watermark || ''}
           </p>
           <div className='flex items-center space-x-[0.75rem] xsm:mb-[1rem]'>
             {dataFooter?.social?.map((e: social, index: number) => (

@@ -43,7 +43,7 @@ const OutstandingAustraliaClone: FC<IOutstandingProjectEB5Props> = ({listItems})
   const sectionRef = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
   const [search, setSearch] = useState<string>('')
-  const [totalPage, setTotalPage] = useState<number>(listItems.totalPages || 1)
+  const [totalPage, setTotalPage] = useState<number>(listItems?.totalPages || 1)
   const path = usePathname() // Lấy đường dẫn hiện tại (vd: "/tour-nuoc-ngoai")
   const segment = path?.split('/').filter(Boolean).pop() // Lấy phần cuối cùng sau "/"
   const currentPath = `${segment}` // Lấy đường dẫn hiện tại không bao gồm phần query string
@@ -80,7 +80,7 @@ const OutstandingAustraliaClone: FC<IOutstandingProjectEB5Props> = ({listItems})
     revalidateOnReconnect: false,
   })
   useEffect(() => {
-    if (posts && searchParams?.size) {
+    if (posts && searchParams?.size && posts.totalPages) {
       setTotalPage(posts.totalPages)
     }
   }, [posts])
@@ -129,7 +129,7 @@ const OutstandingAustraliaClone: FC<IOutstandingProjectEB5Props> = ({listItems})
             </>
           )}
         </div>
-        {posts && posts.totalPages > 1 && (
+        {posts && posts.totalPages && posts.totalPages > 1 && (
           <Pagination
             pageCurrent={currentPage}
             setCurrentPage={setCurrentPage}

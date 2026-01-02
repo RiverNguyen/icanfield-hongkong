@@ -8,6 +8,9 @@ import Footer from '@/layout/footer'
 import {Inter} from 'next/font/google'
 import fetchData from '@/fetch/fetchData'
 import Providers from '@/components/proccessBar'
+import Script from 'next/script'
+import ContactButtons from '@/components/contact-buttons'
+
 const inter = Inter({subsets: ['latin']})
 const optima = localFont({
   src: [
@@ -42,25 +45,73 @@ export default async function RootLayout({
   const requestFooter = {
     api: '/footer-options?acf_format=standard',
     option: {
-      next  : { revalidate: 60 },
+      next: {revalidate: 60},
     },
   }
   const requestHeader = {
     api: '/header-options?acf_format=standard',
     option: {
-      next  : { revalidate: 60 },
+      next: {revalidate: 60},
     },
   }
-  const [dataFooter, dataHeader] = await Promise.all([
+  const requestPopup = {
+    api: '/form-all-page',
+
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const [dataFooter, dataHeader, dataPopup] = await Promise.all([
     fetchData(requestFooter),
     fetchData(requestHeader),
+    fetchData(requestPopup),
   ])
+
   return (
     <html lang='en'>
+      <head>
+        {/* Gắn Facebook Pixel bằng thẻ script thuần */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1247066973474967');
+            fbq('track', 'PageView');
+          `,
+          }}
+        />
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy='afterInteractive'
+        />
+        <Script
+          src='https://www.googletagmanager.com/gtag/js?id=G-B54QV5PM5T'
+          strategy='afterInteractive'
+        />
+        <Script
+          id='google-analytics'
+          strategy='afterInteractive'
+        >
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-B54QV5PM5T');
+        `}
+        </Script>
+      </head>
       <body className={` ${optima.variable} ${inter.className} antialiased`}>
         <Header
           data={dataHeader?.data}
           dataFooter={dataFooter.data}
+          dataPopup={dataPopup?.data}
         />
 
         <Providers>{children}</Providers>
@@ -72,6 +123,7 @@ export default async function RootLayout({
           duration={4000}
           expand
         />
+        <ContactButtons data={dataFooter?.data?.contact_button} />
         <Footer dataFooter={dataFooter?.data} />
       </body>
     </html>
