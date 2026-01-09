@@ -1,3 +1,7 @@
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin()
+
 const nextConfig = {
   images: {
     formats: ['image/webp'],
@@ -37,6 +41,10 @@ const nextConfig = {
       config.devtool = false // Không cần source map trong production
     }
 
+    // ✅ Xử lý webpack warnings cho next-intl dynamic imports
+    // Warning này là bình thường và không ảnh hưởng đến functionality
+    // Có thể ignore vì next-intl hoạt động đúng
+
     // ✅ Giảm kích thước bundle JS
     config.optimization.splitChunks = {
       chunks: 'all',
@@ -54,4 +62,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+export default withNextIntl(nextConfig)

@@ -7,6 +7,7 @@ import {cn} from '@/lib/utils'
 import IConMessager from '@/sections/immigration/programme/IConMessager'
 import {dataProgramsAcf} from '@/types/dataAcfImmigration.interface'
 import Link from 'next/link'
+import {useTranslations} from 'next-intl'
 
 export default function ItemProgramme({
   className,
@@ -19,6 +20,7 @@ export default function ItemProgramme({
 }) {
   const isMobile = useIsMobile()
   const {consultingPhoneNumber} = useStore((state) => state)
+  const t = useTranslations()
   return (
     <div
       className={cn(
@@ -47,21 +49,22 @@ export default function ItemProgramme({
             <div className='flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)] p-[0.5rem_0.75rem]'>
               <p className='text-[rgba(255,255,255,0.85)] body-14-m'>
                 {dataPostProgramme?.acf?.information?.investment_level?.title ||
-                  'Mức đầu tư'}
+                  t('muc_dau_tu')}
               </p>
               <p className='text-white body16-s'>
                 {dataPostProgramme?.acf?.information?.investment_level?.value ||
-                  'Chưa có thông tin'}
+                  t('chua_co_thong_tin')}
               </p>
             </div>
             <div className='flex-1 rounded-[0.5rem] bg-[rgba(237,237,237,0.16)] p-[0.5rem_0.75rem]'>
               <p className='text-[rgba(255,255,255,0.85)] body-14-m'>
                 {dataPostProgramme?.acf?.information?.review_time?.title ||
-                  'Thời gian xét duyệt'}
+                  t('thoi_gian_xet_duyet')}
               </p>
               <p className='text-white body16-s'>
                 {dataPostProgramme?.acf?.information?.review_time?.from}-
-                {dataPostProgramme?.acf?.information?.review_time?.to} tháng
+                {dataPostProgramme?.acf?.information?.review_time?.to}{' '}
+                {t('thang')}
               </p>
             </div>
           </div>
@@ -72,21 +75,22 @@ export default function ItemProgramme({
           <div>
             <p className='text-greyscaletext-200 body16-m'>
               {dataPostProgramme?.acf?.information?.investment_level?.title ||
-                'Mức đầu tư'}
+                t('muc_dau_tu')}
             </p>
             <p className='text-[1.125rem] font-semibold leading-[133.3%] tracking-[-0.0225rem] text-orangetext-500'>
               {dataPostProgramme?.acf?.information?.investment_level?.value ||
-                'Chưa có thông tin'}
+                t('chua_co_thong_tin')}
             </p>
           </div>
           <div>
             <p className='text-greyscaletext-200 body16-m'>
               {dataPostProgramme?.acf?.information?.review_time?.title ||
-                'Thời gian xét duyệt'}
+                t('thoi_gian_xet_duyet')}
             </p>
             <p className='text-[1.125rem] font-semibold leading-[133.3%] tracking-[-0.0225rem] text-orangetext-500'>
               {dataPostProgramme?.acf?.information?.review_time?.from}-
-              {dataPostProgramme?.acf?.information?.review_time?.to} tháng
+              {dataPostProgramme?.acf?.information?.review_time?.to}{' '}
+              {t('thang')}
             </p>
           </div>
         </div>
@@ -132,7 +136,7 @@ export default function ItemProgramme({
             <IConMessager className='size-[1.25rem] object-contain' />
           </div>
           <p className='tracking-[-0.0175rem] text-brown transition-all body-14-m group-hover:text-brown xsm:hidden'>
-            Liên hệ tư vấn
+            {t('lien_he_tu_van')}
           </p>
         </Link>
         <Link
@@ -140,7 +144,7 @@ export default function ItemProgramme({
           className='flex cursor-pointer items-center space-x-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:flex-1 xsm:justify-center'
         >
           <p className='tracking-[-0.0175rem] text-white body-14-m'>
-            Xem chi tiết
+            {t('xem_chi_tiet')}
           </p>
           <IConArrow className='size-[1.5rem]' />
         </Link>

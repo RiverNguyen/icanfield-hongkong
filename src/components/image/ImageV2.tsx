@@ -14,6 +14,9 @@ const ImageV2 = ({
   fallbackImage = fallbackImg,
   style = {},
   draggable = false,
+  width = 400, // Default width
+  height = 300, // Default height
+  fill,
   ...rest
 }: IImageProps) => {
   const [imgSrc, setImgSrc] = useState<string | StaticImport>(src)
@@ -43,6 +46,7 @@ const ImageV2 = ({
         objectFit: isError || !imgSrc ? 'cover' : style.objectFit,
       }}
       draggable={draggable}
+      {...(fill ? {fill} : {width, height})}
     />
   )
 }

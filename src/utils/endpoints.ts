@@ -8,7 +8,11 @@ const endpoints = {
   categories: {
     list: '/categories',
   },
-  homepage: '/pages/96',
+  homepage: {
+    zh: '/pages/96',
+    'zh-cn': '/pages/7069',
+    en: '/pages/7070',
+  },
   compareProgramsPage: '/pages/1621',
   comparePrograms: '/comparep-rograms',
   homeFeatured: '/home-featured',

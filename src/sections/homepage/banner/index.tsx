@@ -11,6 +11,7 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import {filterOptions} from './constants'
 const LazyReactPlayer = React.lazy(() => import('react-player'))
 import {Suspense} from 'react'
+import {useLocale, useTranslations} from 'next-intl'
 export interface IDataMedia {
   type: 'upload' | 'youtube' | 'tiktok' | 'slide'
   [key: string]: any
@@ -32,12 +33,15 @@ const BannerHomepage = ({
   const [selectedItems, setSelectedItems] = useState<{
     [key: number]: {label: string; slug: string; key: string}
   }>([])
+  const t = useTranslations()
+  const locale = useLocale() as 'zh' | 'zh-cn' | 'en'
   //handle update FilterOption when dataFilter
-  const [filterOptionsLastest, setFilterOptionsLastest] =
-    useState(filterOptions)
+  const [filterOptionsLastest, setFilterOptionsLastest] = useState(
+    filterOptions({locale}),
+  )
 
   useEffect(() => {
-    const updatedFilterOptions = filterOptions.map((option) => {
+    const updatedFilterOptions = filterOptions({locale}).map((option) => {
       const dataKey = dataFilter[option.key as keyof FilterData]
       if (dataKey) {
         return {
@@ -258,7 +262,8 @@ const BannerHomepage = ({
                         <span
                           className={`text-Phase-1-Brown1 line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] transition-all duration-500 ${openFilters[filterIndex] ? '-translate-y-[5rem] translate-x-full opacity-0' : 'translate-x-0 translate-y-0 opacity-100'}`}
                         >
-                          {selectedItems[filterIndex]?.label || 'Click để chọn'}
+                          {selectedItems[filterIndex]?.label ||
+                            t('click_de_chon')}
                         </span>
                         <ImageV2
                           src='/icons/homepage/banner/arrow-down.svg'
@@ -302,7 +307,7 @@ const BannerHomepage = ({
                     ))}
                   </div>
                 </div>
-                {filterIndex < filterOptions.length - 1 && (
+                {filterIndex < filterOptions({locale}).length - 1 && (
                   <div className='line mx-[0.5rem] h-[2.75rem] w-[0.0625rem] rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
                 )}
               </React.Fragment>
@@ -320,14 +325,14 @@ const BannerHomepage = ({
               className='mr-[0.62rem] size-[1.5rem] object-contain'
             />
             <span className='text-[1rem] font-semibold leading-[1.5] text-white'>
-              Tìm kiếm
+              {t('tim_kiem')}
             </span>
           </button>
         </div>
       </div>
       <div className='banner-filter-mb mx-auto flex w-[21.4375rem] -translate-y-[1.5rem] flex-col rounded-[0.75rem] bg-white p-4 shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)] sm:hidden'>
         <div className='flex h-full flex-1 flex-col items-center justify-between'>
-          {filterOptions.map((item: FilterOption, index: number) => (
+          {filterOptions({locale}).map((item: FilterOption, index: number) => (
             <React.Fragment key={index}>
               <div
                 className='flex h-full w-full cursor-pointer rounded-[0.5rem] transition-all duration-300'
@@ -352,7 +357,7 @@ const BannerHomepage = ({
                   </span>
                   <div className='flex cursor-pointer items-center justify-between'>
                     <span className='line-clamp-1 text-[1rem] font-medium leading-[1.5] tracking-[0.02rem] text-Phase-1-Brown'>
-                      {selectedItems[index]?.label || 'Click để chọn'}
+                      {selectedItems[index]?.label || t('click_de_chon')}
                     </span>
                     <ImageV2
                       src='/icons/homepage/banner/arrow-down.svg'
@@ -364,7 +369,7 @@ const BannerHomepage = ({
                   </div>
                 </div>
               </div>
-              {index < filterOptions.length - 1 && (
+              {index < filterOptions({locale}).length - 1 && (
                 <div className='line my-4 h-[0.0625rem] w-full rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
               )}
             </React.Fragment>
@@ -382,7 +387,7 @@ const BannerHomepage = ({
             className='mr-[0.62rem] size-[1.5rem] object-contain'
           />
           <span className='text-[0.875rem] font-semibold leading-[1.5] text-white'>
-            Tìm kiếm
+            {t('tim_kiem')}
           </span>
         </button>
       </div>
@@ -435,7 +440,7 @@ const BannerHomepage = ({
                 className='tracking-[-0.00875rem text-brown] cursor-pointer border-b-[1px] border-[#EBEBEB] px-3 py-4 text-[0.875rem] leading-[1.5]'
                 onClick={() => {
                   handleSelect(
-                    filterOptions.findIndex(
+                    filterOptions({locale}).findIndex(
                       (filter) => filter.key === keyFilter,
                     ),
                     {...child, key: child.key || ''},

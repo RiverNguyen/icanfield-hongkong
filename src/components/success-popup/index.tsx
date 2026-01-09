@@ -5,6 +5,7 @@ import {cn} from '@/lib/utils'
 import {Media} from '@/types/image.interface'
 import Link from 'next/link'
 import {FC, useEffect, useState} from 'react'
+import {useTranslations} from 'next-intl'
 
 interface ISuccessPopupProps {
   className?: string
@@ -24,6 +25,7 @@ export const SuccessPopup: FC<ISuccessPopupProps> = ({
   setActive,
 }) => {
   const [socials, setSocials] = useState<ISocial[]>([])
+  const t = useTranslations()
   useEffect(() => {
     const fetchSocials = async () => {
       // fetch socials
@@ -58,12 +60,10 @@ export const SuccessPopup: FC<ISuccessPopupProps> = ({
       >
         <MailIcon className='size-[3.75rem] sm:size-[5rem]' />
         <p className='mb-[0.5rem] mt-[2rem] text-center font-optima text-[1.25rem] font-medium uppercase leading-[1.2] tracking-[-0.025rem] text-brown sm:mb-[1rem] sm:mt-[2.25rem] sm:text-[2.25rem] sm:tracking-[-0.045rem]'>
-          Cảm ơn bạn đã liên hệ!
+          {t('cam_on_ban_da_lien_he')}
         </p>
         <p className='mb-auto text-center text-[0.875rem] leading-[1.5rem] tracking-[-0.00875rem] text-bodytext sm:text-[1rem] sm:tracking-[-0.02rem]'>
-          Thông tin của bạn đã được gửi thành công. Đội ngũ iCanfield sẽ phản
-          hồi bạn trong thời gian sớm nhất. Hãy kiểm tra email để cập nhật thêm
-          thông tin!
+          {t('thong_tin_cua_ban_da_duoc_gui_thanh_cong')}
         </p>
         <button
           onClick={() => setActive(!active)}

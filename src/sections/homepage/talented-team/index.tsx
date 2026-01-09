@@ -61,50 +61,102 @@ const TalentedTeam = ({data: {title, talented_team}}: ITalentedTeamProps) => {
               },
             }}
           >
-            {talented_team.map(
-              (
-                item: {image: Media; name: string; position: string; link: string},
-                index: number,
-              ) => (
-                <SwiperSlide
-                  key={index}
-                  className='!overflow-visible relative'
-                >
-                  {
-                    item.link ? (
+            {Array.isArray(talented_team) &&
+              talented_team.map(
+                (
+                  item: {
+                    image: Media
+                    name: string
+                    position: string
+                    link: string
+                  },
+                  index: number,
+                ) => (
+                  <SwiperSlide
+                    key={index}
+                    className='relative !overflow-visible'
+                  >
+                    {item.link ? (
                       <Link href={item.link}>
-                        <div className='absolute left-0 top-0 size-full z-20'></div>
+                        <div className='absolute left-0 top-0 z-20 size-full'></div>
                       </Link>
                     ) : (
-                      <div className='absolute left-0 top-0 size-full z-20'></div>
-                    )
-                  }
-                  <div className='flex cursor-pointer flex-col items-center justify-center !overflow-visible'>
-                    <ImageV2
-                      src={item.image.url || ''}
-                      alt={item.image.alt}
-                      width={item.image.width * 2 || 40}
-                      height={item.image.height * 2 || 40}
-                      className='h-[22.04544rem] w-full scale-95 object-contain transition-transform duration-300 hover:scale-100'
-                    />
-                    <div
-                      className={`flex flex-col items-center justify-center transition-opacity duration-300 ${
-                        activeIndex === index
-                          ? 'xsm:opacity-100'
-                          : 'xsm:pointer-events-none xsm:opacity-0'
-                      }`}
-                    >
-                      <h3 className='text-[1.25rem] font-semibold uppercase leading-[140%] tracking-[-0.025rem] text-brown'>
-                        {item.name}
-                      </h3>
-                      <p className='text-center text-[0.875rem] font-medium leading-[1.5] text-greentext opacity-70'>
-                        {item.position}
-                      </p>
+                      <div className='absolute left-0 top-0 z-20 size-full'></div>
+                    )}
+                    <div className='flex cursor-pointer flex-col items-center justify-center !overflow-visible'>
+                      <ImageV2
+                        src={item.image.url || ''}
+                        alt={item.image.alt}
+                        width={item.image.width * 2 || 40}
+                        height={item.image.height * 2 || 40}
+                        className='h-[22.04544rem] w-full scale-95 object-contain transition-transform duration-300 hover:scale-100'
+                      />
+                      <div
+                        className={`flex flex-col items-center justify-center transition-opacity duration-300 ${
+                          activeIndex === index
+                            ? 'xsm:opacity-100'
+                            : 'xsm:pointer-events-none xsm:opacity-0'
+                        }`}
+                      >
+                        <h3 className='text-[1.25rem] font-semibold uppercase leading-[140%] tracking-[-0.025rem] text-brown'>
+                          {item.name}
+                        </h3>
+                        <p className='text-center text-[0.875rem] font-medium leading-[1.5] text-greentext opacity-70'>
+                          {item.position}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ),
-            )}
+                  </SwiperSlide>
+                ),
+              )}
+            {Array.isArray(talented_team) &&
+              talented_team.map(
+                (
+                  item: {
+                    image: Media
+                    name: string
+                    position: string
+                    link: string
+                  },
+                  index: number,
+                ) => (
+                  <SwiperSlide
+                    key={index}
+                    className='relative !overflow-visible'
+                  >
+                    {item.link ? (
+                      <Link href={item.link}>
+                        <div className='absolute left-0 top-0 z-20 size-full'></div>
+                      </Link>
+                    ) : (
+                      <div className='absolute left-0 top-0 z-20 size-full'></div>
+                    )}
+                    <div className='flex cursor-pointer flex-col items-center justify-center !overflow-visible'>
+                      <ImageV2
+                        src={item.image.url || ''}
+                        alt={item.image.alt}
+                        width={item.image.width * 2 || 40}
+                        height={item.image.height * 2 || 40}
+                        className='h-[22.04544rem] w-full scale-95 object-contain transition-transform duration-300 hover:scale-100'
+                      />
+                      <div
+                        className={`flex flex-col items-center justify-center transition-opacity duration-300 ${
+                          activeIndex === index
+                            ? 'xsm:opacity-100'
+                            : 'xsm:pointer-events-none xsm:opacity-0'
+                        }`}
+                      >
+                        <h3 className='text-[1.25rem] font-semibold uppercase leading-[140%] tracking-[-0.025rem] text-brown'>
+                          {item.name}
+                        </h3>
+                        <p className='text-center text-[0.875rem] font-medium leading-[1.5] text-greentext opacity-70'>
+                          {item.position}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ),
+              )}
           </Swiper>
         </Suspense>
         <div className='prev-btn-talented-team absolute left-0 top-1/3 z-10 flex size-[2.5rem] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[rgba(245,193,120,0.20)] xsm:translate-x-1/2'>

@@ -1,6 +1,20 @@
-export const filterOptions = [
+import messagesZh from '@/messages/zh.json'
+import messagesZhCn from '@/messages/zh-cn.json'
+import messagesEn from '@/messages/en.json'
+
+const messages = {
+  zh: messagesZh,
+  'zh-cn': messagesZhCn,
+  en: messagesEn,
+}
+
+export const filterOptions = ({
+  locale = 'zh',
+}: {
+  locale?: 'zh' | 'zh-cn' | 'en'
+}) => [
   {
-    label: 'Quốc gia quan tâm',
+    label: messages[locale].quoc_gia_quan_tam,
     key: 'nation',
     icon: '/icons/homepage/banner/filter-nation.svg',
     selected: 'Cannda',
@@ -15,7 +29,7 @@ export const filterOptions = [
     ],
   },
   {
-    label: 'Mục đích đầu tư',
+    label: messages[locale].muc_dich_dau_tu,
     key: 'investment-purpose',
     icon: '/icons/homepage/banner/filter-widgets.svg',
     selected: 'Có thêm quốc tịch',
@@ -32,7 +46,7 @@ export const filterOptions = [
     ],
   },
   {
-    label: 'Ngân sách dự kiến',
+    label: messages[locale].ngan_sach_du_kien,
     key: 'expected-budget',
     icon: '/icons/homepage/banner/filter-budget.svg',
     selected: '500,000 USD',

@@ -4,19 +4,32 @@ import HomePage from '@/pages/homepage'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 import getMetadataPage from '@/fetch/getMetadataPage'
-export async function generateMetadata() {
-  const res = await getMetadataPage('/pages/96')
+
+export async function generateMetadata({
+  params,
+}: {
+  params: {locale: 'zh' | 'zh-cn' | 'en'}
+}) {
+  const {locale} = await params
+  const res = await getMetadataPage(endpoints.homepage[locale])
   return metadataValues(res)
 }
-export default async function Home() {
+
+export default async function Home({
+  params,
+}: {
+  params: {locale: 'zh' | 'zh-cn' | 'en'}
+}) {
+  const {locale} = await params
+  console.log('locale', locale)
   const homeRequest = {
-    api: endpoints.homepage + '?_fields=acf&acf_format=standard',
+    api: endpoints.homepage[locale] + '?_fields=acf&acf_format=standard',
     option: {
       next: {revalidate: 10},
     },
   }
   const newsRequest = {
-    api: endpoints.homeFeatured,
+    api: endpoints.homeFeatured + '?lang=' + locale,
     option: {
       next: {revalidate: 10},
     },

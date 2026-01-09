@@ -1,5 +1,8 @@
-export interface IImageV2 {
-  src: string
+import {ImageProps} from 'next/image'
+import {StaticImport} from 'next/dist/shared/lib/get-img-props'
+
+export interface IImageV2 extends Omit<ImageProps, 'src' | 'alt'> {
+  src: string | StaticImport
   alt: string
 }
 

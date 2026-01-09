@@ -42,12 +42,14 @@ const ProudJourney: FC<IProudJourneyProps> = ({
   const swiperRef2 = useRef<SwiperType | null>(null)
   const [spaceBetween, setSpaceBetween] = useState(1.5)
   const minSlides = 6
-  const paddedItems = [
-    ...items,
-    ...Array(Math.max(0, minSlides - items.length))
-      .fill(items)
-      .flat(),
-  ].slice(0, minSlides)
+  const paddedItems = Array.isArray(items)
+    ? [
+        ...items,
+        ...Array(Math.max(0, minSlides - items.length))
+          .fill(items)
+          .flat(),
+      ].slice(0, minSlides)
+    : []
   useEffect(() => {
     setSpaceBetween((prev) => {
       if (typeof window === 'undefined') return prev
@@ -113,6 +115,11 @@ const ProudJourney: FC<IProudJourneyProps> = ({
                     <ProudJourneyQuote content={item.content} />
                   </SwiperSlide>
                 ))}
+                {paddedItems.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <ProudJourneyQuote content={item.content} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>
@@ -135,8 +142,13 @@ const ProudJourney: FC<IProudJourneyProps> = ({
               swiperRef2.current?.slideTo(swiper.realIndex)
             }}
             allowTouchMove={false}
-            className='trip__swiper relative z-10 !ml-[8.3rem] !mr-0 h-[24.2rem] w-full flex-1 !overflow-visible !pointer-events-none'
+            className='trip__swiper !pointer-events-none relative z-10 !ml-[8.3rem] !mr-0 h-[24.2rem] w-full flex-1 !overflow-visible'
           >
+            {paddedItems.slice(1).map((item, index) => (
+              <SwiperSlide key={index}>
+                <ProudJourneyItem {...item} />
+              </SwiperSlide>
+            ))}
             {paddedItems.slice(1).map((item, index) => (
               <SwiperSlide key={index}>
                 <ProudJourneyItem {...item} />
@@ -150,6 +162,14 @@ const ProudJourney: FC<IProudJourneyProps> = ({
             spaceBetween={spaceBetween}
             className='min-h-[25.125rem] !p-[5.375rem_0_2.5rem] !pl-[1rem]'
           >
+            {paddedItems.map((item, index) => (
+              <SwiperSlide
+                className='!w-[18.75rem] rounded-[1rem] bg-white p-[1rem] shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)]'
+                key={index}
+              >
+                <ProudJourneyItem {...item} />
+              </SwiperSlide>
+            ))}
             {paddedItems.map((item, index) => (
               <SwiperSlide
                 className='!w-[18.75rem] rounded-[1rem] bg-white p-[1rem] shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)]'
@@ -178,7 +198,7 @@ function ProudJourneyQuote({
     <div
       dangerouslySetInnerHTML={{__html: content || ''}}
       className={cn(
-        'z-[30] mb-auto mt-[1.5rem] text-[1.25rem] h-[11rem] overflow-y-auto font-medium leading-[133.3%] text-greyscaletext-300 [&_*]:text-[1.25rem] [&_*]:font-medium [&_*]:leading-[133.3%] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900',
+        'z-[30] mb-auto mt-[1.5rem] h-[11rem] overflow-y-auto !text-[1rem] font-medium leading-[133.3%] text-greyscaletext-300 [&_*]:!text-[1rem] [&_*]:font-medium [&_*]:leading-[133.3%] [&_*]:text-greyscaletext-300 [&_strong]:text-greyscaletext-900',
         className,
       )}
     ></div>
@@ -223,7 +243,7 @@ function ProudJourneyItem({
           <h3 className='text-[1rem] font-semibold leading-[1.3] text-[var(--GREYSCALE-grey-900)] sm:mb-[0.38rem] sm:text-white'>
             {name}
           </h3>
-          <span className='text-[0.75rem] font-medium leading-[0.975rem] tracking-[0.00875rem] text-[#B3B3B3;] sm:leading-[1.3rem] sm:text-white line-clamp-6'>
+          <span className='line-clamp-6 text-[0.75rem] font-medium leading-[0.975rem] tracking-[0.00875rem] text-[#B3B3B3;] sm:leading-[1.3rem] sm:text-white'>
             {position}
           </span>
         </div>

@@ -19,16 +19,7 @@ import {useEffect, useMemo, useRef, useState, useTransition} from 'react'
 import ReactPaginate from 'react-paginate'
 import useSWR from 'swr'
 import './style.css'
-
-const sortOptions = [
-  {name: 'Tất cả', value: 'all'},
-  {name: 'Từ Z-A', value: 'desc'},
-  {name: 'Từ A-Z', value: 'asc'},
-  {name: 'Thời gian xét duyệt nhanh nhất', value: 'fastest'},
-  {name: 'Thời gian xét duyệt chậm nhất', value: 'slowest'},
-  {name: 'Mức ngân sách cao nhất', value: 'high-investment'},
-  {name: 'Mức ngân sách thấp nhất', value: 'low-investment'},
-]
+import {useTranslations} from 'next-intl'
 
 export default function Programme({
   name,
@@ -50,6 +41,17 @@ export default function Programme({
   const [search, setSearch] = useState<string>('')
   const [page, setPage] = useState<number>(1)
   const [isPending, setTransition] = useTransition()
+  const t = useTranslations()
+
+  const sortOptions = [
+    {name: t('tat_ca'), value: 'all'},
+    {name: t('tu_z_a'), value: 'desc'},
+    {name: t('tu_a_z'), value: 'asc'},
+    {name: t('thoi_gian_xet_duyet_nhanh_nhat'), value: 'fastest'},
+    {name: t('thoi_gian_xet_duyet_cham_nhat'), value: 'slowest'},
+    {name: t('muc_ngan_sach_cao_nhat'), value: 'high-investment'},
+    {name: t('muc_ngan_sach_thap_nhat'), value: 'low-investment'},
+  ]
   useEffect(() => {
     setListPrograms(dataPrograms)
   }, []) //eslint-disable-line
@@ -147,7 +149,7 @@ export default function Programme({
       <div className='relative z-10 flex section-container sm:items-start sm:space-x-[6.19rem] xsm:w-full xsm:flex-col xsm:px-0'>
         <div className='sticky w-[23.9375rem] space-y-[2.5rem] sm:top-[7.75rem] sm:pb-[6.5rem] xsm:top-[1rem] xsm:z-10 xsm:w-full xsm:space-y-[1rem] xsm:bg-background xsm:px-[1rem] xsm:pb-[1rem]'>
           <h2 className='font-optima font-semibold text-orangetext-900 heading1 sm:capitalize'>
-            Các chương trình định cư{' '}
+            {t('cac_chuong_trinh_dinh_cu')}{' '}
             <span className='font-optima font-semibold capitalize text-orangetext-900 heading1'>
               {name}
             </span>
@@ -161,6 +163,7 @@ export default function Programme({
             setSelectedSortOption={setSelectedSortOption}
             setPage={setPage}
             page={page}
+            placeholder={t('tim_kiem_trong_chuong_trinh')}
           />
         </div>
         <div className='flex flex-1 flex-col items-center pb-[9.5rem] xsm:mt-[1rem] xsm:w-full xsm:px-[1rem] xsm:pb-[2.5rem]'>
@@ -191,7 +194,7 @@ export default function Programme({
                 ) : (
                   <>
                     <IConSeeMore className='up-down size-[1.375rem] object-contain' />
-                    <p className='text-brown body-14'>XEM THÊM</p>
+                    <p className='text-brown body-14'>{t('xem_them')}</p>
                   </>
                 )}
               </div>

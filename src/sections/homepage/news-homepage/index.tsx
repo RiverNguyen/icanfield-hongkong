@@ -4,10 +4,11 @@ import ArrowRight from '@/components/svg/ArrowRight'
 import {cn} from '@/lib/utils'
 import {Media} from '@/types/image.interface'
 import Link from 'next/link'
-import {FC, useState} from 'react'
+import {FC, useState, useEffect} from 'react'
 import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import './style.css'
+import {useTranslations} from 'next-intl'
 
 export interface INewsFlowProps {
   data: {
@@ -27,10 +28,23 @@ export interface INewsFlowProps {
 const NewsFlow: FC<INewsFlowProps> = ({data}) => {
   const {title, news_flow: itemsNewsFeatured, news: itemsNews} = data
   const [latestNewsItemIndex, setLatestNewsItemIndex] = useState<number>(0)
+  const t = useTranslations()
+
+  // Ensure latestNewsItemIndex is always valid
+  useEffect(() => {
+    if (
+      !Array.isArray(itemsNews) ||
+      itemsNews.length === 0 ||
+      latestNewsItemIndex < 0 ||
+      latestNewsItemIndex >= itemsNews.length
+    ) {
+      setLatestNewsItemIndex(0)
+    }
+  }, [itemsNews, latestNewsItemIndex])
   return (
     <section className='relative z-10 space-y-[1.5rem] bg-white pt-[2.5rem] shadow-[0px_-20px_40px_0px_rgba(0,0,0,0.03)] sm:space-y-[2.5rem] sm:rounded-[4rem_4rem_0rem_0rem] sm:p-[5rem_0_6.5rem] xsm:mb-[4rem]'>
       <h2 className='mx-auto max-w-[90rem] px-[1rem] font-optima font-semibold text-brown heading1 sm:px-0'>
-        {title || 'Tin tức mới nhất'}
+        {title || t('tin_tuc_moi_nhat')}
       </h2>
       <div className='mx-auto flex flex-col px-[1rem] sm:max-w-[90rem] sm:flex-row sm:px-0'>
         {itemsNewsFeatured?.map((item, index) => (
@@ -67,20 +81,37 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
           <p className='mb-[2.2rem] mt-[0.5rem] text-black/60 body-14'>
             {Array.isArray(itemsNews) &&
               itemsNews.length > 0 &&
-              itemsNews[latestNewsItemIndex].description}
+              latestNewsItemIndex >= 0 &&
+              latestNewsItemIndex < itemsNews.length &&
+              itemsNews[latestNewsItemIndex]?.description}
           </p>
           <div className='mt-[1.5rem] flex items-center justify-center px-[1rem] sm:justify-between sm:px-0 xsm:absolute xsm:bottom-0 xsm:left-0 xsm:right-0'>
-            <Link
-              href={
+            {(() => {
+              const isValidIndex =
                 Array.isArray(itemsNews) &&
-                  itemsNews.length > 0 &&
-                  itemsNews[latestNewsItemIndex].id === null ?  itemsNews[latestNewsItemIndex].slug : `/tin-tuc?category=${itemsNews[latestNewsItemIndex].slug}`
-              }
-              className='flex items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem]'
-            >
-              <span className='text-white body-14-m'>Xem tất cả</span>
-              <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white' />
-            </Link>
+                itemsNews.length > 0 &&
+                latestNewsItemIndex >= 0 &&
+                latestNewsItemIndex < itemsNews.length
+              const currentItem = isValidIndex
+                ? itemsNews[latestNewsItemIndex]
+                : null
+              const href =
+                currentItem?.id === null
+                  ? currentItem?.slug || ''
+                  : `/tin-tuc?category=${currentItem?.slug || ''}`
+
+              return (
+                <Link
+                  href={href}
+                  className='flex items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem]'
+                >
+                  <span className='text-white body-14-m'>
+                    {t('xem_tat_ca')}
+                  </span>
+                  <ArrowRight className='ml-[0.5rem] h-[1.3125rem] w-auto text-white' />
+                </Link>
+              )
+            })()}
             <button className='latest-news__prev ml-auto size-[2.5rem] rounded-full bg-[rgba(245,193,120,0.20)] p-[0.5rem] xsm:hidden'>
               <ArrowRight className='h-auto w-full rotate-180 text-brown' />
             </button>
@@ -108,7 +139,9 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
           >
             {Array.isArray(itemsNews) &&
               itemsNews.length > 0 &&
-              data.news[latestNewsItemIndex].posts.map((item, index) => (
+              latestNewsItemIndex >= 0 &&
+              latestNewsItemIndex < itemsNews.length &&
+              data.news[latestNewsItemIndex]?.posts?.map((item, index) => (
                 <SwiperSlide
                   key={index}
                   className='!w-[14.375rem] sm:!w-[21.375rem]'

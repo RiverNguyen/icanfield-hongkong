@@ -7,25 +7,23 @@ import metadataValues from '@/utils/metadataValues'
 
 import {redirect} from 'next/navigation'
 
-export async function generateStaticParams() {
-  // Gọi API để lấy tất cả các slug của các tour
-  const tours = await fetchData({
-    api: '/slugs?post_type=settlement-program',
-  })
+// export async function generateStaticParams() {
+//   // Gọi API để lấy tất cả các slug của các tour
+//   const tours = await fetchData({
+//     api: '/slugs?post_type=settlement-program',
+//   })
 
-  // Trả về các tham số tĩnh
-  return tours?.map((tour: {slug: string; nation?: string[]}) => ({
-    slug: tour?.slug,
-  }))
-}
+//   // Trả về các tham số tĩnh
+//   return tours?.map((tour: {slug: string; nation?: string[]}) => ({
+//     slug: tour?.slug,
+//   }))
+// }
 export async function generateMetadata({
   params,
 }: {
   params: {slug: string; detailslug: string}
 }) {
   try {
-
-
     // Gọi API để lấy metadata
     const res = await getMetadata(
       `/nation?slug=${encodeURIComponent(params.slug)}`,
@@ -55,7 +53,7 @@ export default async function page({params}: {params: {slug: string}}) {
         params?.slug +
         '&acf_format=standard',
       option: {
-        next: { revalidate: 10}
+        next: {revalidate: 10},
       },
     }).catch((err) => {
       console.error('fetchDataACF error:', err)
@@ -69,7 +67,7 @@ export default async function page({params}: {params: {slug: string}}) {
         '=' +
         params?.slug,
       option: {
-        next: { revalidate: 10}
+        next: {revalidate: 10},
       },
     }).catch((err) => {
       console.error('fetchData dataPrograms error:', err)
@@ -78,7 +76,7 @@ export default async function page({params}: {params: {slug: string}}) {
     fetchData({
       api: '/posts-by-taxonomy?slug=' + params?.slug,
       option: {
-        next: { revalidate: 10}
+        next: {revalidate: 10},
       },
     }).catch((err) => {
       console.error('fetchData postRelate error:', err)
@@ -87,14 +85,19 @@ export default async function page({params}: {params: {slug: string}}) {
     fetchData({
       api: `/data-map-with-slug/?slug=${params.slug}`,
       option: {
-        next: { revalidate: 10}
+        next: {revalidate: 10},
       },
     }).catch((err) => {
       console.error('fetchData dataMap error:', err)
       return null
     }),
   ])
-  if (!dataAcf || !dataAcf.length) {
+  if (
+    !dataAcf ||
+    !Array.isArray(dataAcf) ||
+    dataAcf.length === 0 ||
+    !dataAcf[0]
+  ) {
     redirect('/')
   }
   return (

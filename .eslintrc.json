@@ -18,5 +18,15 @@
     "no-unexpected-multiline": "warn",
     "keyword-spacing": "warn",
     "comma-spacing": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "plugins": ["jsonc"],
+      "rules": {
+        "jsonc/no-dupe-keys": "error"
+      }
+    }
+  ]
 }

@@ -3,6 +3,7 @@ import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
 import {cn} from '@/lib/utils'
 import {Media} from '@/types/image.interface'
+import {useTranslations} from 'next-intl'
 import Link from 'next/link'
 import {FC, useEffect, useRef, useState} from 'react'
 import './style.css'
@@ -45,15 +46,16 @@ export const InvestmentOpportunities: FC<IInvestmentOpportunities> = ({
         </h2>
       </div>
       <div className='investment-opportunities__content relative w-full translate-y-[47.32rem] opacity-0'>
-        {items.map((item, index) => (
-          <ItemInvestmentOpportunities
-            {...item}
-            key={index}
-            itemKey={index}
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-          />
-        ))}
+        {Array.isArray(items) &&
+          items.map((item, index) => (
+            <ItemInvestmentOpportunities
+              {...item}
+              key={index}
+              itemKey={index}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
+          ))}
       </div>
     </section>
   )
@@ -68,8 +70,7 @@ export interface IItemInvestmentOpportunities {
   background_mb: Media
 }
 
-interface IItemInvestmentOpportunitiesProps
-  extends IItemInvestmentOpportunities {
+interface IItemInvestmentOpportunitiesProps extends IItemInvestmentOpportunities {
   itemKey: number
   activeIndex: number
   // eslint-disable-next-line no-unused-vars
@@ -89,6 +90,7 @@ function ItemInvestmentOpportunities({
 }: IItemInvestmentOpportunitiesProps) {
   const spanRef = useRef<HTMLSpanElement>(null)
   const pRef = useRef<HTMLParagraphElement>(null)
+  const t = useTranslations()
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (window.innerWidth > 640) return
@@ -105,7 +107,7 @@ function ItemInvestmentOpportunities({
   return (
     <div
       className={cn(
-        'shadow-[0px_-64px_60px_0px_rgba(3,33,7,0.02)] sticky top-0 min-h-[24.68rem] overflow-hidden rounded-[1.5rem_1.5rem_0rem_0rem;] bg-[linear-gradient(180deg,#F8F6F3_12%,#E8E0D3_85.5%)] py-[2rem] sm:rounded-none sm:bg-[linear-gradient(180deg,#E8E0D3_31.97%,#F7F6F1_83.45%)] sm:shadow-[0px_-64px_80px_0px_rgba(3,33,7,0.04)]',
+        'sticky top-0 min-h-[24.68rem] overflow-hidden rounded-[1.5rem_1.5rem_0rem_0rem;] bg-[linear-gradient(180deg,#F8F6F3_12%,#E8E0D3_85.5%)] py-[2rem] shadow-[0px_-64px_60px_0px_rgba(3,33,7,0.02)] sm:rounded-none sm:bg-[linear-gradient(180deg,#E8E0D3_31.97%,#F7F6F1_83.45%)] sm:shadow-[0px_-64px_80px_0px_rgba(3,33,7,0.04)]',
         {
           'rounded-none sm:top-[15rem] sm:min-h-[34.1875rem]': itemKey == 0,
           'sm:top-[20rem] sm:min-h-[28.975rem]': itemKey == 1,
@@ -172,7 +174,7 @@ function ItemInvestmentOpportunities({
             href={link}
           >
             <span className='text-bodytext body-14-m sm:text-white'>
-              Tìm hiểu thêm
+              {t('tim_hieu_them')}
             </span>
             <ArrowRight className='ml-[0.5rem] size-[1.5rem] text-bodytext sm:text-white xsm:translate-y-[-2px]' />
           </Link>

@@ -11,6 +11,7 @@ import {
   linkInterface,
 } from '@/types/dataFooter.interface'
 import endpoints from '@/utils/endpoints'
+import {useTranslations} from 'next-intl'
 import Link from 'next/link'
 import {useEffect, useRef, useState} from 'react'
 
@@ -26,7 +27,7 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
   const [email, setEmail] = useState<string>('')
   const [validemail, setValidEmail] = useState<boolean>(false)
   const [popup, setPopup] = useState<boolean>(false)
-
+  const t = useTranslations()
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
@@ -158,12 +159,12 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
                 {dataFooter?.describe}
               </p>
               <span className='font-semibold text-white sub-14'>
-                Đăng ký để nhận tư vấn
+                {t('dang_ky_de_nhan_tu_van')}
               </span>
               <div className='mt-[1rem] flex rounded-[0.5rem] bg-white p-[0.75rem_0.5rem_0.75rem_1rem]'>
                 <input
                   type='email'
-                  placeholder='Email của bạn'
+                  placeholder={t('email_cua_ban')}
                   className='flex-1 tracking-[-0.02rem] body16 placeholder:text-greyscaletext-200 focus:outline-none focus-visible:outline-none'
                   value={email}
                   onChange={handleChange}
@@ -180,7 +181,7 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
               </div>
               {validemail && (
                 <p className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16'>
-                  Email không hợp lệ
+                  {t('email_khong_hop_le')}
                 </p>
               )}
             </div>

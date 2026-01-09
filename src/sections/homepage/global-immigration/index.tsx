@@ -1,7 +1,7 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import CountNumber from '@/sections/homepage/global-immigration/CountNumber'
-import { useEffect, useRef, useState } from 'react'
+import {useEffect, useRef, useState} from 'react'
 import './styles.css'
 
 export interface IGlobalImmigrationProps {
@@ -103,28 +103,30 @@ const GlobalImmigration = ({data}: IGlobalImmigrationProps) => {
           {data.description}
         </p>
         <div className='mt-[3rem] grid grid-cols-2 gap-[2.5rem] xsm:mt-[1.5rem] xsm:gap-[1.5rem]'>
-          {data.count_number.map((item, index) => {
-            return (
-              <div key={index}>
-                <div className='flex items-end space-x-[0.69rem] xsm:space-x-[0.39rem]'>
-                  <CountNumber
-                    number={parseInt(item.number)}
-                    interFace={!isActive}
-                    suffix='+'
-                    delay={500}
-                  />
-                  <div
-                    className='font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown sub-12 xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'
-                    dangerouslySetInnerHTML={{__html: item.label || ''}}
-                  ></div>
+          {Array.isArray(data.count_number) &&
+            data.count_number.map((item, index) => {
+              return (
+                <div key={index}>
+                  <div className='flex items-end space-x-[0.69rem] xsm:space-x-[0.39rem]'>
+                    <CountNumber
+                      number={parseInt(item.number)}
+                      interFace={!isActive}
+                      suffix='+'
+                      delay={500}
+                    />
+                    <div
+                      className='font-semibold uppercase leading-[1.4] tracking-[-0.0075rem] text-brown sub-12 xsm:whitespace-nowrap xsm:text-[0.5625rem] xsm:tracking-[0.00563rem]'
+                      dangerouslySetInnerHTML={{__html: item.label || ''}}
+                    ></div>
+                  </div>
+                  <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
+                  <p
+                    dangerouslySetInnerHTML={{__html: item.title || ''}}
+                    className='text-greyscaletext-400 body16-m xsm:font-medium xsm:tracking-[-0.015rem] xsm:sub-12'
+                  ></p>
                 </div>
-                <div className='my-[0.5rem] h-[0.0625rem] w-full bg-black opacity-[0.1] xsm:h-[0.03456rem]'></div>
-                <p className='text-greyscaletext-400 body16-m xsm:font-medium xsm:tracking-[-0.015rem] xsm:sub-12'>
-                  {item.title}
-                </p>
-              </div>
-            )
-          })}
+              )
+            })}
         </div>
       </div>
       <div className='mt-[0.875rem] sm:hidden'>

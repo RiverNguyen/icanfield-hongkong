@@ -3,6 +3,7 @@ import CF7Request from '@/fetch/cf7Request'
 import {IPropsPopup} from '@/layout/header'
 import React, {useState, useEffect} from 'react'
 import {usePathname} from 'next/navigation'
+import {useTranslations} from 'next-intl'
 
 interface FormData {
   fullName: string
@@ -14,6 +15,8 @@ interface FormData {
 
 const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
   const pathname = usePathname()
+  const t = useTranslations()
+
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     if (!dataPopup || !dataPopup.setting) return
@@ -95,28 +98,29 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
 
     // Validate fullName
     if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Vui lòng nhập họ tên'
+      newErrors.fullName = t('vui_long_nhap_ho_ten')
     } else if (formData.fullName.trim().length < 2) {
-      newErrors.fullName = 'Họ tên phải có ít nhất 2 ký tự'
+      newErrors.fullName = t('ho_ten_phai_co_it_nhat_2_ky_tu')
     }
 
     // Validate phone
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Vui lòng nhập số điện thoại'
-    } else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone.trim())) {
-      newErrors.phone = 'Số điện thoại không hợp lệ'
+      newErrors.phone = t('vui_long_nhap_so_dien_thoai')
     }
+    // else if (!/^[0-9+\-\s()]{10,}$/.test(formData.phone.trim())) {
+    //   newErrors.phone = 'Số điện thoại không hợp lệ'
+    // }
 
     // Validate email
     if (!formData.email.trim()) {
-      newErrors.email = 'Vui lòng nhập email'
+      newErrors.email = t('vui_long_nhap_email')
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = 'Email không hợp lệ'
+      newErrors.email = t('email_khong_hop_le')
     }
 
     // Validate programs
     if (!formData.programs.trim()) {
-      newErrors.programs = 'Vui lòng chọn chương trình quan tâm'
+      newErrors.programs = t('vui_long_nhap_chuong_trinh_quan_tam')
     }
 
     setErrors(newErrors)
@@ -195,13 +199,13 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                 >
                   <p className='mb-1 text-xl font-semibold'>
                     {showStatusPopup === 'success'
-                      ? 'Đăng ký thành công'
-                      : 'Đăng ký thất bại'}
+                      ? t('dang_ky_thanh_cong')
+                      : t('dang_ky_that_bai')}
                   </p>
                   <p className='text-sm opacity-90'>
                     {showStatusPopup === 'success'
-                      ? 'Cảm ơn bạn đã đăng ký. Chúng tôi sẽ liên hệ trong thời gian sớm nhất.'
-                      : 'Đã có lỗi xảy ra. Vui lòng thử lại sau.'}
+                      ? t('cam_on_ban_da_dang_ky')
+                      : t('da_co_loi_xay_ra')}
                   </p>
                 </div>
               </div>
@@ -224,7 +228,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
             <div className='w-full px-6 py-8 sm:w-1/2 sm:px-8 sm:py-10'>
               <div className='mb-6 flex items-center justify-between'>
                 <h2 className='text-2xl font-bold text-brown'>
-                  Đăng Ký Tư Vấn
+                  {t('dang_ky_tu_van')}
                 </h2>
                 <button
                   onClick={handleClose}
@@ -234,8 +238,9 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                 </button>
               </div>
               <p className='mb-6 text-sm text-brown'>
-                Điền thông tin để được tư vấn chi tiết về các chương trình định
-                cư.
+                {t(
+                  'dien_thong_tin_de_duoc_tu_van_chi_tiet_ve_cac_chuong_trinh_dinh_cu',
+                )}
               </p>
 
               <form
@@ -247,7 +252,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                   name='fullName'
                   value={formData.fullName}
                   onChange={handleChange}
-                  placeholder='Họ tên'
+                  placeholder={t('ho_ten')}
                   className={`w-full rounded-xl border px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 ${
                     errors.fullName
                       ? 'border-red-500 focus:border-red-500'
@@ -264,7 +269,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                   name='phone'
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder='Số điện thoại'
+                  placeholder={t('so_dien_thoai')}
                   className={`w-full rounded-xl border px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 ${
                     errors.phone
                       ? 'border-red-500 focus:border-red-500'
@@ -281,7 +286,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                   name='email'
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder='Email'
+                  placeholder={t('email')}
                   className={`w-full rounded-xl border px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 ${
                     errors.email
                       ? 'border-red-500 focus:border-red-500'
@@ -295,7 +300,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
 
                 <div className='space-y-3'>
                   <p className='text-sm font-medium text-brown'>
-                    Chương trình quan tâm:
+                    {t('chuong_trinh_quan_tam')}
                   </p>
                   <div className='relative'>
                     <div
@@ -311,7 +316,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                           formData.programs ? 'text-brown' : 'text-gray-400'
                         }
                       >
-                        {formData.programs || 'Chọn chương trình quan tâm'}
+                        {formData.programs || t('chon_chuong_trinh_quan_tam')}
                       </span>
                       <svg
                         className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
@@ -361,7 +366,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                   name='message'
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder='Lời nhắn (không bắt buộc)'
+                  placeholder={t('loi_nhan_khong_bat_buoc')}
                   className='w-full resize-none rounded-xl border border-gray-300 px-4 py-2 text-sm text-brown placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200'
                   rows={3}
                 />
@@ -369,7 +374,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                 <button
                   type='submit'
                   disabled={isLoading}
-                  className='w-full rounded-lg bg-[linear-gradient(90deg,#95502F_-4.54%,#F5C178_95.42%)] py-2 text-base font-semibold text-white transition hover:bg-[linear-gradient(90deg,#95502F_-4.54%,#F5C178_95.42%)] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50'
+                  className='w-full overflow-hidden rounded-xl bg-[linear-gradient(90deg,#95502F_-4.54%,#F5C178_95.42%)] py-2 text-base font-semibold text-white transition hover:bg-[linear-gradient(90deg,#95502F_-4.54%,#F5C178_95.42%)] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50'
                 >
                   {isLoading ? (
                     <span className='flex items-center justify-center'>
@@ -391,10 +396,10 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                           d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
                         />
                       </svg>
-                      Đang gửi...
+                      {t('dang_gui')}
                     </span>
                   ) : (
-                    'Gửi Đăng Ký'
+                    t('gui_dang_ky')
                   )}
                 </button>
               </form>
@@ -403,7 +408,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
                 onClick={handleClose}
                 className='mt-4 w-full text-center text-sm text-brown underline hover:text-primary-brown'
               >
-                Đóng popup
+                {t('dong_popup')}
               </button>
             </div>
           </div>

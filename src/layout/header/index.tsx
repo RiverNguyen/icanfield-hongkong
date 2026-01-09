@@ -36,6 +36,7 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import {languageOptions} from './constants'
 import './styles.css'
 import PopupForm from '@/components/popupAllPage'
+import LanguageSwitcher from '@/components/language-switcher'
 export interface IPropsPopup {
   setting: SettingItem[]
   image_form_all: ImageHeader
@@ -189,13 +190,18 @@ const Header = ({
       const savedLanguage = localStorage.getItem('language') || 'vi'
       setCurrentLanguage(savedLanguage)
 
+      const languages = Array.isArray(data?.language?.languages)
+        ? data.language.languages
+        : []
       const isCurrentLang =
-        data?.language?.languages.find(
+        languages.find(
           (item: Language) =>
             item.label.toLowerCase() === savedLanguage.toLowerCase(),
-        ) || data?.language?.languages[0]
+        ) || (languages.length > 0 ? languages[0] : null)
 
-      setIsCurrentLanguage(isCurrentLang)
+      if (isCurrentLang) {
+        setIsCurrentLanguage(isCurrentLang)
+      }
 
       // Tải script Google Translate sau khi các tác vụ chính hoàn thành
       if (!document.getElementById('google-translate-script')) {
@@ -322,21 +328,22 @@ const Header = ({
                 modules={[Autoplay]}
                 className='swiper-outstanding-post !h-full'
               >
-                {data?.news_business?.outstanding_news.map(
-                  (item: OutstandingPost, index) => (
-                    <SwiperSlide
-                      key={index}
-                      className='!flex !h-full !w-fit !items-center'
-                    >
-                      <Link
-                        href={`/tin-tuc/${item?.post_name}` || '/'}
-                        className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
+                {Array.isArray(data?.news_business?.outstanding_news) &&
+                  data.news_business.outstanding_news.map(
+                    (item: OutstandingPost, index) => (
+                      <SwiperSlide
+                        key={index}
+                        className='!flex !h-full !w-fit !items-center'
                       >
-                        {item?.post_title}
-                      </Link>
-                    </SwiperSlide>
-                  ),
-                )}
+                        <Link
+                          href={`/tin-tuc/${item?.post_name}` || '/'}
+                          className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
+                        >
+                          {item?.post_title}
+                        </Link>
+                      </SwiperSlide>
+                    ),
+                  )}
               </Swiper>
             </div>
           </div>
@@ -414,33 +421,35 @@ const Header = ({
                 ref={refDropdownLanguage}
                 className={`absolute left-0 top-[120%] z-[2] !ml-0 flex h-fit w-full flex-col space-y-1 rounded-[0.25rem] border-[1px] border-[rgba(0,0,0,0.10)] bg-white p-2 shadow-[1px_2px_24px_0px_rgba(0,0,0,0.16)] ${isActivedLanguage ? 'block' : 'hidden'}`}
               >
-                {data?.language?.languages.map(
-                  (item: Language, index: number) => (
-                    <div
-                      key={index}
-                      className='grid grid-cols-2 items-center space-x-[0.5rem] hover:scale-105'
-                      onClick={() => {
-                        handleChangeLanguage(item)
-                        handleLanguageChange(item.label.toLowerCase())
-                      }}
-                    >
-                      <span
-                        className={`notranslate text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
+                {Array.isArray(data?.language?.languages) &&
+                  data.language.languages.map(
+                    (item: Language, index: number) => (
+                      <div
+                        key={index}
+                        className='grid grid-cols-2 items-center space-x-[0.5rem] hover:scale-105'
+                        onClick={() => {
+                          handleChangeLanguage(item)
+                          handleLanguageChange(item.label.toLowerCase())
+                        }}
                       >
-                        {item.label}
-                      </span>
-                      <ImageV2
-                        src={item?.image_flag?.url || ''}
-                        alt='logo'
-                        width={40}
-                        height={40}
-                        className='size-[1rem] rounded-[50%] object-contain'
-                      />
-                    </div>
-                  ),
-                )}
+                        <span
+                          className={`notranslate text-[0.75rem] leading-[1.5] text-brown ${isCurrentLanguage.label === item.label ? 'font-semibold' : 'font-medium'} `}
+                        >
+                          {item.label}
+                        </span>
+                        <ImageV2
+                          src={item?.image_flag?.url || ''}
+                          alt='logo'
+                          width={40}
+                          height={40}
+                          className='size-[1rem] rounded-[50%] object-contain'
+                        />
+                      </div>
+                    ),
+                  )}
               </div>
             </div>
+            <LanguageSwitcher />
           </div>
         </div>
       </div>
@@ -576,33 +585,35 @@ const Header = ({
                         {data?.other_programs?.label}
                       </p>
                       <div className='flex flex-col pl-5'>
-                        {data?.other_programs?.program_list.map(
-                          (child: ChildProgram, index) => (
-                            <div
-                              key={index}
-                              className='flex flex-col'
-                              onMouseEnter={() =>
-                                handleChangeUrlImage(child?.image?.url || '')
-                              }
-                            >
-                              <Link
-                                href={child.link}
-                                className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
-                                onClick={handleDisableHover}
+                        {Array.isArray(data?.other_programs?.program_list) &&
+                          data.other_programs.program_list.map(
+                            (child: ChildProgram, index) => (
+                              <div
+                                key={index}
+                                className='flex flex-col'
+                                onMouseEnter={() =>
+                                  handleChangeUrlImage(child?.image?.url || '')
+                                }
                               >
-                                <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
-                                  {child.label}
-                                </p>
-                                {data?.other_programs?.program_list &&
-                                  index <
-                                    data?.other_programs?.program_list.length -
-                                      1 && (
-                                    <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
-                                  )}
-                              </Link>
-                            </div>
-                          ),
-                        )}
+                                <Link
+                                  href={child.link}
+                                  className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                  onClick={handleDisableHover}
+                                >
+                                  <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                    {child.label}
+                                  </p>
+                                  {data?.other_programs?.program_list &&
+                                    index <
+                                      data?.other_programs?.program_list
+                                        .length -
+                                        1 && (
+                                      <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
+                                    )}
+                                </Link>
+                              </div>
+                            ),
+                          )}
                       </div>
                     </div>
                     <Image
@@ -664,41 +675,48 @@ const Header = ({
                         {data?.support_customer?.label}
                       </p>
                       <div className='flex flex-col pl-5'>
-                        {data?.support_customer?.list_support.map(
-                          (child: ChildProgram, index) => (
-                            <div
-                              key={index}
-                              className='flex flex-col'
-                              onMouseEnter={() =>
-                                handleChangeUrlImageSupportCustomer(
-                                  child.image?.url || '',
-                                )
-                              }
-                            >
-                              <Link
-                                href={child.link}
-                                className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
-                                onClick={handleDisableHover}
+                        {Array.isArray(data?.support_customer?.list_support) &&
+                          data.support_customer.list_support.map(
+                            (child: ChildProgram, index) => (
+                              <div
+                                key={index}
+                                className='flex flex-col'
+                                onMouseEnter={() =>
+                                  handleChangeUrlImageSupportCustomer(
+                                    child.image?.url || '',
+                                  )
+                                }
                               >
-                                <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
-                                  {child.label}
-                                </p>
-                                {index <
-                                  data?.support_customer?.list_support.length -
-                                    1 && (
-                                  <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
-                                )}
-                              </Link>
-                            </div>
-                          ),
-                        )}
+                                <Link
+                                  href={child.link}
+                                  className='relative rounded-[0.75rem] p-[1rem_0.5rem] hover:bg-[linear-gradient(90deg,#F2EDE7_0%,rgba(242,237,231,0.00)100%)]'
+                                  onClick={handleDisableHover}
+                                >
+                                  <p className='font-optima text-[1.25rem] font-medium uppercase tracking-[-0.035rem] text-greyscaletext-body'>
+                                    {child.label}
+                                  </p>
+                                  {index <
+                                    data?.support_customer?.list_support
+                                      .length -
+                                      1 && (
+                                    <UnderLineHeader className='absolute bottom-0 left-[0rem] h-[2px] w-[22.8rem] object-contain' />
+                                  )}
+                                </Link>
+                              </div>
+                            ),
+                          )}
                       </div>
                     </div>
                     <ImageV2
                       src={
                         urlImageSupportCustomer
                           ? urlImageSupportCustomer || ''
-                          : data?.support_customer?.list_support[0].image.url ||
+                          : (Array.isArray(
+                              data?.support_customer?.list_support,
+                            ) &&
+                              data.support_customer.list_support.length > 0 &&
+                              data.support_customer.list_support[0]?.image
+                                ?.url) ||
                             ''
                       }
                       alt='logo'
@@ -725,7 +743,7 @@ const Header = ({
         </Link>
         <div className='flex items-center space-x-[1.5rem]'>
           <div
-            className='flex items-center hidden '
+            className='flex hidden items-center'
             onClick={handleOpenLanguageMb}
           >
             <div className='relative mr-1 size-[1rem] rounded-[50%]'>
@@ -972,30 +990,31 @@ const Header = ({
           />
         </div>
         <>
-          {data?.language?.languages.map((item: Language, index: number) => (
-            <div
-              className='flex items-center space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] p-[1rem_0.75rem]'
-              key={index}
-              onClick={() => {
-                handleChangeLanguage(item)
-                handleOpenLanguageMb()
-                handleLanguageChange(item.label.toLowerCase())
-              }}
-            >
-              <ImageV2
-                src={item.image_flag?.url || ''}
-                alt='logo'
-                width={40}
-                height={40}
-                className='size-[1.5rem] rounded-[50%] object-contain'
-              />
-              <span
-                className={`${isCurrentLanguage.label === item.label ? 'font-bold' : 'font-normal'} text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body`}
+          {Array.isArray(data?.language?.languages) &&
+            data.language.languages.map((item: Language, index: number) => (
+              <div
+                className='flex items-center space-x-[0.5rem] border-b-[1px] border-[#EBEBEB] p-[1rem_0.75rem]'
+                key={index}
+                onClick={() => {
+                  handleChangeLanguage(item)
+                  handleOpenLanguageMb()
+                  handleLanguageChange(item.label.toLowerCase())
+                }}
               >
-                {item.label}
-              </span>
-            </div>
-          ))}
+                <ImageV2
+                  src={item.image_flag?.url || ''}
+                  alt='logo'
+                  width={40}
+                  height={40}
+                  className='size-[1.5rem] rounded-[50%] object-contain'
+                />
+                <span
+                  className={`${isCurrentLanguage.label === item.label ? 'font-bold' : 'font-normal'} text-[0.875rem] leading-[1.5] tracking-[-0.00875rem] text-greyscaletext-body`}
+                >
+                  {item.label}
+                </span>
+              </div>
+            ))}
         </>
       </div>
       <div

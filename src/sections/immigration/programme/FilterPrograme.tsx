@@ -3,6 +3,7 @@ import {Input} from '@/components/ui/input'
 import useClickOutside from '@/hooks/useClickOutSide'
 import {cn} from '@/lib/utils'
 import {SortOptionProgramme} from '@/types/dataAcfImmigration.interface'
+import {useTranslations} from 'next-intl'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {Fragment, RefObject, useEffect, useState} from 'react'
 import {useDebounceCallback} from 'usehooks-ts'
@@ -41,6 +42,7 @@ export default function FilterProgramme({
   const {ref, isOutside} = useClickOutside<HTMLDivElement>()
   const [isOpenSelectCategory, setIsOpenSelectCategory] =
     useState<boolean>(false)
+  const t = useTranslations()
   useEffect(() => {
     if (isOutside) {
       setIsOpenSelectCategory(false)
@@ -113,7 +115,7 @@ export default function FilterProgramme({
         >
           <span className='flex items-center whitespace-nowrap text-[1rem] font-normal leading-[1.5] tracking-[-0.02rem] text-greyscaletext-body xsm:line-clamp-1 xsm:text-[0.75rem] xsm:text-[#3F2214]'>
             <b className='whitespace-nowrap font-medium sm:font-bold'>
-              Sắp xếp theo:{''}
+              {t('sap_xep_theo')}:{''}
             </b>
             {selectedSortOption?.name}
           </span>
