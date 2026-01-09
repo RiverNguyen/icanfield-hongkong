@@ -1,0 +1,65 @@
+import {cn} from '@/lib/utils'
+import Link from 'next/link'
+import {FC, Fragment} from 'react'
+
+interface IBreadcrumbProps {
+  items: {
+    label: string
+    href: string
+  }[]
+  className?: string
+  color?: string
+}
+
+export const Breadcrumb: FC<IBreadcrumbProps> = ({
+  items,
+  className,
+  color = 'bg-white/60',
+}) => {
+  return (
+    <nav
+      className={cn(
+        'relative z-10 mx-auto max-w-[90rem] py-[1.5rem] xsm:px-4',
+        className,
+      )}
+    >
+      <ul className='flex items-center space-x-[0.5rem] text-white'>
+        {items.map((item, idx) => {
+          if (idx === items.length - 1) {
+            return (
+              <li
+                key={idx}
+                className='flex items-center'
+              >
+                <span className='last--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] xsm:text-[0.75rem] xsm:leading-[150%]'>
+                  {item.label}
+                </span>
+              </li>
+            )
+          } else {
+            return (
+              <Fragment key={idx}>
+                <li className='flex items-center'>
+                  <Link
+                    className={cn(
+                      'item--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] xsm:text-[0.75rem] xsm:leading-[150%]',
+                      {'text-white/80': idx !== items.length - 1},
+                    )}
+                    href={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+                <li className='flex items-center'>
+                  <span
+                    className={`block size-[0.3125rem] rounded-full ${color}`}
+                  ></span>
+                </li>
+              </Fragment>
+            )
+          }
+        })}
+      </ul>
+    </nav>
+  )
+}

@@ -1,0 +1,55 @@
+.trip__swiper .swiper-slide {
+  transition: all 1s;
+  user-select: all;
+}
+.trip__swiper .swiper-slide-active {
+  transition: all 1s;
+  width: 44.25rem !important;
+}
+
+.trip__swiper .swiper-slide .box__image {
+  max-width: 21rem;
+  margin-left: auto;
+  height: 24.125rem;
+}
+.trip__swiper .swiper-slide-prev .box__image {
+  width: 19.125rem;
+  height: 22.125rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0.5rem;
+  transition: all 1s linear;
+}
+
+.trip__swiper .swiper-slide-active .box__image {
+  width: 19.125rem;
+  height: 22.125rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0.5rem;
+  transition: all 1s linear;
+}
+.trip__swiper .swiper-slide-active .box__image img {
+  border-radius: 0.5rem;
+}
+.trip__swiper .swiper-slide-prev .box__user {
+  position: absolute;
+  left: 7rem;
+  bottom: 2rem;
+  right: auto;
+  transition: all 3s linear;
+}
+.trip__swiper .swiper-slide-active .box__user {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  right: auto;
+  transition: all 1s linear;
+}
+.trip__swiper .swiper-slide-active .box__user h3,
+.trip__swiper .swiper-slide-active .box__user span {
+  color: black;
+  transition: all 1s linear;
+}

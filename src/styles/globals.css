@@ -1,0 +1,6 @@
+/* Ẩn logo reCAPTCHA */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  display: none !important;
+} 

@@ -1,0 +1,152 @@
+'use client'
+import ImageV2 from '@/components/image/ImageV2'
+import {Navigation} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import useIsMobile from '@/hooks/useIsMobile'
+import 'swiper/css'
+import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
+import {Media} from '@/types/image.interface'
+
+const InfoItem = ({
+  thumbnail,
+  title,
+  subtitle,
+}: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding'][0]) => {
+  return (
+    <div className='relative flex h-[18.75rem] w-full items-end overflow-hidden rounded-2xl border border-white/25 p-2 xsm:h-[11.25rem] xsm:rounded-xl xsm:p-0'>
+      <ImageV2
+        alt={title}
+        src={thumbnail.url}
+        width={300}
+        height={300}
+        className='absolute inset-0 h-full w-full object-cover'
+      />
+      <div className='z-10 flex w-full flex-row items-center space-x-4 space-y-0 rounded-[0.5rem] border border-black/10 bg-white/65 p-4 shadow-[0px_-1px_20px_0px_rgba(0,0,0,0.04)] sm:backdrop-blur-[20px] xsm:flex-col xsm:items-start xsm:space-x-0 xsm:space-y-2 xsm:p-2'>
+        <div className='flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-[0.5rem] border border-white/25 bg-[linear-gradient(95deg,#95502F_-4.54%,#F5C178_95.42%)] bg-origin-border xsm:h-5 xsm:w-5 xsm:border-none xsm:bg-none'>
+          <ImageV2
+            alt={title}
+            src='/imgs/detail-eb5/check.svg'
+            width={24}
+            height={24}
+            className='h-6 w-6 xsm:h-4 xsm:w-4'
+          />
+        </div>
+        <div className='flex-col space-y-1'>
+          <p className='font-medium tracking-[-0.00875rem] text-greyscaletext-400 sub-14 xsm:font-normal xsm:sub-12'>
+            {title}
+          </p>
+          <p className='heading3-s font-semibold text-Phase-1-Brown xsm:line-clamp-1 xsm:text-[0.87rem] xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'>
+            {subtitle}
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+type ProjectSliderProps = {
+  images: IDataAcfDetailEB5['acf']['eb5_projects_detail_overview']['album']
+}
+
+const ProjectSlider = ({images}: ProjectSliderProps) => {
+  const isMobile = useIsMobile()
+
+  return (
+    <div className='relative h-[34.58331rem] w-full xsm:h-[12.5rem]'>
+      <Swiper
+        slidesOffsetBefore={isMobile ? 16 : 80}
+        modules={[Navigation]}
+        spaceBetween={isMobile ? 16 : 24}
+        slidesPerView='auto'
+        navigation={{
+          prevEl: '.image-pre',
+          nextEl: '.image-next',
+        }}
+        className='!pr-[1.5rem]'
+      >
+        {Array.isArray(images) &&
+          images.map((image: Media, index: number) => (
+            <SwiperSlide
+              key={index}
+              className='!h-[34.58331rem] !w-[51.875rem] xsm:!h-[12.5rem] xsm:!w-[18.75rem]'
+            >
+              <ImageV2
+                src={image.url}
+                alt={image.alt}
+                width={500}
+                height={500}
+                className='h-full w-full rounded-2xl object-cover xsm:rounded-[0.5rem]'
+              />
+            </SwiperSlide>
+          ))}
+      </Swiper>
+      <button className='image-pre absolute left-5 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#FEEFD9] xsm:hidden'>
+        <ImageV2
+          src='/icons/detail-eb5/arrow-left.svg'
+          alt='arrow'
+          width={24}
+          height={24}
+        />
+      </button>
+      <button className='image-next absolute right-5 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#FEEFD9] xsm:hidden'>
+        <ImageV2
+          src='/icons/detail-eb5/arrow-left.svg'
+          alt='arrow'
+          width={24}
+          height={24}
+          className='rotate-180 transform'
+        />
+      </button>
+    </div>
+  )
+}
+
+const ProjectOverview = ({
+  outstanding,
+  overview,
+}: {
+  outstanding: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding']
+  overview: IDataAcfDetailEB5['acf']['eb5_projects_detail_overview']
+}) => {
+  return (
+    <section>
+      <div className='relative z-[21] -mt-[20.25rem] flex flex-col space-y-16 overflow-hidden rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 section-container xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
+        <div className='grid w-full grid-cols-3 gap-6 xsm:grid-cols-2 xsm:gap-2 xsm:rounded-[1.25rem] xsm:bg-white/75 xsm:p-2 xsm:backdrop-blur-[25px]'>
+          {Array.isArray(outstanding) &&
+            outstanding?.map(
+              (
+                item: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding'][0],
+                index: number,
+              ) => (
+                <InfoItem
+                  key={index}
+                  {...item}
+                />
+              ),
+            )}
+        </div>
+        <div className='z-10 flex w-[47.6875rem] flex-col space-y-6 xsm:w-full xsm:space-y-4'>
+          <h1 className='font-optima font-semibold text-Phase-1-Brown heading1'>
+            {overview.title_section}
+          </h1>
+          <div className='text-greyscaletext-body body16 xsm:body-14'>
+            {overview.description ? (
+              <span dangerouslySetInnerHTML={{__html: overview.description || ''}} />
+            ) : (
+              <p>No description available</p>
+            )}
+          </div>
+        </div>
+        <ImageV2
+          src='/imgs/detail-eb5/bg_3.webp'
+          alt='bg'
+          width={1600}
+          height={800}
+          className='absolute -bottom-10 right-[-10rem] w-[70rem] object-cover opacity-80 xsm:hidden'
+        />
+      </div>
+      <ProjectSlider images={overview.album} />
+    </section>
+  )
+}
+export default ProjectOverview

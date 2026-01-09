@@ -1,0 +1,98 @@
+.swiper-content .swiper-pagination-bullet,
+.featured-news__slide-nav--mobile .swiper-pagination-bullet {
+  --swiper-pagination-bullet-size: 1rem;
+  --swiper-pagination-color: transparent;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-inactive-color: transparent;
+  position: relative;
+}
+
+.swiper-content .swiper-pagination-bullet::after,
+.featured-news__slide-nav--mobile .swiper-pagination-bullet::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1px solid #ffffff4b;
+  border-radius: 50%;
+  opacity: var(--swiper-pagination-bullet-inactive-opacity);
+  transform: 0.3s linear;
+}
+
+.featured-news__slide-nav--mobile .swiper-pagination-bullet::after {
+  border: 1px solid #5c321e;
+}
+
+.swiper-content .swiper-pagination-bullet-active::after,
+.featured-news__slide-nav--mobile .swiper-pagination-bullet-active::after {
+  width: 1rem;
+  height: 1rem;
+}
+
+.swiper-content .swiper-pagination-bullet-active::before,
+.featured-news__slide-nav--mobile .swiper-pagination-bullet-active::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transform: 0.3s linear;
+}
+
+.featured-news__slide-nav--mobile .swiper-pagination-bullet-active::before {
+  background-color: #5c321e;
+}
+
+.swiper-content .swiper-pagination,
+.featured-news__slide-nav--mobile .swiper-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: unset;
+  right: 0.35rem;
+}
+
+.featured-news__slide-nav--mobile {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-content .swiper-slide {
+  opacity: 0;
+}
+
+.swiper-content .swiper-slide-prev,
+.swiper-content .swiper-slide-next {
+  opacity: 0.34;
+}
+
+.swiper-content .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+.swiper-content .swiper-slide {
+  transition: opacity 0.6s cubic-bezier(0.82, 0, 0.19, 1.02);
+}
+
+.swiper-content .swiper-content__prev,
+.swiper-content .swiper-content__next {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.swiper-content .swiper-wrapper,
+.image-swiper .swiper-wrapper {
+  --swiper-wrapper-transition-timing-function: cubic-bezier(
+    0.82,
+    0,
+    0.19,
+    1.02
+  );
+}

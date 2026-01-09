@@ -1,0 +1,7 @@
+.swiper-archieverment-pagination .swiper-pagination-bullet {
+  --swiper-pagination-bullet-inactive-color: rgba(217, 217, 217, 0.3);
+}
+
+.swiper-archieverment-pagination .swiper-pagination-bullet-active {
+  --swiper-pagination-color: #bc9247;
+}

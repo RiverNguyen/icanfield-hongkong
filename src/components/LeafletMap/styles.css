@@ -1,0 +1,6 @@
+.leaflet-control-zoom {
+  opacity: 0;
+}
+.leaflet-touch .leaflet-control-attribution {
+  display: none;
+}

@@ -1,0 +1,7 @@
+.service ul {
+  @apply space-y-3 xsm:space-y-2;
+}
+
+.service li {
+  @apply relative flex items-center before:mr-2.5 before:size-6 before:flex-shrink-0 before:bg-[url("/icons/detail-hr/check.svg")] before:bg-cover before:bg-no-repeat xsm:before:mr-2 xsm:before:size-5;
+}

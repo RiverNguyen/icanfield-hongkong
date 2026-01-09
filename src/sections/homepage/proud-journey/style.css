@@ -1,0 +1,78 @@
+.swiper-wrapper {
+  --swiper-wrapper-transition-timing-function: cubic-bezier(0.5, 0, 0.14, 1);
+}
+
+.trip__swiper .swiper-slide {
+  transition: all 0.8s cubic-bezier(0.5, 0, 0.14, 1);
+  transform: translateX(-100%);
+  user-select: all;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.trip__swiper .swiper-slide-active,
+.trip__swiper .swiper-slide-next,
+.trip__swiper .swiper-slide-prev,
+.trip__swiper .swiper-slide-next + .swiper-slide,
+.trip__swiper .swiper-slide-next + .swiper-slide + .swiper-slide {
+  transform: translateX(0);
+}
+
+.trip__swiper .swiper-slide-active,
+.trip__swiper .swiper-slide-next,
+.trip__swiper .swiper-slide-prev,
+.trip__swiper .swiper-slide-next + .swiper-slide {
+  opacity: 1;
+  visibility: visible;
+}
+
+.trip__swiper .swiper-slide-next + .swiper-slide {
+  opacity: 0.5;
+}
+
+.trip__swiper .swiper-slide .box__image {
+  height: 22.125rem;
+  max-width: 21.375rem;
+  border-radius: 0.5rem;
+  top: 50%;
+  left: -1rem;
+  transform: translate(0, -50%);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0.14, 1);
+}
+
+.trip__swiper .swiper-slide-active .box__image,
+.trip__swiper .swiper-slide-next .box__image,
+.trip__swiper .swiper-slide-next + .swiper-slide .box__image {
+  height: 24.125rem;
+  border-radius: 1rem;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0.14, 1);
+}
+
+.trip__swiper .swiper-slide .box__user {
+  transform: translateX(calc(-100% - 5.5rem));
+}
+.trip__swiper .swiper-slide-active .box__user,
+.trip__swiper .swiper-slide-next .box__user,
+.trip__swiper .swiper-slide-next + .swiper-slide .box__user,
+.trip__swiper .swiper-slide-next + .swiper-slide + .swiper-slide .box__user {
+  transform: translateX(0);
+}
+
+.trip__swiper .swiper-slide .box__user h3,
+.trip__swiper .swiper-slide .box__user span,
+.trip__swiper .swiper-slide .box__user-border {
+  transition: all 0.8s cubic-bezier(0.5, 0, 0.14, 1);
+}
+
+.trip__swiper .swiper-slide-prev .box__user h3 {
+  color: var(--GREYSCALE-grey-900, #272727);
+}
+.trip__swiper .swiper-slide-prev .box__user-border {
+  border-color: var(--Phase-1-text, #95502f);
+}
+.trip__swiper .swiper-slide-prev .box__user span {
+  color: #b3b3b3;
+}

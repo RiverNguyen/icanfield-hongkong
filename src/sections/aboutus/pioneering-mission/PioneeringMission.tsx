@@ -1,0 +1,66 @@
+import ImageV2 from '@/components/image/ImageV2'
+import ItemPioneering from '@/sections/aboutus/pioneering-mission/ItemPioneering'
+import { dataAcfPioneeringMission } from '@/types/dataAcfAboutus.interface'
+
+export default function PioneeringMission({
+  dataAcfPioneeringMission,
+}: {
+  dataAcfPioneeringMission: dataAcfPioneeringMission
+}) {
+  return (
+    <section className='new w-full bg-background pt-[5rem]'>
+      <div className='w-full sm:sticky sm:top-[100vh] xsm:relative'>
+        <ImageV2
+          className='xsm:hidden absolute left-0 h-[100vh] w-full sm:top-[-100vh] xsm:top-0'
+          width={1600}
+          height={788}
+          alt=''
+          src={'/imgs/about-us/pioneering-mission/bg-pioneering-mission2.webp'}
+        />
+        <ImageV2
+          className='sm:hidden absolute left-0 top-0 h-[25rem] w-full'
+          width={1600}
+          height={788}
+          alt=''
+          src={'/imgs/about-us/pioneering-mission/bg-pioneering-missionMB.png'}
+        />
+      </div>
+      <div className='flex xsm:flex-col-reverse relative z-10'>
+        <div className='space-y-[1.5rem] p-[6.5rem_4rem_2.5rem_5rem] xsm:p-[2.5rem_1rem]'>
+          {Array.isArray(dataAcfPioneeringMission?.list_item_mission) &&
+            dataAcfPioneeringMission?.list_item_mission?.map((e, index) => (
+              <ItemPioneering
+                key={index}
+                index={index}
+                data={e}
+              />
+            ))}
+        </div>
+        <div className='sticky top-[3rem] h-[43.75rem] flex-1 space-y-[2rem] p-[6.5rem_5rem_6.5rem_3.5rem] xsm:top-[3.75rem] xsm:hidden xsm:p-[4rem_1rem_1.5rem_1rem]'>
+          <h2
+            dangerouslySetInnerHTML={{__html: dataAcfPioneeringMission?.title || ''}}
+            className='font-optima font-semibold text-brown heading1'
+          ></h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: dataAcfPioneeringMission?.decscripts || '',
+            }}
+            className='space-y-[0.75rem] [&_p]:tracking-[-0.02rem] [&_p]:text-greyscaletext-400 [&_p]:body16'
+          ></div>
+        </div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: dataAcfPioneeringMission?.decscripts || '',
+          }}
+          className='space-y-[1rem] px-[1rem] sm:hidden [&_p]:tracking-[-0.00875rem] [&_p]:text-greyscaletext-body [&_p]:body-14'
+        ></div>
+        <div className='sticky top-0 z-10 flex-1 bg-background p-[6.5rem_7.5rem_6.5rem_3.5rem] sm:hidden xsm:top-[3.75rem] xsm:p-[1rem_1rem_1.5rem_1rem]'>
+          <h2
+            dangerouslySetInnerHTML={{__html: dataAcfPioneeringMission?.title || ''}}
+            className='font-optima text-brown heading1'
+          ></h2>
+        </div>
+      </div>
+    </section>
+  )
+}

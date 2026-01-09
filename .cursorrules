@@ -1,0 +1,17 @@
+# Cursor Rules for ICANFIELD Project
+
+## Performance & Code Quality
+
+### Spell Checker Issues
+- **Long regex patterns**: Extract regex patterns longer than 1000 characters into named constants at the top of the file to avoid spell checker performance issues
+- **Example**: Phone number validation regex should be extracted as `const PHONE_REGEX = /.../` instead of inline usage
+- **Reason**: Cursor spell checker skips files with very long text blocks without spaces for performance reasons
+
+### ESLint Configuration
+- **JSON files**: Use `jsonc-eslint-parser` and `eslint-plugin-jsonc` for JSON validation
+- **Duplicate keys**: Enable `jsonc/no-dupe-keys` rule to catch duplicate keys in JSON files
+- **IDE integration**: Add `.vscode/settings.json` with `"eslint.validate": ["json"]` for real-time JSON linting
+
+### Code Organization
+- **Regex patterns**: Extract complex regex patterns to constants for better maintainability and performance
+- **Validation logic**: Keep validation rules separate from component logic when possible

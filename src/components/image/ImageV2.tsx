@@ -1,0 +1,54 @@
+'use client'
+import {StaticImport} from 'next/dist/shared/lib/get-img-props'
+import NextImage, {ImageProps} from 'next/image'
+import {memo, useEffect, useState} from 'react'
+
+export interface IImageProps extends ImageProps {
+  fallbackImage?: string
+}
+
+const fallbackImg = '/imgs/fallback2.webp'
+
+const ImageV2 = ({
+  src,
+  fallbackImage = fallbackImg,
+  style = {},
+  draggable = false,
+  width = 400, // Default width
+  height = 300, // Default height
+  fill,
+  ...rest
+}: IImageProps) => {
+  const [imgSrc, setImgSrc] = useState<string | StaticImport>(src)
+  const [isError, setIsError] = useState(false)
+
+  useEffect(() => {
+    setImgSrc(src)
+  }, [src])
+
+  const handleError = () => {
+    if (!isError) {
+      setImgSrc(fallbackImage)
+      setIsError(true)
+    }
+  }
+
+  return (
+    <NextImage
+      src={imgSrc || fallbackImage}
+      {...rest}
+      placeholder='blur'
+      blurDataURL={fallbackImg}
+      onError={handleError}
+      loading='lazy'
+      style={{
+        ...style,
+        objectFit: isError || !imgSrc ? 'cover' : style.objectFit,
+      }}
+      draggable={draggable}
+      {...(fill ? {fill} : {width, height})}
+    />
+  )
+}
+
+export default memo(ImageV2)
