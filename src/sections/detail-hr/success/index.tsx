@@ -17,7 +17,7 @@ import {IDataAcfDetailHR, IPost} from '@/types/dataAcfDetailHR.interface'
 
 const SuccessCard = ({post}: {post: IPost}) => (
   <Link
-    href={`/tin-tuc/${post?.slug}`}
+    href={`/news/${post?.slug}`}
     className='group relative flex h-[36.25rem] w-full flex-shrink-0 cursor-pointer flex-col items-start overflow-hidden rounded-[1.25rem] xsm:h-[25rem] xsm:w-[18.75rem] xsm:rounded-[1rem]'
   >
     <ImageV2

@@ -5,7 +5,7 @@
 //   taxonomies: [
 //     {
 //       title: 'Tin tức mới nhất',
-//       slug: 'tin-tuc-moi-nhat',
+//       slug: 'news-moi-nhat',
 //     },
 //     {
 //       title: 'Sự kiện',

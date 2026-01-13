@@ -98,7 +98,7 @@ const NewsFlow: FC<INewsFlowProps> = ({data}) => {
               const href =
                 currentItem?.id === null
                   ? currentItem?.slug || ''
-                  : `/tin-tuc?category=${currentItem?.slug || ''}`
+                  : `/news?category=${currentItem?.slug || ''}`
 
               return (
                 <Link
@@ -221,7 +221,7 @@ function NewsFeatured({
           )}
         </div>
         <Link
-          href={`/tin-tuc/${link}`}
+          href={`/news/${link}`}
           className='group/btn relative z-10 mt-auto inline-flex cursor-pointer items-center self-start rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] hover:bg-white xsm:hidden'
         >
           <span className='text-white body-14-m group-hover/btn:text-greentext'>
@@ -231,7 +231,7 @@ function NewsFeatured({
         </Link>
         <Link
           className='absolute bottom-0 left-0 right-0 top-0 group-hover:text-greentext'
-          href={`/tin-tuc/${link}`}
+          href={`/news/${link}`}
         ></Link>
       </div>
     </div>
@@ -248,7 +248,7 @@ function LatestNews({name, thumb, date, slug: link}: ItemNewsHP) {
         height={342 * 2}
         className='h-[10.6875rem] w-full rounded-[1rem] object-cover'
       />
-      <Link href={`/tin-tuc/${link}`}>
+      <Link href={`/news/${link}`}>
         <h3 className='mb-[0.5rem] mt-[0.75rem] line-clamp-2 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
           {name}
         </h3>
