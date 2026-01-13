@@ -11,7 +11,7 @@ const ItemAustralia = (data: IItemAustralia) => {
   const {consultingPhoneNumber} = useStore((state) => state)
   return (
     <Link
-      href={'/bat-dong-san-uc/' + slug}
+      href={'/australian-real-estate/' + slug}
       className='group/item block h-full w-full overflow-hidden rounded-[1.25rem] border-[0.8px] border-[rgba(0,0,0,0.08)] bg-white shadow-[0px_4px_11.1px_0px_rgba(114,114,114,0.08)]'
     >
       <div className='relative h-[18.5625rem] w-full overflow-hidden xsm:h-[14.25rem]'>

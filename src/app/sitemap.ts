@@ -15,19 +15,19 @@ export default async function sitemap() {
   const fixedPages = locales.flatMap((locale) =>
     [
       '',
-      '/tin-tuc',
+      '/news',
       '/dinh-cu-canada',
       '/dinh-cu-uc',
       '/dinh-cu-my',
       '/dinh-cu-chau-au',
       '/dinh-cu-caribe',
-      '/ve-chung-toi',
-      '/lien-he',
-      '/bat-dong-san-uc',
+      '/about-us',
+      '/contact',
+      '/australian-real-estate',
       '/EB5',
-      '/tham-dinh-ho-so',
-      '/ho-chieu',
-      '/so-sanh-chuong-trinh',
+      '/immigration-application-assessment',
+      '/passport',
+      '/compare-programs',
     ].map((path) => ({
       url: `${baseUrl}${locale}${path}`,
       lastModified,
@@ -40,7 +40,7 @@ export default async function sitemap() {
   if (slugPosst.length > 0) {
     dynamicPages.push(
       ...slugPosst.map((post: string) => ({
-        url: `${baseUrl}/tin-tuc/${post}`,
+        url: `${baseUrl}/news/${post}`,
         lastModified,
         priority: 0.8,
       })),

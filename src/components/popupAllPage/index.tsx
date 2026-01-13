@@ -27,7 +27,7 @@ const PopupForm: React.FC<{dataPopup: IPropsPopup}> = ({dataPopup}) => {
       if (!item.slug || !item.show_popup) return false
 
       const slug = item.slug.trim()
-      // Xử lý slug động (ví dụ: /tin-tuc/${slug} hoặc /${nation}/${slug})
+      // Xử lý slug động (ví dụ: /news/${slug} hoặc /${nation}/${slug})
       if (slug.includes('${')) {
         // Chuyển slug thành regex
         const regexPattern = slug

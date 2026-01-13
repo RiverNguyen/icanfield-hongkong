@@ -1,4 +1,4 @@
-import { Breadcrumb } from '@/components/breadcrumb'
+import {Breadcrumb} from '@/components/breadcrumb'
 import ImageV2 from '@/components/image/ImageV2'
 
 export type BannerTopProps = {
@@ -10,7 +10,7 @@ export type BannerTopProps = {
   }
 }
 
-const BannerTop = ({title, description,image}: BannerTopProps) => {
+const BannerTop = ({title, description, image}: BannerTopProps) => {
   return (
     <div className='relative h-[100vh] w-full overflow-hidden xsm:h-[25rem] xsm:rounded-b-[1.25rem]'>
       <ImageV2
@@ -26,7 +26,7 @@ const BannerTop = ({title, description,image}: BannerTopProps) => {
           <Breadcrumb
             items={[
               {label: 'Trang chủ', href: '/'},
-              {label: 'Liên hệ', href: '/lien-he'},
+              {label: 'Liên hệ', href: '/contact'},
             ]}
           />
         </div>

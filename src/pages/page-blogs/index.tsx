@@ -1,11 +1,16 @@
-import { BannerStatic } from '@/components/banner-static'
-import { Breadcrumb } from '@/components/breadcrumb'
+import {BannerStatic} from '@/components/banner-static'
+import {Breadcrumb} from '@/components/breadcrumb'
 import FormConnectUs from '@/sections/blogs/connect-us/FormConnectUs'
 import WrapperConnectUs from '@/sections/blogs/connect-us/WrapperConnectUs'
-import { FeaturedNews } from '@/sections/blogs/featured-news'
+import {FeaturedNews} from '@/sections/blogs/featured-news'
 import ListBlogs from '@/sections/blogs/list-blogs'
-import { ApiAcfPage, ApiResponse, Category, IFeaturedNewsItem } from '@/types/blogs.interface'
-import { FC, Suspense } from 'react'
+import {
+  ApiAcfPage,
+  ApiResponse,
+  Category,
+  IFeaturedNewsItem,
+} from '@/types/blogs.interface'
+import {FC, Suspense} from 'react'
 interface IPageBlogsProps {
   dataPosts: ApiResponse
   dataCategories: Category[]
@@ -19,7 +24,12 @@ interface IPageBlogsProps {
 // INIT DATA
 const categoryItemAll = {id: 0, name: 'Tất cả', slug: 'all', taxonomy: 'all'}
 
-const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage,outstandingData}) => {
+const PageBlogs: FC<IPageBlogsProps> = ({
+  dataPosts,
+  dataCategories,
+  dataPage,
+  outstandingData,
+}) => {
   let dataCategoriesWithAll
   if (
     dataCategories &&
@@ -47,7 +57,7 @@ const PageBlogs: FC<IPageBlogsProps> = ({dataPosts, dataCategories, dataPage,out
         <Breadcrumb
           items={[
             {label: 'Trang chủ', href: '/'},
-            {label: 'Tin Tức', href: '/tin-tuc'},
+            {label: 'Tin Tức', href: '/news'},
           ]}
         />
       </BannerStatic>

@@ -141,13 +141,15 @@ export const SuccessStoryShareItem: FC<ISuccessStoryShareItemProps> = ({
         />
       </div>
       <div className='flex-1 sm:space-y-[1.5rem] sm:pr-[0.71rem] xsm:mt-[1.25rem]'>
-        <h3 className='pc-sub-3 font-bold text-brown xsm:text-[1.25rem] xsm:leading-[1.33] xsm:font-bold'>{name}</h3>
+        <h3 className='pc-sub-3 font-bold text-brown xsm:text-[1.25rem] xsm:font-bold xsm:leading-[1.33]'>
+          {name}
+        </h3>
         <p className='font-medium italic text-[rgba(18,18,18,0.72)] body-14 xsm:m-[0.5rem_0_1rem] xsm:tracking-[-0.0175rem]'>
           {review}
         </p>
         <Link
           className='mt-auto inline-flex h-[3rem] items-center justify-center rounded-[0.5rem] bg-btn-gradient p-[0.5rem_0.75rem_0.5rem_1.5rem] xsm:w-full'
-          href={`/tin-tuc/${link}`}
+          href={`/news/${link}`}
         >
           <span className='body14 font-medium -tracking-[0.0175rem] text-white'>
             Xem câu chuyện
