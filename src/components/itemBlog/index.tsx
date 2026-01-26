@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ImageV2 from '@/components/image/ImageV2'
 import {Category, DataItem} from '@/types/blogs.interface'
+import {useTranslations} from 'next-intl'
 import Link from 'next/link'
 
 interface IProps {
@@ -8,6 +9,7 @@ interface IProps {
 }
 
 const ItemBlog = ({data}: IProps) => {
+  const t = useTranslations()
   function handleFindPrimaryCategory(category: Category[]) {
     return category.find((category: Category) => category.primary)?.name
   }
@@ -28,7 +30,7 @@ const ItemBlog = ({data}: IProps) => {
       <div className='relative z-[3] flex size-full flex-col justify-between xsm:justify-end'>
         <div className='relative ml-auto flex h-[2.75rem] w-[8.8125rem] justify-end xsm:hidden'>
           <span className='absolute left-[1.25rem] top-1/2 z-10 -translate-y-1/2 text-[0.875rem] font-semibold leading-normal text-[#3F2214] opacity-0 transition-all delay-100 duration-500 lg:group-hover:opacity-100'>
-            Xem thêm
+            {t('xem_them')}
           </span>
           <button className='z-[1] flex h-full w-[2.75rem] items-center justify-end rounded-[0.9375rem] bg-[#D9D9D9] px-[0.62rem] transition-all duration-500 lg:group-hover:w-full'>
             <ICArrow className='size-[1.5rem] transition-all duration-700 lg:group-hover:rotate-45' />
@@ -36,11 +38,15 @@ const ItemBlog = ({data}: IProps) => {
         </div>
         <div>
           <div className='flex h-[1.625rem] w-fit items-center justify-center rounded-[0.375rem] bg-[rgba(248,244,241,0.48)] px-[0.75rem] text-[0.75rem] font-bold uppercase leading-[1.2] text-white backdrop-blur-[15px] xsm:h-[1.36063rem] xsm:px-[0.63rem] xsm:text-[0.625rem]'>
-            {handleFindPrimaryCategory(data.category)}
+            {handleFindPrimaryCategory(data.category) ||
+              (Array.isArray(data.category) &&
+                data.category.map((i) => i.name).join(', '))}
           </div>
-          <h3 className='my-[0.68rem] line-clamp-2 font-optima text-[1.25rem] font-semibold leading-normal text-white xsm:my-[0.74rem] xsm:text-[0.875rem]'>
-            {data.title}
-          </h3>
+          <h3
+            dangerouslySetInnerHTML={{__html: data.title}}
+            className='my-[0.68rem] line-clamp-2 font-optima text-[1.25rem] font-semibold leading-normal text-white xsm:my-[0.74rem] xsm:text-[0.875rem]'
+          />
+
           <div className='flex items-center'>
             <ICCalendar className='mr-[0.38rem] h-auto w-[1.01794rem] flex-shrink-0 xsm:mr-[0.32rem] xsm:w-[0.85238rem]' />
             <span className='text-[0.875rem] font-normal leading-normal text-greyscaletext-100 xsm:text-[0.75rem]'>

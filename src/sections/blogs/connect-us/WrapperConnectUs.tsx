@@ -1,12 +1,19 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import { cn } from '@/lib/utils'
-import { useEffect, useRef, useState } from 'react'
+import {cn} from '@/lib/utils'
+import {IImageV2} from '@/types/image.interface'
+import {useEffect, useRef, useState} from 'react'
 
 const WrapperConnectUs = ({
   children,
+  data,
 }: Readonly<{
   children: React.ReactNode
+  data: {
+    logo: IImageV2
+    quote: string
+    author: string
+  }
 }>) => {
   const [isActive, setIsActive] = useState(false)
   const sectionFef = useRef<HTMLElement>(null)
@@ -115,7 +122,7 @@ const WrapperConnectUs = ({
         <div className='flex w-full items-center justify-between xsm:flex-col'>
           <ImageV2
             className='h-auto w-[38.9rem] object-contain xsm:w-[18.4rem]'
-            src={'/imgs/blogs/slogan-blogs.webp'}
+            src={data.logo?.url || '/imgs/blogs/slogan-blogs.webp'}
             alt='slogan'
             width={630}
             height={170}
@@ -123,11 +130,10 @@ const WrapperConnectUs = ({
           />
           <div className='flex-shrink-0 sm:w-[37.82rem] xsm:mt-[2.5rem]'>
             <p className='mb-[1rem] font-optima text-[2rem] font-semibold leading-[1.3] -tracking-[0.08rem] text-Phase-1-Brown xsm:text-[1.25rem]'>
-              Cuộc sống là một hành trình, và mỗi bước đi đúng đắn hôm nay sẽ mở
-              ra cánh cửa cho một tương lai tươi sáng và tràn đầy hy vọng.
+              {data.quote}
             </p>
             <span className='font-optima text-[1.5rem] font-medium leading-[1.3] -tracking-[0.06rem] text-greyscaletext-300 xsm:text-[1rem]'>
-              Khuyết danh
+              {data.author}
             </span>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import {IImageV2} from '@/types/image.interface'
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Category {
   id: number
@@ -62,5 +64,9 @@ export interface ApiAcfPage {
   banner_blogs_page: ApiAcfBannerBlogsPage
   featured_news: ApiAcfFeaturedNewsBlogsPage
   featured_news_blogs_page: IFeaturedNewsItem[]
+  quote_blogs_page: {
+    logo: IImageV2
+    quote: string
+    author: string
+  }
 }
-

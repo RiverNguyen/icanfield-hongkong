@@ -1,6 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadata from '@/fetch/getMetadata'
+import Header from '@/layout/header'
 import Immigration from '@/pages/immigration'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
@@ -43,7 +44,47 @@ export async function generateMetadata({
     return {}
   }
 }
-export default async function page({params}: {params: {slug: string}}) {
+export default async function page({
+  params,
+}: {
+  params: {slug: string; locale: string}
+}) {
+  const {locale, slug} = params
+  console.log('locale', locale)
+  const requestFooter = {
+    api: '/footer-options?acf_format=standard&lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const requestHeader = {
+    api: '/header-options?acf_format=standard&lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const requestPopup = {
+    api: '/form-all-page?lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+
+  const requestLanguageSwitcher = {
+    api: '/language-switcher/taxonomy-nation/' + locale + '/' + slug,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+
+  const [dataFooter, dataHeader, dataPopup, dataLanguageSwitcher] =
+    await Promise.all([
+      fetchData(requestFooter),
+      fetchData(requestHeader),
+      fetchData(requestPopup),
+      fetchData(requestLanguageSwitcher),
+    ])
+
   const [dataAcf, dataPrograms, postRelate, dataMap] = await Promise.all([
     fetchDataACF({
       api:
@@ -51,7 +92,8 @@ export default async function page({params}: {params: {slug: string}}) {
         endpoints.taxonomiesSettlement +
         '?slug=' +
         params?.slug +
-        '&acf_format=standard',
+        '&acf_format=standard&lang=' +
+        locale,
       option: {
         next: {revalidate: 10},
       },
@@ -100,13 +142,24 @@ export default async function page({params}: {params: {slug: string}}) {
   ) {
     redirect('/')
   }
+
+  console.log('dataLanguageSwitcher', dataLanguageSwitcher)
+
   return (
-    <Immigration
-      slug={params?.slug}
-      dataImmigration={dataAcf[0]}
-      dataPrograms={dataPrograms}
-      postRelate={postRelate}
-      dataMap={dataMap?.data}
-    />
+    <>
+      <Header
+        data={dataHeader?.data}
+        dataFooter={dataFooter.data}
+        dataPopup={dataPopup?.data}
+        languageSwitcher={dataLanguageSwitcher}
+      />
+      <Immigration
+        slug={params?.slug}
+        dataImmigration={dataAcf[0]}
+        dataPrograms={dataPrograms}
+        postRelate={postRelate}
+        dataMap={dataMap?.data}
+      />
+    </>
   )
 }

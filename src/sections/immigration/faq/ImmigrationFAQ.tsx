@@ -3,16 +3,18 @@ import ItemAccordion from '@/components/accordion/ItemAccordion'
 import ButtonBrown from '@/components/button/ButtonBrown'
 import ImageV2 from '@/components/image/ImageV2'
 import {dataFAQ, dataListFAQ} from '@/types/dataAcfImmigration.interface'
+import {useTranslations} from 'next-intl'
 
 export default function ImmigrationFAQ({
   dataFAQ,
   flag,
-  listFAQ
+  listFAQ,
 }: {
-    dataFAQ: dataFAQ
-    flag: { url: string; alt: string }
-    listFAQ?:dataListFAQ[]
+  dataFAQ: dataFAQ
+  flag: {url: string; alt: string}
+  listFAQ?: dataListFAQ[]
 }) {
+  const t = useTranslations()
   return (
     <section className='flex pb-[6rem] pt-[11.25rem] section-container sm:items-center sm:space-x-[5rem] xsm:flex-col xsm:space-y-[1.5rem] xsm:p-[2.5rem_1rem]'>
       <div className='relative w-[41.875rem] rounded-[1.5rem] bg-white shadow-[0px_2px_30px_0px_rgba(224,224,224,0.08)] sm:h-[37.5rem] xsm:w-full'>
@@ -35,7 +37,7 @@ export default function ImmigrationFAQ({
           </div>
           <div className='space-y-[0.62rem] xsm:space-y-[0.5rem]'>
             <p className='tracking-[0] text-brown body16-s xsm:text-[0.75rem] xsm:font-semibold xsm:leading-[1.5] xsm:tracking-[-0.015rem]'>
-              Định cư dễ dàng cùng
+              {t('dinh_cu_de_dang_cung')}
             </p>
             <ImageV2
               className='h-[4.9rem] w-[15.94838rem] object-contain xsm:h-[3.5rem] xsm:w-[11.39169rem]'

@@ -3,10 +3,10 @@
 import ImageV2 from '@/components/image/ImageV2'
 import ArrowRight from '@/components/svg/ArrowRight'
 import Calendar from '@/components/svg/Calendar'
-import { cn } from '@/lib/utils'
-import { IFeaturedNewsItem } from '@/types/blogs.interface'
+import {cn} from '@/lib/utils'
+import {IFeaturedNewsItem} from '@/types/blogs.interface'
 import Link from 'next/link'
-import { FC, useRef } from 'react'
+import {FC, useRef} from 'react'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/effect-fade'
@@ -19,15 +19,16 @@ import {
   Navigation,
   Pagination,
 } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Swiper as ISwiper } from 'swiper/types'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {Swiper as ISwiper} from 'swiper/types'
 import './style.css'
+import {useTranslations} from 'next-intl'
 
 export interface IFeaturedNewsProps {
   title: string
   items: IFeaturedNewsItem[]
 }
-export const FeaturedNews: FC<IFeaturedNewsProps> = ({ title, items }) => {
+export const FeaturedNews: FC<IFeaturedNewsProps> = ({title, items}) => {
   // console.log('FeaturedNews', items)
   return (
     <section className='mx-auto mt-[3rem] max-w-[90rem] px-[1rem] sm:mt-[5rem] sm:px-0'>
@@ -57,6 +58,7 @@ function FeaturedNewSlidePC({
   const swiper2Ref = useRef<ISwiper | null>(null)
   const progressRef = useRef<HTMLDivElement>(null)
   const isSyncing = useRef(false) // Cờ để ngăn vòng lặp vô hạn
+  const t = useTranslations()
 
   const handleSlideChange1 = () => {
     if (swiper1Ref.current && swiper2Ref.current && !isSyncing.current) {
@@ -103,22 +105,24 @@ function FeaturedNewSlidePC({
             <div className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(183deg,rgba(63,34,20,0.00)_10.25%,#000_119.74%)]'></div>
             <div className='absolute bottom-[1.5rem] left-[4.54rem] space-y-[1.34rem] text-white'>
               <div className='flex items-center'>
-                <span className='flex-center mr-[1.34rem] rounded-[0.33625rem] bg-white px-[0.6725rem] text-[0.78456rem] font-medium leading-[174.857%] tracking-[-0.02019rem] text-brown'>
-                  Sự kiện nổi bật
+                <span className='mr-[1.34rem] rounded-[0.33625rem] bg-white px-[0.6725rem] text-[0.78456rem] font-medium leading-[174.857%] tracking-[-0.02019rem] text-brown flex-center'>
+                  {Array.isArray(item?.categories) &&
+                    item.categories.map((item) => item).join(', ')}
                 </span>
                 <Calendar className='mr-[0.22rem] size-[0.89663rem]' />
                 <span className='text-[0.78456rem] leading-[114.286%]'>
                   {item?.date}
                 </span>
               </div>
-              <h3 className='max-w-[40.9375rem] font-optima text-[2.24156rem] font-medium leading-[1.2] tracking-[-0.05606rem]'>
-                {item.title}
-              </h3>
+              <h3
+                dangerouslySetInnerHTML={{__html: item.title}}
+                className='max-w-[40.9375rem] font-optima text-[2.24156rem] font-medium leading-[1.2] tracking-[-0.05606rem]'
+              />
               <Link
-                href={'/tin-tuc/' + item?.slug}
+                href={t('slug') + 'blogs/' + item?.slug}
                 className='inline-flex items-center rounded-[0.5rem] border border-white/25 p-[0.84rem_0.75rem_0.84rem_1.5rem] transition hover:bg-white hover:text-brown'
               >
-                <span>Chi tiết bài viết</span>
+                <span>{t('chi_tiet_bai_viet')}</span>
                 <ArrowRight className='ml-[0.5rem] size-[1.5rem]' />
               </Link>
             </div>
@@ -163,18 +167,21 @@ function FeaturedNewSlidePC({
             key={idx}
           >
             <span>{idx < 10 ? '0' + (idx + 1) : idx + 1}</span>
-            <p className='line-clamp-3' dangerouslySetInnerHTML={{__html:item.excerpt}}></p>
+            <p
+              className='line-clamp-3'
+              dangerouslySetInnerHTML={{__html: item.excerpt}}
+            ></p>
           </SwiperSlide>
         ))}
-        <div className='pointer-events-none sm:items-center absolute bottom-0 right-[-0.5rem] top-0 z-20 flex flex-col justify-between'>
-          <button className='group swiper-content__prev flex-center size-[2.75rem] rounded-[100%] transition-all hover:bg-[rgba(220,220,220)]'>
+        <div className='pointer-events-none absolute bottom-0 right-[-0.5rem] top-0 z-20 flex flex-col justify-between sm:items-center'>
+          <button className='swiper-content__prev group size-[2.75rem] rounded-[100%] transition-all flex-center hover:bg-[rgba(220,220,220)]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='23'
               viewBox='0 0 22 23'
               fill='none'
-              className='size-[1.75rem] translate-y-[-0.1rem] group-hover:filter group-hover:brightness-[100] group-hover:invert-[100]'
+              className='size-[1.75rem] translate-y-[-0.1rem] group-hover:brightness-[100] group-hover:invert-[100] group-hover:filter'
             >
               <path
                 d='M11.5586 8.44098L18.4766 14.7359C18.6198 14.8648 18.6914 15.0295 18.6914 15.23C18.6914 15.4306 18.6198 15.5953 18.4766 15.7242C18.319 15.8674 18.1328 15.939 17.918 15.939C17.7031 15.939 17.5241 15.8674 17.3809 15.7242L11 9.94489L4.61914 15.7242C4.47591 15.8674 4.29687 15.939 4.08203 15.939C3.86719 15.939 3.68099 15.8674 3.52344 15.7242C3.38021 15.5953 3.30859 15.4306 3.30859 15.23C3.30859 15.0295 3.38021 14.8648 3.52344 14.7359L10.4414 8.44098C10.599 8.29775 10.7852 8.22614 11 8.22614C11.2148 8.22614 11.401 8.29775 11.5586 8.44098Z'
@@ -183,14 +190,14 @@ function FeaturedNewSlidePC({
               />
             </svg>
           </button>
-          <button className='group swiper-content__next flex-center size-[2.75rem] rounded-[100%] transition-all hover:bg-[rgba(220,220,220)]'>
+          <button className='swiper-content__next group size-[2.75rem] rounded-[100%] transition-all flex-center hover:bg-[rgba(220,220,220)]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='23'
               viewBox='0 0 22 23'
               fill='none'
-              className='size-[1.75rem] translate-y-[0.2rem] group-hover:filter group-hover:brightness-[100] group-hover:invert-[100]'
+              className='size-[1.75rem] translate-y-[0.2rem] group-hover:brightness-[100] group-hover:invert-[100] group-hover:filter'
             >
               <path
                 d='M10.4414 14.559L3.52344 8.2641C3.38021 8.13519 3.30859 7.97048 3.30859 7.76996C3.30859 7.56944 3.38021 7.40473 3.52344 7.27582C3.68099 7.13259 3.86719 7.06098 4.08203 7.06098C4.29688 7.06098 4.47591 7.13259 4.61914 7.27582L11 13.0551L17.3809 7.27582C17.5241 7.13259 17.7031 7.06097 17.918 7.06097C18.1328 7.06097 18.319 7.13259 18.4766 7.27582C18.6198 7.40472 18.6914 7.56944 18.6914 7.76996C18.6914 7.97048 18.6198 8.13519 18.4766 8.2641L11.5586 14.559C11.401 14.7023 11.2148 14.7739 11 14.7739C10.7852 14.7739 10.599 14.7023 10.4414 14.559Z'
@@ -213,6 +220,7 @@ function FeaturedNewSlideMobile({
   items: IFeaturedNewsItem[]
   className?: string
 }) {
+  const t = useTranslations()
   return (
     <div className={className}>
       <div className='relative overflow-hidden rounded-[1.25rem]'>
@@ -241,7 +249,8 @@ function FeaturedNewSlideMobile({
               <div className='absolute bottom-[1.25rem] left-[1.5rem] right-[2.5rem] space-y-[1rem] text-white'>
                 <div className='flex items-center'>
                   <span className='mr-[1.34rem] rounded-[0.33625rem] bg-white px-[0.6725rem] text-[0.625rem] font-medium leading-[174.857%] tracking-[-0.02019rem] text-brown'>
-                    Sự kiện nổi bật
+                    {Array.isArray(item?.categories) &&
+                      item.categories.map((item) => item).join(', ')}
                   </span>
                   <Calendar className='mr-[0.22rem] size-[0.89663rem]' />
                   <span className='text-[0.75rem] leading-[114.286%]'>
@@ -252,11 +261,11 @@ function FeaturedNewSlideMobile({
                   {item.title}
                 </h3>
                 <Link
-                  href={'/tin-tuc/' + item?.slug}
+                  href={t('slug') + 'blogs/' + item?.slug}
                   className='inline-flex items-center py-[0.2rem]'
                 >
                   <span className='text-[0.75rem] font-medium leading-[1.5] tracking-[-0.015re]'>
-                    Chi tiết bài viết
+                    {t('chi_tiet_bai_viet')}
                   </span>
                   <ArrowRight className='ml-[0.5rem] size-[1.5rem]' />
                 </Link>

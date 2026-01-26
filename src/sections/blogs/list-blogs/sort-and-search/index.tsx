@@ -5,6 +5,7 @@ import {Input} from '@/components/ui/input'
 import useClickOutside from '@/hooks/useClickOutSide'
 import {cn} from '@/lib/utils'
 import {SortOption} from '@/types/blogs.interface'
+import {useTranslations} from 'next-intl'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import React, {useEffect, useState} from 'react'
 import {useDebounceCallback} from 'usehooks-ts'
@@ -32,6 +33,7 @@ const IndexSortAndSearchPosts = ({
   const pathName = usePathname()
   const searchParams = useSearchParams()
   const debounced = useDebounceCallback(setSearch, 500)
+  const t = useTranslations()
 
   const [isOpenSelectCategory, setIsOpenSelectCategory] =
     useState<boolean>(false)
@@ -104,7 +106,7 @@ const IndexSortAndSearchPosts = ({
         >
           <span className='flex items-center whitespace-nowrap text-[1rem] font-normal leading-[1.5] tracking-[-0.02rem] text-greyscaletext-body xsm:line-clamp-1 xsm:text-[0.75rem] xsm:text-[#3F2214]'>
             <b className='whitespace-nowrap font-medium sm:font-bold'>
-              Sắp xếp theo:{' '}
+              {t('sap_xep_theo')}:{' '}
             </b>
             {selectedSortOption?.name}
           </span>

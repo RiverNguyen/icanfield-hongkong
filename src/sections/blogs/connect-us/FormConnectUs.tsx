@@ -14,6 +14,7 @@ import {
 import {Input} from '@/components/ui/input'
 import {cn} from '@/lib/utils'
 import {useState, useTransition} from 'react'
+import {useTranslations} from 'next-intl'
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -37,6 +38,7 @@ const FormConnectUs = () => {
     phone: false,
   })
   const [isPending, setTransition] = useTransition()
+  const t = useTranslations()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,6 +50,7 @@ const FormConnectUs = () => {
     },
   })
 
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setTransition(async () => {
       await new Promise((resolve) => setTimeout(resolve, 2000))
@@ -57,7 +60,7 @@ const FormConnectUs = () => {
   return (
     <div className='relative h-fit w-full'>
       <h2 className='mb-[2rem] font-optima font-medium text-Phase-1-Brown heading3 xsm:mb-[1.88rem] xsm:text-[1.5rem]'>
-        Hãy kết nối với chúng tôi
+        {t('hay_ket_noi_voi_chung_toi')}
       </h2>
       <Form {...form}>
         <form
@@ -76,7 +79,7 @@ const FormConnectUs = () => {
                       'pointer-events-none opacity-0',
                   )}
                 >
-                  <span className='text-greyscaletext-200'>Họ và tên</span>
+                  <span className='text-greyscaletext-200'>{t('ho_ten')}</span>
                   <span className='text-errtext'>*</span>
                 </FormLabel>
                 <FormControl>
@@ -109,7 +112,7 @@ const FormConnectUs = () => {
                         'pointer-events-none opacity-0',
                     )}
                   >
-                    <span className='text-greyscaletext-200'>Email</span>
+                    <span className='text-greyscaletext-200'>{t('email')}</span>
                     <span className='text-errtext'>*</span>
                   </FormLabel>
                   <FormControl>
@@ -142,7 +145,7 @@ const FormConnectUs = () => {
                     )}
                   >
                     <span className='text-greyscaletext-200'>
-                      Số điện thoại
+                      {t('so_dien_thoai')}
                     </span>
                     <span className='text-errtext'>*</span>
                   </FormLabel>
@@ -179,7 +182,7 @@ const FormConnectUs = () => {
                   <Input
                     className='flex h-[3rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] font-medium -tracking-[0.02rem] body16 placeholder:text-[1rem] placeholder:font-normal placeholder:leading-normal placeholder:-tracking-[0.02rem] placeholder:text-greyscaletext-200 xsm:h-[2.75rem]'
                     type='text'
-                    placeholder='Lời nhắn của bạn'
+                    placeholder={t('loi_nhan_cua_ban')}
                     {...field}
                   />
                 </FormControl>
@@ -197,7 +200,7 @@ const FormConnectUs = () => {
             ) : (
               <>
                 <span className='body14 font-medium -tracking-[0.0175rem] text-white'>
-                  Gửi thông tin
+                  {t('gui_thong_tin')}
                 </span>
                 <ICArrow className='ml-[0.5rem] size-[1.5rem] flex-shrink-0' />
               </>

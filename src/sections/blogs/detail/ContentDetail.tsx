@@ -6,7 +6,8 @@ import useIsMobile from '@/hooks/useIsMobile'
 const addIdsToHeadings = (htmlString: string) => {
   let index = 1
   if (!htmlString) return ''
-  return htmlString.replace(/<(h2|h3)[^>]*>/g, (match, tag:any) => { //eslint-disable-line
+  return htmlString.replace(/<(h2|h3)[^>]*>/g, (match, tag: any) => {
+    //eslint-disable-line
     return `${match.slice(0, -1)} id="section-${index++}">`
   })
 }
@@ -29,13 +30,14 @@ export default function ContentDetail({
   return (
     <div className='w-[58.3125rem] xsm:w-full'>
       {!isMobile && (
-        <h1 className='mb-[2.9rem] font-optima text-[2rem] font-semibold leading-[1.3] tracking-[-0.02rem] text-orangetext-900'>
-          {title}
-        </h1>
+        <h1
+          dangerouslySetInnerHTML={{__html: title}}
+          className='mb-[2.9rem] font-optima text-[2rem] font-semibold leading-[1.3] tracking-[-0.02rem] text-orangetext-900'
+        ></h1>
       )}
       <div
-        className='[&_h2]:content-h2 [&_img]:content-img  [&_.wp-caption]:italic [&_.wp-caption]:text-center  [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li flex-1 [&_a]:text-blue-600 [&_strong]:font-bold'
-        dangerouslySetInnerHTML={{ __html: cleanedHtml || '' }}
+        className='[&_h2]:content-h2 [&_img]:content-img [&_p]:content-p [&_span]:content-span [&_ul]:content-ul [&_ul_li]:content-ul--li [&_strong]:content-strong [&_ol]:content-ol [&_ol_li]:content-ol--li flex-1 [&_.wp-caption]:text-center [&_.wp-caption]:italic [&_a]:text-blue-600 [&_strong]:font-bold'
+        dangerouslySetInnerHTML={{__html: cleanedHtml || ''}}
       ></div>
       <div className='my-[1.5rem] h-[0.0625rem] w-full bg-[rgba(0,0,0,0.04)]'></div>
       <div className='flex w-full items-center justify-between'>

@@ -1,4 +1,5 @@
 {
+  "slug": "/en",
   "quoc_gia_quan_tam": "Interested Countries",
   "click_de_chon": "Click to select",
   "muc_dich_dau_tu": "Investment Purpose",
@@ -57,5 +58,17 @@
   "thoi_gian_xet_duyet": "Approval time",
   "thang": "month",
   "lien_he_tu_van": "Contact consultation",
-  "xem_chi_tiet": "View details"
+  "xem_chi_tiet": "View details",
+  "dinh_cu_de_dang_cung": "Easy settlement together",
+  "cac_bai_viet_lien_quan": "Related articles",
+  "chi_tiet_bai_viet": "Article Details",
+  "tin_tuc_khac": "Other News",
+  "chua_co_bai_viet": "No articles yet",
+  "tim_kiem_trong_danh_sach": "Search within the list",
+  "moi_nhat": "Newest",
+  "pho_bien_nhat": "Most Popular",
+  "hay_ket_noi_voi_chung_toi": "Connect with us",
+  "tin_tuc": "Blogs",
+  "tin_tuc_breadcrumb": "/en/blogs",
+  "trang_chu_breadcrumb": "/en"
 }

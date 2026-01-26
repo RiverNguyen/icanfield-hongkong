@@ -1,4 +1,5 @@
 {
+  "slug": "/",
   "quoc_gia_quan_tam": "關注國家",
   "click_de_chon": "點擊選擇",
   "muc_dich_dau_tu": "投資目的",
@@ -57,5 +58,17 @@
   "thoi_gian_xet_duyet": "审批时间",
   "thang": "月",
   "lien_he_tu_van": "联系咨询",
-  "xem_chi_tiet": "查看详情"
+  "xem_chi_tiet": "查看详情",
+  "dinh_cu_de_dang_cung": "共同定居",
+  "cac_bai_viet_lien_quan": "相关文章",
+  "chi_tiet_bai_viet": "文章詳情",
+  "tin_tuc_khac": "其他新聞",
+  "chua_co_bai_viet": "尚無文章",
+  "tim_kiem_trong_danh_sach": "列表內搜尋",
+  "moi_nhat": "最新",
+  "pho_bien_nhat": "最受歡迎",
+  "hay_ket_noi_voi_chung_toi": "歡迎與我們聯繫",
+  "tin_tuc": "新聞",
+  "tin_tuc_breadcrumb": "/blogs",
+  "trang_chu_breadcrumb": "/"
 }

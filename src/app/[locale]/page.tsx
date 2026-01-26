@@ -4,6 +4,7 @@ import HomePage from '@/pages/homepage'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 import getMetadataPage from '@/fetch/getMetadataPage'
+import Header from '@/layout/header'
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,17 @@ export async function generateMetadata({
   const res = await getMetadataPage(endpoints.homepage[locale])
   return metadataValues(res)
 }
-
+const dataLanguageSwitcher = {
+  zh: {
+    slug: '',
+  },
+  'zh-cn': {
+    slug: '',
+  },
+  en: {
+    slug: '',
+  },
+}
 export default async function Home({
   params,
 }: {
@@ -22,6 +33,25 @@ export default async function Home({
 }) {
   const {locale} = await params
   console.log('locale', locale)
+  const requestFooter = {
+    api: '/footer-options?acf_format=standard&lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const requestHeader = {
+    api: '/header-options?acf_format=standard&lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const requestPopup = {
+    api: '/form-all-page?lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+
   const homeRequest = {
     api: endpoints.homepage[locale] + '?_fields=acf&acf_format=standard',
     option: {
@@ -46,6 +76,7 @@ export default async function Home({
       next: {revalidate: 10},
     },
   }
+
   try {
     const [homeResponse, newsResponse, dataFilter, homepageMap] =
       await Promise.all([
@@ -54,13 +85,26 @@ export default async function Home({
         fetchData(FilterBanner),
         fetchData(HomepageMap),
       ])
+    const [dataFooter, dataHeader, dataPopup] = await Promise.all([
+      fetchData(requestFooter),
+      fetchData(requestHeader),
+      fetchData(requestPopup),
+    ])
     return (
-      <HomePage
-        homeData={homeResponse}
-        newsData={newsResponse}
-        dataFilter={dataFilter?.data}
-        dataMap={homepageMap?.data}
-      />
+      <>
+        <Header
+          data={dataHeader?.data}
+          dataFooter={dataFooter.data}
+          dataPopup={dataPopup?.data}
+          languageSwitcher={dataLanguageSwitcher}
+        />
+        <HomePage
+          homeData={homeResponse}
+          newsData={newsResponse}
+          dataFilter={dataFilter?.data}
+          dataMap={homepageMap?.data}
+        />
+      </>
     )
   } catch (error) {
     console.error('Error fetching data:', error)

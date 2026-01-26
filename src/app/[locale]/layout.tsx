@@ -136,11 +136,11 @@ export default async function LocaleLayout({
             zIndex={1600}
             showAtBottom={false}
           />
-          <Header
+          {/* <Header
             data={dataHeader?.data}
             dataFooter={dataFooter.data}
             dataPopup={dataPopup?.data}
-          />
+          /> */}
 
           <Providers>{children}</Providers>
 
