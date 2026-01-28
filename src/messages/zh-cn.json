@@ -92,5 +92,20 @@
 	"truong_nay_khong_duoc_de_trong": "此字段不能为空",
 	"dien_chi_email_khong_hop_le": "电子邮件地址不合法",
 	"chuong_trinh_dinh_cu_ban_quan_tam": "您感兴趣的程序",
-	"chuong_trinh_dinh_cu": "定居程序"
+	"chuong_trinh_dinh_cu": "定居程序",
+	"thong_tin_ho_chieu": "护照信息",
+	"tra_cuu_thong_tin_ho_chieu": "搜索护照信息",
+	"quoc_gia_ho_chieu": "护照国家",
+	"chon_quoc_gia": "选择国家",
+	"tim_kiem_quoc_gia": "搜索国家",
+	"khong_tim_thay": "没有找到！",
+	"tra_cuu": "搜索",
+	"ket_qua_tra_cuu": "搜索结果",
+	"xep_hang_quyen_luc_ho_chieu": "护照权力排名",
+	"khong_tim_thay_thong_tin": "没有找到信息！",
+	"mien_thi_thuc": "显示",
+	"thi_thuc_nhap_canh_tai_san_bay": "进入国家",
+	"yeu_cau_thi_thuc": "要求",
+	"xem_danh_sach_cac_quoc_gia_mien_yeu_cau_thi_thuc": "查看免费/要求签证的国家列表",
+	"an_danh_sach_cac_quoc_gia_mien_yeu_cau_thi_thuc": "隐藏免费/要求签证的国家列表"
 }

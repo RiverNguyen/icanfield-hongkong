@@ -40,7 +40,6 @@ const page = async ({
 		fetchDataACF(requestPage),
 	])
 
-	console.log(dataPage?.acf?.information);
 
 	return (
 		<main className='bg-background'>

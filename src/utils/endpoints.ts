@@ -76,6 +76,11 @@ const endpoints = {
 	},
 	settlementTaxonomies: {
 		get: (locale: 'zh' | 'zh-cn' | 'en') => `/taxonomies-settlement?lang=${locale}`,
+	},
+	passportPage: {
+		zh: '/pages/7279',
+		'zh-cn': '/pages/7281',
+		en: '/pages/7283',
 	}
 }
 

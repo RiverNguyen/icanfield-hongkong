@@ -92,5 +92,20 @@
 	"truong_nay_khong_duoc_de_trong": "This field cannot be empty",
 	"dien_chi_email_khong_hop_le": "The email address is not valid",
 	"chuong_trinh_dinh_cu_ban_quan_tam": "The program you are interested in",
-	"chuong_trinh_dinh_cu": "Settlement Program"
+	"chuong_trinh_dinh_cu": "Settlement Program",
+	"thong_tin_ho_chieu": "Passport Information",
+	"tra_cuu_thong_tin_ho_chieu": "Search Passport Information",
+	"quoc_gia_ho_chieu": "Passport Country",
+	"chon_quoc_gia": "Select Country",
+	"tim_kiem_quoc_gia": "Search Country",
+	"khong_tim_thay": "Not found!",
+	"tra_cuu": "Search",
+	"ket_qua_tra_cuu": "Search Results",
+	"xep_hang_quyen_luc_ho_chieu": "Passport Power Rank",
+	"khong_tim_thay_thong_tin": "No information found!",
+	"mien_thi_thuc": "Displayed",
+	"thi_thuc_nhap_canh_tai_san_bay": "Entry into the country",
+	"yeu_cau_thi_thuc": "Required",
+	"xem_danh_sach_cac_quoc_gia_mien_yeu_cau_thi_thuc": "View list of countries with free/required visa",
+	"an_danh_sach_cac_quoc_gia_mien_yeu_cau_thi_thuc": "Hide list of countries with free/required visa"
 }

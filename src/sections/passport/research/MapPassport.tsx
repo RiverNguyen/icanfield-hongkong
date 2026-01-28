@@ -2,18 +2,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
-import {Feature, GeoJsonObject} from 'geojson'
-import L, {GeoJSONOptions} from 'leaflet'
+import { Feature, GeoJsonObject } from 'geojson'
+import L, { GeoJSONOptions } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import './style.css'
-import {useCallback, useEffect, useRef, useState} from 'react'
-import {GeoJSON, MapContainer} from 'react-leaflet'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { GeoJSON, MapContainer } from 'react-leaflet'
 // import mapJson from '@/sections/aboutus/office-map/custom.geo.json'
 import useSWR from 'swr'
-import {fetcher} from '@/lib/swr'
-import {useSearchParams} from 'next/navigation'
+import { fetcher } from '@/lib/swr'
+import { useSearchParams } from 'next/navigation'
 import ListCountry from '@/sections/passport/research/ListCountry'
-import {JSON_TYPE} from '@/types/passport'
+import { JSON_TYPE } from '@/types/passport'
+import countryList from '@/sections/passport/research/countrylist.json'
+import countryListZh from '@/sections/passport/research/countrylist_zh_full.json'
+import countryListZhCn from '@/sections/passport/research/countrylist_zh_cn_full.json'
+import { useLocale } from 'next-intl'
 
 const fetcherWithCustomBase = (url: string) =>
   fetcher(url, process.env.NEXT_PUBLIC_API_PASSPORT)
@@ -22,6 +26,7 @@ const MapPassport = () => {
   const mapRef = useRef<L.Map | null>(null)
   const geoJsonRef = useRef<L.GeoJSON | null>(null) // Reference to the GeoJSON layer
   const searchParams = useSearchParams()
+  const locale = useLocale()
   const postal = searchParams?.get('postal')
   const [isMobile, setIsMobile] = useState(false)
   const [geoData, setGeoData] = useState(null)
@@ -52,6 +57,22 @@ const MapPassport = () => {
     if (!Array.isArray(arr1)) return false
     return arr1.some((item: any) => item?.code === postal)
   }
+
+  const countries = useMemo(() => {
+    return locale === 'zh'
+      ? (countryListZh as any[])
+      : locale === 'zh-cn'
+        ? (countryListZhCn as any[])
+        : (countryList as any[])
+  }, [locale])
+
+  const countryNameByCode = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const c of countries || []) {
+      if (c?.code && c?.name) map.set(String(c.code).toUpperCase(), String(c.name))
+    }
+    return map
+  }, [countries])
 
   const getFillColor = useCallback(
     (feature: Feature) => {
@@ -108,7 +129,11 @@ const MapPassport = () => {
 
   // Custom tooltip
   const onEachFeature = (feature: Feature, layer: L.Layer) => {
-    layer.bindTooltip(feature?.properties?.name, {
+    const code = String(feature?.properties?.postal || '').toUpperCase()
+    const localizedName =
+      (code && countryNameByCode.get(code)) || feature?.properties?.name || ''
+
+    layer.bindTooltip(localizedName, {
       sticky: true,
       direction: 'top',
       offset: [0, -10],
@@ -139,6 +164,7 @@ const MapPassport = () => {
       >
         {geoData && (
           <GeoJSON
+            key={locale}
             ref={geoJsonRef}
             data={geoData as GeoJsonObject}
             style={geoJsonStyle as GeoJSONOptions}

@@ -92,5 +92,20 @@
 	"truong_nay_khong_duoc_de_trong": "此字段不能為空",
 	"dien_chi_email_khong_hop_le": "電子郵件地址不合法",
 	"chuong_trinh_dinh_cu_ban_quan_tam": "您感興趣的程序",
-	"chuong_trinh_dinh_cu": "定居程序"
+	"chuong_trinh_dinh_cu": "定居程序",
+	"thong_tin_ho_chieu": "護照信息",
+	"tra_cuu_thong_tin_ho_chieu": "搜索護照信息",
+	"quoc_gia_ho_chieu": "護照國家",
+	"chon_quoc_gia": "選擇國家",
+	"tim_kiem_quoc_gia": "搜索國家",
+	"khong_tim_thay": "沒有找到！",
+	"tra_cuu": "搜索",
+	"ket_qua_tra_cuu": "搜索結果",
+	"xep_hang_quyen_luc_ho_chieu": "護照權力排名",
+	"khong_tim_thay_thong_tin": "沒有找到信息！",
+	"mien_thi_thuc": "顯示",
+	"thi_thuc_nhap_canh_tai_san_bay": "進入國家",
+	"yeu_cau_thi_thuc": "要求",
+	"xem_danh_sach_cac_quoc_gia_mien_yeu_cau_thi_thuc": "查看免費/要求簽證的國家列表",
+	"an_danh_sach_cac_quoc_gia_mien_yeu_cau_thi_thuc": "隱藏免費/要求簽證的國家列表"
 }
