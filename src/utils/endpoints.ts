@@ -13,8 +13,16 @@ const endpoints = {
 		'zh-cn': '/pages/7069',
 		en: '/pages/7070',
 	},
-	compareProgramsPage: '/pages/1621',
-	comparePrograms: '/comparep-rograms',
+	compareProgramsPage: {
+		page: {
+			zh: '/pages/7239',
+			'zh-cn': '/pages/7242',
+			en: '/pages/7244',
+		}
+	},
+	comparePrograms: {
+		get: (locale: 'zh' | 'zh-cn' | 'en') => `/comparep-rograms?lang=${locale}`,
+	},
 	homeFeatured: '/home-featured',
 	contactForm: {
 		id: '317',
@@ -48,6 +56,26 @@ const endpoints = {
 			'zh-cn': '/pages/7222',
 			en: '/pages/7224',
 		}
+	},
+	australianRealEstate: {
+		page: {
+			zh: '/pages/7230?acf_format=standard',
+			'zh-cn': '/pages/7233?acf_format=standard',
+			en: '/pages/7235?acf_format=standard',
+		},
+		metadata: {
+			zh: '/pages/7230',
+			'zh-cn': '/pages/7233',
+			en: '/pages/7235',
+		}
+	},
+	contactPage: {
+		zh: '/pages/7269',
+		'zh-cn': '/pages/7271',
+		en: '/pages/7264',
+	},
+	settlementTaxonomies: {
+		get: (locale: 'zh' | 'zh-cn' | 'en') => `/taxonomies-settlement?lang=${locale}`,
 	}
 }
 
