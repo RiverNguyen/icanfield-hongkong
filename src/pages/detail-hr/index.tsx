@@ -9,33 +9,36 @@ import { IDataAcfDetailHR } from '@/types/dataAcfDetailHR.interface'
 import { Breadcrumb } from '@/components/breadcrumb'
 import OurPeopleOurVoice from '@/sections/detail-hr/our-people-our-voice'
 import Service from '@/sections/detail-hr/service'
+import { useTranslations } from 'next-intl'
 
 export default function HRDetail({ data }: { data: IDataAcfDetailHR }) {
-  // Add null check for data
-  if (!data) {
-    return <div>Error: Data is undefined</div>
-  }
+	const t = useTranslations('')
 
-  const { title, acf } = data
+	// Add null check for data
+	if (!data) {
+		return <div>Error: Data is undefined</div>
+	}
 
-  return (
-    <main className='relative mt-[6.44rem] bg-background xsm:mt-[3.75rem]'>
-      <Banner banner_background={acf?.banner_background}>
-        <Breadcrumb
-          items={[
-            { label: 'Trang chủ', href: '/' },
-            { label: 'Đội ngũ', href: '/doi-ngu' },
-            { label: title || '', href: '#' },
-          ]}
-        />
-      </Banner>
-      <Personnel profile={acf?.profile} />
-      <Achievements outstanding_achievements={acf?.outstanding_achievements} />
-      <OurPeopleOurVoice our_people_our_voice={acf?.our_people_our_voice} />
-      <Success success_story={acf?.success_story} />
-      <Reviews testimonial={acf?.testimonial} />
-      <Service service={acf?.service_list} />
-      <FormContact title={acf?.title || ''} />
-    </main>
-  )
+	const { title, acf } = data
+
+	return (
+		<main className='relative mt-[6.44rem] bg-background xsm:mt-[3.75rem]'>
+			<Banner banner_background={acf?.banner_background}>
+				<Breadcrumb
+					items={[
+						{ label: t('trang_chu'), href: '/' },
+						{ label: t('doi_ngu'), href: '/team' },
+						{ label: title || '', href: '#' },
+					]}
+				/>
+			</Banner>
+			<Personnel profile={acf?.profile} />
+			<Achievements outstanding_achievements={acf?.outstanding_achievements} />
+			<OurPeopleOurVoice our_people_our_voice={acf?.our_people_our_voice} />
+			<Success success_story={acf?.success_story} />
+			<Reviews testimonial={acf?.testimonial} />
+			<Service service={acf?.service_list} />
+			<FormContact title={acf?.title || ''} />
+		</main>
+	)
 }

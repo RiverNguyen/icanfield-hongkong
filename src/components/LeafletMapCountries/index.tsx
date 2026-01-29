@@ -2,10 +2,11 @@
 import { Feature, FeatureCollection, GeoJsonObject } from 'geojson'
 import L, { GeoJSONOptions, LatLngTuple } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { GeoJSON, MapContainer, Marker } from 'react-leaflet'
 import './styles.css'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 export interface ICountry {
 	name: string
 	label?: string
@@ -67,6 +68,15 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
 	const path = usePathname() // Lấy đường dẫn hiện tại (vd: "/tour-nuoc-ngoai")
 	const segment = path?.split('/').filter(Boolean)[0] // Lấy phần đầu tiên sau "/"
 	const currentPath = `/${segment}` // Lấy đường dẫn hiện tại không bao gồm phần query string
+
+	// States to highlight from dataCountry (use location_name_en for GeoJSON matching)
+	const dataCountryStateNames = useMemo(() => {
+		if (!Array.isArray(dataCountry) || dataCountry.length === 0) return new Set<string>()
+		return new Set(
+			dataCountry.map((c) => (c.location_name_en || c.location_name).trim())
+		)
+	}, [dataCountry])
+
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
 			setIsMobile(window.innerWidth < 640)
@@ -109,22 +119,22 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
 		return [0, 0]
 	}, [])
 
-	const getFillColor = useCallback((feature: Feature) => {
-		if (!feature.properties) return '#f6f6f6' // Màu mặc định
-		const countryName = feature.properties.name
-		if (euCountries.has(countryName) && countryName !== 'Vietnam') {
-			return fillColor // Màu cho các quốc gia EU
-		}
-		if (countryName === 'Ohio') {
-			return fillColor // Màu cho Việt Nam
-		}
-		if (countryName === 'New York') {
-			return fillColor // Màu cho Việt Nam
-		}
-		// Xử lý màu cho các quốc gia cụ thể
-		const specialColors: { [key: string]: string } = {}
-		return specialColors[countryName] || '#F6f6f6' // Mặc định màu nền
-	}, [])
+	const getFillColor = useCallback(
+		(feature: Feature) => {
+			if (!feature.properties) return '#f6f6f6' // Màu mặc định
+			const countryName = feature.properties.name
+			if (euCountries.has(countryName) && countryName !== 'Vietnam') {
+				return fillColor
+			}
+			// Highlight states from dataCountry (API data) - works for all locales when location_name_en is set
+			if (dataCountryStateNames.has(countryName)) {
+				return fillColor
+			}
+			const specialColors: { [key: string]: string } = {}
+			return specialColors[countryName] || '#F6f6f6' // Mặc định màu nền
+		},
+		[dataCountryStateNames, fillColor]
+	)
 
 	const geoJsonStyle = useCallback((feature: Feature) => {
 		// console.log(feature)
@@ -201,7 +211,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
 	useEffect(() => {
 		handleZoomOut()
 	}, [isZoomOutClick])
-
+	const t = useTranslations()
 	return (
 		<MapContainer
 			key={isMobile ? 'mobile-map' : 'desktop-map'}
@@ -259,7 +269,7 @@ export const LeafletMapCountries: FC<ILeafletMapProps> = ({
                                       </div>
                                       <div class='flex flex-col '>
                                             <span class='text-greentext font-normal leading-[1.25] text-[1.25rem]'>${countryObj?.number_of_projects}</span>
-                                            <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>${isAustralia ? countryObj.label : 'Dự án EB-5'}</span>
+                                            <span class = 'text-tagtext leading-[1.41] tracking-[-0.00875rem] xsm:text-[0.5rem] '>${isAustralia ? countryObj.label : t('du_an_eb5')}</span>
                                       </div>
                                 </a>
                             </div>

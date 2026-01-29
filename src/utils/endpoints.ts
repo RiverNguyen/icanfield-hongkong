@@ -9,9 +9,9 @@ const endpoints = {
 		list: '/categories',
 	},
 	homepage: {
-		zh: '/pages/96',
-		'zh-cn': '/pages/7069',
-		en: '/pages/7070',
+		zh: '/pages/7295',
+		'zh-cn': '/pages/7298',
+		en: '/pages/7302',
 	},
 	compareProgramsPage: {
 		page: {
@@ -39,7 +39,11 @@ const endpoints = {
 	taxonomiesSettlement: 'nation',
 	settlementPrograms: '/settlement-programs',
 	eb5Project: {
-		page: '/pages/521?_fields=acf&acf_format=standard',
+		page: {
+			zh: '/pages/7312',
+			'zh-cn': '/pages/7314',
+			en: '/pages/7316',
+		},
 		list: '/eb5-projects',
 		categories: '/eb5-categories?_fields=id,name,slug,taxonomy',
 	},

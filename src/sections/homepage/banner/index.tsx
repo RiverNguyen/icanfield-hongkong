@@ -58,9 +58,12 @@ const BannerHomepage = ({
     setFilterOptionsLastest(updatedFilterOptions)
   }, [])
   useEffect(() => {}, [filterOptionsLastest])
-  const [openFilters, setOpenFilters] = React.useState(
-    new Array(filterOptions.length).fill(false),
-  )
+  const [openFilters, setOpenFilters] = React.useState<boolean[]>([])
+
+  useEffect(() => {
+    // Đảm bảo mảng trạng thái mở/đóng luôn khớp với số lượng filter
+    setOpenFilters(new Array(filterOptionsLastest.length).fill(false))
+  }, [filterOptionsLastest.length])
 
   const toggleDropdown = (index: number) => {
     setOpenFilters(
@@ -99,7 +102,7 @@ const BannerHomepage = ({
         (ref) => ref && !ref.contains(e.target as Node),
       )
     ) {
-      setOpenFilters(new Array(filterOptions.length).fill(false)) // Đóng tất cả dropdown
+      setOpenFilters(new Array(filterOptionsLastest.length).fill(false)) // Đóng tất cả dropdown
     }
   }
 
@@ -307,7 +310,7 @@ const BannerHomepage = ({
                     ))}
                   </div>
                 </div>
-                {filterIndex < filterOptions({locale}).length - 1 && (
+                {filterIndex < filterOptionsLastest.length - 1 && (
                   <div className='line mx-[0.5rem] h-[2.75rem] w-[0.0625rem] rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
                 )}
               </React.Fragment>
@@ -332,7 +335,7 @@ const BannerHomepage = ({
       </div>
       <div className='banner-filter-mb mx-auto flex w-[21.4375rem] -translate-y-[1.5rem] flex-col rounded-[0.75rem] bg-white p-4 shadow-[0px_-8px_60px_0px_rgba(3,33,7,0.08)] sm:hidden'>
         <div className='flex h-full flex-1 flex-col items-center justify-between'>
-          {filterOptions({locale}).map((item: FilterOption, index: number) => (
+          {filterOptionsLastest.map((item: FilterOption, index: number) => (
             <React.Fragment key={index}>
               <div
                 className='flex h-full w-full cursor-pointer rounded-[0.5rem] transition-all duration-300'
@@ -369,7 +372,7 @@ const BannerHomepage = ({
                   </div>
                 </div>
               </div>
-              {index < filterOptions({locale}).length - 1 && (
+              {index < filterOptionsLastest.length - 1 && (
                 <div className='line my-4 h-[0.0625rem] w-full rounded-[0.1875rem] bg-[rgba(0,0,0,0.10)]'></div>
               )}
             </React.Fragment>
@@ -440,7 +443,7 @@ const BannerHomepage = ({
                 className='tracking-[-0.00875rem text-brown] cursor-pointer border-b-[1px] border-[#EBEBEB] px-3 py-4 text-[0.875rem] leading-[1.5]'
                 onClick={() => {
                   handleSelect(
-                    filterOptions({locale}).findIndex(
+                    filterOptionsLastest.findIndex(
                       (filter) => filter.key === keyFilter,
                     ),
                     {...child, key: child.key || ''},
