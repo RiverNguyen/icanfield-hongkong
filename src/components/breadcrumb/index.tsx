@@ -31,9 +31,10 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({
                 key={idx}
                 className='flex items-center'
               >
-                <span className='last--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] xsm:text-[0.75rem] xsm:leading-[150%]'>
-                  {item.label}
-                </span>
+                <span
+                  dangerouslySetInnerHTML={{__html: item.label}}
+                  className='last--li text-[0.875rem] font-medium leading-[1.5] tracking-[-0.0175rem] xsm:text-[0.75rem] xsm:leading-[150%]'
+                ></span>
               </li>
             )
           } else {
@@ -46,9 +47,8 @@ export const Breadcrumb: FC<IBreadcrumbProps> = ({
                       {'text-white/80': idx !== items.length - 1},
                     )}
                     href={item.href}
-                  >
-                    {item.label}
-                  </Link>
+                    dangerouslySetInnerHTML={{__html: item.label}}
+                  ></Link>
                 </li>
                 <li className='flex items-center'>
                   <span

@@ -1,34 +1,42 @@
-import IndexPassport from '@/pages/passport/IndexPassport'
+import IndexPassport from '@/views/passport/IndexPassport'
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
-export async function generateMetadata() {
-  const res = await getMetadata('/pages/1632')
-  return metadataValues(res)
+import endpoints from '@/utils/endpoints'
+export async function generateMetadata({
+	params,
+}: {
+	params: { locale: 'zh' | 'zh-cn' | 'en' }
+}) {
+	const { locale } = await params
+	const res = await getMetadata(endpoints.passportPage[locale])
+	return metadataValues(res)
 }
-const Page = async () => {
-  const requestTaxonomies = {
-    api: '/taxonomies-settlement',
-    option: {
-      revalidate: 10,
-    },
-  }
-  const [dataTaxonomies, dataAcf] = await Promise.all([
-    fetchData(requestTaxonomies),
-    fetchDataACF({
-      api: '/pages/1632?_fields=acf&acf_format=standard',
-      option: {
-        next: { revalidate: 10}
-      },
-    }),
-  ])
-  return (
-    <IndexPassport
-      dataAcf={dataAcf.acf}
-      dataNationSettlement={dataTaxonomies?.nation}
-    />
-  )
+export default async function Page({
+	params,
+}: {
+	params: { locale: 'zh' | 'zh-cn' | 'en' }
+}) {
+	const { locale } = await params
+	const [dataTaxonomies, dataAcf] = await Promise.all([
+		fetchData({
+			api: endpoints.settlementTaxonomies.get(locale as 'zh' | 'zh-cn' | 'en'),
+			option: {
+				next: { revalidate: 10 },
+			},
+		}),
+		fetchDataACF({
+			api: endpoints.passportPage[locale] + '?_fields=acf&acf_format=standard',
+			option: {
+				next: { revalidate: 10 },
+			},
+		}),
+	])
+	return (
+		<IndexPassport
+			dataAcf={dataAcf.acf}
+			dataNationSettlement={dataTaxonomies?.nation}
+		/>
+	)
 }
-
-export default Page

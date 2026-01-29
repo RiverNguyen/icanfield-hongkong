@@ -72,7 +72,7 @@ export const SuccessPopup: FC<ISuccessPopupProps> = ({
           <CloseIcon className='size-[1.5rem]' />
         </button>
         <div className='flex space-x-[0.75rem]'>
-          {socials.map((item, index) => (
+          {Array.isArray(socials) && socials.map((item, index) => (
             <Link
               key={index}
               href={item.link}

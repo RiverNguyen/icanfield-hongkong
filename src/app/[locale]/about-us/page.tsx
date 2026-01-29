@@ -1,21 +1,34 @@
 import fetchDataACF from '@/fetch/fetchDataACF'
-import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
+import IndexAboutUs from '@/views/about-us/IndexAboutUs'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
-export async function generateMetadata() {
-  const res = await getMetadata('/pages/101')
-  return metadataValues(res)
+import endpoints from '@/utils/endpoints'
+
+interface PageProps {
+	params: {
+		locale: 'zh' | 'zh-cn' | 'en'
+	}
 }
-const page = async () => {
-  const [dataAcf] = await Promise.all([
-    fetchDataACF({
-      api: '/pages/101?acf_format=standard',
-      option: {
-        next: {revalidate: 10},
-      },
-    }),
-  ])
-  return <IndexAboutUs dataAcf={dataAcf?.acf} />
+
+export async function generateMetadata({ params }: PageProps) {
+	const { locale } = params
+	const res = await getMetadata(endpoints.aboutUs.metadata[locale])
+	return metadataValues(res)
+}
+
+
+const page = async ({ params }: PageProps) => {
+	const { locale } = params
+
+	const [dataAcf] = await Promise.all([
+		fetchDataACF({
+			api: endpoints.aboutUs.page[locale],
+			option: {
+				next: { revalidate: 10 },
+			},
+		}),
+	])
+	return <IndexAboutUs dataAcf={dataAcf?.acf} />
 }
 
 export default page

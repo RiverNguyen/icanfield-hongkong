@@ -2,23 +2,27 @@
 
 import ImageV2 from '@/components/image/ImageV2'
 import ItemBlog from '@/components/itemBlog'
-import { cn } from '@/lib/utils'
-import { DataItem } from '@/types/blogs.interface'
-import { Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import {cn} from '@/lib/utils'
+import {DataItem} from '@/types/blogs.interface'
+import {useTranslations} from 'next-intl'
+import {Navigation, Pagination} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
 export default function RelatedArticles({
   dataRelatedPosts,
-  className
+  className,
 }: {
   dataRelatedPosts: DataItem[]
   className?: string
-  }) {
+}) {
+  const t = useTranslations()
   // console.log(dataRelatedPosts)
   return (
-    <section className={cn('pb-[11.31rem] pt-[1.5rem] xsm:pb-[2rem]', className)}>
+    <section
+      className={cn('pb-[11.31rem] pt-[1.5rem] xsm:pb-[2rem]', className)}
+    >
       <div className='flex items-center justify-between section-container xsm:mb-[1.5rem]'>
         <p className='font-optima text-orangetext-900 heading1'>
-          Các bài viết liên quan
+          {t('cac_bai_viet_lien_quan')}
         </p>
         <div className='flex items-center space-x-[0.75rem] xsm:hidden'>
           <button className='related-articles__prev h-[2.5rem] w-[2.5rem] rounded-[1.5rem] bg-[rgba(245,193,120,0.20)] flex-center'>

@@ -6,7 +6,7 @@ import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {GeoJSON, MapContainer, Marker} from 'react-leaflet'
 import './styles.css'
 import {DivIcon} from 'leaflet'
-import {ItemMap} from '@/pages/about-us/IndexAboutUs'
+import {ItemMap} from '@/views/about-us/IndexAboutUs'
 export interface ICountry {
   name: string
   label?: string
