@@ -1,7 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadata from '@/fetch/getMetadata'
-import AustralianRealEstateClone from '@/pages/australianrealestate/indexClone'
+import AustralianRealEstateClone from '@/views/australianrealestate/indexClone'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 export async function generateMetadata({ params: { locale } }: { params: { locale: 'zh' | 'zh-cn' | 'en' } }) {

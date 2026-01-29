@@ -1,11 +1,11 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
-// import PageEB5 from '@/pages/page-EB5'
+// import PageEB5 from '@/views/page-EB5'
 import { LIMIT_POSTS } from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
-import PageEB5 from '@/pages/page-EB5'
+import PageEB5 from '@/views/page-EB5'
 export async function generateMetadata({
 	params,
 }: {

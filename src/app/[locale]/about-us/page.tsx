@@ -1,5 +1,5 @@
 import fetchDataACF from '@/fetch/fetchDataACF'
-import IndexAboutUs from '@/pages/about-us/IndexAboutUs'
+import IndexAboutUs from '@/views/about-us/IndexAboutUs'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
 import endpoints from '@/utils/endpoints'

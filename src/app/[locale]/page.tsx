@@ -1,6 +1,6 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
-import HomePage from '@/pages/homepage'
+import HomePage from '@/views/homepage'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 import getMetadataPage from '@/fetch/getMetadataPage'

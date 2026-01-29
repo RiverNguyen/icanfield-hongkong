@@ -1,5 +1,5 @@
 import fetchDataACF from '@/fetch/fetchDataACF'
-import DetailEB5 from '@/pages/detail-EB5'
+import DetailEB5 from '@/views/detail-EB5'
 import { notFound } from 'next/navigation'
 import fetchData from '@/fetch/fetchData'
 import { redirect } from 'next/navigation'

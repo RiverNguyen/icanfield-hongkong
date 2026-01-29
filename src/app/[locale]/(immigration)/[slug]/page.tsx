@@ -2,7 +2,7 @@ import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadata from '@/fetch/getMetadata'
 import Header from '@/layout/header'
-import Immigration from '@/pages/immigration'
+import Immigration from '@/views/immigration'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 

@@ -1,6 +1,6 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
-import PageBlogs from '@/pages/page-blogs'
+import PageBlogs from '@/views/page-blogs'
 import {LIMIT_POSTS} from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
 import getMetadata from '@/fetch/getMetadata'

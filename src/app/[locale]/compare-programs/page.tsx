@@ -1,7 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadata from '@/fetch/getMetadata'
-import IndexComparePrograms from '@/pages/compare-programs/IndexComparePrograms'
+import IndexComparePrograms from '@/views/compare-programs/IndexComparePrograms'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 

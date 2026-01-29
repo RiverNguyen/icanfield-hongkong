@@ -1,7 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadataPage from '@/fetch/getMetadataPage'
-import AustralianRealEstate from '@/pages/australianrealestate'
+import AustralianRealEstate from '@/views/australianrealestate'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 

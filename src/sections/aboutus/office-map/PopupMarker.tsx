@@ -13,7 +13,7 @@ import { Swiper as SwiperType } from 'swiper/types'
 import ImageV2 from '@/components/image/ImageV2'
 // import {ItemOfficeData} from '@/sections/homepage/map-discover/dataMap.interface'
 import { ImageHeader } from '@/types/dataHeader.interface'
-import { ItemMap } from '@/pages/about-us/IndexAboutUs'
+import { ItemMap } from '@/views/about-us/IndexAboutUs'
 import { useTranslations } from 'next-intl'
 
 type PopupMarkerProps = {

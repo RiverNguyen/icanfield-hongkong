@@ -1,4 +1,4 @@
-import IndexPassport from '@/pages/passport/IndexPassport'
+import IndexPassport from '@/views/passport/IndexPassport'
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadata from '@/fetch/getMetadata'

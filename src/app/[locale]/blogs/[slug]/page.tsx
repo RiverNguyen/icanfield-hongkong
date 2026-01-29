@@ -1,4 +1,4 @@
-import IndexDetailBlog from '@/pages/detail-blog'
+import IndexDetailBlog from '@/views/detail-blog'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
 import fetchData from '@/fetch/fetchData'

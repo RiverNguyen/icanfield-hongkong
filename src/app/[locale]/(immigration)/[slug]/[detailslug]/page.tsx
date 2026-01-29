@@ -1,7 +1,7 @@
 import fetchData from '@/fetch/fetchData'
 import fetchDataACF from '@/fetch/fetchDataACF'
 import getMetadata from '@/fetch/getMetadata'
-import DetailSettlementPrograms from '@/pages/detail-settlement-programs'
+import DetailSettlementPrograms from '@/views/detail-settlement-programs'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 

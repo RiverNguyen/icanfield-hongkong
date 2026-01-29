@@ -4,7 +4,7 @@ import { LIMIT_POSTS } from '@/sections/blogs/constant'
 import endpoints from '@/utils/endpoints'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
-import PageEB5Clone from '@/pages/page-EB5/indexClone'
+import PageEB5Clone from '@/views/page-EB5/indexClone'
 export async function generateMetadata() {
 	const res = await getMetadata('/pages/521')
 	return metadataValues(res)

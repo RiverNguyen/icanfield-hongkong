@@ -1,6 +1,6 @@
 import fetchData from '@/fetch/fetchData'
 import getMetadata from '@/fetch/getMetadata'
-import HRDetail from '@/pages/detail-hr'
+import HRDetail from '@/views/detail-hr'
 import metadataValues from '@/utils/metadataValues'
 import {notFound} from 'next/navigation'
 

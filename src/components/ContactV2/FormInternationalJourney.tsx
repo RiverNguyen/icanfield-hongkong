@@ -94,7 +94,7 @@ const FormInternationalJourney = ({
 
 			// Gửi yêu cầu
 			const request = new CF7Request(values)
-			const response = await request.send(endpoints.contactForm)
+			await request.send(endpoints.contactForm)
 
 			// Cập nhật trạng thái khi gửi thành công
 			setIsSubmitting({ isSubmitting: false, isSuccess: true })
