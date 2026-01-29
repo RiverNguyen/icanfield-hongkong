@@ -2,9 +2,15 @@ import fetchData from '@/fetch/fetchData'
 import SearchResult from '@/sections/searchResult'
 import endpoints from '@/utils/endpoints'
 import { Suspense } from 'react'
-export default async function page() {
+
+export default async function page({
+	params,
+}: {
+	params: Promise<{ locale: 'zh' | 'zh-cn' | 'en' }>
+}) {
+	const { locale } = await params
 	const FilterBanner = {
-		api: endpoints.filter,
+		api: `${endpoints.filter}?lang=${locale}`,
 		option: {
 			next: { revalidate: 10 },
 		},

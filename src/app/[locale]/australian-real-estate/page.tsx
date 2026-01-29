@@ -21,7 +21,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 export default async function page({ params: { locale } }: { params: { locale: 'zh' | 'zh-cn' | 'en' } }) {
 	const requestTaxonomies = {
-		api: '/taxonomies-settlement',
+		api: `/taxonomies-settlement?lang=${locale}`,
 		option: {
 			next: { revalidate: 10 },
 		},

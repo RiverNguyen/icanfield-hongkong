@@ -487,53 +487,30 @@ const data = {
 	},
 }
 
-const why_choose_us = {
-	title: 'Vì sao lựa chọn chúng tôi',
-	description:
-		'Icanfield mở ra cánh cửa đến cuộc sống chất lượng, cơ hội phát triển toàn diện và môi trường lý tưởng cho cả gia đình bạn. Cùng khám phá những lợi thế vượt trội từ các chương trình định cư hàng đầu.',
-	logo: {
-		ID: 88,
-		id: 88,
-		title: 'bacgroud',
-		filename: 'sss',
-		filesize: 59961081,
-		url: 'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-logo.webp',
-		link: 'string',
-		alt: 'string',
-
-		author: 'string',
-		description: 'string',
-		caption: 'string',
-		name: 'string',
-		status: 'string',
-		uploaded_to: 1,
-		date: 'string',
-		modified: 'string',
-		menu_order: 1,
-		mime_type: 'string',
-		type: 'string',
-		subtype: 'string',
-		icon: 'string',
-		width: 1622,
-		height: 800,
-	},
-	items: [
-		{
-			title: 'Dịch vụ uy tín',
-			description:
-				'Với nhiều năm kinh nghiệm trong lĩnh vực di trú và định cư, iCanfield cam kết mang đến giải pháp tối ưu và đáng tin cậy cho bạn.',
-		},
-		{
-			title: 'Hỗ trợ toàn diện',
-			description:
-				'Chúng tôi hỗ trợ từ tư vấn ban đầu, xử lý hồ sơ, đến hoàn thiện thủ tục, đảm bảo bạn luôn được chăm sóc chu đáo nhất.',
-		},
-		{
-			title: 'Đa dạng lựa chọn',
-			description:
-				'Từ chương trình định cư, du học đến cơ hội đầu tư, iCanfield cung cấp nhiều giải pháp linh hoạt cho từng cá nhân và gia đình.',
-		},
-	],
+const why_choose_us_logo = {
+	ID: 88,
+	id: 88,
+	title: 'bacgroud',
+	filename: 'sss',
+	filesize: 59961081,
+	url: 'https://cms.icanfield.okhub-tech.com/wp-content/uploads/2025/01/d-logo.webp',
+	link: 'string',
+	alt: 'string',
+	author: 'string',
+	description: 'string',
+	caption: 'string',
+	name: 'string',
+	status: 'string',
+	uploaded_to: 1,
+	date: 'string',
+	modified: 'string',
+	menu_order: 1,
+	mime_type: 'string',
+	type: 'string',
+	subtype: 'string',
+	icon: 'string',
+	width: 1622,
+	height: 800,
 }
 interface dataAcf {
 	banner_australia: {
@@ -594,8 +571,28 @@ export default function AustralianRealEstate({
 	const dataInvestment = {
 		data: { ...dataAcf?.investment_process_australia?.safety_standards },
 	}
-
 	const t = useTranslations()
+
+	const why_choose_us = {
+		title: t('australian_why_choose_us_title'),
+		description: t('australian_why_choose_us_description'),
+		logo: why_choose_us_logo,
+		items: [
+			{
+				title: t('australian_why_choose_us_item1_title'),
+				description: t('australian_why_choose_us_item1_description'),
+			},
+			{
+				title: t('australian_why_choose_us_item2_title'),
+				description: t('australian_why_choose_us_item2_description'),
+			},
+			{
+				title: t('australian_why_choose_us_item3_title'),
+				description: t('australian_why_choose_us_item3_description'),
+			},
+		],
+	}
+
 	return (
 		<main className='bg-background'>
 			<Banner

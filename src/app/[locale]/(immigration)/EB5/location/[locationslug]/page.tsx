@@ -9,30 +9,30 @@ export async function generateMetadata() {
 	const res = await getMetadata('/pages/521')
 	return metadataValues(res)
 }
-export default async function page(slug: any) { //eslint-disable-line
+export default async function page({ params }: { params: { locale: 'zh' | 'zh-cn' | 'en', locationslug: string } }) { //eslint-disable-line
 	// console.log(slug)
 	try {
 		const req = [
 			fetchDataACF({
-				api: endpoints.eb5Project.page,
+				api: endpoints.eb5Project.page[params.locale],
 				option: {
 					next: { revalidate: 10 },
 				},
 			}),
 			fetchDataACF({
-				api: endpoints.eb5Project.categories,
+				api: endpoints.eb5Project.categories + `&lang=${params.locale}`,
 				option: {
 					next: { revalidate: 10 },
 				},
 			}),
 			fetchData({
-				api: endpoints.eb5Project.list + `?tax=eb5-location&eb5-location=${slug?.params?.locationslug}&page=1&limit=${LIMIT_POSTS}`,
+				api: endpoints.eb5Project.list + `?tax=eb5-location&eb5-location=${params.locationslug}&page=1&limit=${LIMIT_POSTS}&lang=${params.locale}`,
 				option: {
 					next: { revalidate: 10 },
 				},
 			}),
 			fetchData({
-				api: '/eb5-location',
+				api: '/eb5-location?lang=' + params.locale,
 				option: {
 					next: { revalidate: 10 },
 				},
