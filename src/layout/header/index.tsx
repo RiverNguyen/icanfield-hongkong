@@ -263,6 +263,10 @@ const Header = ({
     }
   }, [data?.language?.languages])
 
+  const outstandingPosts = Array.isArray(data?.news_business?.outstanding_news)
+    ? data.news_business.outstanding_news
+    : []
+
   const clearCookies = () => {
     const cookies = document.cookie.split(';')
     for (let i = 0; i < cookies.length; i++) {
@@ -330,7 +334,7 @@ const Header = ({
                   delay: 2500,
                   disableOnInteraction: false,
                 }}
-                loop={true}
+                loop={outstandingPosts.length > 1}
                 direction={'vertical'}
                 pagination={{
                   clickable: true,

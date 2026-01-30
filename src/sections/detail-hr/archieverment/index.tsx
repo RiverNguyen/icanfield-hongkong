@@ -59,8 +59,8 @@ export default function Achievements({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Arrow Left'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 object-cover'
             />
           </button>
@@ -68,8 +68,8 @@ export default function Achievements({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Arrow Right'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 rotate-180 object-cover'
             />
           </button>
@@ -111,7 +111,9 @@ export default function Achievements({
                         />
                         <div
                           className='w-[26rem] text-center text-[1.375rem] font-bold not-italic leading-[150%] text-white xsm:w-[19.3125rem] xsm:text-[1rem]'
-                          dangerouslySetInnerHTML={{__html: item?.description || ''}}
+                          dangerouslySetInnerHTML={{
+                            __html: item?.description || '',
+                          }}
                         ></div>
                       </div>
                     </div>
@@ -135,8 +137,8 @@ export default function Achievements({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Prev'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-[1.5rem] object-cover xsm:size-[1.2rem]'
             />
           </button>
@@ -147,8 +149,8 @@ export default function Achievements({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Next'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-[1.5rem] rotate-180 object-cover xsm:size-[1.2rem]'
             />
           </button>

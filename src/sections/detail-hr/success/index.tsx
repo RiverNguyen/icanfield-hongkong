@@ -94,8 +94,8 @@ export default function Success({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Prev'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 object-cover'
             />
           </button>
@@ -103,8 +103,8 @@ export default function Success({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Next'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 rotate-180 object-cover'
             />
           </button>

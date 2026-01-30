@@ -37,8 +37,10 @@ const ImageV2 = ({
     <NextImage
       src={imgSrc || fallbackImage}
       {...rest}
-      placeholder='blur'
-      blurDataURL={fallbackImg}
+      {...( !fill && Number(width) >= 40 && Number(height) >= 40
+        ? { placeholder: 'blur', blurDataURL: fallbackImg }
+        : {}
+      )}
       onError={handleError}
       loading='lazy'
       style={{
