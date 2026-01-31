@@ -6,6 +6,7 @@ import useIsMobile from '@/hooks/useIsMobile'
 import 'swiper/css'
 import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
 import {Media} from '@/types/image.interface'
+import {useTranslations} from 'next-intl'
 
 const InfoItem = ({
   thumbnail,
@@ -26,8 +27,8 @@ const InfoItem = ({
           <ImageV2
             alt={title}
             src='/imgs/detail-eb5/check.svg'
-            width={24}
-            height={24}
+            width={40}
+            height={40}
             className='h-6 w-6 xsm:h-4 xsm:w-4'
           />
         </div>
@@ -84,16 +85,16 @@ const ProjectSlider = ({images}: ProjectSliderProps) => {
         <ImageV2
           src='/icons/detail-eb5/arrow-left.svg'
           alt='arrow'
-          width={24}
-          height={24}
+          width={40}
+          height={40}
         />
       </button>
       <button className='image-next absolute right-5 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#FEEFD9] xsm:hidden'>
         <ImageV2
           src='/icons/detail-eb5/arrow-left.svg'
           alt='arrow'
-          width={24}
-          height={24}
+          width={40}
+          height={40}
           className='rotate-180 transform'
         />
       </button>
@@ -108,6 +109,7 @@ const ProjectOverview = ({
   outstanding: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding']
   overview: IDataAcfDetailEB5['acf']['eb5_projects_detail_overview']
 }) => {
+  const t = useTranslations()
   return (
     <section>
       <div className='relative z-[21] -mt-[20.25rem] flex flex-col space-y-16 overflow-hidden rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 section-container xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
@@ -131,9 +133,11 @@ const ProjectOverview = ({
           </h1>
           <div className='text-greyscaletext-body body16 xsm:body-14'>
             {overview.description ? (
-              <span dangerouslySetInnerHTML={{__html: overview.description || ''}} />
+              <span
+                dangerouslySetInnerHTML={{__html: overview.description || ''}}
+              />
             ) : (
-              <p>No description available</p>
+              <p>{t('khong_co_mo_ta')}</p>
             )}
           </div>
         </div>

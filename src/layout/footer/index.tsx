@@ -192,7 +192,7 @@ export default function Footer({dataFooter}: {dataFooter: dataFooter}) {
             {dataFooter?.watermark || ''}
           </p>
           <div className='flex items-center space-x-[0.75rem] xsm:mb-[1rem]'>
-            {dataFooter?.social?.map((e: social, index: number) => (
+            {Array.isArray(dataFooter?.social) && dataFooter.social.map((e: social, index: number) => (
               <Link
                 key={index}
                 href={e?.link}

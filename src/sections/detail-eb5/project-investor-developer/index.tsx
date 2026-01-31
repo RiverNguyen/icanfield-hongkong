@@ -3,6 +3,7 @@ import ImageV2 from '@/components/image/ImageV2'
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs'
 import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
 import {useState} from 'react'
+import {useTranslations} from 'next-intl'
 
 export type ProjectInvestorDeveloperProps = {
   title: string
@@ -33,6 +34,7 @@ const ProjectInvestorDeveloper = ({
   development,
 }: IDataAcfDetailEB5['acf']['eb5_projects_detail_quality']) => {
   const [tab, setTab] = useState<'investor' | 'developer'>('investor')
+  const t = useTranslations()
   return (
     <div className='relative flex h-fit w-full flex-col items-start p-20 xsm:mt-[2.5rem] xsm:h-auto xsm:flex-col xsm:items-start xsm:p-0'>
       <ImageV2
@@ -70,7 +72,7 @@ const ProjectInvestorDeveloper = ({
                   {investor.name}
                 </h3>
                 <p className='mt-1 font-medium text-white/85 body-14 xsm:sub-12-m'>
-                  Chủ đầu tư dự án
+                  {t('chu_dau_tu_du_an')}
                 </p>
               </div>
             ) : (
@@ -148,7 +150,7 @@ const ProjectInvestorDeveloper = ({
             )}
           </div>
         </div>
-        <div className='h-[33.3125rem] flex-1 rounded-3xl bg-orangetext-50 xsm:rounded-b-none xsm:h-fit'>
+        <div className='h-[33.3125rem] flex-1 rounded-3xl bg-orangetext-50 xsm:h-fit xsm:rounded-b-none'>
           <Tabs
             onValueChange={(value) => setTab(value as 'investor' | 'developer')}
             value={tab}
@@ -156,16 +158,16 @@ const ProjectInvestorDeveloper = ({
           >
             <TabsList className='grid h-auto w-full grid-cols-2 p-3 xsm:p-2'>
               <TabsTrigger
-                className='heading3-s uppercase data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
+                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold uppercase text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='investor'
               >
-                Chủ đầu tư dự án
+                {t('chu_dau_tu_du_an')}
               </TabsTrigger>
               <TabsTrigger
-                className='heading3-s uppercase data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
+                className='heading3-s data-[state=active]:shadow-SHADOW rounded-2xl py-5 font-semibold uppercase text-[#12121261] flex-center data-[state=active]:bg-white data-[state=active]:text-Phase-1-Brown xsm:py-4 xsm:text-sm xsm:leading-[1.4] xsm:tracking-[-0.0175rem]'
                 value='developer'
               >
-                Đơn vị phát triển dự án
+                {t('don_vi_phat_trien_du_an')}
               </TabsTrigger>
             </TabsList>
             <TabsContent

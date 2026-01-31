@@ -33,8 +33,8 @@ export default function Reviews({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Prev'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 object-cover'
             />
           </button>
@@ -45,8 +45,8 @@ export default function Reviews({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Next'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 rotate-180 object-cover'
             />
           </button>
@@ -82,7 +82,7 @@ export default function Reviews({
                   <ImageV2
                     src={feedback?.image?.url}
                     alt={feedback?.image?.alt}
-                    width={feedback?.image?.width || 1000 }
+                    width={feedback?.image?.width || 1000}
                     height={feedback?.image?.height || 1000}
                     className='h-[13.5rem] w-[16rem] rounded-xl object-cover xsm:h-[10.8125rem] xsm:w-full'
                   />

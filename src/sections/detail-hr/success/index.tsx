@@ -17,7 +17,7 @@ import {IDataAcfDetailHR, IPost} from '@/types/dataAcfDetailHR.interface'
 
 const SuccessCard = ({post}: {post: IPost}) => (
   <Link
-    href={`/tin-tuc/${post?.slug}`}
+    href={`/news/${post?.slug}`}
     className='group relative flex h-[36.25rem] w-full flex-shrink-0 cursor-pointer flex-col items-start overflow-hidden rounded-[1.25rem] xsm:h-[25rem] xsm:w-[18.75rem] xsm:rounded-[1rem]'
   >
     <ImageV2
@@ -94,8 +94,8 @@ export default function Success({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Prev'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 object-cover'
             />
           </button>
@@ -103,8 +103,8 @@ export default function Success({
             <Image
               src='/icons/arrow-right-brown.svg'
               alt='Next'
-              width={24}
-              height={24}
+              width={40}
+              height={40}
               className='size-6 rotate-180 object-cover'
             />
           </button>

@@ -1,5 +1,5 @@
 import ImageV2 from '@/components/image/ImageV2'
-import {ItemMap} from '@/pages/about-us/IndexAboutUs'
+import {ItemMap} from '@/views/about-us/IndexAboutUs'
 import dynamic from 'next/dynamic'
 import {FC} from 'react'
 const IndexMap = dynamic(

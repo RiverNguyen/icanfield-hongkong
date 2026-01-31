@@ -37,6 +37,13 @@ import {languageOptions} from './constants'
 import './styles.css'
 import PopupForm from '@/components/popupAllPage'
 import LanguageSwitcher from '@/components/language-switcher'
+
+interface ILanguageSwitcher {
+  [key: string]: {
+    slug: string
+  }
+}
+
 export interface IPropsPopup {
   setting: SettingItem[]
   image_form_all: ImageHeader
@@ -45,12 +52,16 @@ const Header = ({
   data,
   dataFooter,
   dataPopup,
+  languageSwitcher,
 }: {
   data: dataHeader
   dataFooter: dataFooter
   dataPopup?: IPropsPopup
+  languageSwitcher?: ILanguageSwitcher
 }) => {
-  const listMenuMobileLast = [data?.icanfield_handbook, data?.contact]
+  const listMenuMobileLast = [data?.icanfield_handbook, data?.contact].filter(
+    Boolean,
+  )
   const [isActivedLanguage, setIsActivedLanguage] = React.useState(false) //handle language dropdown
   const [isCurrentLanguage, setIsCurrentLanguage] = React.useState(
     data?.language?.languages[0] || languageOptions[0],
@@ -214,7 +225,7 @@ const Header = ({
         window.googleTranslateElementInit = () => {
           if (!isMounted) return
 
-          const languagesString = data?.language.languages
+          const languagesString = data?.language?.languages
             .map((item: Language) => item.label.toLowerCase())
             .join(',')
 
@@ -250,7 +261,11 @@ const Header = ({
       }
       window.googleTranslateElementInit = () => {}
     }
-  }, [data?.language.languages])
+  }, [data?.language?.languages])
+
+  const outstandingPosts = Array.isArray(data?.news_business?.outstanding_news)
+    ? data.news_business.outstanding_news
+    : []
 
   const clearCookies = () => {
     const cookies = document.cookie.split(';')
@@ -294,7 +309,7 @@ const Header = ({
             <div className='relative'>
               <div className='z-1 pointer-events-none absolute top-0 h-full w-full bg-[linear-gradient(90deg,#FFF_0%,#FFF_52.5%,#FFF_100%)] opacity-[0.08]'></div>
               <Link
-                href={data?.news_business.link || '/'}
+                href={data?.news_business?.link || '/'}
                 className='flex items-center justify-center space-x-[0.62rem] p-[0.47rem_0.53rem]'
               >
                 <ImageV2
@@ -306,7 +321,7 @@ const Header = ({
                   loading='eager'
                 />
                 <span className='text-[0.75rem] font-medium uppercase leading-[1.5] text-white'>
-                  {data?.news_business.label || ''}
+                  {data?.news_business?.label || ''}
                 </span>
               </Link>
             </div>
@@ -319,7 +334,7 @@ const Header = ({
                   delay: 2500,
                   disableOnInteraction: false,
                 }}
-                loop={true}
+                loop={outstandingPosts.length > 1}
                 direction={'vertical'}
                 pagination={{
                   clickable: true,
@@ -336,7 +351,7 @@ const Header = ({
                         className='!flex !h-full !w-fit !items-center'
                       >
                         <Link
-                          href={`/tin-tuc/${item?.post_name}` || '/'}
+                          href={`/news/${item?.post_name}` || '/'}
                           className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
                         >
                           {item?.post_title}
@@ -449,7 +464,7 @@ const Header = ({
                   )}
               </div>
             </div>
-            <LanguageSwitcher />
+            <LanguageSwitcher data={languageSwitcher} />
           </div>
         </div>
       </div>
@@ -883,14 +898,14 @@ const Header = ({
             className='mb-3 mt-3 flex w-full items-center justify-between rounded-[0.75rem] bg-[#F1F0EC] p-4'
             onClick={() => {
               handleSelectChild({
-                label: data?.other_programs.label,
-                childrens: data?.other_programs.program_list,
+                label: data?.other_programs?.label,
+                childrens: data?.other_programs?.program_list,
               })
               handleToggleChild()
             }}
           >
             <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-              {data?.other_programs.label}
+              {data?.other_programs?.label}
             </span>
             <ImageV2
               src='/icons/homepage/header/arrow_normal_mb.svg'
@@ -906,14 +921,14 @@ const Header = ({
                 className='flex items-center justify-between'
                 onClick={() => {
                   handleSelectChild({
-                    label: data?.support_customer.label,
-                    childrens: data?.support_customer.list_support,
+                    label: data?.support_customer?.label,
+                    childrens: data?.support_customer?.list_support,
                   })
                   handleToggleChild()
                 }}
               >
                 <span className='line-clamp-1 text-[1rem] font-semibold leading-[1.5] tracking-[-0.01rem] text-greyscaletext-body'>
-                  {data?.support_customer.label}
+                  {data?.support_customer?.label}
                 </span>
                 <ImageV2
                   src='/icons/homepage/header/arrow_normal_mb.svg'
@@ -953,23 +968,24 @@ const Header = ({
           </div>
 
           <div className='mb-[7.5rem] mt-[2.5rem] flex items-center justify-center space-x-[0.75rem]'>
-            {dataFooter?.social.map((item: social, index: number) => (
-              <Link
-                href={item.link || '/'}
-                key={index}
-                className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)] xsm:rounded-[100%]'
-                onClick={() => handleBeforeNavigate()}
-                prefetch
-              >
-                <ImageV2
-                  src={item.icon?.url || ''}
-                  alt='logo'
-                  width={40}
-                  height={40}
-                  className='size-[1.5rem] object-contain [filter:brightness(0)_saturate(100%)_invert(15%)_sepia(58%)_saturate(1201%)_hue-rotate(345deg)_brightness(97%)_contrast(83%)]'
-                />
-              </Link>
-            ))}
+            {Array.isArray(dataFooter?.social) &&
+              dataFooter.social.map((item: social, index: number) => (
+                <Link
+                  href={item.link || '/'}
+                  key={index}
+                  className='flex size-[2.75rem] items-center justify-center rounded-[0.5rem] border-[1px] border-[rgba(0,0,0,0.10)] xsm:rounded-[100%]'
+                  onClick={() => handleBeforeNavigate()}
+                  prefetch
+                >
+                  <ImageV2
+                    src={item.icon?.url || ''}
+                    alt='logo'
+                    width={40}
+                    height={40}
+                    className='size-[1.5rem] object-contain [filter:brightness(0)_saturate(100%)_invert(15%)_sepia(58%)_saturate(1201%)_hue-rotate(345deg)_brightness(97%)_contrast(83%)]'
+                  />
+                </Link>
+              ))}
           </div>
         </div>
       </div>

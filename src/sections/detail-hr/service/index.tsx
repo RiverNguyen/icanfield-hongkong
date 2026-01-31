@@ -9,6 +9,7 @@ import useIsMobile from '@/hooks/useIsMobile'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import ServiceItem from './service-item'
 import {remToPx} from '@/utils/remToPx'
+import {useTranslations} from 'next-intl'
 
 export default function Service({
   service,
@@ -16,7 +17,7 @@ export default function Service({
   service: IDataAcfDetailHR['acf']['service_list']
 }) {
   const isMobile = useIsMobile()
-
+  const t = useTranslations('')
   return (
     <section className='relative rounded-t-[4rem] bg-white px-20 pb-[22.5rem] pt-[6.25rem] xsm:rounded-t-[1.5rem] xsm:px-4 xsm:pb-[23.125rem] xsm:pt-8'>
       {!isMobile && (
@@ -49,7 +50,7 @@ export default function Service({
           href='#'
           className='h-12 space-x-2 rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] py-2 pl-6 pr-3 text-sm font-medium leading-[150%] tracking-[-0.0175rem] text-white flex-center xsm:hidden'
         >
-          <span>Tìm hiểu thêm</span>
+          <span>{t('tim_hieu_them')}</span>
           <Image
             src={'/icons/arrow-right.svg'}
             alt='Arrow Right'
@@ -91,7 +92,7 @@ export default function Service({
           href='#'
           className='h-12 space-x-2 rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] py-2 pl-6 pr-3 text-sm font-medium leading-[150%] tracking-[-0.0175rem] text-white flex-center'
         >
-          <span>Tìm hiểu thêm</span>
+          <span>{t('tim_hieu_them')}</span>
           <Image
             src={'/icons/arrow-right.svg'}
             alt='Arrow Right'

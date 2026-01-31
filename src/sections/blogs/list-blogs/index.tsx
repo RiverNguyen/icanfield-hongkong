@@ -15,15 +15,10 @@ import {
   SortOption,
 } from '@/types/blogs.interface'
 import endpoints from '@/utils/endpoints'
+import {useTranslations} from 'next-intl'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useMemo, useRef, useState} from 'react'
 import useSWR from 'swr'
-
-const sortOptions = [
-  {name: 'Tất cả', value: 'all', orderBy: 'all'},
-  {name: 'Mới nhất', value: 'DESC', orderBy: 'date'},
-  {name: 'Phổ biến nhất', value: 'ASC', orderBy: 'index'},
-]
 
 interface IProps {
   dataPosts: ApiResponse
@@ -33,7 +28,12 @@ interface IProps {
 const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const searchParams = useSearchParams()
-
+  const t = useTranslations()
+  const sortOptions = [
+    {name: t('tat_ca'), value: 'all', orderBy: 'all'},
+    {name: t('moi_nhat'), value: 'DESC', orderBy: 'date'},
+    {name: t('pho_bien_nhat'), value: 'ASC', orderBy: 'index'},
+  ]
   const [selectedCategory, setSelectedCategory] = useState<Category>(
     dataCategories.length
       ? dataCategories[0]
@@ -84,7 +84,7 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
       className='list-blogs mb-[6.75rem] pt-[6.75rem] section-container xsm:mb-[3.25rem] xsm:pt-[3rem]'
     >
       <h2 className='mb-[1.5rem] font-optima text-[3rem] font-semibold leading-[1.2] tracking-[-0.06rem] text-brown xsm:mb-[1rem] xsm:text-[1.5rem] xsm:leading-[1.3] xsm:-tracking-[0.045rem]'>
-        Tin tức khác
+        {t('tin_tuc_khac')}
       </h2>
       <div className='list-blogs__filters relative z-20 mb-[2rem] flex sm:items-center sm:justify-between xsm:mb-[2.19rem] xsm:flex-col'>
         <IndexTabs
@@ -93,6 +93,7 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
           setSelectedCategory={setSelectedCategory}
         />
         <IndexSortAndSearchPosts
+          placeholder={t('tim_kiem_trong_danh_sach')}
           sortOptions={sortOptions}
           search={search}
           selectedSortOption={selectedSortOption}
@@ -120,7 +121,7 @@ const ListBlogs = ({dataPosts, dataCategories}: IProps) => {
               ))
             ) : (
               <div className='col-start-2 row-start-2 w-full text-center text-brown'>
-                Chưa có bài viết
+                {t('chua_co_bai_viet')}
               </div>
             )}
           </>

@@ -4,10 +4,12 @@ import {cn} from '@/lib/utils'
 import {usePathname} from 'next/navigation'
 import {useEffect, useState} from 'react'
 import {toast} from 'sonner'
+import {useTranslations} from 'next-intl'
 
 export default function Share({className}: {className?: string}) {
   const [currentUrl, setCurrentUrl] = useState('')
   const pathname = usePathname()
+  const t = useTranslations()
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const fullUrl = `${window.location.origin}${pathname}${window.location.search}`
@@ -17,7 +19,7 @@ export default function Share({className}: {className?: string}) {
   }, [])
   const handleCopuUrl = () => {
     navigator.clipboard.writeText(currentUrl)
-    toast.success('Sao chép thành công')
+    toast.success(t('sao_chep_thanh_cong'))
   }
   const handleShareToFacebook = () => {
     if (typeof window === 'undefined') return
@@ -33,7 +35,7 @@ export default function Share({className}: {className?: string}) {
         className,
       )}
     >
-      <p className='text-orangetext-900 body16-s'>Chia sẻ qua</p>
+      <p className='text-orangetext-900 body16-s'>{t('chia_se_qua')}</p>
       <div
         onClick={handleShareToFacebook}
         className='size-[2.75rem] cursor-pointer rounded-[1.9375rem] border-[1px] border-solid border-[rgba(0,0,0,0.10)] flex-center xsm:size-[2rem]'

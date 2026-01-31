@@ -27,26 +27,30 @@ import {
 import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
 
 import countryList from '@/sections/passport/research/countrylist.json'
+import countryListZh from '@/sections/passport/research/countrylist_zh_full.json'
+import countryListZhCn from '@/sections/passport/research/countrylist_zh_cn_full.json'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect, useState} from 'react'
 import ICSearch from '@/components/icon/ICSearch'
-
-const FormSchema = z.object({
-  postal: z.string({
-    required_error: 'Please select a country.',
-  }),
-})
+import {useLocale, useTranslations} from 'next-intl'
 
 interface IProps {
   setCodePostal: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 const SearchPassport = ({setCodePostal}: IProps) => {
+  const t = useTranslations('')
+  const locale = useLocale()
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()
-
   const [open, setOpen] = useState(false)
+
+  const FormSchema = z.object({
+    postal: z.string({
+      required_error: t('vui_long_chon_quoc_gia'),
+    }),
+  })
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -70,16 +74,22 @@ const SearchPassport = ({setCodePostal}: IProps) => {
     })
   }
 
+  const countries =
+    locale === 'zh'
+      ? countryListZh
+      : locale === 'zh-cn'
+        ? countryListZhCn
+        : countryList
+
   function handleFindCountry(postal: string) {
-    const countryCurrent = countryList?.find(
-      (item: any) => item.code === postal,
-    )
-    return countryCurrent?.name || 'Not found!'
+    const countryCurrent = countries?.find((item: any) => item.code === postal)
+    return countryCurrent?.name || t('khong_tim_thay')
   }
+
   return (
     <div className='rounded-[1.25rem] bg-white p-[1.5rem] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)] xsm:p-[1rem]'>
-      <h2 className='font-medium text-Phase-1-Brown heading3 xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.025rem] font-optima'>
-        Tra cứu thông tin hộ chiếu
+      <h2 className='font-optima font-medium text-Phase-1-Brown heading3 xsm:text-[1.25rem] xsm:leading-[1.3] xsm:tracking-[-0.025rem]'>
+        {t('tra_cuu_thong_tin_ho_chieu')}
       </h2>
       <Form {...form}>
         <form
@@ -92,7 +102,7 @@ const SearchPassport = ({setCodePostal}: IProps) => {
             render={({field}) => (
               <FormItem className='flex w-full flex-col space-y-0'>
                 <FormLabel className='mb-[0.75rem] mt-[1.5rem] inline-block font-optima text-tagtext body-14-m xsm:my-[1rem] xsm:text-[-0.0175rem]'>
-                  Quốc gia hộ chiếu
+                  {t('quoc_gia_ho_chieu')}
                 </FormLabel>
                 <Popover
                   open={open}
@@ -110,18 +120,18 @@ const SearchPassport = ({setCodePostal}: IProps) => {
                       >
                         {field.value
                           ? handleFindCountry(field.value)
-                          : 'Chọn quốc gia'}
+                          : t('chon_quoc_gia')}
                         <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
                   <PopoverContent className='w-[17.6875rem] bg-white p-0 xsm:w-[calc(100vw-4.2rem)]'>
                     <Command>
-                      <CommandInput placeholder='Tìm kiếm quốc gia...' />
+                      <CommandInput placeholder={t('tim_kiem_quoc_gia')} />
                       <CommandList>
-                        <CommandEmpty>Không tìm thấy!</CommandEmpty>
+                        <CommandEmpty>{t('khong_tim_thay')}</CommandEmpty>
                         <CommandGroup>
-                          {countryList?.map((country: any) => (
+                          {countries?.map((country: any) => (
                             <CommandItem
                               className='cursor-pointer lg:hover:bg-greyscaletext-50'
                               value={country?.code}
@@ -157,7 +167,7 @@ const SearchPassport = ({setCodePostal}: IProps) => {
           >
             <ICSearch className='size-[1.25rem] [&>path]:stroke-white' />
             <span className='whitespace-nowrap text-[0.875rem] font-medium leading-normal text-white'>
-              Tra cứu
+              {t('tra_cuu')}
             </span>
           </button>
         </form>
