@@ -27,8 +27,8 @@ import { useTranslations } from 'next-intl'
 const PioneeringValuesAustralia = dynamic(
 	() => import('@/sections/australian-real-estate/section-map'),
 	{
-		ssr: false, // Nếu component không cần server-side rendering
-		loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
+		ssr: false,
+		loading: () => <p>{t('dang_tai_ban_do')}</p>,
 	},
 )
 const data = {
@@ -627,7 +627,7 @@ export default function AustralianRealEstateClone({
 				}}
 			/>
 			<PioneeringValuesAustralia data={dataAcf?.section_map} dataMap={dataMap} />
-			<Suspense fallback={<p>Loading...</p>}>
+			<Suspense fallback={<p>{t('dang_tai')}</p>}>
 				<OutstandingAustraliaClone
 					listItems={dataListPost}
 					categories={data?.categories}

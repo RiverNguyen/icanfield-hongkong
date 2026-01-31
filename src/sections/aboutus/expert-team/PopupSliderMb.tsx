@@ -69,8 +69,8 @@ export default function PopupSliderMb({
         >
           <ImageV2
             className='size-[1.5rem] object-contain'
-            width={24}
-            height={24}
+            width={40}
+            height={40}
             alt=''
             src={'/icons/close.svg'}
           />

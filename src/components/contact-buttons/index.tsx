@@ -28,21 +28,21 @@ const ContactButtons = ({data}: ContactButtonsProps) => {
             isOpen
               ? 'wave bg-[linear-gradient(0deg,rgb(20_50_100/12%)_0%,rgba(246,245,242,0)_8%,rgb(20_50_100/9%)_100%)]'
               : 'shadow-[rgba(0,0,0,0.24)_0px_3px_8px]'
-          } mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-white hover:shadow-xl cursor-pointer transition-all duration-300 ease-in-out`}
+          } mb-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white transition-all duration-300 ease-in-out hover:shadow-xl`}
           onClick={handleClick}
         >
           <ImageV2
             src='/icons/buttons/close2.svg'
             alt='icon'
-            width={24}
-            height={24}
+            width={40}
+            height={40}
             className={`h-6 w-6 ${isOpen ? 'hidden' : ''}`}
           />
           <ImageV2
             src='/icons/buttons/comment2.svg'
             alt='icon'
-            width={24}
-            height={24}
+            width={40}
+            height={40}
             className={`h-6 w-6 ${isOpen ? '' : 'hidden'}`}
           />
         </div>
@@ -67,8 +67,8 @@ const ContactButtons = ({data}: ContactButtonsProps) => {
               <ImageV2
                 src={item.icon}
                 alt='icon'
-                width={24}
-                height={24}
+                width={40}
+                height={40}
                 className='h-6 w-6 [filter:_brightness(0)_saturate(100%)_invert(100%)_sepia(0%)_saturate(7500%)_hue-rotate(131deg)_brightness(111%)_contrast(111%);]'
               />
             </Link>

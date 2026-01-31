@@ -36,7 +36,7 @@ import { useLocale, useTranslations } from 'next-intl'
 
 const FormSchema = z.object({
 	postal: z.string({
-		required_error: 'Please select a country.',
+		required_error: t('vui_long_chon_quoc_gia'),
 	}),
 })
 
@@ -81,7 +81,7 @@ const SearchPassport = ({ setCodePostal }: IProps) => {
 		const countryCurrent = countries?.find(
 			(item: any) => item.code === postal,
 		)
-		return countryCurrent?.name || 'Not found!'
+		return countryCurrent?.name || t('khong_tim_thay')
 	}
 
 	return (

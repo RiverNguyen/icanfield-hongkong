@@ -18,7 +18,7 @@ export default function AsideDetail({
 	const t = useTranslations()
 	const formatDate = (dateString: string): string => {
 		if (!dateString) {
-			return 'Invalid date'
+			return t('ngay_khong_hop_le')
 		}
 		const [day, month, year] = dateString.split('/')
 		const date = new Date(`${year}-${month}-${day}`)

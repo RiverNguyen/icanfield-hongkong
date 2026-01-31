@@ -4,14 +4,18 @@ import {Breadcrumb} from '@/components/breadcrumb'
 import {Banner} from '@/sections/detail-settlement-programs/banner'
 import FormAppraisal from '@/sections/document-appraisal/FormAppraisal'
 import {Taxonomies, dataAppraisal} from '@/types/dataAppraisal.interface'
+import {useTranslations} from 'next-intl'
 
 export default function DocumentAppraisal({
   data,
   dataTaxonomies,
+  defaultCalling,
 }: {
   data: dataAppraisal
   dataTaxonomies: Taxonomies
+  defaultCalling?: string
 }) {
+  const t = useTranslations()
   return (
     <main className='bg-background'>
       <Banner
@@ -25,14 +29,15 @@ export default function DocumentAppraisal({
       >
         <Breadcrumb
           items={[
-            {label: 'Trang chủ', href: '/'},
-            {label: 'Thẩm định hồ sơ', href: ''},
+            {label: t('trang_chu'), href: '/'},
+            {label: t('tham_dinh_ho_so'), href: ''},
           ]}
         />
       </Banner>
       <FormAppraisal
         dataTaxonomies={dataTaxonomies}
         otherInformation={data?.filter_value}
+        defaultCalling={defaultCalling}
       />
       <ContactV2>
         <FormInternationalJourney

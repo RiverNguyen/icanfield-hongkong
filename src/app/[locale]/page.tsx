@@ -5,6 +5,7 @@ import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
 import getMetadataPage from '@/fetch/getMetadataPage'
 import Header from '@/layout/header'
+import { getTranslations } from 'next-intl/server'
 
 export async function generateMetadata({
 	params,
@@ -32,6 +33,7 @@ export default async function Home({
 	params: { locale: 'zh' | 'zh-cn' | 'en' }
 }) {
 	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'Common' })
 	const requestFooter = {
 		api: `/footer-options?acf_format=standard&lang=${locale}`,
 		option: {
@@ -107,6 +109,6 @@ export default async function Home({
 		)
 	} catch (error) {
 		console.error('Error fetching data:', error)
-		return <div>Error loading page content.</div>
+		return <div>{t('loi_tai_trang')}</div>
 	}
 }

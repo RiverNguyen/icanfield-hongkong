@@ -22,8 +22,8 @@ import { useTranslations } from 'next-intl'
 const PioneeringValues = dynamic(
 	() => import('@/sections/EB5/pioneering-values'),
 	{
-		ssr: false, // Nếu component không cần server-side rendering
-		loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
+		ssr: false,
+		loading: () => <p>{t('dang_tai_ban_do')}</p>,
 	},
 )
 
@@ -65,7 +65,7 @@ const PageEB5: FC<IPageEB5Props> = ({ data }) => {
 				data={data?.section_map}
 				dataMap={data?.dataMap || []}
 			/>
-			<Suspense fallback={<p>Loading...</p>}>
+			<Suspense fallback={<p>{t('dang_tai')}</p>}>
 				<OutstandingProjectEB5
 					listItems={data?.listItems}
 					categories={data?.categories}
