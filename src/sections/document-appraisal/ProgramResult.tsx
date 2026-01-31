@@ -8,8 +8,8 @@ import {
 } from '@/types/dataAppraisal.interface'
 import {cn} from '@/lib/utils'
 import Link from 'next/link'
-import {useTranslations} from 'next-intl'
 import {useRef, useState} from 'react'
+import {useLocale} from 'next-intl'
 
 // Status badge component
 function StatusBadge({
@@ -44,7 +44,7 @@ function ExplanationItem({
   t,
 }: {
   explanation: AppraisalProgram['explanations'][0]
-  t: ReturnType<typeof useTranslations>
+  t: (arg: string) => string
 }) {
   const statusStyles = {
     pass: 'bg-green-50 border-green-200 text-green-800',
@@ -126,16 +126,17 @@ function ProgramCard({
   isMobile,
 }: {
   program: AppraisalProgram
-  t: ReturnType<typeof useTranslations>
+  t: (arg: string) => string
   isMobile: boolean
 }) {
+  const locale = useLocale()
   const [showExplanations, setShowExplanations] = useState(false)
 
   // Calculate total contribution from passed explanations
   const passedContributions = program.explanations
     .filter((e) => e.status === 'pass' || e.status === 'soft')
     .reduce((sum, e) => sum + (e.contribution || 0), 0)
-
+  const href = `${locale === 'zh' ? `/${program.nation}/${program.slug}` : `/${locale}/${program.nation}/${program.slug}`}`
   return (
     <div
       className={cn(
@@ -146,7 +147,7 @@ function ProgramCard({
       {/* Image & Title Section */}
       <div className='relative'>
         <Link
-          href={`/${program.nation}/${program.slug}`}
+          href={href}
           className='block h-[18.5625rem] w-full xsm:h-[14.25rem]'
         >
           <ImageV2
@@ -226,7 +227,7 @@ function ProgramCard({
           <span className='text-brown body-14-m'>{t('lien_he_tu_van')}</span>
         </Link>
         <Link
-          href={`${t('slug')}/${program.nation}/${program.slug}`}
+          href={href}
           className='flex items-center gap-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] px-[1.5rem] py-[0.5rem]'
         >
           <span className='text-white body-14-m'>{t('xem_chi_tiet')}</span>
@@ -239,12 +240,13 @@ function ProgramCard({
 
 export default function ProgramResult({
   appraisalResponse,
+  t,
 }: {
   appraisalResponse: AppraisalResponse
+  t: (arg: string) => string
 }) {
   const isMobile = useIsMobile()
   const elemtRef = useRef<HTMLDivElement>(null)
-  const t = useTranslations()
 
   if (!appraisalResponse) {
     return <div></div>
