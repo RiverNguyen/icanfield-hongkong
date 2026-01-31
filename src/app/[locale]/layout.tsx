@@ -40,7 +40,13 @@ const HTML_LOCALES = {
   'zh-cn': 'zh-Hans',
   en: 'en-US',
 }
+
+// ✅ ISR + Dynamic params - an toàn cho build
+export const dynamicParams = true
+export const revalidate = 60
+
 export function generateStaticParams() {
+  // ✅ KHÔNG gọi API - chỉ return locales từ config
   return routing.locales.map((locale) => ({locale}))
 }
 export default async function LocaleLayout({
