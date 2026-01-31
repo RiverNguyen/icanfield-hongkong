@@ -5,8 +5,29 @@ import { useEffect, useState } from 'react'
 
 export default function IndexAside({ htmlString }: { htmlString: string }) {
   const [activeSection, setActiveSection] = useState<string>('')
+  const [mounted, setMounted] = useState(false)
+  const [headings, setHeadings] = useState<{ text: string; id: string; level: string }[]>([])
 
   useEffect(() => {
+    setMounted(true)
+    const headingRegex = /<(h2|h3)[^>]*>(.*?)<\/\1>/g
+    const tempHeadings: { text: string; id: string; level: string }[] = []
+    let match
+    let index = 1
+
+    while ((match = headingRegex.exec(htmlString)) !== null) {
+      tempHeadings.push({
+        text: match[2].trim(),
+        id: `section-${index}`,
+        level: match[1]
+      })
+      index++
+    }
+    setHeadings(tempHeadings)
+  }, [htmlString])
+
+  useEffect(() => {
+    if (!mounted) return
     const sections = document.querySelectorAll('h2, h3')
     const observer = new IntersectionObserver(
       (entries) => {
@@ -23,21 +44,7 @@ export default function IndexAside({ htmlString }: { htmlString: string }) {
     return () => {
       sections.forEach((section) => observer.unobserve(section))
     }
-  }, [])
-
-  const headingRegex = /<(h2|h3)[^>]*>(.*?)<\/\1>/g
-  const headings: { text: string; id: string; level: string }[] = []
-  let match
-  let index = 1
-
-  while ((match = headingRegex.exec(htmlString)) !== null) {
-    headings.push({
-      text: match[2].trim(),
-      id: `section-${index}`,
-      level: match[1] // h2 or h3
-    })
-    index++
-  }
+  }, [mounted])
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
@@ -47,6 +54,10 @@ export default function IndexAside({ htmlString }: { htmlString: string }) {
         behavior: 'smooth'
       })
     }
+  }
+
+  if (!mounted) {
+    return null // Render nothing on server to avoid hydration mismatch
   }
 
   return (
@@ -75,6 +86,7 @@ export default function IndexAside({ htmlString }: { htmlString: string }) {
                 : '!text-[#ad6903] [&_*]:!text-[#ad6903]'
             )}
             dangerouslySetInnerHTML={{ __html: content?.text || '' }}
+            suppressHydrationWarning
           />
         </li>
       ))}
