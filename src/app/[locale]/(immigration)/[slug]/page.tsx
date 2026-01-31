@@ -107,7 +107,9 @@ export default async function page({
         '?page=1&per_page=8&order=asc&' +
         endpoints.taxonomiesSettlement +
         '=' +
-        params?.slug,
+        params?.slug +
+        '&lang=' +
+        locale,
       option: {
         next: {revalidate: 10},
       },
@@ -143,7 +145,7 @@ export default async function page({
     redirect('/')
   }
 
-  console.log('dataLanguageSwitcher', dataLanguageSwitcher)
+  console.log('dataPrograms', dataPrograms)
 
   return (
     <>
@@ -154,6 +156,7 @@ export default async function page({
         languageSwitcher={dataLanguageSwitcher}
       />
       <Immigration
+        locale={locale}
         slug={params?.slug}
         dataImmigration={dataAcf[0]}
         dataPrograms={dataPrograms}
