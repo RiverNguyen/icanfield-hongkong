@@ -85,13 +85,21 @@ export default async function page({
       next: {revalidate: 60},
     },
   }
-  const [dataFooter, dataHeader, dataPopup, dataLanguageSwitcher] =
-    await Promise.all([
-      fetchData(requestFooter),
-      fetchData(requestHeader),
-      fetchData(requestPopup),
-      fetchData(requestLanguageSwitcher),
-    ])
+
+  // ✅ Fetch footer, header, popup song song
+  const [dataFooter, dataHeader, dataPopup] = await Promise.all([
+    fetchData(requestFooter),
+    fetchData(requestHeader),
+    fetchData(requestPopup),
+  ])
+
+  // ✅ Language switcher fetch riêng, có lỗi cũng không crash page
+  let dataLanguageSwitcher = {}
+  try {
+    dataLanguageSwitcher = await fetchData(requestLanguageSwitcher)
+  } catch (error) {
+    console.warn('language-switcher fetch failed, using empty object:', error)
+  }
   const [data] = await Promise.all([
     fetchData({
       api: '/blogs/' + locale + '/' + slug,

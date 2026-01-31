@@ -13,6 +13,7 @@ interface ImmigrationProps {
   slug: string
   postRelate: DataItem[]
   dataMap: Data
+  locale: string
 }
 
 const Immigration: React.FC<ImmigrationProps> = ({
@@ -21,6 +22,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
   slug,
   postRelate,
   dataMap,
+  locale,
 }) => {
   const t = useTranslations()
   const CanadaMap = dynamic(() => import('@/sections/immigration/map'), {
@@ -79,6 +81,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
           slug={slug}
           dataPrograms={dataPrograms}
           imgBg={dataImmigration?.acf?.banner?.image_list_program?.url}
+          locale={locale}
         />
       </Suspense>
       <ImmigrationFAQ

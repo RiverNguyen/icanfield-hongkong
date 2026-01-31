@@ -78,10 +78,12 @@ export default async function page({
 }: {
   params: {slug: string; detailslug: string; locale: string}
 }) {
+  const {locale} = await params
   try {
     const fetchProgramData = fetchData({
       api:
-        endpoints.settlementPrograms + `/${params.slug}/${params.detailslug}`,
+        endpoints.settlementPrograms +
+        `/${params.slug}/${params.detailslug}/?lang=${locale}`,
       option: {
         next: {revalidate: 10},
       },
@@ -111,6 +113,9 @@ export default async function page({
       fetchAcfNation,
       fetchData(requestTaxonomies),
     ])
+    console.log('programResponse', programResponse)
+    console.log('dataAcfNation', dataAcfNation)
+    console.log('dataTaxonomies', dataTaxonomies)
     const data = {
       ...programResponse,
       data: {
