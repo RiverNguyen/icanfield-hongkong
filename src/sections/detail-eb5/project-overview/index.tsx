@@ -6,6 +6,7 @@ import useIsMobile from '@/hooks/useIsMobile'
 import 'swiper/css'
 import {IDataAcfDetailEB5} from '@/types/dataAcfDetailEB5.interface'
 import {Media} from '@/types/image.interface'
+import {useTranslations} from 'next-intl'
 
 const InfoItem = ({
   thumbnail,
@@ -108,6 +109,7 @@ const ProjectOverview = ({
   outstanding: IDataAcfDetailEB5['acf']['eb5_projects_detail_outstanding']
   overview: IDataAcfDetailEB5['acf']['eb5_projects_detail_overview']
 }) => {
+  const t = useTranslations()
   return (
     <section>
       <div className='relative z-[21] -mt-[20.25rem] flex flex-col space-y-16 overflow-hidden rounded-t-[2rem] bg-[linear-gradient(180deg,#FFF_18.71%,#F6F6F4_100%)] p-16 section-container xsm:-mt-[10rem] xsm:space-y-5 xsm:bg-none xsm:p-4'>
@@ -135,7 +137,7 @@ const ProjectOverview = ({
                 dangerouslySetInnerHTML={{__html: overview.description || ''}}
               />
             ) : (
-              <p>No description available</p>
+              <p>{t('khong_co_mo_ta')}</p>
             )}
           </div>
         </div>

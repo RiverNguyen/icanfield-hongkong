@@ -1,20 +1,26 @@
 'use client'
 
 import ItemSlider from '@/sections/document-appraisal/ItemSlider'
-import {valueFilter, filter} from '@/types/dataAppraisal.interface'
+import {filter} from '@/types/dataAppraisal.interface'
+import {Dispatch, SetStateAction} from 'react'
+
+interface value {
+  value: number
+  percent: number
+}
 
 interface OtherInfoSlidersSectionProps {
   otherInformation: filter
-  valueBudget: valueFilter
-  setValueBudget: (v: valueFilter) => void
-  valuePossibility: valueFilter
-  setValuePossibility: (v: valueFilter) => void
-  valueTotalAssets: valueFilter
-  setValueTotalAssets: (v: valueFilter) => void
-  valueAge: valueFilter
-  setValueAge: (v: valueFilter) => void
-  valueNumberOfChildren: valueFilter
-  setValueNumberOfChildren: (v: valueFilter) => void
+  valueBudget: value
+  setValueBudget: Dispatch<SetStateAction<value>>
+  valuePossibility: value
+  setValuePossibility: Dispatch<SetStateAction<value>>
+  valueTotalAssets: value
+  setValueTotalAssets: Dispatch<SetStateAction<value>>
+  valueAge: value
+  setValueAge: Dispatch<SetStateAction<value>>
+  valueNumberOfChildren: value
+  setValueNumberOfChildren: Dispatch<SetStateAction<value>>
 }
 
 export default function OtherInfoSlidersSection({
@@ -61,4 +67,3 @@ export default function OtherInfoSlidersSection({
     </div>
   )
 }
-

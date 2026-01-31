@@ -1,4 +1,5 @@
 'use client'
+import { useTranslations } from 'next-intl'
 import BannerHomepage, { IBannerHomepageProps } from '@/sections/homepage/banner'
 import {
 	IItemInvestmentOpportunities,
@@ -16,31 +17,31 @@ const GlobalImmigration = dynamic(
 )
 const NewsFlow = dynamic(() => import('@/sections/homepage/news-homepage'), {
 	ssr: false,
-	loading: () => <p>Loading News Flow...</p>,
+	loading: () => <p>{t('dang_tai_tin_tuc')}</p>,
 })
 const ProudJourney = dynamic(
 	() => import('@/sections/homepage/proud-journey'),
 	{
 		ssr: false,
-		loading: () => <p>Loading Proud Journey...</p>,
+		loading: () => <p>{t('dang_tai_hanh_trinh')}</p>,
 	},
 )
 const MapDiscover = dynamic(() => import('@/sections/homepage/map-discover'), {
-	ssr: false, // Nếu component không cần server-side rendering
-	loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
+	ssr: false,
+	loading: () => <p>{t('dang_tai_ban_do')}</p>,
 })
 const TalentedTeam = dynamic(
 	() => import('@/sections/homepage/talented-team'),
 	{
 		ssr: false,
-		loading: () => <p>Loading Talented Team...</p>,
+		loading: () => <p>{t('dang_tai_doi_ngu')}</p>,
 	},
 )
 const FormHomepage = dynamic(
 	() => import('@/sections/homepage/form-homepage'),
 	{
 		ssr: false,
-		loading: () => <p>Loading Form Homepage...</p>,
+		loading: () => <p>{t('dang_tai_bieu_mau')}</p>,
 	},
 )
 interface HomeData {
@@ -107,6 +108,7 @@ const HomePage = ({
 	dataFilter: FilterData
 	dataMap: DataMapHomepage
 }) => {
+	const t = useTranslations()
 	const {
 		home_banner,
 		home_global_immigration,

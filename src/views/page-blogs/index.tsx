@@ -69,7 +69,7 @@ const PageBlogs: FC<IPageBlogsProps> = ({
 				<Breadcrumb items={BREADCRUMB} />
 			</BannerStatic>
 			<FeaturedNews {...outstandingData} />
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<div>{t('dang_tai')}</div>}>
 				<ListBlogs
 					dataPosts={dataPosts}
 					dataCategories={dataCategoriesWithAll}

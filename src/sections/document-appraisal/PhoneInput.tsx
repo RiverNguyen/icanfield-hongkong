@@ -17,6 +17,7 @@ import {
 import {ICLoading} from '@/sections/blogs/connect-us/FormConnectUs'
 import {DEFAULT_COUNTRY_SELECT} from './constants'
 import {UseFormSetValue} from 'react-hook-form'
+import {useTranslations} from 'next-intl'
 
 type CountryOption = {
   callingCode: string
@@ -44,6 +45,7 @@ export default function PhoneInput({
   const [countrySearch, setCountrySearch] = useState<string>('')
   const [countryOptions, setCountryOptions] = useState<CountryOption[]>([])
   const [isCountryLoading, setIsCountryLoading] = useState<boolean>(false)
+  const t = useTranslations()
 
   // derive from incoming value on mount/update
   useEffect(() => {
@@ -173,7 +175,7 @@ export default function PhoneInput({
                   <span>{selectedCountryForDisplay.callingCode}</span>
                 </div>
               ) : (
-                <span className='text-greyscaletext-200'>+code</span>
+                <span className='text-greyscaletext-200'>{t('chon_ma_quoc_gia')}</span>
               )}
             </button>
           </PopoverTrigger>
@@ -188,12 +190,12 @@ export default function PhoneInput({
             ) : (
               <Command className='min-h-[8rem]'>
                 <CommandInput
-                  placeholder='Search'
+                  placeholder={t('tim_kiem')}
                   value={countrySearch}
                   onValueChange={(val: string) => setCountrySearch(val)}
                 />
                 <CommandList>
-                  <CommandEmpty>No results.</CommandEmpty>
+                  <CommandEmpty>{t('khong_co_ket_qua')}</CommandEmpty>
                   <CommandGroup>
                     {countryOptions
                       .filter((c) => {

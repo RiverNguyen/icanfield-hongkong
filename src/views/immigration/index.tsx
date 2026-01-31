@@ -3,44 +3,45 @@ import BannerImmigration from '@/sections/immigration/banner/BannerImmigration'
 import {dataPrograms, immigration} from '@/types/dataAcfImmigration.interface'
 import dynamic from 'next/dynamic'
 const CanadaMap = dynamic(() => import('@/sections/immigration/map'), {
-  ssr: false, // Nếu component không cần server-side rendering
-  loading: () => <p>Loading Map Discover...</p>, // Thêm trạng thái loading
+  ssr: false,
+  loading: () => <p>{t('dang_tai_ban_do')}</p>,
 })
 const Strengths = dynamic(
   () => import('@/sections/immigration/strengths/Strengths'),
   {
     ssr: false,
-    loading: () => <p>Loading Strengths...</p>,
+    loading: () => <p>{t('dang_tai_diem_manh')}</p>,
   },
 )
 const Programme = dynamic(
   () => import('@/sections/immigration/programme/Programme'),
   {
     ssr: false,
-    loading: () => <p>Loading Programme...</p>,
+    loading: () => <p>{t('dang_tai_chuong_trinh')}</p>,
   },
 )
 const ImmigrationFAQ = dynamic(
   () => import('@/sections/immigration/faq/ImmigrationFAQ'),
   {
     ssr: false,
-    loading: () => <p>Loading Strengths...</p>,
+    loading: () => <p>{t('dang_tai_hoi_dap')}</p>,
   },
 )
 const DossierAppraisal = dynamic(
   () => import('@/sections/immigration/dossier-appraisal/DossierAppraisal'),
   {
     ssr: true,
-    loading: () => <p>Loading Dossier Appraisal...</p>,
+    loading: () => <p>{t('dang_tai_danh_gia_ho_so')}</p>,
   },
 )
 const RelatedArticles = dynamic(
   () => import('@/sections/blogs/detail/RelatedArticles'),
   {
     ssr: true,
-    loading: () => <p>Loading Related Articles...</p>,
+    loading: () => <p>{t('dang_tai_bai_viet')}</p>,
   },
 )
+import {useTranslations} from 'next-intl'
 import {Suspense} from 'react'
 import {DataItem} from '@/types/blogs.interface'
 import {Data} from '@/sections/immigration/map'
@@ -60,6 +61,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
   postRelate,
   dataMap,
 }) => {
+  const t = useTranslations()
   return (
     <main className='bg-background'>
       <BannerImmigration
@@ -71,7 +73,7 @@ const Immigration: React.FC<ImmigrationProps> = ({
         data={dataMap}
       />
       <Strengths dataStrength={dataImmigration?.acf?.characteristic} />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>{t('dang_tai')}</div>}>
         <Programme
           name={dataImmigration?.name}
           slug={slug}

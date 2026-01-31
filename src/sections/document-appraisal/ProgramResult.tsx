@@ -102,9 +102,9 @@ function ExplanationItem({
       <div className='flex-1'>
         <div className='flex items-center justify-between'>
           <span className='text-xs font-medium uppercase tracking-[0.05em] text-opacity-80'>
-            {explanation.key.replace(/_/g, ' ')}: {explanation.label}
+            {t(explanation.key.replace(/_/g, ' '))}: {explanation.label}
           </span>
-          <span className='text-xs font-bold'>{label}</span>
+          <span className='text-xs font-bold'>{t(label)}</span>
         </div>
         {explanation.message && (
           <p className='mt-[0.25rem] text-sm'>{explanation.message}</p>
@@ -226,7 +226,7 @@ function ProgramCard({
           <span className='text-brown body-14-m'>{t('lien_he_tu_van')}</span>
         </Link>
         <Link
-          href={`/${program.nation}/${program.slug}`}
+          href={`${t('slug')}/${program.nation}/${program.slug}`}
           className='flex items-center gap-[0.5rem] rounded-[0.5rem] bg-[linear-gradient(97deg,#5C321E_-3.86%,#95502F_51.97%,#F5C178_117.18%)] px-[1.5rem] py-[0.5rem]'
         >
           <span className='text-white body-14-m'>{t('xem_chi_tiet')}</span>

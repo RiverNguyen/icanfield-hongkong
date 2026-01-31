@@ -7,20 +7,20 @@ import {DEFAULT_COUNTRY_SELECT} from '@/sections/document-appraisal/constants'
 import Header from '@/layout/header'
 
 const PAGE_ID = {
-  zh: 7209,
-  'zh-cn': 678,
-  en: 7212,
+  zh: 7339,
+  'zh-cn': 7344,
+  en: 7342,
 }
 
 const dataLanguageSwitcher = {
   zh: {
-    slug: 'tham-dinh-ho-so',
+    slug: 'document-appraisal',
   },
   'zh-cn': {
-    slug: 'tham-dinh-ho-so',
+    slug: 'document-appraisal',
   },
   en: {
-    slug: 'tham-dinh-ho-so',
+    slug: 'document-appraisal',
   },
 }
 

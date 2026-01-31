@@ -194,22 +194,23 @@ export default function LanguageProficiency({
                   className='cursor-pointer border-b-[1px] border-solid border-[rgba(0,0,0,0.10)] p-[0.75rem_1rem]'
                   value='none'
                 >
-                  None
+                  {t('khong')}
                 </SelectItem>
                 <SelectItem
                   className='cursor-pointer border-b-[1px] border-solid border-[rgba(0,0,0,0.10)] p-[0.75rem_1rem]'
                   value='basic'
                 >
-                  Basic communication
+                  {t('giao_tiep_co_ban')}
                 </SelectItem>
                 <SelectItem
                   className='cursor-pointer border-b-[1px] border-solid border-[rgba(0,0,0,0.10)] p-[0.75rem_1rem]'
                   value='certificate'
                 >
-                  Certificate-based
+                  {t('chung_chi')}
                 </SelectItem>
               </SelectContent>
             </Select>
+            <FormMessage className='!mt-[0.5rem] tracking-[-0.02rem] text-errtext body16' />
           </FormItem>
         )}
       />

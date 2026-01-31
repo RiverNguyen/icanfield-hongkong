@@ -17,20 +17,18 @@ export function buildFormSchema(t: (arg: string) => string) {
       })
       .regex(/^\d{4,20}$/, {message: t('dinh_dang_khong_hop_le')}),
     location: z.string().optional(),
-    nation: z.string({
-      required_error: t('truong_nay_khong_duoc_de_trong'),
-    }),
+    nation: z.string().optional(),
     educationlevel: z.string({
-      required_error: t('truong_nay_khong_duoc_de_trong'),
+      required_error: t('vui_long_chon_truong_nay'),
     }),
-    languageproficiencytype: z
-      .enum(['none', 'basic', 'certificate'])
-      .optional(),
+    languageproficiencytype: z.enum(['none', 'basic', 'certificate'], {
+      required_error: t('vui_long_chon_truong_nay'),
+    }),
     languageproficiency: z.string().optional(),
     languageproficiency_score: z.string().nullable().optional(),
     languageproficiency_effective_from: z.string().optional(),
     visapurpose: z.string({
-      required_error: t('truong_nay_khong_duoc_de_trong'),
+      required_error: t('vui_long_chon_truong_nay'),
     }),
     managementexperience: z.preprocess((val) => {
       if (typeof val === 'string') {

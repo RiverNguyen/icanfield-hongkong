@@ -28,6 +28,9 @@ export interface filterValue {
   step: number
 }
 
+// Alias for backward compatibility
+export type valueFilter = filterValue
+
 export interface filter {
   estimated_investment_budget: filterValue
   possibility_of_residence: filterValue

@@ -28,7 +28,7 @@ import OtherInfoSlidersSection from './OtherInfoSlidersSection'
 import EducationAndManagementSection from './EducationAndManagementSection'
 import postData from '@/fetch/postData'
 
-interface valueFilter {
+interface value {
   value: number
   percent: number
 }
@@ -52,24 +52,24 @@ export default function FormAppraisal({
   const isMobile = useIsMobile()
   const sectionRef = useRef<HTMLElement>(null)
   const [isPending, setTransition] = useTransition()
-  const [valueBudget, setValueBudget] = useState<valueFilter>({
+  const [valueBudget, setValueBudget] = useState<value>({
     value: Number(otherInformation?.estimated_investment_budget?.to) / 2,
     percent: 50,
   })
-  const [valuePossibility, setValuePossibility] = useState<valueFilter>({
+  const [valuePossibility, setValuePossibility] = useState<value>({
     value: Number(otherInformation?.possibility_of_residence?.to) / 2,
     percent: 50,
   })
-  const [valueTotalAssets, setValueTotalAssets] = useState<valueFilter>({
+  const [valueTotalAssets, setValueTotalAssets] = useState<value>({
     value: Number(otherInformation?.total_assets?.to) / 2,
     percent: 50,
   })
-  const [valueAge, setValueAge] = useState<valueFilter>({
+  const [valueAge, setValueAge] = useState<value>({
     value: Number(otherInformation?.age?.to) / 2,
     percent: 50,
   })
   const [valueNumberOfChildren, setValueNumberOfChildren] =
-    useState<valueFilter>({
+    useState<value>({
       value: Number(otherInformation?.number_of_children?.to) / 2,
       percent: 50,
     })

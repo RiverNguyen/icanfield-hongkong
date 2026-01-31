@@ -7,7 +7,7 @@ import { Navigation } from 'swiper/modules'
 // import {Swiper, SwiperSlide} from 'swiper/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { getLocaleSlug } from '@/utils/localeSlug'
 const SwiperSlide = dynamic(
 	() => import('swiper/react').then((mod) => mod.SwiperSlide),
@@ -33,12 +33,13 @@ export interface ITalentedTeamProps {
 const TalentedTeam = ({ data: { title, talented_team } }: ITalentedTeamProps) => {
 	const [activeIndex, setActiveIndex] = useState(0) // Theo dõi slide active
 	const locale = useLocale()
+	const t = useTranslations()
 	const slugLocale = getLocaleSlug(locale)
 	return (
 		<section className='talented-team py-[6.5rem] xsm:py-[2.5rem] xsm:pb-0'>
 			<h2 className='text-center font-optima text-brown heading1'>{title}</h2>
 			<div className='relative mx-auto mt-[2.5rem] w-[83.75rem] section-container xsm:mt-[1.5rem] xsm:w-full xsm:px-0'>
-				<Suspense fallback={<div>Loading...</div>}>
+				<Suspense fallback={<div>{t('dang_tai')}</div>}>
 					<Swiper
 						spaceBetween={23}
 						slidesPerView={5}

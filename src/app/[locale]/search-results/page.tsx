@@ -2,6 +2,7 @@ import fetchData from '@/fetch/fetchData'
 import SearchResult from '@/sections/searchResult'
 import endpoints from '@/utils/endpoints'
 import { Suspense } from 'react'
+import { getTranslations } from 'next-intl/server'
 
 export default async function page({
 	params,
@@ -9,6 +10,7 @@ export default async function page({
 	params: Promise<{ locale: 'zh' | 'zh-cn' | 'en' }>
 }) {
 	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'Common' })
 	const FilterBanner = {
 		api: `${endpoints.filter}?lang=${locale}`,
 		option: {
@@ -25,6 +27,6 @@ export default async function page({
 		)
 	} catch (error) {
 		console.error('Error fetching data:', error)
-		return <div>Error loading page content.</div>
+		return <div>{t('loi_tai_trang')}</div>
 	}
 }

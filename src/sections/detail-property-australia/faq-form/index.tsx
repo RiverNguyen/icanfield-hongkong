@@ -237,7 +237,7 @@ const FAQForm = () => {
 									<FormControl>
 										<Textarea
 											className='flex h-[6.25rem] w-full items-center rounded-[0.5rem] border border-solid border-[#0000001A] bg-[#F3F3F3] px-3 py-1 font-medium -tracking-[0.02rem] outline-none body16 placeholder:text-[1rem] placeholder:font-normal placeholder:leading-normal placeholder:-tracking-[0.02rem] placeholder:text-greyscaletext-200'
-											placeholder='Nhu cầu cụ thể'
+											placeholder={t('nhu_cau_cu_the')}
 											{...field}
 										/>
 									</FormControl>
