@@ -16,8 +16,8 @@ export async function generateStaticParams() {
   const timeoutId = setTimeout(() => controller.abort(), 5000)
 
   try {
-    const tours = await fetchData({
-      api: '/slugs?post_type=eb-5-project',
+	const tours = await fetchData({
+		api: '/slugs?post_type=eb-5-project',
       option: {
         signal: controller.signal,
       },
@@ -33,8 +33,8 @@ export async function generateStaticParams() {
 
     // ✅ Chỉ build 200 page, phần còn lại ISR
     return tours.slice(0, 200).map((tour: string[]) => ({
-      slug: tour,
-    }))
+		slug: tour,
+	}))
   } catch (error) {
     clearTimeout(timeoutId)
     console.error('generateStaticParams failed:', error)

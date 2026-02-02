@@ -29,12 +29,12 @@ export async function generateStaticParams({
   const timeoutId = setTimeout(() => controller.abort(), 5000)
 
   try {
-    const tours = await fetchData({
+  const tours = await fetchData({
       api: '/slugs?post_type=post&lang=' + locale,
       option: {
         signal: controller.signal,
       },
-    })
+  })
 
     clearTimeout(timeoutId)
 
@@ -46,8 +46,8 @@ export async function generateStaticParams({
 
     // ✅ Chỉ build 200 page, phần còn lại ISR
     return tours.slice(0, 200).map((tour: string[]) => ({
-      slug: tour,
-    }))
+    slug: tour,
+  }))
   } catch (error) {
     clearTimeout(timeoutId)
     console.error('generateStaticParams failed:', error)
@@ -88,9 +88,9 @@ export default async function page({
 
   // ✅ Fetch footer, header, popup song song
   const [dataFooter, dataHeader, dataPopup] = await Promise.all([
-    fetchData(requestFooter),
-    fetchData(requestHeader),
-    fetchData(requestPopup),
+      fetchData(requestFooter),
+      fetchData(requestHeader),
+      fetchData(requestPopup),
   ])
 
   // ✅ Language switcher fetch riêng, có lỗi cũng không crash page

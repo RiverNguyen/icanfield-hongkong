@@ -232,12 +232,13 @@
   "hard": "硬",
   "tong_quan_du_an": "项目概述",
   "vi_tri_du_an": "项目位置",
-	"tien_ich_da_dang": "多样化设施",
-	"tien_ich": "设施",
-	"cac_du_an_khac": "其他项目",
-	"de_lai_thong_tin_chung_toi_se_ho_tro_ban": "留下您的信息，我们将支持您",
-	"co_hieu_dau_tu": "投资机会",
-	"khu_vuc_sinh_song": "居住区域",
-	"gui_thong_tin_that_bai": "信息发送失败",
-	"co_loi_xay_ra_khi_gui_thong_tin": "发送信息时发生错误"
+  "tien_ich_da_dang": "多样化设施",
+  "tien_ich": "设施",
+  "cac_du_an_khac": "其他项目",
+  "de_lai_thong_tin_chung_toi_se_ho_tro_ban": "留下您的信息，我们将支持您",
+  "co_hieu_dau_tu": "投资机会",
+  "khu_vuc_sinh_song": "居住区域",
+  "gui_thong_tin_that_bai": "信息发送失败",
+  "co_loi_xay_ra_khi_gui_thong_tin": "发送信息时发生错误",
+  "co_hoi_dau_tu": "投资机会"
 }
