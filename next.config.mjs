@@ -7,12 +7,12 @@ const nextConfig = {
     formats: ['image/webp'],
     minimumCacheTTL: 3600,
     remotePatterns: [
-      {protocol: 'https', hostname: '**'},
-      {protocol: 'http', hostname: '**'},
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: '**' },
     ],
   },
   reactStrictMode: false,
-  output: 'standalone',
+  // output: 'standalone',
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
@@ -21,20 +21,20 @@ const nextConfig = {
       {
         source: '/layout',
         headers: [
-          {key: 'Cache-Control', value: 'public, max-age=31536000, immutable'},
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
         source: '/homepage/banner',
         headers: [
-          {key: 'Cache-Control', value: 'public, max-age=31536000, immutable'},
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
     ]
   },
 
   // ✅ Tối ưu Webpack để giảm Evaluate Script
-  webpack: (config, {dev, isServer}) => {
+  webpack: (config, { dev, isServer }) => {
     if (dev) {
       config.devtool = 'cheap-module-source-map' // Tăng tốc độ build & debug
     } else {
