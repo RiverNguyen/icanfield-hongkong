@@ -5,6 +5,7 @@ import fetchData from '@/fetch/fetchData'
 import {redirect} from 'next/navigation'
 import getMetadata from '@/fetch/getMetadata'
 import metadataValues from '@/utils/metadataValues'
+import Header from '@/layout/header'
 
 // ✅ ISR + Dynamic params - an toàn cho build
 export const dynamicParams = true
@@ -73,17 +74,41 @@ export async function generateMetadata({
     return {}
   }
 }
+
 export default async function page({
   params: {detailslug, locale},
 }: {
   params: {detailslug: string; locale: string}
 }) {
+  const requestFooter = {
+    api: '/footer-options?acf_format=standard&lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const requestHeader = {
+    api: '/header-options?acf_format=standard&lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
+  const requestPopup = {
+    api: '/form-all-page?lang=' + locale,
+    option: {
+      next: {revalidate: 60},
+    },
+  }
   const requestTaxonomies = {
     api: `/taxonomies-settlement?lang=${locale}`,
     option: {
       revalidate: 10,
     },
   }
+  const [dataFooter, dataHeader, dataPopup] = await Promise.all([
+    fetchData(requestFooter),
+    fetchData(requestHeader),
+    fetchData(requestPopup),
+  ])
   const [data, dataReleatedPost, dataTaxonomies] = await Promise.all([
     fetchDataACF({
       api: `/eb-5-project?slug=${detailslug}&acf_format=standard&lang=${locale}`,
@@ -103,11 +128,30 @@ export default async function page({
     redirect('/')
   }
   if (data?.length <= 0) return notFound()
+  const dataLanguageSwitcher = {
+    zh: {
+      slug: 'EB5',
+    },
+    'zh-cn': {
+      slug: 'EB5',
+    },
+    en: {
+      slug: 'EB5',
+    },
+  }
   return (
-    <DetailEB5
-      data={data?.[0]}
-      dataReleatedPost={dataReleatedPost?.data}
-      dataNationSettlement={dataTaxonomies?.nation}
-    />
+    <>
+      <Header
+        data={dataHeader?.data}
+        dataFooter={dataFooter.data}
+        dataPopup={dataPopup?.data}
+        languageSwitcher={dataLanguageSwitcher}
+      />
+      <DetailEB5
+        data={data?.[0]}
+        dataReleatedPost={dataReleatedPost?.data}
+        dataNationSettlement={dataTaxonomies?.nation}
+      />
+    </>
   )
 }
