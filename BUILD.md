@@ -28,3 +28,4 @@ docker.io/okhubvn/nextjs14-okhub:latest && docker run -d -p 3000:3000 --name nex
 
 docker pull docker.io/okhubvn/nextjs14-okhub:latest && docker stop nextjs14-okhub && docker rm
 nextjs14-okhub && docker run -d -p 3000:3000 --name nextjs14-okhub docker.io/okhubvn/nextjs14-okhub:latest
+
