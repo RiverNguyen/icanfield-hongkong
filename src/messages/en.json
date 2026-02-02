@@ -229,5 +229,15 @@
   "pass": "Pass",
   "fail": "Fail",
   "soft": "Soft",
-  "hard": "Hard"
+  "hard": "Hard",
+  "tong_quan_du_an": "Project Overview",
+  "vi_tri_du_an": "Project Location",
+	"tien_ich_da_dang": "Diverse Amenities",
+	"tien_ich": "Amenities",
+	"cac_du_an_khac": "Other Projects",
+	"de_lai_thong_tin_chung_toi_se_ho_tro_ban": "Leave your information, we will support you",
+	"co_hieu_dau_tu": "Investment Opportunities",
+	"khu_vuc_sinh_song": "Living Area",
+	"gui_thong_tin_that_bai": "Information sent failed",
+	"co_loi_xay_ra_khi_gui_thong_tin": "An error occurred while sending information"
 }
