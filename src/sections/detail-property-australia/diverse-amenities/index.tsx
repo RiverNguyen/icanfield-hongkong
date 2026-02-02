@@ -4,6 +4,7 @@ import useIsMobile from '@/hooks/useIsMobile'
 import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
 import {Navigation} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
+import {useTranslations} from 'next-intl'
 
 const Slider = ({
   items,
@@ -21,7 +22,7 @@ const Slider = ({
           prevEl: '.image-pre',
           nextEl: '.image-next',
         }}
-        className='!w-full !h-full'
+        className='!h-full !w-full'
       >
         {Array.isArray(items) &&
           items.map((item, index) => (
@@ -69,16 +70,18 @@ const DiverseAmenities = ({
   utilities,
   slide_room,
 }: IDataAcfDetailAustralia['acf']['diverse_amenities']) => {
+  const t = useTranslations()
   return (
     <div className='space-y-[1.5625rem] rounded-[1.25rem] bg-white p-10 shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)] xsm:space-y-6 xsm:p-0 xsm:shadow-none'>
       <h2 className='font-optima font-medium text-Phase-1-Brown heading3 xsm:text-xl xsm:font-semibold xsm:leading-[1.3] xsm:tracking-[-0.025rem]'>
-        Tiện ích đa dạng
+        {t('tien_ich_da_dang')}
       </h2>
-      <div className='text-greyscaletext-400 body16-r55 xsm:body-14' dangerouslySetInnerHTML={{__html: description}}>
-
-      </div>
+      <div
+        className='text-greyscaletext-400 body16-r55 xsm:body-14'
+        dangerouslySetInnerHTML={{__html: description}}
+      ></div>
       <div className='space-y-3 rounded-2xl bg-[#FAFAFA] p-4'>
-        <h3 className='text-textgreybody body16-s'>Tiện ích</h3>
+        <h3 className='text-textgreybody body16-s'>{t('tien_ich')}</h3>
         <div className='h-[1px] w-full bg-[#EDEDED]' />
         <div className='grid grid-cols-4 gap-[0.625rem] xsm:grid-cols-2'>
           {Array.isArray(utilities) &&
@@ -94,8 +97,10 @@ const DiverseAmenities = ({
                   height={50}
                   className='h-5 w-5 object-cover'
                 />
-                <div className='tracking-[-0.0175rem] body-14-m xsm:sub-12-m' dangerouslySetInnerHTML={{__html: item.item || ''}}></div>
-
+                <div
+                  className='tracking-[-0.0175rem] body-14-m xsm:sub-12-m'
+                  dangerouslySetInnerHTML={{__html: item.item || ''}}
+                ></div>
               </div>
             ))}
         </div>

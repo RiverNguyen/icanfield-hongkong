@@ -3,7 +3,6 @@ import {getMessages} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {routing} from '@/i18n/routing'
 import {Toaster} from 'sonner'
-import Header from '@/layout/header'
 import Footer from '@/layout/footer'
 import fetchData from '@/fetch/fetchData'
 import Providers from '@/components/proccessBar'
@@ -72,23 +71,8 @@ export default async function LocaleLayout({
       next: {revalidate: 60},
     },
   }
-  const requestHeader = {
-    api: '/header-options?acf_format=standard&lang=' + locale,
-    option: {
-      next: {revalidate: 60},
-    },
-  }
-  const requestPopup = {
-    api: '/form-all-page?lang=' + locale,
-    option: {
-      next: {revalidate: 60},
-    },
-  }
-  const [dataFooter, dataHeader, dataPopup] = await Promise.all([
-    fetchData(requestFooter),
-    fetchData(requestHeader),
-    fetchData(requestPopup),
-  ])
+
+  const [dataFooter] = await Promise.all([fetchData(requestFooter)])
 
   return (
     <html lang={HTML_LOCALES[locale as keyof typeof HTML_LOCALES]}>
@@ -143,11 +127,6 @@ export default async function LocaleLayout({
             speed={200}
             zIndex={1600}
             showAtBottom={false}
-          />
-          <Header
-            data={dataHeader?.data}
-            dataFooter={dataFooter.data}
-            dataPopup={dataPopup?.data}
           />
 
           <Providers>{children}</Providers>

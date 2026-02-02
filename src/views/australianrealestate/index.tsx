@@ -610,7 +610,7 @@ export default function AustralianRealEstate({
       >
         <Breadcrumb
           items={[
-            {label: t('trang_chu'), href: '/'},
+            {label: t('trang_chu'), href: t('slug')},
             {label: t('australian_real_estate'), href: '#'},
           ]}
         />

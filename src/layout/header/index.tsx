@@ -37,6 +37,7 @@ import {languageOptions} from './constants'
 import './styles.css'
 import PopupForm from '@/components/popupAllPage'
 import LanguageSwitcher from '@/components/language-switcher'
+import {useTranslations} from 'next-intl'
 
 interface ILanguageSwitcher {
   [key: string]: {
@@ -59,6 +60,7 @@ const Header = ({
   dataPopup?: IPropsPopup
   languageSwitcher?: ILanguageSwitcher
 }) => {
+  const t = useTranslations()
   const listMenuMobileLast = [data?.icanfield_handbook, data?.contact].filter(
     Boolean,
   )
@@ -294,9 +296,6 @@ const Header = ({
     }
   }
 
-  // useEffect(() => {
-  //   console.log('isCurrentLanguage', isCurrentLanguage)
-  // }, [isCurrentLanguage])
   return (
     <header className='fixed left-0 top-0 z-[1000] w-full'>
       <div
@@ -351,7 +350,7 @@ const Header = ({
                         className='!flex !h-full !w-fit !items-center'
                       >
                         <Link
-                          href={`/news/${item?.post_name}` || '/'}
+                          href={`${t('slug')}/blogs/${item?.post_name}` || '/'}
                           className='link-outstanding-post relative z-10 line-clamp-1 text-[0.875rem] font-medium leading-[1.2] text-white'
                         >
                           {item?.post_title}

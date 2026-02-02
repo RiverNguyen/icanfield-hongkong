@@ -10,7 +10,7 @@ import {cn} from '@/lib/utils'
 import './styles.css'
 import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
 import {Media} from '@/types/image.interface'
-import {info_banner} from '@/sections/detail-property-australia/slider/contants'
+import {useTranslations} from 'next-intl'
 
 type SliderItemProps = {
   type: 'video' | 'image'
@@ -83,7 +83,25 @@ export const SliderMobile = ({
   slide_banner,
 }: SliderProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
-
+  const t = useTranslations()
+  const info_banner = [
+    {
+      name: t('dien_tich'),
+      icon: '/icons/detail-property/icon.svg',
+    },
+    {
+      name: t('gia_ban'),
+      icon: '/icons/detail-property/price.svg',
+    },
+    {
+      name: t('chu_dau_tu'),
+      icon: '/icons/detail-property/investor.svg',
+    },
+    {
+      name: t('phap_ly'),
+      icon: '/icons/detail-property/legal.svg',
+    },
+  ]
   return (
     <div className={cn('relative mt-[3.75rem] h-[30rem] w-full', className)}>
       <div className='absolute inset-0 h-full w-full'>
@@ -166,9 +184,27 @@ const Slider = ({
   slide_banner,
   className,
 }: SliderProps) => {
+  const t = useTranslations()
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
   const [activeIndex, setActiveIndex] = useState<number>(0)
-
+  const info_banner = [
+    {
+      name: t('dien_tich'),
+      icon: '/icons/detail-property/icon.svg',
+    },
+    {
+      name: t('gia_ban'),
+      icon: '/icons/detail-property/price.svg',
+    },
+    {
+      name: t('chu_dau_tu'),
+      icon: '/icons/detail-property/investor.svg',
+    },
+    {
+      name: t('phap_ly'),
+      icon: '/icons/detail-property/legal.svg',
+    },
+  ]
   return (
     <div
       className={cn('relative mt-[6.44rem] h-[42.8125rem] w-full', className)}
@@ -184,9 +220,10 @@ const Slider = ({
           />
           <span>{location}</span>
         </h3>
-        <h1 className='background_clip--text mt-[1.125rem] bg-[linear-gradient(180deg,#FFF_0%,#D7B578_100%)] hero-title'>
-          {title}
-        </h1>
+        <h1
+          dangerouslySetInnerHTML={{__html: title}}
+          className='background_clip--text mt-[1.125rem] bg-[linear-gradient(180deg,#FFF_0%,#D7B578_100%)] hero-title'
+        />
       </div>
       <div className='absolute bottom-[9.3rem] right-20 z-10 grid w-[33.8125rem] grid-cols-[min(15rem)_1fr] gap-y-[1.125rem]'>
         {typeof info === 'object' &&

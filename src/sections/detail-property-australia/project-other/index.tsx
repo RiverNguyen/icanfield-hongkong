@@ -1,34 +1,37 @@
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
 import ItemAustralia from '@/components/itemAustralia'
-import { fetcher } from '@/lib/swr'
-import { IDataAcfDetailAustralia } from '@/types/dataAcfDetailAustralia.interface'
-import { Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import {fetcher} from '@/lib/swr'
+import {IDataAcfDetailAustralia} from '@/types/dataAcfDetailAustralia.interface'
+import {useLocale, useTranslations} from 'next-intl'
+import {Pagination} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
 import useSWR from 'swr'
 
 const fetcherWithCustomBase = (url: string) =>
   fetcher(url, process.env.NEXT_PUBLIC_API_ACF)
 
 const ProjectOther = ({id}: {id: number}) => {
+  const t = useTranslations()
+  const locale = useLocale()
   const {data: dataOther} = useSWR(
-    id ? `/australia-real-estat?exclude=${id}&per_page=5` : null,
+    id ? `/australia-real-estat?exclude=${id}&per_page=5&lang=${locale}` : null,
     fetcherWithCustomBase,
     {
       revalidateIfStale: false,
       revalidateOnReconnect: false,
     },
   )
-// console.log(dataOther)
+  // console.log(dataOther)
   return (
     <section className='mt-[6.25rem] section-container xsm:mt-8'>
       <div className='flex w-full items-end justify-between'>
         <h1 className='font-optima font-semibold tracking-[-0.045rem] text-orangetext-900 heading1 xsm:text-2xl xsm:leading-[1.2]'>
-          Các dự án khác
+          {t('cac_du_an_khac')}
         </h1>
         <button className='flex h-[3rem] items-center justify-center rounded-[0.5rem] bg-btn-gradient px-[0.75rem] pl-[1.5rem] xsm:hidden'>
           <span className='body14 font-medium -tracking-[0.0175rem] text-white'>
-            Xem tất cả
+            {t('xem_tat_ca')}
           </span>
           <ImageV2
             src='/icons/arrow-right.svg'
@@ -89,7 +92,7 @@ const ProjectOther = ({id}: {id: number}) => {
         <div className='pagination-project-other flex justify-center space-x-2'></div>
         <button className='mt-7 hidden h-[3rem] items-center justify-center rounded-[0.5rem] bg-btn-gradient px-[0.75rem] pl-[1.5rem] xsm:flex'>
           <span className='body14 font-medium -tracking-[0.0175rem] text-white'>
-            Xem tất cả
+            {t('xem_tat_ca')}
           </span>
           <ImageV2
             src='/icons/arrow-right.svg'

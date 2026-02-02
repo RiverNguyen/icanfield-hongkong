@@ -29,7 +29,7 @@ export default function DocumentAppraisal({
       >
         <Breadcrumb
           items={[
-            {label: t('trang_chu'), href: '/'},
+            {label: t('trang_chu'), href: t('slug')},
             {label: t('tham_dinh_ho_so'), href: ''},
           ]}
         />

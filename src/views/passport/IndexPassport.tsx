@@ -1,58 +1,58 @@
 import ContactV2 from '@/components/ContactV2/ContactV2'
 import FormInternationalJourney from '@/components/ContactV2/FormInternationalJourney'
-import { Breadcrumb } from '@/components/breadcrumb'
+import {Breadcrumb} from '@/components/breadcrumb'
 import {
-	Banner,
-	IBannerProps,
+  Banner,
+  IBannerProps,
 } from '@/sections/detail-settlement-programs/banner'
 import WrapperAside from '@/sections/passport/research/WrapperAside'
-import { Term } from '@/types/dataAppraisal.interface'
+import {Term} from '@/types/dataAppraisal.interface'
 import dynamic from 'next/dynamic'
-import { useTranslations } from 'next-intl'
-import { Suspense } from 'react'
+import {useTranslations} from 'next-intl'
+import {Suspense} from 'react'
 const MapPassport = dynamic(
-	() => import('@/sections/passport/research/MapPassport'),
-	{ ssr: false },
+  () => import('@/sections/passport/research/MapPassport'),
+  {ssr: false},
 )
 const IndexPassport = ({
-	dataAcf,
-	dataNationSettlement,
+  dataAcf,
+  dataNationSettlement,
 }: {
-	dataAcf: {
-		clone_banner: IBannerProps
-	}
-	dataNationSettlement: Term[]
+  dataAcf: {
+    clone_banner: IBannerProps
+  }
+  dataNationSettlement: Term[]
 }) => {
-	const t = useTranslations('')
-	return (
-		<main className='bg-background'>
-			<Banner
-				{...dataAcf?.clone_banner}
-				backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.50)_24.02%,rgba(0,0,0,0.00)86.12%)]'
-				className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
-			>
-				<Breadcrumb
-					items={[
-						{ label: t('trang_chu'), href: '/' },
-						{ label: t('thong_tin_ho_chieu'), href: '/EB5' },
-					]}
-				/>
-			</Banner>
-			<div className=' flex w-full items-center rounded-[2.5rem_2.5rem_0_0] sm:pt-[5rem] bg-[#F6F6F4] sm:h-fit xsm:mt-0  xsm:h-fit z-[21] relative sm:-translate-y-9'>
-				<div className='relative flex w-full section-container sm:h-[38.9rem] sm:space-x-[1.5rem] xsm:h-fit xsm:flex-col xsm:-translate-y-[2rem]'>
-					<Suspense>
-						<WrapperAside />
-					</Suspense>
-					<div className='flex-1 overflow-hidden sm:rounded-[1.5rem] sm:shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)] xsm:absolute xsm:left-0 xsm:top-[14.1875rem] xsm:h-[16.125rem] xsm:z-50 xsm:min-h-[16.125rem] xsm:w-full xsm:px-[1rem]'>
-						<MapPassport />
-					</div>
-				</div>
-			</div>
-			<ContactV2>
-				<FormInternationalJourney dataNationSettlement={dataNationSettlement} />
-			</ContactV2>
-		</main>
-	)
+  const t = useTranslations('')
+  return (
+    <main className='bg-background'>
+      <Banner
+        {...dataAcf?.clone_banner}
+        backgroundOverlay='bg-[linear-gradient(180deg,rgba(0,0,0,0.50)_24.02%,rgba(0,0,0,0.00)86.12%)]'
+        className='z-20 xsm:rounded-bl-[1.25rem] xsm:rounded-br-[1.25rem]'
+      >
+        <Breadcrumb
+          items={[
+            {label: t('trang_chu'), href: t('slug')},
+            {label: t('thong_tin_ho_chieu'), href: '/EB5'},
+          ]}
+        />
+      </Banner>
+      <div className='relative z-[21] flex w-full items-center rounded-[2.5rem_2.5rem_0_0] bg-[#F6F6F4] sm:h-fit sm:-translate-y-9 sm:pt-[5rem] xsm:mt-0 xsm:h-fit'>
+        <div className='relative flex w-full section-container sm:h-[38.9rem] sm:space-x-[1.5rem] xsm:h-fit xsm:-translate-y-[2rem] xsm:flex-col'>
+          <Suspense>
+            <WrapperAside />
+          </Suspense>
+          <div className='flex-1 overflow-hidden sm:rounded-[1.5rem] sm:shadow-[0px_4px_24px_0px_rgba(0,0,0,0.04)] xsm:absolute xsm:left-0 xsm:top-[14.1875rem] xsm:z-50 xsm:h-[16.125rem] xsm:min-h-[16.125rem] xsm:w-full xsm:px-[1rem]'>
+            <MapPassport />
+          </div>
+        </div>
+      </div>
+      <ContactV2>
+        <FormInternationalJourney dataNationSettlement={dataNationSettlement} />
+      </ContactV2>
+    </main>
+  )
 }
 
 export default IndexPassport
