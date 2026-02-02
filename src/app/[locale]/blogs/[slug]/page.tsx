@@ -84,6 +84,7 @@ export default async function page({
     option: {
       next: {revalidate: 60},
     },
+    fallback: {},
   }
 
   // ✅ Fetch footer, header, popup song song

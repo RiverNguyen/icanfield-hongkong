@@ -7,9 +7,11 @@ export default async function sitemap() {
   // Fetch dữ liệu với delay nhẹ để tránh ảnh hưởng TBT
   const slugPosst = await fetchData({
     api: '/slugs?post_type=post',
+    fallback: [],
   })
   const slugSettlement = await fetchData({
     api: '/slugs?post_type=settlement-program',
+    fallback: [],
   })
   // Các trang tĩnh
   const fixedPages = locales.flatMap((locale) =>

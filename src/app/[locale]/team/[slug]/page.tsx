@@ -59,6 +59,7 @@ export default async function page({
     option: {
       next: {revalidate: 60},
     },
+    fallback: {},
   }
   const [dataFooter, dataHeader, dataPopup, dataLanguageSwitcher] =
     await Promise.all([
@@ -72,8 +73,12 @@ export default async function page({
   }
   if (dataLanguageSwitcher) {
     Object.keys(dataLanguageSwitcherLocal).forEach((key) => {
-      dataLanguageSwitcherLocal[key as 'zh' | 'zh-cn' | 'en'].slug +=
-        '/' + dataLanguageSwitcher[key as 'zh' | 'zh-cn' | 'en']?.slug
+      const nextSlug =
+        dataLanguageSwitcher?.[key as 'zh' | 'zh-cn' | 'en']?.slug
+      if (nextSlug) {
+        dataLanguageSwitcherLocal[key as 'zh' | 'zh-cn' | 'en'].slug +=
+          '/' + nextSlug
+      }
     })
   }
 

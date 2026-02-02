@@ -67,6 +67,7 @@ export default function LanguageProficiency({
     const fetchCertificate = async () => {
       const res = await fetchData({
         api: '/smart-form/certificate',
+        fallback: [],
       })
       setCertificate(res)
     }

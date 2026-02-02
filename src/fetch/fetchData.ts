@@ -5,9 +5,17 @@ export type RequestPostGuest = {
   headers?: any
   option?: any
   method?: string
+  fallback?: any
 }
 
 export default async function fetchData(request: RequestPostGuest) {
+  const fallback = request.fallback ?? {data: null}
+  const fallbackWithError = (message: string, status?: number) => {
+    if (fallback && typeof fallback === 'object' && !Array.isArray(fallback)) {
+      return {...fallback, error: {message, status}}
+    }
+    return fallback
+  }
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${
@@ -19,33 +27,32 @@ export default async function fetchData(request: RequestPostGuest) {
           'Content-Type': 'application/json',
           ...request.headers,
         },
+        next: {
+          revalidate: 60,
+        },
         ...request.option,
       },
     )
 
-    // Check if response is JSON
-    const contentType = res.headers.get('content-type')
-    if (!contentType || !contentType.includes('application/json')) {
-      throw new Error(`Expected JSON response but got ${contentType}`)
+    const contentType = res.headers.get('content-type') || ''
+    if (!contentType.includes('application/json')) {
+      console.error(`Expected JSON response but got ${contentType || 'unknown'}`)
+      return fallbackWithError('Non-JSON response', res.status)
     }
 
+    const json = await res.json().catch(() => null)
     if (!res.ok) {
-      // Return error response as JSON if possible
-      try {
-        return res.json()
-      } catch {
-        throw new Error(`HTTP ${res.status}: ${res.statusText}`)
-      }
+      return json ?? fallbackWithError(res.statusText, res.status)
     }
 
-    return res.json()
+    return json ?? fallback
   } catch (error: unknown) {
-    // Convert the error to a string or handle based on its type
     const errorMessage = error instanceof Error ? error.message : String(error)
-    throw new Error(
+    console.error(
       `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${
         request.api
       }: ${errorMessage}`,
     )
+    return fallbackWithError(errorMessage)
   }
 }

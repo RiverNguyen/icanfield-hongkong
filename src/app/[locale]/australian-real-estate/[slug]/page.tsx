@@ -101,6 +101,7 @@ const page = async ({
     option: {
       next: {revalidate: 60},
     },
+    fallback: {},
   }
   const [dataFooter, dataHeader, dataPopup, dataLanguageSwitcher] =
     await Promise.all([
@@ -123,8 +124,12 @@ const page = async ({
   console.log('dataLanguageSwitcher', dataLanguageSwitcher)
   if (dataLanguageSwitcher) {
     Object.keys(dataLanguageSwitcherLocal).forEach((key) => {
-      dataLanguageSwitcherLocal[key as 'zh' | 'zh-cn' | 'en'].slug +=
-        '/' + dataLanguageSwitcher[key as 'zh' | 'zh-cn' | 'en']?.slug
+      const nextSlug =
+        dataLanguageSwitcher?.[key as 'zh' | 'zh-cn' | 'en']?.slug
+      if (nextSlug) {
+        dataLanguageSwitcherLocal[key as 'zh' | 'zh-cn' | 'en'].slug +=
+          '/' + nextSlug
+      }
     })
   }
   console.log('dataLanguageSwitcherLocal', dataLanguageSwitcherLocal)
