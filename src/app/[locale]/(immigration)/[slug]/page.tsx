@@ -75,6 +75,7 @@ export default async function page({
     option: {
       next: {revalidate: 60},
     },
+    fallback: {},
   }
 
   const [dataFooter, dataHeader, dataPopup, dataLanguageSwitcher] =
@@ -97,9 +98,6 @@ export default async function page({
       option: {
         next: {revalidate: 10},
       },
-    }).catch((err) => {
-      console.error('fetchDataACF error:', err)
-      return null
     }),
     fetchData({
       api:
@@ -113,27 +111,21 @@ export default async function page({
       option: {
         next: {revalidate: 10},
       },
-    }).catch((err) => {
-      console.error('fetchData dataPrograms error:', err)
-      return []
+      fallback: [],
     }),
     fetchData({
       api: '/posts-by-taxonomy?slug=' + params?.slug,
       option: {
         next: {revalidate: 10},
       },
-    }).catch((err) => {
-      console.error('fetchData postRelate error:', err)
-      return []
+      fallback: [],
     }),
     fetchData({
       api: `/data-map-with-slug/?slug=${params.slug}`,
       option: {
         next: {revalidate: 10},
       },
-    }).catch((err) => {
-      console.error('fetchData dataMap error:', err)
-      return null
+      fallback: null,
     }),
   ])
   if (

@@ -31,7 +31,11 @@ export const SuccessPopup: FC<ISuccessPopupProps> = ({
       // fetch socials
       const {
         data: {social},
-      } = await fetchData({api: '/footer-options', method: 'GET'})
+      } = await fetchData({
+        api: '/footer-options',
+        method: 'GET',
+        fallback: {data: {social: []}},
+      })
       setSocials(social)
     }
     fetchSocials()
