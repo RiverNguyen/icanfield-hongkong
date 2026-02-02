@@ -7,19 +7,53 @@ import Header from '@/layout/header'
 interface LanguageSwitcherItem {
   slug: string
 }
+
+// ✅ ISR + Dynamic params - KHÔNG sập build
+export const dynamicParams = true
+export const revalidate = 60
+
 export async function generateMetadata({params}: {params: {slug: string}}) {
   const res = await getMetadata(`/posts?slug=${params.slug}`)
   return metadataValues(Array.isArray(res) ? res[0] : res)
 }
-export async function generateStaticParams() {
-  // Gọi API để lấy tất cả các slug của các tour
-  const tours = await fetchData({
-    api: '/slugs?post_type=post',
-  })
-  // Trả về các tham số tĩnh
-  return tours?.map((tour: string[]) => ({
-    slug: tour,
-  }))
+
+export async function generateStaticParams({
+  params,
+}: {
+  params: {slug: string; locale: string}
+}) {
+  const {locale} = await params
+
+  // ✅ Timeout 5s - tránh treo build
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 5000)
+
+  try {
+    const tours = await fetchData({
+      api: '/slugs?post_type=post&lang=' + locale,
+      option: {
+        signal: controller.signal,
+      },
+    })
+
+    clearTimeout(timeoutId)
+
+    // ✅ Validate data & limit slug
+    if (!Array.isArray(tours)) {
+      console.warn('generateStaticParams: API không trả về array')
+      return []
+    }
+
+    // ✅ Chỉ build 200 page, phần còn lại ISR
+    return tours.slice(0, 200).map((tour: string[]) => ({
+      slug: tour,
+    }))
+  } catch (error) {
+    clearTimeout(timeoutId)
+    console.error('generateStaticParams failed:', error)
+    // ✅ KHÔNG throw - cứu build
+    return []
+  }
 }
 export default async function page({
   params,
@@ -51,13 +85,21 @@ export default async function page({
       next: {revalidate: 60},
     },
   }
-  const [dataFooter, dataHeader, dataPopup, dataLanguageSwitcher] =
-    await Promise.all([
-      fetchData(requestFooter),
-      fetchData(requestHeader),
-      fetchData(requestPopup),
-      fetchData(requestLanguageSwitcher),
-    ])
+
+  // ✅ Fetch footer, header, popup song song
+  const [dataFooter, dataHeader, dataPopup] = await Promise.all([
+    fetchData(requestFooter),
+    fetchData(requestHeader),
+    fetchData(requestPopup),
+  ])
+
+  // ✅ Language switcher fetch riêng, có lỗi cũng không crash page
+  let dataLanguageSwitcher = {}
+  try {
+    dataLanguageSwitcher = await fetchData(requestLanguageSwitcher)
+  } catch (error) {
+    console.warn('language-switcher fetch failed, using empty object:', error)
+  }
   const [data] = await Promise.all([
     fetchData({
       api: '/blogs/' + locale + '/' + slug,

@@ -33,6 +33,7 @@ export async function generateMetadata({
   const res = await getMetadata(`/pages/${PAGE_ID[locale]}`)
   return metadataValues(res)
 }
+
 export default async function page({
   params,
 }: {

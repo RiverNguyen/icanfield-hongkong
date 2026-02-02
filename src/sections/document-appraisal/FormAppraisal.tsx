@@ -22,11 +22,11 @@ import {z} from 'zod'
 import LanguageProficiency from './LanguageProficiency'
 import NationButtons from './NationButtons'
 import {buildFormSchema} from './formSchema'
-import {useTranslations} from 'next-intl'
 import BasicInfoSection from './BasicInfoSection'
 import OtherInfoSlidersSection from './OtherInfoSlidersSection'
 import EducationAndManagementSection from './EducationAndManagementSection'
 import postData from '@/fetch/postData'
+import {useTranslations} from 'next-intl'
 
 interface value {
   value: number
@@ -68,11 +68,10 @@ export default function FormAppraisal({
     value: Number(otherInformation?.age?.to) / 2,
     percent: 50,
   })
-  const [valueNumberOfChildren, setValueNumberOfChildren] =
-    useState<value>({
-      value: Number(otherInformation?.number_of_children?.to) / 2,
-      percent: 50,
-    })
+  const [valueNumberOfChildren, setValueNumberOfChildren] = useState<value>({
+    value: Number(otherInformation?.number_of_children?.to) / 2,
+    percent: 50,
+  })
   // contact info will be sent directly in the single payload
   const [dataPopupMb, setDataPopupMb] = useState<fieldForm>({
     nation: false,
@@ -348,7 +347,10 @@ export default function FormAppraisal({
       </section>
       {appraisalResponse?.programs && (
         <section ref={sectionRef}>
-          <ProgramResult appraisalResponse={appraisalResponse} />
+          <ProgramResult
+            appraisalResponse={appraisalResponse}
+            t={t}
+          />
         </section>
       )}
       {errorField && (

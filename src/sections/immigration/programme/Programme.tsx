@@ -26,11 +26,13 @@ export default function Programme({
   dataPrograms,
   slug,
   imgBg,
+  locale,
 }: {
   name?: string
   dataPrograms: dataPrograms
   slug: string
   imgBg?: string
+  locale: string
 }) {
   const isMobile = useIsMobile()
   const searchParams = useSearchParams()
@@ -62,9 +64,11 @@ export default function Programme({
         '?page=1&per_page=8&' +
         endpoints.taxonomiesSettlement +
         '=' +
-        slug
+        slug +
+        '&lang=' +
+        locale
       )
-    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}&${endpoints.taxonomiesSettlement}=${slug}`
+    return `${endpoints.settlementPrograms}?page=${slugPage === 0 ? 1 : slugPage}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}&${endpoints.taxonomiesSettlement}=${slug}&lang=${locale}`
   }, [searchParams, slugPage, slugOrder, search]) //eslint-disable-line
   const {data: posts} = useSWR(query, fetcher, {
     revalidateIfStale: false,
@@ -106,7 +110,7 @@ export default function Programme({
         const fetchData = async () => {
           try {
             const response = await fetch(
-              `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${endpoints.settlementPrograms}?page=${page}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}${slug ? `&${endpoints.taxonomiesSettlement}=${slug}` : ''}`,
+              `${process.env.NEXT_PUBLIC_API!}${process.env.NEXT_PUBLIC_API_VERSION!}${endpoints.settlementPrograms}?page=${page}&per_page=8${slugOrder ? `&order=${slugOrder}` : ''}${search ? `&search=${search}` : ''}${slug ? `&${endpoints.taxonomiesSettlement}=${slug}` : ''}&lang=${locale}`,
             )
             const data = await response.json()
             if (data?.success) {
@@ -173,7 +177,7 @@ export default function Programme({
                 key={index}
                 className='sm:even:translate-y-[7.5rem]'
                 dataPostProgramme={e}
-                slug={slug}
+                slug={locale !== 'zh' ? locale + '/' + slug : slug}
               />
             ))}
           </div>
