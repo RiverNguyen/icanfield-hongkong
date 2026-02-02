@@ -1,7 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import ImageV2 from '@/components/image/ImageV2'
 import {
 	Form,
 	FormControl,
@@ -11,31 +10,36 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { cn } from '@/lib/utils'
-import { useEffect, useState, useTransition } from 'react'
-import ImageV2 from '@/components/image/ImageV2'
-import { ICLoading } from '@/sections/blogs/connect-us/FormConnectUs'
-import { Textarea } from '@/components/ui/textarea'
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 } from '@/components/ui/select'
-import { listArea } from '@/sections/detail-property-australia/faq-form/constants'
+import { Textarea } from '@/components/ui/textarea'
+import CF7Request from '@/fetch/cf7Request'
 import useClickOutside from '@/hooks/useClickOutSide'
-import { useTranslations } from 'next-intl'
+import { cn } from '@/lib/utils'
+import { ICLoading } from '@/sections/blogs/connect-us/FormConnectUs'
+import endpoints from '@/utils/endpoints'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useLocale, useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 
-const FAQForm = () => {
+const FAQForm = ({ dataLocation }: { dataLocation: any }) => {
 	const t = useTranslations()
 	const [focus, setFocus] = useState({
-		fullName: false,
+		fullname: false,
 		email: false,
 		phone: false,
 	})
+	const locale = useLocale()
 	const formSchema = z.object({
-		fullName: z.string().min(2, {
+		fullname: z.string().min(2, {
 			message: t('truong_nay_it_nhat_phai_co_2_ky_tu'),
 		}),
 		email: z.string().email({ message: t('dien_chi_email_khong_hop_le') }),
@@ -50,25 +54,51 @@ const FAQForm = () => {
 			required_error: t('truong_nay_khong_duoc_de_trong'),
 		}),
 		message: z.string(),
+		url: z.string().optional(),
 	})
-	const [isPending, setTransition] = useTransition()
-
+	const [isPending, setIsPending] = useState(false)
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			fullName: '',
+			fullname: '',
 			email: '',
 			phone: '',
+			area: dataLocation?.data?.[0]?.location_name || '',
 			message: '',
+			url: '',
 		},
 	})
 
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			form.setValue('url', window.location.href)
+		}
+	}, [form])
 
-	async function onSubmit() {
-		setTransition(async () => {
-			await new Promise((resolve) => setTimeout(resolve, 2000))
-			form.reset()
-		})
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		setIsPending(true)
+		try {
+			const valueContactForm = {
+				...values,
+				url: window.location.href,
+			}
+			const request = new CF7Request(valueContactForm)
+			const response = await request.send({
+				id: endpoints.formAustraliaRealEstate[locale as 'zh' | 'zh-cn' | 'en'].id,
+				unitTag: endpoints.formAustraliaRealEstate[locale as 'zh' | 'zh-cn' | 'en'].unitTag,
+			})
+			if (response?.status) {
+				toast.success(t('gui_thong_tin_thanh_cong'))
+				form.reset()
+			} else {
+				toast.error(t('gui_thong_tin_that_bai'))
+			}
+		} catch (error) {
+			console.error('Error submitting form:', error)
+			toast.error(t('co_loi_xay_ra_khi_gui_thong_tin'))
+		} finally {
+			setIsPending(false)
+		}
 	}
 
 	return (
@@ -82,7 +112,7 @@ const FAQForm = () => {
 			/>
 			<div className='relative z-10'>
 				<h3 className='max-w-[14.625rem] font-optima font-semibold text-Phase-1-Brown heading4 xsm:text-[1.125rem]'>
-					Để lại thông tin, chúng tôi sẽ hỗ trợ bạn
+					{t('de_lai_thong_tin_chung_toi_se_ho_tro_ban')}
 				</h3>
 				<Form {...form}>
 					<form
@@ -91,17 +121,28 @@ const FAQForm = () => {
 					>
 						<FormField
 							control={form.control}
-							name='fullName'
+							name='url'
+							render={({ field }) => (
+								<FormItem className='hidden'>
+									<FormControl>
+										<Input type='hidden' {...field} />
+									</FormControl>
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name='fullname'
 							render={({ field }) => (
 								<FormItem className='relative space-x-0 space-y-0'>
 									<FormLabel
 										className={cn(
 											'absolute left-[1rem] top-1/2 flex -translate-y-1/2 items-center font-normal -tracking-[0.02rem] transition-all duration-200 body16',
-											(focus.fullName || field.value) &&
+											(focus.fullname || field.value) &&
 											'pointer-events-none opacity-0',
 										)}
 									>
-										<span className='text-greyscaletext-200'>Họ và tên</span>
+										<span className='text-greyscaletext-200'>{t('ho_va_ten')}</span>
 										<span className='text-errtext'>*</span>
 									</FormLabel>
 									<FormControl>
@@ -110,10 +151,10 @@ const FAQForm = () => {
 											type='text'
 											{...field}
 											onFocus={() =>
-												setFocus((prev) => ({ ...prev, fullName: true }))
+												setFocus((prev) => ({ ...prev, fullname: true }))
 											}
 											onBlur={() =>
-												setFocus((prev) => ({ ...prev, fullName: false }))
+												setFocus((prev) => ({ ...prev, fullname: false }))
 											}
 										/>
 									</FormControl>
@@ -134,7 +175,7 @@ const FAQForm = () => {
 										)}
 									>
 										<span className='text-greyscaletext-200'>
-											Số điện thoại
+											{t('so_dien_thoai')}
 										</span>
 										<span className='text-errtext'>*</span>
 									</FormLabel>
@@ -173,7 +214,7 @@ const FAQForm = () => {
 											'pointer-events-none opacity-0',
 										)}
 									>
-										<span className='text-greyscaletext-200'>Email</span>
+										<span className='text-greyscaletext-200'>{t('email')}</span>
 										<span className='text-errtext'>*</span>
 									</FormLabel>
 									<FormControl>
@@ -207,7 +248,7 @@ const FAQForm = () => {
 												{field.value || (
 													<FormLabel className='flex items-center font-normal -tracking-[0.02rem] body16'>
 														<span className='text-greyscaletext-200'>
-															Khu vực sinh sống
+															{t('khu_vuc_sinh_song')}
 														</span>
 														<span className='text-errtext'>*</span>
 													</FormLabel>
@@ -215,12 +256,12 @@ const FAQForm = () => {
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent className='rounded-[0.5rem] bg-white'>
-											{listArea.map((item, index) => (
+											{dataLocation?.data?.map((item: any, index: number) => (
 												<SelectItem
 													key={index}
-													value={item}
+													value={item.location_name}
 												>
-													{item}
+													{item.location_name}
 												</SelectItem>
 											))}
 										</SelectContent>
@@ -246,6 +287,7 @@ const FAQForm = () => {
 						/>
 						<button
 							type='submit'
+							disabled={isPending}
 							className={cn(
 								'flex h-[3rem] w-full items-center justify-center rounded-[0.5rem] bg-btn-gradient px-[0.75rem] pl-[1.5rem]',
 							)}
@@ -255,7 +297,7 @@ const FAQForm = () => {
 							) : (
 								<>
 									<span className='body14 font-medium -tracking-[0.0175rem] text-white'>
-										Gửi thông tin
+										{t('gui_thong_tin')}
 									</span>
 									<ImageV2
 										src='/icons/arrow-right.svg'
@@ -274,10 +316,10 @@ const FAQForm = () => {
 	)
 }
 
-export const FAQFormMobile = ({ className }: { className?: string }) => {
+export const FAQFormMobile = ({ dataLocation, className }: { dataLocation: any, className?: string }) => {
 	const [open, setOpen] = useState(false)
 	const { ref, isOutside } = useClickOutside<HTMLDivElement>()
-
+	const t = useTranslations('')
 	useEffect(() => {
 		if (isOutside) {
 			setOpen(false)
@@ -315,10 +357,10 @@ export const FAQFormMobile = ({ className }: { className?: string }) => {
 					)}
 				/>
 				<p className='relative z-10 text-xs font-semibold uppercase leading-[1.2rem] tracking-[-0.0225rem] text-white'>
-					Cơ hội đầu tư
+					{t('co_hieu_dau_tu')}
 				</p>
 			</div>
-			<FAQForm />
+			<FAQForm dataLocation={dataLocation} />
 		</div>
 	)
 }

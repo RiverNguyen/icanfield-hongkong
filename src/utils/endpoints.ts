@@ -85,6 +85,20 @@ const endpoints = {
 		zh: '/pages/7279',
 		'zh-cn': '/pages/7281',
 		en: '/pages/7283',
+	},
+	formAustraliaRealEstate: {
+		zh: {
+			id: '7381',
+			unitTag: 'chi-tiet-bat-dong-san-uc-zh',
+		},
+		'zh-cn': {
+			id: '7383',
+			unitTag: 'chi-tiet-bat-dong-san-uc-zh-cn',
+		},
+		en: {
+			id: '7385',
+			unitTag: 'chi-tiet-bat-dong-san-uc-en',
+		},
 	}
 }
 
