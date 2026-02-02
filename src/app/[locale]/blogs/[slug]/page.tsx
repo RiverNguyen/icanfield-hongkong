@@ -17,44 +17,44 @@ export async function generateMetadata({params}: {params: {slug: string}}) {
   return metadataValues(Array.isArray(res) ? res[0] : res)
 }
 
-export async function generateStaticParams({
-  params,
-}: {
-  params: {slug: string; locale: string}
-}) {
-  const {locale} = await params
+// export async function generateStaticParams({
+//   params,
+// }: {
+//   params: {slug: string; locale: string}
+// }) {
+//   const {locale} = await params
 
-  // ✅ Timeout 5s - tránh treo build
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 5000)
+//   // ✅ Timeout 5s - tránh treo build
+//   const controller = new AbortController()
+//   const timeoutId = setTimeout(() => controller.abort(), 5000)
 
-  try {
-  const tours = await fetchData({
-      api: '/slugs?post_type=post&lang=' + locale,
-      option: {
-        signal: controller.signal,
-      },
-  })
+//   try {
+//     const tours = await fetchData({
+//       api: '/slugs?post_type=post&lang=' + locale,
+//       option: {
+//         signal: controller.signal,
+//       },
+//     })
 
-    clearTimeout(timeoutId)
+//     clearTimeout(timeoutId)
 
-    // ✅ Validate data & limit slug
-    if (!Array.isArray(tours)) {
-      console.warn('generateStaticParams: API không trả về array')
-      return []
-    }
+//     // ✅ Validate data & limit slug
+//     if (!Array.isArray(tours)) {
+//       console.warn('generateStaticParams: API không trả về array')
+//       return []
+//     }
 
-    // ✅ Chỉ build 200 page, phần còn lại ISR
-    return tours.slice(0, 200).map((tour: string[]) => ({
-    slug: tour,
-  }))
-  } catch (error) {
-    clearTimeout(timeoutId)
-    console.error('generateStaticParams failed:', error)
-    // ✅ KHÔNG throw - cứu build
-    return []
-  }
-}
+//     // ✅ Chỉ build 5 page, phần còn lại ISR (on-demand)
+//     return tours.slice(0, 5).map((tour: string[]) => ({
+//       slug: tour,
+//     }))
+//   } catch (error) {
+//     clearTimeout(timeoutId)
+//     console.error('generateStaticParams failed:', error)
+//     // ✅ KHÔNG throw - cứu build
+//     return []
+//   }
+// }
 export default async function page({
   params,
 }: {
@@ -88,9 +88,9 @@ export default async function page({
 
   // ✅ Fetch footer, header, popup song song
   const [dataFooter, dataHeader, dataPopup] = await Promise.all([
-      fetchData(requestFooter),
-      fetchData(requestHeader),
-      fetchData(requestPopup),
+    fetchData(requestFooter),
+    fetchData(requestHeader),
+    fetchData(requestPopup),
   ])
 
   // ✅ Language switcher fetch riêng, có lỗi cũng không crash page
