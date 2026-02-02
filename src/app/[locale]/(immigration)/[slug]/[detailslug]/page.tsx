@@ -4,6 +4,7 @@ import getMetadata from '@/fetch/getMetadata'
 import DetailSettlementPrograms from '@/views/detail-settlement-programs'
 import endpoints from '@/utils/endpoints'
 import metadataValues from '@/utils/metadataValues'
+import Header from '@/layout/header'
 
 // ✅ ISR + Dynamic params - an toàn cho build
 export const dynamicParams = true
@@ -108,14 +109,40 @@ export default async function page({
         next: {revalidate: 10},
       },
     }
-    const [programResponse, dataAcfNation, dataTaxonomies] = await Promise.all([
+
+    const requestFooter = {
+      api: '/footer-options?acf_format=standard&lang=' + locale,
+      option: {
+        next: {revalidate: 60},
+      },
+    }
+    const requestHeader = {
+      api: '/header-options?acf_format=standard&lang=' + locale,
+      option: {
+        next: {revalidate: 60},
+      },
+    }
+    const requestPopup = {
+      api: '/form-all-page?lang=' + locale,
+      option: {
+        next: {revalidate: 60},
+      },
+    }
+    const [
+      programResponse,
+      dataAcfNation,
+      dataTaxonomies,
+      dataFooter,
+      dataHeader,
+      dataPopup,
+    ] = await Promise.all([
       fetchProgramData,
       fetchAcfNation,
       fetchData(requestTaxonomies),
+      fetchData(requestFooter),
+      fetchData(requestHeader),
+      fetchData(requestPopup),
     ])
-    console.log('programResponse', programResponse)
-    console.log('dataAcfNation', dataAcfNation)
-    console.log('dataTaxonomies', dataTaxonomies)
     const data = {
       ...programResponse,
       data: {
@@ -127,7 +154,41 @@ export default async function page({
     if (data.status === 404) {
       return <div>{String('error')}</div>
     }
-    return <DetailSettlementPrograms {...data.data} />
+    const categorySlug = programResponse.data.category_translations
+    const postSlug = programResponse.data.post_translations
+    const dataLanguageSwitcher = {
+      zh: {
+        slug: '',
+      },
+      'zh-cn': {
+        slug: '',
+      },
+      en: {
+        slug: '',
+      },
+    }
+    if (categorySlug && postSlug) {
+      Object.keys(dataLanguageSwitcher).forEach((key) => {
+        dataLanguageSwitcher[key as 'zh' | 'zh-cn' | 'en'].slug +=
+          categorySlug[key as 'zh' | 'zh-cn' | 'en']?.slug +
+          '/' +
+          postSlug[key as 'zh' | 'zh-cn' | 'en'].slug
+      })
+    }
+    console.log('dataLanguageSwitcher', dataLanguageSwitcher)
+    console.log('categorySlug', categorySlug)
+    console.log('postSlug', postSlug)
+    return (
+      <>
+        <Header
+          data={dataHeader?.data}
+          dataFooter={dataFooter.data}
+          dataPopup={dataPopup?.data}
+          languageSwitcher={dataLanguageSwitcher}
+        />
+        <DetailSettlementPrograms {...data.data} />
+      </>
+    )
   } catch (error) {
     return <div>{String(error)}</div>
   }
