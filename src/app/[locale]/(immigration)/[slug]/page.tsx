@@ -22,17 +22,18 @@ import {redirect} from 'next/navigation'
 export async function generateMetadata({
   params,
 }: {
-  params: {slug: string; detailslug: string}
+  params: Promise<{slug: string; detailslug: string}>
 }) {
+  const {slug} = await params
   try {
     // Gọi API để lấy metadata
     const res = await getMetadata(
-      `/nation?slug=${encodeURIComponent(params.slug)}`,
+      `/nation?slug=${encodeURIComponent(slug)}`,
     )
 
     // Kiểm tra dữ liệu trả về
     if (!res || !Array.isArray(res) || res.length === 0 || !res[0]) {
-      console.error('No valid metadata found for slug:', params.detailslug)
+      console.error('No valid metadata found for slug:', slug)
       return {}
     }
     // console.log('res', res[0])
@@ -47,10 +48,10 @@ export async function generateMetadata({
 export default async function page({
   params,
 }: {
-  params: {slug: string; locale: string}
+  params: Promise<{slug: string; locale: string}>
 }) {
-  const {locale, slug} = params
-  console.log('locale', locale)
+  const {locale, slug} = await params
+  const slugEnc = encodeURIComponent(slug)
   const requestFooter = {
     api: '/footer-options?acf_format=standard&lang=' + locale,
     option: {
@@ -71,7 +72,7 @@ export default async function page({
   }
 
   const requestLanguageSwitcher = {
-    api: '/language-switcher/taxonomy-nation/' + locale + '/' + slug,
+    api: '/language-switcher/taxonomy-nation/' + locale + '/' + encodeURIComponent(slug),
     option: {
       next: {revalidate: 60},
     },
@@ -92,7 +93,7 @@ export default async function page({
         '/' +
         endpoints.taxonomiesSettlement +
         '?slug=' +
-        params?.slug +
+        slugEnc +
         '&acf_format=standard&lang=' +
         locale,
       option: {
@@ -105,7 +106,7 @@ export default async function page({
         '?page=1&per_page=8&order=asc&' +
         endpoints.taxonomiesSettlement +
         '=' +
-        params?.slug +
+        slugEnc +
         '&lang=' +
         locale,
       option: {
@@ -114,14 +115,14 @@ export default async function page({
       fallback: [],
     }),
     fetchData({
-      api: '/posts-by-taxonomy?slug=' + params?.slug,
+      api: '/posts-by-taxonomy?slug=' + slugEnc,
       option: {
         next: {revalidate: 10},
       },
       fallback: [],
     }),
     fetchData({
-      api: `/data-map-with-slug/?slug=${params.slug}`,
+      api: `/data-map-with-slug/?slug=${slugEnc}`,
       option: {
         next: {revalidate: 10},
       },
@@ -149,7 +150,7 @@ export default async function page({
       />
       <Immigration
         locale={locale}
-        slug={params?.slug}
+        slug={slug}
         dataImmigration={dataAcf[0]}
         dataPrograms={dataPrograms}
         postRelate={postRelate}

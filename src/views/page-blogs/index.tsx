@@ -75,7 +75,7 @@ const PageBlogs: FC<IPageBlogsProps> = ({
 					dataCategories={dataCategoriesWithAll}
 				/>
 			</Suspense>
-			<WrapperConnectUs data={dataPage.quote_blogs_page}>
+			<WrapperConnectUs data={dataPage?.quote_blogs_page}>
 				<FormConnectUs />
 			</WrapperConnectUs>
 		</>

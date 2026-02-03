@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import ImageV2 from '@/components/image/ImageV2'
-import {Input} from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
 import useClickOutside from '@/hooks/useClickOutSide'
-import {cn} from '@/lib/utils'
-import {SortOption} from '@/types/blogs.interface'
-import {useTranslations} from 'next-intl'
-import {usePathname, useRouter, useSearchParams} from 'next/navigation'
-import React, {useEffect, useState} from 'react'
-import {useDebounceCallback} from 'usehooks-ts'
+import { cn } from '@/lib/utils'
+import { SortOption } from '@/types/blogs.interface'
+import { useTranslations } from 'next-intl'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import { useDebounceCallback } from 'usehooks-ts'
 
 const IndexSortAndSearchPosts = ({
   sortOptions,
@@ -39,7 +39,7 @@ const IndexSortAndSearchPosts = ({
     useState<boolean>(false)
 
   // hook
-  const {ref, isOutside} = useClickOutside<HTMLDivElement>()
+  const { ref, isOutside } = useClickOutside<HTMLDivElement>()
 
   useEffect(() => {
     if (searchParams?.get('sort')) {
@@ -155,7 +155,7 @@ const IndexSortAndSearchPosts = ({
 }
 
 export default IndexSortAndSearchPosts
-const ICSearch = ({className}: {className?: string}) => {
+const ICSearch = ({ className }: { className?: string }) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

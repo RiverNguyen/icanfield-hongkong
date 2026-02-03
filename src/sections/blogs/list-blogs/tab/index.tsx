@@ -18,12 +18,17 @@ const IndexTabs = ({
 	const pathName = usePathname()
 	const searchParams = useSearchParams()
 
+	const normalizeSlug = (s: string) => s?.replace(/-/g, '_') ?? ''
+
 	useEffect(() => {
-		if (searchParams?.get('category')) {
+		const urlCategory = searchParams?.get('category')
+		if (urlCategory && urlCategory !== 'all') {
 			const category = categories.find(
-				(category: Category) => category.slug === searchParams.get('category'),
+				(cat: Category) => normalizeSlug(cat.slug) === normalizeSlug(urlCategory),
 			)
 			setSelectedCategory(category ?? categories[0])
+		} else if (!urlCategory || urlCategory === 'all') {
+			setSelectedCategory(categories[0])
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchParams])
