@@ -24,9 +24,12 @@ export async function generateMetadata({
 }: {
   params: Promise<{slug: string; detailslug: string}>
 }) {
-  const {slug} = await params
+  const {slug: slugRaw} = await params
+  const slug =
+    typeof slugRaw === 'string' && /%[0-9A-Fa-f]{2}/.test(slugRaw)
+      ? decodeURIComponent(slugRaw)
+      : slugRaw
   try {
-    // Gọi API để lấy metadata
     const res = await getMetadata(
       `/nation?slug=${encodeURIComponent(slug)}`,
     )
@@ -50,7 +53,12 @@ export default async function page({
 }: {
   params: Promise<{slug: string; locale: string}>
 }) {
-  const {locale, slug} = await params
+  const {locale, slug: slugRaw} = await params
+  // Slug có thể nhận dạng encoded trên production (vd. %E5%8A%A0%E6%8B%BF%E5%A4%A7) → decode để gọi API đúng
+  const slug =
+    typeof slugRaw === 'string' && /%[0-9A-Fa-f]{2}/.test(slugRaw)
+      ? decodeURIComponent(slugRaw)
+      : slugRaw
   const slugEnc = encodeURIComponent(slug)
   const requestFooter = {
     api: '/footer-options?acf_format=standard&lang=' + locale,

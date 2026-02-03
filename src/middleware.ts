@@ -5,17 +5,24 @@ import {routing} from './i18n/routing'
 const intlMiddleware = createMiddleware(routing)
 const locales = routing.locales as readonly string[]
 
+function safeDecodePath(pathname: string): string {
+  try {
+    return decodeURIComponent(pathname)
+  } catch {
+    return pathname
+  }
+}
+
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
-  const segment1 = pathname.split('/').filter(Boolean)[0]
+  const pathnameDecoded = safeDecodePath(pathname)
+  const segment1 = pathnameDecoded.split('/').filter(Boolean)[0]
 
-  // Nếu segment đầu không phải locale → rewrite nội bộ sang /zh/... (URL trình duyệt vẫn giữ nguyên, không thành /zh)
+  // Nếu segment đầu không phải locale (vd. slug tiếng Trung 加拿大) → rewrite nội bộ sang /zh/...
   if (segment1 && !locales.includes(segment1)) {
     const defaultLocale = routing.defaultLocale
-    const rewritten = new URL(
-      `/${defaultLocale}${pathname.startsWith('/') ? pathname : '/' + pathname}`,
-      request.url
-    )
+    const pathNormalized = pathnameDecoded.startsWith('/') ? pathnameDecoded : '/' + pathnameDecoded
+    const rewritten = new URL(`/${defaultLocale}${pathNormalized}`, request.url)
     return NextResponse.rewrite(rewritten)
   }
 
