@@ -22,7 +22,11 @@ export default function middleware(request: NextRequest) {
   if (segment1 && !locales.includes(segment1)) {
     const defaultLocale = routing.defaultLocale
     const pathNormalized = pathnameDecoded.startsWith('/') ? pathnameDecoded : '/' + pathnameDecoded
-    const rewritten = new URL(`/${defaultLocale}${pathNormalized}`, request.url)
+    // Dùng path đã encode (ASCII) để Vercel/Edge match route ổn định với slug Unicode
+    const segments = pathNormalized.split('/').filter(Boolean)
+    const encodedPath =
+      '/' + defaultLocale + '/' + segments.map((s) => encodeURIComponent(s)).join('/')
+    const rewritten = new URL(encodedPath, request.url)
     return NextResponse.rewrite(rewritten)
   }
 
